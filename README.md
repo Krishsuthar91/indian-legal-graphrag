@@ -118,6 +118,43 @@ logic or frontend features changed).
 
 Deploy with `docker compose up --build -d` and visit http://localhost.
 
+## Module 10 — Research Evaluation & Publication Package
+
+Offline, deterministic evaluation and publication material for the HHGR system.
+Runs entirely on the `mock` LLM provider and a deterministic embedding provider,
+so every number is reproducible with no network access.
+
+- **Gold dataset** — `data/eval/gold/` (34 items, 5 legal domains): 10 grounded
+  Contract Act items with node-level relevance labels + 6 domain-probes each for
+  BNS, BNSS, BSA, and Supreme Court judgments (scored via citation matching)
+- **Metrics** — `eval/metrics/`:
+  - retrieval: Recall@K, Precision@K, Hit Rate@K, MRR, MAP, NDCG@K, latency (mean/p50/p95) + throughput
+  - explainability: citation accuracy, hierarchy correctness, graph-path accuracy,
+    provenance completeness, evidence coverage, counter-authority P/R/F1
+  - generation: RAGAS-style faithfulness, answer relevancy, context recall /
+    precision, answer correctness (offline surrogates; optional native `ragas`)
+- **Systems** — `eval/systems.py`: HHGR (full, with provenance), dense-only,
+  BM25, graph-only, naive RAG
+- **Ablation** — `eval/ablation.py`: six arms (full / no_graph / no_hierarchy /
+  no_dense / no_multilingual / no_explainability)
+- **Harness + CLI** — `eval/harness.py` + `eval/cli.py`; one command produces
+  JSON / CSV / Markdown / PDF reports and SVG + PNG figures under `evaluation/`
+- **Publication package** — `paper/`: IEEEtran paper (abstract, introduction,
+  methodology, experiments, results, future work), BibTeX, A0 poster, beamer
+  slides, and build instructions
+- **Reproducibility** — `scripts/reproduce.sh` + `requirements-lock.txt`
+
+```bash
+# Full offline benchmark run (reports + figures)
+python -m eval.cli --config data/eval/config/experiment.json --out evaluation
+
+# Quick smoke run (first 3 items)
+python -m eval.cli --quick --out evaluation
+
+# One-command reproducibility (venv + deps + benchmark + tests)
+bash scripts/reproduce.sh
+```
+
 ## Quick Start
 
 ```bash
@@ -202,7 +239,13 @@ explaintool/
 ├── monitoring/                # Module 9 — Prometheus + Grafana overlay
 ├── docs/                      # Module 9 — DEPLOYMENT / DEVELOPER / PRODUCTION / TROUBLESHOOTING / ARCHITECTURE
 ├── .github/workflows/ci.yml   # Module 9 — CI pipeline
-├── tests/                     # 361 backend tests (343 pre-existing + 18 Module 9)
+├── eval/                      # Module 10 — evaluation package (metrics, systems, harness, CLI)
+├── data/eval/                 # Module 10 — gold datasets + experiment config
+├── evaluation/                # Module 10 — generated reports + figures
+├── paper/                     # Module 10 — IEEE paper, poster, presentation, BibTeX
+├── scripts/reproduce.sh       # Module 10 — one-command reproducibility
+├── requirements-lock.txt      # Module 10 — pinned evaluation lock file
+├── tests/                     # 447 backend tests (361 pre-existing + 86 Module 10)
 ├── logs/
 ├── data/
 ├── pyproject.toml

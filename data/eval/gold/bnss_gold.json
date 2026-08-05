@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "name": "bnss_gold",
+  "document_id": "0940d367554383c5",
+  "meta": {
+    "description": "Domain-expansion gold items on the Bharatiya Nagarik Suraksha Sanhita (BNSS), 2023 (criminal procedure). Ungrounded probes scored via citation-string matching.",
+    "act": "Bharatiya Nagarik Suraksha Sanhita (BNSS), 2023"
+  },
+  "items": [
+    {
+      "id": "bnss-001",
+      "domain": "bnss",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "easy",
+      "query": "When is a police officer required to inform the accused of the grounds of arrest?",
+      "reference_answer": "A police officer shall inform the person arrested of the full particulars of the offence or other grounds of arrest, as soon as practicable after the arrest.",
+      "citations": [
+        {
+          "citation_text": "Section 47, Bharatiya Nagarik Suraksha Sanhita (BNSS) 2023",
+          "label": "Section",
+          "numbering": "47",
+          "title": "Information of arrest grounds"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Arrest information rights under the new procedure code."
+    },
+    {
+      "id": "bnss-002",
+      "domain": "bnss",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "medium",
+      "query": "How does the BNSS allow electronic evidence recording in investigations?",
+      "reference_answer": "The BNSS permits audio-video electronic means for recording statements and search procedures, including electronic evidence, throughout the investigation.",
+      "citations": [
+        {
+          "citation_text": "Section 176, Bharatiya Nagarik Suraksha Sanhita (BNSS) 2023",
+          "label": "Section",
+          "numbering": "176",
+          "title": "Recording of evidence electronically"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Technology-forward evidence provisions."
+    },
+    {
+      "id": "bnss-003",
+      "domain": "bnss",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "easy",
+      "query": "What is the maximum period for which the police may detain a person in custody before remand?",
+      "reference_answer": "A person arrested without warrant may be detained by the police for a period not exceeding twenty-four hours before being produced before a magistrate.",
+      "citations": [
+        {
+          "citation_text": "Section 58, Bharatiya Nagarik Suraksha Sanhita (BNSS) 2023",
+          "label": "Section",
+          "numbering": "58",
+          "title": "Detention before remand"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Pre-remand detention limit."
+    },
+    {
+      "id": "bnss-004",
+      "domain": "bnss",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "hard",
+      "query": "Can a trial proceed in the absence of the accused under the BNSS?",
+      "reference_answer": "Yes, the BNSS provides for trial in the absence of the accused in certain circumstances, including for petty offences and via video-conferencing where the accused is represented by counsel.",
+      "citations": [
+        {
+          "citation_text": "Section 272, Bharatiya Nagarik Suraksha Sanhita (BNSS) 2023",
+          "label": "Section",
+          "numbering": "272",
+          "title": "Trial in absence of accused"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Procedural innovation of the BNSS."
+    },
+    {
+      "id": "bnss-005",
+      "domain": "bnss",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "medium",
+      "query": "What is the time limit for framing charges against an undertrial accused?",
+      "reference_answer": "The BNSS provides a time limit for the framing of charges and completion of trial for undertrial prisoners, with release on bail where the limit is exceeded without trial.",
+      "citations": [
+        {
+          "citation_text": "Section 479, Bharatiya Nagarik Suraksha Sanhita (BNSS) 2023",
+          "label": "Section",
+          "numbering": "479",
+          "title": "Undertrial release limits"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Undertrial-rights safeguard provision."
+    },
+    {
+      "id": "bnss-006",
+      "domain": "bnss",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "easy",
+      "query": "How is a First Information Report to be filed under the BNSS?",
+      "reference_answer": "A First Information Report may be filed orally or in writing, and the police officer shall reduce an oral report to writing and read it over to the informant.",
+      "citations": [
+        {
+          "citation_text": "Section 173, Bharatiya Nagarik Suraksha Sanhita (BNSS) 2023",
+          "label": "Section",
+          "numbering": "173",
+          "title": "First Information Report"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "FIR filing procedure."
+    }
+  ]
+}

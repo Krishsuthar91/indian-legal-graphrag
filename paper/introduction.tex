@@ -1,0 +1,40 @@
+\section{Introduction}
+
+Indian legal practice operates across an enormous and rapidly changing body of
+law. The recent enactment of the Bharatiya Nyaya Sanhita (BNS), the Bharatiya
+Nagarik Suraksha Sanhita (BNSS), and the Bharatiya Sakshya Adhiniyam (BSA)
+replaced the colonial-era criminal codes, creating an urgent need for
+retrieval systems that can track how provisions have been repealed, superseded,
+and renumbered across statutes. A lawyer, researcher, or citizen asking a
+question such as ``what does the Act say about the performance of contracts?''
+needs not only an answer but also the exact section, its chapter context, and a
+warning when a cited authority has been overruled or repealed.
+
+Retrieval-augmented generation (RAG) systems \cite{lewis2020rag} have become
+the standard approach for answering questions over private or domain corpora.
+However, plain RAG has two well-known shortcomings: it retrieves flat chunks
+with no awareness of the legal document's hierarchy, and it cannot explain
+\emph{why} a passage was retrieved or whether the retrieved authority is still
+good law. Graph RAG \cite{edge2024graphrag} adds relationships between chunks,
+and multilingual embedding models extend coverage to Indic languages
+\cite{chen2023multilingual}, but the combination of hierarchical structure,
+semantic similarity, and explicit verifiability remains underexplored for
+Indian law.
+
+\subsection{Contributions}
+
+\begin{itemize}
+  \item \textbf{HHGR}: a hybrid retrieval method that fuses dense multilingual
+        embeddings, a hierarchical knowledge graph, and hierarchy-aware
+        evidence propagation with configurable signal weights.
+  \item \textbf{Verifiable provenance}: every answer is accompanied by
+        per-signal evidence scores, a reasoning chain, hierarchy paths,
+        numbered citations, confidence, validity flags, and counter-authority
+        detection.
+  \item \textbf{Evaluation package}: a gold-standard dataset (34 items, five
+        legal domains), a full suite of retrieval and explainability metrics,
+        RAGAS-style generation metrics, five baselines, and a six-arm ablation
+        study, all offline and reproducible.
+  \item \textbf{Publication package}: IEEE paper, poster, presentation, and
+        BibTeX, with all figures generated programmatically as SVG and PNG.
+\end{itemize}

@@ -1,0 +1,219 @@
+{
+  "schema_version": "1.0",
+  "name": "contract_act_gold",
+  "document_id": "0940d367554383c5",
+  "meta": {
+    "description": "Gold-standard evaluation items grounded in the synthetic Indian Contract Act, 1892 corpus document (data/hierarchy/0940d367554383c5.json).",
+    "act": "Indian Contract Act, 1892",
+    "corpus_node_ids": ["root", "n_0001", "n_0002", "n_0003", "n_0004", "n_0005", "n_0006", "n_0007", "n_0008", "n_0009", "n_0010"]
+  },
+  "items": [
+    {
+      "id": "ica-001",
+      "domain": "contract_act",
+      "language": "en",
+      "grounded": true,
+      "difficulty": "easy",
+      "query": "What is the short title and commencement of the Indian Contract Act, 1892?",
+      "reference_answer": "The Act may be called the Indian Contract Act, 1892, and it came into force on the first day of July, 1892.",
+      "citations": [
+        {
+          "citation_text": "Section 1, The Indian Contract Act, 1892",
+          "node_id": "n_0002",
+          "label": "Section",
+          "numbering": "1",
+          "title": "Short title and commencement"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Direct fact lookup; tests short-title and commencement retrieval."
+    },
+    {
+      "id": "ica-002",
+      "domain": "contract_act",
+      "language": "en",
+      "grounded": true,
+      "difficulty": "easy",
+      "query": "How is a contract defined under the Act?",
+      "reference_answer": "A contract is an agreement enforceable by law.",
+      "citations": [
+        {
+          "citation_text": "Section 2, The Indian Contract Act, 1892",
+          "node_id": "n_0003",
+          "label": "Section",
+          "numbering": "2",
+          "title": "Definitions"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Definitions clause lookup."
+    },
+    {
+      "id": "ica-003",
+      "domain": "contract_act",
+      "language": "en",
+      "grounded": true,
+      "difficulty": "easy",
+      "query": "What is a promise under the Act?",
+      "reference_answer": "A promise is a proposal that has been accepted and communicated in accordance with the Act.",
+      "citations": [
+        {
+          "citation_text": "Section 2, The Indian Contract Act, 1892",
+          "node_id": "n_0003",
+          "label": "Section",
+          "numbering": "2",
+          "title": "Definitions"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Paraphrase of the definitions clause."
+    },
+    {
+      "id": "ica-004",
+      "domain": "contract_act",
+      "language": "en",
+      "grounded": true,
+      "difficulty": "medium",
+      "query": "When is the communication of a proposal complete?",
+      "reference_answer": "The communication of proposals is complete as provided under the Act, governing when a proposal takes effect.",
+      "citations": [
+        {
+          "citation_text": "Section 3, The Indian Contract Act, 1892",
+          "node_id": "n_0008",
+          "label": "Section",
+          "numbering": "3",
+          "title": "Communication of proposals"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Section 3 lookup; requires reading the section body."
+    },
+    {
+      "id": "ica-005",
+      "domain": "contract_act",
+      "language": "en",
+      "grounded": true,
+      "difficulty": "medium",
+      "query": "What does the Act say about the performance of contracts?",
+      "reference_answer": "Where the contract provides for the manner of performance it must be performed accordingly, and where no provision is made the contract must be performed in the manner the law prescribes.",
+      "citations": [
+        {
+          "citation_text": "Section 4, The Indian Contract Act, 1892",
+          "node_id": "n_0010",
+          "label": "Section",
+          "numbering": "4",
+          "title": "Performance of contracts"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Flagship HHGR query also used in demo_embeddings.py."
+    },
+    {
+      "id": "ica-006",
+      "domain": "contract_act",
+      "language": "hi",
+      "grounded": true,
+      "difficulty": "medium",
+      "query": "अनुबंध प्रदर्शन",
+      "reference_answer": "अनुबंध का प्रदर्शन उसी प्रकार किया जाना चाहिए जैसा अनुबंध में उपबंधित है; जहाँ कोई उपबंध नहीं है, वहाँ उसे विधि द्वारा निर्धारित रीति से किया जाएगा।",
+      "citations": [
+        {
+          "citation_text": "Section 4, The Indian Contract Act, 1892",
+          "node_id": "n_0010",
+          "label": "Section",
+          "numbering": "4",
+          "title": "Performance of contracts"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Multilingual (Hindi) probe of contract performance."
+    },
+    {
+      "id": "ica-007",
+      "domain": "contract_act",
+      "language": "en",
+      "grounded": true,
+      "difficulty": "medium",
+      "query": "Which chapter of the Act deals with performance?",
+      "reference_answer": "Chapter III, Of Performance, contains Section 4 on the performance of contracts.",
+      "citations": [
+        {
+          "citation_text": "Chapter III, The Indian Contract Act, 1892",
+          "node_id": "n_0009",
+          "label": "Chapter",
+          "numbering": "CHAPTER III",
+          "title": "Of Performance"
+        },
+        {
+          "citation_text": "Section 4, The Indian Contract Act, 1892",
+          "node_id": "n_0010",
+          "label": "Section",
+          "numbering": "4",
+          "title": "Performance of contracts"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Hierarchy test: the answer must surface the chapter ancestor alongside the section."
+    },
+    {
+      "id": "ica-008",
+      "domain": "contract_act",
+      "language": "en",
+      "grounded": true,
+      "difficulty": "easy",
+      "query": "Where are the preliminary provisions of the Act located?",
+      "reference_answer": "The preliminary provisions are located in Chapter I of the Act.",
+      "citations": [
+        {
+          "citation_text": "Chapter I, The Indian Contract Act, 1892",
+          "node_id": "n_0001",
+          "label": "Chapter",
+          "numbering": "CHAPTER I",
+          "title": "Preliminary"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Chapter-level (ancestor) retrieval without a specific section reference."
+    },
+    {
+      "id": "ica-009",
+      "domain": "contract_act",
+      "language": "en",
+      "grounded": true,
+      "difficulty": "easy",
+      "query": "What is an agreement enforceable by law called?",
+      "reference_answer": "An agreement enforceable by law is called a contract.",
+      "citations": [
+        {
+          "citation_text": "Section 2, The Indian Contract Act, 1892",
+          "node_id": "n_0003",
+          "label": "Section",
+          "numbering": "2",
+          "title": "Definitions"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Reverse-phrased definition lookup."
+    },
+    {
+      "id": "ica-010",
+      "domain": "contract_act",
+      "language": "en",
+      "grounded": true,
+      "difficulty": "hard",
+      "query": "Does the Act require the parties to specify how a contract is to be performed, and what happens if they do not?",
+      "reference_answer": "Yes - where the contract provides for the manner of performance, it must be performed accordingly; where no provision is made, performance follows the manner prescribed by law.",
+      "citations": [
+        {
+          "citation_text": "Section 4, The Indian Contract Act, 1892",
+          "node_id": "n_0010",
+          "label": "Section",
+          "numbering": "4",
+          "title": "Performance of contracts"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Two-part conditional question stressing evidence sufficiency."
+    }
+  ]
+}

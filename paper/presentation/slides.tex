@@ -1,0 +1,53 @@
+\documentclass[10pt]{beamer}
+% Presentation slides. Compile with: pdflatex slides.tex
+\usetheme{Madrid}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\title{Explaintool: Explainable Multilingual Hierarchical Graph-RAG (HHGR)}
+\author{Krishna M. Sahoo}
+\date{\today}
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Problem}
+  \begin{itemize}
+    \item Legal QA requires verifiable answers: section, chapter context, and
+          current validity.
+    \item New codes (BNS, BNSS, BSA) repeal and renumber older statutes.
+    \item Plain RAG: flat chunks, no hierarchy, no provenance.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Approach: HHGR}
+  Fuse three retrieval signals over a hierarchical knowledge graph:
+  \begin{enumerate}
+    \item \textbf{Dense} multilingual embeddings (cross-lingual queries).
+    \item \textbf{Graph} text / citation / hierarchy / structural signals.
+    \item \textbf{Hierarchy} evidence propagation to ancestors/descendants.
+  \end{enumerate}
+  Then expose full provenance: reasoning chain, citations, confidence,
+  validity, and counter-authority detection.
+\end{frame}
+
+\begin{frame}{Results at K=5}
+  \begin{itemize}
+    \item HHGR: MRR 0.750, MAP 0.750, NDCG@5 0.763.
+    \item Ablations: removing the multilingual path drops MRR to 0.650.
+    \item Explainability: citation accuracy 0.95, hierarchy correctness 1.00,
+          provenance completeness 0.85.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Reproducibility}
+  One command reproduces everything offline:
+  \begin{itemize}
+    \item \texttt{scripts/reproduce.sh}
+    \item Gold dataset: 34 items across 5 legal domains.
+    \item Reports: CSV, JSON, Markdown, PDF. Figures: SVG and PNG.
+  \end{itemize}
+\end{frame}
+
+\end{document}

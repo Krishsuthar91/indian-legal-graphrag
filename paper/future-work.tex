@@ -1,0 +1,28 @@
+\section{Future Work}
+
+\begin{itemize}
+  \item \textbf{Scaling the corpus}: extend evaluation to full statutes (BNS,
+        BNSS, BSA), judgments, and the modern renumbering mappings between
+        repealed IPC/CPC/Evidence Act provisions and their successors.
+  \item \textbf{Real multilingual embeddings}: replace the deterministic
+        provider with bge-m3 or LaBSE and evaluate cross-lingual transfer
+        quantitatively, including Indic-language tokenization for coverage
+        metrics.
+  \item \textbf{Gold-answer generation}: replace the mock LLM with open or
+        commercial models and run native RAGAS evaluation end-to-end.
+  \item \textbf{Temporal validity}: model amendment and repeal edges as
+        dated relations so counter-authority detection becomes provenance-based
+        rather than marker-based.
+  \item \textbf{Learned fusion}: replace fixed signal weights with a
+        learn-to-rank model over the HHGR signal features.
+  \item \textbf{Human evaluation}: collect lawyer assessments of citation
+        usefulness, hierarchy correctness, and overall answer verifiability.
+\end{itemize}
+
+\section{Reproducibility}
+
+All artifacts are included: the evaluation dataset under
+\texttt{data/eval/gold/}, the experiment configuration under
+\texttt{data/eval/config/}, the metrics and harness under \texttt{eval/}, and
+the one-command script \texttt{scripts/reproduce.sh}, which installs the locked
+requirements and emits every report and figure under \texttt{evaluation/}.

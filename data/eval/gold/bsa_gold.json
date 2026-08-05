@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "name": "bsa_gold",
+  "document_id": "0940d367554383c5",
+  "meta": {
+    "description": "Domain-expansion gold items on the Bharatiya Sakshya Adhiniyam (BSA), 2023 (law of evidence). Ungrounded probes scored via citation-string matching.",
+    "act": "Bharatiya Sakshya Adhiniyam (BSA), 2023"
+  },
+  "items": [
+    {
+      "id": "bsa-001",
+      "domain": "bsa",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "easy",
+      "query": "What kinds of facts are relevant under the Bharatiya Sakshya Adhiniyam?",
+      "reference_answer": "Facts forming part of the same transaction, facts that are the occasion, cause or effect of relevant facts, motive, preparation and conduct, are among the facts that are relevant.",
+      "citations": [
+        {
+          "citation_text": "Section 6, Bharatiya Sakshya Adhiniyam (BSA) 2023",
+          "label": "Section",
+          "numbering": "6",
+          "title": "Facts relevant in the case"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Relevancy chapter of the new evidence law."
+    },
+    {
+      "id": "bsa-002",
+      "domain": "bsa",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "medium",
+      "query": "When is an electronic record admissible as evidence under the BSA?",
+      "reference_answer": "An electronic record is admissible if its authenticity is proved, including through a certificate in the manner prescribed, covering integrity and identity of the device.",
+      "citations": [
+        {
+          "citation_text": "Section 63, Bharatiya Sakshya Adhiniyam (BSA) 2023",
+          "label": "Section",
+          "numbering": "63",
+          "title": "Admissibility of electronic records"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Modernised electronic evidence provisions."
+    },
+    {
+      "id": "bsa-003",
+      "domain": "bsa",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "easy",
+      "query": "What is a document according to the Bharatiya Sakshya Adhiniyam?",
+      "reference_answer": "A document means any matter expressed or described upon any substance by means of letters, figures or marks, or by more than one of those means, intended to be used as evidence.",
+      "citations": [
+        {
+          "citation_text": "Section 2(1)(d), Bharatiya Sakshya Adhiniyam (BSA) 2023",
+          "label": "Section",
+          "numbering": "2(1)(d)",
+          "title": "Definitions"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Statutory definition of document."
+    },
+    {
+      "id": "bsa-004",
+      "domain": "bsa",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "medium",
+      "query": "How is a dying declaration treated under the BSA?",
+      "reference_answer": "Statements made by a person as to the cause of his death or as to any circumstances of the transaction resulting in his death are relevant and admissible when the person is dead.",
+      "citations": [
+        {
+          "citation_text": "Section 26, Bharatiya Sakshya Adhiniyam (BSA) 2023",
+          "label": "Section",
+          "numbering": "26",
+          "title": "Dying declaration"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Exception to hearsay for dying declarations."
+    },
+    {
+      "id": "bsa-005",
+      "domain": "bsa",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "hard",
+      "query": "What is the rule regarding secondary evidence of documents under the BSA?",
+      "reference_answer": "Secondary evidence may be given of the existence, condition or contents of a document in the cases prescribed, including when the original is lost, destroyed, or not produced in the prescribed circumstances.",
+      "citations": [
+        {
+          "citation_text": "Section 61, Bharatiya Sakshya Adhiniyam (BSA) 2023",
+          "label": "Section",
+          "numbering": "61",
+          "title": "Secondary evidence"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Best-evidence rule exception."
+    },
+    {
+      "id": "bsa-006",
+      "domain": "bsa",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "easy",
+      "query": "Who may be examined as a witness under the BSA?",
+      "reference_answer": "All persons are competent to testify unless prevented by reason of tender years, extreme old age, disease or infirmity, from understanding the questions or giving rational answers.",
+      "citations": [
+        {
+          "citation_text": "Section 132, Bharatiya Sakshya Adhiniyam (BSA) 2023",
+          "label": "Section",
+          "numbering": "132",
+          "title": "Competency of witnesses"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Witness competency rule."
+    }
+  ]
+}

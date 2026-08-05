@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "dataset": {
+    "name": "explaintool-eval",
+    "gold_dir": "data/eval/gold",
+    "document_id": "0940d367554383c5",
+    "hierarchy_file": "data/hierarchy/0940d367554383c5.json"
+  },
+  "experiment": {
+    "seed": 42,
+    "top_k": 5,
+    "runs": 3,
+    "embedding": {
+      "provider": "deterministic",
+      "model": "deterministic",
+      "force_deterministic": true
+    },
+    "hybrid_weights": {
+      "dense": 0.4,
+      "graph": 0.35,
+      "hierarchy": 0.25
+    },
+    "confidence_threshold": 0.45,
+    "quick_items": 3
+  },
+  "ablation": {
+    "variants": [
+      "full",
+      "no_graph",
+      "no_hierarchy",
+      "no_dense",
+      "no_multilingual",
+      "no_explainability"
+    ]
+  },
+  "systems": [
+    "hhgr",
+    "dense",
+    "bm25",
+    "graph",
+    "naive_rag"
+  ],
+  "output": {
+    "dir": "evaluation",
+    "reports": "evaluation/reports",
+    "figures": "evaluation/figures"
+  }
+}

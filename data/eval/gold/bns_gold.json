@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "name": "bns_gold",
+  "document_id": "0940d367554383c5",
+  "meta": {
+    "description": "Domain-expansion gold items on the Bharatiya Nyaya Sanhita (BNS), 2023. Ungrounded probes scored via citation-string matching; used to measure generalisation beyond the Contract Act corpus.",
+    "act": "Bharatiya Nyaya Sanhita (BNS), 2023"
+  },
+  "items": [
+    {
+      "id": "bns-001",
+      "domain": "bns",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "easy",
+      "query": "What punishment does the Bharatiya Nyaya Sanhita prescribe for murder?",
+      "reference_answer": "The Bharatiya Nyaya Sanhita prescribes death or imprisonment for life and fine for murder.",
+      "citations": [
+        {
+          "citation_text": "Section 103, Bharatiya Nyaya Sanhita (BNS) 2023",
+          "label": "Section",
+          "numbering": "103",
+          "title": "Punishment for murder"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "BNS murder provision (successor to IPC Section 302)."
+    },
+    {
+      "id": "bns-002",
+      "domain": "bns",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "easy",
+      "query": "How does the BNS define an offence?",
+      "reference_answer": "An offence is an act made punishable by the Bharatiya Nyaya Sanhita.",
+      "citations": [
+        {
+          "citation_text": "Section 2, Bharatiya Nyaya Sanhita (BNS) 2023",
+          "label": "Section",
+          "numbering": "2",
+          "title": "Definitions"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "General definitions clause in the new criminal code."
+    },
+    {
+      "id": "bns-003",
+      "domain": "bns",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "medium",
+      "query": "What are the punishments for theft under the BNS?",
+      "reference_answer": "Theft is punishable with imprisonment of either description for a term which may extend to three years, or fine, or both.",
+      "citations": [
+        {
+          "citation_text": "Section 303, Bharatiya Nyaya Sanhita (BNS) 2023",
+          "label": "Section",
+          "numbering": "303",
+          "title": "Punishment for theft"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Theft punishment (successor to IPC Section 379)."
+    },
+    {
+      "id": "bns-004",
+      "domain": "bns",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "medium",
+      "query": "When is a person said to be justified in the use of force for private defence?",
+      "reference_answer": "A person is justified in the use of force for private defence against bodily harm or wrongful restraint, subject to the limitations in the BNS.",
+      "citations": [
+        {
+          "citation_text": "Section 34, Bharatiya Nyaya Sanhita (BNS) 2023",
+          "label": "Section",
+          "numbering": "34",
+          "title": "Private defence"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "General exception on private defence."
+    },
+    {
+      "id": "bns-005",
+      "domain": "bns",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "hard",
+      "query": "What is the punishment for criminal breach of trust by a public servant under the BNS?",
+      "reference_answer": "Criminal breach of trust by a public servant is punishable with imprisonment for life or with imprisonment for up to ten years, and fine.",
+      "citations": [
+        {
+          "citation_text": "Section 316, Bharatiya Nyaya Sanhita (BNS) 2023",
+          "label": "Section",
+          "numbering": "316",
+          "title": "Criminal breach of trust by public servant"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Special aggravated form of criminal breach of trust."
+    },
+    {
+      "id": "bns-006",
+      "domain": "bns",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "easy",
+      "query": "Does the BNS repeal the Indian Penal Code?",
+      "reference_answer": "Yes, the Bharatiya Nyaya Sanhita, 2023 repeals the Indian Penal Code, 1860.",
+      "citations": [
+        {
+          "citation_text": "Section 358, Bharatiya Nyaya Sanhita (BNS) 2023",
+          "label": "Section",
+          "numbering": "358",
+          "title": "Repeal and savings"
+        }
+      ],
+      "expected_counter_authority_markers": ["repealed"],
+      "notes": "Repeal provision - exercises counter-authority awareness."
+    }
+  ]
+}

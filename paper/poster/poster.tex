@@ -1,0 +1,68 @@
+\documentclass[portrait,fontscale=0.7]{beamer}
+% IEEE-style research poster. Compile with: pdflatex poster.tex
+\usetheme{default}
+\usepackage[orientation=portrait,size=a0]{beamerposter}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{xcolor}
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{block title}{fg=white,bg=blue!60!black}
+\setbeamercolor{block body}{bg=blue!5!white}
+\title{Explaintool: Explainable Multilingual Hierarchical Graph-RAG (HHGR)
+for Indian Legal Document Intelligence}
+\author{Krishna M. Sahoo}
+\institute{Explaintool Project}
+
+\begin{document}
+\begin{frame}{}
+  \maketitle
+  \begin{columns}[t]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Motivation}
+        Legal QA must be \emph{verifiable}: lawyers need the exact section, its
+        chapter context, and warnings when an authority is overruled or repealed.
+        Plain RAG retrieves flat chunks with no hierarchy and no provenance.
+      \end{block}
+      \begin{block}{HHGR Retrieval}
+        Fuse three signals with configurable weights:
+        \begin{itemize}
+          \item \textbf{Dense}: multilingual embeddings (queries in Hindi match
+                English evidence).
+          \item \textbf{Graph}: text, citation, hierarchy, and structural signals
+                over a PART\_OF knowledge graph.
+          \item \textbf{Hierarchy}: evidence propagation to ancestors and
+                descendants.
+        \end{itemize}
+      \end{block}
+      \begin{block}{Explainability}
+        Every answer ships with evidence scores, a reasoning chain, hierarchy
+        paths, numbered citations, confidence, validity flags, and
+        counter-authority detection.
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Results (K=5, 10 grounded items)}
+        \begin{center}
+        \begin{tabular}{lccc}
+          \textbf{System} & \textbf{MRR} & \textbf{MAP} & \textbf{Mean ms}\\
+          \hline
+          Naive RAG & 0.700 & 0.675 & 0.80\\
+          Dense-only & 0.700 & 0.675 & 0.77\\
+          BM25 & 0.758 & 0.728 & 0.04\\
+          Graph-only & 0.650 & 0.620 & 0.35\\
+          \textbf{HHGR} & \textbf{0.750} & \textbf{0.750} & 2.58\\
+        \end{tabular}
+        \end{center}
+        Explainability: citation accuracy 0.95, hierarchy correctness 1.00,
+        graph-path accuracy 1.00, provenance completeness 0.85.
+      \end{block}
+      \begin{block}{Evaluation Package}
+        34 gold items across the Contract Act, BNS, BNSS, BSA, and SC judgments;
+        retrieval + explainability + RAGAS metrics; five baselines; six-arm
+        ablation. Fully offline and reproducible via
+        \texttt{scripts/reproduce.sh}.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+\end{document}

@@ -1,0 +1,21 @@
+system,item_id,domain,language,query,faithfulness,answer_relevancy,context_recall,context_precision,answer_correctness
+hhgr,ica-001,contract_act,en,"What is the short title and commencement of the Indian Contract Act, 1892?",1.0,0.8081,1.0,0.5731,0.552
+hhgr,ica-002,contract_act,en,How is a contract defined under the Act?,1.0,0.7542,1.0,0.4711,0.2549
+hhgr,ica-003,contract_act,en,What is a promise under the Act?,1.0,0.7864,1.0,0.4804,0.4495
+hhgr,ica-004,contract_act,en,When is the communication of a proposal complete?,1.0,0.7842,1.0,0.4517,0.5843
+hhgr,ica-005,contract_act,en,What does the Act say about the performance of contracts?,1.0,0.8563,1.0,0.5079,0.3928
+hhgr,ica-006,contract_act,hi,अनुबंध प्रदर्शन,1.0,0.6211,0.0,0.051,0.2331
+hhgr,ica-007,contract_act,en,Which chapter of the Act deals with performance?,1.0,0.7548,0.5,0.5376,0.4694
+hhgr,ica-008,contract_act,en,Where are the preliminary provisions of the Act located?,1.0,0.8524,0.0,0.4771,0.6262
+hhgr,ica-009,contract_act,en,What is an agreement enforceable by law called?,1.0,0.7178,1.0,0.2542,0.4984
+hhgr,ica-010,contract_act,en,"Does the Act require the parties to specify how a contract is to be performed, and what happens if they do not?",1.0,0.8926,1.0,0.3881,0.3366
+naive_rag,ica-001,contract_act,en,"What is the short title and commencement of the Indian Contract Act, 1892?",1.0,0.8484,1.0,0.5731,0.5714
+naive_rag,ica-002,contract_act,en,How is a contract defined under the Act?,1.0,0.8,1.0,0.4748,0.2748
+naive_rag,ica-003,contract_act,en,What is a promise under the Act?,1.0,0.8329,1.0,0.4663,0.4634
+naive_rag,ica-004,contract_act,en,When is the communication of a proposal complete?,1.0,0.8,1.0,0.4359,0.6186
+naive_rag,ica-005,contract_act,en,What does the Act say about the performance of contracts?,1.0,0.8981,1.0,0.5037,0.3976
+naive_rag,ica-006,contract_act,hi,अनुबंध प्रदर्शन,1.0,0.6708,1.0,0.051,0.2518
+naive_rag,ica-007,contract_act,en,Which chapter of the Act deals with performance?,1.0,0.803,1.0,0.5329,0.4534
+naive_rag,ica-008,contract_act,en,Where are the preliminary provisions of the Act located?,1.0,0.8932,1.0,0.4746,0.6672
+naive_rag,ica-009,contract_act,en,What is an agreement enforceable by law called?,1.0,0.7276,1.0,0.2562,0.5192
+naive_rag,ica-010,contract_act,en,"Does the Act require the parties to specify how a contract is to be performed, and what happens if they do not?",1.0,0.9125,1.0,0.3881,0.3455

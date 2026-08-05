@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "dataset_name": "explaintool-eval",
+  "files": [
+    "bns_gold.json",
+    "bnss_gold.json",
+    "bsa_gold.json",
+    "contract_act_gold.json",
+    "sc_judgments_gold.json"
+  ],
+  "total_items": 34,
+  "grounded_items": 10,
+  "by_domain": {
+    "bns": 6,
+    "bnss": 6,
+    "bsa": 6,
+    "contract_act": 10,
+    "sc_judgments": 6
+  },
+  "document_id": "0940d367554383c5",
+  "meta": {}
+}

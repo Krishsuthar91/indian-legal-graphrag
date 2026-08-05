@@ -1,0 +1,34 @@
+{
+  "architecture": {
+    "svg": "evaluation\\figures\\architecture.svg",
+    "png": "evaluation\\figures\\architecture.png"
+  },
+  "hierarchy_tree": {
+    "svg": "evaluation\\figures\\hierarchy_tree.svg",
+    "png": "evaluation\\figures\\hierarchy_tree.png"
+  },
+  "kg_example": {
+    "svg": "evaluation\\figures\\kg_example.svg",
+    "png": "evaluation\\figures\\kg_example.png"
+  },
+  "retrieval_flow": {
+    "svg": "evaluation\\figures\\retrieval_flow.svg",
+    "png": "evaluation\\figures\\retrieval_flow.png"
+  },
+  "eval_comparison": {
+    "svg": "evaluation\\figures\\eval_comparison.svg",
+    "png": "evaluation\\figures\\eval_comparison.png"
+  },
+  "latency_chart": {
+    "svg": "evaluation\\figures\\latency_chart.svg",
+    "png": "evaluation\\figures\\latency_chart.png"
+  },
+  "ablation_chart": {
+    "svg": "evaluation\\figures\\ablation_chart.svg",
+    "png": "evaluation\\figures\\ablation_chart.png"
+  },
+  "ragas_radar": {
+    "svg": "evaluation\\figures\\ragas_radar.svg",
+    "png": "evaluation\\figures\\ragas_radar.png"
+  }
+}

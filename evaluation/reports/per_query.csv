@@ -1,0 +1,51 @@
+system,item_id,domain,language,grounded,query,relevant_ids,retrieved_ids,duration_ms,recall_at_k,precision_at_k,hit_rate_at_k,mrr,map,ndcg_at_k,k
+hhgr,ica-001,contract_act,en,True,"What is the short title and commencement of the Indian Contract Act, 1892?",['n_0002'],"['n_0002', '0940d367554383c5', 'n_0003', 'n_0010', 'n_0008']",4.255,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+hhgr,ica-002,contract_act,en,True,How is a contract defined under the Act?,['n_0003'],"['n_0003', '0940d367554383c5', 'n_0010', 'n_0002', 'n_0008']",2.918,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+hhgr,ica-003,contract_act,en,True,What is a promise under the Act?,['n_0003'],"['n_0003', 'n_0010', 'n_0008', 'n_0009', 'n_0002']",2.241,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+hhgr,ica-004,contract_act,en,True,When is the communication of a proposal complete?,['n_0008'],"['n_0008', 'n_0003', 'n_0010', 'n_0002', 'n_0009']",2.445,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+hhgr,ica-005,contract_act,en,True,What does the Act say about the performance of contracts?,['n_0010'],"['n_0010', 'n_0009', 'n_0008', 'n_0003', 'n_0002']",2.193,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+hhgr,ica-006,contract_act,hi,True,अनुबंध प्रदर्शन,['n_0010'],"['n_0004', 'n_0002', '0940d367554383c5', 'n_0007', 'n_0009']",2.228,0.0,0.0,0.0,0.0,0.0,0.0,5.0
+hhgr,ica-007,contract_act,en,True,Which chapter of the Act deals with performance?,"['n_0009', 'n_0010']","['n_0009', 'n_0010', 'n_0008', 'n_0003', 'n_0002']",2.355,1.0,0.4,1.0,1.0,1.0,1.0,5.0
+hhgr,ica-008,contract_act,en,True,Where are the preliminary provisions of the Act located?,['n_0001'],"['n_0003', 'n_0010', '0940d367554383c5', 'n_0002', 'n_0008']",2.262,0.0,0.0,0.0,0.0,0.0,0.0,5.0
+hhgr,ica-009,contract_act,en,True,What is an agreement enforceable by law called?,['n_0003'],"['n_0003', 'n_0002', 'n_0008', 'n_0010', 'n_0006']",2.165,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+hhgr,ica-010,contract_act,en,True,"Does the Act require the parties to specify how a contract is to be performed, and what happens if they do not?",['n_0010'],"['n_0002', 'n_0010', 'n_0003', 'n_0008', '0940d367554383c5']",2.065,1.0,0.2,1.0,0.5,0.5,0.6309,5.0
+dense,ica-001,contract_act,en,True,"What is the short title and commencement of the Indian Contract Act, 1892?",['n_0002'],"['n_0002', '0940d367554383c5', 'n_0003', 'n_0010', 'n_0008']",0.459,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+dense,ica-002,contract_act,en,True,How is a contract defined under the Act?,['n_0003'],"['n_0010', 'n_0003', '0940d367554383c5', 'n_0008', 'n_0002']",0.388,1.0,0.2,1.0,0.5,0.5,0.6309,5.0
+dense,ica-003,contract_act,en,True,What is a promise under the Act?,['n_0003'],"['n_0003', 'n_0010', 'n_0008', 'n_0009', 'n_0002']",0.374,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+dense,ica-004,contract_act,en,True,When is the communication of a proposal complete?,['n_0008'],"['n_0008', 'n_0003', 'n_0010', 'n_0002', 'n_0009']",0.365,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+dense,ica-005,contract_act,en,True,What does the Act say about the performance of contracts?,['n_0010'],"['n_0010', 'n_0003', 'n_0008', 'n_0002', 'n_0009']",0.379,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+dense,ica-006,contract_act,hi,True,अनुबंध प्रदर्शन,['n_0010'],"['n_0004', 'n_0002', '0940d367554383c5', 'n_0009', 'n_0007']",0.37,0.0,0.0,0.0,0.0,0.0,0.0,5.0
+dense,ica-007,contract_act,en,True,Which chapter of the Act deals with performance?,"['n_0009', 'n_0010']","['n_0010', 'n_0003', 'n_0008', 'n_0009', 'n_0002']",0.363,1.0,0.4,1.0,1.0,0.75,0.8772,5.0
+dense,ica-008,contract_act,en,True,Where are the preliminary provisions of the Act located?,['n_0001'],"['n_0003', 'n_0010', '0940d367554383c5', 'n_0002', 'n_0008']",0.364,0.0,0.0,0.0,0.0,0.0,0.0,5.0
+dense,ica-009,contract_act,en,True,What is an agreement enforceable by law called?,['n_0003'],"['n_0003', 'n_0002', 'n_0008', 'n_0010', 'n_0006']",0.357,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+dense,ica-010,contract_act,en,True,"Does the Act require the parties to specify how a contract is to be performed, and what happens if they do not?",['n_0010'],"['n_0002', 'n_0010', 'n_0003', 'n_0008', '0940d367554383c5']",0.384,1.0,0.2,1.0,0.5,0.5,0.6309,5.0
+bm25,ica-001,contract_act,en,True,"What is the short title and commencement of the Indian Contract Act, 1892?",['n_0002'],"['n_0002', '0940d367554383c5', 'n_0003', 'n_0010', 'n_0001']",0.05,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+bm25,ica-002,contract_act,en,True,How is a contract defined under the Act?,['n_0003'],"['0940d367554383c5', 'n_0002', 'n_0003', 'n_0010', 'n_0001']",0.024,1.0,0.2,1.0,0.3333,0.3333,0.5,5.0
+bm25,ica-003,contract_act,en,True,What is a promise under the Act?,['n_0003'],"['n_0003', '0940d367554383c5', 'n_0002', 'n_0001', 'n_0004']",0.018,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+bm25,ica-004,contract_act,en,True,When is the communication of a proposal complete?,['n_0008'],"['n_0008', 'n_0003', '0940d367554383c5', 'n_0001', 'n_0002']",0.02,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+bm25,ica-005,contract_act,en,True,What does the Act say about the performance of contracts?,['n_0010'],"['n_0010', 'n_0007', 'n_0009', '0940d367554383c5', 'n_0002']",0.031,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+bm25,ica-006,contract_act,hi,True,अनुबंध प्रदर्शन,['n_0010'],"['0940d367554383c5', 'n_0001', 'n_0002', 'n_0003', 'n_0004']",0.026,0.0,0.0,0.0,0.0,0.0,0.0,5.0
+bm25,ica-007,contract_act,en,True,Which chapter of the Act deals with performance?,"['n_0009', 'n_0010']","['n_0009', 'n_0001', 'n_0007', '0940d367554383c5', 'n_0010']",0.022,1.0,0.4,1.0,1.0,0.7,0.8503,5.0
+bm25,ica-008,contract_act,en,True,Where are the preliminary provisions of the Act located?,['n_0001'],"['n_0001', '0940d367554383c5', 'n_0002', 'n_0003', 'n_0004']",0.02,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+bm25,ica-009,contract_act,en,True,What is an agreement enforceable by law called?,['n_0003'],"['n_0003', 'n_0002', '0940d367554383c5', 'n_0001', 'n_0004']",0.019,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+bm25,ica-010,contract_act,en,True,"Does the Act require the parties to specify how a contract is to be performed, and what happens if they do not?",['n_0010'],"['0940d367554383c5', 'n_0002', 'n_0003', 'n_0010', 'n_0001']",0.029,1.0,0.2,1.0,0.25,0.25,0.4307,5.0
+graph,ica-001,contract_act,en,True,"What is the short title and commencement of the Indian Contract Act, 1892?",['n_0002'],"['n_0002', '0940d367554383c5', 'n_0001', 'n_0003', 'n_0007']",0.299,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+graph,ica-002,contract_act,en,True,How is a contract defined under the Act?,['n_0003'],"['0940d367554383c5', 'n_0003', 'n_0002', 'n_0010', 'n_0001']",0.255,1.0,0.2,1.0,0.5,0.5,0.6309,5.0
+graph,ica-003,contract_act,en,True,What is a promise under the Act?,['n_0003'],"['n_0003', 'n_0001', '0940d367554383c5', 'n_0004', 'n_0005']",0.177,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+graph,ica-004,contract_act,en,True,When is the communication of a proposal complete?,['n_0008'],"['n_0003', 'n_0008', '0940d367554383c5', 'n_0001', 'n_0007']",0.194,1.0,0.2,1.0,0.5,0.5,0.6309,5.0
+graph,ica-005,contract_act,en,True,What does the Act say about the performance of contracts?,['n_0010'],"['n_0010', 'n_0007', 'n_0009', 'n_0008', '0940d367554383c5']",0.164,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+graph,ica-006,contract_act,hi,True,अनुबंध प्रदर्शन,['n_0010'],[],0.095,0.0,0.0,0.0,0.0,0.0,0.0,5.0
+graph,ica-007,contract_act,en,True,Which chapter of the Act deals with performance?,"['n_0009', 'n_0010']","['n_0009', 'n_0001', 'n_0007', 'n_0008', 'n_0010']",0.244,1.0,0.4,1.0,1.0,0.7,0.8503,5.0
+graph,ica-008,contract_act,en,True,Where are the preliminary provisions of the Act located?,['n_0001'],"['n_0003', 'n_0001', 'n_0010', '0940d367554383c5', 'n_0009']",0.206,1.0,0.2,1.0,0.5,0.5,0.6309,5.0
+graph,ica-009,contract_act,en,True,What is an agreement enforceable by law called?,['n_0003'],"['n_0003', 'n_0001', '0940d367554383c5', 'n_0004', 'n_0005']",0.169,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+graph,ica-010,contract_act,en,True,"Does the Act require the parties to specify how a contract is to be performed, and what happens if they do not?",['n_0010'],[],0.095,0.0,0.0,0.0,0.0,0.0,0.0,5.0
+naive_rag,ica-001,contract_act,en,True,"What is the short title and commencement of the Indian Contract Act, 1892?",['n_0002'],"['n_0002', '0940d367554383c5', 'n_0003', 'n_0010', 'n_0008']",0.495,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+naive_rag,ica-002,contract_act,en,True,How is a contract defined under the Act?,['n_0003'],"['n_0010', 'n_0003', '0940d367554383c5', 'n_0008', 'n_0002']",0.441,1.0,0.2,1.0,0.5,0.5,0.6309,5.0
+naive_rag,ica-003,contract_act,en,True,What is a promise under the Act?,['n_0003'],"['n_0003', 'n_0010', 'n_0008', 'n_0009', 'n_0002']",0.407,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+naive_rag,ica-004,contract_act,en,True,When is the communication of a proposal complete?,['n_0008'],"['n_0008', 'n_0003', 'n_0010', 'n_0002', 'n_0009']",0.393,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+naive_rag,ica-005,contract_act,en,True,What does the Act say about the performance of contracts?,['n_0010'],"['n_0010', 'n_0003', 'n_0008', 'n_0002', 'n_0009']",0.382,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+naive_rag,ica-006,contract_act,hi,True,अनुबंध प्रदर्शन,['n_0010'],"['n_0004', 'n_0002', '0940d367554383c5', 'n_0009', 'n_0007']",0.381,0.0,0.0,0.0,0.0,0.0,0.0,5.0
+naive_rag,ica-007,contract_act,en,True,Which chapter of the Act deals with performance?,"['n_0009', 'n_0010']","['n_0010', 'n_0003', 'n_0008', 'n_0009', 'n_0002']",0.38,1.0,0.4,1.0,1.0,0.75,0.8772,5.0
+naive_rag,ica-008,contract_act,en,True,Where are the preliminary provisions of the Act located?,['n_0001'],"['n_0003', 'n_0010', '0940d367554383c5', 'n_0002', 'n_0008']",0.389,0.0,0.0,0.0,0.0,0.0,0.0,5.0
+naive_rag,ica-009,contract_act,en,True,What is an agreement enforceable by law called?,['n_0003'],"['n_0003', 'n_0002', 'n_0008', 'n_0010', 'n_0006']",0.42,1.0,0.2,1.0,1.0,1.0,1.0,5.0
+naive_rag,ica-010,contract_act,en,True,"Does the Act require the parties to specify how a contract is to be performed, and what happens if they do not?",['n_0010'],"['n_0002', 'n_0010', 'n_0003', 'n_0008', '0940d367554383c5']",0.422,1.0,0.2,1.0,0.5,0.5,0.6309,5.0

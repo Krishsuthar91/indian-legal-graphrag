@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-import tempfile
 from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
 
+from eval.corpus import build_corpus
+from eval.dataset import EvalDataset
 from src.main import app
-
 
 # ---------------------------------------------------------------------------
 # API fixtures
@@ -116,3 +116,36 @@ def output_dir() -> Path:
     d = Path(__file__).resolve().parent.parent / "data" / "processed"
     d.mkdir(parents=True, exist_ok=True)
     return d
+
+
+# ---------------------------------------------------------------------------
+# Module 10 evaluation fixtures
+# ---------------------------------------------------------------------------
+
+EVAL_DOCUMENT_ID = "0940d367554383c5"
+EVAL_HIERARCHY_FILE = Path("data/hierarchy/0940d367554383c5.json")
+EVAL_GOLD_DIR = Path("data/eval/gold")
+
+
+@pytest.fixture(scope="session")
+def eval_corpus():
+    """Deterministic offline corpus used across the evaluation tests."""
+    corpus = build_corpus(
+        document_id=EVAL_DOCUMENT_ID,
+        hierarchy_file=str(EVAL_HIERARCHY_FILE),
+        seed=42,
+    )
+    yield corpus
+    corpus.close()
+
+
+@pytest.fixture(scope="session")
+def eval_dataset() -> EvalDataset:
+    """The grounded Contract Act gold dataset."""
+    return EvalDataset.load(EVAL_GOLD_DIR / "contract_act_gold.json")
+
+
+@pytest.fixture(scope="session")
+def eval_items(eval_dataset) -> list:
+    """The grounded evaluation items."""
+    return eval_dataset.grounded_items()

@@ -1,0 +1,65 @@
+\section{Methodology}
+
+\subsection{Overview}
+
+Explaintool processes a legal document through five layers: ingestion,
+knowledge-graph construction, embedding and indexing, retrieval and
+explanation, and answer generation. The retrieval layer (HHGR) is the
+methodological core of this paper.
+
+\subsection{Hierarchical knowledge graph}
+
+Each statute is parsed into a hierarchy of documents, chapters, sections,
+explanations, illustrations, and provisos. These become nodes in a knowledge
+graph with \texttt{PART\_OF} edges encoding the document structure, plus
+\texttt{CITES} and \texttt{REFERENCES} edges for intra- and inter-document
+citations. For every node we store its title, text, numbering, and hierarchy
+level, enabling structural reasoning that flat chunking cannot express.
+
+\subsection{Dense multilingual retrieval}
+
+We index every node with a multilingual embedding model. Retrieval is performed
+by cosine similarity in the shared vector space, so queries written in Hindi
+(for example \emph{अनुबंध प्रदर्शन}, ``contract performance'') can match English
+evidence without explicit translation. In the released offline package the
+provider is a deterministic hashing embedder so results are fully reproducible
+without a model download; production deployments swap in a real multilingual
+model such as bge-m3.
+
+\subsection{Graph retrieval}
+
+HHGR's graph path combines four signals per node: text overlap with the query,
+citation matching against referenced section numbers, hierarchy position
+(structural importance), and evidence propagated from dense matches to
+ancestors and descendants along \texttt{PART\_OF} edges. This lets a query about
+``performance'' surface both Section~4 and its Chapter~III ancestor, giving the
+answer its statutory context.
+
+\subsection{Fusion and explainability}
+
+The final score of each candidate node is a weighted combination of the dense,
+graph, and hierarchy signals, with default weights $\mathbf{w} = (0.40, 0.35,
+0.25)$ normalized to sum to one. From the ranked evidence we construct:
+
+\begin{itemize}
+  \item \textbf{Evidence}: per-signal scores, active signal sources, and the
+        root-to-node hierarchy path.
+  \item \textbf{Reasoning chain}: a six-step audit trail (query parsing, dense
+        search, graph search, hierarchy propagation, fusion, verification).
+  \item \textbf{Citations}: numbered source citations with snippets.
+  \item \textbf{Counter-authority detection}: marker-based detection of
+        overruled, superseded, repealed, and inoperative authorities.
+  \item \textbf{Confidence and validity}: a composite confidence score and
+        boolean validity flags that gate the generated answer.
+\end{itemize}
+
+\subsection{Evaluation metrics}
+
+Retrieval quality is measured with Recall@K, Precision@K, Hit Rate@K, MRR,
+MAP, and NDCG@K, together with latency statistics (mean, p50, p95) and
+throughput. Explainability is measured with citation accuracy, hierarchy
+correctness, graph-path accuracy, provenance completeness, evidence coverage,
+and counter-authority detection F1. Generation quality is measured with
+RAGAS-style \cite{es2024ragas} faithfulness, answer relevancy, context recall,
+context precision, and answer correctness, computed with deterministic offline
+surrogates so the package runs without external services.

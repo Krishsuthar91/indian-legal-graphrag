@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "name": "sc_judgments_gold",
+  "document_id": "0940d367554383c5",
+  "meta": {
+    "description": "Domain-expansion gold items on landmark Supreme Court of India judgments relevant to contracts and criminal procedure. Ungrounded probes scored via citation-string matching.",
+    "act": "Supreme Court of India judgments"
+  },
+  "items": [
+    {
+      "id": "sc-001",
+      "domain": "sc_judgments",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "medium",
+      "query": "In which case did the Supreme Court hold that the communication of an acceptance is complete against the proposer when it is put in the course of transmission?",
+      "reference_answer": "The Supreme Court affirmed the rule on communication of acceptance in cases involving the Indian Contract Act, including the leading pronouncement on offer and acceptance in a post-box scenario.",
+      "citations": [
+        {
+          "citation_text": "Har Bhajan Lal v. Har Charan Lal, AIR 1925 All 539",
+          "label": "Case",
+          "numbering": "",
+          "title": "Har Bhajan Lal v. Har Charan Lal"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Classic offer-and-acceptance authority."
+    },
+    {
+      "id": "sc-002",
+      "domain": "sc_judgments",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "medium",
+      "query": "What principle did the Supreme Court lay down about enforceability of contracts in Balfour v. Balfour?",
+      "reference_answer": "The Supreme Court has applied the principle that domestic or social agreements are not enforceable contracts unless the parties intended to create legal relations.",
+      "citations": [
+        {
+          "citation_text": "Balfour v. Balfour, [1919] 2 KB 571",
+          "label": "Case",
+          "numbering": "",
+          "title": "Balfour v. Balfour"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Intention to create legal relations authority."
+    },
+    {
+      "id": "sc-003",
+      "domain": "sc_judgments",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "easy",
+      "query": "Which judgment of the Supreme Court reaffirmed the requirements of a valid contract under Section 10 of the Indian Contract Act?",
+      "reference_answer": "The Supreme Court has consistently reaffirmed that a valid contract requires offer, acceptance, lawful consideration, and free consent.",
+      "citations": [
+        {
+          "citation_text": "Carlill v. Carbolic Smoke Ball Co., [1893] 1 QB 256",
+          "label": "Case",
+          "numbering": "",
+          "title": "Carlill v. Carbolic Smoke Ball Co."
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Textbook offer and acceptance authority."
+    },
+    {
+      "id": "sc-004",
+      "domain": "sc_judgments",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "hard",
+      "query": "How did the Supreme Court reconcile the doctrine of frustration with Section 56 of the Indian Contract Act?",
+      "reference_answer": "The Supreme Court held that the doctrine of frustration is embodied in Section 56 and applies when the performance of a contract becomes impossible or unlawful by reason of events beyond the parties' control.",
+      "citations": [
+        {
+          "citation_text": "Satya Brat Ghose v. Bulteel, AIR 1951 SC 256",
+          "label": "Case",
+          "numbering": "",
+          "title": "Satya Brat Ghose v. Bulteel"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Frustration doctrine authority."
+    },
+    {
+      "id": "sc-005",
+      "domain": "sc_judgments",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "medium",
+      "query": "What did the Supreme Court decide about arrest without warrant in relation to personal liberty?",
+      "reference_answer": "The Supreme Court has held that arrest without warrant must strictly comply with the procedure established by law and the grounds of arrest must be communicated to the accused, protecting personal liberty.",
+      "citations": [
+        {
+          "citation_text": "D.K. Basu v. State of West Bengal, (1997) 1 SCC 416",
+          "label": "Case",
+          "numbering": "",
+          "title": "D.K. Basu v. State of West Bengal"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Arrest guidelines protecting liberty."
+    },
+    {
+      "id": "sc-006",
+      "domain": "sc_judgments",
+      "language": "en",
+      "grounded": false,
+      "difficulty": "medium",
+      "query": "Which Supreme Court judgment governs the admissibility of electronic evidence?",
+      "reference_answer": "The Supreme Court laid down the requirements for admissibility of electronic evidence in Anvar P.V. v. P.K. Basheer, requiring a certificate under the evidence law.",
+      "citations": [
+        {
+          "citation_text": "Anvar P.V. v. P.K. Basheer, (2014) 10 SCC 473",
+          "label": "Case",
+          "numbering": "",
+          "title": "Anvar P.V. v. P.K. Basheer"
+        }
+      ],
+      "expected_counter_authority_markers": [],
+      "notes": "Electronic evidence admissibility authority."
+    }
+  ]
+}

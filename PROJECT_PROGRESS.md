@@ -1,6 +1,6 @@
 # Project Progress — Explainable Multilingual Hierarchical Graph-RAG with HHGR
 
-Status tracker for the staged build. All modules are complete. Backend: 361 pytest
+Status tracker for the staged build. All modules are complete. Backend: 447 pytest
 tests pass. Frontend (Module 8): 49 Vitest tests pass and `npm run build` succeeds.
 
 ## Module 1 — Foundation (DONE)
@@ -108,15 +108,73 @@ tests pass. Frontend (Module 8): 49 Vitest tests pass and `npm run build` succee
 - **Tests** — `tests/test_health_probes.py`, `tests/test_security_middleware.py`,
   `tests/test_deploy_config.py` (18 new tests; no existing tests modified).
 
+## Module 10 — Research Evaluation & Publication Package (DONE)
+- **Gold dataset** — `eval/dataset.py` + `data/eval/gold/*.json` (34 items, 5
+  domains): 10 grounded Contract Act items (node ids `n_0001..n_0010`, doc
+  `0940d367554383c5`) + 6 domain-probes each for BNS / BNSS / BSA / SC
+  judgments (scored via citation-string → node matching). Schema validation,
+  `manifest.json`, and `load_all_gold`.
+- **Retrieval metrics** — `eval/metrics/retrieval.py`: Recall@K, Precision@K,
+  Hit Rate@K, MRR, MAP, NDCG@K (binary or graded), `latency_stats`
+  (mean/p50/p95 ms, throughput QPS), `aggregate_metrics`, `summarize`.
+- **Explainability metrics** — `eval/metrics/explainability.py`: citation
+  accuracy (label+numbering anchors), hierarchy correctness (true ancestor
+  chain), graph-path accuracy, provenance completeness (0.5 structural + 0.5
+  gold recall), evidence coverage (answer-token coverage), counter-authority
+  precision/recall/F1.
+- **RAGAS + semantic** — `eval/metrics/ragas.py`: offline deterministic
+  faithfulness, answer relevancy, context recall/precision, answer correctness
+  (0.5 token F1 + 0.5 cosine); optional native `ragas_context()` when the
+  package is installed. `eval/metrics/semantic.py`: cached deterministic
+  embedder (dim=64) for cosine relevance.
+- **Systems** — `eval/systems.py`: `RetrievalSystem` protocol; HHGR (with
+  MockLLM-backed `QueryService`), dense-only, BM25 (k1=1.5, b=0.75, stopword
+  filter), graph-only (Module 5 ranker), naive RAG (dense + mock LLM, no
+  provenance); `RankedHit` canonicalized; `build_systems()`.
+- **Ablation** — `eval/ablation.py`: six arms (full / no_graph / no_hierarchy /
+  no_dense / no_multilingual / no_explainability); `run_ablation`,
+  `build_ablation_rows`.
+- **Reports** — `eval/reports.py`: JSON, CSV, Markdown, PDF (reportlab) with
+  `_METRIC_LABELS`.
+- **Figures** — `eval/figures.py`: architecture, hierarchy tree, KG example,
+  retrieval flow, eval comparison, latency chart, ablation chart, RAGAS radar —
+  each saved as SVG + PNG (8 figures per full run).
+- **Harness + CLI** — `eval/corpus.py` (`build_corpus`: 11 nodes / 10 edges,
+  dim=64), `eval/harness.py` (`benchmark_retrieval`, `benchmark_explainability`,
+  `benchmark_ragas`, `run_ablation`, `run_benchmark`, `benchmark_from_config`,
+  `item_relevant_ids`), `eval/cli.py` (`python -m eval.cli --quick|--config|
+  --out|--dataset|--seed|--no-figures`).
+- **Paper package** — `paper/`: IEEEtran `paper.tex` + `abstract.tex`,
+  `introduction.tex`, `methodology.tex`, `experiments.tex`, `results.tex`,
+  `future-work.tex`, `references.bib`, `poster/poster.tex` (A0),
+  `presentation/slides.tex` (beamer), and build `README.md`.
+- **Reproducibility** — `scripts/reproduce.sh` (venv → locked deps → benchmark
+  → tests) and `requirements-lock.txt` (pinned eval deps).
+- **Tests** — `tests/test_eval_dataset.py`, `test_eval_retrieval_metrics.py`,
+  `test_eval_explainability_metrics.py`, `test_eval_ragas.py`,
+  `test_eval_harness.py` (+ session fixtures in `conftest.py`): 86 new tests,
+  none of the existing tests modified.
+
 ## Verification
-- Backend: `pytest` → 361 passed (343 pre-existing unchanged + 18 new Module 9).
+- Backend: `pytest` → 447 passed (361 pre-existing unchanged + 86 new Module 10).
 - Frontend:
   - `cd ui && npm install` → clean
   - `npm run build` → type-check + production build OK (code-split chunks)
   - `npm test` → 49 passed
   - `npm run preview` → serves dist with HTTP 200 smoke test
-- `ruff check .` → 78 pre-existing errors (Modules 7–9 code is clean; the
-  baseline is unrelated to these modules).
+- `ruff check eval/ tests/test_eval_*.py` → clean (new code); repo-wide
+  `ruff check .` → 78 pre-existing errors (unrelated baseline).
+- Benchmark (`python -X utf8 -m eval.cli --out evaluation`, contract_act_gold,
+  10 items, K=5, seed 42, ~0.25 s): retrieval MRR hhgr 0.750 / dense 0.700 /
+  bm25 0.758 / graph 0.650 / naive_rag 0.700; R@5 bm25 0.900, others 0.800;
+  hhgr mean 2.58 ms (~388 QPS); explainability citation_accuracy 0.95,
+  hierarchy_correctness 1.00, graph_path_accuracy 1.00, provenance_completeness
+  0.85, evidence_coverage 0.68, CA-F1 1.00; ablation full MRR 0.750 vs
+  no_multilingual 0.650 + cite_acc 0.75; RAGAS hhgr faithfulness 1.0, answer
+  relevancy 0.783, context recall 0.75, context precision 0.419, answer
+  correctness 0.44.
+- Outputs: `evaluation/reports/` (benchmark.json/md/pdf + 5 CSVs) and
+  `evaluation/figures/*.svg|*.png` + `figures.json`.
 - Deployment config: `deploy.config.cli validate` passes for development /
   docker profiles and fails fast for the production template (missing
   `LLM_API_KEY`).
@@ -125,6 +183,3 @@ tests pass. Frontend (Module 8): 49 Vitest tests pass and `npm run build` succee
 - Environment limitation: Docker / nginx are not installed on this machine, so
   `docker compose up` and `nginx -t` could not be executed locally; validation
   is offline and CI is configured to perform the container builds.
-
-## Next
-- Module 10 — not started (per scope).

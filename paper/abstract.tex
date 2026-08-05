@@ -1,0 +1,23 @@
+\begin{abstract}
+Legal document intelligence demands retrieval systems that are not only
+accurate but also \emph{verifiable}. This paper presents Explaintool, an
+explainable, multilingual, hierarchical graph-retrieval framework for Indian
+legal documents (statutes and case law). We introduce Hybrid Hierarchical
+Graph Retrieval (HHGR), which fuses (i) multilingual dense embeddings, (ii) a
+hierarchical knowledge graph of document structure, and (iii) hierarchy-aware
+evidence propagation, and then exposes every stage through structured
+provenance: retrieval signals, reasoning chains, hierarchy paths, source
+citations, confidence scores, and counter-authority detection.
+
+We evaluate HHGR against four baselines --- Naive RAG, Dense-only, BM25, and
+Graph-only --- on a gold-standard evaluation dataset of 34 question-answer
+pairs across the Indian Contract Act, the Bharatiya Nyaya Sanhita (BNS), the
+Bharatiya Nagarik Suraksha Sanhita (BNSS), the Bharatiya Sakshya Adhiniyam
+(BSA), and Supreme Court judgments. HHGR achieves top ranking effectiveness
+among neural baselines (MRR 0.750, MAP 0.750, the best MAP at K=5) while
+adding a complete explainability layer (citation accuracy 0.95, hierarchy and
+graph-path correctness 1.00, provenance completeness 0.85). An ablation study
+isolates the contribution of each signal and of the multilingual path. The
+full package --- dataset, metrics, baselines, ablation harness, reports, and
+figures --- is released with a one-command reproducibility script.
+\end{abstract}

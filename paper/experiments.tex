@@ -1,0 +1,53 @@
+\section{Experiments}
+
+\subsection{Evaluation dataset}
+
+We curate a gold-standard dataset of 34 question--answer--citation items across
+five legal domains. Ten items are \emph{grounded} in the Indian Contract Act,
+1892 corpus document (node-level relevance labels); the remaining twenty-four
+items cover the BNS, the BNSS, the BSA, and landmark Supreme Court judgments as
+domain-expansion probes scored through citation-string matching. Each item
+stores the query, a reference answer, one or more gold citations, its language,
+and a difficulty rating. Table~\ref{tab:dataset} summarises coverage.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lccl}
+\hline
+\textbf{Domain} & \textbf{Items} & \textbf{Grounded} & \textbf{Source}\\
+\hline
+Indian Contract Act & 10 & 10 & Corpus node ids\\
+Bharatiya Nyaya Sanhita & 6 & 0 & Citation strings\\
+Bharatiya Nagarik Suraksha Sanhita & 6 & 0 & Citation strings\\
+Bharatiya Sakshya Adhiniyam & 6 & 0 & Citation strings\\
+Supreme Court judgments & 6 & 0 & Citation strings\\
+\hline
+\end{tabular}
+\caption{Evaluation dataset coverage.}
+\label{tab:dataset}
+\end{table}
+
+\subsection{Baselines}
+
+\begin{itemize}
+  \item \textbf{Naive RAG}: dense-only retrieval feeding a plain LLM prompt
+        with no structure or provenance.
+  \item \textbf{Dense-only}: multilingual vector search, no graph signals.
+  \item \textbf{BM25}: classic lexical retrieval over node texts.
+  \item \textbf{Graph-only}: HHGR graph signals without embeddings.
+  \item \textbf{Hybrid HHGR}: the full fused system.
+\end{itemize}
+
+\subsection{Ablations}
+
+We remove one component at a time: the graph signal, the hierarchy signal, the
+dense signal, the multilingual path, and the explainability enrichment, all
+measured against the full configuration.
+
+\subsection{Setup}
+
+All experiments run offline with fixed seed $42$, $K=5$, on a single
+deterministic corpus document (11 nodes, 10 edges) using an in-memory vector
+store. Generation uses a deterministic mock LLM so answer metrics are stable.
+The complete harness is invoked by \texttt{python -m eval.cli}, and all
+reports and figures are emitted under \texttt{evaluation/}.
