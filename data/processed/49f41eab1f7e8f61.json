@@ -1,0 +1,35 @@
+{
+  "document_id": "49f41eab1f7e8f61",
+  "title": "THE INDIAN CONTRACT ACT, 1892",
+  "language": "en",
+  "pages": [
+    {
+      "page_number": 1,
+      "text": "THE INDIAN CONTRACT ACT, 1892\nPART I — PRELIMINARY\nCHAPTER I\nPreliminary\nSection 1.\nShort title and commencement. (1) This Act may be called the Indian Contract Act, 1892. (2) It shall come into force on the first day of July, 1892.\nSection 2.\nDefinitions.\nIn this Act, unless there is anything repugnant in the subject or context, (a) \"contract\" means an agreement enforceable by law; (b) \"promise\" means a proposal accepted. (i) where the proposal is made (ii) where the acceptance is communicated\nExplanation.—Nothing in this section shall apply to\nIllustration.—A says to B\nProviso.—Provided that\nCHAPTER II\nOf Contracts\nSection 3.\nCommunication of proposals. (1) The communication of proposals is complete\nPART II — PERFORMANCE\nCHAPTER III\nOf Performance\nSection 4.\nPerformance of contracts. (a) where the contract provides (b) where no provision is made",
+      "is_scanned": false
+    }
+  ],
+  "metadata": {
+    "file_name": "test_act.pdf",
+    "file_path": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-21\\test_parse_finds_sections0\\test_act.pdf",
+    "file_size_bytes": 2252,
+    "file_type": "pdf",
+    "num_pages": 1,
+    "language": "en",
+    "creation_date": "2026-08-05T16:16:26.612211+00:00",
+    "pdf_properties": {
+      "page_count": 1,
+      "Author": "anonymous",
+      "CreationDate": "D:20260805214626+05'00'",
+      "Creator": "anonymous",
+      "Keywords": "",
+      "ModDate": "D:20260805214626+05'00'",
+      "Producer": "ReportLab PDF Library - (opensource)",
+      "Subject": "unspecified",
+      "Title": "untitled",
+      "Trapped": "False"
+    },
+    "is_scanned": false,
+    "ocr_applied": false
+  }
+}

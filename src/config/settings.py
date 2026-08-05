@@ -49,6 +49,18 @@ class Settings(BaseSettings):
 
     CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:8000"]
 
+    # Security middleware (Module 9)
+    API_KEY_AUTH_ENABLED: bool = False
+    API_KEY: str = ""
+    RATE_LIMIT_ENABLED: bool = False
+    RATE_LIMIT_PER_MINUTE: int = 120
+    REQUEST_MAX_BODY_BYTES: int = 1048576
+
+    # Logging rotation (Module 9)
+    LOG_ROTATION_ENABLED: bool = False
+    LOG_MAX_BYTES: int = 52428800
+    LOG_BACKUP_COUNT: int = 10
+
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8", "extra": "ignore"}
 
 

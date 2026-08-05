@@ -1,6 +1,6 @@
 # Project Progress — Explainable Multilingual Hierarchical Graph-RAG with HHGR
 
-Status tracker for the staged build. All modules are complete. Backend: 343 pytest
+Status tracker for the staged build. All modules are complete. Backend: 361 pytest
 tests pass. Frontend (Module 8): 49 Vitest tests pass and `npm run build` succeeds.
 
 ## Module 1 — Foundation (DONE)
@@ -71,15 +71,60 @@ tests pass. Frontend (Module 8): 49 Vitest tests pass and `npm run build` succee
   lazy routes + vendor chunk splitting.
 - Unit tests: 49 (Vitest + Testing Library), including mocked Cytoscape and jsdom setup.
 
+## Module 9 — Production Deployment & Enterprise Infrastructure (DONE)
+- **Containers** — multi-stage `deploy/backend/Dockerfile` (Python 3.11-slim,
+  cached wheel layer, non-root user, container HEALTHCHECK) and
+  `deploy/frontend/Dockerfile` (Node 20 build → nginx:alpine static serve);
+  root `.dockerignore`.
+- **Compose stack** — `docker-compose.yml` with six services (`api`, `react`,
+  `nginx`, `neo4j`, `qdrant`, `redis`), per-service healthchecks, `depends_on`
+  with `condition: service_healthy`, and named persistent volumes; dev
+  `docker-compose.override.yml` (hot reload + direct ports).
+- **Reverse proxy** — `deploy/nginx/nginx.conf` edge config (routes `/api/*`
+  and `/docs` to `api:8000`, SPA to `react:80`, gzip, security headers, CSP,
+  WebSocket upgrade, commented TLS block) + `deploy/nginx/nginx-frontend.conf`.
+- **Configuration** — `deploy/env/.env.{production,development,docker}`
+  profiles; `deploy/config/loader.py` env loader + fail-fast production secret
+  validation (`LLM_API_KEY` for real providers, `API_KEY` when auth enabled,
+  `APP_DEBUG=false`); `deploy/config/cli.py` (`load` / `validate` commands).
+- **Security middleware** (`src/middleware/security.py`) — additive: optional
+  `X-API-Key` auth (probes stay public), in-process per-IP rate limiting,
+  request body size limit, and security headers.
+- **Health probes** — additive `/api/v1/live`, `/api/v1/check/database`,
+  `/api/v1/check/vector`, `/api/v1/check/llm` (all return `200` with a
+  `ServiceHealth` body even on dependency failure).
+- **Logging** — per-channel rotating file sinks (`app/api/llm/retrieval/
+  error/audit.log`) with daily rotation via `LOG_ROTATION_ENABLED`.
+- **Monitoring** — stdlib-only `/metrics` exporter (`src/monitoring/`, no
+  `prometheus_client` dependency), `monitoring/prometheus/prometheus.yml`,
+  Grafana provisioning (datasource + dashboard provider) and a prebuilt
+  "Explaintool Overview" dashboard, plus an optional overlay
+  `monitoring/docker-compose.monitoring.yml` (prometheus, grafana,
+  node-exporter, neo4j-exporter).
+- **CI** — `.github/workflows/ci.yml`: ruff lint, pytest, vitest + build,
+  docker image builds, compose YAML validation, and deploy-config checks.
+- **Docs** — `docs/DEPLOYMENT.md`, `docs/DEVELOPER.md`, `docs/PRODUCTION.md`,
+  `docs/TROUBLESHOOTING.md`, `docs/ARCHITECTURE.md`.
+- **Tests** — `tests/test_health_probes.py`, `tests/test_security_middleware.py`,
+  `tests/test_deploy_config.py` (18 new tests; no existing tests modified).
+
 ## Verification
-- Backend: `pytest` → 343 passed (unchanged — no backend modules modified).
+- Backend: `pytest` → 361 passed (343 pre-existing unchanged + 18 new Module 9).
 - Frontend:
   - `cd ui && npm install` → clean
   - `npm run build` → type-check + production build OK (code-split chunks)
   - `npm test` → 49 passed
   - `npm run preview` → serves dist with HTTP 200 smoke test
-- `ruff check src tests` → clean for Modules 7–8 code (pre-existing hints unrelated
-  to these modules remain).
+- `ruff check .` → 78 pre-existing errors (Modules 7–9 code is clean; the
+  baseline is unrelated to these modules).
+- Deployment config: `deploy.config.cli validate` passes for development /
+  docker profiles and fails fast for the production template (missing
+  `LLM_API_KEY`).
+- Compose: all three YAML files parse (services verified); nginx configs pass
+  a brace-balance structural check.
+- Environment limitation: Docker / nginx are not installed on this machine, so
+  `docker compose up` and `nginx -t` could not be executed locally; validation
+  is offline and CI is configured to perform the container builds.
 
 ## Next
-- Module 9 — not started (per scope).
+- Module 10 — not started (per scope).

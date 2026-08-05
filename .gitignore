@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Node
+node_modules/
+ui/dist/
+*.tsbuildinfo
+
+# Environment / secrets (tracked templates live in deploy/env/)
+.env
+.env.local
+.env.*.local
+deploy/env/.env.production.local
+
+# Logs (channel files are generated at runtime)
+logs/*.log
+
+# OS
+.DS_Store
+Thumbs.db

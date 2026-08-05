@@ -1,0 +1,66 @@
+version: "3.9"
+
+name: explaintool-monitoring
+
+# Optional monitoring stack — bring up with:
+#   docker compose -f docker-compose.yml -f monitoring/docker-compose.monitoring.yml up
+#
+# Exposes:
+#   Prometheus  http://localhost:9090
+#   Grafana     http://localhost:3000   (admin / grafana)
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.retention.time=30d"
+    ports:
+      - "9090:9090"
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: grafana
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+  # Node-level CPU / memory metrics for the host (or its container).
+  node-exporter:
+    image: prom/node-exporter:latest
+    network_mode: host
+    pid: host
+    command:
+      - "--path.procfs=/host/proc"
+      - "--path.sysfs=/host/sys"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+    restart: unless-stopped
+
+  # Neo4j metrics exporter (uses the Neo4j metrics HTTP endpoint).
+  neo4j-exporter:
+    image: cazador481/neo4j-exporter:latest
+    environment:
+      NEO4J_URL: "http://neo4j:7474"
+      NEO4J_USERNAME: "neo4j"
+      NEO4J_PASSWORD: "password"
+    ports:
+      - "9101:9101"
+    restart: unless-stopped
+
+volumes:
+  prometheus_data:
+  grafana_data:

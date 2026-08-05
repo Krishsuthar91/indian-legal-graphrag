@@ -73,9 +73,7 @@ Generates cited, explainable answers over the HHGR + vector retrieval layers:
 ## Module 8 — React Frontend & Explainability Dashboard
 
 A `ui/` Vite + React 18 + TypeScript dashboard over the Modules 1–7 API. Backend modules
-are untouched.
-
-- **Pages** — Home (search box, language selector, recent questions), Explain (full query
+are untouched.- **Pages** — Home (search box, language selector, recent questions), Explain (full query
   flow with a "retrieval only" `/explain` toggle), Provenance (look up any
   `/provenance/{id}`), Settings (dark mode, defaults, API info)
 - **Answer view** — answer text, model name, response time, confidence gauge (Recharts),
@@ -91,6 +89,34 @@ are untouched.
 - **Robustness** — React Query state management, friendly error messages with retry,
   responsive Tailwind layout (desktop / tablet / mobile), dark mode (persisted), unit
   tests (49), lazy-loaded routes + vendor chunk splitting
+
+## Module 9 — Production Deployment & Enterprise Infrastructure
+
+Production-readiness for the Modules 1–8 application (additive only — no backend
+logic or frontend features changed).
+
+- **Containers** — multi-stage `deploy/backend/Dockerfile` (Python 3.11-slim, cached
+  dependency layer, non-root user, healthcheck) and `deploy/frontend/Dockerfile`
+  (Node 20 build → nginx:alpine)
+- **Compose** — six-service `docker-compose.yml` (`api`, `react`, `nginx`, `neo4j`,
+  `qdrant`, `redis`) with healthchecks, `depends_on` gating, and named volumes;
+  dev override `docker-compose.override.yml`
+- **Edge nginx** — `deploy/nginx/nginx.conf` reverse proxy (API + SPA + docs),
+  gzip, security headers, WebSocket upgrade, TLS-ready
+- **Configuration** — `deploy/env/.env.{production,development,docker}` profiles +
+  fail-fast secret validation (`python -m deploy.config.cli validate --env production`)
+- **Security** — `src/middleware/security.py`: API-key auth, per-IP rate limiting,
+  request-size limits, security headers (all opt-in via settings)
+- **Health probes** — additive `/api/v1/live`, `/check/database`, `/check/vector`,
+  `/check/llm` returning structured `ServiceHealth`
+- **Monitoring** — stdlib-only `/metrics` endpoint, `monitoring/` Prometheus +
+  Grafana overlay (prebuilt "Overview" dashboard)
+- **Logging** — per-channel rotating log files (`logs/app|api|llm|retrieval|error|audit.log`)
+- **CI** — `.github/workflows/ci.yml` (ruff, pytest, vitest+build, docker builds)
+- **Docs** — `docs/DEPLOYMENT.md`, `docs/DEVELOPER.md`, `docs/PRODUCTION.md`,
+  `docs/TROUBLESHOOTING.md`, `docs/ARCHITECTURE.md`
+
+Deploy with `docker compose up --build -d` and visit http://localhost.
 
 ## Quick Start
 
@@ -133,7 +159,9 @@ LaBSE / MuRIL / IndicBERT) in `.env`. Qdrant runs via Docker (`docker-compose up
 ## Docker
 
 ```bash
-docker-compose up --build
+docker-compose up --build          # production-style six-service stack (http://localhost)
+# dev override: docker-compose -f docker-compose.yml -f docker-compose.override.yml up
+# validate secrets: python -m deploy.config.cli validate --env production
 ```
 
 ## Project Structure
@@ -141,82 +169,44 @@ docker-compose up --build
 ```
 explaintool/
 ├── src/
-│   ├── main.py              # FastAPI entry point
+│   ├── main.py              # FastAPI entry point (+ security & metrics middleware)
+│   ├── middleware/
+│   │   └── security.py      # Module 9 — API key / rate limit / size / headers
+│   ├── monitoring/
+│   │   ├── metrics.py       # Module 9 — stdlib Prometheus collector
+│   │   └── middleware.py    # Module 9 — /metrics endpoint
 │   ├── config/
 │   │   ├── settings.py      # Pydantic settings
-│   │   └── logging_config.py
+│   │   └── logging_config.py  # rotating per-channel file logging
 │   ├── api/
 │   │   ├── router.py        # API router
-│   │   ├── health.py        # Health endpoints
+│   │   ├── health.py        # Health + dependency probes (/live, /check/*)
 │   │   └── qa.py            # QA endpoints (/query, /explain, /provenance/{id})
 │   ├── models/
-│   │   └── schemas.py       # Pydantic models
+│   │   └── schemas.py       # Pydantic models (HealthResponse, ServiceHealth, ...)
 │   ├── ingestion/
-│   │   ├── pipeline.py      # ingest_document() orchestrator
-│   │   ├── loaders/         # PDF / DOCX / TXT loaders
-│   │   ├── ocr/             # PaddleOCR + Tesseract fallback
-│   │   ├── detection/       # scanned-PDF + language detection
-│   │   ├── metadata/        # metadata extraction
-│   │   └── cleaning/        # text cleaner
 │   ├── hierarchy/
-│   │   ├── patterns.py      # legal numbering patterns
-│   │   ├── tree_builder.py  # parent assignment + nested set
-│   │   ├── validators.py    # hierarchy validators
-│   │   └── parser.py        # parse_document()
 │   ├── knowledge_graph/
-│   │   ├── neo4j_driver.py  # InMemoryGraph + Neo4jDriver
-│   │   ├── schema.py        # NodeLabel / RelType enums
-│   │   ├── citation_extractor.py
-│   │   ├── entity_resolver.py
-│   │   ├── importer.py      # hierarchy JSON -> graph
-│   │   ├── traversal.py     # parent/children/citation/shortest-path APIs
-│   │   └── stats.py
 │   ├── retrieval/
-│   │   ├── query.py         # RetrievalQuery + parse_query()
-│   │   ├── context.py       # ancestors/descendants + evidence propagation
-│   │   ├── scorer.py        # text/citation/hierarchy/structural signals
-│   │   └── ranker.py        # retrieve() orchestrator
 │   ├── embeddings/
-│   │   ├── models.py        # model registry + collection mapping
-│   │   ├── providers.py     # deterministic / sentence-transformers / transformers
-│   │   ├── service.py       # batched EmbeddingService
-│   │   ├── store.py         # QdrantStore (4 collections)
-│   │   ├── indexer.py       # full + incremental + sync indexing
-│   │   ├── retriever.py     # dense + hybrid (graph/hierarchy) retrieval
-│   │   └── benchmark.py     # latency reports
 │   ├── llm/
-│   │   ├── llm.py           # LLM abstraction (OpenAI/Llama/Mistral/Qwen + mock)
-│   │   ├── prompts.py       # evidence-based prompt builder
-│   │   ├── provenance.py    # evidence/reasoning/citations + ProvenanceStore
-│   │   ├── explanation.py   # explainability engine (confidence, validity, counter-authority)
-│   │   ├── schemas.py       # QA API request/response models
-│   │   └── service.py       # QueryService + default corpus wiring
 │   └── utils/
-│       ├── constants.py
-│       ├── exceptions.py
-│       └── helpers.py
 ├── ui/                        # Module 8 — React frontend (Vite + TS)
-│   ├── src/
-│   │   ├── api/client.ts      # Axios client for /query, /explain, /provenance/{id}
-│   │   ├── components/        # QueryInput, AnswerCard, EvidencePanel, HierarchyTree,
-│   │   │                      # KnowledgeGraph, ProvenancePanel, ConfidenceGauge,
-│   │   │                      # ValidityBadge, CounterAuthorityCard, LoadingOverlay, ...
-│   │   ├── pages/             # Home, Explain, Provenance, Settings
-│   │   ├── hooks/             # React Query hooks, dark mode, recent questions, settings
-│   │   ├── types/             # TS types mirroring the backend schemas
-│   │   ├── utils/             # format/score, keyword highlighting, graph builders
-│   │   ├── test/              # fixtures + jsdom setup
-│   │   ├── App.tsx
-│   │   └── main.tsx
-│   ├── index.html
-│   ├── package.json
-│   ├── tsconfig*.json
-│   ├── tailwind.config.js
-│   └── vite.config.ts
-├── tests/                     # 343 backend tests + 49 frontend tests
+├── deploy/                    # Module 9 — Docker, nginx, env profiles, config loader
+│   ├── backend/Dockerfile
+│   ├── frontend/Dockerfile
+│   ├── nginx/nginx.conf + nginx-frontend.conf
+│   ├── env/.env.{production,development,docker}
+│   ├── config/{loader.py,cli.py}
+│   └── scripts/entrypoint.sh
+├── monitoring/                # Module 9 — Prometheus + Grafana overlay
+├── docs/                      # Module 9 — DEPLOYMENT / DEVELOPER / PRODUCTION / TROUBLESHOOTING / ARCHITECTURE
+├── .github/workflows/ci.yml   # Module 9 — CI pipeline
+├── tests/                     # 361 backend tests (343 pre-existing + 18 Module 9)
 ├── logs/
 ├── data/
 ├── pyproject.toml
 ├── requirements.txt
-└── docker-compose.yml
+├── docker-compose.yml         # six-service production stack
+└── docker-compose.override.yml
 ```

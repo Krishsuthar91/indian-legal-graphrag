@@ -9,6 +9,8 @@ from fastapi.responses import JSONResponse
 from src.api.router import api_router
 from src.config.logging_config import get_logger, setup_logging
 from src.config.settings import settings
+from src.middleware.security import SecurityMiddleware
+from src.monitoring.middleware import MetricsMiddleware
 from src.utils.exceptions import AppException
 
 
@@ -36,6 +38,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.add_middleware(SecurityMiddleware)
+app.add_middleware(MetricsMiddleware)
 
 app.include_router(api_router)
 

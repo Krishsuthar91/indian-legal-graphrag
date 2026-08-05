@@ -15,6 +15,14 @@ class HealthResponse(BaseModel):
     environment: str
 
 
+class ServiceHealth(BaseModel):
+    status: str
+    service: str
+    ok: bool
+    detail: str = ""
+    latency_ms: float = 0.0
+
+
 class ErrorResponse(BaseModel):
     detail: str
     code: str

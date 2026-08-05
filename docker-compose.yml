@@ -1,55 +1,137 @@
 version: "3.9"
 
+name: explaintool
+
 services:
+  # ---------------------------------------------------------------------
+  # API backend (FastAPI + uvicorn)
+  # ---------------------------------------------------------------------
   api:
     build:
       context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
+      dockerfile: deploy/backend/Dockerfile
+    image: explaintool-api:latest
     env_file:
-      - .env
+      - deploy/env/.env.docker
+    environment:
+      APP_ENV: production
+      NEO4J_URI: bolt://neo4j:7687
+      REDIS_URL: redis://redis:6379/0
+      QDRANT_URL: http://qdrant:6333
     volumes:
       - ./logs:/app/logs
-      - ./data:/app/data
+      - app_data:/app/data
+    expose:
+      - "8000"
+    depends_on:
+      neo4j:
+        condition: service_healthy
+      qdrant:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://localhost:8000/health')"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health', timeout=3)"]
       interval: 30s
-      timeout: 10s
+      timeout: 5s
       retries: 3
+      start_period: 20s
+    security_opt:
+      - no-new-privileges:true
 
+  # ---------------------------------------------------------------------
+  # Frontend (React static bundle served by an internal nginx)
+  # ---------------------------------------------------------------------
+  react:
+    build:
+      context: .
+      dockerfile: deploy/frontend/Dockerfile
+    image: explaintool-ui:latest
+    expose:
+      - "80"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO", "/dev/null", "http://localhost/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # ---------------------------------------------------------------------
+  # Edge reverse proxy (single public entry point)
+  # ---------------------------------------------------------------------
+  nginx:
+    image: nginx:1.27-alpine
+    volumes:
+      - ./deploy/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      api:
+        condition: service_healthy
+      react:
+        condition: service_started
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------
+  # Knowledge graph database
+  # ---------------------------------------------------------------------
   neo4j:
     image: neo4j:5-community
-    ports:
-      - "7474:7474"
-      - "7687:7687"
     environment:
-      - NEO4J_AUTH=neo4j/password
+      NEO4J_AUTH: neo4j/password
+      NEO4J_dbms_memory_heap_initial__size: 512m
+      NEO4J_dbms_memory_heap_max__size: 1g
     volumes:
       - neo4j_data:/data
       - neo4j_logs:/logs
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO /dev/null http://localhost:7474 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
     restart: unless-stopped
 
+  # ---------------------------------------------------------------------
+  # Vector store
+  # ---------------------------------------------------------------------
   qdrant:
     image: qdrant/qdrant:latest
-    ports:
-      - "6333:6333"
-      - "6334:6334"
     volumes:
       - qdrant_data:/qdrant/storage
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c ':> /dev/tcp/127.0.0.1/6333' || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
     restart: unless-stopped
 
+  # ---------------------------------------------------------------------
+  # Cache / rate-limit backing store
+  # ---------------------------------------------------------------------
   redis:
     image: redis:7-alpine
-    ports:
-      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
     volumes:
       - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
     restart: unless-stopped
 
 volumes:
   neo4j_data:
   neo4j_logs:
-  redis_data:
   qdrant_data:
+  redis_data:
+  app_data:

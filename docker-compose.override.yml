@@ -1,0 +1,41 @@
+version: "3.9"
+
+# Development override — apply with:
+#   docker compose -f docker-compose.yml -f docker-compose.override.yml up
+#
+# Differences vs production:
+#   - backend runs with --reload and source mounted (no rebuild per change)
+#   - env points at deploy/env/.env.development
+#   - edge nginx still terminates public traffic on :80
+services:
+  api:
+    build:
+      context: .
+      dockerfile: deploy/backend/Dockerfile
+    env_file:
+      - deploy/env/.env.development
+    environment:
+      APP_ENV: development
+      APP_DEBUG: "true"
+    volumes:
+      - ./src:/app/src:ro
+      - ./logs:/app/logs
+      - ./data:/app/data
+    command: >
+      uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8000:8000"
+
+  neo4j:
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+
+  qdrant:
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+
+  redis:
+    ports:
+      - "6379:6379"

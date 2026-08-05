@@ -1,0 +1,38 @@
+# ---------------------------------------------------------------------------
+# Prometheus scrape configuration for the Explaintool stack.
+#
+#   api      - application /metrics endpoint (request latency, counters, RSS)
+#   qdrant   - Qdrant's built-in Prometheus metrics (port 6333 /metrics)
+#   neo4j    - via neo4j_exporter sidecar (see docker-compose.monitoring.yml)
+# ---------------------------------------------------------------------------
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: "explaintool-api"
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["api:8000"]
+        labels:
+          service: explaintool-api
+
+  - job_name: "explaintool-qdrant"
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["qdrant:6333"]
+        labels:
+          service: qdrant
+
+  - job_name: "explaintool-neo4j"
+    static_configs:
+      - targets: ["neo4j-exporter:9101"]
+        labels:
+          service: neo4j
+
+  - job_name: "explaintool-node"
+    static_configs:
+      - targets: ["node-exporter:9100"]
+        labels:
+          service: node
