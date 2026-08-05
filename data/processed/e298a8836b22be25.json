@@ -1,0 +1,24 @@
+{
+  "document_id": "e298a8836b22be25",
+  "title": "Rule 45-A of the Code of Civil Procedure",
+  "language": "en",
+  "pages": [
+    {
+      "page_number": 1,
+      "text": "Rule 45-A of the Code of Civil Procedure\nOrder VII Rule 11 of the CPC",
+      "is_scanned": false
+    }
+  ],
+  "metadata": {
+    "file_name": "sample.docx",
+    "file_path": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-14\\test_ingest_docx0\\sample.docx",
+    "file_size_bytes": 35439,
+    "file_type": "docx",
+    "num_pages": 1,
+    "language": "en",
+    "creation_date": "2026-08-04T16:34:23.856945+00:00",
+    "pdf_properties": {},
+    "is_scanned": false,
+    "ocr_applied": false
+  }
+}

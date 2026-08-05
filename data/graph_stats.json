@@ -1,0 +1,14 @@
+{
+  "total_nodes": 11,
+  "nodes_by_label": {
+    "Document": 1,
+    "Chapter": 3,
+    "Section": 7
+  },
+  "total_edges": 10,
+  "edges_by_type": {
+    "PART_OF": 10
+  },
+  "avg_degree": 1.82,
+  "max_degree": 4
+}

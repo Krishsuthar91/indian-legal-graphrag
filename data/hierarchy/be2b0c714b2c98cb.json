@@ -1,0 +1,318 @@
+{
+  "document_id": "be2b0c714b2c98cb",
+  "root_id": "root",
+  "nodes": [
+    {
+      "node_id": "root",
+      "parent_id": null,
+      "level": 0,
+      "node_type": "document",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "text": "",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "",
+      "children": [
+        "n_0001",
+        "n_0007",
+        "n_0010",
+        "n_0013"
+      ]
+    },
+    {
+      "node_id": "n_0001",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "CHAPTER I",
+      "text": "Preliminary",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "CHAPTER I",
+      "children": [
+        "n_0002",
+        "n_0003"
+      ]
+    },
+    {
+      "node_id": "n_0002",
+      "parent_id": "n_0001",
+      "level": 5,
+      "node_type": "section",
+      "title": ".",
+      "text": "Short title and commencement. (1) This Act may be called the Indian Contract Act, 1892. (2) It shall come into force on the first day of July, 1892.",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "1",
+      "children": []
+    },
+    {
+      "node_id": "n_0003",
+      "parent_id": "n_0001",
+      "level": 5,
+      "node_type": "section",
+      "title": ".",
+      "text": "Definitions.\nIn this Act, unless there is anything repugnant in the subject or context,— (a) \"contract\" means an agreement enforceable by law; (b) \"promise\" means a proposal when accepted. (i) where the proposal is made, (ii) where the acceptance is communicated.",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "2",
+      "children": [
+        "n_0004",
+        "n_0005",
+        "n_0006"
+      ]
+    },
+    {
+      "node_id": "n_0004",
+      "parent_id": "n_0003",
+      "level": 9,
+      "node_type": "explanation",
+      "title": "Explanation.—Nothing in this section shall apply to agreements.",
+      "text": "",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "—Nothing in this section shall apply to agreements.",
+      "children": []
+    },
+    {
+      "node_id": "n_0005",
+      "parent_id": "n_0003",
+      "level": 9,
+      "node_type": "illustration",
+      "title": "Illustration.—A says to B, \"I will sell my house for Rs. 1 lakh.\"",
+      "text": "",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "—A says to B, \"I will sell my house for Rs. 1 lakh.\"",
+      "children": []
+    },
+    {
+      "node_id": "n_0006",
+      "parent_id": "n_0003",
+      "level": 9,
+      "node_type": "proviso",
+      "title": "Proviso.—Provided that no suit shall be filed after three years.",
+      "text": "",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "—Provided that no suit shall be filed after three years.",
+      "children": []
+    },
+    {
+      "node_id": "n_0007",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "CHAPTER II",
+      "text": "Of Contracts",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "CHAPTER II",
+      "children": [
+        "n_0008",
+        "n_0009"
+      ]
+    },
+    {
+      "node_id": "n_0008",
+      "parent_id": "n_0007",
+      "level": 5,
+      "node_type": "section",
+      "title": ".",
+      "text": "Communication of proposals. (1) The communication of proposals is complete when it reaches the offeree. (2) The communication of acceptance is complete as against the proposer\nwhen it is put in course of transmission.",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "3",
+      "children": []
+    },
+    {
+      "node_id": "n_0009",
+      "parent_id": "n_0007",
+      "level": 5,
+      "node_type": "section",
+      "title": ".",
+      "text": "When proposals and acceptances are revoked. (a) where the contract provides for revocation, (b) where no provision is made.\nPART II — PERFORMANCE",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "4",
+      "children": []
+    },
+    {
+      "node_id": "n_0010",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "CHAPTER III",
+      "text": "Of Performance of Contracts",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "CHAPTER III",
+      "children": [
+        "n_0011",
+        "n_0012"
+      ]
+    },
+    {
+      "node_id": "n_0011",
+      "parent_id": "n_0010",
+      "level": 5,
+      "node_type": "section",
+      "title": ".",
+      "text": "Contracts to be performed. (1) Promisor must perform the promise. (2) Promisee may dispense with performance.",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "5",
+      "children": []
+    },
+    {
+      "node_id": "n_0012",
+      "parent_id": "n_0010",
+      "level": 5,
+      "node_type": "section",
+      "title": ".",
+      "text": "Effect of refusing performance. (a) the promisor refuses to perform, (b) the performance becomes impossible.",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "6",
+      "children": []
+    },
+    {
+      "node_id": "n_0013",
+      "parent_id": "root",
+      "level": 1,
+      "node_type": "schedule",
+      "title": "SCHEDULE",
+      "text": "LIST OF AMENDMENTS",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "SCHEDULE",
+      "children": [
+        "n_0014",
+        "n_0015"
+      ]
+    },
+    {
+      "node_id": "n_0014",
+      "parent_id": "n_0013",
+      "level": 5,
+      "node_type": "section",
+      "title": "— Amendment of Section 2",
+      "text": "",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "1",
+      "children": []
+    },
+    {
+      "node_id": "n_0015",
+      "parent_id": "n_0013",
+      "level": 5,
+      "node_type": "section",
+      "title": "— Amendment of Section 3",
+      "text": "",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "2",
+      "children": []
+    }
+  ],
+  "nested_set": [
+    {
+      "node_id": "n_0002",
+      "left": 3,
+      "right": 4,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0004",
+      "left": 6,
+      "right": 7,
+      "depth": 3
+    },
+    {
+      "node_id": "n_0005",
+      "left": 8,
+      "right": 9,
+      "depth": 3
+    },
+    {
+      "node_id": "n_0006",
+      "left": 10,
+      "right": 11,
+      "depth": 3
+    },
+    {
+      "node_id": "n_0003",
+      "left": 5,
+      "right": 12,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0001",
+      "left": 2,
+      "right": 13,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0008",
+      "left": 15,
+      "right": 16,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0009",
+      "left": 17,
+      "right": 18,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0007",
+      "left": 14,
+      "right": 19,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0011",
+      "left": 21,
+      "right": 22,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0012",
+      "left": 23,
+      "right": 24,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0010",
+      "left": 20,
+      "right": 25,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0014",
+      "left": 27,
+      "right": 28,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0015",
+      "left": 29,
+      "right": 30,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0013",
+      "left": 26,
+      "right": 31,
+      "depth": 1
+    },
+    {
+      "node_id": "root",
+      "left": 1,
+      "right": 32,
+      "depth": 0
+    }
+  ],
+  "warnings": []
+}
