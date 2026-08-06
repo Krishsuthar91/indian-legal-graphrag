@@ -54,7 +54,7 @@ RUN groupadd --system app && useradd --system --gid app --home /app app
 WORKDIR /app
 
 COPY --from=deps /wheels /wheels
-RUN pip install --no-index --find-links /wheels -r requirements.txt && rm -rf /wheels
+RUN pip install --no-index --find-links /wheels -r /wheels/requirements.txt && rm -rf /wheels
 
 # Application source (backend modules only; frontend is served by nginx).
 COPY src/ ./src/
