@@ -155,7 +155,7 @@ class QdrantStore:
         aggregated: list[dict[str, Any]] = []
         for name in collections:
             aggregated.extend(self.search(name, vector, top_k=limit, language=language))
-        aggregated.sort(key=lambda h: h["score"], reverse=True)
+        aggregated.sort(key=lambda h: (-h["score"], h["node_id"]))
         return aggregated[:top_k]
 
     def delete(self, collection: str, node_ids: list[str]) -> int:

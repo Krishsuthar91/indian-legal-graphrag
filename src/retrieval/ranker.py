@@ -137,7 +137,7 @@ def retrieve(
             continue
         results.append(result)
 
-    results.sort(key=lambda r: r.score, reverse=True)
+    results.sort(key=lambda r: (-r.score, r.node_id))
     top = results[:top_k]
 
     log.info(

@@ -4,7 +4,7 @@ ica-002,contract_act,en,How is a contract defined under the Act?,5,5,0,0.7094,Tr
 ica-003,contract_act,en,What is a promise under the Act?,5,5,0,0.7794,True,1.0,1.0,1.0,0.9643,0.6667,1.0,1.0,1.0
 ica-004,contract_act,en,When is the communication of a proposal complete?,5,5,0,0.7183,True,1.0,1.0,1.0,0.9643,0.5625,1.0,1.0,1.0
 ica-005,contract_act,en,What does the Act say about the performance of contracts?,5,5,0,0.7217,True,1.0,1.0,1.0,0.9643,0.7143,1.0,1.0,1.0
-ica-006,contract_act,hi,अनुबंध प्रदर्शन,5,5,0,0.4281,False,1.0,1.0,1.0,0.4357,0.0,1.0,1.0,1.0
+ica-006,contract_act,hi,अनुबंध प्रदर्शन,5,5,0,0.4281,False,1.0,1.0,1.0,0.4214,0.0,1.0,1.0,1.0
 ica-007,contract_act,en,Which chapter of the Act deals with performance?,5,5,0,0.7285,True,0.5,1.0,1.0,0.9643,0.8,1.0,1.0,1.0
 ica-008,contract_act,en,Where are the preliminary provisions of the Act located?,5,5,0,0.6331,True,1.0,1.0,1.0,0.45,0.5,1.0,1.0,1.0
 ica-009,contract_act,en,What is an agreement enforceable by law called?,5,5,0,0.7457,True,1.0,1.0,1.0,0.95,1.0,1.0,1.0,1.0

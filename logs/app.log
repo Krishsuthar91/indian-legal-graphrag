@@ -4397,3 +4397,4 @@
 {"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-05T17:04:26.980029Z"}
 {"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-05T17:04:26.980805Z"}
 {"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-05T17:04:26.981567Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:22:14.445301Z"}

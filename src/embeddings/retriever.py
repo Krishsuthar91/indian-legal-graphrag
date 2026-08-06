@@ -223,7 +223,7 @@ class VectorRetriever:
                 )
             )
 
-        results.sort(key=lambda r: r.score, reverse=True)
+        results.sort(key=lambda r: (-r.score, r.node_id))
         top = results[:top_k]
         log.info(
             "retrieval.hybrid_complete",

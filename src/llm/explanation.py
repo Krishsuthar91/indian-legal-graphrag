@@ -175,7 +175,7 @@ class ExplainabilityEngine:
             query, top_k=top_k, language=language, graph_results=graph_results,
             propagated=propagated,
         )
-        ranked_ids = sorted(candidates, key=lambda n: signals[n].final, reverse=True)[:top_k]
+        ranked_ids = sorted(candidates, key=lambda n: (-signals[n].final, n))[:top_k]
         chain.append(
             ReasoningStep(
                 step=5,

@@ -1,7 +1,7 @@
 ablation,label,system,items,recall_at_k,precision_at_k,hit_rate_at_k,mrr,map,ndcg_at_k,n,mean_ms,p50_ms,p95_ms,throughput_qps,explain_citation_accuracy,explain_hierarchy_correctness,explain_graph_path_accuracy,explain_provenance_completeness,explain_evidence_coverage,explain_counter_authority_precision,explain_counter_authority_recall,explain_counter_authority_f1
-full,Full HHGR,full,10,0.8,0.18,0.8,0.75,0.75,0.7631,10.0,2.178,2.137,2.785,459.12,0.95,1.0,1.0,0.8543,0.6824,1.0,1.0,1.0
-no_graph,Without graph signal,no_graph,10,0.8,0.18,0.8,0.7,0.675,0.7139,10.0,2.038,2.02,2.263,490.77,0.95,1.0,1.0,0.8543,0.6824,1.0,1.0,1.0
-no_hierarchy,Without hierarchy signal,no_hierarchy,10,0.8,0.18,0.8,0.75,0.75,0.7631,10.0,1.994,1.965,2.248,501.63,0.95,1.0,1.0,0.8543,0.6824,1.0,1.0,1.0
-no_dense,Without dense signal,no_dense,10,0.9,0.2,0.9,0.67,0.645,0.7157,10.0,2.237,2.154,2.831,447.03,0.95,1.0,1.0,0.9014,0.6686,1.0,1.0,1.0
-no_multilingual,Without multilingual path,no_multilingual,10,0.8,0.18,0.8,0.65,0.62,0.6743,10.0,2.816,2.043,8.423,355.13,0.75,0.8,0.8,0.7557,0.5872,1.0,1.0,1.0
-no_explainability,Without explainability enrichment,no_explainability,10,0.8,0.18,0.8,0.75,0.75,0.7631,10.0,1.379,1.364,1.717,725.16,,,,,,,,
+full,Full HHGR,full,10,0.8,0.18,0.8,0.75,0.75,0.7631,10.0,2.132,2.12,2.353,468.96,0.95,1.0,1.0,0.8529,0.6824,1.0,1.0,1.0
+no_graph,Without graph signal,no_graph,10,0.8,0.18,0.8,0.7,0.675,0.7139,10.0,2.138,2.163,2.379,467.7,0.95,1.0,1.0,0.8529,0.6824,1.0,1.0,1.0
+no_hierarchy,Without hierarchy signal,no_hierarchy,10,0.8,0.18,0.8,0.75,0.75,0.7631,10.0,2.202,2.253,2.465,454.22,0.95,1.0,1.0,0.8529,0.6824,1.0,1.0,1.0
+no_dense,Without dense signal,no_dense,10,0.8,0.18,0.8,0.65,0.625,0.677,10.0,2.087,2.087,2.272,479.23,0.95,1.0,1.0,0.8486,0.6504,1.0,1.0,1.0
+no_multilingual,Without multilingual path,no_multilingual,10,0.8,0.18,0.8,0.65,0.62,0.6743,10.0,2.436,2.104,4.998,410.48,0.75,0.8,0.8,0.7557,0.5872,1.0,1.0,1.0
+no_explainability,Without explainability enrichment,no_explainability,10,0.8,0.18,0.8,0.75,0.75,0.7631,10.0,1.201,1.195,1.38,832.71,,,,,,,,
