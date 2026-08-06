@@ -4,8 +4,6 @@ from __future__ import annotations
 
 from typing import Any
 
-from src.knowledge_graph.schema import NodeLabel
-
 
 def _normalize(text: str) -> str:
     """Normalize a string for comparison: lowercase, strip, collapse whitespace."""

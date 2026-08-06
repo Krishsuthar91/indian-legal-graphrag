@@ -9,7 +9,6 @@ Four signals are combined into a single relevance score:
 
 from __future__ import annotations
 
-import re
 from typing import Any
 
 from src.retrieval.context import get_descendant_ids

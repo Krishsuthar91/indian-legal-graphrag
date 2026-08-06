@@ -1,7 +1,11 @@
 """Tests for tree builder (adjacency + nested set index)."""
 
 from src.hierarchy.models import HierarchyNode
-from src.hierarchy.tree_builder import assign_parents, build_document_root, build_hierarchy, build_nested_set
+from src.hierarchy.tree_builder import (
+    assign_parents,
+    build_document_root,
+    build_hierarchy,
+)
 
 
 class TestDocumentRoot:

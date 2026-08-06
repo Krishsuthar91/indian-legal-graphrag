@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from enum import Enum
+from enum import StrEnum
 
 
-class NodeLabel(str, Enum):
+class NodeLabel(StrEnum):
     DOCUMENT = "Document"
     CHAPTER = "Chapter"
     PART = "Part"
@@ -19,7 +19,7 @@ class NodeLabel(str, Enum):
     AMENDMENT = "Amendment"
 
 
-class RelType(str, Enum):
+class RelType(StrEnum):
     PART_OF = "PART_OF"
     CITES = "CITES"
     REFERENCES = "REFERENCES"

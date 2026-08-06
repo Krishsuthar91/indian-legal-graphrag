@@ -2,8 +2,8 @@
 
 from pathlib import Path
 
-from src.ingestion.loaders.pdf_loader import load_pdf, pdf_has_text
 from src.ingestion.loaders.docx_loader import load_docx
+from src.ingestion.loaders.pdf_loader import load_pdf, pdf_has_text
 from src.ingestion.loaders.txt_loader import load_txt
 
 

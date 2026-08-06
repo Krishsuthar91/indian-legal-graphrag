@@ -99,7 +99,9 @@ def import_hierarchy_json(graph, hierarchy_path: Path) -> dict[str, int]:
                 # Create Court node if court is identified
                 if cite.court:
                     court_id = f"court_{cite.court}"
-                    graph.merge_node(NodeLabel.COURT.value, "name", cite.court, {"name": cite.court})
+                    graph.merge_node(
+                        NodeLabel.COURT.value, "name", cite.court, {"name": cite.court}
+                    )
                     graph.create_edge(case_id, court_id, RelType.PART_OF.value)
 
             else:
@@ -108,7 +110,11 @@ def import_hierarchy_json(graph, hierarchy_path: Path) -> dict[str, int]:
                 concept_id = f"concept_{concept_name[:50]}"
                 graph.merge_node(
                     NodeLabel.LEGAL_CONCEPT.value, "name", concept_name,
-                    {"name": concept_name, "citation_type": cite.citation_type, "ref_number": cite.ref_number},
+                    {
+                        "name": concept_name,
+                        "citation_type": cite.citation_type,
+                        "ref_number": cite.ref_number,
+                    },
                 )
                 if graph.create_edge(source_id, concept_id, RelType.REFERENCES.value):
                     edges_created += 1

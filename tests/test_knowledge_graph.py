@@ -7,7 +7,7 @@ import pytest
 
 from src.knowledge_graph.importer import import_all, import_hierarchy_json
 from src.knowledge_graph.neo4j_driver import InMemoryGraph
-from src.knowledge_graph.schema import NodeLabel, RelType
+from src.knowledge_graph.stats import get_graph_stats
 from src.knowledge_graph.traversal import (
     citation_chain,
     get_children,
@@ -15,7 +15,6 @@ from src.knowledge_graph.traversal import (
     get_parent,
     shortest_path,
 )
-from src.knowledge_graph.stats import get_graph_stats
 
 
 @pytest.fixture()
@@ -30,15 +29,54 @@ def sample_hierarchy(tmp_path: Path) -> Path:
         "document_id": "test_doc_01",
         "root_id": "root",
         "nodes": [
-            {"node_id": "root", "parent_id": None, "level": 0, "node_type": "document",
-             "title": "Test Act", "text": "", "start_page": 1, "end_page": 1, "numbering": "", "children": ["n1", "n2"]},
-            {"node_id": "n1", "parent_id": "root", "level": 4, "node_type": "chapter",
-             "title": "CHAPTER I", "text": "", "start_page": 1, "end_page": 1, "numbering": "I", "children": ["n3"]},
-            {"node_id": "n2", "parent_id": "root", "level": 4, "node_type": "chapter",
-             "title": "CHAPTER II", "text": "", "start_page": 2, "end_page": 2, "numbering": "II", "children": []},
-            {"node_id": "n3", "parent_id": "n1", "level": 5, "node_type": "section",
-             "title": "Section 1", "text": "Section 12 of the Act and Article 14 of the Constitution.",
-             "start_page": 1, "end_page": 1, "numbering": "1", "children": []},
+            {
+                "node_id": "root",
+                "parent_id": None,
+                "level": 0,
+                "node_type": "document",
+                "title": "Test Act",
+                "text": "",
+                "start_page": 1,
+                "end_page": 1,
+                "numbering": "",
+                "children": ["n1", "n2"],
+            },
+            {
+                "node_id": "n1",
+                "parent_id": "root",
+                "level": 4,
+                "node_type": "chapter",
+                "title": "CHAPTER I",
+                "text": "",
+                "start_page": 1,
+                "end_page": 1,
+                "numbering": "I",
+                "children": ["n3"],
+            },
+            {
+                "node_id": "n2",
+                "parent_id": "root",
+                "level": 4,
+                "node_type": "chapter",
+                "title": "CHAPTER II",
+                "text": "",
+                "start_page": 2,
+                "end_page": 2,
+                "numbering": "II",
+                "children": [],
+            },
+            {
+                "node_id": "n3",
+                "parent_id": "n1",
+                "level": 5,
+                "node_type": "section",
+                "title": "Section 1",
+                "text": "Section 12 of the Act and Article 14 of the Constitution.",
+                "start_page": 1,
+                "end_page": 1,
+                "numbering": "1",
+                "children": [],
+            },
         ],
         "nested_set": [],
         "warnings": [],
@@ -75,10 +113,30 @@ class TestImportHierarchy:
         data = {
             "document_id": "doc_a", "root_id": "root", "language": "en",
             "nodes": [
-                {"node_id": "root", "parent_id": None, "level": 0, "node_type": "document",
-                 "title": "Act A", "text": "", "start_page": 1, "end_page": 1, "numbering": "", "children": []},
-                {"node_id": "s1", "parent_id": "root", "level": 5, "node_type": "section",
-                 "title": "S1", "text": "", "start_page": 1, "end_page": 1, "numbering": "1", "children": []},
+                {
+                    "node_id": "root",
+                    "parent_id": None,
+                    "level": 0,
+                    "node_type": "document",
+                    "title": "Act A",
+                    "text": "",
+                    "start_page": 1,
+                    "end_page": 1,
+                    "numbering": "",
+                    "children": [],
+                },
+                {
+                    "node_id": "s1",
+                    "parent_id": "root",
+                    "level": 5,
+                    "node_type": "section",
+                    "title": "S1",
+                    "text": "",
+                    "start_page": 1,
+                    "end_page": 1,
+                    "numbering": "1",
+                    "children": [],
+                },
             ],
             "nested_set": [], "warnings": [],
         }

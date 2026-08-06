@@ -1,5 +1,7 @@
 """Tests for language detection."""
 
+from pathlib import Path
+
 from src.ingestion.detection.language_detector import detect_document_language, detect_language
 
 

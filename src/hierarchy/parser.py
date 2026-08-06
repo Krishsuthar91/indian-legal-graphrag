@@ -7,7 +7,6 @@ adjacency tree + nested set index, validates, and writes to data/hierarchy/.
 from __future__ import annotations
 
 import json
-import logging
 from pathlib import Path
 
 from src.config.logging_config import get_logger

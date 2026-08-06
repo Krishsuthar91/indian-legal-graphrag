@@ -2,18 +2,15 @@
 
 from pathlib import Path
 
-from src.knowledge_graph.citation_extractor import extract_citations
 from src.knowledge_graph.entity_resolver import resolve_duplicates
-from src.knowledge_graph.importer import import_hierarchy_json, setup_schema
+from src.knowledge_graph.importer import import_hierarchy_json
 from src.knowledge_graph.neo4j_driver import InMemoryGraph
 from src.knowledge_graph.schema import NodeLabel
-from src.knowledge_graph.stats import export_stats, get_graph_stats
+from src.knowledge_graph.stats import export_stats
 from src.knowledge_graph.traversal import (
     citation_chain,
     get_children,
-    get_neighbors,
     get_parent,
-    shortest_path,
 )
 
 
@@ -106,4 +103,4 @@ if __name__ == "__main__":
     for k, v in stats.items():
         print(f"  {k}: {v}")
 
-    print(f"\nStats saved to data/graph_stats.json")
+    print("\nStats saved to data/graph_stats.json")

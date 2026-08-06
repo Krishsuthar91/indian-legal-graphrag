@@ -1,6 +1,7 @@
 """Demo script: create a sample legal PDF and run the ingestion pipeline."""
 
 from pathlib import Path
+
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
 from reportlab.pdfgen import canvas
@@ -100,7 +101,7 @@ if __name__ == "__main__":
     print(f"Created sample PDF: {pdf_path}")
 
     doc = ingest_document(pdf_path)
-    print(f"\nIngested document:")
+    print("\nIngested document:")
     print(f"  ID:       {doc.document_id}")
     print(f"  Title:    {doc.title}")
     print(f"  Language: {doc.language}")

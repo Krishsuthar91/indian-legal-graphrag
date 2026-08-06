@@ -53,9 +53,9 @@ def _avg_degree(graph) -> float:
             total_degree += len(neighbors)
 
     sampled = sum(
-        min(len(graph.get_nodes_by_label(l.value)), 50)
-        for l in NodeLabel
-        if graph.node_count(l.value) > 0
+        min(len(graph.get_nodes_by_label(label.value)), 50)
+        for label in NodeLabel
+        if graph.node_count(label.value) > 0
     )
     return round(total_degree / max(sampled, 1), 2)
 

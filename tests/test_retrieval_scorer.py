@@ -87,7 +87,9 @@ class TestStructuralImportance:
         g.create_node("Chapter", "ch1", {})
         g.create_edge("s1", "ch1", "PART_OF")
         g.create_edge("s2", "ch1", "PART_OF")
-        assert structural_importance(g, g.get_node("ch1")) > structural_importance(g, g.get_node("s1"))
+        assert structural_importance(g, g.get_node("ch1")) > structural_importance(
+            g, g.get_node("s1")
+        )
 
     def test_subtree_increases_importance(self):
         g = InMemoryGraph()

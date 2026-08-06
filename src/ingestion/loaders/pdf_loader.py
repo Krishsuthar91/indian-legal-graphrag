@@ -57,8 +57,9 @@ def render_page_to_image(path: Path, page_number: int, dpi: int = 300):
         zoom = dpi / 72
         mat = fitz.Matrix(zoom, zoom)
         pix = page.get_pixmap(matrix=mat)
-        from PIL import Image
         import io
+
+        from PIL import Image
 
         img = Image.open(io.BytesIO(pix.tobytes("png")))
         doc.close()

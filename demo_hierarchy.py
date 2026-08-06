@@ -6,8 +6,8 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
 from reportlab.pdfgen import canvas
 
-from src.ingestion.pipeline import ingest_document
 from src.hierarchy.parser import parse_and_save
+from src.ingestion.pipeline import ingest_document
 
 
 def create_demo_pdf(output_path: Path) -> Path:
@@ -132,7 +132,7 @@ if __name__ == "__main__":
     print_tree(hierarchy)
 
     print(f"\n{'='*60}")
-    print(f"NESTED SET INDEX")
+    print("NESTED SET INDEX")
     print(f"{'='*60}")
     node_map = {n.node_id: n for n in hierarchy.nodes}
     for entry in sorted(hierarchy.nested_set, key=lambda e: e.left):
@@ -147,4 +147,4 @@ if __name__ == "__main__":
         for w in hierarchy.warnings:
             print(f"  [{w.warning_type}] {w.message}")
     else:
-        print(f"\nNo hierarchy warnings detected.")
+        print("\nNo hierarchy warnings detected.")

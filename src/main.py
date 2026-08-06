@@ -27,7 +27,10 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
-    description="Explainable Multilingual Hierarchical Graph-RAG with HHGR for Indian Legal Document Intelligence",
+    description=(
+        "Explainable Multilingual Hierarchical Graph-RAG with HHGR for Indian "
+        "Legal Document Intelligence"
+    ),
     lifespan=lifespan,
 )
 

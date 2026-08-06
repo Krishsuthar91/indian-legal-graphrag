@@ -8,13 +8,12 @@ from __future__ import annotations
 
 import hashlib
 import json
-import logging
 from pathlib import Path
 
 from src.config.logging_config import get_logger
 from src.ingestion.cleaning.text_cleaner import clean_pages
 from src.ingestion.detection.language_detector import detect_document_language
-from src.ingestion.detection.scanner_detector import is_page_scanned, is_scanned_pdf
+from src.ingestion.detection.scanner_detector import is_scanned_pdf
 from src.ingestion.loaders.docx_loader import load_docx
 from src.ingestion.loaders.pdf_loader import load_pdf, render_page_to_image
 from src.ingestion.loaders.txt_loader import load_txt
@@ -38,7 +37,7 @@ def _generate_document_id(path: Path, text_sample: str) -> str:
 def _derive_title(path: Path, pages: list[str]) -> str:
     """Extract a title from the document content or fall back to filename."""
     for page in pages:
-        lines = [l.strip() for l in page.split("\n") if l.strip()]
+        lines = [raw.strip() for raw in page.split("\n") if raw.strip()]
         for line in lines[:5]:
             if len(line) > 5 and len(line) < 200:
                 return line
@@ -138,7 +137,10 @@ def ingest_document(file_path: str | Path) -> IngestedDocument:
     # --- 8. Save ---
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     out_path = OUTPUT_DIR / f"{doc_id}.json"
-    out_path.write_text(json.dumps(doc.model_dump(), indent=2, ensure_ascii=False), encoding="utf-8")
+    out_path.write_text(
+        json.dumps(doc.model_dump(), indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
     log.info("ingestion.complete", file=str(path), output=str(out_path), doc_id=doc_id)
 
     return doc

@@ -4398,3 +4398,722 @@
 {"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-05T17:04:26.980805Z"}
 {"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-05T17:04:26.981567Z"}
 {"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:22:14.445301Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:37:32.352531Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:37:34.936017Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:37:35.053229Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:37:37.497236Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:37:37.611870Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:37:40.229291Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:40:36.933833Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:40:39.887178Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:41:16.854366Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:41:33.901541Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:41:34.017545Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:41:36.259395Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:41:37.907401Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:41:40.302105Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:41:40.405270Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:41:42.450699Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:41:59.357806Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:42:01.601435Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:42:01.712267Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:42:03.953315Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:42:04.057653Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:42:06.340856Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:42:06.451561Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:42:08.581580Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:42:20.524649Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:42:22.866134Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:42:22.970601Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:42:25.323482Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:42:25.434218Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:42:27.721927Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:42:27.834973Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:42:30.018854Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:42:30.133082Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:42:32.301478Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:42:48.601358Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:42:50.831964Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:42:50.942017Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:42:53.201653Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:42:53.311958Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:42:55.602130Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:42:55.704044Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:42:57.792726Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:11.128190Z"}
+{"event": "HTTP Request: GET http://testserver/ \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:11.141170Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:11.142326Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:11.146994Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/health \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:11.151033Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:11.151928Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:11.156664Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/ready \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:11.159232Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:11.159893Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:11.164442Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/live \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:11.167007Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:11.167715Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:11.171953Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/check/llm \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:11.174980Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:11.175668Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:11.181111Z"}
+{"error": "Couldn't connect to localhost:7687 (resolved to ('[::1]:7687', '127.0.0.1:7687')):\nTimed out trying to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0))\nFailed to establish connection to ResolvedIPv4Address(('127.0.0.1', 7687)) (reason [WinError 10061] No connection could be made because the target machine actively refused it)", "event": "health.database_failed", "level": "warning", "timestamp": "2026-08-06T06:43:15.144803Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/check/database \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:15.147451Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:15.148783Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:15.157507Z"}
+{"error": "timed out", "event": "health.vector_failed", "level": "warning", "timestamp": "2026-08-06T06:43:17.492241Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/check/vector \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:17.496819Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:17.498104Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:17.504801Z"}
+{"error": "Couldn't connect to localhost:7687 (resolved to ('[::1]:7687', '127.0.0.1:7687')):\nTimed out trying to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0))\nFailed to establish connection to ResolvedIPv4Address(('127.0.0.1', 7687)) (reason [WinError 10061] No connection could be made because the target machine actively refused it)", "event": "health.database_failed", "level": "warning", "timestamp": "2026-08-06T06:43:20.531920Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/check/database \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:20.534442Z"}
+{"error": "timed out", "event": "health.vector_failed", "level": "warning", "timestamp": "2026-08-06T06:43:23.003997Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/check/vector \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:23.006849Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/check/llm \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:23.008932Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:23.009986Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_parse_returns_hierarchy0\\test_act.pdf", "ext": ".pdf", "event": "ingestion.start", "level": "info", "timestamp": "2026-08-06T06:43:23.089527Z"}
+{"lang": "en", "file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_parse_returns_hierarchy0\\test_act.pdf", "event": "language.detected", "level": "info", "timestamp": "2026-08-06T06:43:23.538729Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_parse_returns_hierarchy0\\test_act.pdf", "output": "C:\\Users\\Krish\\Project2\\data\\processed\\cddf9c26b8f7b182.json", "doc_id": "cddf9c26b8f7b182", "event": "ingestion.complete", "level": "info", "timestamp": "2026-08-06T06:43:23.542822Z"}
+{"document_id": "cddf9c26b8f7b182", "event": "hierarchy.parse.start", "level": "info", "timestamp": "2026-08-06T06:43:23.544432Z"}
+{"document_id": "cddf9c26b8f7b182", "nodes": 11, "warnings": 0, "event": "hierarchy.parse.complete", "level": "info", "timestamp": "2026-08-06T06:43:23.545422Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_parse_finds_chapters0\\test_act.pdf", "ext": ".pdf", "event": "ingestion.start", "level": "info", "timestamp": "2026-08-06T06:43:23.550716Z"}
+{"lang": "en", "file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_parse_finds_chapters0\\test_act.pdf", "event": "language.detected", "level": "info", "timestamp": "2026-08-06T06:43:23.604174Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_parse_finds_chapters0\\test_act.pdf", "output": "C:\\Users\\Krish\\Project2\\data\\processed\\a8d81f8275c5d947.json", "doc_id": "a8d81f8275c5d947", "event": "ingestion.complete", "level": "info", "timestamp": "2026-08-06T06:43:23.607088Z"}
+{"document_id": "a8d81f8275c5d947", "event": "hierarchy.parse.start", "level": "info", "timestamp": "2026-08-06T06:43:23.608466Z"}
+{"document_id": "a8d81f8275c5d947", "nodes": 11, "warnings": 0, "event": "hierarchy.parse.complete", "level": "info", "timestamp": "2026-08-06T06:43:23.609350Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_parse_finds_sections0\\test_act.pdf", "ext": ".pdf", "event": "ingestion.start", "level": "info", "timestamp": "2026-08-06T06:43:23.616201Z"}
+{"lang": "en", "file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_parse_finds_sections0\\test_act.pdf", "event": "language.detected", "level": "info", "timestamp": "2026-08-06T06:43:23.681582Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_parse_finds_sections0\\test_act.pdf", "output": "C:\\Users\\Krish\\Project2\\data\\processed\\8848d0b534dfe8eb.json", "doc_id": "8848d0b534dfe8eb", "event": "ingestion.complete", "level": "info", "timestamp": "2026-08-06T06:43:23.684285Z"}
+{"document_id": "8848d0b534dfe8eb", "event": "hierarchy.parse.start", "level": "info", "timestamp": "2026-08-06T06:43:23.685805Z"}
+{"document_id": "8848d0b534dfe8eb", "nodes": 11, "warnings": 0, "event": "hierarchy.parse.complete", "level": "info", "timestamp": "2026-08-06T06:43:23.686556Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_parse_has_nested_set0\\test_act.pdf", "ext": ".pdf", "event": "ingestion.start", "level": "info", "timestamp": "2026-08-06T06:43:23.693069Z"}
+{"lang": "en", "file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_parse_has_nested_set0\\test_act.pdf", "event": "language.detected", "level": "info", "timestamp": "2026-08-06T06:43:23.748877Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_parse_has_nested_set0\\test_act.pdf", "output": "C:\\Users\\Krish\\Project2\\data\\processed\\000b16b127e649b8.json", "doc_id": "000b16b127e649b8", "event": "ingestion.complete", "level": "info", "timestamp": "2026-08-06T06:43:23.751504Z"}
+{"document_id": "000b16b127e649b8", "event": "hierarchy.parse.start", "level": "info", "timestamp": "2026-08-06T06:43:23.752672Z"}
+{"document_id": "000b16b127e649b8", "nodes": 11, "warnings": 0, "event": "hierarchy.parse.complete", "level": "info", "timestamp": "2026-08-06T06:43:23.753365Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_parse_parent_child0\\test_act.pdf", "ext": ".pdf", "event": "ingestion.start", "level": "info", "timestamp": "2026-08-06T06:43:23.759619Z"}
+{"lang": "en", "file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_parse_parent_child0\\test_act.pdf", "event": "language.detected", "level": "info", "timestamp": "2026-08-06T06:43:23.973750Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_parse_parent_child0\\test_act.pdf", "output": "C:\\Users\\Krish\\Project2\\data\\processed\\3eef871b6c7047e7.json", "doc_id": "3eef871b6c7047e7", "event": "ingestion.complete", "level": "info", "timestamp": "2026-08-06T06:43:23.976310Z"}
+{"document_id": "3eef871b6c7047e7", "event": "hierarchy.parse.start", "level": "info", "timestamp": "2026-08-06T06:43:23.977775Z"}
+{"document_id": "3eef871b6c7047e7", "nodes": 11, "warnings": 0, "event": "hierarchy.parse.complete", "level": "info", "timestamp": "2026-08-06T06:43:23.978574Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_saves_json0\\test_act.pdf", "ext": ".pdf", "event": "ingestion.start", "level": "info", "timestamp": "2026-08-06T06:43:23.984537Z"}
+{"lang": "en", "file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_saves_json0\\test_act.pdf", "event": "language.detected", "level": "info", "timestamp": "2026-08-06T06:43:24.038127Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_saves_json0\\test_act.pdf", "output": "C:\\Users\\Krish\\Project2\\data\\processed\\b753708cfeaadff4.json", "doc_id": "b753708cfeaadff4", "event": "ingestion.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.041436Z"}
+{"document_id": "b753708cfeaadff4", "event": "hierarchy.parse.start", "level": "info", "timestamp": "2026-08-06T06:43:24.043042Z"}
+{"document_id": "b753708cfeaadff4", "nodes": 11, "warnings": 0, "event": "hierarchy.parse.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.043695Z"}
+{"path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b753708cfeaadff4.json", "event": "hierarchy.saved", "level": "info", "timestamp": "2026-08-06T06:43:24.044828Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_saved_json_has_correct_st0\\test_act.pdf", "ext": ".pdf", "event": "ingestion.start", "level": "info", "timestamp": "2026-08-06T06:43:24.051181Z"}
+{"lang": "en", "file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_saved_json_has_correct_st0\\test_act.pdf", "event": "language.detected", "level": "info", "timestamp": "2026-08-06T06:43:24.115274Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_saved_json_has_correct_st0\\test_act.pdf", "output": "C:\\Users\\Krish\\Project2\\data\\processed\\169e97330f638ece.json", "doc_id": "169e97330f638ece", "event": "ingestion.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.118067Z"}
+{"document_id": "169e97330f638ece", "event": "hierarchy.parse.start", "level": "info", "timestamp": "2026-08-06T06:43:24.119241Z"}
+{"document_id": "169e97330f638ece", "nodes": 11, "warnings": 0, "event": "hierarchy.parse.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.119889Z"}
+{"path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\169e97330f638ece.json", "event": "hierarchy.saved", "level": "info", "timestamp": "2026-08-06T06:43:24.121056Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.127300Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.128030Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.128456Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.128881Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.129232Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 2}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.131468Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.141144Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.142064Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.142632Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.143012Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.143296Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 2}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.145287Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.153122Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.153719Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.153992Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.154235Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.154464Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 2}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.156019Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.161859Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.162318Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.162599Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.162841Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.163071Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 2}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.164528Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.170799Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.171268Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.171574Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.171819Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.172059Z"}
+{"doc_id": "doc1", "collections": {"sections": 1}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.173693Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.179795Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.180404Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.180682Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.180926Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.181179Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 2}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.182688Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.188566Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.189053Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.189382Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.189650Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.189880Z"}
+{"doc_id": "docA", "collections": {"documents": 1, "chapters": 1}, "event": "index.hierarchy_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.193896Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.205987Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.206694Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.207007Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.207351Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.207619Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 2}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.209440Z"}
+{"doc_id": "doc1", "indexed": 0, "skipped": 5, "event": "index.incremental_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.210163Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.216704Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.217258Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.217527Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.217761Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.217980Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 2}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.219503Z"}
+{"doc_id": "doc1", "indexed": 1, "skipped": 5, "event": "index.incremental_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.220140Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.229551Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.230256Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.230624Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.231010Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.231352Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 2}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.233529Z"}
+{"doc_id": "doc1", "indexed": 1, "skipped": 4, "event": "index.incremental_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.234655Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.242970Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.243543Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.243933Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.244420Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.244770Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 2}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.246781Z"}
+{"doc_id": "doc1", "indexed": 0, "skipped": 5, "event": "index.incremental_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.247416Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.255367Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.256034Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.256481Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.256871Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.257176Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 2}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.258876Z"}
+{"doc_id": "doc1", "indexed": 0, "skipped": 5, "event": "index.incremental_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.259584Z"}
+{"indexed": 0, "skipped": 5, "collections": {}, "deleted": 1, "event": "index.sync_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.260052Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_import_creates_nodes0\\test_doc_01.json", "nodes": 4, "edges": 5, "event": "import.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.270353Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_import_creates_part_of_ed0\\test_doc_01.json", "nodes": 4, "edges": 5, "event": "import.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.275257Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_import_extracts_citations0\\test_doc_01.json", "nodes": 4, "edges": 5, "event": "import.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.280181Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_import_document_node0\\test_doc_01.json", "nodes": 4, "edges": 5, "event": "import.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.285341Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_import_all0\\hierarchy\\doc_a.json", "nodes": 2, "edges": 1, "event": "import.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.291485Z"}
+{"files": 1, "nodes": 2, "edges": 1, "event": "import.all_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.292050Z"}
+{"url": "http://x/v1/chat/completions", "error": "boom", "event": "llm.request_failed", "level": "error", "timestamp": "2026-08-06T06:43:24.343440Z"}
+{"url": "http://x/v1/chat/completions", "body": {"foo": "bar"}, "event": "llm.bad_response", "level": "error", "timestamp": "2026-08-06T06:43:24.345963Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.356820Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.357541Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.357935Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.358324Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.358673Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.360318Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.362193Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.364252Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.365738Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.366486Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.375850Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.376412Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.376698Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.376936Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.377160Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.378234Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.379337Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.380381Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.381414Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.381923Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.387999Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.388556Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.388852Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.389101Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.389332Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.390418Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.391579Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.392659Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.393641Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.394143Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.401009Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.401569Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.401853Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.402093Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.402327Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.403494Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.404658Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.405763Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.406772Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.407324Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.414197Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.414933Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.415347Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.415717Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.415986Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.417368Z"}
+{"query": "section 4 performance", "seeds": 1, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.418839Z"}
+{"query": "section 4 performance", "seeds": 1, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.420128Z"}
+{"query": "section 4 performance", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.421183Z"}
+{"query": "section 4 performance", "candidates": 5, "returned": 5, "confidence": 0.8568, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.421719Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.429542Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.430345Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.430758Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.431051Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.431311Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.432448Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.433609Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.434728Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.435756Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.436259Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.443011Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.443852Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.444154Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.444392Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.444619Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.446401Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.447881Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.449285Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.450489Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.451109Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.453669Z"}
+{"query": "performance of contracts", "candidates": 3, "returned": 3, "confidence": 0.5213, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.454340Z"}
+{"query": "zzzqxwv unrelated gibberish", "event": "retrieval.no_seeds", "level": "info", "timestamp": "2026-08-06T06:43:24.455910Z"}
+{"query": "zzzqxwv unrelated gibberish", "candidates": 0, "returned": 0, "confidence": 0.0, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.456334Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.462877Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.463513Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.463804Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.464103Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.464379Z"}
+{"doc_id": "docV", "collections": {"documents": 1, "chapters": 1, "sections": 1}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.465458Z"}
+{"query": "agreements without consideration are void", "seeds": 1, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.466844Z"}
+{"query": "agreements without consideration are void", "seeds": 1, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.468550Z"}
+{"query": "agreements without consideration are void", "candidates": 3, "returned": 3, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.470244Z"}
+{"query": "agreements without consideration are void", "candidates": 3, "returned": 3, "confidence": 0.803, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.472261Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.481266Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.481951Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.482339Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.482697Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.483056Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.484552Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.486262Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.487873Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.489480Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.490197Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.499370Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.500084Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.500429Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.500772Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.501100Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.502642Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.504246Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.506032Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.507630Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.508401Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.518113Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.518860Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.519224Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.519553Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.519843Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.521435Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.523105Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.524794Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.526248Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.526993Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.558566Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.559376Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.559860Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.560262Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.560640Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.562421Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.564258Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.565785Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.567111Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.567850Z"}
+{"provenance_id": "dabf1403d6404eb3902721fa39846f39", "query": "performance of contracts", "model": "mock-llm", "evidence": 5, "confidence": 0.8006, "duration_ms": 5.54, "event": "qa.answer_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.568748Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.576753Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.577293Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.577567Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.577829Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.578064Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.579428Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.581094Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.582289Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.583325Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.583816Z"}
+{"provenance_id": "9518c39ffed9466ab87e896d590c1d0b", "query": "performance of contracts", "model": "mock-llm", "evidence": 5, "confidence": 0.8006, "duration_ms": 4.34, "event": "qa.answer_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.584389Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.590722Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.591243Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.591531Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.591797Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.592029Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.593311Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 2, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.594975Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 2, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.596640Z"}
+{"query": "performance of contracts", "candidates": 3, "returned": 2, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.598071Z"}
+{"query": "performance of contracts", "candidates": 2, "returned": 2, "confidence": 0.8408, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.598646Z"}
+{"provenance_id": "627f80c206184db3b0f97ffbf56e92bb", "query": "performance of contracts", "model": "mock-llm", "evidence": 2, "confidence": 0.8408, "duration_ms": 5.31, "event": "qa.answer_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.599203Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.606059Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.606799Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.607107Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.607364Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.607605Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.608824Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.616670Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.617197Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.617520Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.617759Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.618010Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.619059Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.620215Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.621276Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.622305Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.622779Z"}
+{"provenance_id": "e545aec7c1c144778d7e8b292dd54515", "query": "performance of contracts", "model": "mock-llm", "evidence": 5, "confidence": 0.8006, "duration_ms": 3.85, "event": "qa.answer_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.623389Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:24.630890Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.631434Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.631714Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.631962Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:24.632320Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.633426Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.634563Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.635789Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:24.636886Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.637402Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_ingest_txt0\\sample.txt", "ext": ".txt", "event": "ingestion.start", "level": "info", "timestamp": "2026-08-06T06:43:24.879365Z"}
+{"lang": "en", "file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_ingest_txt0\\sample.txt", "event": "language.detected", "level": "info", "timestamp": "2026-08-06T06:43:24.883278Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_ingest_txt0\\sample.txt", "output": "C:\\Users\\Krish\\Project2\\data\\processed\\b431abdc8fe96899.json", "doc_id": "b431abdc8fe96899", "event": "ingestion.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.885837Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_ingest_pdf0\\sample.pdf", "ext": ".pdf", "event": "ingestion.start", "level": "info", "timestamp": "2026-08-06T06:43:24.892597Z"}
+{"lang": "en", "file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_ingest_pdf0\\sample.pdf", "event": "language.detected", "level": "info", "timestamp": "2026-08-06T06:43:24.914232Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_ingest_pdf0\\sample.pdf", "output": "C:\\Users\\Krish\\Project2\\data\\processed\\70648f9e69f7a39a.json", "doc_id": "70648f9e69f7a39a", "event": "ingestion.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.916475Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_ingest_docx0\\sample.docx", "ext": ".docx", "event": "ingestion.start", "level": "info", "timestamp": "2026-08-06T06:43:24.947608Z"}
+{"lang": "en", "file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_ingest_docx0\\sample.docx", "event": "language.detected", "level": "info", "timestamp": "2026-08-06T06:43:24.959587Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_ingest_docx0\\sample.docx", "output": "C:\\Users\\Krish\\Project2\\data\\processed\\193bcc3941affef9.json", "doc_id": "193bcc3941affef9", "event": "ingestion.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.961682Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_ingest_creates_json0\\sample.txt", "ext": ".txt", "event": "ingestion.start", "level": "info", "timestamp": "2026-08-06T06:43:24.965938Z"}
+{"lang": "en", "file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_ingest_creates_json0\\sample.txt", "event": "language.detected", "level": "info", "timestamp": "2026-08-06T06:43:24.969789Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_ingest_creates_json0\\sample.txt", "output": "C:\\Users\\Krish\\Project2\\data\\processed\\07c0d4db94764581.json", "doc_id": "07c0d4db94764581", "event": "ingestion.complete", "level": "info", "timestamp": "2026-08-06T06:43:24.972285Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_ingested_doc_matches_sche0\\sample.pdf", "ext": ".pdf", "event": "ingestion.start", "level": "info", "timestamp": "2026-08-06T06:43:24.983577Z"}
+{"lang": "en", "file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_ingested_doc_matches_sche0\\sample.pdf", "event": "language.detected", "level": "info", "timestamp": "2026-08-06T06:43:25.009866Z"}
+{"file": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-31\\test_ingested_doc_matches_sche0\\sample.pdf", "output": "C:\\Users\\Krish\\Project2\\data\\processed\\a4b498d212ce940d.json", "doc_id": "a4b498d212ce940d", "event": "ingestion.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.012077Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:25.019254Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.026307Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.026825Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.027191Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.027534Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.027928Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.029427Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.035745Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.037658Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.039163Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.039821Z"}
+{"provenance_id": "878acb8c7d184062b596c81f0685b347", "query": "performance of contracts", "model": "mock-llm", "evidence": 5, "confidence": 0.8006, "duration_ms": 6.05, "event": "qa.answer_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.040685Z"}
+{"event": "HTTP Request: POST http://testserver/api/v1/query \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:25.043567Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:25.044711Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:25.051287Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.056491Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.056953Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.057226Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.057456Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.057678Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.059117Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.064856Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.067010Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 3, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.068670Z"}
+{"query": "performance of contracts", "candidates": 3, "returned": 3, "confidence": 0.8412, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.069422Z"}
+{"provenance_id": "ba5b9bcbdde44db29bb09e185a62d87a", "query": "performance of contracts", "model": "mock-llm", "evidence": 3, "confidence": 0.8412, "duration_ms": 7.12, "event": "qa.answer_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.070244Z"}
+{"event": "HTTP Request: POST http://testserver/api/v1/query \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:25.072299Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:25.073442Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:25.079581Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.084995Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.085544Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.085893Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.086213Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.086532Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.088232Z"}
+{"event": "HTTP Request: POST http://testserver/api/v1/query \"HTTP/1.1 422 Unprocessable Entity\"", "level": "info", "timestamp": "2026-08-06T06:43:25.093138Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:25.094244Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:25.100542Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.105609Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.105995Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.106244Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.106471Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.106693Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.107719Z"}
+{"event": "HTTP Request: POST http://testserver/api/v1/query \"HTTP/1.1 422 Unprocessable Entity\"", "level": "info", "timestamp": "2026-08-06T06:43:25.112470Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:25.113486Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:25.119421Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.131524Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.132146Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.132507Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.132857Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.133206Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.135948Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.141084Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.142955Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.144403Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.145066Z"}
+{"event": "HTTP Request: POST http://testserver/api/v1/explain \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:25.147382Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:25.148862Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:25.156079Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.161351Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.162029Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.162405Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.162721Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.163125Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.165105Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.169542Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.170907Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.171902Z"}
+{"query": "performance of contracts", "candidates": 5, "returned": 5, "confidence": 0.8006, "event": "explanation.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.172380Z"}
+{"provenance_id": "a0f7fba67c7c418e9600a5e0b1cb0c29", "query": "performance of contracts", "model": "mock-llm", "evidence": 5, "confidence": 0.8006, "duration_ms": 4.27, "event": "qa.answer_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.172987Z"}
+{"event": "HTTP Request: POST http://testserver/api/v1/query \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:25.175115Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/provenance/a0f7fba67c7c418e9600a5e0b1cb0c29 \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:25.178581Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:25.180248Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:25.188199Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.193307Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.193704Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.193994Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.194224Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.194437Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.195485Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/provenance/doesnotexist \"HTTP/1.1 404 Not Found\"", "level": "info", "timestamp": "2026-08-06T06:43:25.198627Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:25.199473Z"}
+{"env": "development", "version": "0.1.0", "event": "app.starting", "level": "info", "timestamp": "2026-08-06T06:43:25.206222Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.211627Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.212014Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.212260Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.212482Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.212714Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.213881Z"}
+{"event": "HTTP Request: POST http://testserver/api/v1/explain \"HTTP/1.1 422 Unprocessable Entity\"", "level": "info", "timestamp": "2026-08-06T06:43:25.217322Z"}
+{"event": "app.stopping", "level": "info", "timestamp": "2026-08-06T06:43:25.218162Z"}
+{"mode": "in-memory", "dim": 4, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.227758Z"}
+{"collection": "documents", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.228575Z"}
+{"collection": "chapters", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.229014Z"}
+{"collection": "sections", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.229379Z"}
+{"collection": "clauses", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.229762Z"}
+{"mode": "in-memory", "dim": 4, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.237942Z"}
+{"collection": "documents", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.238702Z"}
+{"collection": "chapters", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.239094Z"}
+{"collection": "sections", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.239410Z"}
+{"collection": "clauses", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.239713Z"}
+{"mode": "in-memory", "dim": 4, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.247624Z"}
+{"collection": "documents", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.248070Z"}
+{"collection": "chapters", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.248339Z"}
+{"collection": "sections", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.248600Z"}
+{"collection": "clauses", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.248860Z"}
+{"mode": "in-memory", "dim": 4, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.254701Z"}
+{"collection": "documents", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.255156Z"}
+{"collection": "chapters", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.255426Z"}
+{"collection": "sections", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.255684Z"}
+{"collection": "clauses", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.255915Z"}
+{"collection": "sections", "event": "qdrant.collection_deleted", "level": "info", "timestamp": "2026-08-06T06:43:25.256651Z"}
+{"mode": "in-memory", "dim": 4, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.262216Z"}
+{"collection": "documents", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.262645Z"}
+{"collection": "chapters", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.262925Z"}
+{"collection": "sections", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.263174Z"}
+{"collection": "clauses", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.263414Z"}
+{"mode": "in-memory", "dim": 4, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.269365Z"}
+{"collection": "documents", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.269942Z"}
+{"collection": "chapters", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.270418Z"}
+{"collection": "sections", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.270712Z"}
+{"collection": "clauses", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.271028Z"}
+{"mode": "in-memory", "dim": 4, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.281719Z"}
+{"collection": "documents", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.282290Z"}
+{"collection": "chapters", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.282577Z"}
+{"collection": "sections", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.282831Z"}
+{"collection": "clauses", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.283084Z"}
+{"mode": "in-memory", "dim": 4, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.289789Z"}
+{"collection": "documents", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.290256Z"}
+{"collection": "chapters", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.290524Z"}
+{"collection": "sections", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.290761Z"}
+{"collection": "clauses", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.291053Z"}
+{"mode": "in-memory", "dim": 4, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.297388Z"}
+{"collection": "documents", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.297978Z"}
+{"collection": "chapters", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.298264Z"}
+{"collection": "sections", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.298507Z"}
+{"collection": "clauses", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.298733Z"}
+{"mode": "in-memory", "dim": 4, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.305090Z"}
+{"collection": "documents", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.305606Z"}
+{"collection": "chapters", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.305871Z"}
+{"collection": "sections", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.306106Z"}
+{"collection": "clauses", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.306335Z"}
+{"mode": "in-memory", "dim": 4, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.312843Z"}
+{"collection": "documents", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.313302Z"}
+{"collection": "chapters", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.313571Z"}
+{"collection": "sections", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.313810Z"}
+{"collection": "clauses", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.314035Z"}
+{"mode": "in-memory", "dim": 4, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.325413Z"}
+{"collection": "documents", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.326273Z"}
+{"collection": "chapters", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.326614Z"}
+{"collection": "sections", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.326944Z"}
+{"collection": "clauses", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.327209Z"}
+{"mode": "in-memory", "dim": 4, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.334022Z"}
+{"collection": "documents", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.334498Z"}
+{"collection": "chapters", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.334830Z"}
+{"collection": "sections", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.335110Z"}
+{"collection": "clauses", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.335353Z"}
+{"mode": "in-memory", "dim": 4, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.341190Z"}
+{"collection": "documents", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.341619Z"}
+{"collection": "chapters", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.341878Z"}
+{"collection": "sections", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.342126Z"}
+{"collection": "clauses", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.342353Z"}
+{"mode": "in-memory", "dim": 4, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.348881Z"}
+{"collection": "documents", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.349499Z"}
+{"collection": "chapters", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.349787Z"}
+{"collection": "sections", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.350080Z"}
+{"collection": "clauses", "dim": 4, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.350583Z"}
+{"query": "performance of contracts", "seeds": 3, "candidates": 5, "returned": 5, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.384117Z"}
+{"query": "performance of contracts", "seeds": 3, "candidates": 5, "returned": 5, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.386171Z"}
+{"query": "performance of contracts", "seeds": 3, "candidates": 5, "returned": 5, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.387887Z"}
+{"event": "retrieval.empty_query", "level": "info", "timestamp": "2026-08-06T06:43:25.389419Z"}
+{"event": "retrieval.empty_query", "level": "info", "timestamp": "2026-08-06T06:43:25.389719Z"}
+{"query": "quantum entanglement fusion reactor", "event": "retrieval.no_seeds", "level": "info", "timestamp": "2026-08-06T06:43:25.390958Z"}
+{"query": "performance of contracts", "seeds": 3, "candidates": 5, "returned": 5, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.392458Z"}
+{"query": "performance of contracts", "seeds": 3, "candidates": 5, "returned": 5, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.394124Z"}
+{"query": "performance of contracts", "seeds": 3, "candidates": 5, "returned": 5, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.395811Z"}
+{"query": "performance of contracts", "seeds": 3, "candidates": 5, "returned": 5, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.397531Z"}
+{"query": "performance of contracts", "seeds": 3, "candidates": 5, "returned": 5, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.399222Z"}
+{"query": "performance of contracts", "seeds": 3, "candidates": 5, "returned": 2, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.400829Z"}
+{"query": "performance of contracts", "seeds": 3, "candidates": 5, "returned": 5, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.402462Z"}
+{"query": "performance of contracts", "seeds": 3, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.403100Z"}
+{"query": "what does section 4 say", "seeds": 1, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.404677Z"}
+{"query": "section 4", "seeds": 2, "candidates": 4, "returned": 4, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.406261Z"}
+{"query": "word", "seeds": 1, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.408069Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/health \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:25.462388Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/data \"HTTP/1.1 401 Unauthorized\"", "level": "info", "timestamp": "2026-08-06T06:43:25.470394Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/data \"HTTP/1.1 401 Unauthorized\"", "level": "info", "timestamp": "2026-08-06T06:43:25.471677Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/data \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:25.474106Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/health \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:25.481524Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/data \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:25.488597Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/data \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:25.491390Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/data \"HTTP/1.1 200 OK\"", "level": "info", "timestamp": "2026-08-06T06:43:25.492951Z"}
+{"event": "HTTP Request: GET http://testserver/api/v1/data \"HTTP/1.1 429 Too Many Requests\"", "level": "info", "timestamp": "2026-08-06T06:43:25.494092Z"}
+{"event": "HTTP Request: POST http://testserver/api/v1/data \"HTTP/1.1 413 Request Entity Too Large\"", "level": "info", "timestamp": "2026-08-06T06:43:25.500632Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.531406Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.532115Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.532401Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.532647Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.532877Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.534735Z"}
+{"mode": "in-memory", "dim": 64, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.541779Z"}
+{"collection": "documents", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.542304Z"}
+{"collection": "chapters", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.542600Z"}
+{"collection": "sections", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.542832Z"}
+{"collection": "clauses", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.543057Z"}
+{"doc_id": "d", "collections": {"documents": 1, "sections": 1}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.543704Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.549633Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.550062Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.550376Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.550628Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.550854Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.552771Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.562738Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.563291Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.563561Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.563829Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.564067Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.566072Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.575823Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.576534Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.576866Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.577160Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.577460Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.579720Z"}
+{"mode": "in-memory", "dim": 64, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.588601Z"}
+{"collection": "documents", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.589241Z"}
+{"collection": "chapters", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.589678Z"}
+{"collection": "sections", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.589996Z"}
+{"collection": "clauses", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.590299Z"}
+{"doc_id": "docX", "collections": {"documents": 1, "sections": 2}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.591356Z"}
+{"mode": "in-memory", "dim": 64, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.600736Z"}
+{"collection": "documents", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.601571Z"}
+{"collection": "chapters", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.601988Z"}
+{"collection": "sections", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.602523Z"}
+{"collection": "clauses", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.603029Z"}
+{"doc_id": "docX", "collections": {"documents": 1, "sections": 2}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.604574Z"}
+{"mode": "in-memory", "dim": 64, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.615405Z"}
+{"collection": "documents", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.616314Z"}
+{"collection": "chapters", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.616648Z"}
+{"collection": "sections", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.616932Z"}
+{"collection": "clauses", "dim": 64, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.617190Z"}
+{"doc_id": "docY", "collections": {"documents": 1, "sections": 2}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.618260Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.626010Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.626751Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.627135Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.627494Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.627911Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.630339Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.640893Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.641623Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.642013Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.642384Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.642736Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.653827Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.654644Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.655034Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.655411Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.655823Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.659471Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.661528Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.663201Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.672530Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.673214Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.673565Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.673811Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.674043Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.675829Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.677628Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.679304Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.688615Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.689337Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.689710Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.690053Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.690402Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.692597Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.693872Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 6, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.694910Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.702829Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.703567Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.703970Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.704316Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.705517Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.708590Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.710425Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 6, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.711949Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.720679Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.721343Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.721677Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.721932Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.722159Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.724103Z"}
+{"query": "performance of contracts", "candidates": 3, "returned": 3, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.725351Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.733698Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.734277Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.734562Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.734829Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.735061Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.736881Z"}
+{"query": "section 4", "seeds": 1, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.738115Z"}
+{"query": "section 4", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.739124Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.747323Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.748100Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.748480Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.748862Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.749220Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.751652Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.754921Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.756436Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.767448Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.768108Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.768481Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.768849Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.769188Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.771381Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.773257Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.774718Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.783359Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.784169Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.784555Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.784946Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.785290Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.787691Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.789304Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.790795Z"}
+{"mode": "in-memory", "dim": 32, "event": "qdrant.connected", "level": "info", "timestamp": "2026-08-06T06:43:25.797649Z"}
+{"collection": "documents", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.798465Z"}
+{"collection": "chapters", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.799501Z"}
+{"collection": "sections", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.800282Z"}
+{"collection": "clauses", "dim": 32, "event": "qdrant.collection_created", "level": "info", "timestamp": "2026-08-06T06:43:25.800508Z"}
+{"doc_id": "doc1", "collections": {"documents": 1, "chapters": 2, "sections": 3}, "event": "index.graph_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.802237Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.803554Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.804567Z"}
+{"query": "performance of contracts", "seeds": 2, "candidates": 3, "returned": 3, "event": "retrieval.complete", "level": "info", "timestamp": "2026-08-06T06:43:25.805615Z"}
+{"query": "performance of contracts", "candidates": 6, "returned": 5, "event": "retrieval.hybrid_complete", "level": "info", "timestamp": "2026-08-06T06:43:25.806697Z"}

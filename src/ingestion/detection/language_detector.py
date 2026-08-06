@@ -6,8 +6,6 @@ for Indic languages that langdetect may misclassify.
 
 from __future__ import annotations
 
-import re
-
 # ---------------------------------------------------------------------------
 # Unicode ranges for Indic scripts (BMP)
 # ---------------------------------------------------------------------------

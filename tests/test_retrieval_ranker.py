@@ -24,11 +24,17 @@ def graph():
     })
     g.create_node("Section", "s3", {
         "title": "Communication of proposals", "numbering": "3",
-        "text": "The communication of proposals is complete when it comes to knowledge of the offeree.",
+        "text": (
+            "The communication of proposals is complete when it comes to "
+            "knowledge of the offeree."
+        ),
     })
     g.create_node("Section", "s4", {
         "title": "Performance of contracts", "numbering": "4",
-        "text": "Performance of contracts. (a) where the contract provides (b) where no provision is made.",
+        "text": (
+            "Performance of contracts. (a) where the contract provides "
+            "(b) where no provision is made."
+        ),
     })
     g.create_edge("ch1", "doc", "PART_OF")
     g.create_edge("ch2", "doc", "PART_OF")

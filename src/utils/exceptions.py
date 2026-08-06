@@ -18,9 +18,17 @@ class NotFoundException(AppException):
 
 class ValidationException(AppException):
     def __init__(self, detail: str = "Validation failed"):
-        super().__init__(detail=detail, code="VALIDATION_ERROR", status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        super().__init__(
+            detail=detail,
+            code="VALIDATION_ERROR",
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+        )
 
 
 class ServiceUnavailableException(AppException):
     def __init__(self, detail: str = "Service temporarily unavailable"):
-        super().__init__(detail=detail, code="SERVICE_UNAVAILABLE", status_code=status.HTTP_503_SERVICE_UNAVAILABLE)
+        super().__init__(
+            detail=detail,
+            code="SERVICE_UNAVAILABLE",
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+        )

@@ -3,9 +3,8 @@
 from __future__ import annotations
 
 import uuid
-from collections import defaultdict
 
-from src.hierarchy.models import HierarchyNode, NestedSetEntry, ParsedHierarchy, HierarchyWarning
+from src.hierarchy.models import HierarchyNode, NestedSetEntry, ParsedHierarchy
 
 
 def _make_id() -> str:

@@ -47,8 +47,12 @@ class TestMissingParent:
 class TestDuplicateNumbering:
     def test_no_duplicates(self):
         nodes = [
-            HierarchyNode(node_id="s1", level=5, node_type="section", numbering="1", parent_id="root"),
-            HierarchyNode(node_id="s2", level=5, node_type="section", numbering="2", parent_id="root"),
+            HierarchyNode(
+                node_id="s1", level=5, node_type="section", numbering="1", parent_id="root"
+            ),
+            HierarchyNode(
+                node_id="s2", level=5, node_type="section", numbering="2", parent_id="root"
+            ),
         ]
         h = _make_hierarchy(nodes)
         warnings = validate_hierarchy(h)
@@ -56,8 +60,12 @@ class TestDuplicateNumbering:
 
     def test_duplicate_detected(self):
         nodes = [
-            HierarchyNode(node_id="s1", level=5, node_type="section", numbering="12", parent_id="root"),
-            HierarchyNode(node_id="s2", level=5, node_type="section", numbering="12", parent_id="root"),
+            HierarchyNode(
+                node_id="s1", level=5, node_type="section", numbering="12", parent_id="root"
+            ),
+            HierarchyNode(
+                node_id="s2", level=5, node_type="section", numbering="12", parent_id="root"
+            ),
         ]
         h = _make_hierarchy(nodes)
         warnings = validate_hierarchy(h)

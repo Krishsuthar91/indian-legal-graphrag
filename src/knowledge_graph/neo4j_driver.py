@@ -42,13 +42,21 @@ class InMemoryGraph:
     def all_nodes(self) -> list[dict[str, Any]]:
         return list(self._nodes.values())
 
-    def find_nodes(self, label: str, property_key: str, property_value: Any) -> list[dict[str, Any]]:
+    def find_nodes(
+        self, label: str, property_key: str, property_value: Any
+    ) -> list[dict[str, Any]]:
         return [
             n for nid, n in self._nodes.items()
             if self._node_labels.get(nid) == label and n.get(property_key) == property_value
         ]
 
-    def merge_node(self, label: str, match_key: str, match_value: Any, props: dict[str, Any] | None = None) -> str:
+    def merge_node(
+        self,
+        label: str,
+        match_key: str,
+        match_value: Any,
+        props: dict[str, Any] | None = None,
+    ) -> str:
         existing = self.find_nodes(label, match_key, match_value)
         if existing:
             nid = existing[0]["node_id"]
@@ -83,7 +91,13 @@ class InMemoryGraph:
 
     # -- Edge operations ---------------------------------------------------
 
-    def create_edge(self, from_node: str, to_node: str, rel_type: str, props: dict[str, Any] | None = None) -> int:
+    def create_edge(
+        self,
+        from_node: str,
+        to_node: str,
+        rel_type: str,
+        props: dict[str, Any] | None = None,
+    ) -> int:
         edge_idx = len(self._edges)
         edge: dict[str, Any] = {"from_node": from_node, "to_node": to_node, "rel_type": rel_type}
         if props:
@@ -93,7 +107,9 @@ class InMemoryGraph:
         self._adj_in[to_node].append(edge_idx)
         return edge_idx
 
-    def get_edges(self, node_id: str, rel_type: str | None = None, direction: str = "both") -> list[dict[str, Any]]:
+    def get_edges(
+        self, node_id: str, rel_type: str | None = None, direction: str = "both"
+    ) -> list[dict[str, Any]]:
         result: list[dict[str, Any]] = []
         if direction in ("out", "both"):
             for idx in self._adj_out.get(node_id, []):
@@ -126,7 +142,13 @@ class InMemoryGraph:
                 return True
         return False
 
-    def merge_edge(self, from_node: str, to_node: str, rel_type: str, props: dict[str, Any] | None = None) -> bool:
+    def merge_edge(
+        self,
+        from_node: str,
+        to_node: str,
+        rel_type: str,
+        props: dict[str, Any] | None = None,
+    ) -> bool:
         existing = self.find_edge(from_node, to_node, rel_type)
         if existing:
             if props:
@@ -144,7 +166,10 @@ class InMemoryGraph:
 
     def edge_count(self, rel_type: str | None = None) -> int:
         if rel_type:
-            return sum(1 for e in self._edges if not e.get("_deleted") and e["rel_type"] == rel_type)
+            return sum(
+                1 for e in self._edges
+                if not e.get("_deleted") and e["rel_type"] == rel_type
+            )
         return sum(1 for e in self._edges if not e.get("_deleted"))
 
     def clear(self) -> None:
@@ -175,7 +200,9 @@ class Neo4jDriver:
             result = session.run(cypher, params or {})
             return [dict(record) for record in result]
 
-    def execute_write(self, cypher: str, params: dict[str, Any] | None = None) -> list[dict[str, Any]]:
+    def execute_write(
+        self, cypher: str, params: dict[str, Any] | None = None
+    ) -> list[dict[str, Any]]:
         with self._driver.session() as session:
             def _tx(tx):
                 result = tx.run(cypher, params or {})
@@ -188,7 +215,13 @@ class Neo4jDriver:
         self.run(query, p)
         return node_id
 
-    def create_edge(self, from_node: str, to_node: str, rel_type: str, props: dict[str, Any] | None = None) -> bool:
+    def create_edge(
+        self,
+        from_node: str,
+        to_node: str,
+        rel_type: str,
+        props: dict[str, Any] | None = None,
+    ) -> bool:
         query = (
             f"MATCH (a {{node_id: $from_id}}), (b {{node_id: $to_id}}) "
             f"MERGE (a)-[r:{rel_type}]->(b) SET r += $props RETURN type(r) AS t"
@@ -208,16 +241,27 @@ class Neo4jDriver:
         result = self.run("MATCH (n) RETURN properties(n) AS props")
         return [r["props"] for r in result]
 
-    def get_neighbors(self, node_id: str, rel_type: str | None = None, direction: str = "both") -> list[dict[str, Any]]:
+    def get_neighbors(
+        self, node_id: str, rel_type: str | None = None, direction: str = "both"
+    ) -> list[dict[str, Any]]:
         if direction == "out":
             rel_clause = f"-[r:{rel_type}]->" if rel_type else "-[r]->"
-            query = f"MATCH (n {{node_id: $id}}){rel_clause}(m) RETURN properties(m) AS props, type(r) AS rel"
+            query = (
+                f"MATCH (n {{node_id: $id}}){rel_clause}(m) "
+                "RETURN properties(m) AS props, type(r) AS rel"
+            )
         elif direction == "in":
             rel_clause = f"<-[r:{rel_type}]-" if rel_type else "<-[r]-"
-            query = f"MATCH (n {{node_id: $id}}){rel_clause}(m) RETURN properties(m) AS props, type(r) AS rel"
+            query = (
+                f"MATCH (n {{node_id: $id}}){rel_clause}(m) "
+                "RETURN properties(m) AS props, type(r) AS rel"
+            )
         else:
             rel_clause = f"-[r:{rel_type}]-" if rel_type else "-[r]-"
-            query = f"MATCH (n {{node_id: $id}}){rel_clause}(m) RETURN properties(m) AS props, type(r) AS rel"
+            query = (
+                f"MATCH (n {{node_id: $id}}){rel_clause}(m) "
+                "RETURN properties(m) AS props, type(r) AS rel"
+            )
         return self.run(query, {"id": node_id})
 
     def delete_node(self, node_id: str) -> None:

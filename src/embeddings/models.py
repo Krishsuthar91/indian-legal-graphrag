@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from enum import Enum
+from enum import StrEnum
 
 
-class EmbeddingModel(str, Enum):
+class EmbeddingModel(StrEnum):
     """Supported embedding models."""
 
     BGE_M3 = "BAAI/bge-m3"
@@ -65,7 +65,7 @@ def get_model_spec(model_name: str) -> ModelSpec | None:
     return MODEL_REGISTRY.get(model_name)
 
 
-class CollectionName(str, Enum):
+class CollectionName(StrEnum):
     """Vector collections, one per hierarchy granularity."""
 
     DOCUMENTS = "documents"

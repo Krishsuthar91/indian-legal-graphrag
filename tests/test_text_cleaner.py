@@ -1,6 +1,6 @@
 """Tests for text cleaning."""
 
-from src.ingestion.cleaning.text_cleaner import clean_text, clean_pages
+from src.ingestion.cleaning.text_cleaner import clean_pages, clean_text
 
 
 class TestTextCleaner:

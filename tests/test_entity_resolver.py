@@ -1,6 +1,10 @@
 """Tests for entity resolution."""
 
-from src.knowledge_graph.entity_resolver import find_duplicate_nodes, merge_nodes, resolve_duplicates
+from src.knowledge_graph.entity_resolver import (
+    find_duplicate_nodes,
+    merge_nodes,
+    resolve_duplicates,
+)
 from src.knowledge_graph.neo4j_driver import InMemoryGraph
 from src.knowledge_graph.schema import NodeLabel
 
