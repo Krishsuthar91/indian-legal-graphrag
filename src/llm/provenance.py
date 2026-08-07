@@ -8,12 +8,13 @@ for persistence and for the FastAPI response models.
 from __future__ import annotations
 
 import json
-import logging
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
-log = logging.getLogger(__name__)
+from src.config.logging_config import get_logger
+
+log = get_logger("provenance")
 
 
 # ---------------------------------------------------------------------------

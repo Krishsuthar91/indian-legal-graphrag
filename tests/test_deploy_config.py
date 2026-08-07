@@ -31,7 +31,7 @@ def test_env_files_exist():
 def test_load_development_profile(clean_env):
     values = load_environment("development")
     assert values["APP_ENV"] == "development"
-    assert values["LLM_PROVIDER"] == "mock"
+    assert values["LLM_PROVIDER"] == "gemini"
 
 
 def test_env_vars_override_file(clean_env, monkeypatch):

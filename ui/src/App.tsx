@@ -7,6 +7,7 @@ import { useDarkMode } from './hooks/useDarkMode'
 
 const Home = lazy(() => import('./pages/Home'))
 const Explain = lazy(() => import('./pages/Explain'))
+const Upload = lazy(() => import('./pages/Upload'))
 const Provenance = lazy(() => import('./pages/Provenance'))
 const Settings = lazy(() => import('./pages/Settings'))
 
@@ -28,6 +29,7 @@ export default function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/explain" element={<Explain />} />
+                <Route path="/upload" element={<Upload />} />
                 <Route path="/provenance" element={<Provenance />} />
                 <Route path="/provenance/:id" element={<Provenance />} />
                 <Route path="/settings" element={<Settings dark={dark} onToggleDark={setDark} />} />

@@ -61,6 +61,17 @@ def build_retriever(graph) -> VectorRetriever:
     return VectorRetriever(graph, store, service)
 
 
+def build_fast_corpus():
+    """A tiny, fully offline (graph, store, embedding) corpus.
+
+    Drop-in replacement for ``service.build_default_corpus`` in tests so the
+    lazy default-service/corpus initialization can be exercised quickly.
+    """
+    graph = build_graph()
+    retriever = build_retriever(graph)
+    return graph, retriever.store, retriever.service
+
+
 def build_engine(graph=None, **kwargs) -> ExplainabilityEngine:
     graph = graph or build_graph()
     retriever = kwargs.pop("vector_retriever", None) or build_retriever(graph)

@@ -3,19 +3,28 @@
 - POST /query           -> generate an answer with full provenance
 - POST /explain         -> retrieve + explain without calling the LLM
 - GET /provenance/{id}  -> fetch a stored provenance record
+
+All service work is synchronous and may touch external services (Qdrant, an
+LLM API), so it is dispatched to a worker thread with a hard timeout. This
+guarantees a request always returns JSON instead of hanging the event loop.
 """
 
 from __future__ import annotations
 
+import asyncio
+import traceback
 from collections.abc import Callable
 from dataclasses import asdict
+from typing import Any
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
 from src.config.logging_config import get_logger
+from src.config.settings import settings
+from src.llm.llm import RateLimitError
 from src.llm.schemas import ExplainRequest, ExplanationResponse, QueryRequest, QueryResponse
 from src.llm.service import QueryService, get_default_service
-from src.utils.exceptions import NotFoundException, ValidationException
+from src.utils.exceptions import AppException, NotFoundException, ValidationException
 
 log = get_logger("qa_api")
 
@@ -23,6 +32,28 @@ router = APIRouter(tags=["qa"])
 
 # Overridable in tests to avoid building the full corpus service.
 service_factory: Callable[[], QueryService] = get_default_service
+
+
+class LLMQuotaExceededError(AppException):
+    """Rendered as a clean 429 with the provider-facing quota JSON shape."""
+
+    def __init__(
+        self,
+        *,
+        provider: str,
+        retry_after: float | None,
+        details: str,
+        quota_exhausted: bool,
+    ) -> None:
+        super().__init__(
+            detail=details,
+            code="LLM_RATE_LIMITED",
+            status_code=429,
+        )
+        self.provider = provider
+        self.retry_after = retry_after
+        self.details = details
+        self.quota_exhausted = quota_exhausted
 
 
 def _query_response(result) -> QueryResponse:
@@ -39,19 +70,92 @@ def _query_response(result) -> QueryResponse:
     return QueryResponse.model_validate(data)
 
 
-@router.post("/query", response_model=QueryResponse, summary="Answer with provenance")
-async def answer_query(req: QueryRequest) -> QueryResponse:
-    """Generate an explainable answer for the given legal question."""
-    if not req.query.strip():
-        raise ValidationException("query must not be empty")
-    result = service_factory().answer(
+def _run_answer(req: QueryRequest):
+    """Blocking QA work — runs off the event loop (may call Qdrant + LLM)."""
+    return service_factory().answer(
         query=req.query,
         top_k=req.top_k,
         language=req.language,
         temperature=req.temperature,
         max_tokens=req.max_tokens,
     )
-    return _query_response(result)
+
+
+def _run_explain(req: ExplainRequest):
+    """Blocking retrieval-only work — runs off the event loop (may call Qdrant)."""
+    return service_factory().explain(
+        query=req.query,
+        top_k=req.top_k,
+        language=req.language,
+    )
+
+
+def _run_provenance(provenance_id: str):
+    """Blocking provenance lookup (reads the provenance store)."""
+    return service_factory().get_provenance(provenance_id)
+
+
+async def _dispatch(fn, *args) -> Any:
+    """Run a blocking service call in a thread with a hard timeout.
+
+    Returns the result, or raises an HTTPException — 429 when the LLM provider
+    throttles/quota-exhausts, otherwise 500 with a traceback if the call raises
+    or never completes within ``QA_REQUEST_TIMEOUT_SECONDS``.
+    """
+    timeout = settings.QA_REQUEST_TIMEOUT_SECONDS
+    log.info("qa.request_start", fn=fn.__name__, timeout=timeout)
+    try:
+        result = await asyncio.wait_for(
+            asyncio.to_thread(fn, *args),
+            timeout=timeout,
+        )
+    except TimeoutError as exc:
+        log.error("qa.request_timeout", fn=fn.__name__, timeout=timeout)
+        raise HTTPException(
+            status_code=500,
+            detail=(
+                f"Request timed out after {timeout}s while waiting on the "
+                "backend service. The downstream dependency may be "
+                "unavailable or too slow."
+            ),
+        ) from exc
+    except HTTPException:
+        raise
+    except RateLimitError as exc:
+        log.error(
+            "qa.llm_rate_limited",
+            fn=fn.__name__,
+            status_code=exc.status_code,
+            retry_after=exc.retry_after,
+            quota_exhausted=exc.quota_exhausted,
+            provider_body=exc.provider_body[:500],
+        )
+        raise LLMQuotaExceededError(
+            provider=exc.provider,
+            retry_after=exc.retry_after,
+            details=exc.provider_body or str(exc),
+            quota_exhausted=exc.quota_exhausted,
+        ) from exc
+    except Exception as exc:
+        log.exception("qa.request_error", fn=fn.__name__, error=str(exc))
+        raise HTTPException(
+            status_code=500,
+            detail=f"Backend service failed: {exc}\n\n{traceback.format_exc()}",
+        ) from exc
+    log.info("qa.request_complete", fn=fn.__name__, timeout=timeout)
+    return result
+
+
+@router.post("/query", response_model=QueryResponse, summary="Answer with provenance")
+async def answer_query(req: QueryRequest) -> QueryResponse:
+    """Generate an explainable answer for the given legal question."""
+    if not req.query.strip():
+        raise ValidationException("query must not be empty")
+    log.info("query.return.start")
+    result = await _dispatch(_run_answer, req)
+    response = _query_response(result)
+    log.info("query.return.complete")
+    return response
 
 
 @router.post("/explain", response_model=ExplanationResponse, summary="Explain retrieval")
@@ -59,18 +163,14 @@ async def explain_query(req: ExplainRequest) -> ExplanationResponse:
     """Run retrieval and return the explanation without invoking the LLM."""
     if not req.query.strip():
         raise ValidationException("query must not be empty")
-    explanation = service_factory().explain(
-        query=req.query,
-        top_k=req.top_k,
-        language=req.language,
-    )
+    explanation = await _dispatch(_run_explain, req)
     return ExplanationResponse.model_validate(asdict(explanation))
 
 
 @router.get("/provenance/{provenance_id}", response_model=QueryResponse, summary="Get provenance")
 async def get_provenance(provenance_id: str) -> QueryResponse:
     """Return a previously generated answer and its full provenance record."""
-    record = service_factory().get_provenance(provenance_id)
+    record = await _dispatch(_run_provenance, provenance_id)
     if record is None:
         raise NotFoundException(detail=f"Provenance record {provenance_id!r} not found")
     data = dict(record["explanation"])

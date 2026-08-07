@@ -142,6 +142,7 @@ def get_provider(
         return DeterministicEmbeddingProvider(dim=deterministic_dim or 64, name=name)
 
     try:
+        log.info("embedding.provider_load_start", model=name, provider=spec.provider)
         if spec.provider == "sentence_transformers":
             provider = SentenceTransformerProvider(name, batch_size=batch_size)
         else:

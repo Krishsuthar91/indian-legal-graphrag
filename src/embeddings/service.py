@@ -47,10 +47,12 @@ class EmbeddingService:
         if not texts:
             return []
         size = batch_size or self._batch_size
+        log.info("embedding.generate.start", texts=len(texts), model=self._model_name)
         vectors: list[list[float]] = []
         for start in range(0, len(texts), size):
             chunk = texts[start : start + size]
             vectors.extend(self._provider.encode(chunk))
+        log.info("embedding.generate.complete", texts=len(texts), vectors=len(vectors))
         return vectors
 
     def embed_text(self, text: str) -> list[float]:

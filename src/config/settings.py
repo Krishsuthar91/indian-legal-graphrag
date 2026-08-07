@@ -1,6 +1,10 @@
 """Project settings loaded from environment variables."""
 
-from pydantic_settings import BaseSettings
+from pathlib import Path
+
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+_REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
 class Settings(BaseSettings):
@@ -23,6 +27,7 @@ class Settings(BaseSettings):
     QDRANT_URL: str = "http://localhost:6333"
     QDRANT_API_KEY: str = ""
     QDRANT_IN_MEMORY: bool = False
+    QDRANT_TIMEOUT_SECONDS: float = 5.0
 
     EMBEDDING_MODEL: str = "BAAI/bge-m3"
     EMBEDDING_BATCH_SIZE: int = 32
@@ -33,20 +38,31 @@ class Settings(BaseSettings):
     HYBRID_WEIGHTS_HIERARCHY: float = 0.25
 
     # LLM / Answer Generation (Module 7)
-    LLM_PROVIDER: str = "mock"  # mock | openai | llama | mistral | qwen
+    LLM_PROVIDER: str = "mock"  # mock | openai | llama | mistral | qwen | gemini
     # e.g. gpt-4o-mini, llama-3.1-8b, mistral-small, Qwen/Qwen2.5-7B-Instruct
     LLM_MODEL: str = ""
     LLM_BASE_URL: str = ""      # OpenAI-compatible endpoint for llama/qwen local serving
     LLM_API_KEY: str = ""
     LLM_TEMPERATURE: float = 0.2
     LLM_MAX_TOKENS: int = 800
-    LLM_TIMEOUT_SECONDS: float = 60.0
+    LLM_TIMEOUT_SECONDS: float = 25.0
+
+    # Gemini (optional — only used when LLM_PROVIDER=gemini)
+    GEMINI_API_KEY: str = ""
+    GEMINI_MODEL: str = "gemini-2.0-flash"
+    GEMINI_BASE_URL: str = "https://generativelanguage.googleapis.com/v1beta/openai"
+
+    # Document upload (Module 8 frontend integration)
+    DOCUMENT_UPLOAD_MAX_BYTES: int = 20971520  # 20 MB
 
     # QA / Retrieval (Module 7)
     QA_TOP_K: int = 5
     QA_CONFIDENCE_THRESHOLD: float = 0.45
     QA_PROVENANCE_DIR: str = "data/provenance"
     QA_INDEX_IN_MEMORY: bool = True
+    # Upper bound for a single /query, /explain, or /provenance request.
+    # Must be >= LLM_TIMEOUT_SECONDS so a slow-but-alive LLM still gets its turn.
+    QA_REQUEST_TIMEOUT_SECONDS: float = 30.0
 
     CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:8000"]
 
@@ -62,7 +78,17 @@ class Settings(BaseSettings):
     LOG_MAX_BYTES: int = 52428800
     LOG_BACKUP_COUNT: int = 10
 
-    model_config = {"env_file": ".env", "env_file_encoding": "utf-8", "extra": "ignore"}
+    model_config = SettingsConfigDict(
+        env_file=str(_REPO_ROOT / "deploy" / "env" / ".env.development"),
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
 
 
 settings = Settings()
+
+# Diagnostics: which .env file pydantic was pointed at, and whether it existed.
+# These are module-level so any component (e.g. the app startup log) can report
+# the exact env-file source without importing the settings instance again.
+ENV_FILE_PATH = Path(Settings.model_config["env_file"])
+ENV_FILE_LOADED = ENV_FILE_PATH.is_file()

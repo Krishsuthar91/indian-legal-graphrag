@@ -1,0 +1,417 @@
+{
+  "provenance_id": "c00c49468f304487814e3f3cdb6bffc6",
+  "query": "What is Section 2 of the Indian Contract Act?",
+  "answer": "[mock] Based on the retrieved legal evidence, the answer addresses: What is Section 2 of the Indian Contract Act?. Sources cited: [1], [2], [3], [4], [5].",
+  "model": "mock-llm",
+  "explanation": {
+    "query": "What is Section 2 of the Indian Contract Act?",
+    "query_language": "en",
+    "retrieval": {
+      "keywords": [
+        "2",
+        "indian",
+        "contract"
+      ],
+      "section_refs": [
+        "section 2"
+      ],
+      "dense_hits": 0,
+      "graph_hits": 5,
+      "hierarchy_propagated": 0,
+      "candidates": 5,
+      "returned": 5
+    },
+    "evidence": [
+      {
+        "node_id": "n_0003",
+        "title": ".",
+        "text": "Definitions.\nIn this Act, unless there is anything repugnant in the subject or context, (a) \"contract\" means an agreement enforceable by law; (b) \"promise\" means a proposal accepted. (i) where the proposal is made (ii) where the acceptance is communicated",
+        "label": "Section",
+        "numbering": "2",
+        "collection": "",
+        "language": "",
+        "level": 5,
+        "dense_score": 0.0,
+        "graph_score": 0.2567,
+        "hierarchy_score": 0.0,
+        "final_score": 0.2567,
+        "sources": [
+          "graph"
+        ],
+        "path": [
+          "0940d367554383c5",
+          "n_0001",
+          "n_0003"
+        ],
+        "snippet": "Definitions.\nIn this Act, unless there is anything repugnant in the subject or context, (a) \"contract\" means an agreement enforceable by law; (b) \"promise\" means a proposal accepted. (i) where the proposal is made (ii) where the acceptance "
+      },
+      {
+        "node_id": "n_0002",
+        "title": ".",
+        "text": "Short title and commencement. (1) This Act may be called the Indian Contract Act, 1892. (2) It shall come into force on the first day of July, 1892.",
+        "label": "Section",
+        "numbering": "1",
+        "collection": "",
+        "language": "",
+        "level": 5,
+        "dense_score": 0.0,
+        "graph_score": 0.2406,
+        "hierarchy_score": 0.0,
+        "final_score": 0.2406,
+        "sources": [
+          "graph"
+        ],
+        "path": [
+          "0940d367554383c5",
+          "n_0001",
+          "n_0002"
+        ],
+        "snippet": "Short title and commencement. (1) This Act may be called the Indian Contract Act, 1892. (2) It shall come into force on the first day of July, 1892."
+      },
+      {
+        "node_id": "n_0014",
+        "title": "— Amendment of Section 2",
+        "text": "",
+        "label": "Section",
+        "numbering": "1",
+        "collection": "",
+        "language": "",
+        "level": 5,
+        "dense_score": 0.0,
+        "graph_score": 0.2185,
+        "hierarchy_score": 0.0,
+        "final_score": 0.2185,
+        "sources": [
+          "graph"
+        ],
+        "path": [
+          "be2b0c714b2c98cb",
+          "n_0013",
+          "n_0014"
+        ],
+        "snippet": ""
+      },
+      {
+        "node_id": "be2b0c714b2c98cb",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "text": "",
+        "label": "Document",
+        "numbering": "",
+        "collection": "",
+        "language": "unknown",
+        "level": 0,
+        "dense_score": 0.0,
+        "graph_score": 0.2105,
+        "hierarchy_score": 0.0,
+        "final_score": 0.2105,
+        "sources": [
+          "graph"
+        ],
+        "path": [
+          "be2b0c714b2c98cb"
+        ],
+        "snippet": ""
+      },
+      {
+        "node_id": "0940d367554383c5",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "text": "",
+        "label": "Document",
+        "numbering": "",
+        "collection": "",
+        "language": "unknown",
+        "level": 0,
+        "dense_score": 0.0,
+        "graph_score": 0.2101,
+        "hierarchy_score": 0.0,
+        "final_score": 0.2101,
+        "sources": [
+          "graph"
+        ],
+        "path": [
+          "0940d367554383c5"
+        ],
+        "snippet": ""
+      }
+    ],
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "kind": "query_parse",
+        "description": "Parsed the query into keywords and legal references.",
+        "node_ids": [],
+        "detail": {
+          "keywords": [
+            "2",
+            "indian",
+            "contract"
+          ],
+          "section_refs": [
+            "section 2"
+          ]
+        }
+      },
+      {
+        "step": 2,
+        "kind": "dense",
+        "description": "Semantic vector search returned 0 candidate(s).",
+        "node_ids": [],
+        "detail": {
+          "count": 0
+        }
+      },
+      {
+        "step": 3,
+        "kind": "graph",
+        "description": "Hybrid hierarchical graph retrieval returned 5 candidate(s).",
+        "node_ids": [
+          "n_0003",
+          "n_0002",
+          "n_0014",
+          "be2b0c714b2c98cb",
+          "0940d367554383c5"
+        ],
+        "detail": {
+          "seeds": [
+            "n_0003",
+            "n_0002",
+            "n_0014",
+            "be2b0c714b2c98cb",
+            "0940d367554383c5"
+          ],
+          "count": 5
+        }
+      },
+      {
+        "step": 4,
+        "kind": "hierarchy",
+        "description": "Hierarchical evidence propagated from 0 seed(s) to 0 ancestor/descendant node(s).",
+        "node_ids": [],
+        "detail": {
+          "seed_ids": [],
+          "count": 0
+        }
+      },
+      {
+        "step": 5,
+        "kind": "fusion",
+        "description": "Fused dense/graph/hierarchy signals into 5 ranked evidence node(s) using weights dense=0.40, graph=0.35, hierarchy=0.25.",
+        "node_ids": [
+          "n_0003",
+          "n_0002",
+          "n_0014",
+          "be2b0c714b2c98cb",
+          "0940d367554383c5"
+        ],
+        "detail": {
+          "weights": {
+            "dense": 0.4,
+            "graph": 0.35,
+            "hierarchy": 0.25
+          },
+          "candidates": 5,
+          "returned": 5
+        }
+      },
+      {
+        "step": 6,
+        "kind": "verification",
+        "description": "Confidence 0.64 (medium); valid=True; counter-authorities detected: 0.",
+        "node_ids": [],
+        "detail": {
+          "confidence": 0.6395,
+          "validity": true
+        }
+      }
+    ],
+    "hierarchy_paths": [
+      {
+        "node_id": "n_0003",
+        "entries": [
+          {
+            "node_id": "0940d367554383c5",
+            "title": "THE INDIAN CONTRACT ACT, 1892",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0001",
+            "title": "CHAPTER I",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER I"
+          },
+          {
+            "node_id": "n_0003",
+            "title": ".",
+            "label": "Section",
+            "level": 5,
+            "numbering": "2"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0002",
+        "entries": [
+          {
+            "node_id": "0940d367554383c5",
+            "title": "THE INDIAN CONTRACT ACT, 1892",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0001",
+            "title": "CHAPTER I",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER I"
+          },
+          {
+            "node_id": "n_0002",
+            "title": ".",
+            "label": "Section",
+            "level": 5,
+            "numbering": "1"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0014",
+        "entries": [
+          {
+            "node_id": "be2b0c714b2c98cb",
+            "title": "THE INDIAN CONTRACT ACT, 1892",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0013",
+            "title": "SCHEDULE",
+            "label": "Schedule",
+            "level": 1,
+            "numbering": "SCHEDULE"
+          },
+          {
+            "node_id": "n_0014",
+            "title": "— Amendment of Section 2",
+            "label": "Section",
+            "level": 5,
+            "numbering": "1"
+          }
+        ]
+      },
+      {
+        "node_id": "be2b0c714b2c98cb",
+        "entries": [
+          {
+            "node_id": "be2b0c714b2c98cb",
+            "title": "THE INDIAN CONTRACT ACT, 1892",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          }
+        ]
+      },
+      {
+        "node_id": "0940d367554383c5",
+        "entries": [
+          {
+            "node_id": "0940d367554383c5",
+            "title": "THE INDIAN CONTRACT ACT, 1892",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "index": 1,
+        "node_id": "n_0003",
+        "title": ".",
+        "label": "Section",
+        "numbering": "2",
+        "score": 0.2567,
+        "citation_text": "Section 2, \".\"",
+        "snippet": "Definitions.\nIn this Act, unless there is anything repugnant in the subject or context, (a) \"contract\" means an agreement enforceable by law; (b) \"promise\" means a proposal accepted. (i) where the proposal is made (ii) where the acceptance "
+      },
+      {
+        "index": 2,
+        "node_id": "n_0002",
+        "title": ".",
+        "label": "Section",
+        "numbering": "1",
+        "score": 0.2406,
+        "citation_text": "Section 1, \".\"",
+        "snippet": "Short title and commencement. (1) This Act may be called the Indian Contract Act, 1892. (2) It shall come into force on the first day of July, 1892."
+      },
+      {
+        "index": 3,
+        "node_id": "n_0014",
+        "title": "— Amendment of Section 2",
+        "label": "Section",
+        "numbering": "1",
+        "score": 0.2185,
+        "citation_text": "Section 1, \"— Amendment of Section 2\"",
+        "snippet": ""
+      },
+      {
+        "index": 4,
+        "node_id": "be2b0c714b2c98cb",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "label": "Document",
+        "numbering": "",
+        "score": 0.2105,
+        "citation_text": "\"THE INDIAN CONTRACT ACT, 1892\"",
+        "snippet": ""
+      },
+      {
+        "index": 5,
+        "node_id": "0940d367554383c5",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "label": "Document",
+        "numbering": "",
+        "score": 0.2101,
+        "citation_text": "\"THE INDIAN CONTRACT ACT, 1892\"",
+        "snippet": ""
+      }
+    ],
+    "counter_authorities": [],
+    "confidence": {
+      "score": 0.6395,
+      "label": "medium",
+      "factors": {
+        "base_score": 0.2326,
+        "keyword_coverage": 1.0,
+        "sufficiency": 1.0,
+        "citation_bonus": 0.1,
+        "n_evidence": 5,
+        "matched_keywords": [
+          "2",
+          "contract",
+          "indian"
+        ]
+      }
+    },
+    "validity": {
+      "is_valid": true,
+      "supported": true,
+      "has_conflicts": false,
+      "cites_counter_authority": false,
+      "insufficient_evidence": false,
+      "reasons": [
+        "answer supported by retrieved evidence"
+      ]
+    },
+    "retrieval_weights": {
+      "dense": 0.4,
+      "graph": 0.35,
+      "hierarchy": 0.25
+    }
+  },
+  "duration_ms": 44.16
+}

@@ -1,5 +1,6 @@
 import axios, { type AxiosResponse } from 'axios'
-import { toApiError } from './client'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { client, toApiError, uploadDocument } from './client'
 
 function buildAxiosError(detail: unknown, status = 400): unknown {
   return new axios.AxiosError(
@@ -36,5 +37,27 @@ describe('toApiError', () => {
   it('handles plain errors and unknowns', () => {
     expect(toApiError(new Error('boom')).message).toBe('boom')
     expect(toApiError('nope').message).toBe('Unknown error')
+  })
+})
+
+describe('uploadDocument', () => {
+  afterEach(() => {
+    vi.restoreAllMocks()
+  })
+
+  it('posts multipart form data to the upload endpoint', async () => {
+    const postSpy = vi
+      .spyOn(client, 'post')
+      .mockResolvedValue({ data: { document_id: 'abc123' } } as never)
+
+    const file = new File(['hello'], 'sample.txt', { type: 'text/plain' })
+    const result = await uploadDocument(file)
+
+    expect(postSpy).toHaveBeenCalledWith(
+      '/documents/upload',
+      expect.any(FormData),
+      expect.objectContaining({ headers: { 'Content-Type': 'multipart/form-data' } }),
+    )
+    expect(result.document_id).toBe('abc123')
   })
 })

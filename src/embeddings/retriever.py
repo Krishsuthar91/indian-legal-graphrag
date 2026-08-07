@@ -106,13 +106,22 @@ class VectorRetriever:
 
         ``query_language`` is a hint only — multilingual models embed any language
         into a shared space, so cross-lingual queries work without translation.
-        ``language`` optionally filters indexed payloads by document language.
+        ``language`` optionally filters indexed payloads by document language. The
+        filter is soft: when it matches no documents (e.g. a Hindi query against
+        an English corpus) the search falls back to the full corpus.
         """
         vector = self.service.embed_query(query)
         names = collections or self.store.collections
         hits = self.store.search_multiple(
             names, vector, top_k=top_k, language=language
         )
+        if not hits and language:
+            log.info(
+                "retrieval.language_fallback",
+                language=language,
+                reason="no_matches",
+            )
+            hits = self.store.search_multiple(names, vector, top_k=top_k)
         return [
             VectorHit(
                 node_id=h["node_id"],

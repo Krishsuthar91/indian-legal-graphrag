@@ -1,0 +1,894 @@
+{
+  "document_id": "2dd258ec3348f208",
+  "root_id": "root",
+  "nodes": [
+    {
+      "node_id": "root",
+      "parent_id": null,
+      "level": 0,
+      "node_type": "document",
+      "title": "The Indian Contract Act, 1872",
+      "text": "",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "",
+      "children": [
+        "n_0001",
+        "n_0002",
+        "n_0003",
+        "n_0004",
+        "n_0006",
+        "n_0008",
+        "n_0015",
+        "n_0016",
+        "n_0023",
+        "n_0024",
+        "n_0028",
+        "n_0030",
+        "n_0033",
+        "n_0038",
+        "n_0044",
+        "n_0045"
+      ]
+    },
+    {
+      "node_id": "n_0001",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "Chapter I Of the communication, acceptance and revocation of proposals",
+      "text": "3 Communication, acceptance and revocation of proposals\n4 Communication when complete\n5 Revocation of proposals and acceptances\n6 Revocation how made\n7 Acceptance must be absolute\n8 Acceptance by performing conditions, or receiving consideration\n9 Promises, express or implied",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "Of the communication, acceptance and revocation of proposals",
+      "children": []
+    },
+    {
+      "node_id": "n_0002",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "Chapter II Of contracts, violable contracts and void agreements",
+      "text": "10 What agreements are contracts\n11 Who are competent to contract\n12 What is a sound mind for the purposes of contracting\n13 \"Consent\" defined\n14 \"Free consent\" defined\n15 \"Coercion\" defined\n16 \"Undue influence\" defined\n17 \"Fraud\" defined\n18 \"Misrepresentation\" defined\n19 Voidability of agreements without free consent\n19A Power to set aside contract induced by undue influence\nAgreement void where both parties are under mistake as to matter of\n20\nfact\n21 Effect of mistakes as to law\n22 Contract caused by mistake of one party as to matter of fact\n23 What considerations and objects are lawful, and what not\n24 Agreements void, if consideration and objects unlawful in part\nAgreement without consideration void, unless it is in writing and\n25 registered, or is a promise to compensation for something done, or is a\npromise to pay a debt barred by limitation law\n26 Agreement in restraint of marriage void\n27 Agreement in restraint of trade void\n28 Agreements in restraint of legal proceedings void\n29 Agreement void for uncertainty\n30 Agreements by way of wager, void\nChapter\nOf contingent contracts\nIII\n31 \"Contingent contract\" defined\n32 Enforcement of contracts contingent on an event happening\n33 Enforcement of contracts contingent on an event not happening\nWhen event on which contract is contingent to be deemed impossible, if\n34\nit is the future conduct of a living person\nWhen contracts become void, which are contingent on happening of\n35\nspecified event within fixed time\n36 Agreements contingent on impossible events, void\nChapter Of the performance of contracts Contracts which must be\nIV performed\n37 Obligation of parties to contracts\n38 Effect of refusal to accept offer of performance\n39 Effect of refusal of party to perform promise wholly\n40 Person by whom promise is to be performed\n41 Effect of accepting performance from third person\n42 Devolution of joint liabilities\n43 Any one of joint promisors may be compelled to perform\n44 Effect of release of one joint promisor\n45 Devolution of joint rights\nTime for performance of promise, where no application is to be made\n46\nand no time is specified\nTime and place for performance of promise, where time is specified and\n47\nno application to be made\nApplication for performance on certain day to be at proper time and\n48\nplace\nPlace for performance of promise, where no application to be made and\n49\nno place fixed for performance\n50 Performance in manner or at time prescribed or sanctioned by promisee\nPromisor not bound to perform, unless reciprocal promisee ready and\n51\nwilling to perform\n52 Order of performance of reciprocal promises\n53 Liability of party preventing event on which contract is to take effect\nEffect of default as to taht promise which should be first performed, in\n54\ncontract consisting of reciprocal promises\nEffect of failure to perform at fixed time, in contract in which time is\n55\nessential\n56 Agreement to do impossible act\n57 Reciprocal promise to do things legal and also other things illegal\n58 Alternative promise, one brach being illegal\n59 Application of payment where debt to be discharged is indicated\n60 Application of payment where debt to be discharged is not indicated\n61 Application of payment neither party appropriates\n62 Effect of novation, rescission and alteration of contract\n63 Promisee may dispense with or remit performance of promise\n64 Consequences of rescission of voidable contract\nObligation of person who has received advantage under void\n65\nagreement, or contract that becomes void\n66 Mode of communicating or revoking recission of voidable contract\nEffect of neglect of promisee to afford promisor reasonable facilities for\n67\nperformance",
+      "start_page": 1,
+      "end_page": 3,
+      "numbering": "Of contracts, violable contracts and void agreements",
+      "children": []
+    },
+    {
+      "node_id": "n_0003",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "Chapter V Of certain relations resembling those created by contract",
+      "text": "Claim for necessaries supplied to person incapable of contracting, or on\n68\nhis account\nReimburesement of person paying money due by another, in payment\n69\nof which he is interested\n70 Obligation of person enjoying benefit of non-grauitous act\n71 Responsibility of finder of goods\nLiability of person to whom money is paid, or thing delivered, by\n72\nmistake or under coercion\nChapter\nOf the consequences of breach of contract\nVI\n73 Compensation for loss or damage caused by breach of contract\n74 Compensation for breach of contract where penalty stipulated for\n75 Party rightfully rescinding contract entitled to compensation\nChapter\nSale of goods\nVII\n76 to 123 Repealed\nChapter\nOf indemnity and guarantee\nVIII\n124 \"Contract of indemnity\" defined\n125 Rights of indemnity-holder when sued\n126 \"Contract of guarantee\", \"surety\", principal debtor\" and \"Creditor\"\n127 Consideration for guarantee\n128 Surety's liability\n129 \"Continuing guarantee\"\n130 Revocation of continuing guarantee\n131 Revocation of continuing guarantee by surety's death\nLiability of two persons, primarily liable, not affected by arrangement\n132\nbetween them that one shall be surety in other's default\n133 Discharge of surety by variance in terms of contract\n134 Discharge of surety by release of discharge of principal debtor\nDischarge of surety shen cerditor compounds with, gives time to, or\n135\nagrees not to sue principal debtor\nSurety not discharged when agreement made with third person to give\n136\ntime to principal debtor\n137 Creditor's forbearance to sue does not discharge surety\n138 Release of one co-surety does not discharge others\nDischarge of surety by creditor's act or omission impairing surety's\n139\neventual remedy\n140 Rights of surety on payment or performance\n141 Surety's right to benefit of creditor's securities\n142 Guarantee obtaiend by misrepresentation, invalid\n143 Guarantee obtained by concealment, invalid\nGuarantee on contract that creditor shall not act on it until co-sureties\n144\njoins\n145 Implied promise to indemnify surety\n146 Co-sureties liable to contribute equally\n147 Liability of co-sureties bound in different sums\nChapter\nOf bailment\nIX\n148 \"Bailment\", \"bailor\" and \"bailee\" defined\n149 Delivery to bailee how made\n150 Bailor's duty to disclose faults in goods bailed\n151 Care to be taken by bailee\n152 Bailee when not liable for loss, etc. of thing bailed\n153 Termination of bailment by bailee's act inconsistent with conditions\n154 Liability of bailee making unauthorized use of goods bailed\n155 Effect of mixture, with bailor's consent, of his goods with bailee's\nEffect of mixture, without bailor's consent when the goods can be\n156\nseparated\nEffect of mixture, without bailor's consent, when the goods cannot be\n157\nseparated\n158 Repayment, by bailor, of necessary expenses\nRestoration of goods bailed, on expiration of time or accomplishment of\n159\npurpose\nReturn of goods bailed, on expiration of time or accomplishment of\n160\npurpose\n161 Bailee's responsibility when goods are not duly returned\n162 Termination of gratuitours bailment by death\n163 Bailor entitled to increase or profit from goods bailed\n164 Bailor's responsibility to bailee\n165 Bailment by several joint owners\n166 Bailee not responsible on re-delivery to bailor without title\n167 Right of third person claiming goods bailed\n168 Right of finder of goods may sue for specific reward offered\n169 When Finder of thing commonly on sale may sell it\n170 Bailee's particular lien\nGeneral lien of bankers, factors, wharfingers, attorneys, and policy\n171\nbrokers\n172 \"Pledge\", \"pownor\" and \"pawnee\" defined\n173 Pawnee's right of retainer\nPawnee not to retain for debt or promise other than that for which\n174\ngoods pledged: Presumption in case of subsequent advances\n175 Pawnee's right to extraordinary expenses incurred\n176 Pawnee's right where pawnor makes default\n177 Defaulting pawnor's right to redeem\n178 Pledge by mercantile agent\n178A Pledge by person in possession under voidable contract\nPledge where pawnor has only a limited interest suits by bailors against\n179\nwrong-doers\n180 Suit by bailor or bailee against wrong-doer\n181 Apportionment of relief or compensation obtained by such suits",
+      "start_page": 3,
+      "end_page": 6,
+      "numbering": "Of certain relations resembling those created by contract",
+      "children": []
+    },
+    {
+      "node_id": "n_0004",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "Chapter X Agency, Appointment and authority of agents",
+      "text": "182 \"Agent\" and \"Principal\" defined\n183 Who may employ agent\n184 Who may be an agent\n185 Consideration not necessary\n186 Agent's authority may be expressed or implied\n187 Definitions of express and implied authority\n188 Extent of agent's authority\n189 Agent's authority in an emergency\n190 When agent cannot delegate\n191 \"Sub-agent\" defined\n192 Representation of principal by sub-agent properly appointed\n193 Agent's responsibility for sub-agent appointed without authority\nRelation between principal and person duly appointed by agent to act in\n194\nbusiness of agency\n195 Agent's duty in naming such person\nRight of person as to acts done for him without his authority: effect of\n196\nratification\n197 Ratification may be expressed or implied\n198 Knowledge requisite for valid ratification\n199 Effect of ratifying unauthorized act forming part of transaction\n200 Ratification of unauthorized act cannot injure third person\n201 Termination of agency\n202 Termination of agency, where agent has an interest in subject-matter\n203 When principal may revoke agent's authority\n204 Revocation where authority has been partly exercised\n205 Compensation for revocation by principal, or renunciation by agent\n206 Notice of revocation or renunciation\n207 Revocation and renunciation may be expressed or implied\nWhen termination of agent's authority takes effect as to agent, and as\n208\nto third persons\n209 Agent's duty on termination of agency by principal's death or insanity\n210 Termination of sub-agent's authority\n211 Agent's duty in conducting principal's business\n212 Skill and diligence required from agent\n213 Agent's accounts\n214 Agent's duty to communicate with principal\nRight of principal when agent deals, on his own account, in business of\n215\nagency without principal's consent\nPrincipal's right to benefit gained by agent dealing on his own account in\n216\nbusiness of agency\n217 Agent's right of retainer out of sums received on principal's account\n218 Agent's duty to pay sums received for principal\n219 When agent's remuneration becomes due\n220 Agent not entitled to remuneration for business misconducted\n221 Agent's lien on principal's property\n222 Agent to be indemnified against consequences of lawful acts\n223 Agent to be indemnified against consequences of acts done in good faith\n224 Non-liability of employer of agent to do a criminal act\n225 Compensation to agent for for injury caused by principal's neglect\n226 Enforcement and consequences of agent's contracts\n227 Principal how far bound, when agent exceeds authority\n228 Principal not bound when excess of agent's authority is not separable\n229 Consequences of notice given to agent\nAgent cannot personally enforce, nor be bound by, contracts on behalf\n230\nof principal\n231 Rights of parties to a contract made by agent not disclosed\n232 Performance of contract with agent supposed to be principal\n233 Right of person dealing with agent personally liable\nConsequence of inducing agent or principal to act on belief that principal\n234\nor agent will be held exclusively liable\n235 Liability of pretended agent\n236 Person falsely contracting as agent, not entitled to performance\nLiability of principal inducing belief that agent's unauthorised acts were\n237\nauthorised\n238 Effect, on agreement, of misrepresentation or fraud by agent\nChapter\nOf partnership\nXI\n239 to 266 Repealed\nSchedule Repealed\nPREAMBLE\n[9 OF 1872]\nWhereas it is expedient to define and amend certain parts of the law relating to\ncontract; it is hereby enacted as follows :- 1. Short title\nThis Act may be called be the Indian Contract Act, 1872.\nExtent, commencement - It extends to the whole of except the State of Jammu and\nKashmir; and it shall come into force on the first day of September, 1872.\nEnactment repealed - Nothing herein contained shall affect the provisions of any\nStatute, Act or Regulation not hereby expressly repealed, nor any usage or customs\nof trade, nor any incident of any contract, not inconsistent with the provisions of this\nAct. 2. Interpretation -clause\nIn this Act the following words and expressions are used in the following senses,\nunless contrary intention appears from the context: (a) When one person signifies to another his willingness to do or to abstain from\ndoing anything, with a view to obtaining the assent of that other to such act or\nabstinence, he is said to make a proposal; (b) When a person to whom the proposal is made, signifies his assent thereto, the\nproposal is said to be accepted. A proposal, when a accepted, becomes a promise; (c) The person making the proposal is called the \"promisor\", and the person\naccepting the proposal is called \"promisee\", (d) When, at the desire of the promisor, the promisee or any other person has done\nor abstained from doing, or does or abstains from doing, or promises to do or to\nabstain from doing, something, such act or abstinence or promise is called a\nconsideration for the promise; (e) Every promise and every set of promises, forming the consideration for each\nother, is an agreement; (f) Promises which form the consideration or part of the consideration for each other,\nare called reciprocal promises; (g) An agreement not enforceable by law is said to be void; (h) An agreement enforceable by law is a contract; (i) An agreement which is enforceable by law at the option of one or more of the\nparties thereto, but not at the option of the other or others, is a voidable contract;",
+      "start_page": 6,
+      "end_page": 9,
+      "numbering": "Agency, Appointment and authority of agents",
+      "children": [
+        "n_0005"
+      ]
+    },
+    {
+      "node_id": "n_0005",
+      "parent_id": "n_0004",
+      "level": 7,
+      "node_type": "clause",
+      "title": "A contract which ceases to be enforceable by law becomes void when it ceases to",
+      "text": "be enforceable.",
+      "start_page": 10,
+      "end_page": 10,
+      "numbering": "j",
+      "children": []
+    },
+    {
+      "node_id": "n_0006",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "Chapter I Of the communication, acceptance and revocation of proposals 3. Communication, acceptance and revocation of proposals",
+      "text": "The communication of proposals, the acceptance of proposals, and the revocation of\nproposals and acceptance, respectively, are deemed to be made by any act or\nomission of the party proposing, accepting or revoking, by which he intends to\ncommunicated such proposal, acceptance or revocation, or which has the effect of\ncommunicating it. 4. Communication when complete\nThe communication of a proposal is complete when it becomes to the knowledge of\nthe person to whom it is made.\nThe communication of an acceptance is complete -as against the proposer, when it is\nput in a course of transmission to him so at to be out of the power of the acceptor;\nas against the acceptor, when it comes to the knowledge of the proposer.\nThe communication of a revocation is complete -as against the person who makes it,\nwhen it is put into a course of transmission to the person to whom it is made, so as\nto be out of the power of the person who makes it;as against the person to whom it\nis made, when it comes to his knowledge. 5. Revocation of Proposals and acceptance\nA proposal may be revoked at any time before the communication of its acceptance\nis complete as against the proposer, but not afterwards.\nAn acceptance may be revoked at any time before the communication of the\nacceptance is complete as against the acceptor, but no afterwards. 6. Revocation how made\nA proposal is revoked - (1) by the communication of notice of revocation by the proposer to the other party; (2) by the lapse of the time prescribed in such proposal for its acceptance, or, if no\ntime is so prescribed, by the lapse of a reasonable time, without communication of\nthe acceptance; (3) by the failure of the acceptor to fulfil a condition precedent to acceptance; or (4) by the death or insanity of the proposer, if the fact of the death or insanity\ncomes to the knowledge of theacceptor before acceptance. 7. Acceptance must be absolute\nIn order to convert a proposal into a promise the acceptance must -",
+      "start_page": 11,
+      "end_page": 11,
+      "numbering": "Of the communication, acceptance and revocation of proposals 3. Communication, acceptance and revocation of proposals",
+      "children": [
+        "n_0007"
+      ]
+    },
+    {
+      "node_id": "n_0007",
+      "parent_id": "n_0006",
+      "level": 6,
+      "node_type": "sub_section",
+      "title": "be absolute and unqualified. (2) be expressed in some usual and reasonable manner, unless the proposal",
+      "text": "prescribes the manner in which it is to be accepted. If the proposal prescribes a\nmanner in which it is to be accepted; and the acceptance is not made in such\nmanner, the proposer may, within a reasonable time after the acceptance is\ncommunicated to him, insist that his proposal shall be accepted in the prescribed\nmanner, and not otherwise; but; if he fails to do so, he accepts the acceptance. 8. Acceptance by performing conditions, or receiving consideration\nPerformance of the conditions of proposal, for the acceptance of any consideration\nfor a reciprocal promise which may be offered with a proposal, is an acceptance of\nthe proposal. 9. Promise, express and implied\nIn so far as the proposal or acceptance of any promise is made in words, the promise\nis said to be express. In so far as such proposal or acceptance is made otherwise\nthan in words, the promise is said to be implied.",
+      "start_page": 12,
+      "end_page": 12,
+      "numbering": "1",
+      "children": []
+    },
+    {
+      "node_id": "n_0008",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "Chapter II Of contracts, violable contracts and void agreements 10. What agreements are contracts",
+      "text": "All agreements are contracts if they are made by the free consent of parties\ncompetent to contract, for a lawful consideration and with a lawful object, and are\nnot hereby expressly declared to be void. Nothing herein contained shall affect any\nlaw in force in India, and not hereby expressly repealed, by which any contract is\nrequired to be made in writing or in the presence of witnesses, or any law relating to\nthe registration of documents. 11. Who are competent to contract\nEvery person is competent to contract who is of the age of majority according to the\nlaw to which he is subject, and who is sound mind and is not disqualified from\ncontracting by any law to which he is subject. 12. What is a sound mind for the purposes of contracting\nA person is said to be of sound mind for the propose of making a contract, if, at the\ntime when he makes it, he is capable of understanding it and of forming a rational\njudgement as to its effect upon his interest.A person who is usually of unsound mind,\nbut occasionally of sound mind, may make a contract when he is of sound mind. A\nperson who is usually of sound mind, but occasionally of unsound mind, may not\nmake a contract when he is of unsound mind. 13. \"Consent\" defined -\nTwo or more person are said to consent when they agree upon the same thing in the\nsame sense. 14. \"Free consent\" defined -\nConsent is said to be free when it is not caused by - (1) coercion, as defined in section 15, or (2) undue influence, as defined in section 16, or (3) fraud, as defined in section 17, or (4) misrepresentation, as defined in section 18, or (5) mistake, subject to the provisions of section 20,21, and 22.\nConsent is said to be so caused when it would not have been given but for the\nexistence of such coercion, undue influence, fraud, misrepresentation, or mistake. 15. \"Coercion\" defined\n\"Coercion\" is the committing, or threating to commit, any act forbidden by the Indian\nPenal Code (45 of 1860) or the unlawful detaining, or threatening to detain, any\nproperty, to the prejudice of any person whatever, with the intention of causing any\nperson to enter into an agreement. 16. \"Undue influence\" defined (1) A contract is said to be induced by \"under influence\" where the relations\nsubsisting between the parties are such that one of the parties is in a position to\ndominate the will of the other and uses that position to obtain an unfair advantage\nover the other. (2) In particular and without prejudice to the generally of the foregoing principle, a\nperson is deemed to be in a position to dominate the will of another - (a) where he hold a real or apparent authority over the other, or where he stands in\na fiduciary relation to the other; or (b) where he makes a contract with a person whose mental capacity is temporarily\nor permanently affected by reason of age, illness, or mental or bodily distress. (3) Where a person who is in a position to dominate the will of another, enters into a\ncontract with him, and the transaction appears, on the face of it or on the evidence\nadduced, to be unconscionable, the burden of proving that such contract was not\ninduced by undue influence shall be upon the person in a position to dominate the\nwill of the other.\nNothing in the sub-section shall affect the provisions of section 111 of the Indian\nEvidence Act, 1872 (1 of 1872) 17. \"fraud defined\n\"Fraud\" means and includes any of the following acts committed by a party to a\ncontract, or with his connivance, or by his agents, with intent to deceive another\nparty thereto his agent, or to induce him to enter into the contract; (1) the suggestion as a fact, of that which is not true, by one who does not believe it\nto be true; (2) the active concealment of a fact by one having knowledge or belief of the fact; (3) a promise made without any intention of performing it; (4) any other act fitted to deceive; (5) any such act or omission as the law specially declares to be fraudulent. 18. \"Misrepresentation\" defined\n\"Misrepresentation\" means and includes - (1) the positive assertion, in a manner not warranted by the information of the\nperson making it, of that whichis not true, though he believes it to be true; (2) any breach of duty which, without an intent to deceive, gains an advantage to\nthe person committing it, or anyone claiming under him; by misleading another to\nhis prejudice, or to the prejudice of any one claiming under him; (3) causing, however innocently, a party to an agreement, to make a mistake as to\nthe substance of the thing which is subject of the agreement. 19. Voidability of agreements without free consent\nWhen consent to an agreement is caused by coercion, fraud or misrepresentation,\nthe agreement is a contract voidable at the option of the party whose consent was so\ncaused. A party to contract, whose consent was caused by fraud or mispresentation,\nmay, if he thinks fit, insist that the contract shall be performed, and that he shall be\nput on the position in which he would have been if the representations made had\nbeen true.\nException : If such consent was caused by misrepreentation or by silence, fraudulent\nwithin the meaning of section 17, the contract, neverthless, is not voidable, if the\nparty whose consent was so caused had the means of discovering the truth with\nordinary diligence.",
+      "start_page": 13,
+      "end_page": 15,
+      "numbering": "Of contracts, violable contracts and void agreements 10. What agreements are contracts",
+      "children": [
+        "n_0009",
+        "n_0010",
+        "n_0011",
+        "n_0014"
+      ]
+    },
+    {
+      "node_id": "n_0009",
+      "parent_id": "n_0008",
+      "level": 9,
+      "node_type": "explanation",
+      "title": "Explanation : A fraud or misrepresentation which did not cause the consent to a",
+      "text": "contract of the party on whom such fraud was practised, or to whom such\nmisrepresentation was made, does not render a contract voidable.\n19-A. Power to set aside contract induced by undue influence - When consent\nto an agreement is caused by undue influence, the agreement is a contract voidable\nat the option of the party whose consent was so caused.\nAny such contract may be set aside either absolutely or, if the party who was entitled\nto avoid it has received any benefit thereunder, upon such terms and conditions as\nto the Court may seem just. 20. Agreement void where both parties are under mistake as to matter of\nfact",
+      "start_page": 15,
+      "end_page": 15,
+      "numbering": "A fraud or misrepresentation which did not cause the consent to a",
+      "children": []
+    },
+    {
+      "node_id": "n_0010",
+      "parent_id": "n_0008",
+      "level": 9,
+      "node_type": "explanation",
+      "title": "Explanation : An erroneous opinion as to the value of the things which forms the",
+      "text": "subject-matter of the agreement,is not be deemed a mistake as to a matter of fact. 21. Effect of mistake as to law\nA contract is not voidable because it was caused by a mistake as to any law in force\nin India; but mistake as to a law not in force in India has the same effect as a\nmistake of fact. 22. Contract caused by mistake of one party as to matter of fact\nA contract is not voidable merely because it was caused by one of the parties to it\nbeing under a mistake as to a matter of fact.",
+      "start_page": 15,
+      "end_page": 15,
+      "numbering": "An erroneous opinion as to the value of the things which forms the",
+      "children": []
+    },
+    {
+      "node_id": "n_0011",
+      "parent_id": "n_0008",
+      "level": 5,
+      "node_type": "section",
+      "title": "What consideration and objects are lawful, and what not",
+      "text": "The consideration or object of an agreement is lawful, unless -It is forbidden by law;\noris of such nature that, if permitted it would defeat the provisions of any law or is\nfraudulent; ofinvolves or implies, injury to the person or property of another; orthe\nCourt regards it as immoral, or opposed to public policy.\nIn each of these cases, the consideration or object of an agreement is said to be\nunlawful. Every agreement of which the object or consideration is unlawful is void. 24. Agreements void, if consideration are objects unlawful in part\nIf any part of a single consideration for one or more objects, or any one or any part\nof any one of several consideration of a single object, is unlawful, the agreement is\nvoid. 25. Agreement without consideration, void, unless it is in writing and\nregistered or is a promise to compensate for something done or is a promise\nto pay a debt barred by limitation law -\nAn agreement made without consideration is void, unless - (1) it is expressed in writing and registered under the law for the time being in force\nfor the registration of documents, and is made on account of natural love and\naffection between parties standing in a near relation to each other; or unless. (2) it is a promise to compensate, wholly or in part, a person who has already\nvoluntarily done something for the promisor, or something which the promisor was\nlegally compellable to do; or unless. (3) it is a promise, made in writing and signed by the person to be charged therewith\nor by his agent generally or specially authorised in that behalf, to pay wholly or in\npart debt of which the creditor might have enforced payment but for the law for the\nlimitation of suits. In any of these cases, such an agreement is a contract.",
+      "start_page": 16,
+      "end_page": 16,
+      "numbering": "23",
+      "children": [
+        "n_0012",
+        "n_0013"
+      ]
+    },
+    {
+      "node_id": "n_0012",
+      "parent_id": "n_0011",
+      "level": 9,
+      "node_type": "explanation",
+      "title": "Explanation 1 : Nothing in this section shall affect the validity, as between the donor",
+      "text": "and donee, of any gift actually made.",
+      "start_page": 16,
+      "end_page": 16,
+      "numbering": "Nothing in this section shall affect the validity, as between the donor",
+      "children": []
+    },
+    {
+      "node_id": "n_0013",
+      "parent_id": "n_0011",
+      "level": 9,
+      "node_type": "explanation",
+      "title": "Explanation 2 : An agreement to which the consent of the promisor is freely given is",
+      "text": "not void merely because the consideration is inadequate; but the inadequacy of the\nconsideration may be taken into account by the Court in determining the question\nwhether the consent of the promisor was freely given. 26. Agreement in restraint of marriage, void\nEvery agreement in restraint of the marriage of any person, other than a minor, is\nvoid. 27. Agreement in restraint of trade, void\nEvery agreement by which anyone is restrained from exercising a lawful profession,\ntrade or business of any kind, is to that extent void.\nException 1 : Saving of agreement not to carry on business of which good will is sold\n- One who sells the goodwill of a business may agree with the buyer to refrain from\ncarrying on a similar business, within specified local limits, so long as the buyer, or\nany person deriving title to the goodwill from him, carries on a like business therein,\nprovided that such limits appear to the court reasonable, regard being had to the\nnature of the business. 28. Agreements in restrain of legal proceedings, void\nEvery agreement, by which any party thereto is restricted absolutely from enforcing\nhis rights under or in respect of any contract, by the usual legal proceedings in the\nordinary tribunals, or which limits the time within which he may thus enforce his\nrights, is void to the extent.\nException 1 : Saving of contract to refer to arbitration dispute that may arise.This\nsection shall not render illegal contract, by which two or more persons agree that\nany dispute which may arise between them in respect of any subject or class of\nsubject shall be referred to arbitration, and that only and amount awarded in such\narbitration shall be recoverable in respect of the dispute so referred.\nException 2: Saving of contract to refer question that have already arisen - Nor shall\nthis section render illegal any contract in writing, by which two or more persons\nagree to refer to arbitration any question between them which has already arisen, or\naffect any provision of any law in force for the time being as to reference to\narbitration.\nRelated Judgements\nTHYSSEN STAHLUNION GMBH v. STEEL AUTHORITY OF INDIA LTD. 29. Agreements void for uncertainty\nAgreements, the meaning of which is not certain, or capable of being made certain,\nare void. 30. Agreements by way of wager, void\nAgreements by way of wager are void; and no suit shall be brought for recovering\nanything alleged to be won on any wager, or entrusted to any person to abide the\nresult of any game or other uncertain event on which may wager is made. Exception\non favour of certain prizes for horse-racing: This section shall not be deemed to\nrender unlawful a subscription or contribution, or agreement to subscribe or\ncontribute, made or entered into for or toward any plate, prize or sum of money, of\nthe value or amount of five hundred rupees or upwards, to be rewarded to the\nwinner or winners of any horse-race.",
+      "start_page": 16,
+      "end_page": 17,
+      "numbering": "An agreement to which the consent of the promisor is freely given is",
+      "children": []
+    },
+    {
+      "node_id": "n_0014",
+      "parent_id": "n_0008",
+      "level": 5,
+      "node_type": "section",
+      "title": "of the Indian Penal Code not affected : Nothing in this section shall be",
+      "text": "deemed to legalize any transaction connected with horse-racing, to which the\nprovisions of section 294A of the Indian Penal Code (45 of 1860) apply.",
+      "start_page": 17,
+      "end_page": 17,
+      "numbering": "294A",
+      "children": []
+    },
+    {
+      "node_id": "n_0015",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "Chapter III Of contingent contracts 31. \"Contingent contract\" defined",
+      "text": "A \"contingent contract\" is a contract to do or not to do something, if some event,\ncollateral to such contract, does or does not happen. 32. Enforcement of Contracts contingent on an event happening\nContingent contracts to do or not to do anything in an uncertain future event\nhappens, cannot be enforced by law unless and until that event has happened. If the\nevent becomes impossible, such contracts become void. 33. Enforcement of contract contingent on an event not happening\nContingent contracts to do or not to do anything if an uncertain future event does\nnot happen, can be enforced when the happening of that event becomes impossible,\nand not before. 34. When event on which contract is contingent to be deemed impossible, if\nit is the future conduct of a living person\nIf the future event on which a contract is contingent is the way in which a person will\nact at an unspecified time, the event shall be considered to become impossible when\nsuch person does anything which renders it impossible that the should so act within\nany definite time, or otherwise than under further contingencies. 35. When contracts become void, which are contingent on happening of\nspecified event within fixed time\nContingent contracts to do or not to do anything, if a specified uncertain event\nhappens within a fixed time, become void, if, at the expiration of the time fixed, such\nevent has not happened, or if, before the time fixed, such event becomes impossible.\nWhen contracts may be enforced, which are contingent on specified event not\nhappening within fixed time : Contingent contract tutu or not to do anything, if a\nspecified uncertain event does not happen within a fixed time, may be enforced by\nlaw when the time fixed has expired and such event has not happened, or before the\ntime fixed has expired, if it become certain that such event will not happen. 36. Agreements contingent on impossible event void\nContingent agreements to do or not to do anything, if an impossible event happens,\nare void, whether the impossibility of the event is known or not to the parties to\nagreement at the time when it is made.\nOf the performance of contracts Contracts which must be",
+      "start_page": 18,
+      "end_page": 19,
+      "numbering": "Of contingent contracts 31. \"Contingent contract\" defined",
+      "children": []
+    },
+    {
+      "node_id": "n_0016",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "Chapter IV",
+      "text": "performed 37. Obligations of parties to contract\nThe parties to a contract must either perform, or offer to perform, their respective\npromises, unless such performance in dispensed with or excused under the provision\nof this Act, or of any other law.\nPromises bind the representative of the promisor in case of the death of such\npromisors before performance, unless a contrary intention appears from the\ncontract. 38. Effect of refusal to accept offer of performance\nWhere a promisor has made an offer of performance to the promisee, and the offer\nhas not been accepted, the promisor is not responsible for non-performance, nor\ndoes he thereby lose his rights under the contract.\nEvery such offer must fulfil the following conditions - (1) it must be unconditional; (2) it must be made at a proper time and place, and under such circumstances that\nthe person to whom it is made may have a reasonable opportunity of ascertaining\nthat the person by whom it is been made is able and willing there and then to do the\nwhole of what he is bound by his promise to do; (3) if the offer is an offer to deliver anything to the promisee, the promisee must\nhave a reasonable opportunity of seeing that the thing offered is the thing which the\npromisor is bound by his promise to deliver. An offer to one of several joint\npromisees has the same legal consequences as an offer to all of them. 39. Effect of refusal of party to perform promise wholly\nWhen a party to a contract has refused to perform, or disabled himself from\nperforming, his promise in its entirety, the promisee may put an end to the\ncontract,unless he has signified, by words or conduct, his acquiescence in its\ncontinuance. 40. Person by whom promises is to be performed\nIf it appears from the nature of the case that it was the intention of the parties to\nany contract that any promise contain in it should be performed by the promisor\nhimself, such promise must be performed by the promisor.\nIn other cases, the promisor or his representative may employ a competent person\nto perform it. 41. Effect of accepting performance from this person\nWhen a promisee accepts performance of the promise from a third person, he cannot\nafterwards enforce it against the promisor. 42. Devolution of joint liabilities\nWhen two or more person have made a joint promise, then, unless a contrary\nintention appears by the contract, all such persons, during their joint lives, and, after\nthe death of any of them, his representative jointly with the survivor or survivors,\nand, after the death of the last survivor the representatives of all jointly, must fulfil\nthe promise. 43. Any one of joint promisors may be compelled to perform\nWhen two or more persons make a joint promise, the promise may, in the absence\nof express agreements to the contrary, compel any one or more of such joint\npromisors to perform the whole promise.\nEach promisor may compel contribution : Each of two or more joint promisors may\ncompel every other joint promisor to contribute equally with himself to the\nperformance of the promise, unless a contrary intention appears from the contract.\nSharing of loss by default in contribution : If any one of two or more joint promisors\nmake default in such contribution, the remaining joint promisors mus bear the loss\narising from such default in equal shares.",
+      "start_page": 19,
+      "end_page": 20,
+      "numbering": "Chapter IV",
+      "children": [
+        "n_0017",
+        "n_0018",
+        "n_0019",
+        "n_0020",
+        "n_0021",
+        "n_0022"
+      ]
+    },
+    {
+      "node_id": "n_0017",
+      "parent_id": "n_0016",
+      "level": 9,
+      "node_type": "explanation",
+      "title": "Explanation : Nothing in this section shall prevent a surety from recovering, from his",
+      "text": "principal, payments made by the surety on behalf of the principal, or entitle the\nprincipal to recover anything from the surety on account of payments made by the\nprincipal. 44. Effect of release of one joint promisor\nWhere two or more persons have made a joint promise, a release of one of such\njoint promisors by the promisee does not discharge the other joint promisor,neither\ndoes it free the joint promisor so released from responsibility to the other joint\npromisor or joint promisors. 45. Devolution of joint rights\nWhen a person has made a promise to two or more persons jointly, then unless\ncontrary intention appears from the contract, the right to claim performance rests,\nas between him and them, with them during their joint lives, and, after the death of\nany one of them, with the representative of such deceased person jointly with the\nsurvivor or survivors, and, after the death of the last survivor, with the\nrepresentatives of all jointly. 46. Time for performance of promise, where no application is to be made\nand no time is specified\nWhere, by the contract, a promisor is to perform his promise without application by\nthe promisee, and no time for performance is specified, the engagement must be\nperformed within a reasonable time.",
+      "start_page": 20,
+      "end_page": 20,
+      "numbering": "Nothing in this section shall prevent a surety from recovering, from his",
+      "children": []
+    },
+    {
+      "node_id": "n_0018",
+      "parent_id": "n_0016",
+      "level": 9,
+      "node_type": "explanation",
+      "title": "Explanation : The question \"what is a reasonable time\" is, in each particular case, a",
+      "text": "question of fact. 47. Time and place for performance of promise, where time is specified and\nno application to be made\nWhen a promise is to be performed on a certain day, and the promisor has\nundertaken to perform it without the application by the promisee, the promisor may\nperform it at any time during the usual hours of business on such day and at the\nplace at which the promise ought to be performed. 48. Application for performance on certain day to be at proper time and\nplace\nWhen a promise is to be performed on a certain day, and the promisor has not\nundertaken to perform it without application by the promisee, it is the duty of the\npromisee to apply for the performance at a proper place within the usual hours of\nbusiness.",
+      "start_page": 21,
+      "end_page": 21,
+      "numbering": "The question \"what is a reasonable time\" is, in each particular case, a",
+      "children": []
+    },
+    {
+      "node_id": "n_0019",
+      "parent_id": "n_0016",
+      "level": 9,
+      "node_type": "explanation",
+      "title": "Explanation : The question \"what is proper time and place\" is, in each particular",
+      "text": "case, a question of fact. 49. Place for the performance of promise, where no application to be made\nand no place fixed for performance\nWhen a promise is to be performed without application by the promisee, and not\nplace is fixed for the performance of it, it is the duty of the promisor to apply to the\npromisee to appoint a reasonable place for the performance of the promise, and to\nperform it at such a place. 50. Performance in manner or at time prescribed or sanctioned by promise\nThe performance of any promise may be made in any manner, or at any time which\nthe promisee prescribes or sanctions. 51. Promisor not bound to perform, unless reciprocal promisee ready and\nwilling to perform\nWhen a contract consists of reciprocal promises to be simultaneously performed, no\npromisor need perform his promise unless the promisee is ready and willing to\nperform his reciprocal promise. 52. Order of performance of reciprocal promises\nWhere the order in which reciprocal promises are to be performed is expressly fixed\nby the contract, they shall be performed in that order, and where the orders is not\nexpressly fixed by the contract, they shall be performed in that order which the\nnature of transaction requires.",
+      "start_page": 21,
+      "end_page": 21,
+      "numbering": "The question \"what is proper time and place\" is, in each particular",
+      "children": []
+    },
+    {
+      "node_id": "n_0020",
+      "parent_id": "n_0016",
+      "level": 5,
+      "node_type": "section",
+      "title": "Liability of party preventing event on which contract is to take effect",
+      "text": "When a contract contains reciprocal promises and one party to the contract prevents\nthe other from performing his promise, the contract becomes voidable at the option\nof the party so prevented; and he is entitled to compensation from the other party\nfor any loss which he may sustain in consequence of the non-performance of the\ncontract. 54. Effect of default as to the promise which should be performed, in\ncontract consisting or reciprocal promises\nWhen a contract consists of reciprocal promises, such that one of them cannot be\nperformed, or that its performance cannot be claimed till the other has been\nperformed, and the promisor of the promise last mentioned fails to perform it, such\npromisor cannot claim the performance of the reciprocal promise, and must make\ncompensation to the other party to the contract for any loss which such other party\nmay sustain by the non-performance of the contract. 55. Effect of failure to perform a fixed time, in contract in which time is\nessential\nWhen a party to a contract promises to do a certain thing at or before a specified\ntime, or certain thins at or before a specified time and fails to do such thing at or\nbefore a specified time, and fails to do such thing at or before a specified time, the\ncontract or so much of it as has not been performed, becomes voidable at the option\nof the promisee, if the intention of the parties was that time should be of essence of\nthe contract.\nEffect of such failure when time is not essential: If it was not the intention of the\nparties that time should be of the essence of the contract, the contract does not\nbecome voidable by the failure to do such thing at or before the specified time; but\nthe promisee is entitled to compensation from the promisor for any loss occasioned\nto him by such failure.\nEffect of acceptance of performance at time other than agreed upon: If, in case of a\ncontract voidable on account of the promisor's failure to perform his promise at the\ntime agreed, the promisee accepts performance of such promise at any time other\nthan agree, the promisee cannot claim compensation of any loss occasioned by the\nnon-performance of the promise at the time agreed, unless, at the time of\nacceptance, he give notice to the promisor of his intention to do so. 56. Agreement to do impossible act\nAn agreement to do an act impossible in itself is void. Contract to do act afterwards\nbecoming impossible or unlawful: A contract to do an act which, after the contract is\nmade, becomes impossible or, by reason of some event which the promisor could not\nprevent, unlawful, becomes void when the act becomes impossible or unlawful.\nCompensation for loss through non-performance of act known to be impossible or\nunlawful: Where one person has promised to be something which he knew or, with\nreasonable diligence, might have known, and which the promisee did not know to be\nimpossible or unlawful, such promisor must make compensation to such promise for\nany loss which such promisee sustains through the non-performance of the promise.",
+      "start_page": 22,
+      "end_page": 22,
+      "numbering": "53",
+      "children": []
+    },
+    {
+      "node_id": "n_0021",
+      "parent_id": "n_0016",
+      "level": 5,
+      "node_type": "section",
+      "title": "Reciprocal promise to do things legal, and also other things illegal",
+      "text": "Where persons reciprocally promise, firstly to do certain things which are legal, and,\nsecondly under specified circumstances, to do certain other things which are illegal,\nthe first set of promise is a contract, but the second is a void agreement. 58. Alternative promise, one branch being illegal\nIn the case of an alternative promise, one branch of which is legal and other other\nillegal, the legal branch alone can be enforced. 59. Application of payment where debt to be discharged is indicated\nWhere a debtor, owing several distinct debts to one person, makes a payment to\nhim, either with express intimation, or under circumstances implying, that the\npayment is to be applied to the discharge of some particular debt, the payment if\naccepted, must be applied accordingly. 60. Application of payment where debt to be discharged is not indicated\nWhere the debtor has ommitted to intimate, and there are no other circumstances\nindicating to which debt the payment is to be applied, the creditor may apply it at his\ndiscretion to any lawful debt actually due and payable to him from the debtor,\nwhether its recovery is or is not barred by the law in force for the time being as to\nthe limitations of suits. 61. Application of payment where neither party appropriates\nWhere neither party makes any appropriation, the payment shall be applied in\ndischarge of the debts in order of time, whether they are or are not barred by the\nlaw in force for the time being as to the limitation of suits. If the debts are of equal\nstanding, the payment shall be applied in discharge of each proportionably. 62. Effect of novation, rescission, and alteration of contract\nIf the parties to a contract agree to substitute a new contract for it, or to rescind or\nalter it, the original contract need not be performed. 63. Promise may dispense with or remit performance of promise\nEvery promise may dispense with or remit, wholly or in part, the performance of the\npromise made to him, or may extend the time for such performance, or may accept\ninstead of it any satisfaction which he thinks fit. 64. Consequence of rescission of voidable contract\nWhen a person at whose option a contract is voidable rescinds it, the other party\nthereto need to perform any promise therein contained in which he is the promisor.\nThe party rescinding a voidable contract shall, if he have received any benefit\nthereunder from another party to such contract restore such benefit, so far as may\nbe, to the person from whom it was received.",
+      "start_page": 23,
+      "end_page": 23,
+      "numbering": "57",
+      "children": []
+    },
+    {
+      "node_id": "n_0022",
+      "parent_id": "n_0016",
+      "level": 5,
+      "node_type": "section",
+      "title": "Obligation of person who has received advantage under void agreement,",
+      "text": "or contract that becomes void\nWhen an agreement is discovered to be void, or when a contract becomes void, any\nperson who has received any advantage under such agreement or contract is bound\nto restore, it, or to make compensation for it, to the person from whom he received\nit. 66. Mode of communicating or revoking rescission of voidable contract\nThe rescission of a voidable contract may be communicated or revoked in the same\nmanner, and subject to some rules, as apply to the communication or revocation of\nthe proposal. 67. Effect of neglect or promise to afford promisor reasonable facilities for\nperformance\nIf any promisee neglects or refuses to afford the promisee reasonable facilities for\nthe performance of his promise, the promisor is excused by such neglect or refusal\nas to non-performance caused thereby.",
+      "start_page": 24,
+      "end_page": 24,
+      "numbering": "65",
+      "children": []
+    },
+    {
+      "node_id": "n_0023",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "Chapter V Of certain relations resembling those created by contract 68. Claim for necessaries supplied to person incapable of contracting, or on",
+      "text": "his account\nIf a person, incapable of entering into a contract, or anyone whom he is legally\nbound to support, is supplied by another person with necessaries suited to his\ncondition in life, the person who has furnished such supplies is entitled to be\nreimbursed from the property of such incapable person. 69. Reimbursement of person paying money due by another, in payment of\nwhich he is interested\nA person who is interested in the payment of money which another is bound by law\nto pay, and who therefore pays it, is entitled to be reimbursed by the other. 70. Obligation of person enjoying benefit of non-gratuitous act\nWhere a person lawfully does anything for another person, or delivers anything to\nhim, not intending to do so gratuitously, and such another person enjoys the benefit\nthereof, the letter is bound to make compensation to the former in respect of, or to\nrestore, the thing so done or delivered. 71. Responsibility of finder of goods\nA person who finds goods belonging to another, and takes them into his custody, is\nsubject to the same responsibility as a bailee. 72. Liability of person to whom money is paid, or thing delivered, by\nmistake or under coercion\nA person to whom money has been paid, or anything delivered, by mistake or under\ncoercion, must repay or return it.",
+      "start_page": 25,
+      "end_page": 25,
+      "numbering": "Of certain relations resembling those created by contract 68. Claim for necessaries supplied to person incapable of contracting, or on",
+      "children": []
+    },
+    {
+      "node_id": "n_0024",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "Chapter VI Of the consequences of breach of contract 73. Compensation of loss or damage caused by breach of contract",
+      "text": "When a contract has been broken, the party who suffers by such breach is entitled to\nreceive, form the party who has broken the contract, compensation for any loss or\ndamage caused to him thereby, which naturally arose in the usual course of things\nfrom such breach, or which the parties knew, when they made the contract, to be\nlikely to result from the breach of it.\nSuch compensation is not to be given for any remote and indirect loss of damage\nsustained by reason of the breach.\nCompensation for failure to discharge obligation resembling those created by\ncontract : When an obligation resembling those created by contract has been\nincurred and has not been discharged, any person injured by the failure to discharge\nit is entitled to receive the same compensation from the party in default, as if such\nperson had contracted to discharge it and had broken his contract.",
+      "start_page": 26,
+      "end_page": 26,
+      "numbering": "Of the consequences of breach of contract 73. Compensation of loss or damage caused by breach of contract",
+      "children": [
+        "n_0025",
+        "n_0026",
+        "n_0027"
+      ]
+    },
+    {
+      "node_id": "n_0025",
+      "parent_id": "n_0024",
+      "level": 9,
+      "node_type": "explanation",
+      "title": "Explanation : In estimating the loss or damage arising from a breach of contract, the",
+      "text": "means which existed of remedying the inconvenience caused by non-performance of\nthe contract must be taken into account. 74. Compensation of breach of contract where penalty stipulated for\nWhen a contract has been broken, if a sum is named in the contract as the amount\nbe paid in case of such breach, or if the contract contains any other stipulation by\nway of penalty, the party complaining of the breach is entitled, whether or not actual\ndamage or loss or proved to have been caused thereby, to receive from the party\nwho has broken the contract reasonable compensation not exceeding the amount so\nnamed or, as the case may be, the penalty stipulated for.",
+      "start_page": 26,
+      "end_page": 26,
+      "numbering": "In estimating the loss or damage arising from a breach of contract, the",
+      "children": []
+    },
+    {
+      "node_id": "n_0026",
+      "parent_id": "n_0024",
+      "level": 9,
+      "node_type": "explanation",
+      "title": "Explanation : A stipulation for increased interest from the date of default may be a",
+      "text": "stipulation by way of penalty.",
+      "start_page": 26,
+      "end_page": 26,
+      "numbering": "A stipulation for increased interest from the date of default may be a",
+      "children": []
+    },
+    {
+      "node_id": "n_0027",
+      "parent_id": "n_0024",
+      "level": 9,
+      "node_type": "explanation",
+      "title": "Explanation : When any person enters into any bail bond, recognisance or other",
+      "text": "instrument of the same nature or, under the provisions of any law, or under the\norders of the Central Government or of any State Government, gives any bond for\nthe performance of any public duty or act in which the public are interested, he shall\nbe liable, upon breach of the condition of any such instrument, to pay the whole sum\nmentioned therein. 75. Party rightfully rescinding contract, entitled to compensation\nA person who rightfully rescinds a contract is entitled to consideration for any\ndamage which he has sustained through the no fulfillment of the contract.",
+      "start_page": 26,
+      "end_page": 26,
+      "numbering": "When any person enters into any bail bond, recognisance or other",
+      "children": []
+    },
+    {
+      "node_id": "n_0028",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "Chapter VII Sale of goods",
+      "text": "",
+      "start_page": 27,
+      "end_page": 27,
+      "numbering": "Sale of goods",
+      "children": [
+        "n_0029"
+      ]
+    },
+    {
+      "node_id": "n_0029",
+      "parent_id": "n_0028",
+      "level": 5,
+      "node_type": "section",
+      "title": "to 123 – Repealed",
+      "text": "",
+      "start_page": 27,
+      "end_page": 27,
+      "numbering": "76",
+      "children": []
+    },
+    {
+      "node_id": "n_0030",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "Chapter VIII Of indemnity and guarantee 124. \"Contract of indemnity\" defined",
+      "text": "A contract by which one party promises to save the other from loss caused to him by\nthe contract of the promisor himself, or by the conduct of any other person, is called\na \"contract of indemnity\". 125. Right of indemnity-holder when sued -\nThe promisee in a contract of indemnity, acting within the scope of his authority, is\nentitled to recover from the promisor- (1) all damages which he may be compelled to pay in any suit in respect of any\nmatter to which the promise to indemnify applies; (2) all costs which he may be compelled to pay in any such suit, if in bringing of\ndefending it, he did not contravene the orders of the promisor, and acted as it would\nhave been prudent for him to act in the absence of any contract of indemnity, or if\nthe promisor authorised him to bring or defend the suit; (3) all sums which he may have paid under the terms of any compromise of any\nsuch suit, if the compromise was not contract to the orders of the promisor, and was\none which it would have been prudent for the promise to make in the absence of any\ncontract of indemnity, or if the promisor authorised him to compromise the suit. 126. \"Contract of guarantee\", \"surety\", \"principal debtor\" and \"creditor\" -\nA \"contract of guarantee\" is a contract to perform the promise, or discharge the\nliability, of a third person in case of his default. The person who gives the guarantee\nis called the \"surety\", the person in respect of whose default the guarantee is given\nis called the \"principal debtor\", and the person to whom the guarantee is given is\ncalled the \"creditor\". A guarantee may be either oral or written. 127. Consideration for guarantee\nAnything done, or any promise made, for the benefit of the principal debtor, may be\na sufficient consideration to the surety for giving the guarantee. 128. Surety's liability\nThe liability of the surety is co-extensive with that of the principal debtor, unless it is\notherwise provided by the contract. 129. Continuing guarantee\nA guarantee which extends to a series of transaction, is called, a \"continuing\nguarantee\".",
+      "start_page": 28,
+      "end_page": 28,
+      "numbering": "Of indemnity and guarantee 124. \"Contract of indemnity\" defined",
+      "children": [
+        "n_0031",
+        "n_0032"
+      ]
+    },
+    {
+      "node_id": "n_0031",
+      "parent_id": "n_0030",
+      "level": 5,
+      "node_type": "section",
+      "title": "Revocation of continuing guarantee",
+      "text": "A continuing guarantee may at any time be revoked by the surety, as to future\ntransactions, by notice to the creditor. 131. Revocation of continuing guarantee by surety' death -\nThe death of the surety operates, in the absence of any contract to the contrary, as a\nrevocation of ma continuing guarantee, so far as regards future transactions. 132. Liability of two persons, primarily liable, not affected by arrangement\nbetween them that one shall be surety on other's default -\nWhere two persons contract with third person to undertake a certain liability, and\nalso contract with each other that one of them shall be liable only on the default of\nthe other, the third person not being a party to such contract the liability of each of\nsuch two persons to the third person under the first contract is not affected by the\nexistence of the second contract,although such third person may have been aware of\nits existence. 133. Discharge of surety by variance in terms of contract\nAny variance made without the surety's consent, in the terms of the contract\nbetween the principal [debtor] and the creditor, discharges the surety as to\ntransactions subsequent to the variance. 134. Discharge of surety by release or discharge of principal debtor -\nThe surety is discharged by any contract between the creditor and the principal\ndebtor, by which the principal debtor is released, or by any act or omission of the\ncreditor, the legal consequence of which is the discharge of the principal debtor. 135. Discharge of surety when creditor compounds with, gives time to, or\nagrees not to sue, principal debtor\nA contract between the creditor and the principal debtor, by which the creditor make\na composition with, or promises to give time, or not to sue, the principal debtor,\ndischarges the surety, unless the surety assents to such contract. 136. Surety not discharged when agreement made with third person to give\ntime to principal debtor\nWhere a contract to give time to the principal debtor is made by the creditor with a\nthird person, and not with the principal debtor, the surety is not discharged. 137. Creditor's forbearance to sue does not discharge surety\nMere forbearance on the part of the creditor to sue the principal debtor or to enforce\nany other remedy against him, dies not, in the absence of any provision in the\nguarantee to the contrary, discharge the surety.",
+      "start_page": 29,
+      "end_page": 29,
+      "numbering": "130",
+      "children": []
+    },
+    {
+      "node_id": "n_0032",
+      "parent_id": "n_0030",
+      "level": 5,
+      "node_type": "section",
+      "title": "Release of one co-surety does not discharge other -",
+      "text": "Where there are co-sureties, a release by the creditor of one of them does not\ndischarge the others neither does set free the surety so released from his\nresponsibility to the other sureties. 139. Discharge of surety by creditor's act or omission impairing surety's\neventual remedy -\nIf the creditor does any act which is inconsistent with the right of the surety, or\nomits to do any act which his duty to the surety requires him to do, and the eventual\nremedy of the surety himself against the principal debtor is thereby impaired, the\nsurety is discharged. 140. Rights of surety on payment or performance -\nWhere a guaranteed debt has become due, or default of the principal debtor to\nperform a guaranteed duty has taken place, the surety upon payment or\nperformance of all that he is liable for, is invested with all the rights which the\ncreditor had against the principal debtor. 141. Surety's right to benefit of creditor's securities -\nA surety is entitled to the benefit of every security which the creditor has against the\nprincipal debtor at the time when the contract of suretyship entered into, whether\nthe surety knows of the existence of such security or not; and if the creditor loses, or\nwithout the consent of the existence of such security or not; and if the creditor loses,\nor without the consent of the surety, parts with such security, the surety, the surety\nis discharged to the extent of the value of the security. 142. Guarantee obtained by misrepresentation, invalid\nAny guarantee which has been obtained by means of misrepresentation made by the\ncreditor, or with his knowledge and assent, concerning a material part of the\ntransaction, is invalid. 143. Guarantee obtained by concealment, invalid -\nAny guarantee which the creditor has obtained by means of keeping silence as to\nmeterial circumstances, is invalid. 144. Guarantee on contract that creditor shall not act on it until co-surety\njoins -\nWhere a person gives a guarantee upon a contract that the creditor shall not act\nupon it until another person has jointed in it as co-surety, the guarantee is not valid\nthat other person does not join. 145. Implied promise to indemnify surety -\nIn every contract of guarantee there is an implied promise by the principal debtor to\nindemnify the surety, and the surety is entitled to recover from the principal debtor\nwhatever sum he has rightfully paid under the guarantee, but no sums which he has\npaid wrongfully. 146. Co-sureties liable to contribute equally -\nWhere two or more persons are co-sureties for the same debt or duty, either jointly\nor severally, and whether under the same or different contract, and whether with or\nwithout the knowledge of each other the co-sureties, in the absence of any contract\nto the contrary, are liable, as between themselves, to pay each an equal share of the\nwhole debt, or of that part of it which remains unpaid by the principal debtor. 147. Liability of co-sureties bound in different sums -\nCo-sureties who are bound in different sums are liable to pay equally as far as the\nlimits of their respective obligations permit.",
+      "start_page": 30,
+      "end_page": 31,
+      "numbering": "138",
+      "children": []
+    },
+    {
+      "node_id": "n_0033",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "Chapter IX Of bailment 148. \"Bailment\", \"bailor\" and \"bailee\" defined -",
+      "text": "A \"bailment\" is the delivery of goods by one person to another for some purpose,\nupon a contract that they shall, when the purpose is accomplished, be returned or\notherwise disposed of according to the direction of the person delivering them. The\nperson delivering the goods is called the \"bailor\". The person to whom they are\ndelivered is called the \"bailee\".Explanation: If a person already in possession of the\ngoods of other contracts hold them as a bailee, he thereby becomes the bailee, and\nthe owner becomes the bailor of such goods, although they may not have been\ndelivered by way of bailment. 149. Delivery to bailee how made -\nThe delivery to be bailee may be made by doing anything which has the effect of\nputting the goods in the possession of the intended bailee or of any person\nauthorised to hold them on his behalf. 150. Bailor's duty to disclose faults in goods bailed -\nThe bailor is bound to disclose to the bailee faults in the goods bailed, of which the\nbailor is aware, and which materially interfere with the use of them, or expose the\nbailee to extraordinary risk; and if he does not make such disclosure, he is\nresponsible for damage arising to the bailee directly from such faults. 151. Care to be taken by bailee -\nIn all cases of bailment the bailee is bound to take as much care of the goods bailed\nto him as a man of ordinary prudence would, under similar circumstances, take of his\nown goods of the same bulk, quantity and value as the goods bailed. 152. Bailee when not liable for loss, etc, of thing bailed -\nThe bailee, in the absence of any special contract, is not responsible for the loss,\ndestruction or deterioration of the thing bailed, if he has taken the amount of care of\nit described in section 151. 153. Termination of bailment by bailee's act inconsistent with conditions -\nA contract of bailment is voidable at the option of the bailor, if the bailee does any\nact with regard to the foods bailed, inconsistent with the conditions of the bailment. 154. Liability of bailee making unauthorised use of goods bailed -\nIf the bailee makes any use of the goods bailed which is not according to the\nconditions of the bailment, he is liable to make compensation to the bailor for any\ndamage arising to the goods from or during such use of them.",
+      "start_page": 32,
+      "end_page": 32,
+      "numbering": "Of bailment 148. \"Bailment\", \"bailor\" and \"bailee\" defined -",
+      "children": [
+        "n_0034",
+        "n_0035",
+        "n_0036"
+      ]
+    },
+    {
+      "node_id": "n_0034",
+      "parent_id": "n_0033",
+      "level": 5,
+      "node_type": "section",
+      "title": "Effect of mixture with bailor's consent, of his goods with bailee's -",
+      "text": "If the bailee, with the consent of the bailor, mixes the goods of the bailor with his\nown goods, the bailor and the bailee shall have an interest, in proportion to their\nrespective shares, in the mixture thus produced. 156. Effect of mixture, without bailor's consent, when the goods can be\nseparated -\nIf the bailee, without the consent of the bailor, mixes the goods of the bailor with his\nown goods and the goods can be separated or divided, the property in the goods\nremains in the parties respectively; but the bailee is bound to be bear the expense of\nseparation or division, and any damage arising from the mixture. 157. Effect of mixture, without bailor's consent, when the goods cannot be\nseparated -\nIf the bailee, without the consent of the bailor, mixes the foods of the bailor with his\nown goods in such a manner that it is impossible to separate the goods bailed from\nthe other goods, and deliver them back, the bailor is entitled to be compensated by\nthe bailee for the loss of the goods. 158. Repayment, by bailor, of necessary expenses -\nWhere, by the conditions of the bailment, the goods are to be kept or to be carried,\nor to have work done upon them by the bailee for the bailor, and the bailee is to\nreceive no remuneration, the bailors shall repay to the bailee the necessary expenses\nincurred by him for the purpose of the bailment. 159. Restoration of goods lent gratuitously -\nThe lender of a thing for use may at any time require its return, if the loan was\ngratuitous, even through he lent it for a specified time or purpose. But if, on the faith\nof such loan made for a specified time or purpose, the borrower has acted in such a\nmanner that the return of the thing lent before the time agreed upon would cause\nhim losses exceeding the benefit actually derived by him from the loan, the lender\nmust, if he compels the return. indemnify the borrower for the amount in which the\nloss so occasioned exceeds the benefits so derived. 160. Return of goods bailed, on expiration of time or a accomplishment of\npurpose -\nIt is the duty of the bailee to return, or deliver according to the bailor's directions,\nthe goods bailed, without demand, as soon as the time for which they were bailed\nhas expired, or the purpose for which they were bailed has been accomplished. 161. Bailee's responsibility when goods are not duly returned -\nIf by the fault of the bailee, the goods are not returned, delivered or tendered at the\nproper time, he is responsible to the bailor for any loss, destruction or deterioration\nof the goods from that time.",
+      "start_page": 33,
+      "end_page": 33,
+      "numbering": "155",
+      "children": []
+    },
+    {
+      "node_id": "n_0035",
+      "parent_id": "n_0033",
+      "level": 5,
+      "node_type": "section",
+      "title": "Termination of gratuitous bailment by death -",
+      "text": "A gratuitous bailment is terminated by the death either of the bailor or of the bailee. 163. Bailer entitled to increase or profit from goods bailed -\nIn the absence of any contract to the contrary, the bailee is bound to deliver to the\nbailer, or according to his directions, any increase or profit which may have accrued\nfrom the goods bailed. 164. Bailor's responsibility to bailee -\nThe bailor is responsible to the bailee for any loss which the bailee may sustain the\nreason that the bailor was not entitled to make the bailment, or to receive back the\ngoods, or to give directions, respecting them. 165. Bailment by several joint owners -\nIf several joint owners of goods bail them, the bailee may deliver them back to, or\naccording to the directions of, one joint owner without the consent of all in the\nabsence of any agreement to the contrary. 166. Bailee not responsible on redelivery to bailor without title -\nIf the bailor has no title to the goods, and the bailee, in good faith, delivers them\nback to, or according to the directions of the bailor, the bailee is not responsible to\nthe owner in respect of such deliver. 167. Right of third person claiming goods bailed -\nIf a person, other than the bailor, claims goods bailed he may apply to the court to\nstop delivery of the goods to the bailor, and to decide the title to the goods. 168. Right to finder of goods may sue for specified reward offered -\nThe finder of goods has no right to use the owner for compensation for trouble and\nexpense, voluntary incurred by him to preserve the goods and to find out the owner;\nbut he may retain the goods again the owner until he receive such compensation;\nand where the owner has offered a specific required for the return of goods lost, the\nfinder may sue for such reward, and may retain the goods until he received it. 169. When finder of thing commonly on sale may sell it -\nWhen thing which is commonly the subject of sale is lost, if the owner cannot with\nreasonable diligence be found, or if he refuses upon demand, to pay the lawful\ncharges of the finder, the finder may sell it - (1) when the thing is in danger of perishing or of losing the greater part of its value,\nor (2) when the lawful charges of the finder, in respect of the thing found, amount to\ntwo-thirds of its value.",
+      "start_page": 34,
+      "end_page": 34,
+      "numbering": "162",
+      "children": []
+    },
+    {
+      "node_id": "n_0036",
+      "parent_id": "n_0033",
+      "level": 5,
+      "node_type": "section",
+      "title": "Bailee's particular lien -",
+      "text": "Where the bailee has, in accordance with the purpose of the bailment, rendered any\nservice involving the exercise of labour or skill in respect of the goods bailed he has\nin the absence of a contract to the contrary, a right to retain such goods until he\nreceives due remuneration for the services he has rendered in respect of them. 171. General lien of bankers, factors, wharfinger, attorneys and policy\nbrokers -\nBankers, factor, wharfingers, attorneys of a High Court and policy brokers may, in\nthe absence of a contract to the contrary, retain as a security for a general balance\nof account, any goods bailed to them; but no other person have a right retain, as a\nsecurity for which balance, goods, bailed to them, unless is an express contract to\nthat effect. 172. \"Pledge\", \"Pawnor\", and \"Pawnee\" defined -\nThe bailment of goods as security for payment of a debt or performance of a promise\nis called \"pledge\". The bailor is in this case called \"pawnor\". The bailee is called\n\"pawnee\". 173. Pawnee's right of retainer -\nThe pawnee may retain the goods pledged, not only for payment of the debt or the\nperformance of the promise, but for the interests of the debt, and all necessary\nexpenses incurred by him in respect to the possession or for the preservation of the\ngoods pledged. 174. Pawnee not to retain for debt or promise other than for which goods\npledged - presumption in case of subsequent advances -\nThe pawnee shall not, in the absence of a contract to that effect, retain the goods\npledged for any debt or promise of other than the debtor promise for which they are\npledged; but such contract, in the absence of anything to the contrary, shall be\npresumed in regard to subsequent advances made by the pawnee. 175. Pawnee's right as to extraordinary expenses incurred -\nThe pawnee is entitled to receive from the pawnor extraordinary expenses incurred\nby him for the preservation of the goods pledged. 176. Pawnee's right where pawnor makes default -\nIf the pawnor makes default in payment of the debt, or performance, at the\nstipulated time, or the promise, in respect of which the goods were pledged, the\npawnee may bring as suit against the pawnor upon the debt or promise, and retain\nthe goods pledged as a collateral security; or he may sell the thing pledged, on\ngiving the pawnor reasonable notice of the sale.\nIf the proceeds of such sale are less than the amount due in respect of the debt or\npromise, the pawnor is still liable to pay the balance. If the proceeds of the sale are\ngreater that the amount so due, the pawnee shall pay over the surplus to the\npawnor. 177. Defaulting pawnor's right to redeem -\nIf a time is stipulated for the payment of the debt, or performance of the promise,\nfor which the pledged is made, and the pawnor makes default in payment of the debt\nor performance of the promise at the stipulated time, he may redeem the goods\npledged at any subsequent time before the actual sale of them; but he must, on that\ncase, pay, in addition, any expenses which have arisen from his default. 178. Pledge by mercantile agent -\nWhere a mercantile agent is, with the consent of the owner, in possession of goods\nor the documents of title to goods, any pledge made by him, when acting in the\nordinary course of business of a mercantile agent, shall be as valid as if he were\nexpressly authorised by the owner of the goods to make the same; provided that the\npawnee acts in good faith and has not at the time of the pledge notice that the\npawnor has not authority to pledge.",
+      "start_page": 35,
+      "end_page": 36,
+      "numbering": "170",
+      "children": [
+        "n_0037"
+      ]
+    },
+    {
+      "node_id": "n_0037",
+      "parent_id": "n_0036",
+      "level": 9,
+      "node_type": "explanation",
+      "title": "Explanation : In this section, the expression \"mercantile agent\" and \"documents of",
+      "text": "title\" shall have the meanings assigned to them in the Indian Sale of Goods Act,\n1930 (3 of 1930). 178A. Pledge by person in possession under voidable contract -\nWhen the pawnor has obtained possession of the other goods pledged by him under\na contract voidable under section 19 of section 19A, but the contract has not been\nrescinded at the time of the pledge, the pawnee acquired a goods title to the goods,\nprovided he acts in good faith and without notice of the pawnor's defect of title. 179. Pledge where pawnor has only a limited interest -\nWhere person pledges goods in which he has only a limited interest, the pledge is\nvalid to the extent of that interest. 180. Suit by bailor or bailee against wrong-doer -\nIf a third person wrongfully deprives the bailee of the use of possession of goods\nbailed, or does them any injury, the bailee is entitled to use such remedies as the\nowner might have used in the like case if no bailment has been made; and either the\nbailor or the bailee may bring a suit against a third person for such deprivation or\ninjury. 181. Appointment of relief or compensation obtained by such suit -\nWhatever is obtained by way of relief of compensation in any such suit shall, as\nbetween the bailor and the bailee, be dealt with according to their respective\ninterests.",
+      "start_page": 36,
+      "end_page": 36,
+      "numbering": "In this section, the expression \"mercantile agent\" and \"documents of",
+      "children": []
+    },
+    {
+      "node_id": "n_0038",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "Chapter X Agency, Appointment and authority of agents 182. \"Agent\" and \"principal\" defined -",
+      "text": "An \"agent\" is a person employed to do any act for another, or to represent another\nin dealing with third persons. The person for whom such act is done, or who is so\nrepresented, is called the \"principal\". 183. Who may employ agent -\nAny person who is of the age of majority according to the law to which he is subject,\nand who is of sound mind, may employ an agent. 184. Who may be an agent -\nAs between the principal and third persons, any person may become an agent, but\nno person who is not of the age of majority and sound mind can become an agent,\nso as to be responsible to the principal according to the provisions in that behalf\nherein contained. 185. Consideration not necessary -\nNo consideration is necessary to create an agency; 186. Agent's authority may be expressed or implied -\nThe authority of an agent may be expressed or implied. 187. Definitions of express and implied -\nAn authority is said to be express when it is given by words spoken or written. An\nauthority is said to be implied when it is to be inferred from the circumstances of the\ncase; and things spoken or written, or the ordinary course of dealing, may be\naccounted circumstances of the case. 188. Extent of agent's authority -\nAn agent, having an authority to do an act, has authority do every lawful thing which\nis necessary in order to do so such act.An agent having an authority to carry on a\nbusiness, has authority to do every lawful thing necessary for the purpose, or usually\ndone in the course, of conducting such business. 189. Agent's authority in an emergency -\nAn agent has authority, in an emergency, to do all such acts for the purpose of\nprotecting his principal from loss and would be done by a person or ordinary\nprudence, in his own case, under similar circumstances. 190. When agent cannot delegate -\nAn agent cannot lawful employ another to perform acts which he has expressly or\nimpliedly undertaken to perform personally, unless by the ordinary custom of trade a\nsub-agent may, or, from the nature or agency, a sub-agent must, be employed. 191. \"Sub-agent\" defined -\nA \"sub-agent\" is a person employed by, and acting undue the control of, the original\nagent in the business of the agency. 192. Representation of principal by sub-agent properly appointed -\nWhere a sub-agent is properly appointed, the principal is, so far as regards third\npersons, represented by the sub-agent, and is bound by and responsible for his acts,\nas if he were an agent originally appointed by the principal.Agent's responsibility for\nsub-agent: The agent is responsible to the principal for the acts of the sub-\nagent.Sub-agent's responsibility: The sub-agent is responsible for his acts to the\nagent, but not to the principal, except in cases of fraud, or wilful wrong. 193. Agent's responsibility for sub-agent appointed without -\nauthorityWhere an agent, without having authority to do so, has appointed a person\nto act as a sub-agent stands towards such person in the relation of a principal to an\nagent, and is responsible for his act both to the principal and to third person; the\nprincipal is not represented, by or responsible for the acts of the person so\nemployed, nor is that person responsible to the principal. 194. Relation between principal and person duly appointed by agent to act\nin business of agency -\nWhen an agent, holding an express or implied authority to name another person to\nact for the principal in the business of the agency, has named another person\naccordingly, such person is not a sub-agent, but an agent of the principal for such\npart of the business of the agency as is entrusted to him. 195. Agent's duty in naming such person -\nIn selecting such agent for his principal, an agent is bound to exercise the same\namount of discretion as a man or ordinary prudence would exercise in his own case;\nand, if he does this, he is not responsible to the principal for the acts of negligence of\nthe agent so selected. 196. Right of person as to acts done for him without his authority, effect of\nratification -\nWhere acts are done by one person on behalf of another, but without his knowledge\nor authority, he may elect to ratify or to disown such acts. If he ratifies them, the\nsame effects will follow as if they had been performed by his authority. 197. Ratification may be expressed or implied -\nRatification may be expressed or may be implied in the conduct of the person on\nwhose behalf the acts are done.",
+      "start_page": 37,
+      "end_page": 38,
+      "numbering": "Agency, Appointment and authority of agents 182. \"Agent\" and \"principal\" defined -",
+      "children": [
+        "n_0039",
+        "n_0040",
+        "n_0041",
+        "n_0042",
+        "n_0043"
+      ]
+    },
+    {
+      "node_id": "n_0039",
+      "parent_id": "n_0038",
+      "level": 5,
+      "node_type": "section",
+      "title": "Knowledge requisite for valid ratification -",
+      "text": "No valid ratification can be made by a person whose knowledge of the facts of the\ncase is materially defective. 199. Effect of ratifying unauthorized act forming part of a transaction -\nA person ratifying any unauthorized act done on his behalf ratifies the whole of the\ntransaction of which such act formed a part. 200. Ratification of unauthorized act cannot injure third person -\nAn act done by one person on behalf of another, without such other person's\nauthority, which, if done with authority, would have the effect of subjecting a third\nperson to damages, or of terminating any right or interest of a third person, cannot,\nby ratification, be made to have such effect. 201. Termination of Agency -\nAn agency is terminated by the principal revoking his authority, or by the agent\nrenouncing the business of the agency; or by the business of the agency being\ncompleted; or by either the principal or agent dying or becoming of unsound mind;\nor by the principal being adjudicated an insolvent under the provisions of any Act for\nthe time being in force for the relief of insolvent debtors. 202. Termination of Agency, where agent has an interest in subject-matter -\nWhere the agent has himself an interest in the property which forms the subject-\nmatter of the agency, the agency cannot, in the absence of an express contract, be\nterminated to the prejudice of such interest. 203. When principal may revoke agent's authority -\nThe principal may, save as is otherwise provided by the last preceding section,\nrevoke the authority given to his agent at any time before the authority has been\nexercised so as to bind the principal. 204. Revocation where authority has been partly exercised -\nThe principal cannot revoke the authority given to his agent after the authority has\nbeen partly exercised, so far as regards such acts and obligations as arise from acts\nalready done in the agency. 205. Compensation for revocation by principal, or renunciation by agent -\nWhere there is an express or implied contract that the agency should be continued\nfor any period of time, the principal must make compensation to the agent, or the\nagent to the principal, as the case may be, for any previous revocation or\nrenunciation of the agency without sufficient cause.",
+      "start_page": 39,
+      "end_page": 39,
+      "numbering": "198",
+      "children": []
+    },
+    {
+      "node_id": "n_0040",
+      "parent_id": "n_0038",
+      "level": 5,
+      "node_type": "section",
+      "title": "Notice of revocation or renunciation -",
+      "text": "Reasonable notice must be given of such revocation or renunciation; otherwise the\ndamage thereby resulting to the principal or the agent, as the case may be, must be\nmade good to the one by the other. 207. Revocation and Renunciation may be expressed or implied -\nRevocation and renunciation may be expressed or may be implied in the conduct of\nthe principal or agent respectively. 208. When termination of agent's authority takes effect as to agent, and as\nto third persons -\nThe termination of the authority of an agent does not, so far as regards the agent,\ntake effect before it becomes known to him, or, so far as regards third persons,\nbefore it becomes known to them. 209. Agent's duty on termination o agency by principal's death or insanity -\nWhen an agency is terminated by the principal dying or becoming of unsound mind,\nthe agent is bound to take, on behalf of the representatives of his late principal, all\nreasonable steps for the protection and preservation of the interests entrusted to\nhim. 210. Termination of Sub-agent's authority -\nThe termination of the authority of an agent causes the termination (subject to the\nrules herein contained regarding the termination of an agent's authority) of the\nauthority of all sub-agents appointed by him. 211. Agent's duty in conducting principal's business -\nAn agent is bound to conduct the business of his principal according to the directions\ngiven by the principal, or, in the absence of any such directions, according to the\ncustom which prevails in doing business of the same kind at the place where the\nagent conducts such business. When the agent acts otherwise, if any loss be\nsustained, he must make it good to his principal, and, if any profit accrues, he must\naccount for it. 212. Skill and Diligence required from agent -\nAn agent is bound to conduct the business of the agency with as much skill as is\ngenerally possessed by persons engaged in similar business, unless the principal has\nnotice of his want of skill. The agent is always bound to act with reasonable\ndiligence, and to use such skill as he possesses; and to make compensation to his\nprincipal in respect of the direct consequences of his own neglect, want of skill or\nmisconduct, but not in respect of loss or damage which are indirectly or remotely\ncaused by such neglect, want of skill or misconduct.",
+      "start_page": 40,
+      "end_page": 40,
+      "numbering": "206",
+      "children": []
+    },
+    {
+      "node_id": "n_0041",
+      "parent_id": "n_0038",
+      "level": 5,
+      "node_type": "section",
+      "title": "Agent's accounts -",
+      "text": "An agent is bound to render proper accounts to his principal on demand. 214. Agent's duty of communicate with principal -\nIt is the duty of an agent, in cases of difficulty, to use all reasonable diligence in\ncommunicating with his principal, and in seeking to obtain his instructions. 215. Right to principal when agent deals, on his own account, in business of\nagency without principal's consent -\nIf an agent deals on his own account in the business of the agency, without first\nobtaining the consent of his principal and acquainting him with all material\ncircumstances which have come to his own knowledge on the subject, the principal\nmay repudiate the transaction, if the case shows either that any material fact has\nbeen dishonestly concealed from him by the agent, or that the dealings of the agent\nhave been disadvantageous to him. 216. Principal's right to benefit gained by agent dealing on his own account\nin business of agency -\nIf an agent, without the knowledge of his principal, deals in the business 6f the\nagency on his own account instead of on account of his principal, the principal is\nentitled to claim from the agent any benefit which may have resulted to him from\nthe transaction. 217. Agent's right of retainer out of sums received on principal's account -\nAn agent may retain, out of any sums received on account of the principal in the\nbusiness of the agency, all moneys due to himself in respect of advances made or\nexpenses properly incurred by him in conducting such business, and also such\nremuneration as may be payable to him for acting as agent.\n218 . Agent's duty to pay sums received for principal -\nSubject to such deductions, the agent is bound to pay to his principal all sums\nreceived on his account. 219. When agent's remuneration becomes due -\nIn the absence of any special contract, payment for the performance of any act is not\ndue to the agent until the completion of such act; but an agent may detain moneys\nreceived by him on account of goods sold, although the whole of the goods\nconsigned to him for sale may not have been sold, or although the sale may not be\nactually complete. 220. Agent not entitled to remuneration for business misconducted -\nAn agent who is guilty of misconduct in the business of the agency is not entitled to\nany remuneration in respect of that part of the business which he has misconducted.",
+      "start_page": 41,
+      "end_page": 41,
+      "numbering": "213",
+      "children": []
+    },
+    {
+      "node_id": "n_0042",
+      "parent_id": "n_0038",
+      "level": 5,
+      "node_type": "section",
+      "title": "Agent's lien on principal property -",
+      "text": "In the absence of any contract to the contrary, an agent is entitled to retain goods,\npapers, and other property, whether movable or immovable, of the principal received\nby him, until the amount due to himself for commission, disbursements and services\nin respect of the same has been paid or accounted for to him. 222. Agent to be indemnified against consequences of lawful acts -\nThe employer of an agent is bound to indemnify him against the consequences of all\nlawful acts done by such agent in exercise of the authority conferred upon him. 223. Agent to be indemnified against consequences of acts done in good\nfaith -\nWhere one person employs another to do an act, and the agent does the act in good\nfaith, the employer is liable to indemnify the agent against the consequences of that\nact, though it causes an injury to the rights of third persons 224. Non-Liability of employer of agent to do a Criminal Act -\nWhere one person employs another to do an act which is criminal, the employer is\nnot liable to the agent, either upon an express or an implied promise, to indemnify\nhim against the consequences of that act. 225. Compensation to agent for injury caused by principal's neglect -\nThe principal must make compensation to his agent in respect of injury caused to\nsuch agent by the principal's neglect or want of skill. 226. Enforcement and Consequences of agent's contracts -\nContracts entered into through an agent, and obligations arising from acts done by\nan agent, may be enforced in the same manner, and will have the same legal\nconsequences, as if the contracts had been entered into and the acts done by the\nprincipal in person. 227. Principal how far bound, when agent exceeds authority -\nWhen an agent does more than he is authorised to do, and when the part of what he\ndoes, which is within his authority, can be separated from the part which is beyond\nhis authority, so much only of what he does as is within his authority is binding as\nbetween him and his principal. 228. Principal not bound when excess of agent's authority is not separable -\nWhere an agent does more than he is authorised to do, and what he does beyond\nthe scope of his authority cannot be separated from what is within it, the principal is\nnot bound to recognise the transaction.",
+      "start_page": 42,
+      "end_page": 42,
+      "numbering": "221",
+      "children": []
+    },
+    {
+      "node_id": "n_0043",
+      "parent_id": "n_0038",
+      "level": 5,
+      "node_type": "section",
+      "title": "Consequences of notice given to agent -",
+      "text": "Any notice given to or information obtained by the agent, provided it be given or\nobtained in the course of the business transacted by him for the principal, shall, as\nbetween the principal and third parties, have the same legal consequence as if it had\nbeen given to or obtained by the principal. 230. Agent cannot personally enforce, nor be bound by, contracts on behalf\nof principal -\nIn the absence of any contract to that effect, an agent cannot personally enforce\ncontracts entered into by him on behalf of his principal, nor is he personally bound\nby them.\nPRESUMPTION OF CONTRACT TO THE CONTRARY. -\nSuch a contract shall be presumed to exist in the following cases :- (1) where the contract is made by an agent for the sale or purchase of goods for a\nmerchant resident abroad; (2) where the agent does not disclose the name of his principal; and (3) where the principal, though disclosed, cannot be sued. 231. Rights of Parties to a contract made by agent not disclosed -\nIf an agent makes a contract with a person who neither knows, nor has reason to\nsuspect, that he is an agent, his principal may require the performance of the\ncontract; but the other contracting party has, as against the principal, the same\nrights as he would have had as against the agent if the agent had been the principal.\nIf the principal discloses himself before the contract is completed, the other\ncontracting party may refuse to fulfil the contract, if he can show that, if he had\nknown who was the principal in the contract, or if he had known that the agent was\nnot a principal, he would not have entered into the contract. 232. Performance of contract with agent supposed to be principal -\nWhere one man makes a contract with another, neither knowing nor having\nreasonable ground to suspect that the other is an agent, the principal, if he requires\nthe performance of the contract, can only obtain such performance subject to the\nrights and obligations subsisting between the agent and the other party to the\ncontract. 233. Right of person dealing with agent personally liable -\nIn cases where the agent is personally liable, a person dealing with him may hold\neither him or his principal, or both of them, liable. 234. Consequence of Inducing agent or principal to act on belief that\nprincipal or agent will be held exclusively liable -\nWhen a person who has made a contract with an agent induces the agent to act\nupon the belief that' the Principal only will be held liable, or induces the principal to\nact upon the belief that the agent only will be held liable, he cannot afterwards hold\nliable the agent or principal respectively. 235. Liability of pretended agent -\nA person untruly representing himself to be the authorised agent of another, and\nthereby inducing a third person to deal with him as such agent, is liable, if his\nalleged employer does not ratify his acts, to make compensation to the other in\nrespect of any loss or damage which he has incurred by so dealing. 236. Person falsely contracting as agent not entitled to performance -\nA person with whom a contract has been entered into in the character of agent, is\nnot entitled to require the performance of it if he was in reality acting, not as agent,\nbut on his own account. 237. Liability of principal inducing belief that agent's unauthorized acts\nwere authorized -\nWhen an agent has, without authority, done acts or incurred obligations to third\npersons on behalf of his principal, the principal is bound by such acts or obligations,\nif he has by his words or conduct induced such third persons to believe that such act\nand obligations were within the scope of the agent's authority. 238. Effect, on agreement, of misrepresentation or fraud by agent -\nMisrepresentations made, or frauds committed, by agents acting in the course of\ntheir business for their principals, have the same effect on agreements made by such\nagents as if such misrepresentations or frauds had been made or committed, by the\nprincipals; but misrepresentations made, or frauds, committed, by agents, in matters\nwhich do not fall within their authority, do not affect their principals.",
+      "start_page": 43,
+      "end_page": 44,
+      "numbering": "229",
+      "children": []
+    },
+    {
+      "node_id": "n_0044",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "Chapter XI Of partnership",
+      "text": "239-266 [Rep. By the Indian Partnership Act, 1932 (9 OF 1932), SEC. 73\nAnd Sch. II].",
+      "start_page": 45,
+      "end_page": 45,
+      "numbering": "Of partnership",
+      "children": []
+    },
+    {
+      "node_id": "n_0045",
+      "parent_id": "root",
+      "level": 1,
+      "node_type": "schedule",
+      "title": "Schedule",
+      "text": "Sch. THE THE SCHEDULE Enactments repealed -\n[Repealed by the Repealing and Amending Act, 1914 (10 of 1914) sec. 3 and Sch. II.",
+      "start_page": 45,
+      "end_page": 45,
+      "numbering": "Schedule",
+      "children": []
+    }
+  ],
+  "nested_set": [
+    {
+      "node_id": "n_0001",
+      "left": 2,
+      "right": 3,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0002",
+      "left": 4,
+      "right": 5,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0003",
+      "left": 6,
+      "right": 7,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0005",
+      "left": 9,
+      "right": 10,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0004",
+      "left": 8,
+      "right": 11,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0007",
+      "left": 13,
+      "right": 14,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0006",
+      "left": 12,
+      "right": 15,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0009",
+      "left": 17,
+      "right": 18,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0010",
+      "left": 19,
+      "right": 20,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0012",
+      "left": 22,
+      "right": 23,
+      "depth": 3
+    },
+    {
+      "node_id": "n_0013",
+      "left": 24,
+      "right": 25,
+      "depth": 3
+    },
+    {
+      "node_id": "n_0011",
+      "left": 21,
+      "right": 26,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0014",
+      "left": 27,
+      "right": 28,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0008",
+      "left": 16,
+      "right": 29,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0015",
+      "left": 30,
+      "right": 31,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0017",
+      "left": 33,
+      "right": 34,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0018",
+      "left": 35,
+      "right": 36,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0019",
+      "left": 37,
+      "right": 38,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0020",
+      "left": 39,
+      "right": 40,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0021",
+      "left": 41,
+      "right": 42,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0022",
+      "left": 43,
+      "right": 44,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0016",
+      "left": 32,
+      "right": 45,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0023",
+      "left": 46,
+      "right": 47,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0025",
+      "left": 49,
+      "right": 50,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0026",
+      "left": 51,
+      "right": 52,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0027",
+      "left": 53,
+      "right": 54,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0024",
+      "left": 48,
+      "right": 55,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0029",
+      "left": 57,
+      "right": 58,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0028",
+      "left": 56,
+      "right": 59,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0031",
+      "left": 61,
+      "right": 62,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0032",
+      "left": 63,
+      "right": 64,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0030",
+      "left": 60,
+      "right": 65,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0034",
+      "left": 67,
+      "right": 68,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0035",
+      "left": 69,
+      "right": 70,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0037",
+      "left": 72,
+      "right": 73,
+      "depth": 3
+    },
+    {
+      "node_id": "n_0036",
+      "left": 71,
+      "right": 74,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0033",
+      "left": 66,
+      "right": 75,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0039",
+      "left": 77,
+      "right": 78,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0040",
+      "left": 79,
+      "right": 80,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0041",
+      "left": 81,
+      "right": 82,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0042",
+      "left": 83,
+      "right": 84,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0043",
+      "left": 85,
+      "right": 86,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0038",
+      "left": 76,
+      "right": 87,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0044",
+      "left": 88,
+      "right": 89,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0045",
+      "left": 90,
+      "right": 91,
+      "depth": 1
+    },
+    {
+      "node_id": "root",
+      "left": 1,
+      "right": 92,
+      "depth": 0
+    }
+  ],
+  "warnings": []
+}

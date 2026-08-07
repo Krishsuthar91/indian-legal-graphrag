@@ -23,6 +23,8 @@ from src.config.settings import settings
 # Routes that never require an API key (probes + OpenAPI docs).
 _PUBLIC_PATH_PREFIXES = ("/api/v1/health", "/api/v1/ready", "/api/v1/live")
 _OPTIONAL_AUTH_PATH_PREFIXES = ("/api/v1/check",)
+# Multipart uploads are validated against their own limit inside the endpoint.
+_BODY_SIZE_EXEMPT_PREFIXES = ("/api/v1/documents/upload",)
 
 
 class RateLimitError(Exception):
@@ -109,6 +111,8 @@ class SecurityMiddleware(BaseHTTPMiddleware):
             raise RateLimitError()
 
     async def _enforce_body_size(self, request: Request) -> None:
+        if request.url.path.startswith(_BODY_SIZE_EXEMPT_PREFIXES):
+            return
         content_length = request.headers.get("content-length")
         if (
             content_length

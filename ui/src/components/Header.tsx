@@ -31,6 +31,9 @@ export default function Header({ dark, onToggleDark }: HeaderProps) {
           <NavLink to="/explain" className={linkClass}>
             Explain
           </NavLink>
+          <NavLink to="/upload" className={linkClass}>
+            Upload
+          </NavLink>
           <NavLink to="/provenance" className={linkClass}>
             Provenance
           </NavLink>

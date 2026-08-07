@@ -6,6 +6,7 @@ over the HHGR / vector retrieval layers.
 
 from src.llm.explanation import ExplainabilityEngine
 from src.llm.llm import (
+    GeminiClient,
     LlamaClient,
     LLMClient,
     LLMError,
@@ -40,8 +41,10 @@ from src.llm.provenance import (
 )
 from src.llm.service import (
     QueryService,
+    build_default_corpus,
     build_default_graph,
     build_default_service,
+    get_default_corpus,
     get_default_service,
 )
 
@@ -51,6 +54,7 @@ __all__ = [
     "LLMError",
     "LLMResponse",
     "OpenAICompatClient",
+    "GeminiClient",
     "LlamaClient",
     "MistralClient",
     "QwenClient",
@@ -75,7 +79,9 @@ __all__ = [
     "RetrievalSummary",
     "ProvenanceStore",
     "QueryService",
+    "build_default_corpus",
     "build_default_graph",
     "build_default_service",
+    "get_default_corpus",
     "get_default_service",
 ]

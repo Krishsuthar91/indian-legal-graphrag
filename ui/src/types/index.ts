@@ -116,6 +116,17 @@ export interface ExplainRequest {
   language?: string
 }
 
+export interface DocumentUploadResponse {
+  document_id: string
+  title: string
+  language: string
+  num_pages: number
+  file_name: string
+  nodes_indexed: number
+  collections: Record<string, number>
+  message: string
+}
+
 export interface RecentQuestion {
   query: string
   language: string

@@ -56,3 +56,14 @@ class IngestedDocument(BaseModel):
     language: str
     pages: list[PageData]
     metadata: DocumentMetadata
+
+
+class DocumentUploadResponse(BaseModel):
+    document_id: str
+    title: str
+    language: str
+    num_pages: int
+    file_name: str
+    nodes_indexed: int
+    collections: dict[str, int] = Field(default_factory=dict)
+    message: str = ""

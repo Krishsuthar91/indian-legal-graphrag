@@ -123,8 +123,11 @@ class QueryService:
 # Default service wiring (data directory -> graph -> embeddings -> retriever)
 # ---------------------------------------------------------------------------
 
-_default_lock = threading.Lock()
+_default_lock = threading.RLock()
 _default_service: QueryService | None = None
+_default_graph: InMemoryGraph | None = None
+_default_store: QdrantStore | None = None
+_default_embedding: EmbeddingService | None = None
 
 
 def build_default_graph(data_dir: str | None = None) -> InMemoryGraph:
@@ -134,8 +137,9 @@ def build_default_graph(data_dir: str | None = None) -> InMemoryGraph:
     return graph
 
 
-def build_default_service() -> QueryService:
-    """Build a fully wired QueryService over the project's data/hierarchy corpus."""
+def build_default_corpus() -> tuple[InMemoryGraph, QdrantStore, EmbeddingService]:
+    """Build the graph + vector corpus over data/hierarchy once (thread-safe)."""
+    log.info("qa_service.corpus_build_start")
     graph = build_default_graph()
 
     provider = get_provider(
@@ -148,13 +152,41 @@ def build_default_service() -> QueryService:
         url=settings.QDRANT_URL or None,
         api_key=settings.QDRANT_API_KEY or None,
     )
+    log.info("qa_service.collections_ensure_start", in_memory=settings.QA_INDEX_IN_MEMORY)
     store.ensure_collections()
+    log.info("qa_service.collections_ensure_complete")
+    log.info("qa_service.index_graph_start", nodes=len(graph.all_nodes()))
     HierarchyIndexer(graph, store, embedding_service).index_graph()
+    log.info("qa_service.index_graph_complete")
     log.info(
         "qa_service.indexed",
         nodes=len(graph.all_nodes()),
         points=sum(store.count(c) for c in store.collections),
     )
+    log.info("qa_service.corpus_build_complete")
+    return graph, store, embedding_service
+
+
+def get_default_corpus() -> tuple[InMemoryGraph, QdrantStore, EmbeddingService]:
+    """Return the cached shared corpus used by both QA and document uploads.
+
+    The corpus is built exactly once. A reentrant lock (``RLock``) plus the
+    check-then-act pattern keeps concurrent first calls safe without ever
+    nesting the lock across separate public functions.
+    """
+    global _default_graph, _default_store, _default_embedding
+    if _default_graph is None:
+        log.info("corpus.load.start")
+        with _default_lock:
+            if _default_graph is None:
+                _default_graph, _default_store, _default_embedding = build_default_corpus()
+        log.info("corpus.load.complete")
+    return _default_graph, _default_store, _default_embedding
+
+
+def build_default_service() -> QueryService:
+    """Build a fully wired QueryService over the project's data/hierarchy corpus."""
+    graph, store, embedding_service = get_default_corpus()
 
     vector_retriever = VectorRetriever(graph, store, embedding_service)
     engine = ExplainabilityEngine(
@@ -174,9 +206,17 @@ def build_default_service() -> QueryService:
 
 
 def get_default_service() -> QueryService:
-    """Return a lazily-built, cached default QueryService (thread-safe)."""
+    """Return a lazily-built, cached default QueryService (thread-safe).
+
+    Never nests ``_default_lock``: the corpus is built first (under the corpus
+    lock only), then the service is built using the already-cached corpus. The
+    inner ``get_default_corpus()`` call inside ``build_default_service()``
+    takes the fast path (corpus present), so no lock is acquired a second time
+    in the same thread.
+    """
     global _default_service
     if _default_service is None:
+        get_default_corpus()
         with _default_lock:
             if _default_service is None:
                 _default_service = build_default_service()

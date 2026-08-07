@@ -26,8 +26,16 @@ ENV_FILES: dict[str, str] = {
 
 # Secrets that MUST be present when a real LLM provider is configured.
 CONDITIONAL_SECRETS = {
-    "LLM_PROVIDER": "LLM_API_KEY",
     "API_KEY_AUTH_ENABLED": "API_KEY",
+}
+
+# Which secret each non-offline LLM provider requires.
+LLM_PROVIDER_SECRETS: dict[str, str] = {
+    "openai": "LLM_API_KEY",
+    "llama": "LLM_API_KEY",
+    "mistral": "LLM_API_KEY",
+    "qwen": "LLM_API_KEY",
+    "gemini": "GEMINI_API_KEY",
 }
 
 # Providers that work without a secret (offline / local).
@@ -86,12 +94,16 @@ def validate_production(env: dict[str, str] | None = None) -> list[str]:
     values = env if env is not None else load_environment("production")
     errors: list[str] = []
 
+    provider = (values.get("LLM_PROVIDER") or "mock").strip().lower()
+    if provider not in _OFFLINE_PROVIDERS:
+        secret = LLM_PROVIDER_SECRETS.get(provider, "LLM_API_KEY")
+        if not values.get(secret):
+            errors.append(
+                f"LLM_PROVIDER is {provider!r} but required secret {secret} is empty"
+            )
+
     for flag, secret in CONDITIONAL_SECRETS.items():
-        if flag == "LLM_PROVIDER":
-            provider = (values.get("LLM_PROVIDER") or "mock").strip().lower()
-            if provider in _OFFLINE_PROVIDERS:
-                continue
-        elif not _truthy(values.get(flag, "false")):
+        if not _truthy(values.get(flag, "false")):
             continue
         if not values.get(secret):
             errors.append(

@@ -1,6 +1,7 @@
 """Tests for the vector/graph hybrid retriever."""
 
 import re
+import time
 
 import pytest
 
@@ -134,12 +135,21 @@ class TestDenseSearch:
         hits = _retriever(graph, store, service).cross_lingual_search("performance of contracts")
         assert "s4" in [h.node_id for h in hits]
 
-    def test_language_filter(self, graph, store, service):
+    def test_language_filter_falls_back_when_no_matches(self, graph, store, service):
         _index(graph, store, service)
         hits = _retriever(graph, store, service).dense_search(
             "performance of contracts", language="xx"
         )
-        assert hits == []
+        assert hits
+        assert "s4" in [h.node_id for h in hits]
+
+    def test_language_filter_restricts_matching_documents(self, graph, store, service):
+        _index(graph, store, service)
+        hits = _retriever(graph, store, service).dense_search(
+            "performance of contracts", language="en"
+        )
+        assert hits
+        assert "s4" in [h.node_id for h in hits]
 
 
 class TestCrossLingual:
@@ -175,6 +185,38 @@ class TestCrossLingual:
         node_ids = [h.node_id for h in hits]
         assert "s_en" in node_ids
         assert "s_hi" in node_ids
+
+    def test_hindi_query_with_matching_filter(self, xl_retriever):
+        hits = xl_retriever.cross_lingual_search(
+            "अनुबंध प्रदर्शन", top_k=5, language="hi"
+        )
+        assert "s_hi" in [h.node_id for h in hits]
+
+    def test_hindi_query_against_english_corpus_with_hindi_filter(self):
+        """Reported bug: Hindi query + language=hi against an English corpus."""
+        store = QdrantStore(dim=64, in_memory=True)
+        store.ensure_collections()
+        g = InMemoryGraph()
+        g.create_node("Document", "doc_en", {"document_id": "doc_en", "language": "en"})
+        g.create_node("Section", "s_contract", {
+            "title": "Definitions", "numbering": "2", "hierarchy_level": 5,
+            "text": "contract means an agreement enforceable by law.",
+        })
+        g.create_node("Section", "s_perf", {
+            "title": "Performance of contracts", "numbering": "4", "hierarchy_level": 5,
+            "text": "Performance of contracts.",
+        })
+        g.create_edge("s_contract", "doc_en", "PART_OF")
+        g.create_edge("s_perf", "doc_en", "PART_OF")
+        service = EmbeddingService(provider=CrossLingualProvider(dim=64))
+        HierarchyIndexer(g, store, service).index_graph()
+        retriever = VectorRetriever(g, store, service)
+        try:
+            hits = retriever.dense_search("अनुबंध प्रदर्शन", top_k=5, language="hi")
+            assert hits
+            assert any(h.node_id in ("s_contract", "s_perf") for h in hits)
+        finally:
+            store.close()
 
     def test_monolingual_provider_does_not_cross_match(self):
         store = QdrantStore(dim=64, in_memory=True)
@@ -312,3 +354,18 @@ class TestWeights:
             "performance of contracts", top_k=5, weights={"graph": 1.0}
         )]
         assert dense_ranked != graph_ranked or dense_ranked[:1] != graph_ranked[:1]
+
+
+def test_unreachable_qdrant_fails_fast_instead_of_hanging():
+    """An unreachable Qdrant server must error quickly, never hang forever."""
+    store = QdrantStore(
+        dim=32,
+        in_memory=False,
+        url="http://127.0.0.1:1",
+        timeout=1.0,
+    )
+    start = time.perf_counter()
+    with pytest.raises(Exception):
+        store.ensure_collections()
+    elapsed = time.perf_counter() - start
+    assert elapsed < 5
