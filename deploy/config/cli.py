@@ -36,7 +36,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     values = load_environment(args.env)
-    errors = validate_production(values)
+    errors = validate_production(values, profile=args.env)
     if args.json:
         print(json.dumps({"valid": not errors, "errors": errors}, indent=2))
     else:

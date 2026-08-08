@@ -41,11 +41,30 @@ def test_env_vars_override_file(clean_env, monkeypatch):
 
 
 def test_validate_development_passes(clean_env):
-    # The committed dev template keeps secrets empty (a developer fills them
-    # in locally); model that here so the profile validates as configured.
+    # The committed dev template keeps secrets empty/placeholder; development
+    # validation must pass without a real key (CI has no committed secret).
     values = load_environment("development")
-    values["NVIDIA_API_KEY"] = "test-key"
-    assert validate_production(values) == []
+    assert validate_production(values, profile="development") == []
+
+
+def test_validate_development_passes_with_placeholder_key(clean_env):
+    values = load_environment("development")
+    values["NVIDIA_API_KEY"] = "YOUR_NVIDIA_API_KEY_HERE"
+    assert validate_production(values, profile="development") == []
+
+
+def test_validate_production_fails_with_placeholder_key(clean_env):
+    values = load_environment("production")
+    values["NVIDIA_API_KEY"] = "YOUR_NVIDIA_API_KEY_HERE"
+    errors = validate_production(values, profile="production")
+    assert any("NVIDIA_API_KEY" in e for e in errors)
+
+
+def test_validate_production_passes_with_real_key(clean_env):
+    values = load_environment("production")
+    values["NVIDIA_API_KEY"] = "nvapi-real-key"
+    errors = validate_production(values, profile="production")
+    assert not any("NVIDIA_API_KEY" in e for e in errors)
 
 
 def test_validate_production_fails_without_llm_key(clean_env):

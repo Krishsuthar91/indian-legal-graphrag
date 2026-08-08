@@ -42,6 +42,25 @@ LLM_PROVIDER_SECRETS: dict[str, str] = {
 # Providers that work without a secret (offline / local).
 _OFFLINE_PROVIDERS = {"", "mock", "offline"}
 
+# Profiles whose committed templates may ship with placeholder secrets. The
+# real key is filled in locally or injected at runtime (env_file / secrets).
+_PLACEHOLDER_OK_PROFILES = {"development", "docker", "test"}
+
+# Substrings that identify a template placeholder rather than a real secret.
+_PLACEHOLDER_MARKERS = (
+    "your_",
+    "your-",
+    "your ",
+    "change-me",
+    "change_me",
+    "changeme",
+    "placeholder",
+    "example",
+    "xxx",
+    "todo",
+    "insert ",
+)
+
 DEFAULTS: dict[str, str] = {
     "APP_ENV": "development",
     "APP_NAME": "explaintool",
@@ -86,21 +105,47 @@ def load_environment(env: str = "production") -> dict[str, str]:
     return values
 
 
-def validate_production(env: dict[str, str] | None = None) -> list[str]:
-    """Return a list of missing/invalid secrets for production startup.
+def _is_placeholder(value: str | None) -> bool:
+    """True when ``value`` is empty or an obvious template placeholder.
+
+    Committed templates (e.g. ``.env.development``) keep secrets blank or use
+    ``YOUR_...`` / ``change-me`` markers. A placeholder is never a real key.
+    """
+    text = (value or "").strip().lower()
+    if not text:
+        return True
+    return any(marker in text for marker in _PLACEHOLDER_MARKERS)
+
+
+def validate_production(
+    env: dict[str, str] | None = None,
+    *,
+    profile: str | None = None,
+) -> list[str]:
+    """Return a list of missing/invalid secrets for the target environment.
 
     Empty list means the environment is safe to start. Never raise inside
     health probes — the entrypoint decides whether to fail fast.
+
+    ``profile`` controls how strictly provider secrets are required. For
+    placeholder-tolerant profiles (development/docker/test) an empty or
+    placeholder secret is accepted — CI can validate templates without a
+    committed key. Production still fails fast when the real secret is missing.
+    When ``profile`` is None it is inferred from ``APP_ENV``, defaulting to
+    production for maximum safety.
     """
     values = env if env is not None else load_environment("production")
+    profile = (profile or values.get("APP_ENV") or "production").strip().lower()
+    require_secrets = profile not in _PLACEHOLDER_OK_PROFILES
     errors: list[str] = []
 
     provider = (values.get("LLM_PROVIDER") or "mock").strip().lower()
     if provider not in _OFFLINE_PROVIDERS:
         secret = LLM_PROVIDER_SECRETS.get(provider, "LLM_API_KEY")
-        if not values.get(secret):
+        if require_secrets and _is_placeholder(values.get(secret)):
             errors.append(
-                f"LLM_PROVIDER is {provider!r} but required secret {secret} is empty"
+                f"LLM_PROVIDER is {provider!r} but required secret {secret} "
+                "is empty or a placeholder"
             )
 
     for flag, secret in CONDITIONAL_SECRETS.items():

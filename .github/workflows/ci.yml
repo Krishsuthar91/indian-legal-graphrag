@@ -102,4 +102,8 @@ jobs:
           fi
           echo "OK: production validation fails fast as expected"
       - name: Validate development profile
+        env:
+          # Injected when the repo secret is configured; validation still
+          # passes without it because development templates allow placeholders.
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
         run: python -m deploy.config.cli validate --env development
