@@ -1,5 +1,7 @@
 """Tests for the Module 9 health probe endpoints."""
 
+from src.config.settings import settings
+
 
 def test_liveness(client):
     resp = client.get("/api/v1/live")
@@ -9,12 +11,14 @@ def test_liveness(client):
     assert "version" in data
 
 
-def test_check_llm_with_mock_provider(client):
+def test_check_llm_with_mock_provider(client, monkeypatch):
+    """The LLM probe must stay offline — never dial a real provider with a test key."""
+    monkeypatch.setattr(settings, "LLM_PROVIDER", "mock")
     resp = client.get("/api/v1/check/llm")
     assert resp.status_code == 200
     data = resp.json()
     assert data["service"] == "llm"
-    assert "status" in data
+    assert data["status"] == "ok"
     assert "latency_ms" in data
 
 

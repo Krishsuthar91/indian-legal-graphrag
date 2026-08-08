@@ -60,8 +60,13 @@ class QueryService:
         language: str | None = None,
         temperature: float | None = None,
         max_tokens: int | None = None,
+        deadline: float | None = None,
     ) -> AnswerResult:
-        """Run the full pipeline: retrieve -> explain -> prompt -> generate -> store."""
+        """Run the full pipeline: retrieve -> explain -> prompt -> generate -> store.
+
+        ``deadline`` is a monotonic-clock timestamp bounding the LLM call
+        (including its retries); the API layer passes the QA request deadline.
+        """
         query = (query or "").strip()
         if not query:
             raise ValueError("query must not be empty")
@@ -76,6 +81,7 @@ class QueryService:
             messages,
             temperature=temperature if temperature is not None else settings.LLM_TEMPERATURE,
             max_tokens=max_tokens if max_tokens is not None else settings.LLM_MAX_TOKENS,
+            deadline=deadline,
         )
         duration_ms = round((time.perf_counter() - start) * 1000.0, 2)
 

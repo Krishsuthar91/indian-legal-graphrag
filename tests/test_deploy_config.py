@@ -31,7 +31,7 @@ def test_env_files_exist():
 def test_load_development_profile(clean_env):
     values = load_environment("development")
     assert values["APP_ENV"] == "development"
-    assert values["LLM_PROVIDER"] == "gemini"
+    assert values["LLM_PROVIDER"] == "nvidia"
 
 
 def test_env_vars_override_file(clean_env, monkeypatch):
@@ -41,14 +41,17 @@ def test_env_vars_override_file(clean_env, monkeypatch):
 
 
 def test_validate_development_passes(clean_env):
+    # The committed dev template keeps secrets empty (a developer fills them
+    # in locally); model that here so the profile validates as configured.
     values = load_environment("development")
+    values["NVIDIA_API_KEY"] = "test-key"
     assert validate_production(values) == []
 
 
 def test_validate_production_fails_without_llm_key(clean_env):
     values = load_environment("production")
     errors = validate_production(values)
-    assert any("LLM_API_KEY" in e for e in errors)
+    assert any("API_KEY" in e for e in errors)
 
 
 def test_validate_requires_api_key_when_auth_enabled(clean_env):

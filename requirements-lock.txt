@@ -1,11 +1,12 @@
 # Explaintool evaluation lock — pinned for offline reproducibility (Python 3.11+)
-# Regenerate with: pip freeze | grep -Ei '^(numpy|matplotlib|pandas|reportlab|scikit-learn|qdrant-client|pytest|fastapi|uvicorn|pydantic|pydantic-settings|python-dotenv|structlog|python-json-logger|httpx|pdfplumber|python-docx|pymupdf|Pillow|pytesseract|langdetect|neo4j|ruff)='
+# Regenerate with: pip freeze | grep -Ei '^(numpy|matplotlib|pandas|reportlab|scikit-learn|qdrant-client|pytest|fastapi|uvicorn|pydantic|pydantic-settings|python-dotenv|python-multipart|structlog|python-json-logger|httpx|pdfplumber|python-docx|pymupdf|Pillow|pytesseract|langdetect|neo4j|ruff)='
 # Last verified against a Python 3.14.5 environment on Windows.
 
 fastapi==0.141.1
 uvicorn[standard]==0.52.0
 pydantic==2.13.4
 pydantic-settings==2.14.2
+python-multipart==0.0.32
 python-dotenv==1.2.2
 structlog==26.1.0
 python-json-logger>=2.0.7

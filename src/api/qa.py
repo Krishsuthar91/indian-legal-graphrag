@@ -12,6 +12,7 @@ guarantees a request always returns JSON instead of hanging the event loop.
 from __future__ import annotations
 
 import asyncio
+import time
 import traceback
 from collections.abc import Callable
 from dataclasses import asdict
@@ -21,7 +22,15 @@ from fastapi import APIRouter, HTTPException
 
 from src.config.logging_config import get_logger
 from src.config.settings import settings
-from src.llm.llm import RateLimitError
+from src.llm.llm import (
+    LLMAuthenticationError,
+    LLMConnectivityError,
+    LLMNotFoundError,
+    LLMPermissionError,
+    LLMProviderError,
+    LLMTimeoutError,
+    RateLimitError,
+)
 from src.llm.schemas import ExplainRequest, ExplanationResponse, QueryRequest, QueryResponse
 from src.llm.service import QueryService, get_default_service
 from src.utils.exceptions import AppException, NotFoundException, ValidationException
@@ -29,6 +38,10 @@ from src.utils.exceptions import AppException, NotFoundException, ValidationExce
 log = get_logger("qa_api")
 
 router = APIRouter(tags=["qa"])
+
+# The LLM is given slightly less than the outer request timeout so that a
+# deadline-hit (clean 504) wins before the blanket asyncio.wait_for (500).
+_LLM_DEADLINE_MARGIN_SECONDS = 1.0
 
 # Overridable in tests to avoid building the full corpus service.
 service_factory: Callable[[], QueryService] = get_default_service
@@ -71,13 +84,23 @@ def _query_response(result) -> QueryResponse:
 
 
 def _run_answer(req: QueryRequest):
-    """Blocking QA work — runs off the event loop (may call Qdrant + LLM)."""
+    """Blocking QA work — runs off the event loop (may call Qdrant + LLM).
+
+    The LLM deadline is the request timeout minus a small margin, so a slow or
+    overloaded provider produces a clean 504 (deadline exceeded) instead of
+    the outer ``asyncio.wait_for`` 500. Retrieval (explain) happens before the
+    deadline starts mattering — it is typically well under a second.
+    """
+    deadline = time.monotonic() + max(
+        0.5, settings.QA_REQUEST_TIMEOUT_SECONDS - _LLM_DEADLINE_MARGIN_SECONDS
+    )
     return service_factory().answer(
         query=req.query,
         top_k=req.top_k,
         language=req.language,
         temperature=req.temperature,
         max_tokens=req.max_tokens,
+        deadline=deadline,
     )
 
 
@@ -135,6 +158,64 @@ async def _dispatch(fn, *args) -> Any:
             retry_after=exc.retry_after,
             details=exc.provider_body or str(exc),
             quota_exhausted=exc.quota_exhausted,
+        ) from exc
+    except LLMTimeoutError as exc:
+        log.error(
+            "qa.llm_timeout",
+            fn=fn.__name__,
+            timeout_seconds=exc.timeout_seconds,
+            deadline_margin=_LLM_DEADLINE_MARGIN_SECONDS,
+            error=str(exc),
+        )
+        raise HTTPException(
+            status_code=504,
+            detail=(
+                "The LLM provider did not respond within "
+                f"{exc.timeout_seconds:.1f}s. It may be slow or overloaded — "
+                "please retry in a moment."
+            ),
+        ) from exc
+    except LLMConnectivityError as exc:
+        log.error("qa.llm_connectivity", fn=fn.__name__, error=str(exc))
+        raise HTTPException(
+            status_code=502,
+            detail="The LLM provider endpoint could not be reached. "
+            "Please check network connectivity and try again.",
+        ) from exc
+    except LLMAuthenticationError as exc:
+        log.error("qa.llm_auth", fn=fn.__name__, error=str(exc))
+        raise HTTPException(
+            status_code=502,
+            detail="The LLM provider rejected the API key (HTTP 401). "
+            "Please check the configured provider key.",
+        ) from exc
+    except LLMPermissionError as exc:
+        log.error("qa.llm_permission", fn=fn.__name__, error=str(exc))
+        raise HTTPException(
+            status_code=502,
+            detail="The LLM provider denied access (HTTP 403). The API key "
+            "may not have access to the configured model.",
+        ) from exc
+    except LLMNotFoundError as exc:
+        log.error("qa.llm_not_found", fn=fn.__name__, error=str(exc))
+        raise HTTPException(
+            status_code=502,
+            detail="The LLM model or endpoint was not found (HTTP 404). "
+            "Please check the configured model and base URL.",
+        ) from exc
+    except LLMProviderError as exc:
+        log.error(
+            "qa.llm_provider_error",
+            fn=fn.__name__,
+            http_status=exc.http_status,
+            error=str(exc),
+        )
+        raise HTTPException(
+            status_code=502,
+            detail=(
+                "The LLM provider returned an error "
+                f"(HTTP {exc.http_status or 'unknown'}). Please try again."
+            ),
         ) from exc
     except Exception as exc:
         log.exception("qa.request_error", fn=fn.__name__, error=str(exc))

@@ -2,7 +2,8 @@
 
 
 from src.knowledge_graph.neo4j_driver import InMemoryGraph
-from src.llm.explanation import ExplainabilityEngine
+from src.llm.explanation import ExplainabilityEngine, _Signal
+from src.retrieval.query import parse_query
 from tests.qa_helpers import build_engine, build_graph
 
 
@@ -118,6 +119,91 @@ class TestCounterAuthority:
         assert result.counter_authorities == []
         assert result.validity.has_conflicts is False
         assert result.validity.is_valid is True
+
+
+class TestEvidenceTextResolution:
+    """Regression: ranked nodes with empty text must resolve to text-bearing
+    descendants (e.g. a Section supplies the text of an empty Document wrapper)
+    so the evidence handed to the LLM is never a bare title."""
+
+    def test_ranked_node_with_empty_text_resolves_to_best_descendant(self):
+        engine = build_engine()
+        parsed = parse_query("performance of contracts")
+        node, resolved_id = engine._resolve_evidence_node("doc1", parsed)
+        assert resolved_id == "s4"
+        assert (node.get("text") or "").strip()
+
+    def test_node_with_text_resolves_to_itself(self):
+        engine = build_engine()
+        parsed = parse_query("performance of contracts")
+        node, resolved_id = engine._resolve_evidence_node("s4", parsed)
+        assert resolved_id == "s4"
+        assert node["text"].strip()
+
+    def test_all_evidence_blocks_carry_text(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts")
+        assert result.evidence
+        assert all(ev.text.strip() for ev in result.evidence)
+        assert all(ev.snippet.strip() for ev in result.evidence)
+
+    def test_graph_only_evidence_blocks_carry_text(self):
+        graph = build_graph()
+        engine = ExplainabilityEngine(graph, vector_retriever=None)
+        result = engine.explain("performance of contracts")
+        assert result.evidence
+        assert all(ev.text.strip() for ev in result.evidence)
+
+    def test_cycle_in_hierarchy_does_not_hang(self):
+        """Regression: a PART_OF cycle (malformed/merged data) must terminate
+        instead of looping forever in the descendant resolution walk."""
+        g = InMemoryGraph()
+        g.create_node("Document", "docA", {"title": "DOC A", "language": "en"})
+        g.create_node(
+            "Section",
+            "secA",
+            {
+                "title": "Definitions",
+                "numbering": "2",
+                "text": "contract means an agreement enforceable by law.",
+            },
+        )
+        g.create_edge("secA", "docA", "PART_OF")
+        g.create_edge("docA", "secA", "PART_OF")
+        engine = ExplainabilityEngine(g, vector_retriever=None)
+        parsed = parse_query("contract definitions")
+        node, resolved_id = engine._resolve_evidence_node("docA", parsed)
+        assert resolved_id == "secA"
+        assert (node.get("text") or "").strip()
+
+    def test_duplicate_resolved_descendants_are_deduplicated(self):
+        """Two empty-text wrappers sharing the same best descendant must not
+        produce duplicate evidence blocks."""
+        g = InMemoryGraph()
+        g.create_node("Document", "docA", {"title": "DOC A", "language": "en"})
+        g.create_node("Chapter", "chA", {"title": "CH I", "hierarchy_level": 4})
+        g.create_node("Chapter", "chB", {"title": "CH II", "hierarchy_level": 4})
+        g.create_node(
+            "Section",
+            "secA",
+            {
+                "title": "Definitions",
+                "numbering": "2",
+                "text": "contract means an agreement enforceable by law.",
+            },
+        )
+        g.create_edge("chA", "docA", "PART_OF")
+        g.create_edge("chB", "docA", "PART_OF")
+        g.create_edge("secA", "chA", "PART_OF")
+        g.create_edge("secA", "chB", "PART_OF")
+        engine = ExplainabilityEngine(g, vector_retriever=None)
+        parsed = parse_query("contract definitions")
+        ids = ["docA", "chA", "chB"]
+        signals = {nid: _Signal(dense=0.0, graph=0.1, hierarchy=0.0) for nid in ids}
+        evidence = engine._build_evidence(ids, signals, parsed)
+        assert len(evidence) == 1
+        assert evidence[0].node_id == "secA"
+        assert evidence[0].text.strip()
 
 
 class TestConfiguration:

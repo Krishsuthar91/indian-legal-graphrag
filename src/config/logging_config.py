@@ -139,6 +139,11 @@ def setup_logging(level: str = "INFO") -> None:
         handler.setFormatter(file_formatter)
         root_logger.addHandler(handler)
 
+    # pdfminer/pdfplumber emit per-token DEBUG records; at DEBUG app level
+    # these flood every sink and slow text extraction ~15x. Keep them quiet.
+    for noisy in ("pdfminer", "pdfplumber"):
+        logging.getLogger(noisy).setLevel(logging.WARNING)
+
 
 def get_logger(name: str) -> structlog.stdlib.BoundLogger:
     """Get a bound logger instance routed to a channel by its name."""

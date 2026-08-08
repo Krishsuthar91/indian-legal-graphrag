@@ -15,6 +15,7 @@ from dataclasses import dataclass
 from src.config.logging_config import get_logger
 from src.config.settings import settings
 from src.embeddings.retriever import DEFAULT_HYBRID_WEIGHTS
+from src.knowledge_graph.traversal import get_children
 from src.llm.provenance import (
     Confidence,
     CounterAuthority,
@@ -30,6 +31,7 @@ from src.llm.provenance import (
 from src.retrieval.context import get_ancestor_chain, propagate_hierarchy
 from src.retrieval.query import parse_query
 from src.retrieval.ranker import retrieve
+from src.retrieval.scorer import citation_score, text_score
 
 log = get_logger("explanation")
 
@@ -194,7 +196,7 @@ class ExplainabilityEngine:
             )
         )
 
-        evidence = self._build_evidence(ranked_ids, signals)
+        evidence = self._build_evidence(ranked_ids, signals, parsed)
         paths = self._build_paths(evidence)
         citations = self._build_citations(evidence)
         counter = self._detect_counter_authorities(evidence)
@@ -292,18 +294,25 @@ class ExplainabilityEngine:
     # -- evidence assembly -------------------------------------------------
 
     def _build_evidence(
-        self, ranked_ids: list[str], signals: dict[str, _Signal]
+        self,
+        ranked_ids: list[str],
+        signals: dict[str, _Signal],
+        parsed=None,
     ) -> list[Evidence]:
         evidence: list[Evidence] = []
+        seen: set[str] = set()
         for node_id in ranked_ids:
-            node = self.graph.get_node(node_id)
+            node, resolved_id = self._resolve_evidence_node(node_id, parsed)
             if not node:
                 continue
+            if resolved_id in seen:
+                continue
+            seen.add(resolved_id)
             text = node.get("text", "") or ""
             sig = signals[node_id]
             evidence.append(
                 Evidence(
-                    node_id=node_id,
+                    node_id=resolved_id,
                     title=node.get("title", ""),
                     text=text,
                     label=node.get("label", ""),
@@ -316,11 +325,59 @@ class ExplainabilityEngine:
                     hierarchy_score=round(sig.hierarchy, 4),
                     final_score=round(sig.final, 4),
                     sources=self._active_signals(sig),
-                    path=self._root_to_node(node_id),
+                    path=self._root_to_node(resolved_id),
                     snippet=text[:SNIPPET_CHARS],
                 )
             )
         return evidence
+
+    def _resolve_evidence_node(self, node_id: str, parsed) -> tuple[dict | None, str]:
+        """Return the node to surface as evidence for ``node_id``.
+
+        If the ranked node itself carries text it is used as-is. Otherwise the
+        descendant subtree is walked breadth-first and the text-bearing
+        descendant with the strongest lexical/citation match against the parsed
+        query is chosen — e.g. a Section supplies the text for an otherwise
+        empty-text parent Document node. The ranked node's fused scores are kept.
+        """
+        node = self.graph.get_node(node_id)
+        if not node:
+            return None, node_id
+        if (node.get("text") or "").strip():
+            return node, node_id
+
+        best: dict | None = None
+        best_id: str = node_id
+        best_key: tuple[float, float, int] | None = None
+        visited: set[str] = {node_id}
+        frontier = [node_id]
+        while frontier:
+            nxt: list[str] = []
+            for current in frontier:
+                for child in get_children(self.graph, current):
+                    child_id = child["node_id"]
+                    if child_id in visited:
+                        continue
+                    visited.add(child_id)
+                    child_node = self.graph.get_node(child_id)
+                    if not child_node:
+                        continue
+                    if (child_node.get("text") or "").strip():
+                        if parsed is not None:
+                            key = (
+                                text_score(child_node, parsed),
+                                citation_score(child_node, parsed),
+                                len(child_node.get("text", "")),
+                            )
+                        else:
+                            key = (0.0, 0.0, len(child_node.get("text", "")))
+                        if best_key is None or key > best_key:
+                            best = child_node
+                            best_id = child_node["node_id"]
+                            best_key = key
+                    nxt.append(child_id)
+            frontier = nxt
+        return best, best_id
 
     @staticmethod
     def _active_signals(sig: _Signal) -> list[str]:

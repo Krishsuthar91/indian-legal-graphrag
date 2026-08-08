@@ -149,6 +149,33 @@ def test_post_query_llm_quota_returns_clean_429(client, monkeypatch):
     assert elapsed < 2
 
 
+def test_post_query_nvidia_quota_returns_provider_neutral_429(client, monkeypatch):
+    """Requirement: NVIDIA quota exhaustion surfaces the NVIDIA provider name."""
+    from src.llm.llm import RateLimitError
+
+    class NvidiaQuotaExhausted:
+        def answer(self, **kwargs):
+            raise RateLimitError(
+                "LLM rate limit / quota exceeded",
+                status_code=429,
+                quota_exhausted=True,
+                retry_after=7.0,
+                provider="nvidia",
+                provider_body=(
+                    '{"error":{"message":"Request failed with status code 429"}}'
+                ),
+            )
+
+    monkeypatch.setattr(qa_api, "service_factory", lambda: NvidiaQuotaExhausted())
+    resp = client.post("/api/v1/query", json={"query": "performance of contracts"})
+    assert resp.status_code == 429
+    body = resp.json()
+    assert body["error"] == "Nvidia quota exceeded"
+    assert body["provider"] == "nvidia"
+    assert body["retry_after"] == 7.0
+    assert "Traceback" not in resp.text
+
+
 def test_post_query_llm_rate_limit_returns_429_without_retry_after(client, monkeypatch):
     """Non-quota throttling also returns 429, omitting retry_after when unknown."""
     from src.llm.llm import RateLimitError
@@ -203,3 +230,94 @@ def test_post_query_hang_returns_500_within_bound(client, monkeypatch):
     assert resp.status_code == 500
     assert "timed out" in resp.json()["detail"].lower()
     assert elapsed < 5
+
+
+def test_post_query_llm_timeout_returns_clean_504(client, monkeypatch):
+    """Requirement: a provider read timeout surfaces as a clean HTTP 504 JSON."""
+    from src.llm.llm import LLMTimeoutError
+
+    class TimeoutLLM:
+        def answer(self, **kwargs):
+            time.sleep(0.3)
+            raise LLMTimeoutError("LLM inference timed out", timeout_seconds=25.0)
+
+    monkeypatch.setattr(qa_api, "service_factory", lambda: TimeoutLLM())
+    start = time.perf_counter()
+    resp = client.post("/api/v1/query", json={"query": "performance of contracts"})
+    elapsed = time.perf_counter() - start
+
+    assert resp.status_code == 504
+    body = resp.json()
+    assert "slow or overloaded" in body["detail"].lower()
+    assert "Traceback" not in resp.text
+    assert elapsed < 2
+
+
+def test_post_query_llm_auth_returns_clean_502(client, monkeypatch):
+    """Requirement: an invalid NVIDIA key surfaces as a clean HTTP 502 JSON."""
+    from src.llm.llm import LLMAuthenticationError
+
+    class AuthFailed:
+        def answer(self, **kwargs):
+            raise LLMAuthenticationError("LLM authentication failed (HTTP 401)")
+
+    monkeypatch.setattr(qa_api, "service_factory", lambda: AuthFailed())
+    resp = client.post("/api/v1/query", json={"query": "performance of contracts"})
+    assert resp.status_code == 502
+    body = resp.json()
+    assert "api key" in body["detail"].lower()
+    assert "Traceback" not in resp.text
+
+
+def test_post_query_llm_connectivity_returns_clean_502(client, monkeypatch):
+    from src.llm.llm import LLMConnectivityError
+
+    class Unreachable:
+        def answer(self, **kwargs):
+            raise LLMConnectivityError("LLM request failed: connection refused")
+
+    monkeypatch.setattr(qa_api, "service_factory", lambda: Unreachable())
+    resp = client.post("/api/v1/query", json={"query": "performance of contracts"})
+    assert resp.status_code == 502
+    assert "Traceback" not in resp.text
+
+
+def test_post_query_llm_timeout_preferred_over_generic_hang(client, monkeypatch):
+    """A typed timeout raised just before the outer bound must win as 504."""
+    from src.llm.llm import LLMTimeoutError
+
+    class LateTimeout:
+        def answer(self, **kwargs):
+            time.sleep(0.7)
+            raise LLMTimeoutError("deadline exceeded", timeout_seconds=1.0)
+
+    monkeypatch.setattr(settings, "QA_REQUEST_TIMEOUT_SECONDS", 1.0)
+    monkeypatch.setattr(qa_api, "service_factory", lambda: LateTimeout())
+    start = time.perf_counter()
+    resp = client.post("/api/v1/query", json={"query": "performance of contracts"})
+    elapsed = time.perf_counter() - start
+
+    assert resp.status_code == 504
+    assert "Traceback" not in resp.text
+    assert elapsed < 2
+
+
+def test_run_answer_bounds_llm_by_request_deadline(monkeypatch):
+    """The LLM deadline is the request timeout minus the margin, so a clean
+    504 can fire before the blanket asyncio.wait_for 500."""
+    from src.llm.schemas import QueryRequest
+
+    captured: dict = {}
+
+    class SpyService:
+        def answer(self, **kwargs):
+            captured.update(kwargs)
+
+    monkeypatch.setattr(settings, "QA_REQUEST_TIMEOUT_SECONDS", 30.0)
+    monkeypatch.setattr(qa_api, "service_factory", lambda: SpyService())
+    qa_api._run_answer(QueryRequest(query="performance of contracts"))
+
+    deadline = captured.get("deadline")
+    assert deadline is not None
+    remaining = deadline - time.monotonic()
+    assert 0.0 < remaining <= 29.0

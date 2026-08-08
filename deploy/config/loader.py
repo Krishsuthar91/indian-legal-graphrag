@@ -36,6 +36,7 @@ LLM_PROVIDER_SECRETS: dict[str, str] = {
     "mistral": "LLM_API_KEY",
     "qwen": "LLM_API_KEY",
     "gemini": "GEMINI_API_KEY",
+    "nvidia": "NVIDIA_API_KEY",
 }
 
 # Providers that work without a secret (offline / local).

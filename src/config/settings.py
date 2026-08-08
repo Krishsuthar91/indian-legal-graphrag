@@ -38,19 +38,32 @@ class Settings(BaseSettings):
     HYBRID_WEIGHTS_HIERARCHY: float = 0.25
 
     # LLM / Answer Generation (Module 7)
-    LLM_PROVIDER: str = "mock"  # mock | openai | llama | mistral | qwen | gemini
-    # e.g. gpt-4o-mini, llama-3.1-8b, mistral-small, Qwen/Qwen2.5-7B-Instruct
+    # mock | openai | llama | mistral | qwen | gemini | nvidia
+    LLM_PROVIDER: str = "mock"
+    # e.g. gpt-4o-mini, llama-3.1-8b, mistral-small, Qwen/Qwen2.5-7B-Instruct,
+    # meta/llama-3.3-70b-instruct
     LLM_MODEL: str = ""
-    LLM_BASE_URL: str = ""      # OpenAI-compatible endpoint for llama/qwen local serving
+    LLM_BASE_URL: str = ""      # OpenAI-compatible endpoint for llama/qwen/nvidia serving
     LLM_API_KEY: str = ""
     LLM_TEMPERATURE: float = 0.2
     LLM_MAX_TOKENS: int = 800
     LLM_TIMEOUT_SECONDS: float = 25.0
+    # Transient (5xx / connection / read-timeout) retries per LLM call. The
+    # LLM honors the caller's deadline (see OpenAICompatClient.complete), so
+    # backoff is truncated to whatever time remains before the deadline.
+    LLM_MAX_RETRIES: int = 3
 
     # Gemini (optional — only used when LLM_PROVIDER=gemini)
     GEMINI_API_KEY: str = ""
     GEMINI_MODEL: str = "gemini-2.0-flash"
     GEMINI_BASE_URL: str = "https://generativelanguage.googleapis.com/v1beta/openai"
+
+    # NVIDIA NIM (only used when LLM_PROVIDER=nvidia).
+    # Generic LLM_* settings take precedence when set; NVIDIA_* are the
+    # provider-specific fallback (per the LLM config priority in docs).
+    NVIDIA_API_KEY: str = ""
+    NVIDIA_MODEL: str = "meta/llama-3.3-70b-instruct"
+    NVIDIA_BASE_URL: str = "https://integrate.api.nvidia.com/v1"
 
     # Document upload (Module 8 frontend integration)
     DOCUMENT_UPLOAD_MAX_BYTES: int = 20971520  # 20 MB
