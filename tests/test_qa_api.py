@@ -96,6 +96,29 @@ def test_post_query_returns_with_mock_provider_without_uploads(client, patch_ser
     assert data["provenance_id"]
 
 
+def test_post_query_insufficient_evidence_returns_guard_answer(client, monkeypatch):
+    """When retrieval validation finds the evidence insufficient, /query returns
+    the grounded guard answer instead of an LLM answer that could fabricate."""
+    from src.llm.explanation import ExplainabilityEngine
+    from src.llm.llm import MockLLMClient
+    from src.llm.provenance import ProvenanceStore
+    from src.llm.service import QueryService
+    from tests.qa_helpers import build_graph
+
+    graph = build_graph()
+    engine = ExplainabilityEngine(graph, vector_retriever=None)
+    service = QueryService(engine, MockLLMClient(), ProvenanceStore())
+    monkeypatch.setattr(qa_api, "service_factory", lambda: service)
+
+    resp = client.post("/api/v1/query", json={"query": "zzzqxwv unrelated gibberish"})
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["answer"] == "The indexed evidence is insufficient to answer this question."
+    assert data["model"] == "grounding-guard"
+    assert data["validity"]["insufficient_evidence"] is True
+    assert data["provenance_id"]
+
+
 def test_first_query_default_service_mock_no_uploads(client, monkeypatch):
     """First-ever /query triggers the lazy default-service build and still answers."""
     from src.llm import service as svc

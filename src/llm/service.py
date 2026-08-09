@@ -32,6 +32,14 @@ from src.llm.provenance import (
 
 log = get_logger("qa_service")
 
+# Grounded guard answer returned when retrieval validation finds the indexed
+# evidence insufficient. The LLM is never invoked in that case, so it cannot
+# fabricate a section or assert that a provision "does not exist".
+INSUFFICIENT_EVIDENCE_ANSWER = (
+    "The indexed evidence is insufficient to answer this question."
+)
+INSUFFICIENT_EVIDENCE_MODEL = "grounding-guard"
+
 
 class QueryService:
     """End-to-end explainable answer generation."""
@@ -43,6 +51,7 @@ class QueryService:
         provenance_store: ProvenanceStore,
         top_k: int = 5,
         confidence_threshold: float | None = None,
+        require_sufficient_evidence: bool | None = None,
     ) -> None:
         self.engine = engine
         self.llm = llm
@@ -50,6 +59,11 @@ class QueryService:
         self.top_k = top_k
         if confidence_threshold is not None:
             self.engine.threshold = confidence_threshold
+        self.require_sufficient_evidence = (
+            settings.QA_REQUIRE_SUFFICIENT_EVIDENCE
+            if require_sufficient_evidence is None
+            else require_sufficient_evidence
+        )
 
     # -- API ---------------------------------------------------------------
 
@@ -74,23 +88,36 @@ class QueryService:
         start = time.perf_counter()
         explanation = self.engine.explain(query, top_k=top_k or self.top_k, language=language)
 
-        messages = build_messages(
-            query, explanation, system_prompt=self._system_prompt(explanation)
-        )
-        response = self.llm.complete(
-            messages,
-            temperature=temperature if temperature is not None else settings.LLM_TEMPERATURE,
-            max_tokens=max_tokens if max_tokens is not None else settings.LLM_MAX_TOKENS,
-            deadline=deadline,
-        )
+        if self.require_sufficient_evidence and explanation.validity.insufficient_evidence:
+            response_text = INSUFFICIENT_EVIDENCE_ANSWER
+            response_model = INSUFFICIENT_EVIDENCE_MODEL
+            log.info(
+                "qa.answer_guard_insufficient",
+                query=query,
+                evidence=len(explanation.evidence),
+                confidence=explanation.confidence.score,
+                threshold=self.engine.threshold,
+            )
+        else:
+            messages = build_messages(
+                query, explanation, system_prompt=self._system_prompt(explanation)
+            )
+            response = self.llm.complete(
+                messages,
+                temperature=temperature if temperature is not None else settings.LLM_TEMPERATURE,
+                max_tokens=max_tokens if max_tokens is not None else settings.LLM_MAX_TOKENS,
+                deadline=deadline,
+            )
+            response_text = response.text
+            response_model = response.model
         duration_ms = round((time.perf_counter() - start) * 1000.0, 2)
 
         provenance_id = uuid.uuid4().hex
         result = AnswerResult(
             provenance_id=provenance_id,
             query=query,
-            answer=response.text,
-            model=response.model,
+            answer=response_text,
+            model=response_model,
             explanation=explanation,
             duration_ms=duration_ms,
         )
@@ -100,7 +127,7 @@ class QueryService:
             "qa.answer_complete",
             provenance_id=provenance_id,
             query=query,
-            model=response.model,
+            model=response_model,
             evidence=len(explanation.evidence),
             confidence=explanation.confidence.score,
             duration_ms=duration_ms,

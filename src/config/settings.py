@@ -73,6 +73,9 @@ class Settings(BaseSettings):
     QA_CONFIDENCE_THRESHOLD: float = 0.45
     QA_PROVENANCE_DIR: str = "data/provenance"
     QA_INDEX_IN_MEMORY: bool = True
+    # When True, /query validates retrieval first and, if the evidence is
+    # insufficient, returns the grounded guard answer without calling the LLM.
+    QA_REQUIRE_SUFFICIENT_EVIDENCE: bool = True
     # Upper bound for a single /query, /explain, or /provenance request.
     # Must be >= LLM_TIMEOUT_SECONDS so a slow-but-alive LLM still gets its turn.
     QA_REQUEST_TIMEOUT_SECONDS: float = 30.0
