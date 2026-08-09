@@ -74,6 +74,31 @@ class TestSystemPrompt:
         prompt = build_system_prompt(extra_rules=["Never mention this."])
         assert "Never mention this." in prompt
 
+    def test_never_invents_law(self):
+        prompt = build_system_prompt()
+        assert "Never invent laws" in prompt
+
+    def test_distinguishes_absence_from_nonexistence(self):
+        prompt = build_system_prompt()
+        assert "NOT IN INDEXED EVIDENCE" in prompt
+        assert "TRULY ABSENT" in prompt
+        assert "Do NOT claim it does not exist" in prompt
+
+    def test_explains_why_insufficient(self):
+        prompt = build_system_prompt()
+        assert "explain WHY the answer cannot be produced" in prompt
+
+    def test_structured_response_sections(self):
+        prompt = build_system_prompt()
+        for section in (
+            "Direct Answer",
+            "Key Points",
+            "Evidence Summary",
+            "Confidence Explanation",
+            "Limitations",
+        ):
+            assert section in prompt
+
 
 class TestUserPrompt:
     def test_contains_query_and_instructions(self):
@@ -92,6 +117,23 @@ class TestUserPrompt:
 
     def test_empty_chain(self):
         assert "no reasoning steps" in format_reasoning_chain([])
+
+    def test_instructions_reinforce_no_fabrication(self):
+        prompt = build_user_prompt("performance of contracts", _explanation())
+        assert "Never invent laws, sections, or citations" in prompt
+
+    def test_instructions_distinguish_absence_from_nonexistence(self):
+        prompt = build_user_prompt("performance of contracts", _explanation())
+        assert "do not claim it does not exist" in prompt
+        assert "not in the indexed evidence" in prompt
+
+    def test_instructions_structured_response(self):
+        prompt = build_user_prompt("performance of contracts", _explanation())
+        assert "Direct Answer" in prompt
+        assert "Key Points" in prompt
+        assert "Evidence Summary" in prompt
+        assert "Confidence Explanation" in prompt
+        assert "Limitations" in prompt
 
 
 class TestMessages:
