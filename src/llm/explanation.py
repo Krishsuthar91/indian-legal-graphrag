@@ -29,6 +29,7 @@ from src.llm.provenance import (
     Validity,
 )
 from src.retrieval.context import get_ancestor_chain, propagate_hierarchy
+from src.retrieval.intent import adaptive_top_k, detect_intent
 from src.retrieval.query import parse_query
 from src.retrieval.ranker import retrieve
 from src.retrieval.scorer import citation_score, text_score
@@ -84,6 +85,10 @@ class ExplainabilityEngine:
         vector_retriever=None,
         weights: dict[str, float] | None = None,
         confidence_threshold: float | None = None,
+        adaptive: bool | None = None,
+        top_k_easy: int | None = None,
+        top_k_medium: int | None = None,
+        top_k_complex: int | None = None,
     ) -> None:
         self.graph = graph
         self.vr = vector_retriever
@@ -93,17 +98,43 @@ class ExplainabilityEngine:
             if confidence_threshold is not None
             else settings.QA_CONFIDENCE_THRESHOLD
         )
+        self.adaptive = settings.QA_ADAPTIVE_TOP_K if adaptive is None else adaptive
+        self.top_k_easy = settings.QA_TOP_K_EASY if top_k_easy is None else top_k_easy
+        self.top_k_medium = (
+            settings.QA_TOP_K_MEDIUM if top_k_medium is None else top_k_medium
+        )
+        self.top_k_complex = (
+            settings.QA_TOP_K_COMPLEX if top_k_complex is None else top_k_complex
+        )
 
     # -- public API --------------------------------------------------------
 
     def explain(
         self,
         query: str,
-        top_k: int = 5,
+        top_k: int | None = None,
         language: str | None = None,
     ) -> ExplanationResult:
-        """Run retrieval and assemble a full ExplanationResult for the query."""
+        """Run retrieval and assemble a full ExplanationResult for the query.
+
+        When ``top_k`` is omitted and adaptive retrieval is enabled, the query
+        intent decides the evidence budget. An explicit ``top_k`` always wins.
+        """
         parsed = parse_query(query)
+        intent = detect_intent(parsed)
+        if top_k is None and self.adaptive:
+            budget = adaptive_top_k(
+                intent,
+                easy=self.top_k_easy,
+                medium=self.top_k_medium,
+                complex=self.top_k_complex,
+            )
+            strategy = "adaptive"
+            adaptive_k = budget
+        else:
+            budget = top_k if top_k is not None else 5
+            strategy = "fixed"
+            adaptive_k = None
         chain: list[ReasoningStep] = []
 
         # 1. Query parsing
@@ -115,6 +146,7 @@ class ExplainabilityEngine:
                 detail={
                     "keywords": parsed.keywords,
                     "section_refs": parsed.section_refs,
+                    "intent": intent,
                 },
             )
         )
@@ -122,7 +154,7 @@ class ExplainabilityEngine:
         # 2. Dense (multilingual) retrieval
         dense_ids: list[str] = []
         if self.vr is not None:
-            for hit in self.vr.dense_search(query, top_k=top_k, language=language):
+            for hit in self.vr.dense_search(query, top_k=budget, language=language):
                 if hit.node_id:
                     dense_ids.append(hit.node_id)
         chain.append(
@@ -132,13 +164,13 @@ class ExplainabilityEngine:
                 description=(
                     f"Semantic vector search returned {len(dense_ids)} candidate(s)."
                 ),
-                node_ids=dense_ids[:top_k],
+                node_ids=dense_ids[:budget],
                 detail={"count": len(dense_ids)},
             )
         )
 
         # 3. Graph (HHGR) retrieval
-        graph_results = retrieve(self.graph, query, top_k=top_k)
+        graph_results = retrieve(self.graph, query, top_k=budget)
         graph_map = {r.node_id: r for r in graph_results}
         chain.append(
             ReasoningStep(
@@ -148,7 +180,7 @@ class ExplainabilityEngine:
                     f"Hybrid hierarchical graph retrieval returned "
                     f"{len(graph_results)} candidate(s)."
                 ),
-                node_ids=list(graph_map)[:top_k],
+                node_ids=list(graph_map)[:budget],
                 detail={
                     "seeds": [r.node_id for r in graph_results if r.is_seed],
                     "count": len(graph_results),
@@ -167,17 +199,17 @@ class ExplainabilityEngine:
                     f"Hierarchical evidence propagated from {len(seed_ids)} seed(s) "
                     f"to {len(propagated)} ancestor/descendant node(s)."
                 ),
-                node_ids=list(propagated)[:top_k],
+                node_ids=list(propagated)[:budget],
                 detail={"seed_ids": seed_ids, "count": len(propagated)},
             )
         )
 
         # 5. Fusion + ranking
         signals, candidates = self._fuse(
-            query, top_k=top_k, language=language, graph_results=graph_results,
+            query, top_k=budget, language=language, graph_results=graph_results,
             propagated=propagated,
         )
-        ranked_ids = sorted(candidates, key=lambda n: (-signals[n].final, n))[:top_k]
+        ranked_ids = sorted(candidates, key=lambda n: (-signals[n].final, n))[:budget]
         chain.append(
             ReasoningStep(
                 step=5,
@@ -190,6 +222,9 @@ class ExplainabilityEngine:
                 node_ids=ranked_ids,
                 detail={
                     "weights": self.weights,
+                    "intent": intent,
+                    "strategy": strategy,
+                    "top_k": budget,
                     "candidates": len(candidates),
                     "returned": len(ranked_ids),
                 },
@@ -224,6 +259,9 @@ class ExplainabilityEngine:
             hierarchy_propagated=len(propagated),
             candidates=len(candidates),
             returned=len(ranked_ids),
+            intent=intent,
+            adaptive_top_k=adaptive_k,
+            retrieval_strategy=strategy,
         )
 
         log.info(
@@ -232,6 +270,8 @@ class ExplainabilityEngine:
             candidates=len(candidates),
             returned=len(ranked_ids),
             confidence=confidence.score,
+            intent=intent,
+            strategy=strategy,
         )
 
         return ExplanationResult(

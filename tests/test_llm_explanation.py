@@ -4,7 +4,7 @@
 from src.knowledge_graph.neo4j_driver import InMemoryGraph
 from src.llm.explanation import ExplainabilityEngine, _Signal
 from src.retrieval.query import parse_query
-from tests.qa_helpers import build_engine, build_graph
+from tests.qa_helpers import build_engine, build_graph, build_service
 
 
 class TestExplain:
@@ -217,3 +217,54 @@ class TestConfiguration:
         engine = build_engine()
         result = engine.explain("performance of contracts")
         assert set(result.retrieval_weights) == {"dense", "graph", "hierarchy"}
+
+
+class TestAdaptiveTopK:
+    def test_intent_recorded_and_adaptive_budget_used(self):
+        engine = build_engine(adaptive=True, top_k_easy=2)
+        result = engine.explain("performance of contracts")
+        assert result.retrieval.intent == "explanation"
+        assert result.retrieval.retrieval_strategy == "adaptive"
+        assert result.retrieval.adaptive_top_k == 2
+        assert len(result.evidence) <= 2
+
+    def test_section_lookup_intent(self):
+        engine = build_engine(adaptive=True)
+        result = engine.explain("what does section 4 say")
+        assert result.retrieval.intent == "section_lookup"
+        assert result.retrieval.retrieval_strategy == "adaptive"
+        assert result.evidence
+        assert result.evidence[0].node_id == "s4"
+
+    def test_definition_intent(self):
+        engine = build_engine(adaptive=True)
+        result = engine.explain("what is the definition of contract")
+        assert result.retrieval.intent == "definition"
+        assert result.retrieval.adaptive_top_k == engine.top_k_easy
+
+    def test_explicit_top_k_wins(self):
+        engine = build_engine(adaptive=True, top_k_easy=2)
+        result = engine.explain("performance of contracts", top_k=4)
+        assert result.retrieval.retrieval_strategy == "fixed"
+        assert result.retrieval.adaptive_top_k is None
+        assert len(result.evidence) <= 4
+
+    def test_adaptive_disabled_uses_fixed_default(self):
+        engine = build_engine(adaptive=False)
+        result = engine.explain("performance of contracts")
+        assert result.retrieval.retrieval_strategy == "fixed"
+        assert result.retrieval.adaptive_top_k is None
+        assert len(result.evidence) <= 5
+
+    def test_intent_recorded_on_reasoning_chain(self):
+        engine = build_engine(adaptive=True)
+        result = engine.explain("performance of contracts")
+        fusion = next(s for s in result.reasoning_chain if s.kind == "fusion")
+        assert fusion.detail["intent"] == "explanation"
+        assert fusion.detail["strategy"] == "adaptive"
+
+    def test_service_answer_uses_adaptive_default(self):
+        service = build_service()
+        result = service.answer("performance of contracts")
+        assert result.explanation.retrieval.retrieval_strategy == "adaptive"
+        assert result.explanation.retrieval.intent == "explanation"

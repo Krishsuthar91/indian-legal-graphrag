@@ -86,7 +86,9 @@ class QueryService:
             raise ValueError("query must not be empty")
 
         start = time.perf_counter()
-        explanation = self.engine.explain(query, top_k=top_k or self.top_k, language=language)
+        if top_k is None and not self.engine.adaptive:
+            top_k = self.top_k
+        explanation = self.engine.explain(query, top_k=top_k, language=language)
 
         if self.require_sufficient_evidence and explanation.validity.insufficient_evidence:
             response_text = INSUFFICIENT_EVIDENCE_ANSWER
@@ -142,7 +144,9 @@ class QueryService:
     ) -> ExplanationResult:
         """Return the explanation without calling the LLM."""
         query = (query or "").strip()
-        return self.engine.explain(query, top_k=top_k or self.top_k, language=language)
+        if top_k is None and not self.engine.adaptive:
+            top_k = self.top_k
+        return self.engine.explain(query, top_k=top_k, language=language)
 
     def get_provenance(self, provenance_id: str) -> dict[str, Any] | None:
         """Fetch a stored provenance record."""

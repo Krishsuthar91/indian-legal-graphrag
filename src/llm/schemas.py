@@ -109,6 +109,9 @@ class RetrievalSummarySchema(BaseModel):
     hierarchy_propagated: int = 0
     candidates: int = 0
     returned: int = 0
+    intent: str = ""
+    adaptive_top_k: int | None = None
+    retrieval_strategy: str = "fixed"
 
 
 class ExplanationResponse(BaseModel):

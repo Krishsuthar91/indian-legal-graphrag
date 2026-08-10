@@ -76,6 +76,13 @@ class Settings(BaseSettings):
     # When True, /query validates retrieval first and, if the evidence is
     # insufficient, returns the grounded guard answer without calling the LLM.
     QA_REQUIRE_SUFFICIENT_EVIDENCE: bool = True
+    # Adaptive retrieval (Phase 3): when a caller does not supply top_k, the
+    # engine classifies the query intent and picks an evidence budget from the
+    # QA_TOP_K_{EASY,MEDIUM,COMPLEX} buckets below.
+    QA_ADAPTIVE_TOP_K: bool = True
+    QA_TOP_K_EASY: int = 4
+    QA_TOP_K_MEDIUM: int = 7
+    QA_TOP_K_COMPLEX: int = 12
     # Upper bound for a single /query, /explain, or /provenance request.
     # Must be >= LLM_TIMEOUT_SECONDS so a slow-but-alive LLM still gets its turn.
     QA_REQUEST_TIMEOUT_SECONDS: float = 30.0

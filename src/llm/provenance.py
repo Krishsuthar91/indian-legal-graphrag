@@ -120,7 +120,7 @@ class Validity:
 
 @dataclass
 class RetrievalSummary:
-    """Counts from each retrieval stage."""
+    """Counts from each retrieval stage plus adaptive-retrieval diagnostics."""
 
     keywords: list[str] = field(default_factory=list)
     section_refs: list[str] = field(default_factory=list)
@@ -129,6 +129,9 @@ class RetrievalSummary:
     hierarchy_propagated: int = 0
     candidates: int = 0
     returned: int = 0
+    intent: str = ""
+    adaptive_top_k: int | None = None
+    retrieval_strategy: str = "fixed"
 
 
 @dataclass
