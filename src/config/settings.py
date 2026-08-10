@@ -37,6 +37,15 @@ class Settings(BaseSettings):
     HYBRID_WEIGHTS_GRAPH: float = 0.35
     HYBRID_WEIGHTS_HIERARCHY: float = 0.25
 
+    # Ranking weights (Phase 3): used ONLY to order retrieved evidence. They
+    # are independent of HYBRID_WEIGHTS_* (which set the reported per-signal
+    # scores) so retrieval and confidence scores stay unchanged. Sums to 1.
+    RANKING_WEIGHT_DENSE: float = 0.35
+    RANKING_WEIGHT_GRAPH: float = 0.25
+    RANKING_WEIGHT_HIERARCHY: float = 0.15
+    RANKING_WEIGHT_KEYWORD: float = 0.15
+    RANKING_WEIGHT_CITATION: float = 0.10
+
     # LLM / Answer Generation (Module 7)
     # mock | openai | llama | mistral | qwen | gemini | nvidia
     LLM_PROVIDER: str = "mock"

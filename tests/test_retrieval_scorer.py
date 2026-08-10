@@ -3,11 +3,13 @@
 import pytest
 
 from src.knowledge_graph.neo4j_driver import InMemoryGraph
-from src.retrieval.query import parse_query
+from src.retrieval.query import RetrievalQuery, parse_query
 from src.retrieval.scorer import (
     WEIGHTS,
+    citation_frequency,
     citation_score,
     combine_signals,
+    keyword_overlap,
     matched_keywords,
     structural_importance,
     text_score,
@@ -114,6 +116,63 @@ class TestCombineSignals:
 
     def test_missing_signals_treated_zero(self):
         assert combine_signals({"text": 1.0}) == pytest.approx(WEIGHTS["text"])
+
+
+class TestKeywordOverlap:
+    def test_full_overlap(self):
+        q = parse_query("contract performance")
+        assert keyword_overlap(_node(text="contract performance", title="X"), q) == 1.0
+
+    def test_partial_overlap(self):
+        q = parse_query("contract criminal")
+        score = keyword_overlap(_node(), q)
+        assert score > 0.0
+        assert score < 1.0
+
+    def test_no_overlap(self):
+        q = parse_query("electricity supply")
+        assert keyword_overlap(_node(), q) == 0.0
+
+    def test_stopwords_in_query_ignored(self):
+        q = RetrievalQuery(raw="x", keywords=["the", "contract", "and"])
+        assert keyword_overlap(_node(), q) == 1.0
+
+    def test_only_stopwords_returns_zero(self):
+        q = RetrievalQuery(raw="x", keywords=["the", "and", "of"])
+        assert keyword_overlap(_node(), q) == 0.0
+
+    def test_empty_keywords(self):
+        q = parse_query("the and of")
+        assert keyword_overlap(_node(), q) == 0.0
+
+    def test_never_exceeds_one(self):
+        q = RetrievalQuery(raw="x", keywords=["contract", "contract", "contract"])
+        assert keyword_overlap(_node(), q) == 1.0
+
+
+class TestCitationFrequency:
+    def test_counts_citation_edges(self):
+        g = InMemoryGraph()
+        g.create_node("Section", "s1", {})
+        g.create_node("Section", "s2", {})
+        g.create_node("Section", "s3", {})
+        g.create_edge("s1", "s2", "CITES")
+        g.create_edge("s3", "s1", "REFERENCES")
+        assert citation_frequency(g, "s1") == 2.0
+        assert citation_frequency(g, "s2") == 1.0
+        assert citation_frequency(g, "s3") == 1.0
+
+    def test_zero_when_no_edges(self):
+        g = InMemoryGraph()
+        g.create_node("Section", "s1", {})
+        assert citation_frequency(g, "s1") == 0.0
+
+    def test_ignores_non_citation_edges(self):
+        g = InMemoryGraph()
+        g.create_node("Section", "s1", {})
+        g.create_node("Chapter", "ch1", {})
+        g.create_edge("s1", "ch1", "PART_OF")
+        assert citation_frequency(g, "s1") == 0.0
 
 
 class TestMatchedKeywords:

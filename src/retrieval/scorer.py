@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any
 
 from src.retrieval.context import get_descendant_ids
-from src.retrieval.query import RetrievalQuery, tokenize
+from src.retrieval.query import _STOPWORDS, RetrievalQuery, tokenize
 
 WEIGHTS: dict[str, float] = {
     "text": 0.40,
@@ -45,6 +45,23 @@ def text_score(node: dict[str, Any], query: RetrievalQuery) -> float:
     return min(1.0, coverage + title_bonus)
 
 
+def keyword_overlap(node: dict[str, Any], query: RetrievalQuery) -> float:
+    """Fraction of query keywords found in the node's title/text.
+
+    Stop words are ignored so common tokens never inflate the overlap. Unlike
+    ``text_score`` there is no title bonus — this is a pure lexical overlap
+    signal used only for ordering evidence.
+    """
+    keywords = [k for k in query.keywords if k not in _STOPWORDS]
+    if not keywords:
+        return 0.0
+    combined = _token_set(f"{node.get('title', '')} {node.get('text', '')}")
+    if not combined:
+        return 0.0
+    matched = sum(1 for k in set(keywords) if k in combined)
+    return min(1.0, matched / len(set(keywords)))
+
+
 def citation_score(node: dict[str, Any], query: RetrievalQuery) -> float:
     """Score from a query legal reference matching the node.
 
@@ -70,6 +87,18 @@ def citation_score(node: dict[str, Any], query: RetrievalQuery) -> float:
             return 1.0
 
     return 0.0
+
+
+def citation_frequency(graph, node_id: str) -> float:
+    """Raw count of CITES/REFERENCES edges involving the node (both directions).
+
+    Used as the base for a citation-frequency signal; callers normalize it to
+    [0, 1] (e.g. by the maximum count across the candidate set).
+    """
+    count = 0
+    for rel_type in ("CITES", "REFERENCES"):
+        count += len(graph.get_edges(node_id, rel_type=rel_type))
+    return float(count)
 
 
 def structural_importance(graph, node: dict[str, Any]) -> float:
