@@ -1,8 +1,15 @@
 """Tests for the explainability engine (Module 7)."""
 
 
+import pytest
+
 from src.knowledge_graph.neo4j_driver import InMemoryGraph
-from src.llm.explanation import ExplainabilityEngine, _Signal
+from src.llm.explanation import (
+    DEDUP_TEXT_SIMILARITY,
+    ExplainabilityEngine,
+    _Signal,
+    _text_similarity,
+)
 from src.retrieval.query import parse_query
 from tests.qa_helpers import build_engine, build_graph, build_service
 
@@ -268,3 +275,274 @@ class TestAdaptiveTopK:
         result = service.answer("performance of contracts")
         assert result.explanation.retrieval.retrieval_strategy == "adaptive"
         assert result.explanation.retrieval.intent == "explanation"
+
+
+class TestRankingSignals:
+    def test_final_score_still_three_signal_sum(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        for ev in result.evidence:
+            assert ev.final_score == pytest.approx(
+                ev.dense_score + ev.graph_score + ev.hierarchy_score, abs=1e-3
+            )
+
+    def test_ranking_breakdown_recorded(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        breakdown = result.retrieval.ranking_breakdown
+        assert breakdown
+        first = result.evidence[0]
+        assert first.node_id in breakdown
+        assert {"dense", "graph", "hierarchy", "keyword", "citation", "rank"} <= set(
+            breakdown[first.node_id]
+        )
+        assert 0.0 <= breakdown[first.node_id]["rank"] <= 1.0
+        assert all(
+            0.0 <= v <= 1.0
+            for node in breakdown.values()
+            for v in node.values()
+        )
+
+    def test_evidence_ordered_by_breakdown_rank(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        ids = [ev.node_id for ev in result.evidence]
+        ranks = [result.retrieval.ranking_breakdown[nid]["rank"] for nid in ids]
+        assert ranks == sorted(ranks, reverse=True)
+
+    def test_s4_remains_top_evidence(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        assert result.evidence[0].node_id == "s4"
+
+    def test_keyword_signal_reflects_query_coverage(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        breakdown = result.retrieval.ranking_breakdown
+        assert breakdown["s4"]["keyword"] == 1.0
+
+    def test_graph_only_mode_records_ranking_signals(self):
+        graph = build_graph()
+        engine = ExplainabilityEngine(graph, vector_retriever=None)
+        result = engine.explain("performance of contracts", top_k=5)
+        breakdown = result.retrieval.ranking_breakdown
+        assert breakdown
+        assert breakdown["s4"]["keyword"] == 1.0
+        assert breakdown["s4"]["citation"] == 0.0
+
+    def test_custom_ranking_weights_are_used(self):
+        engine = build_engine(ranking_weights={"keyword": 1.0})
+        assert engine.ranking_weights["keyword"] == 1.0
+        result = engine.explain("performance of contracts", top_k=5)
+        assert result.evidence[0].node_id == "s4"
+        breakdown = result.retrieval.ranking_breakdown
+        assert breakdown["s4"]["rank"] == pytest.approx(1.0)
+
+    def test_confidence_preserved_with_ranking_signals(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        assert result.confidence.score > 0.45
+        assert result.confidence.label == "high"
+
+
+class TestEvidenceDeduplication:
+    """C3: deduplicate ranked evidence before evidence construction."""
+
+    @staticmethod
+    def _signals(ids):
+        return {nid: _Signal(dense=0.1, graph=0.1, hierarchy=0.0) for nid in ids}
+
+    def _multi_parent_graph(self) -> InMemoryGraph:
+        g = InMemoryGraph()
+        g.create_node("Document", "docA", {"title": "DOC A", "language": "en"})
+        g.create_node("Chapter", "chA", {"title": "CH I", "hierarchy_level": 4})
+        g.create_node("Chapter", "chB", {"title": "CH II", "hierarchy_level": 4})
+        g.create_node(
+            "Section",
+            "secA",
+            {
+                "title": "Definitions",
+                "numbering": "2",
+                "text": "contract means an agreement enforceable by law.",
+            },
+        )
+        g.create_edge("chA", "docA", "PART_OF")
+        g.create_edge("chB", "docA", "PART_OF")
+        g.create_edge("secA", "chA", "PART_OF")
+        g.create_edge("secA", "chB", "PART_OF")
+        return g
+
+    # -- text similarity helper -------------------------------------------
+
+    def test_text_similarity_identical(self):
+        assert _text_similarity("alpha beta gamma", "alpha beta gamma") == 1.0
+
+    def test_text_similarity_whitespace_insensitive(self):
+        assert _text_similarity("alpha beta gamma", "alpha   beta\ngamma") == 1.0
+
+    def test_text_similarity_disjoint_is_zero(self):
+        assert _text_similarity("alpha beta", "zzz www") == 0.0
+        assert _text_similarity("abc", "xyz") == 0.0
+
+    def test_text_similarity_near_identical_above_threshold(self):
+        a = "The contract must be performed in good faith by both parties."
+        b = "The contract must be performed in good faith by both partie."
+        assert _text_similarity(a, b) >= DEDUP_TEXT_SIMILARITY
+
+    def test_text_similarity_clearly_different_below_threshold(self):
+        a = "The contract must be performed in good faith by both parties."
+        b = "Consideration must be lawful and given voluntarily at the time of agreement."
+        assert _text_similarity(a, b) < DEDUP_TEXT_SIMILARITY
+
+    def test_dedup_threshold_constant(self):
+        assert DEDUP_TEXT_SIMILARITY == 0.95
+
+    # -- duplicate criteria ------------------------------------------------
+
+    def test_duplicate_node_ids_removed(self):
+        engine = build_engine()
+        parsed = parse_query("performance of contracts")
+        ids = ["s4", "s4", "s1"]
+        retained, details = engine._dedupe_evidence(ids, self._signals(ids), parsed)
+        assert retained == ["s4", "s1"]
+        assert len(details) == 1
+        assert details[0]["duplicate_reason"] == "duplicate_node_id"
+        assert details[0]["removed_node"] == "s4"
+        assert details[0]["retained_node"] == "s4"
+
+    def test_duplicate_hierarchy_paths_removed(self):
+        graph = self._multi_parent_graph()
+        engine = ExplainabilityEngine(graph, vector_retriever=None)
+        parsed = parse_query("contract definitions")
+        ids = ["docA", "chA", "chB"]
+        retained, details = engine._dedupe_evidence(ids, self._signals(ids), parsed)
+        assert retained == ["docA"]
+        assert len(details) == 2
+        assert all(d["duplicate_reason"] == "duplicate_path" for d in details)
+        assert all(d["retained_node"] == "docA" for d in details)
+        assert {d["removed_node"] for d in details} == {"chA", "chB"}
+
+    def test_near_identical_text_removed(self):
+        g = InMemoryGraph()
+        g.create_node(
+            "Section",
+            "sX",
+            {
+                "title": "X",
+                "numbering": "10",
+                "text": "The contract must be performed in good faith by both parties.",
+            },
+        )
+        g.create_node(
+            "Section",
+            "sY",
+            {
+                "title": "Y",
+                "numbering": "11",
+                "text": "The contract must be performed in good faith by both partie.",
+            },
+        )
+        engine = ExplainabilityEngine(g, vector_retriever=None)
+        ids = ["sX", "sY"]
+        retained, details = engine._dedupe_evidence(
+            ids, self._signals(ids), parse_query("contract performance")
+        )
+        assert retained == ["sX"]
+        assert len(details) == 1
+        assert details[0]["duplicate_reason"] == "duplicate_text"
+        assert details[0]["retained_node"] == "sX"
+        assert details[0]["removed_node"] == "sY"
+
+    # -- ordering + false positives ---------------------------------------
+
+    def test_ordering_stability(self):
+        engine = build_engine()
+        parsed = parse_query("performance of contracts")
+        ids = ["s4", "s1", "s4", "s2"]
+        retained, details = engine._dedupe_evidence(ids, self._signals(ids), parsed)
+        assert retained == ["s4", "s1", "s2"]
+        assert len(details) == 1
+        assert details[0]["removed_node"] == "s4"
+        assert details[0]["retained_node"] == "s4"
+
+    def test_no_false_positive_removals(self):
+        engine = build_engine()
+        parsed = parse_query("performance of contracts")
+        ids = ["s4", "s1", "s2"]
+        retained, details = engine._dedupe_evidence(ids, self._signals(ids), parsed)
+        assert retained == ids
+        assert details == []
+
+    def test_subthreshold_text_similarity_retained(self):
+        g = InMemoryGraph()
+        g.create_node(
+            "Section",
+            "sX",
+            {
+                "title": "X",
+                "numbering": "10",
+                "text": "The contract must be performed in good faith by both parties.",
+            },
+        )
+        g.create_node(
+            "Section",
+            "sY",
+            {
+                "title": "Y",
+                "numbering": "11",
+                "text": "Consideration must be lawful and given voluntarily by both parties.",
+            },
+        )
+        engine = ExplainabilityEngine(g, vector_retriever=None)
+        ids = ["sX", "sY"]
+        retained, details = engine._dedupe_evidence(
+            ids, self._signals(ids), parse_query("contract performance")
+        )
+        assert retained == ids
+        assert details == []
+
+    # -- end-to-end diagnostics -------------------------------------------
+
+    def test_end_to_end_diagnostics_populated(self):
+        graph = self._multi_parent_graph()
+        engine = ExplainabilityEngine(graph, vector_retriever=None)
+        result = engine.explain("contract definitions", top_k=5)
+        assert result.retrieval.duplicates_removed == 2
+        assert len(result.retrieval.duplicate_details) == 2
+        details = result.retrieval.duplicate_details
+        assert all(d["duplicate_reason"] == "duplicate_path" for d in details)
+        removed = {d["removed_node"] for d in details}
+        retained = {d["retained_node"] for d in details}
+        assert len(removed) == 2
+        assert len(retained) == 1
+        assert removed | retained == {"docA", "chA", "secA"}
+        assert removed.isdisjoint(retained)
+        assert len(result.evidence) == 1
+        assert result.evidence[0].node_id == "secA"
+        fusion = next(s for s in result.reasoning_chain if s.kind == "fusion")
+        assert fusion.detail["duplicates_removed"] == 2
+
+    def test_no_duplicates_reports_zero_and_empty(self):
+        g = InMemoryGraph()
+        g.create_node(
+            "Section", "n1", {"title": "One", "numbering": "1",
+                              "text": "first distinct text about performance"}
+        )
+        g.create_node(
+            "Section", "n2", {"title": "Two", "numbering": "2",
+                              "text": "second distinct text about performance"}
+        )
+        engine = ExplainabilityEngine(g, vector_retriever=None)
+        result = engine.explain("performance", top_k=5)
+        assert result.retrieval.duplicates_removed == 0
+        assert result.retrieval.duplicate_details == []
+        assert len(result.evidence) == 2
+
+    def test_summary_serializes_new_fields(self):
+        import dataclasses
+
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        dumped = dataclasses.asdict(result.retrieval)
+        assert "duplicates_removed" in dumped
+        assert "duplicate_details" in dumped

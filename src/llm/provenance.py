@@ -132,6 +132,9 @@ class RetrievalSummary:
     intent: str = ""
     adaptive_top_k: int | None = None
     retrieval_strategy: str = "fixed"
+    ranking_breakdown: dict[str, dict[str, float]] = field(default_factory=dict)
+    duplicates_removed: int = 0
+    duplicate_details: list[dict[str, Any]] = field(default_factory=list)
 
 
 @dataclass

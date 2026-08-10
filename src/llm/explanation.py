@@ -11,6 +11,7 @@ citations, counter-authority detection, confidence scoring, and validity flags.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Any
 
 from src.config.logging_config import get_logger
 from src.config.settings import settings
@@ -32,12 +33,72 @@ from src.retrieval.context import get_ancestor_chain, propagate_hierarchy
 from src.retrieval.intent import adaptive_top_k, detect_intent
 from src.retrieval.query import parse_query
 from src.retrieval.ranker import retrieve
-from src.retrieval.scorer import citation_score, text_score
+from src.retrieval.scorer import (
+    citation_frequency,
+    citation_score,
+    keyword_overlap,
+    text_score,
+)
 
 log = get_logger("explanation")
 
 SNIPPET_CHARS = 240
 MAX_PATHS = 6
+DEDUP_TEXT_SIMILARITY = 0.95
+
+# Ranking signals (Phase 3): keyword overlap and citation frequency are fused
+# with the three existing signals into a separate ranking score used ONLY for
+# ordering evidence. It is independent of DEFAULT_HYBRID_WEIGHTS so reported
+# per-signal scores and confidence are preserved.
+RANKING_SIGNALS: tuple[str, ...] = (
+    "dense", "graph", "hierarchy", "keyword", "citation",
+)
+
+DEFAULT_RANKING_WEIGHTS: dict[str, float] = {
+    "dense": 0.35,
+    "graph": 0.25,
+    "hierarchy": 0.15,
+    "keyword": 0.15,
+    "citation": 0.10,
+}
+
+
+def _default_ranking_weights() -> dict[str, float]:
+    """Ranking weights from settings (mirror DEFAULT_RANKING_WEIGHTS)."""
+    return {
+        "dense": settings.RANKING_WEIGHT_DENSE,
+        "graph": settings.RANKING_WEIGHT_GRAPH,
+        "hierarchy": settings.RANKING_WEIGHT_HIERARCHY,
+        "keyword": settings.RANKING_WEIGHT_KEYWORD,
+        "citation": settings.RANKING_WEIGHT_CITATION,
+    }
+
+
+def _normalize_ranking_weights(weights: dict[str, float]) -> dict[str, float]:
+    """Normalize a ranking-weight mapping to sum 1 (missing signals become 0)."""
+    merged = {sig: float(weights.get(sig, 0.0)) for sig in RANKING_SIGNALS}
+    total = sum(merged.values()) or 1.0
+    return {k: v / total for k, v in merged.items()}
+
+
+def _text_similarity(a: str, b: str) -> float:
+    """Dice coefficient over character bigrams, in [0, 1].
+
+    Whitespace is collapsed so paragraph/line breaks do not reduce similarity.
+    Used to detect near-identical evidence texts during deduplication.
+    """
+    a = " ".join((a or "").split())
+    b = " ".join((b or "").split())
+    if a == b:
+        return 1.0
+    if not a or not b:
+        return 0.0
+    bigrams_a = set(a[i : i + 2] for i in range(len(a) - 1))
+    bigrams_b = set(b[i : i + 2] for i in range(len(b) - 1))
+    if not bigrams_a or not bigrams_b:
+        return 0.0
+    overlap = len(bigrams_a & bigrams_b)
+    return 2.0 * overlap / (len(bigrams_a) + len(bigrams_b))
 
 # Counter-authority markers: phrase -> human-readable reason.
 _COUNTER_MARKERS: dict[str, list[str]] = {
@@ -70,6 +131,8 @@ class _Signal:
     dense: float = 0.0
     graph: float = 0.0
     hierarchy: float = 0.0
+    keyword: float = 0.0
+    citation: float = 0.0
 
     @property
     def final(self) -> float:
@@ -89,6 +152,7 @@ class ExplainabilityEngine:
         top_k_easy: int | None = None,
         top_k_medium: int | None = None,
         top_k_complex: int | None = None,
+        ranking_weights: dict[str, float] | None = None,
     ) -> None:
         self.graph = graph
         self.vr = vector_retriever
@@ -105,6 +169,9 @@ class ExplainabilityEngine:
         )
         self.top_k_complex = (
             settings.QA_TOP_K_COMPLEX if top_k_complex is None else top_k_complex
+        )
+        self.ranking_weights = _normalize_ranking_weights(
+            ranking_weights or _default_ranking_weights()
         )
 
     # -- public API --------------------------------------------------------
@@ -207,9 +274,28 @@ class ExplainabilityEngine:
         # 5. Fusion + ranking
         signals, candidates = self._fuse(
             query, top_k=budget, language=language, graph_results=graph_results,
-            propagated=propagated,
+            propagated=propagated, parsed=parsed,
         )
-        ranked_ids = sorted(candidates, key=lambda n: (-signals[n].final, n))[:budget]
+        rank = {nid: self._rank(signals[nid]) for nid in candidates}
+        ranked_ids = sorted(candidates, key=lambda n: (-rank[n], n))[:budget]
+        ranking_breakdown = {
+            nid: {
+                "dense": round(signals[nid].dense, 4),
+                "graph": round(signals[nid].graph, 4),
+                "hierarchy": round(signals[nid].hierarchy, 4),
+                "keyword": round(signals[nid].keyword, 4),
+                "citation": round(signals[nid].citation, 4),
+                "rank": round(rank[nid], 4),
+            }
+            for nid in ranked_ids
+        }
+
+        # 5b. Deduplicate ranked evidence before evidence construction.
+        ranked_ids, duplicate_details = self._dedupe_evidence(
+            ranked_ids, signals, parsed
+        )
+        duplicates_removed = len(duplicate_details)
+
         chain.append(
             ReasoningStep(
                 step=5,
@@ -222,11 +308,13 @@ class ExplainabilityEngine:
                 node_ids=ranked_ids,
                 detail={
                     "weights": self.weights,
+                    "ranking_weights": self.ranking_weights,
                     "intent": intent,
                     "strategy": strategy,
                     "top_k": budget,
                     "candidates": len(candidates),
                     "returned": len(ranked_ids),
+                    "duplicates_removed": duplicates_removed,
                 },
             )
         )
@@ -262,6 +350,9 @@ class ExplainabilityEngine:
             intent=intent,
             adaptive_top_k=adaptive_k,
             retrieval_strategy=strategy,
+            ranking_breakdown=ranking_breakdown,
+            duplicates_removed=duplicates_removed,
+            duplicate_details=duplicate_details,
         )
 
         log.info(
@@ -269,6 +360,7 @@ class ExplainabilityEngine:
             query=query,
             candidates=len(candidates),
             returned=len(ranked_ids),
+            duplicates_removed=duplicates_removed,
             confidence=confidence.score,
             intent=intent,
             strategy=strategy,
@@ -297,6 +389,7 @@ class ExplainabilityEngine:
         language: str | None,
         graph_results,
         propagated: dict[str, float],
+        parsed,
     ) -> tuple[dict[str, _Signal], set[str]]:
         """Compute per-signal scores for the candidate set."""
         signals: dict[str, _Signal] = {}
@@ -326,7 +419,107 @@ class ExplainabilityEngine:
             sig.graph *= w.get("graph", 0.0) / total
             sig.hierarchy *= w.get("hierarchy", 0.0) / total
 
+        # Keyword-overlap and citation-frequency signals (both in [0, 1]).
+        self._fill_ranking_signals(signals, parsed)
+
         return signals, set(signals)
+
+    def _fill_ranking_signals(
+        self, signals: dict[str, _Signal], parsed
+    ) -> None:
+        """Fill keyword-overlap + citation-frequency signals for every candidate."""
+        citation_counts: dict[str, float] = {}
+        max_citations = 0.0
+        for node_id, sig in signals.items():
+            node = self.graph.get_node(node_id)
+            if node:
+                sig.keyword = keyword_overlap(node, parsed)
+            count = citation_frequency(self.graph, node_id)
+            citation_counts[node_id] = count
+            max_citations = max(max_citations, count)
+        if max_citations > 0:
+            for node_id, count in citation_counts.items():
+                signals[node_id].citation = count / max_citations
+
+    def _rank(self, sig: _Signal) -> float:
+        """Weighted 5-signal score used only for ordering retrieved evidence."""
+        w = self.ranking_weights
+        return (
+            w.get("dense", 0.0) * sig.dense
+            + w.get("graph", 0.0) * sig.graph
+            + w.get("hierarchy", 0.0) * sig.hierarchy
+            + w.get("keyword", 0.0) * sig.keyword
+            + w.get("citation", 0.0) * sig.citation
+        )
+
+    def _dedupe_evidence(
+        self,
+        ranked_ids: list[str],
+        signals: dict[str, _Signal],
+        parsed=None,
+    ) -> tuple[list[str], list[dict[str, Any]]]:
+        """Remove duplicate ranked evidence, keeping the highest-ranked copy.
+
+        ``ranked_ids`` is ordered best-first, so the first occurrence of a
+        duplicate is the highest-ranked one and is always retained; later
+        occurrences are dropped. Retention order of the survivors is unchanged.
+
+        Three duplicate criteria are checked, in this order:
+        - ``duplicate_node_id``: the same ranked node id appears again;
+        - ``duplicate_path``: the resolved hierarchy path (root -> resolved
+          node) was already retained, e.g. an empty-text ancestor wrapper and
+          the text-bearing descendant it resolves to both rank;
+        - ``duplicate_text``: resolved text is near-identical (Dice coefficient
+          >= DEDUP_TEXT_SIMILARITY) to an already-retained node's text.
+
+        Returns ``(deduplicated_ids, details)`` where each detail entry carries
+        ``removed_node``, ``duplicate_reason`` and ``retained_node``.
+        """
+        retained: list[str] = []
+        details: list[dict[str, Any]] = []
+        seen_node_ids: dict[str, str] = {}
+        seen_paths: dict[tuple[str, ...], str] = {}
+        seen_texts: list[tuple[str, str]] = []
+
+        for node_id in ranked_ids:
+            node, resolved_id = self._resolve_evidence_node(node_id, parsed)
+
+            reason: str | None = None
+            if node_id in seen_node_ids:
+                reason = "duplicate_node_id"
+                retained_node = seen_node_ids[node_id]
+            elif node is not None:
+                path = tuple(self._root_to_node(resolved_id))
+                if path in seen_paths:
+                    reason = "duplicate_path"
+                    retained_node = seen_paths[path]
+                else:
+                    text = (node.get("text") or "").strip()
+                    for prev_text, prev_node in seen_texts:
+                        if _text_similarity(text, prev_text) >= DEDUP_TEXT_SIMILARITY:
+                            reason = "duplicate_text"
+                            retained_node = prev_node
+                            break
+
+            if reason is not None:
+                details.append(
+                    {
+                        "removed_node": node_id,
+                        "duplicate_reason": reason,
+                        "retained_node": retained_node,
+                    }
+                )
+                continue
+
+            retained.append(node_id)
+            seen_node_ids[node_id] = node_id
+            if node is not None:
+                seen_paths[tuple(self._root_to_node(resolved_id))] = node_id
+                text = (node.get("text") or "").strip()
+                if text:
+                    seen_texts.append((text, node_id))
+
+        return retained, details
 
     def _weights_label(self) -> str:
         return ", ".join(f"{k}={v:.2f}" for k, v in sorted(self.weights.items()))
