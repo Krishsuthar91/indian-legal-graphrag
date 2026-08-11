@@ -62,6 +62,21 @@ DEFAULT_RANKING_WEIGHTS: dict[str, float] = {
     "citation": 0.10,
 }
 
+# Phase 3 C4: canonical hierarchy-path preference multipliers. Derived purely
+# from a node's label (O(1), no graph traversal). Legal leaf nodes are boosted,
+# generic wrappers/documents are demoted, everything else is neutral.
+_CHAIN_RELEVANCE: dict[str, float] = {
+    "section": 1.10,
+    "clause": 1.08,
+    "article": 1.07,
+    "rule": 1.06,
+    "chapter": 1.03,
+    "part": 1.02,
+    "act": 1.00,
+    "document": 0.95,
+    "wrapper": 0.90,
+}
+
 
 def _default_ranking_weights() -> dict[str, float]:
     """Ranking weights from settings (mirror DEFAULT_RANKING_WEIGHTS)."""
@@ -276,7 +291,18 @@ class ExplainabilityEngine:
             query, top_k=budget, language=language, graph_results=graph_results,
             propagated=propagated, parsed=parsed,
         )
-        rank = {nid: self._rank(signals[nid]) for nid in candidates}
+        rank: dict[str, float] = {}
+        chain_info: dict[str, dict[str, Any]] = {}
+        for nid in candidates:
+            sig = signals[nid]
+            node = self.graph.get_node(nid)
+            multiplier = self._chain_relevance(node)
+            rank[nid] = self._rank(sig, multiplier=multiplier)
+            chain_info[nid] = {
+                "chain_relevance": multiplier,
+                "effective_hierarchy_score": round(sig.hierarchy * multiplier, 4),
+                "ranking_reason": self._chain_reason(node),
+            }
         ranked_ids = sorted(candidates, key=lambda n: (-rank[n], n))[:budget]
         ranking_breakdown = {
             nid: {
@@ -295,6 +321,8 @@ class ExplainabilityEngine:
             ranked_ids, signals, parsed
         )
         duplicates_removed = len(duplicate_details)
+        # C4 diagnostics for the retained (surviving) nodes only.
+        chain_ranking = {nid: chain_info[nid] for nid in ranked_ids}
 
         chain.append(
             ReasoningStep(
@@ -353,6 +381,7 @@ class ExplainabilityEngine:
             ranking_breakdown=ranking_breakdown,
             duplicates_removed=duplicates_removed,
             duplicate_details=duplicate_details,
+            chain_ranking=chain_ranking,
         )
 
         log.info(
@@ -441,16 +470,43 @@ class ExplainabilityEngine:
             for node_id, count in citation_counts.items():
                 signals[node_id].citation = count / max_citations
 
-    def _rank(self, sig: _Signal) -> float:
-        """Weighted 5-signal score used only for ordering retrieved evidence."""
+    def _rank(self, sig: _Signal, multiplier: float = 1.0) -> float:
+        """Weighted 5-signal score used only for ordering retrieved evidence.
+
+        ``multiplier`` is the canonical hierarchy-path preference (C4): it
+        scales ONLY the hierarchy term so legal leaf nodes (Section/Clause/
+        Article/Rule) are preferred over wrappers, documents, and intermediate
+        hierarchy nodes. Reported per-signal scores, ``final``, confidence and
+        provenance are untouched — this value is used solely for ordering.
+        """
         w = self.ranking_weights
         return (
             w.get("dense", 0.0) * sig.dense
             + w.get("graph", 0.0) * sig.graph
-            + w.get("hierarchy", 0.0) * sig.hierarchy
+            + w.get("hierarchy", 0.0) * sig.hierarchy * multiplier
             + w.get("keyword", 0.0) * sig.keyword
             + w.get("citation", 0.0) * sig.citation
         )
+
+    def _chain_relevance(self, node) -> float:
+        """Canonical hierarchy-path preference multiplier for a node's label.
+
+        O(1) — a plain dict lookup on the node's label, no graph traversal and
+        no recursion. Unknown or missing labels are neutral (1.0).
+        """
+        if not node:
+            return 1.0
+        label = str(node.get("label", "")).strip().lower()
+        return _CHAIN_RELEVANCE.get(label, 1.0)
+
+    def _chain_reason(self, node) -> str:
+        """Ranking reason for a node's canonical label (e.g. canonical:section)."""
+        if not node:
+            return "unknown"
+        label = str(node.get("label", "")).strip().lower()
+        if label in _CHAIN_RELEVANCE:
+            return f"canonical:{label}"
+        return "unknown"
 
     def _dedupe_evidence(
         self,

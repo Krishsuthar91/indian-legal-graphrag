@@ -135,6 +135,10 @@ class RetrievalSummary:
     ranking_breakdown: dict[str, dict[str, float]] = field(default_factory=dict)
     duplicates_removed: int = 0
     duplicate_details: list[dict[str, Any]] = field(default_factory=list)
+    # Phase 3 C4: canonical hierarchy-path preference, per retained node. Kept
+    # out of the API schema on purpose — it is diagnostics only (persisted in
+    # provenance) and the response format must not change.
+    chain_ranking: dict[str, dict[str, Any]] = field(default_factory=dict)
 
 
 @dataclass

@@ -546,3 +546,151 @@ class TestEvidenceDeduplication:
         dumped = dataclasses.asdict(result.retrieval)
         assert "duplicates_removed" in dumped
         assert "duplicate_details" in dumped
+
+
+class TestChainRelevance:
+    """C4: canonical hierarchy-path preference — affects ranking order only."""
+
+    @staticmethod
+    def _sig() -> _Signal:
+        return _Signal(dense=0.2, graph=0.2, hierarchy=0.5, keyword=0.5, citation=0.0)
+
+    def test_multiplier_table(self):
+        engine = build_engine()
+        cases = {
+            "Section": 1.10,
+            "Clause": 1.08,
+            "Article": 1.07,
+            "Rule": 1.06,
+            "Chapter": 1.03,
+            "Part": 1.02,
+            "Act": 1.00,
+            "Document": 0.95,
+            "Wrapper": 0.90,
+        }
+        for label, expected in cases.items():
+            assert engine._chain_relevance({"label": label}) == pytest.approx(expected)
+
+    def test_unknown_label_neutral(self):
+        engine = build_engine()
+        assert engine._chain_relevance({"label": "Paragraph"}) == 1.0
+        assert engine._chain_relevance({"label": ""}) == 1.0
+        assert engine._chain_relevance({}) == 1.0
+        assert engine._chain_relevance(None) == 1.0
+
+    def test_label_match_case_and_whitespace_insensitive(self):
+        engine = build_engine()
+        assert engine._chain_relevance({"label": "  sEcTiOn "}) == pytest.approx(1.10)
+
+    def test_section_preferred_over_chapter(self):
+        engine = build_engine()
+        sig = self._sig()
+        section = engine._rank(sig, engine._chain_relevance({"label": "Section"}))
+        chapter = engine._rank(sig, engine._chain_relevance({"label": "Chapter"}))
+        assert section > chapter
+
+    def test_clause_preferred_over_act(self):
+        engine = build_engine()
+        sig = self._sig()
+        clause = engine._rank(sig, engine._chain_relevance({"label": "Clause"}))
+        act = engine._rank(sig, engine._chain_relevance({"label": "Act"}))
+        assert clause > act
+
+    def test_wrapper_demoted(self):
+        engine = build_engine()
+        sig = self._sig()
+        section = engine._rank(sig, engine._chain_relevance({"label": "Section"}))
+        document = engine._rank(sig, engine._chain_relevance({"label": "Document"}))
+        wrapper = engine._rank(sig, engine._chain_relevance({"label": "Wrapper"}))
+        assert section > document > wrapper
+
+    def test_unknown_rank_unaffected(self):
+        engine = build_engine()
+        sig = self._sig()
+        plain = engine._rank(sig)
+        unknown = engine._rank(sig, engine._chain_relevance({"label": "AnythingElse"}))
+        assert plain == pytest.approx(unknown)
+
+    def test_section_ranks_above_chapter_end_to_end(self):
+        graph = build_graph()
+        engine = ExplainabilityEngine(graph, vector_retriever=None)
+        result = engine.explain("performance of contracts", top_k=5)
+        assert result.evidence[0].label == "Section"
+        assert result.evidence[1].label == "Chapter"
+
+    def test_stable_ordering_preserved(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        ids = [ev.node_id for ev in result.evidence]
+        breakdown = result.retrieval.ranking_breakdown
+        assert ids == sorted(ids, key=lambda n: (-breakdown[n]["rank"], n))
+
+    def test_confidence_unchanged(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        assert result.confidence.score == pytest.approx(0.8006, abs=1e-4)
+        assert result.confidence.label == "high"
+
+    def test_final_score_unchanged(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        for ev in result.evidence:
+            assert ev.final_score == pytest.approx(
+                ev.dense_score + ev.graph_score + ev.hierarchy_score, abs=1e-3
+            )
+        s4 = next(ev for ev in result.evidence if ev.node_id == "s4")
+        assert s4.final_score == pytest.approx(0.8392, abs=1e-4)
+
+    def test_retrieval_statistics_unchanged(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        assert result.retrieval.candidates == 5
+        assert result.retrieval.returned == 5
+        assert result.retrieval.graph_hits > 0
+        assert result.retrieval.duplicates_removed == 0
+
+    def test_api_output_unchanged(self):
+        import dataclasses
+
+        from src.llm.schemas import ExplanationResponse
+
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        payload = dataclasses.asdict(result)
+        response = ExplanationResponse.model_validate(payload)
+        dumped = response.retrieval.model_dump()
+        assert "chain_ranking" not in dumped
+        assert "ranking_breakdown" in dumped
+        assert {"dense", "graph", "hierarchy", "keyword", "citation", "rank"} <= set(
+            dumped["ranking_breakdown"]["s4"]
+        )
+
+    def test_diagnostics_recorded_per_retained_node(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        cr = result.retrieval.chain_ranking
+        assert set(cr) == {ev.node_id for ev in result.evidence}
+        s4 = cr["s4"]
+        assert s4["chain_relevance"] == pytest.approx(1.10)
+        assert s4["ranking_reason"] == "canonical:section"
+        assert s4["effective_hierarchy_score"] == pytest.approx(
+            result.retrieval.ranking_breakdown["s4"]["hierarchy"] * 1.10, abs=1e-4
+        )
+        ch2 = cr["ch2"]
+        assert ch2["chain_relevance"] == pytest.approx(1.03)
+        assert ch2["ranking_reason"] == "canonical:chapter"
+
+    def test_unknown_node_reason_and_multiplier(self):
+        g = InMemoryGraph()
+        g.create_node(
+            "Paragraph", "p1", {"title": "P1", "text": "some paragraph text"}
+        )
+        g.create_node(
+            "Paragraph", "p2", {"title": "P2", "text": "another paragraph"}
+        )
+        engine = ExplainabilityEngine(g, vector_retriever=None)
+        result = engine.explain("paragraph text", top_k=5)
+        cr = result.retrieval.chain_ranking
+        assert cr
+        assert all(e["chain_relevance"] == 1.0 for e in cr.values())
+        assert all(e["ranking_reason"] == "unknown" for e in cr.values())
