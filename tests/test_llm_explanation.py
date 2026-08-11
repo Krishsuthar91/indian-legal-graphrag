@@ -694,3 +694,239 @@ class TestChainRelevance:
         assert cr
         assert all(e["chain_relevance"] == 1.0 for e in cr.values())
         assert all(e["ranking_reason"] == "unknown" for e in cr.values())
+
+
+class TestRetrievalPipelineDiagnostics:
+    """C5: adaptive retrieval integration + research diagnostics."""
+
+    PIPELINE = [
+        "intent_detection",
+        "adaptive_top_k",
+        "dense_retrieval",
+        "graph_retrieval",
+        "hierarchy_retrieval",
+        "keyword_ranking",
+        "citation_ranking",
+        "canonical_hierarchy_preference",
+        "evidence_deduplication",
+        "evidence_resolution",
+        "provenance_generation",
+        "llm_answer_generation",
+    ]
+
+    def _multi_parent_graph(self) -> InMemoryGraph:
+        g = InMemoryGraph()
+        g.create_node("Document", "docA", {"title": "DOC A", "language": "en"})
+        g.create_node("Chapter", "chA", {"title": "CH I", "hierarchy_level": 4})
+        g.create_node("Chapter", "chB", {"title": "CH II", "hierarchy_level": 4})
+        g.create_node(
+            "Section",
+            "secA",
+            {
+                "title": "Definitions",
+                "numbering": "2",
+                "text": "contract means an agreement enforceable by law.",
+            },
+        )
+        g.create_edge("chA", "docA", "PART_OF")
+        g.create_edge("chB", "docA", "PART_OF")
+        g.create_edge("secA", "chA", "PART_OF")
+        g.create_edge("secA", "chB", "PART_OF")
+        return g
+
+    def test_full_adaptive_pipeline_executes(self):
+        engine = build_engine(adaptive=True, top_k_easy=2)
+        result = engine.explain("what does section 4 say")
+        s = result.retrieval
+        assert s.retrieval_strategy == "adaptive"
+        assert s.adaptive_top_k == 2
+        assert s.intent == "section_lookup"
+        assert s.query_intent == "section_lookup"
+        assert s.retrieval_pipeline == self.PIPELINE
+        assert result.evidence
+
+    def test_diagnostics_populated(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        s = result.retrieval
+        assert s.retrieval_pipeline == self.PIPELINE
+        assert s.query_intent == "explanation"
+        assert s.retrieved_candidates == s.candidates > 0
+        assert s.ranked_candidates >= s.returned
+        assert s.ranking_weights == {
+            "dense": 0.35,
+            "graph": 0.25,
+            "hierarchy": 0.15,
+            "keyword": 0.15,
+            "citation": 0.10,
+        }
+        assert s.ranking_breakdown
+        assert s.chain_ranking
+        assert s.retrieval_strategy == "fixed"
+        assert s.adaptive_top_k is None
+
+    def test_timing_fields_exist_and_consistent(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        s = result.retrieval
+        assert s.retrieval_latency_ms >= 0.0
+        assert s.ranking_latency_ms >= 0.0
+        assert s.total_retrieval_latency_ms >= s.retrieval_latency_ms + s.ranking_latency_ms
+        breakdown = s.latency_breakdown
+        assert set(breakdown) >= {
+            "intent_detection",
+            "fusion",
+            "ranking",
+            "deduplication",
+            "evidence_resolution",
+        }
+        assert all(v >= 0.0 for v in breakdown.values())
+        assert s.total_retrieval_latency_ms == pytest.approx(
+            s.retrieval_latency_ms
+            + s.ranking_latency_ms
+            + breakdown["evidence_resolution"],
+            abs=0.02,
+        )
+
+    def test_ranking_breakdown_preserved(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        ids = [ev.node_id for ev in result.evidence]
+        ranks = [result.retrieval.ranking_breakdown[nid]["rank"] for nid in ids]
+        assert ranks == sorted(ranks, reverse=True)
+
+    def test_dedup_diagnostics_preserved(self):
+        graph = self._multi_parent_graph()
+        engine = ExplainabilityEngine(graph, vector_retriever=None)
+        result = engine.explain("contract definitions", top_k=5)
+        s = result.retrieval
+        assert s.duplicates_removed == 2
+        assert len(s.duplicate_details) == 2
+        assert s.ranked_candidates - s.duplicates_removed == s.returned
+        assert len(result.evidence) == s.returned
+
+    def test_chain_diagnostics_preserved(self):
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        cr = result.retrieval.chain_ranking
+        assert set(cr) == {ev.node_id for ev in result.evidence}
+        assert cr["s4"]["chain_relevance"] == pytest.approx(1.10)
+
+    def test_adaptive_top_k_preserved(self):
+        engine = build_engine(adaptive=True, top_k_easy=2)
+        result = engine.explain("performance of contracts")
+        assert result.retrieval.retrieval_strategy == "adaptive"
+        assert result.retrieval.adaptive_top_k == 2
+        assert result.retrieval.query_intent == "explanation"
+
+    def test_explicit_top_k_stays_fixed(self):
+        engine = build_engine(adaptive=True, top_k_easy=2)
+        result = engine.explain("performance of contracts", top_k=4)
+        assert result.retrieval.retrieval_strategy == "fixed"
+        assert result.retrieval.adaptive_top_k is None
+
+    def test_api_schema_unchanged(self):
+        import dataclasses
+
+        from src.llm.schemas import ExplanationResponse
+
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        payload = dataclasses.asdict(result)
+        response = ExplanationResponse.model_validate(payload)
+        dumped = response.retrieval.model_dump()
+        assert "retrieval_pipeline" not in dumped
+        assert "query_intent" not in dumped
+        assert "retrieved_candidates" not in dumped
+        assert "ranked_candidates" not in dumped
+        assert "ranking_weights" not in dumped
+        assert "retrieval_latency_ms" not in dumped
+        assert "ranking_latency_ms" not in dumped
+        assert "total_retrieval_latency_ms" not in dumped
+        assert "latency_breakdown" not in dumped
+        assert "chain_ranking" not in dumped
+        assert "ranking_breakdown" in dumped
+        assert "retrieval_strategy" in dumped
+        assert "adaptive_top_k" in dumped
+
+    def test_new_provenance_record_roundtrips(self, tmp_path):
+        import uuid
+
+        from src.llm.provenance import AnswerResult, ProvenanceStore
+
+        engine = build_engine()
+        result = engine.explain("performance of contracts", top_k=5)
+        answer = AnswerResult(
+            provenance_id=uuid.uuid4().hex,
+            query=result.query,
+            answer="The answer.",
+            model="mock-llm",
+            explanation=result,
+            duration_ms=1.0,
+        )
+        store = ProvenanceStore(directory=tmp_path)
+        pid = store.save(answer)
+        record = store.get(pid)
+        assert record is not None
+        retrieval = record["explanation"]["retrieval"]
+        assert retrieval["retrieval_pipeline"] == self.PIPELINE
+        assert retrieval["total_retrieval_latency_ms"] >= 0.0
+        assert retrieval["query_intent"] == "explanation"
+
+    def test_old_provenance_record_still_loads(self, tmp_path):
+        import json
+
+        from src.llm.provenance import ProvenanceStore
+        from src.llm.schemas import ExplanationResponse
+
+        old_record = {
+            "provenance_id": "old1",
+            "query": "performance of contracts",
+            "answer": "The answer.",
+            "model": "mock-llm",
+            "duration_ms": 12.3,
+            "explanation": {
+                "query": "performance of contracts",
+                "query_language": "en",
+                "retrieval": {
+                    "keywords": ["performance", "contracts"],
+                    "section_refs": [],
+                    "dense_hits": 5,
+                    "graph_hits": 3,
+                    "hierarchy_propagated": 2,
+                    "candidates": 5,
+                    "returned": 5,
+                    "intent": "explanation",
+                    "adaptive_top_k": None,
+                    "retrieval_strategy": "fixed",
+                    "ranking_breakdown": {},
+                    "duplicates_removed": 0,
+                    "duplicate_details": [],
+                },
+                "evidence": [],
+                "reasoning_chain": [],
+                "hierarchy_paths": [],
+                "citations": [],
+                "counter_authorities": [],
+                "confidence": {"score": 0.5, "label": "medium", "factors": {}},
+                "validity": {
+                    "is_valid": True,
+                    "supported": True,
+                    "has_conflicts": False,
+                    "cites_counter_authority": False,
+                    "insufficient_evidence": False,
+                    "reasons": [],
+                },
+                "retrieval_weights": {"dense": 0.4, "graph": 0.35, "hierarchy": 0.25},
+            },
+        }
+        (tmp_path / "old1.json").write_text(
+            json.dumps(old_record), encoding="utf-8"
+        )
+        store = ProvenanceStore(directory=tmp_path)
+        record = store.get("old1")
+        assert record is not None
+        assert record["explanation"]["retrieval"]["retrieval_strategy"] == "fixed"
+        response = ExplanationResponse.model_validate(record["explanation"])
+        assert response.confidence.score == 0.5
+        assert response.retrieval.retrieval_strategy == "fixed"

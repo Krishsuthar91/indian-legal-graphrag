@@ -139,6 +139,19 @@ class RetrievalSummary:
     # out of the API schema on purpose — it is diagnostics only (persisted in
     # provenance) and the response format must not change.
     chain_ranking: dict[str, dict[str, Any]] = field(default_factory=dict)
+    # Phase 3 C5: adaptive retrieval integration + research diagnostics. All
+    # optional/defaulted for backward compatibility: old provenance records
+    # (without these keys) load unchanged, and the public API schema is left
+    # untouched — these live in provenance for offline evaluation only.
+    retrieval_pipeline: list[str] = field(default_factory=list)
+    query_intent: str = ""
+    retrieved_candidates: int = 0
+    ranked_candidates: int = 0
+    ranking_weights: dict[str, float] = field(default_factory=dict)
+    retrieval_latency_ms: float = 0.0
+    ranking_latency_ms: float = 0.0
+    total_retrieval_latency_ms: float = 0.0
+    latency_breakdown: dict[str, float] = field(default_factory=dict)
 
 
 @dataclass

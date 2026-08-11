@@ -10,6 +10,7 @@ citations, counter-authority detection, confidence scoring, and validity flags.
 
 from __future__ import annotations
 
+import time
 from dataclasses import dataclass
 from typing import Any
 
@@ -76,6 +77,25 @@ _CHAIN_RELEVANCE: dict[str, float] = {
     "document": 0.95,
     "wrapper": 0.90,
 }
+
+# Phase 3 C5: the adaptive retrieval pipeline runs these stages in order.
+# Stages 1-9 are retrieval, 10 resolves evidence, 11 builds provenance in this
+# engine, and 12 (LLM generation or the retrieval guard) runs in the QA
+# service. Exposed as diagnostics for offline research evaluation only.
+RETRIEVAL_PIPELINE_STAGES: tuple[str, ...] = (
+    "intent_detection",
+    "adaptive_top_k",
+    "dense_retrieval",
+    "graph_retrieval",
+    "hierarchy_retrieval",
+    "keyword_ranking",
+    "citation_ranking",
+    "canonical_hierarchy_preference",
+    "evidence_deduplication",
+    "evidence_resolution",
+    "provenance_generation",
+    "llm_answer_generation",
+)
 
 
 def _default_ranking_weights() -> dict[str, float]:
@@ -203,6 +223,8 @@ class ExplainabilityEngine:
         intent decides the evidence budget. An explicit ``top_k`` always wins.
         """
         parsed = parse_query(query)
+        latencies: dict[str, float] = {}
+        _start = time.perf_counter()
         intent = detect_intent(parsed)
         if top_k is None and self.adaptive:
             budget = adaptive_top_k(
@@ -217,6 +239,7 @@ class ExplainabilityEngine:
             budget = top_k if top_k is not None else 5
             strategy = "fixed"
             adaptive_k = None
+        latencies["intent_detection"] = self._ms_since(_start)
         chain: list[ReasoningStep] = []
 
         # 1. Query parsing
@@ -234,11 +257,13 @@ class ExplainabilityEngine:
         )
 
         # 2. Dense (multilingual) retrieval
+        _start = time.perf_counter()
         dense_ids: list[str] = []
         if self.vr is not None:
             for hit in self.vr.dense_search(query, top_k=budget, language=language):
                 if hit.node_id:
                     dense_ids.append(hit.node_id)
+        latencies["dense_retrieval"] = self._ms_since(_start)
         chain.append(
             ReasoningStep(
                 step=2,
@@ -252,8 +277,10 @@ class ExplainabilityEngine:
         )
 
         # 3. Graph (HHGR) retrieval
+        _start = time.perf_counter()
         graph_results = retrieve(self.graph, query, top_k=budget)
         graph_map = {r.node_id: r for r in graph_results}
+        latencies["graph_retrieval"] = self._ms_since(_start)
         chain.append(
             ReasoningStep(
                 step=3,
@@ -271,8 +298,10 @@ class ExplainabilityEngine:
         )
 
         # 4. Hierarchy propagation over graph-present dense seeds
+        _start = time.perf_counter()
         seed_ids = [nid for nid in dense_ids if self.graph.get_node(nid) is not None]
         propagated = propagate_hierarchy(self.graph, seed_ids) if seed_ids else {}
+        latencies["hierarchy_retrieval"] = self._ms_since(_start)
         chain.append(
             ReasoningStep(
                 step=4,
@@ -287,10 +316,14 @@ class ExplainabilityEngine:
         )
 
         # 5. Fusion + ranking
+        _start = time.perf_counter()
         signals, candidates = self._fuse(
             query, top_k=budget, language=language, graph_results=graph_results,
             propagated=propagated, parsed=parsed,
         )
+        latencies["fusion"] = self._ms_since(_start)
+
+        _start = time.perf_counter()
         rank: dict[str, float] = {}
         chain_info: dict[str, dict[str, Any]] = {}
         for nid in candidates:
@@ -315,14 +348,18 @@ class ExplainabilityEngine:
             }
             for nid in ranked_ids
         }
+        latencies["ranking"] = self._ms_since(_start)
+        ranked_before_dedup = len(ranked_ids)
 
         # 5b. Deduplicate ranked evidence before evidence construction.
+        _start = time.perf_counter()
         ranked_ids, duplicate_details = self._dedupe_evidence(
             ranked_ids, signals, parsed
         )
         duplicates_removed = len(duplicate_details)
         # C4 diagnostics for the retained (surviving) nodes only.
         chain_ranking = {nid: chain_info[nid] for nid in ranked_ids}
+        latencies["deduplication"] = self._ms_since(_start)
 
         chain.append(
             ReasoningStep(
@@ -347,7 +384,9 @@ class ExplainabilityEngine:
             )
         )
 
+        _start = time.perf_counter()
         evidence = self._build_evidence(ranked_ids, signals, parsed)
+        latencies["evidence_resolution"] = self._ms_since(_start)
         paths = self._build_paths(evidence)
         citations = self._build_citations(evidence)
         counter = self._detect_counter_authorities(evidence)
@@ -367,6 +406,29 @@ class ExplainabilityEngine:
             )
         )
 
+        retrieval_latency_ms = round(
+            sum(
+                latencies[k]
+                for k in (
+                    "intent_detection",
+                    "dense_retrieval",
+                    "graph_retrieval",
+                    "hierarchy_retrieval",
+                    "fusion",
+                )
+            ),
+            3,
+        )
+        ranking_latency_ms = round(
+            latencies["ranking"] + latencies["deduplication"], 3
+        )
+        total_retrieval_latency_ms = round(
+            retrieval_latency_ms
+            + ranking_latency_ms
+            + latencies["evidence_resolution"],
+            3,
+        )
+
         summary = RetrievalSummary(
             keywords=parsed.keywords,
             section_refs=parsed.section_refs,
@@ -382,6 +444,15 @@ class ExplainabilityEngine:
             duplicates_removed=duplicates_removed,
             duplicate_details=duplicate_details,
             chain_ranking=chain_ranking,
+            retrieval_pipeline=list(RETRIEVAL_PIPELINE_STAGES),
+            query_intent=intent,
+            retrieved_candidates=len(candidates),
+            ranked_candidates=ranked_before_dedup,
+            ranking_weights=dict(self.ranking_weights),
+            retrieval_latency_ms=retrieval_latency_ms,
+            ranking_latency_ms=ranking_latency_ms,
+            total_retrieval_latency_ms=total_retrieval_latency_ms,
+            latency_breakdown={k: round(v, 3) for k, v in latencies.items()},
         )
 
         log.info(
@@ -393,6 +464,8 @@ class ExplainabilityEngine:
             confidence=confidence.score,
             intent=intent,
             strategy=strategy,
+            retrieval_latency_ms=retrieval_latency_ms,
+            total_retrieval_latency_ms=total_retrieval_latency_ms,
         )
 
         return ExplanationResult(
@@ -579,6 +652,11 @@ class ExplainabilityEngine:
 
     def _weights_label(self) -> str:
         return ", ".join(f"{k}={v:.2f}" for k, v in sorted(self.weights.items()))
+
+    @staticmethod
+    def _ms_since(start: float) -> float:
+        """Milliseconds elapsed since ``start`` (monotonic clock)."""
+        return (time.perf_counter() - start) * 1000.0
 
     # -- evidence assembly -------------------------------------------------
 
