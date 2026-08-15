@@ -152,6 +152,19 @@ class RetrievalSummary:
     ranking_latency_ms: float = 0.0
     total_retrieval_latency_ms: float = 0.0
     latency_breakdown: dict[str, float] = field(default_factory=dict)
+    # Phase 4: deterministic legal query expansion diagnostics. Optional /
+    # defaulted so old provenance records load unchanged, and kept out of the
+    # public API schema alongside the other research diagnostics.
+    query_expansion_enabled: bool = False
+    expanded_terms: list[str] = field(default_factory=list)
+    expanded_concepts: list[str] = field(default_factory=list)
+    expansion_reason: str = ""
+    # Corpus-aware section-reference diagnostics: which verified references were
+    # considered, which exist in the indexed corpus (and were injected), and
+    # which were omitted because the section is not present in the corpus.
+    section_refs_considered: list[str] = field(default_factory=list)
+    section_refs_available: list[str] = field(default_factory=list)
+    section_refs_omitted: list[str] = field(default_factory=list)
 
 
 @dataclass

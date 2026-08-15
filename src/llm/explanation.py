@@ -33,6 +33,7 @@ from src.llm.provenance import (
 from src.retrieval.context import get_ancestor_chain, propagate_hierarchy
 from src.retrieval.intent import adaptive_top_k, detect_intent
 from src.retrieval.query import parse_query
+from src.retrieval.query_expansion import available_section_keys, expand_query
 from src.retrieval.ranker import retrieve
 from src.retrieval.scorer import (
     citation_frequency,
@@ -79,12 +80,15 @@ _CHAIN_RELEVANCE: dict[str, float] = {
 }
 
 # Phase 3 C5: the adaptive retrieval pipeline runs these stages in order.
-# Stages 1-9 are retrieval, 10 resolves evidence, 11 builds provenance in this
-# engine, and 12 (LLM generation or the retrieval guard) runs in the QA
-# service. Exposed as diagnostics for offline research evaluation only.
+# Stages 1-10 are retrieval (intent, adaptive budget, Phase 4 legal query
+# expansion, dense, graph, hierarchy, ranking), 11 resolves evidence, 12 builds
+# provenance in this engine, and 13 (LLM generation or the retrieval guard)
+# runs in the QA service. Exposed as diagnostics for offline research
+# evaluation only.
 RETRIEVAL_PIPELINE_STAGES: tuple[str, ...] = (
     "intent_detection",
     "adaptive_top_k",
+    "legal_expansion",
     "dense_retrieval",
     "graph_retrieval",
     "hierarchy_retrieval",
@@ -188,6 +192,7 @@ class ExplainabilityEngine:
         top_k_medium: int | None = None,
         top_k_complex: int | None = None,
         ranking_weights: dict[str, float] | None = None,
+        expansion_enabled: bool | None = None,
     ) -> None:
         self.graph = graph
         self.vr = vector_retriever
@@ -208,6 +213,28 @@ class ExplainabilityEngine:
         self.ranking_weights = _normalize_ranking_weights(
             ranking_weights or _default_ranking_weights()
         )
+        self.expansion_enabled = (
+            settings.QA_QUERY_EXPANSION_ENABLED
+            if expansion_enabled is None
+            else expansion_enabled
+        )
+        self._corpus_section_keys: set[str] | None = None
+
+    def _corpus_sections(self) -> set[str]:
+        """Section keys present in the indexed corpus (cached per engine).
+
+        Verified expansion references are only injected when their section
+        exists here, so expansion never points retrieval at sections the index
+        cannot return. ``None`` when the corpus is unknown -> expansion falls
+        back to concept terms only (all references omitted).
+        """
+        if self._corpus_section_keys is None:
+            try:
+                nodes = self.graph.all_nodes()
+            except (AttributeError, TypeError):
+                nodes = []
+            self._corpus_section_keys = available_section_keys(nodes)
+        return self._corpus_section_keys
 
     # -- public API --------------------------------------------------------
 
@@ -256,17 +283,64 @@ class ExplainabilityEngine:
             )
         )
 
+        # 1b. Phase 4: deterministic legal query expansion. Runs AFTER intent
+        # detection so the expanded section references can never change the
+        # classified intent or its adaptive budget. When active, the expanded
+        # search text drives dense + graph retrieval and the re-parsed query
+        # (with concept terms + verified section refs) drives ranking, evidence
+        # resolution and confidence.
+        _start = time.perf_counter()
+        expansion = expand_query(
+            query,
+            enabled=self.expansion_enabled,
+            available_sections=self._corpus_sections(),
+        )
+        search_text = expansion.build_search_text(query)
+        effective_parsed = parse_query(search_text) if expansion.active else parsed
+        latencies["legal_expansion"] = self._ms_since(_start)
+        if expansion.active:
+            expansion_description = (
+                f"Expanded {len(expansion.matched_phrases)} phrase(s) into "
+                f"{len(expansion.expanded_concepts)} legal concept(s) and "
+                f"{len(expansion.section_refs)} verified section reference(s) "
+                f"present in the corpus; omitted {len(expansion.section_refs_omitted)} "
+                f"reference(s) not present in the indexed corpus."
+            )
+        else:
+            expansion_description = (
+                "Legal query expansion matched no legal concept phrases."
+            )
+        chain.append(
+            ReasoningStep(
+                step=2,
+                kind="query_expansion",
+                description=expansion_description,
+                detail={
+                    "enabled": expansion.enabled,
+                    "active": expansion.active,
+                    "matched_phrases": expansion.matched_phrases,
+                    "expanded_terms": expansion.expanded_terms,
+                    "expanded_concepts": expansion.expanded_concepts,
+                    "section_refs": expansion.section_refs,
+                    "section_refs_considered": expansion.section_refs_considered,
+                    "section_refs_available": expansion.section_refs_available,
+                    "section_refs_omitted": expansion.section_refs_omitted,
+                    "reason": expansion.reason,
+                },
+            )
+        )
+
         # 2. Dense (multilingual) retrieval
         _start = time.perf_counter()
         dense_ids: list[str] = []
         if self.vr is not None:
-            for hit in self.vr.dense_search(query, top_k=budget, language=language):
+            for hit in self.vr.dense_search(search_text, top_k=budget, language=language):
                 if hit.node_id:
                     dense_ids.append(hit.node_id)
         latencies["dense_retrieval"] = self._ms_since(_start)
         chain.append(
             ReasoningStep(
-                step=2,
+                step=3,
                 kind="dense",
                 description=(
                     f"Semantic vector search returned {len(dense_ids)} candidate(s)."
@@ -278,12 +352,12 @@ class ExplainabilityEngine:
 
         # 3. Graph (HHGR) retrieval
         _start = time.perf_counter()
-        graph_results = retrieve(self.graph, query, top_k=budget)
+        graph_results = retrieve(self.graph, search_text, top_k=budget)
         graph_map = {r.node_id: r for r in graph_results}
         latencies["graph_retrieval"] = self._ms_since(_start)
         chain.append(
             ReasoningStep(
-                step=3,
+                step=4,
                 kind="graph",
                 description=(
                     f"Hybrid hierarchical graph retrieval returned "
@@ -304,7 +378,7 @@ class ExplainabilityEngine:
         latencies["hierarchy_retrieval"] = self._ms_since(_start)
         chain.append(
             ReasoningStep(
-                step=4,
+                step=5,
                 kind="hierarchy",
                 description=(
                     f"Hierarchical evidence propagated from {len(seed_ids)} seed(s) "
@@ -318,8 +392,8 @@ class ExplainabilityEngine:
         # 5. Fusion + ranking
         _start = time.perf_counter()
         signals, candidates = self._fuse(
-            query, top_k=budget, language=language, graph_results=graph_results,
-            propagated=propagated, parsed=parsed,
+            search_text, top_k=budget, language=language, graph_results=graph_results,
+            propagated=propagated, parsed=effective_parsed,
         )
         latencies["fusion"] = self._ms_since(_start)
 
@@ -354,7 +428,7 @@ class ExplainabilityEngine:
         # 5b. Deduplicate ranked evidence before evidence construction.
         _start = time.perf_counter()
         ranked_ids, duplicate_details = self._dedupe_evidence(
-            ranked_ids, signals, parsed
+            ranked_ids, signals, effective_parsed
         )
         duplicates_removed = len(duplicate_details)
         # C4 diagnostics for the retained (surviving) nodes only.
@@ -363,7 +437,7 @@ class ExplainabilityEngine:
 
         chain.append(
             ReasoningStep(
-                step=5,
+                step=6,
                 kind="fusion",
                 description=(
                     f"Fused dense/graph/hierarchy signals into {len(ranked_ids)} "
@@ -385,17 +459,17 @@ class ExplainabilityEngine:
         )
 
         _start = time.perf_counter()
-        evidence = self._build_evidence(ranked_ids, signals, parsed)
+        evidence = self._build_evidence(ranked_ids, signals, effective_parsed)
         latencies["evidence_resolution"] = self._ms_since(_start)
         paths = self._build_paths(evidence)
         citations = self._build_citations(evidence)
         counter = self._detect_counter_authorities(evidence)
-        confidence = self._score_confidence(evidence, parsed)
+        confidence = self._score_confidence(evidence, effective_parsed)
         validity = self._assess_validity(evidence, counter, confidence)
 
         chain.append(
             ReasoningStep(
-                step=6,
+                step=7,
                 kind="verification",
                 description=(
                     f"Confidence {confidence.score:.2f} ({confidence.label}); "
@@ -411,6 +485,7 @@ class ExplainabilityEngine:
                 latencies[k]
                 for k in (
                     "intent_detection",
+                    "legal_expansion",
                     "dense_retrieval",
                     "graph_retrieval",
                     "hierarchy_retrieval",
@@ -453,6 +528,13 @@ class ExplainabilityEngine:
             ranking_latency_ms=ranking_latency_ms,
             total_retrieval_latency_ms=total_retrieval_latency_ms,
             latency_breakdown={k: round(v, 3) for k, v in latencies.items()},
+            query_expansion_enabled=expansion.enabled,
+            expanded_terms=expansion.expanded_terms,
+            expanded_concepts=expansion.expanded_concepts,
+            expansion_reason=expansion.reason,
+            section_refs_considered=expansion.section_refs_considered,
+            section_refs_available=expansion.section_refs_available,
+            section_refs_omitted=expansion.section_refs_omitted,
         )
 
         log.info(

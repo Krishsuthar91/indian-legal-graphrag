@@ -4,7 +4,6 @@ import re
 
 import pytest
 
-from src.knowledge_graph.neo4j_driver import InMemoryGraph
 from src.llm.explanation import ExplainabilityEngine
 from src.llm.llm import MockLLMClient
 from src.llm.provenance import ProvenanceStore

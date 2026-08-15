@@ -95,6 +95,14 @@ class Settings(BaseSettings):
     # Upper bound for a single /query, /explain, or /provenance request.
     # Must be >= LLM_TIMEOUT_SECONDS so a slow-but-alive LLM still gets its turn.
     QA_REQUEST_TIMEOUT_SECONDS: float = 30.0
+    # Phase 4: deterministic legal query expansion. When True, ordinary-language
+    # expressions (e.g. "threat") are expanded into canonical ICA concepts and
+    # verified section references before retrieval. Retrieval-side only: answer
+    # generation and the public API contract are unchanged.
+    # Default is False: corpus-aware expansion remains a small net regression on
+    # the 50-question benchmark, so it is opt-in. Set the env var (or .env) to
+    # "true" to enable it explicitly.
+    QA_QUERY_EXPANSION_ENABLED: bool = False
 
     CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:8000"]
 
@@ -111,7 +119,10 @@ class Settings(BaseSettings):
     LOG_BACKUP_COUNT: int = 10
 
     model_config = SettingsConfigDict(
-        env_file=str(_REPO_ROOT / "deploy" / "env" / ".env.development"),
+        env_file=(
+            str(_REPO_ROOT / "deploy" / "env" / ".env.development"),
+            str(_REPO_ROOT / "deploy" / "env" / ".env.development.local"),
+        ),
         env_file_encoding="utf-8",
         extra="ignore",
     )
@@ -119,8 +130,11 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
-# Diagnostics: which .env file pydantic was pointed at, and whether it existed.
-# These are module-level so any component (e.g. the app startup log) can report
-# the exact env-file source without importing the settings instance again.
-ENV_FILE_PATH = Path(Settings.model_config["env_file"])
+# Diagnostics: which .env file(s) pydantic was pointed at, and whether they
+# existed. These are module-level so any component (e.g. the app startup log)
+# can report the exact env-file source without importing the settings instance
+# again.
+ENV_FILE_PATH = Path(Settings.model_config["env_file"][0])
+ENV_FILE_LOCAL_PATH = Path(Settings.model_config["env_file"][1])
 ENV_FILE_LOADED = ENV_FILE_PATH.is_file()
+ENV_FILE_LOCAL_LOADED = ENV_FILE_LOCAL_PATH.is_file()
