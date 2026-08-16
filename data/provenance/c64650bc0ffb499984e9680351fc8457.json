@@ -1,0 +1,603 @@
+{
+  "provenance_id": "c64650bc0ffb499984e9680351fc8457",
+  "query": "A signs under threat. Is the contract valid?",
+  "answer": "**Direct Answer**\nA contract signed under threat is not explicitly addressed in the retrieved evidence. However, [2] defines a \"contract\" as an agreement enforceable by law, and [4] illustrates forgery, which involves signing a document under false pretenses. Since the evidence does not explicitly address contracts signed under threat, we cannot confirm or deny the validity of such a contract.\n\n**Key Points**\n- The retrieved evidence does not explicitly address contracts signed under threat.\n- [2] defines a \"contract\" as an agreement enforceable by law.\n- [4] illustrates forgery, which involves signing a document under false pretenses.\n\n**Evidence Summary**\nThe retrieved evidence consists of four sources:\n- [SOURCE 1]: Discusses pledge by a person in possession under a voidable contract.\n- [SOURCE 2]: Defines key terms, including \"contract\" and \"promise\".\n- [SOURCE 3]: Discusses indemnity and guarantee, including the definition of a contract of indemnity.\n- [SOURCE 4]: Illustrates forgery and provides examples of when a person commits forgery.\n\n**Confidence Explanation**\nThe confidence level for this answer is 0.71 (high), as the evidence does not explicitly address contracts signed under threat. However, the definitions and illustrations provided in the evidence do not directly relate to contracts signed under threat, making it difficult to provide a definitive answer.\n\n**Limitations**\nThe retrieved evidence does not explicitly address contracts signed under threat. Therefore, we cannot confirm or deny the validity of such a contract. The evidence does not provide sufficient information to answer this question with confidence.",
+  "model": "meta/llama-3.1-8b-instruct",
+  "explanation": {
+    "query": "A signs under threat. Is the contract valid?",
+    "query_language": "en",
+    "retrieval": {
+      "keywords": [
+        "signs",
+        "threat",
+        "contract",
+        "valid"
+      ],
+      "section_refs": [],
+      "dense_hits": 5,
+      "graph_hits": 5,
+      "hierarchy_propagated": 45,
+      "candidates": 5,
+      "returned": 5,
+      "intent": "explanation",
+      "adaptive_top_k": null,
+      "retrieval_strategy": "fixed",
+      "ranking_breakdown": {
+        "n_0037": {
+          "dense": 0.2823,
+          "graph": 0.1623,
+          "hierarchy": 0.25,
+          "keyword": 0.5,
+          "citation": 1.0,
+          "rank": 0.3556
+        },
+        "n_0003": {
+          "dense": 0.2892,
+          "graph": 0.175,
+          "hierarchy": 0.25,
+          "keyword": 0.25,
+          "citation": 0.1053,
+          "rank": 0.2343
+        },
+        "n_0030": {
+          "dense": 0.2838,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.25,
+          "citation": 0.0526,
+          "rank": 0.1807
+        },
+        "n_0278": {
+          "dense": 0.2836,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.25,
+          "citation": 0.0,
+          "rank": 0.178
+        },
+        "n_0071": {
+          "dense": 0.2826,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 0.0,
+          "rank": 0.1402
+        }
+      },
+      "duplicates_removed": 0,
+      "duplicate_details": [],
+      "chain_ranking": {
+        "n_0037": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0003": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0030": {
+          "chain_relevance": 1.03,
+          "effective_hierarchy_score": 0.2575,
+          "ranking_reason": "canonical:chapter"
+        },
+        "n_0278": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0071": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        }
+      },
+      "retrieval_pipeline": [
+        "intent_detection",
+        "adaptive_top_k",
+        "dense_retrieval",
+        "graph_retrieval",
+        "hierarchy_retrieval",
+        "keyword_ranking",
+        "citation_ranking",
+        "canonical_hierarchy_preference",
+        "evidence_deduplication",
+        "evidence_resolution",
+        "provenance_generation",
+        "llm_answer_generation"
+      ],
+      "query_intent": "explanation",
+      "retrieved_candidates": 5,
+      "ranked_candidates": 5,
+      "ranking_weights": {
+        "dense": 0.35,
+        "graph": 0.25,
+        "hierarchy": 0.15,
+        "keyword": 0.15,
+        "citation": 0.1
+      },
+      "retrieval_latency_ms": 499.607,
+      "ranking_latency_ms": 7.811,
+      "total_retrieval_latency_ms": 507.734,
+      "latency_breakdown": {
+        "intent_detection": 0.214,
+        "dense_retrieval": 26.925,
+        "graph_retrieval": 212.789,
+        "hierarchy_retrieval": 1.347,
+        "fusion": 258.333,
+        "ranking": 0.092,
+        "deduplication": 7.719,
+        "evidence_resolution": 0.316
+      }
+    },
+    "evidence": [
+      {
+        "node_id": "n_0037",
+        "title": "Explanation : In this section, the expression \"mercantile agent\" and \"documents of",
+        "text": "title\" shall have the meanings assigned to them in the Indian Sale of Goods Act,\n1930 (3 of 1930). 178A. Pledge by person in possession under voidable contract -\nWhen the pawnor has obtained possession of the other goods pledged by him under\na contract voidable under section 19 of section 19A, but the contract has not been\nrescinded at the time of the pledge, the pawnee acquired a goods title to the goods,\nprovided he acts in good faith and without notice of the pawnor's defect of title. 179. Pledge where pawnor has only a limited interest -\nWhere person pledges goods in which he has only a limited interest, the pledge is\nvalid to the extent of that interest. 180. Suit by bailor or bailee against wrong-doer -\nIf a third person wrongfully deprives the bailee of the use of possession of goods\nbailed, or does them any injury, the bailee is entitled to use such remedies as the\nowner might have used in the like case if no bailment has been made; and either the\nbailor or the bailee may bring a suit against a third person for such deprivation or\ninjury. 181. Appointment of relief or compensation obtained by such suit -\nWhatever is obtained by way of relief of compensation in any such suit shall, as\nbetween the bailor and the bailee, be dealt with according to their respective\ninterests.",
+        "label": "Section",
+        "numbering": "In this section, the expression \"mercantile agent\" and \"documents of",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2823,
+        "graph_score": 0.1623,
+        "hierarchy_score": 0.25,
+        "final_score": 0.6946,
+        "sources": [
+          "dense",
+          "graph",
+          "hierarchy"
+        ],
+        "path": [
+          "0d1934142f67c5f5",
+          "n_0033",
+          "n_0036",
+          "n_0037"
+        ],
+        "snippet": "title\" shall have the meanings assigned to them in the Indian Sale of Goods Act,\n1930 (3 of 1930). 178A. Pledge by person in possession under voidable contract -\nWhen the pawnor has obtained possession of the other goods pledged by him unde"
+      },
+      {
+        "node_id": "n_0003",
+        "title": ".",
+        "text": "Definitions.\nIn this Act, unless there is anything repugnant in the subject or context, (a) \"contract\" means an agreement enforceable by law; (b) \"promise\" means a proposal accepted. (i) where the proposal is made (ii) where the acceptance is communicated",
+        "label": "Section",
+        "numbering": "2",
+        "collection": "",
+        "language": "",
+        "level": 5,
+        "dense_score": 0.2892,
+        "graph_score": 0.175,
+        "hierarchy_score": 0.25,
+        "final_score": 0.7142,
+        "sources": [
+          "dense",
+          "graph",
+          "hierarchy"
+        ],
+        "path": [
+          "040eb6f5d6578e88",
+          "n_0001",
+          "n_0003"
+        ],
+        "snippet": "Definitions.\nIn this Act, unless there is anything repugnant in the subject or context, (a) \"contract\" means an agreement enforceable by law; (b) \"promise\" means a proposal accepted. (i) where the proposal is made (ii) where the acceptance "
+      },
+      {
+        "node_id": "n_0030",
+        "title": "Chapter VIII Of indemnity and guarantee 124. \"Contract of indemnity\" defined",
+        "text": "A contract by which one party promises to save the other from loss caused to him by\nthe contract of the promisor himself, or by the conduct of any other person, is called\na \"contract of indemnity\". 125. Right of indemnity-holder when sued -\nThe promisee in a contract of indemnity, acting within the scope of his authority, is\nentitled to recover from the promisor- (1) all damages which he may be compelled to pay in any suit in respect of any\nmatter to which the promise to indemnify applies; (2) all costs which he may be compelled to pay in any such suit, if in bringing of\ndefending it, he did not contravene the orders of the promisor, and acted as it would\nhave been prudent for him to act in the absence of any contract of indemnity, or if\nthe promisor authorised him to bring or defend the suit; (3) all sums which he may have paid under the terms of any compromise of any\nsuch suit, if the compromise was not contract to the orders of the promisor, and was\none which it would have been prudent for the promise to make in the absence of any\ncontract of indemnity, or if the promisor authorised him to compromise the suit. 126. \"Contract of guarantee\", \"surety\", \"principal debtor\" and \"creditor\" -\nA \"contract of guarantee\" is a contract to perform the promise, or discharge the\nliability, of a third person in case of his default. The person who gives the guarantee\nis called the \"surety\", the person in respect of whose default the guarantee is given\nis called the \"principal debtor\", and the person to whom the guarantee is given is\ncalled the \"creditor\". A guarantee may be either oral or written. 127. Consideration for guarantee\nAnything done, or any promise made, for the benefit of the principal debtor, may be\na sufficient consideration to the surety for giving the guarantee. 128. Surety's liability\nThe liability of the surety is co-extensive with that of the principal debtor, unless it is\notherwise provided by the contract. 129. Continuing guarantee\nA guarantee which extends to a series of transaction, is called, a \"continuing\nguarantee\".",
+        "label": "Chapter",
+        "numbering": "Of indemnity and guarantee 124. \"Contract of indemnity\" defined",
+        "collection": "",
+        "language": "",
+        "level": 4,
+        "dense_score": 0.2838,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5338,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "0d1934142f67c5f5",
+          "n_0030"
+        ],
+        "snippet": "A contract by which one party promises to save the other from loss caused to him by\nthe contract of the promisor himself, or by the conduct of any other person, is called\na \"contract of indemnity\". 125. Right of indemnity-holder when sued -"
+      },
+      {
+        "node_id": "n_0278",
+        "title": "Illustrations (a) A signs his own name to a bill of exchange, intending that it may be believed that the bill was drawn by another person of the same",
+        "text": "name. A has committed forgery. (b) A writes the word “accepted” on a piece of paper and signs it with Z's name, in order that B may afterwards write on the paper a bill of\nexchange drawn by B upon Z, and negotiate the bill as though it had been accepted by Z. A is guilty of forgery; and if B, knowing the fact, draws\nthe bill upon the paper pursuant to A's intention, B is also guilty of forgery. (c) A picks up a bill of exchange payable to the order of a different person of the same name. A endorses the bill in his own name, intending\nto cause it to be believed that it was endorsed by the person to whose order it was payable; here A has committed forgery. (d) A purchases an estate sold under execution of a decree against B. B, after the seizure of the estate, in collusion with Z, executes a lease\nof the estate, to Z at a nominal rent and for a long period and dates the lease six months prior to the seizure, with intent to defraud A, and to cause\nit to be believed that the lease was granted before the seizure. B, though he executes the lease in his own name, commits forgery by antedating it. (e) A, a trader, in anticipation of insolvency, lodges effects with B for A's benefit, and with intent to defraud his creditors; and in order to\ngive a colour to the transaction, writes a promissory note binding himself to pay to B a sum for value received, and antedates the note, intending\nthat it may be believed to have been made before A was on the point of insolvency. A has committed forgery under the first head of the\ndefinition.",
+        "label": "Section",
+        "numbering": "s (a) A signs his own name to a bill of exchange, intending that it may be believed that the bill was drawn by another person of the same",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2836,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5336,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0275",
+          "n_0278"
+        ],
+        "snippet": "name. A has committed forgery. (b) A writes the word “accepted” on a piece of paper and signs it with Z's name, in order that B may afterwards write on the paper a bill of\nexchange drawn by B upon Z, and negotiate the bill as though it had "
+      },
+      {
+        "node_id": "n_0071",
+        "title": "Illustrations (a) Z is thrown from his horse, and is insensible. A, a surgeon, finds that Z requires to be trepanned. A, not intending Z's",
+        "text": "death, but in good faith, for Z's benefit, performs the trepan before Z recovers his power of judging for himself. A has committed\nno offence. (b) Z is carried off by a tiger. A fires at the tiger knowing it to be likely that the shot may kill Z, but not intending to kill Z,\nand in good faith intending Z's benefit. A's ball gives Z a mortal wound. A has committed no offence. (c) A, a surgeon, sees a child suffer an accident which is likely to prove fatal unless an operation be immediately performed.\nThere is no time to apply to the child's guardian. A performs the operation in spite of the entreaties of the child, intending, in\ngood faith, the child's benefit. A has committed no offence. (d) A is in a house which is on fire, with Z, a child. People below hold out a blanket. A drops the child from the house stop,\nknowing it to be likely that the fall may kill the child, but not intending to kill the child, and intending, in good faith, the child's\nbenefit. Here, even if the child is killed by the fall, A has committed no offence.",
+        "label": "Section",
+        "numbering": "s (a) Z is thrown from his horse, and is insensible. A, a surgeon, finds that Z requires to be trepanned. A, not intending Z's",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2826,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5326,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0058",
+          "n_0069",
+          "n_0071"
+        ],
+        "snippet": "death, but in good faith, for Z's benefit, performs the trepan before Z recovers his power of judging for himself. A has committed\nno offence. (b) Z is carried off by a tiger. A fires at the tiger knowing it to be likely that the shot may k"
+      }
+    ],
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "kind": "query_parse",
+        "description": "Parsed the query into keywords and legal references.",
+        "node_ids": [],
+        "detail": {
+          "keywords": [
+            "signs",
+            "threat",
+            "contract",
+            "valid"
+          ],
+          "section_refs": [],
+          "intent": "explanation"
+        }
+      },
+      {
+        "step": 2,
+        "kind": "dense",
+        "description": "Semantic vector search returned 5 candidate(s).",
+        "node_ids": [
+          "n_0003",
+          "n_0030",
+          "n_0278",
+          "n_0071",
+          "n_0037"
+        ],
+        "detail": {
+          "count": 5
+        }
+      },
+      {
+        "step": 3,
+        "kind": "graph",
+        "description": "Hybrid hierarchical graph retrieval returned 5 candidate(s).",
+        "node_ids": [
+          "n_0039",
+          "n_0003",
+          "n_0032",
+          "n_0037",
+          "n_0036"
+        ],
+        "detail": {
+          "seeds": [
+            "n_0039",
+            "n_0003",
+            "n_0032",
+            "n_0037",
+            "n_0036"
+          ],
+          "count": 5
+        }
+      },
+      {
+        "step": 4,
+        "kind": "hierarchy",
+        "description": "Hierarchical evidence propagated from 5 seed(s) to 45 ancestor/descendant node(s).",
+        "node_ids": [
+          "n_0003",
+          "n_0001",
+          "040eb6f5d6578e88",
+          "n_0004",
+          "n_0005"
+        ],
+        "detail": {
+          "seed_ids": [
+            "n_0003",
+            "n_0030",
+            "n_0278",
+            "n_0071",
+            "n_0037"
+          ],
+          "count": 45
+        }
+      },
+      {
+        "step": 5,
+        "kind": "fusion",
+        "description": "Fused dense/graph/hierarchy signals into 5 ranked evidence node(s) using weights dense=0.40, graph=0.35, hierarchy=0.25.",
+        "node_ids": [
+          "n_0037",
+          "n_0003",
+          "n_0030",
+          "n_0278",
+          "n_0071"
+        ],
+        "detail": {
+          "weights": {
+            "dense": 0.4,
+            "graph": 0.35,
+            "hierarchy": 0.25
+          },
+          "ranking_weights": {
+            "dense": 0.35,
+            "graph": 0.25,
+            "hierarchy": 0.15,
+            "keyword": 0.15,
+            "citation": 0.1
+          },
+          "intent": "explanation",
+          "strategy": "fixed",
+          "top_k": 5,
+          "candidates": 5,
+          "returned": 5,
+          "duplicates_removed": 0
+        }
+      },
+      {
+        "step": 6,
+        "kind": "verification",
+        "description": "Confidence 0.71 (high); valid=True; counter-authorities detected: 0.",
+        "node_ids": [],
+        "detail": {
+          "confidence": 0.7115,
+          "validity": true
+        }
+      }
+    ],
+    "hierarchy_paths": [
+      {
+        "node_id": "n_0037",
+        "entries": [
+          {
+            "node_id": "0d1934142f67c5f5",
+            "title": "The Indian Contract Act, 1872",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0033",
+            "title": "Chapter IX Of bailment 148. \"Bailment\", \"bailor\" and \"bailee\" defined -",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "Of bailment 148. \"Bailment\", \"bailor\" and \"bailee\" defined -"
+          },
+          {
+            "node_id": "n_0036",
+            "title": "Bailee's particular lien -",
+            "label": "Section",
+            "level": 5,
+            "numbering": "170"
+          },
+          {
+            "node_id": "n_0037",
+            "title": "Explanation : In this section, the expression \"mercantile agent\" and \"documents of",
+            "label": "Section",
+            "level": 9,
+            "numbering": "In this section, the expression \"mercantile agent\" and \"documents of"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0003",
+        "entries": [
+          {
+            "node_id": "040eb6f5d6578e88",
+            "title": "THE INDIAN CONTRACT ACT, 1892",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0001",
+            "title": "CHAPTER I",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER I"
+          },
+          {
+            "node_id": "n_0003",
+            "title": ".",
+            "label": "Section",
+            "level": 5,
+            "numbering": "2"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0030",
+        "entries": [
+          {
+            "node_id": "0d1934142f67c5f5",
+            "title": "The Indian Contract Act, 1872",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0030",
+            "title": "Chapter VIII Of indemnity and guarantee 124. \"Contract of indemnity\" defined",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "Of indemnity and guarantee 124. \"Contract of indemnity\" defined"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0278",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0275",
+            "title": "CHAPTER XVIII",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XVIII"
+          },
+          {
+            "node_id": "n_0278",
+            "title": "Illustrations (a) A signs his own name to a bill of exchange, intending that it may be believed that the bill was drawn by another person of the same",
+            "label": "Section",
+            "level": 9,
+            "numbering": "s (a) A signs his own name to a bill of exchange, intending that it may be believed that the bill was drawn by another person of the same"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0071",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0058",
+            "title": "CHAPTER IV",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER IV"
+          },
+          {
+            "node_id": "n_0069",
+            "title": "Act done in good faith for benefit of a person without consent.—Nothing is an offence by",
+            "label": "Section",
+            "level": 5,
+            "numbering": "92"
+          },
+          {
+            "node_id": "n_0071",
+            "title": "Illustrations (a) Z is thrown from his horse, and is insensible. A, a surgeon, finds that Z requires to be trepanned. A, not intending Z's",
+            "label": "Section",
+            "level": 9,
+            "numbering": "s (a) Z is thrown from his horse, and is insensible. A, a surgeon, finds that Z requires to be trepanned. A, not intending Z's"
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "index": 1,
+        "node_id": "n_0037",
+        "title": "Explanation : In this section, the expression \"mercantile agent\" and \"documents of",
+        "label": "Section",
+        "numbering": "In this section, the expression \"mercantile agent\" and \"documents of",
+        "score": 0.6946,
+        "citation_text": "Section In this section, the expression \"mercantile agent\" and \"documents of, \"Explanation : In this section, the expression \"mercantile agent\" and \"documents of\"",
+        "snippet": "title\" shall have the meanings assigned to them in the Indian Sale of Goods Act,\n1930 (3 of 1930). 178A. Pledge by person in possession under voidable contract -\nWhen the pawnor has obtained possession of the other goods pledged by him unde"
+      },
+      {
+        "index": 2,
+        "node_id": "n_0003",
+        "title": ".",
+        "label": "Section",
+        "numbering": "2",
+        "score": 0.7142,
+        "citation_text": "Section 2, \".\"",
+        "snippet": "Definitions.\nIn this Act, unless there is anything repugnant in the subject or context, (a) \"contract\" means an agreement enforceable by law; (b) \"promise\" means a proposal accepted. (i) where the proposal is made (ii) where the acceptance "
+      },
+      {
+        "index": 3,
+        "node_id": "n_0030",
+        "title": "Chapter VIII Of indemnity and guarantee 124. \"Contract of indemnity\" defined",
+        "label": "Chapter",
+        "numbering": "Of indemnity and guarantee 124. \"Contract of indemnity\" defined",
+        "score": 0.5338,
+        "citation_text": "Chapter Of indemnity and guarantee 124. \"Contract of indemnity\" defined, \"Chapter VIII Of indemnity and guarantee 124. \"Contract of indemnity\" defined\"",
+        "snippet": "A contract by which one party promises to save the other from loss caused to him by\nthe contract of the promisor himself, or by the conduct of any other person, is called\na \"contract of indemnity\". 125. Right of indemnity-holder when sued -"
+      },
+      {
+        "index": 4,
+        "node_id": "n_0278",
+        "title": "Illustrations (a) A signs his own name to a bill of exchange, intending that it may be believed that the bill was drawn by another person of the same",
+        "label": "Section",
+        "numbering": "s (a) A signs his own name to a bill of exchange, intending that it may be believed that the bill was drawn by another person of the same",
+        "score": 0.5336,
+        "citation_text": "Section s (a) A signs his own name to a bill of exchange, intending that it may be believed that the bill was drawn by another person of the same, \"Illustrations (a) A signs his own name to a bill of exchange, intending that it may be believed that the bill was drawn by another person of the same\"",
+        "snippet": "name. A has committed forgery. (b) A writes the word “accepted” on a piece of paper and signs it with Z's name, in order that B may afterwards write on the paper a bill of\nexchange drawn by B upon Z, and negotiate the bill as though it had "
+      },
+      {
+        "index": 5,
+        "node_id": "n_0071",
+        "title": "Illustrations (a) Z is thrown from his horse, and is insensible. A, a surgeon, finds that Z requires to be trepanned. A, not intending Z's",
+        "label": "Section",
+        "numbering": "s (a) Z is thrown from his horse, and is insensible. A, a surgeon, finds that Z requires to be trepanned. A, not intending Z's",
+        "score": 0.5326,
+        "citation_text": "Section s (a) Z is thrown from his horse, and is insensible. A, a surgeon, finds that Z requires to be trepanned. A, not intending Z's, \"Illustrations (a) Z is thrown from his horse, and is insensible. A, a surgeon, finds that Z requires to be trepanned. A, not intending Z's\"",
+        "snippet": "death, but in good faith, for Z's benefit, performs the trepan before Z recovers his power of judging for himself. A has committed\nno offence. (b) Z is carried off by a tiger. A fires at the tiger knowing it to be likely that the shot may k"
+      }
+    ],
+    "counter_authorities": [],
+    "confidence": {
+      "score": 0.7115,
+      "label": "high",
+      "factors": {
+        "base_score": 0.6234,
+        "keyword_coverage": 0.75,
+        "sufficiency": 1.0,
+        "citation_bonus": 0.0,
+        "n_evidence": 5,
+        "matched_keywords": [
+          "contract",
+          "signs",
+          "valid"
+        ]
+      }
+    },
+    "validity": {
+      "is_valid": true,
+      "supported": true,
+      "has_conflicts": false,
+      "cites_counter_authority": false,
+      "insufficient_evidence": false,
+      "reasons": [
+        "answer supported by retrieved evidence"
+      ]
+    },
+    "retrieval_weights": {
+      "dense": 0.4,
+      "graph": 0.35,
+      "hierarchy": 0.25
+    }
+  },
+  "duration_ms": 11822.47
+}

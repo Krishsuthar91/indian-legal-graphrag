@@ -1,0 +1,352 @@
+{
+  "provenance_id": "ef904218c3fc4e11af14b0f75ba8e5b3",
+  "query": "What is Section 2 of the Indian Contract Act?",
+  "answer": "**1. Direct Answer**\nSection 2 of the Indian Contract Act is not present in the retrieved evidence. The evidence only contains Section 1, which deals with the short title and commencement of the Act. [1]\n\n**2. Key Points**\n- The Indian Contract Act, 1892, has a short title and commencement. [1]\n- Section 1 of the Act deals with the short title and commencement. [1]\n- Section 2 of the Indian Contract Act is not present in the retrieved evidence. [1]\n\n**3. Evidence Summary**\nThe retrieved evidence contains Section 1 of the Indian Contract Act, 1892, which deals with the short title and commencement of the Act. It states that the Act may be called the Indian Contract Act, 1892, and it shall come into force on the first day of July, 1892. [1]\n\n**4. Confidence Explanation**\nI am 100% confident in my answer because the retrieved evidence explicitly states that it contains Section 1 and does not mention Section 2.\n\n**5. Limitations**\nThe question about Section 2 of the Indian Contract Act cannot be answered because it is not present in the retrieved evidence. The evidence does not contain any information about Section 2, and I cannot confirm or deny its existence.",
+  "model": "meta/llama-3.1-8b-instruct",
+  "explanation": {
+    "query": "What is Section 2 of the Indian Contract Act?",
+    "query_language": "en",
+    "retrieval": {
+      "keywords": [
+        "2",
+        "indian",
+        "contract"
+      ],
+      "section_refs": [
+        "section 2"
+      ],
+      "dense_hits": 5,
+      "graph_hits": 5,
+      "hierarchy_propagated": 20,
+      "candidates": 5,
+      "returned": 1,
+      "intent": "section_lookup",
+      "adaptive_top_k": null,
+      "retrieval_strategy": "fixed",
+      "ranking_breakdown": {
+        "f878bb4479542659": {
+          "dense": 0.3193,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.6667,
+          "citation": 0.0,
+          "rank": 0.2474
+        },
+        "f89a98cf22313117": {
+          "dense": 0.3193,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.6667,
+          "citation": 0.0,
+          "rank": 0.2474
+        },
+        "fa91efc60a66e428": {
+          "dense": 0.3193,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.6667,
+          "citation": 0.0,
+          "rank": 0.2474
+        },
+        "fae2388dfc74b77c": {
+          "dense": 0.3193,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.6667,
+          "citation": 0.0,
+          "rank": 0.2474
+        },
+        "fe171685afe0d498": {
+          "dense": 0.3193,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.6667,
+          "citation": 0.0,
+          "rank": 0.2474
+        }
+      },
+      "duplicates_removed": 4,
+      "duplicate_details": [
+        {
+          "removed_node": "f89a98cf22313117",
+          "duplicate_reason": "duplicate_path",
+          "retained_node": "f878bb4479542659"
+        },
+        {
+          "removed_node": "fa91efc60a66e428",
+          "duplicate_reason": "duplicate_path",
+          "retained_node": "f878bb4479542659"
+        },
+        {
+          "removed_node": "fae2388dfc74b77c",
+          "duplicate_reason": "duplicate_path",
+          "retained_node": "f878bb4479542659"
+        },
+        {
+          "removed_node": "fe171685afe0d498",
+          "duplicate_reason": "duplicate_path",
+          "retained_node": "f878bb4479542659"
+        }
+      ],
+      "chain_ranking": {
+        "f878bb4479542659": {
+          "chain_relevance": 0.95,
+          "effective_hierarchy_score": 0.2375,
+          "ranking_reason": "canonical:document"
+        }
+      },
+      "retrieval_pipeline": [
+        "intent_detection",
+        "adaptive_top_k",
+        "dense_retrieval",
+        "graph_retrieval",
+        "hierarchy_retrieval",
+        "keyword_ranking",
+        "citation_ranking",
+        "canonical_hierarchy_preference",
+        "evidence_deduplication",
+        "evidence_resolution",
+        "provenance_generation",
+        "llm_answer_generation"
+      ],
+      "query_intent": "section_lookup",
+      "retrieved_candidates": 5,
+      "ranked_candidates": 5,
+      "ranking_weights": {
+        "dense": 0.35,
+        "graph": 0.25,
+        "hierarchy": 0.15,
+        "keyword": 0.15,
+        "citation": 0.1
+      },
+      "retrieval_latency_ms": 884.423,
+      "ranking_latency_ms": 10.694,
+      "total_retrieval_latency_ms": 897.03,
+      "latency_breakdown": {
+        "intent_detection": 0.008,
+        "dense_retrieval": 19.092,
+        "graph_retrieval": 414.347,
+        "hierarchy_retrieval": 4.589,
+        "fusion": 446.386,
+        "ranking": 0.236,
+        "deduplication": 10.458,
+        "evidence_resolution": 1.913
+      }
+    },
+    "evidence": [
+      {
+        "node_id": "n_0002",
+        "title": ".",
+        "text": "Short title and commencement. (1) This Act may be called the Indian Contract Act, 1892. (2) It shall come into force on the first day of July, 1892.",
+        "label": "Section",
+        "numbering": "1",
+        "collection": "",
+        "language": "",
+        "level": 5,
+        "dense_score": 0.3193,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5693,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "040eb6f5d6578e88",
+          "n_0001",
+          "n_0002"
+        ],
+        "snippet": "Short title and commencement. (1) This Act may be called the Indian Contract Act, 1892. (2) It shall come into force on the first day of July, 1892."
+      }
+    ],
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "kind": "query_parse",
+        "description": "Parsed the query into keywords and legal references.",
+        "node_ids": [],
+        "detail": {
+          "keywords": [
+            "2",
+            "indian",
+            "contract"
+          ],
+          "section_refs": [
+            "section 2"
+          ],
+          "intent": "section_lookup"
+        }
+      },
+      {
+        "step": 2,
+        "kind": "dense",
+        "description": "Semantic vector search returned 5 candidate(s).",
+        "node_ids": [
+          "f878bb4479542659",
+          "f89a98cf22313117",
+          "fa91efc60a66e428",
+          "fae2388dfc74b77c",
+          "fe171685afe0d498"
+        ],
+        "detail": {
+          "count": 5
+        }
+      },
+      {
+        "step": 3,
+        "kind": "graph",
+        "description": "Hybrid hierarchical graph retrieval returned 5 candidate(s).",
+        "node_ids": [
+          "n_0003",
+          "n_0174",
+          "n_0125",
+          "n_0171",
+          "n_0249"
+        ],
+        "detail": {
+          "seeds": [
+            "n_0003",
+            "n_0174",
+            "n_0125",
+            "n_0171",
+            "n_0249"
+          ],
+          "count": 5
+        }
+      },
+      {
+        "step": 4,
+        "kind": "hierarchy",
+        "description": "Hierarchical evidence propagated from 5 seed(s) to 20 ancestor/descendant node(s).",
+        "node_ids": [
+          "f878bb4479542659",
+          "n_0001",
+          "n_0007",
+          "n_0009",
+          "n_0002"
+        ],
+        "detail": {
+          "seed_ids": [
+            "f878bb4479542659",
+            "f89a98cf22313117",
+            "fa91efc60a66e428",
+            "fae2388dfc74b77c",
+            "fe171685afe0d498"
+          ],
+          "count": 20
+        }
+      },
+      {
+        "step": 5,
+        "kind": "fusion",
+        "description": "Fused dense/graph/hierarchy signals into 1 ranked evidence node(s) using weights dense=0.40, graph=0.35, hierarchy=0.25.",
+        "node_ids": [
+          "f878bb4479542659"
+        ],
+        "detail": {
+          "weights": {
+            "dense": 0.4,
+            "graph": 0.35,
+            "hierarchy": 0.25
+          },
+          "ranking_weights": {
+            "dense": 0.35,
+            "graph": 0.25,
+            "hierarchy": 0.15,
+            "keyword": 0.15,
+            "citation": 0.1
+          },
+          "intent": "section_lookup",
+          "strategy": "fixed",
+          "top_k": 5,
+          "candidates": 5,
+          "returned": 1,
+          "duplicates_removed": 4
+        }
+      },
+      {
+        "step": 6,
+        "kind": "verification",
+        "description": "Confidence 0.64 (medium); valid=True; counter-authorities detected: 0.",
+        "node_ids": [],
+        "detail": {
+          "confidence": 0.6416,
+          "validity": true
+        }
+      }
+    ],
+    "hierarchy_paths": [
+      {
+        "node_id": "n_0002",
+        "entries": [
+          {
+            "node_id": "040eb6f5d6578e88",
+            "title": "THE INDIAN CONTRACT ACT, 1892",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0001",
+            "title": "CHAPTER I",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER I"
+          },
+          {
+            "node_id": "n_0002",
+            "title": ".",
+            "label": "Section",
+            "level": 5,
+            "numbering": "1"
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "index": 1,
+        "node_id": "n_0002",
+        "title": ".",
+        "label": "Section",
+        "numbering": "1",
+        "score": 0.5693,
+        "citation_text": "Section 1, \".\"",
+        "snippet": "Short title and commencement. (1) This Act may be called the Indian Contract Act, 1892. (2) It shall come into force on the first day of July, 1892."
+      }
+    ],
+    "counter_authorities": [],
+    "confidence": {
+      "score": 0.6416,
+      "label": "medium",
+      "factors": {
+        "base_score": 0.5693,
+        "keyword_coverage": 1.0,
+        "sufficiency": 0.3333,
+        "citation_bonus": 0.0,
+        "n_evidence": 1,
+        "matched_keywords": [
+          "2",
+          "contract",
+          "indian"
+        ]
+      }
+    },
+    "validity": {
+      "is_valid": true,
+      "supported": true,
+      "has_conflicts": false,
+      "cites_counter_authority": false,
+      "insufficient_evidence": false,
+      "reasons": [
+        "answer supported by retrieved evidence"
+      ]
+    },
+    "retrieval_weights": {
+      "dense": 0.4,
+      "graph": 0.35,
+      "hierarchy": 0.25
+    }
+  },
+  "duration_ms": 3526.48
+}

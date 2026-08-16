@@ -1,0 +1,611 @@
+{
+  "provenance_id": "6a1718959f2c4e80ae205792151b4bc0",
+  "query": "What is free consent?",
+  "answer": "**1. Direct Answer**\nFree consent is not explicitly defined in the retrieved evidence. However, [2] mentions that a person's consent is not required if the circumstances are such that it is impossible for that person to signify consent, or if that person is incapable of giving consent, and has no guardian or other person in lawful charge of him from whom it is possible to obtain consent in time for the thing to be done with benefit.\n\n**2. Key Points**\n- Free consent is not explicitly defined in the retrieved evidence.\n- A person's consent is not required in certain circumstances, as mentioned in [2].\n- The concept of free consent is not discussed in the retrieved evidence.\n\n**3. Evidence Summary**\nThe retrieved evidence consists of five sources, which discuss various aspects of the Indian Penal Code. [1] discusses an exception to the rule of consent, [2] mentions the circumstances under which consent is not required, [3] discusses the concept of provocation, [4] explains the concept of personation, and [5] discusses the meaning of a statement.\n\n**4. Confidence Explanation**\nI am 58% confident in my answer, as the retrieved evidence provides some information related to consent, but it does not explicitly define free consent. The evidence is sufficient to answer the question, but it is not comprehensive.\n\n**5. Limitations**\nThe retrieved evidence does not provide a comprehensive definition of free consent. Therefore, I cannot confirm or deny the existence of free consent in the context of the Indian Penal Code. The question could not be answered with absolute certainty due to the lack of explicit definition in the retrieved evidence.",
+  "model": "meta/llama-3.1-8b-instruct",
+  "explanation": {
+    "query": "What is free consent?",
+    "query_language": "en",
+    "retrieval": {
+      "keywords": [
+        "free",
+        "consent"
+      ],
+      "section_refs": [],
+      "dense_hits": 5,
+      "graph_hits": 5,
+      "hierarchy_propagated": 19,
+      "candidates": 5,
+      "returned": 5,
+      "intent": "explanation",
+      "adaptive_top_k": null,
+      "retrieval_strategy": "fixed",
+      "ranking_breakdown": {
+        "n_0067": {
+          "dense": 0.255,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.5,
+          "citation": 1.0,
+          "rank": 0.3055
+        },
+        "n_0069": {
+          "dense": 0.2665,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.5,
+          "citation": 0.0,
+          "rank": 0.2095
+        },
+        "n_0189": {
+          "dense": 0.2426,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.5,
+          "citation": 0.0,
+          "rank": 0.2012
+        },
+        "n_0264": {
+          "dense": 0.2459,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 0.0,
+          "rank": 0.1273
+        },
+        "n_0141": {
+          "dense": 0.2447,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 0.0,
+          "rank": 0.1269
+        }
+      },
+      "duplicates_removed": 0,
+      "duplicate_details": [],
+      "chain_ranking": {
+        "n_0067": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0069": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0189": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0264": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0141": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        }
+      },
+      "retrieval_pipeline": [
+        "intent_detection",
+        "adaptive_top_k",
+        "dense_retrieval",
+        "graph_retrieval",
+        "hierarchy_retrieval",
+        "keyword_ranking",
+        "citation_ranking",
+        "canonical_hierarchy_preference",
+        "evidence_deduplication",
+        "evidence_resolution",
+        "provenance_generation",
+        "llm_answer_generation"
+      ],
+      "query_intent": "explanation",
+      "retrieved_candidates": 5,
+      "ranked_candidates": 5,
+      "ranking_weights": {
+        "dense": 0.35,
+        "graph": 0.25,
+        "hierarchy": 0.15,
+        "keyword": 0.15,
+        "citation": 0.1
+      },
+      "retrieval_latency_ms": 226.894,
+      "ranking_latency_ms": 2.609,
+      "total_retrieval_latency_ms": 229.623,
+      "latency_breakdown": {
+        "intent_detection": 1.354,
+        "dense_retrieval": 19.016,
+        "graph_retrieval": 85.76,
+        "hierarchy_retrieval": 0.143,
+        "fusion": 120.621,
+        "ranking": 0.048,
+        "deduplication": 2.56,
+        "evidence_resolution": 0.12
+      }
+    },
+    "evidence": [
+      {
+        "node_id": "n_0067",
+        "title": "Illustration",
+        "text": "A, in good faith, for his child's benefit without his child's consent, has his child cut for the stone by a surgeon knowing it to\nbe likely that the operation will cause the child's death, but not intending to cause the child's death. A is within the exception,\ninasmuch as his object was the cure of the child. 90. Consent known to be given under fear or misconception.—A consent is not such a consent as\nis intended by any section of this Code, if the consent is given by a person under fear of injury, or under a\nmisconception of fact, and if the person doing the act knows, or has reason to believe, that the consent\nwas given in consequence of such fear or misconception; or\nConsent of insane person.—if the consent is given by a person who, from unsoundness of mind, or\nintoxication, is unable to understand the nature and consequence of that to which he gives his consent; or\nConsent of child.—unless the contrary appears from the context, if the consent is given by a person\nwho is under twelve years of age. 91. Exclusion of acts which are offences independently of harm cause.—The exceptions in\nsections 87, 88 and 89 do not extend to acts which are offences independently of any harm which they\nmay cause, or be intended to cause, or be known to be likely to cause, to the person giving the consent, or\non whose behalf the consent is given.",
+        "label": "Section",
+        "numbering": "Illustration",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.255,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.505,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0058",
+          "n_0067"
+        ],
+        "snippet": "A, in good faith, for his child's benefit without his child's consent, has his child cut for the stone by a surgeon knowing it to\nbe likely that the operation will cause the child's death, but not intending to cause the child's death. A is "
+      },
+      {
+        "node_id": "n_0069",
+        "title": "Act done in good faith for benefit of a person without consent.—Nothing is an offence by",
+        "text": "reason of any harm which it may cause to a person for whose benefit it is done in good faith, even without\nthat person's consent, if the circumstances are such that it is impossible for that person to signify consent,\nor if that person is incapable of giving consent, and has no guardian or other person in lawful charge of\nhim from whom it is possible to obtain consent in time for the thing to be done with benefit: Provided—",
+        "label": "Section",
+        "numbering": "92",
+        "collection": "",
+        "language": "",
+        "level": 5,
+        "dense_score": 0.2665,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5165,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0058",
+          "n_0069"
+        ],
+        "snippet": "reason of any harm which it may cause to a person for whose benefit it is done in good faith, even without\nthat person's consent, if the circumstances are such that it is impossible for that person to signify consent,\nor if that person is i"
+      },
+      {
+        "node_id": "n_0189",
+        "title": "Explanation.—It is immaterial in such cases which party offers the provocation or commits the first",
+        "text": "assault.\nException 5.—Culpable homicide is not murder when the person whose death is caused, being above\nthe age of eighteen years, suffers death or takes the risk of death with his own consent.",
+        "label": "Section",
+        "numbering": "—It is immaterial in such cases which party offers the provocation or commits the first",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2426,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.4926,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0179",
+          "n_0187",
+          "n_0189"
+        ],
+        "snippet": "assault.\nException 5.—Culpable homicide is not murder when the person whose death is caused, being above\nthe age of eighteen years, suffers death or takes the risk of death with his own consent."
+      },
+      {
+        "node_id": "n_0264",
+        "title": "Explanation.—The offence is committed whether the individual personated is a real or imaginary",
+        "text": "person.",
+        "label": "Section",
+        "numbering": "—The offence is committed whether the individual personated is a real or imaginary",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2459,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.4959,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0240",
+          "n_0259",
+          "n_0261",
+          "n_0264"
+        ],
+        "snippet": "person."
+      },
+      {
+        "node_id": "n_0141",
+        "title": "Explanation 1.—A statement is within the meaning of this section, whether it is made verbally or",
+        "text": "otherwise.",
+        "label": "Section",
+        "numbering": "—A statement is within the meaning of this section, whether it is made verbally or",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2447,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.4947,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0140",
+          "n_0141"
+        ],
+        "snippet": "otherwise."
+      }
+    ],
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "kind": "query_parse",
+        "description": "Parsed the query into keywords and legal references.",
+        "node_ids": [],
+        "detail": {
+          "keywords": [
+            "free",
+            "consent"
+          ],
+          "section_refs": [],
+          "intent": "explanation"
+        }
+      },
+      {
+        "step": 2,
+        "kind": "dense",
+        "description": "Semantic vector search returned 5 candidate(s).",
+        "node_ids": [
+          "n_0069",
+          "n_0067",
+          "n_0264",
+          "n_0141",
+          "n_0189"
+        ],
+        "detail": {
+          "count": 5
+        }
+      },
+      {
+        "step": 3,
+        "kind": "graph",
+        "description": "Hybrid hierarchical graph retrieval returned 5 candidate(s).",
+        "node_ids": [
+          "n_0032",
+          "n_0013",
+          "n_0034",
+          "n_0223",
+          "n_0252"
+        ],
+        "detail": {
+          "seeds": [
+            "n_0032",
+            "n_0013",
+            "n_0034",
+            "n_0223",
+            "n_0252"
+          ],
+          "count": 5
+        }
+      },
+      {
+        "step": 4,
+        "kind": "hierarchy",
+        "description": "Hierarchical evidence propagated from 5 seed(s) to 19 ancestor/descendant node(s).",
+        "node_ids": [
+          "n_0069",
+          "n_0058",
+          "cf20a14c52127fd5",
+          "n_0070",
+          "n_0071"
+        ],
+        "detail": {
+          "seed_ids": [
+            "n_0069",
+            "n_0067",
+            "n_0264",
+            "n_0141",
+            "n_0189"
+          ],
+          "count": 19
+        }
+      },
+      {
+        "step": 5,
+        "kind": "fusion",
+        "description": "Fused dense/graph/hierarchy signals into 5 ranked evidence node(s) using weights dense=0.40, graph=0.35, hierarchy=0.25.",
+        "node_ids": [
+          "n_0067",
+          "n_0069",
+          "n_0189",
+          "n_0264",
+          "n_0141"
+        ],
+        "detail": {
+          "weights": {
+            "dense": 0.4,
+            "graph": 0.35,
+            "hierarchy": 0.25
+          },
+          "ranking_weights": {
+            "dense": 0.35,
+            "graph": 0.25,
+            "hierarchy": 0.15,
+            "keyword": 0.15,
+            "citation": 0.1
+          },
+          "intent": "explanation",
+          "strategy": "fixed",
+          "top_k": 5,
+          "candidates": 5,
+          "returned": 5,
+          "duplicates_removed": 0
+        }
+      },
+      {
+        "step": 6,
+        "kind": "verification",
+        "description": "Confidence 0.58 (medium); valid=True; counter-authorities detected: 0.",
+        "node_ids": [],
+        "detail": {
+          "confidence": 0.5766,
+          "validity": true
+        }
+      }
+    ],
+    "hierarchy_paths": [
+      {
+        "node_id": "n_0067",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0058",
+            "title": "CHAPTER IV",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER IV"
+          },
+          {
+            "node_id": "n_0067",
+            "title": "Illustration",
+            "label": "Section",
+            "level": 9,
+            "numbering": "Illustration"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0069",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0058",
+            "title": "CHAPTER IV",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER IV"
+          },
+          {
+            "node_id": "n_0069",
+            "title": "Act done in good faith for benefit of a person without consent.—Nothing is an offence by",
+            "label": "Section",
+            "level": 5,
+            "numbering": "92"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0189",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0179",
+            "title": "CHAPTER XVI",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XVI"
+          },
+          {
+            "node_id": "n_0187",
+            "title": "A is lawfully arrested by Z, a bailiff. A is excited to sudden and violent passion by the arrest, and kills Z. This is murder,",
+            "label": "Clause",
+            "level": 8,
+            "numbering": "c"
+          },
+          {
+            "node_id": "n_0189",
+            "title": "Explanation.—It is immaterial in such cases which party offers the provocation or commits the first",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—It is immaterial in such cases which party offers the provocation or commits the first"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0264",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0240",
+            "title": "CHAPTER XVII",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XVII"
+          },
+          {
+            "node_id": "n_0259",
+            "title": "of the Employees’ Provident Funds and Miscellaneous Provisions Act, 1952 (19 of 1952) or",
+            "label": "Section",
+            "level": 5,
+            "numbering": "17"
+          },
+          {
+            "node_id": "n_0261",
+            "title": "A is a warehouse-keeper. Z going on a journey, entrusts his furniture to A, under a contract that it shall be returned on",
+            "label": "Clause",
+            "level": 7,
+            "numbering": "b"
+          },
+          {
+            "node_id": "n_0264",
+            "title": "Explanation.—The offence is committed whether the individual personated is a real or imaginary",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—The offence is committed whether the individual personated is a real or imaginary"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0141",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0140",
+            "title": "CHAPTER XI",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XI"
+          },
+          {
+            "node_id": "n_0141",
+            "title": "Explanation 1.—A statement is within the meaning of this section, whether it is made verbally or",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—A statement is within the meaning of this section, whether it is made verbally or"
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "index": 1,
+        "node_id": "n_0067",
+        "title": "Illustration",
+        "label": "Section",
+        "numbering": "Illustration",
+        "score": 0.505,
+        "citation_text": "Section Illustration, \"Illustration\"",
+        "snippet": "A, in good faith, for his child's benefit without his child's consent, has his child cut for the stone by a surgeon knowing it to\nbe likely that the operation will cause the child's death, but not intending to cause the child's death. A is "
+      },
+      {
+        "index": 2,
+        "node_id": "n_0069",
+        "title": "Act done in good faith for benefit of a person without consent.—Nothing is an offence by",
+        "label": "Section",
+        "numbering": "92",
+        "score": 0.5165,
+        "citation_text": "Section 92, \"Act done in good faith for benefit of a person without consent.—Nothing is an offence by\"",
+        "snippet": "reason of any harm which it may cause to a person for whose benefit it is done in good faith, even without\nthat person's consent, if the circumstances are such that it is impossible for that person to signify consent,\nor if that person is i"
+      },
+      {
+        "index": 3,
+        "node_id": "n_0189",
+        "title": "Explanation.—It is immaterial in such cases which party offers the provocation or commits the first",
+        "label": "Section",
+        "numbering": "—It is immaterial in such cases which party offers the provocation or commits the first",
+        "score": 0.4926,
+        "citation_text": "Section —It is immaterial in such cases which party offers the provocation or commits the first, \"Explanation.—It is immaterial in such cases which party offers the provocation or commits the first\"",
+        "snippet": "assault.\nException 5.—Culpable homicide is not murder when the person whose death is caused, being above\nthe age of eighteen years, suffers death or takes the risk of death with his own consent."
+      },
+      {
+        "index": 4,
+        "node_id": "n_0264",
+        "title": "Explanation.—The offence is committed whether the individual personated is a real or imaginary",
+        "label": "Section",
+        "numbering": "—The offence is committed whether the individual personated is a real or imaginary",
+        "score": 0.4959,
+        "citation_text": "Section —The offence is committed whether the individual personated is a real or imaginary, \"Explanation.—The offence is committed whether the individual personated is a real or imaginary\"",
+        "snippet": "person."
+      },
+      {
+        "index": 5,
+        "node_id": "n_0141",
+        "title": "Explanation 1.—A statement is within the meaning of this section, whether it is made verbally or",
+        "label": "Section",
+        "numbering": "—A statement is within the meaning of this section, whether it is made verbally or",
+        "score": 0.4947,
+        "citation_text": "Section —A statement is within the meaning of this section, whether it is made verbally or, \"Explanation 1.—A statement is within the meaning of this section, whether it is made verbally or\"",
+        "snippet": "otherwise."
+      }
+    ],
+    "counter_authorities": [],
+    "confidence": {
+      "score": 0.5766,
+      "label": "medium",
+      "factors": {
+        "base_score": 0.5027,
+        "keyword_coverage": 0.5,
+        "sufficiency": 1.0,
+        "citation_bonus": 0.0,
+        "n_evidence": 5,
+        "matched_keywords": [
+          "consent"
+        ]
+      }
+    },
+    "validity": {
+      "is_valid": true,
+      "supported": true,
+      "has_conflicts": false,
+      "cites_counter_authority": false,
+      "insufficient_evidence": false,
+      "reasons": [
+        "answer supported by retrieved evidence"
+      ]
+    },
+    "retrieval_weights": {
+      "dense": 0.4,
+      "graph": 0.35,
+      "hierarchy": 0.25
+    }
+  },
+  "duration_ms": 16929.42
+}

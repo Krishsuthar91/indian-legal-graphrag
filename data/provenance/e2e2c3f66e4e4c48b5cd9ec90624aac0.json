@@ -1,0 +1,458 @@
+{
+  "provenance_id": "e2e2c3f66e4e4c48b5cd9ec90624aac0",
+  "query": "Difference between void and voidable contract.",
+  "answer": "**1. Direct Answer**\nA void contract is one that is not enforceable, whereas a voidable contract is one that can be rescinded by one or both parties. [1] states that when an agreement is discovered to be void, any person who has received an advantage under such agreement is bound to restore it. [2] explains that an agreement to which the consent of the promisor is freely given is not void merely because the consideration is inadequate.\n\n**2. Key Points**\n- A void contract is not enforceable.\n- A voidable contract can be rescinded by one or both parties.\n- When an agreement is discovered to be void, any person who has received an advantage under such agreement is bound to restore it. [1]\n- An agreement to which the consent of the promisor is freely given is not void merely because the consideration is inadequate. [2]\n\n**3. Evidence Summary**\nThe retrieved evidence consists of two sources: [1] and [2]. [1] discusses the obligation of a person who has received an advantage under a void agreement, stating that they are bound to restore it. [2] explains that an agreement to which the consent of the promisor is freely given is not void merely because the consideration is inadequate.\n\n**4. Confidence Explanation**\nThe confidence level is 0.65 (medium), indicating that the evidence is partially relevant to the question. However, the evidence does not provide a clear distinction between a void and voidable contract. [1] discusses the consequences of a void agreement, while [2] explains the conditions under which an agreement is not void. Therefore, the answer is based on the available information, but it may not be comprehensive.\n\n**5. Limitations**\nThe evidence does not provide a clear definition of a void and voidable contract. It only discusses the consequences of a void agreement and the conditions under which an agreement is not void. Therefore, the answer may not be complete, and further evidence may be required to provide a more comprehensive understanding of the difference between a void and voidable contract.",
+  "model": "meta/llama-3.1-8b-instruct",
+  "explanation": {
+    "query": "Difference between void and voidable contract.",
+    "query_language": "en",
+    "retrieval": {
+      "keywords": [
+        "difference",
+        "between",
+        "void",
+        "voidable",
+        "contract"
+      ],
+      "section_refs": [],
+      "dense_hits": 5,
+      "graph_hits": 5,
+      "hierarchy_propagated": 22,
+      "candidates": 5,
+      "returned": 2,
+      "intent": "comparison",
+      "adaptive_top_k": null,
+      "retrieval_strategy": "fixed",
+      "ranking_breakdown": {
+        "n_0022": {
+          "dense": 0.242,
+          "graph": 0.1885,
+          "hierarchy": 0.25,
+          "keyword": 0.6,
+          "citation": 1.0,
+          "rank": 0.3631
+        },
+        "f878bb4479542659": {
+          "dense": 0.2365,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.2,
+          "citation": 0.0,
+          "rank": 0.1484
+        },
+        "f89a98cf22313117": {
+          "dense": 0.2365,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.2,
+          "citation": 0.0,
+          "rank": 0.1484
+        },
+        "fa91efc60a66e428": {
+          "dense": 0.2365,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.2,
+          "citation": 0.0,
+          "rank": 0.1484
+        },
+        "fae2388dfc74b77c": {
+          "dense": 0.2365,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.2,
+          "citation": 0.0,
+          "rank": 0.1484
+        }
+      },
+      "duplicates_removed": 3,
+      "duplicate_details": [
+        {
+          "removed_node": "f89a98cf22313117",
+          "duplicate_reason": "duplicate_path",
+          "retained_node": "f878bb4479542659"
+        },
+        {
+          "removed_node": "fa91efc60a66e428",
+          "duplicate_reason": "duplicate_path",
+          "retained_node": "f878bb4479542659"
+        },
+        {
+          "removed_node": "fae2388dfc74b77c",
+          "duplicate_reason": "duplicate_path",
+          "retained_node": "f878bb4479542659"
+        }
+      ],
+      "chain_ranking": {
+        "n_0022": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "f878bb4479542659": {
+          "chain_relevance": 0.95,
+          "effective_hierarchy_score": 0.2375,
+          "ranking_reason": "canonical:document"
+        }
+      },
+      "retrieval_pipeline": [
+        "intent_detection",
+        "adaptive_top_k",
+        "legal_expansion",
+        "dense_retrieval",
+        "graph_retrieval",
+        "hierarchy_retrieval",
+        "keyword_ranking",
+        "citation_ranking",
+        "canonical_hierarchy_preference",
+        "evidence_deduplication",
+        "evidence_resolution",
+        "provenance_generation",
+        "llm_answer_generation"
+      ],
+      "query_intent": "comparison",
+      "retrieved_candidates": 5,
+      "ranked_candidates": 5,
+      "ranking_weights": {
+        "dense": 0.35,
+        "graph": 0.25,
+        "hierarchy": 0.15,
+        "keyword": 0.15,
+        "citation": 0.1
+      },
+      "retrieval_latency_ms": 604.681,
+      "ranking_latency_ms": 7.821,
+      "total_retrieval_latency_ms": 613.809,
+      "latency_breakdown": {
+        "intent_detection": 1.105,
+        "legal_expansion": 4.547,
+        "dense_retrieval": 29.978,
+        "graph_retrieval": 248.72,
+        "hierarchy_retrieval": 2.943,
+        "fusion": 317.389,
+        "ranking": 0.072,
+        "deduplication": 7.749,
+        "evidence_resolution": 1.307
+      },
+      "query_expansion_enabled": false,
+      "expanded_terms": [],
+      "expanded_concepts": [],
+      "expansion_reason": "expansion disabled",
+      "section_refs_considered": [],
+      "section_refs_available": [],
+      "section_refs_omitted": []
+    },
+    "evidence": [
+      {
+        "node_id": "n_0022",
+        "title": "Obligation of person who has received advantage under void agreement,",
+        "text": "or contract that becomes void\nWhen an agreement is discovered to be void, or when a contract becomes void, any\nperson who has received any advantage under such agreement or contract is bound\nto restore, it, or to make compensation for it, to the person from whom he received\nit. 66. Mode of communicating or revoking rescission of voidable contract\nThe rescission of a voidable contract may be communicated or revoked in the same\nmanner, and subject to some rules, as apply to the communication or revocation of\nthe proposal. 67. Effect of neglect or promise to afford promisor reasonable facilities for\nperformance\nIf any promisee neglects or refuses to afford the promisee reasonable facilities for\nthe performance of his promise, the promisor is excused by such neglect or refusal\nas to non-performance caused thereby.",
+        "label": "Section",
+        "numbering": "65",
+        "collection": "",
+        "language": "",
+        "level": 5,
+        "dense_score": 0.242,
+        "graph_score": 0.1885,
+        "hierarchy_score": 0.25,
+        "final_score": 0.6805,
+        "sources": [
+          "dense",
+          "graph",
+          "hierarchy"
+        ],
+        "path": [
+          "0d1934142f67c5f5",
+          "n_0016",
+          "n_0022"
+        ],
+        "snippet": "or contract that becomes void\nWhen an agreement is discovered to be void, or when a contract becomes void, any\nperson who has received any advantage under such agreement or contract is bound\nto restore, it, or to make compensation for it, t"
+      },
+      {
+        "node_id": "n_0013",
+        "title": "Explanation 2 : An agreement to which the consent of the promisor is freely given is",
+        "text": "not void merely because the consideration is inadequate; but the inadequacy of the\nconsideration may be taken into account by the Court in determining the question\nwhether the consent of the promisor was freely given. 26. Agreement in restraint of marriage, void\nEvery agreement in restraint of the marriage of any person, other than a minor, is\nvoid. 27. Agreement in restraint of trade, void\nEvery agreement by which anyone is restrained from exercising a lawful profession,\ntrade or business of any kind, is to that extent void.\nException 1 : Saving of agreement not to carry on business of which good will is sold\n- One who sells the goodwill of a business may agree with the buyer to refrain from\ncarrying on a similar business, within specified local limits, so long as the buyer, or\nany person deriving title to the goodwill from him, carries on a like business therein,\nprovided that such limits appear to the court reasonable, regard being had to the\nnature of the business. 28. Agreements in restrain of legal proceedings, void\nEvery agreement, by which any party thereto is restricted absolutely from enforcing\nhis rights under or in respect of any contract, by the usual legal proceedings in the\nordinary tribunals, or which limits the time within which he may thus enforce his\nrights, is void to the extent.\nException 1 : Saving of contract to refer to arbitration dispute that may arise.This\nsection shall not render illegal contract, by which two or more persons agree that\nany dispute which may arise between them in respect of any subject or class of\nsubject shall be referred to arbitration, and that only and amount awarded in such\narbitration shall be recoverable in respect of the dispute so referred.\nException 2: Saving of contract to refer question that have already arisen - Nor shall\nthis section render illegal any contract in writing, by which two or more persons\nagree to refer to arbitration any question between them which has already arisen, or\naffect any provision of any law in force for the time being as to reference to\narbitration.\nRelated Judgements\nTHYSSEN STAHLUNION GMBH v. STEEL AUTHORITY OF INDIA LTD. 29. Agreements void for uncertainty\nAgreements, the meaning of which is not certain, or capable of being made certain,\nare void. 30. Agreements by way of wager, void\nAgreements by way of wager are void; and no suit shall be brought for recovering\nanything alleged to be won on any wager, or entrusted to any person to abide the\nresult of any game or other uncertain event on which may wager is made. Exception\non favour of certain prizes for horse-racing: This section shall not be deemed to\nrender unlawful a subscription or contribution, or agreement to subscribe or\ncontribute, made or entered into for or toward any plate, prize or sum of money, of\nthe value or amount of five hundred rupees or upwards, to be rewarded to the\nwinner or winners of any horse-race.",
+        "label": "Section",
+        "numbering": "An agreement to which the consent of the promisor is freely given is",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2365,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.4865,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "040eb6f5d6578e88",
+          "n_0007",
+          "n_0008",
+          "n_0011",
+          "n_0013"
+        ],
+        "snippet": "not void merely because the consideration is inadequate; but the inadequacy of the\nconsideration may be taken into account by the Court in determining the question\nwhether the consent of the promisor was freely given. 26. Agreement in restr"
+      }
+    ],
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "kind": "query_parse",
+        "description": "Parsed the query into keywords and legal references.",
+        "node_ids": [],
+        "detail": {
+          "keywords": [
+            "difference",
+            "between",
+            "void",
+            "voidable",
+            "contract"
+          ],
+          "section_refs": [],
+          "intent": "comparison"
+        }
+      },
+      {
+        "step": 2,
+        "kind": "query_expansion",
+        "description": "Legal query expansion matched no legal concept phrases.",
+        "node_ids": [],
+        "detail": {
+          "enabled": false,
+          "active": false,
+          "matched_phrases": [],
+          "expanded_terms": [],
+          "expanded_concepts": [],
+          "section_refs": [],
+          "section_refs_considered": [],
+          "section_refs_available": [],
+          "section_refs_omitted": [],
+          "reason": "expansion disabled"
+        }
+      },
+      {
+        "step": 3,
+        "kind": "dense",
+        "description": "Semantic vector search returned 5 candidate(s).",
+        "node_ids": [
+          "n_0022",
+          "f878bb4479542659",
+          "f89a98cf22313117",
+          "fa91efc60a66e428",
+          "fae2388dfc74b77c"
+        ],
+        "detail": {
+          "count": 5
+        }
+      },
+      {
+        "step": 4,
+        "kind": "graph",
+        "description": "Hybrid hierarchical graph retrieval returned 5 candidate(s).",
+        "node_ids": [
+          "n_0020",
+          "n_0022",
+          "n_0011",
+          "n_0021",
+          "n_0013"
+        ],
+        "detail": {
+          "seeds": [
+            "n_0020",
+            "n_0022",
+            "n_0011",
+            "n_0021",
+            "n_0013"
+          ],
+          "count": 5
+        }
+      },
+      {
+        "step": 5,
+        "kind": "hierarchy",
+        "description": "Hierarchical evidence propagated from 5 seed(s) to 22 ancestor/descendant node(s).",
+        "node_ids": [
+          "n_0022",
+          "n_0016",
+          "0d1934142f67c5f5",
+          "f878bb4479542659",
+          "n_0001"
+        ],
+        "detail": {
+          "seed_ids": [
+            "n_0022",
+            "f878bb4479542659",
+            "f89a98cf22313117",
+            "fa91efc60a66e428",
+            "fae2388dfc74b77c"
+          ],
+          "count": 22
+        }
+      },
+      {
+        "step": 6,
+        "kind": "fusion",
+        "description": "Fused dense/graph/hierarchy signals into 2 ranked evidence node(s) using weights dense=0.40, graph=0.35, hierarchy=0.25.",
+        "node_ids": [
+          "n_0022",
+          "f878bb4479542659"
+        ],
+        "detail": {
+          "weights": {
+            "dense": 0.4,
+            "graph": 0.35,
+            "hierarchy": 0.25
+          },
+          "ranking_weights": {
+            "dense": 0.35,
+            "graph": 0.25,
+            "hierarchy": 0.15,
+            "keyword": 0.15,
+            "citation": 0.1
+          },
+          "intent": "comparison",
+          "strategy": "fixed",
+          "top_k": 5,
+          "candidates": 5,
+          "returned": 2,
+          "duplicates_removed": 3
+        }
+      },
+      {
+        "step": 7,
+        "kind": "verification",
+        "description": "Confidence 0.65 (medium); valid=True; counter-authorities detected: 0.",
+        "node_ids": [],
+        "detail": {
+          "confidence": 0.6548,
+          "validity": true
+        }
+      }
+    ],
+    "hierarchy_paths": [
+      {
+        "node_id": "n_0022",
+        "entries": [
+          {
+            "node_id": "0d1934142f67c5f5",
+            "title": "The Indian Contract Act, 1872",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0016",
+            "title": "Chapter IV",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "Chapter IV"
+          },
+          {
+            "node_id": "n_0022",
+            "title": "Obligation of person who has received advantage under void agreement,",
+            "label": "Section",
+            "level": 5,
+            "numbering": "65"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0013",
+        "entries": [
+          {
+            "node_id": "040eb6f5d6578e88",
+            "title": "THE INDIAN CONTRACT ACT, 1892",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0007",
+            "title": "CHAPTER II",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER II"
+          },
+          {
+            "node_id": "n_0008",
+            "title": ".",
+            "label": "Section",
+            "level": 5,
+            "numbering": "3"
+          },
+          {
+            "node_id": "n_0011",
+            "title": "What consideration and objects are lawful, and what not",
+            "label": "Section",
+            "level": 5,
+            "numbering": "23"
+          },
+          {
+            "node_id": "n_0013",
+            "title": "Explanation 2 : An agreement to which the consent of the promisor is freely given is",
+            "label": "Section",
+            "level": 9,
+            "numbering": "An agreement to which the consent of the promisor is freely given is"
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "index": 1,
+        "node_id": "n_0022",
+        "title": "Obligation of person who has received advantage under void agreement,",
+        "label": "Section",
+        "numbering": "65",
+        "score": 0.6805,
+        "citation_text": "Section 65, \"Obligation of person who has received advantage under void agreement,\"",
+        "snippet": "or contract that becomes void\nWhen an agreement is discovered to be void, or when a contract becomes void, any\nperson who has received any advantage under such agreement or contract is bound\nto restore, it, or to make compensation for it, t"
+      },
+      {
+        "index": 2,
+        "node_id": "n_0013",
+        "title": "Explanation 2 : An agreement to which the consent of the promisor is freely given is",
+        "label": "Section",
+        "numbering": "An agreement to which the consent of the promisor is freely given is",
+        "score": 0.4865,
+        "citation_text": "Section An agreement to which the consent of the promisor is freely given is, \"Explanation 2 : An agreement to which the consent of the promisor is freely given is\"",
+        "snippet": "not void merely because the consideration is inadequate; but the inadequacy of the\nconsideration may be taken into account by the Court in determining the question\nwhether the consent of the promisor was freely given. 26. Agreement in restr"
+      }
+    ],
+    "counter_authorities": [],
+    "confidence": {
+      "score": 0.6548,
+      "label": "medium",
+      "factors": {
+        "base_score": 0.5914,
+        "keyword_coverage": 0.8,
+        "sufficiency": 0.6667,
+        "citation_bonus": 0.0,
+        "n_evidence": 2,
+        "matched_keywords": [
+          "between",
+          "contract",
+          "void",
+          "voidable"
+        ]
+      }
+    },
+    "validity": {
+      "is_valid": true,
+      "supported": true,
+      "has_conflicts": false,
+      "cites_counter_authority": false,
+      "insufficient_evidence": false,
+      "reasons": [
+        "answer supported by retrieved evidence"
+      ]
+    },
+    "retrieval_weights": {
+      "dense": 0.4,
+      "graph": 0.35,
+      "hierarchy": 0.25
+    }
+  },
+  "duration_ms": 48674.17
+}

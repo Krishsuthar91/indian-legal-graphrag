@@ -1,0 +1,587 @@
+{
+  "provenance_id": "ac499f78a78c40d7a003f5cf4272267c",
+  "query": "Exceptions to consideration.",
+  "answer": "**Direct Answer**\nExceptions to consideration are not explicitly mentioned in the retrieved evidence. However, [1] defines an \"agent\" and a \"principal\" and explains who may employ an agent and who may be an agent. [2] explains counterfeiting and having possession of an instrument or material for counterfeiting a Government stamp. [3] and [4] discuss defamation and causing grievous hurt, respectively. [5] deals with criminal intimidation. \n\n**Key Points**\n- An \"agent\" and a \"principal\" are defined in [1].\n- Who may employ an agent and who may be an agent are explained in [1].\n- Counterfeiting and having possession of an instrument or material for counterfeiting a Government stamp are discussed in [2].\n- Defamation and causing grievous hurt are explained in [3] and [4], respectively.\n- Criminal intimidation is dealt with in [5].\n\n**Evidence Summary**\nThe retrieved evidence consists of five sources:\n- [1] defines an \"agent\" and a \"principal\" and explains who may employ an agent and who may be an agent.\n- [2] explains counterfeiting and having possession of an instrument or material for counterfeiting a Government stamp.\n- [3] and [4] discuss defamation and causing grievous hurt, respectively.\n- [5] deals with criminal intimidation.\n\n**Confidence Explanation**\nI am 58% confident in my answer because the retrieved evidence provides a range of topics related to law, but does not explicitly mention exceptions to consideration.\n\n**Limitations**\nThe question about exceptions to consideration cannot be answered because it is not present in the indexed evidence. The evidence does not explicitly enumerate the complete set of topics, and therefore, I cannot confirm or deny the existence of exceptions to consideration.",
+  "model": "meta/llama-3.1-8b-instruct",
+  "explanation": {
+    "query": "Exceptions to consideration.",
+    "query_language": "en",
+    "retrieval": {
+      "keywords": [
+        "exceptions",
+        "consideration"
+      ],
+      "section_refs": [],
+      "dense_hits": 5,
+      "graph_hits": 5,
+      "hierarchy_propagated": 40,
+      "candidates": 5,
+      "returned": 5,
+      "intent": "explanation",
+      "adaptive_top_k": null,
+      "retrieval_strategy": "fixed",
+      "ranking_breakdown": {
+        "n_0029": {
+          "dense": 0.2667,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 1.0,
+          "rank": 0.2346
+        },
+        "n_0172": {
+          "dense": 0.2627,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 0.8333,
+          "rank": 0.2165
+        },
+        "n_0291": {
+          "dense": 0.2671,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 0.0,
+          "rank": 0.1347
+        },
+        "n_0200": {
+          "dense": 0.2667,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 0.0,
+          "rank": 0.1346
+        },
+        "n_0304": {
+          "dense": 0.2651,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 0.0,
+          "rank": 0.1314
+        }
+      },
+      "duplicates_removed": 0,
+      "duplicate_details": [],
+      "chain_ranking": {
+        "n_0029": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0172": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0291": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0200": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0304": {
+          "chain_relevance": 1.03,
+          "effective_hierarchy_score": 0.2575,
+          "ranking_reason": "canonical:chapter"
+        }
+      },
+      "retrieval_pipeline": [
+        "intent_detection",
+        "adaptive_top_k",
+        "dense_retrieval",
+        "graph_retrieval",
+        "hierarchy_retrieval",
+        "keyword_ranking",
+        "citation_ranking",
+        "canonical_hierarchy_preference",
+        "evidence_deduplication",
+        "evidence_resolution",
+        "provenance_generation",
+        "llm_answer_generation"
+      ],
+      "query_intent": "explanation",
+      "retrieved_candidates": 5,
+      "ranked_candidates": 5,
+      "ranking_weights": {
+        "dense": 0.35,
+        "graph": 0.25,
+        "hierarchy": 0.15,
+        "keyword": 0.15,
+        "citation": 0.1
+      },
+      "retrieval_latency_ms": 196.514,
+      "ranking_latency_ms": 14.447,
+      "total_retrieval_latency_ms": 216.218,
+      "latency_breakdown": {
+        "intent_detection": 0.16,
+        "dense_retrieval": 11.349,
+        "graph_retrieval": 79.483,
+        "hierarchy_retrieval": 0.444,
+        "fusion": 105.078,
+        "ranking": 0.086,
+        "deduplication": 14.361,
+        "evidence_resolution": 5.257
+      }
+    },
+    "evidence": [
+      {
+        "node_id": "n_0038",
+        "title": "Chapter X Agency, Appointment and authority of agents 182. \"Agent\" and \"principal\" defined -",
+        "text": "An \"agent\" is a person employed to do any act for another, or to represent another\nin dealing with third persons. The person for whom such act is done, or who is so\nrepresented, is called the \"principal\". 183. Who may employ agent -\nAny person who is of the age of majority according to the law to which he is subject,\nand who is of sound mind, may employ an agent. 184. Who may be an agent -\nAs between the principal and third persons, any person may become an agent, but\nno person who is not of the age of majority and sound mind can become an agent,\nso as to be responsible to the principal according to the provisions in that behalf\nherein contained. 185. Consideration not necessary -\nNo consideration is necessary to create an agency; 186. Agent's authority may be expressed or implied -\nThe authority of an agent may be expressed or implied. 187. Definitions of express and implied -\nAn authority is said to be express when it is given by words spoken or written. An\nauthority is said to be implied when it is to be inferred from the circumstances of the\ncase; and things spoken or written, or the ordinary course of dealing, may be\naccounted circumstances of the case. 188. Extent of agent's authority -\nAn agent, having an authority to do an act, has authority do every lawful thing which\nis necessary in order to do so such act.An agent having an authority to carry on a\nbusiness, has authority to do every lawful thing necessary for the purpose, or usually\ndone in the course, of conducting such business. 189. Agent's authority in an emergency -\nAn agent has authority, in an emergency, to do all such acts for the purpose of\nprotecting his principal from loss and would be done by a person or ordinary\nprudence, in his own case, under similar circumstances. 190. When agent cannot delegate -\nAn agent cannot lawful employ another to perform acts which he has expressly or\nimpliedly undertaken to perform personally, unless by the ordinary custom of trade a\nsub-agent may, or, from the nature or agency, a sub-agent must, be employed. 191. \"Sub-agent\" defined -\nA \"sub-agent\" is a person employed by, and acting undue the control of, the original\nagent in the business of the agency. 192. Representation of principal by sub-agent properly appointed -\nWhere a sub-agent is properly appointed, the principal is, so far as regards third\npersons, represented by the sub-agent, and is bound by and responsible for his acts,\nas if he were an agent originally appointed by the principal.Agent's responsibility for\nsub-agent: The agent is responsible to the principal for the acts of the sub-\nagent.Sub-agent's responsibility: The sub-agent is responsible for his acts to the\nagent, but not to the principal, except in cases of fraud, or wilful wrong. 193. Agent's responsibility for sub-agent appointed without -\nauthorityWhere an agent, without having authority to do so, has appointed a person\nto act as a sub-agent stands towards such person in the relation of a principal to an\nagent, and is responsible for his act both to the principal and to third person; the\nprincipal is not represented, by or responsible for the acts of the person so\nemployed, nor is that person responsible to the principal. 194. Relation between principal and person duly appointed by agent to act\nin business of agency -\nWhen an agent, holding an express or implied authority to name another person to\nact for the principal in the business of the agency, has named another person\naccordingly, such person is not a sub-agent, but an agent of the principal for such\npart of the business of the agency as is entrusted to him. 195. Agent's duty in naming such person -\nIn selecting such agent for his principal, an agent is bound to exercise the same\namount of discretion as a man or ordinary prudence would exercise in his own case;\nand, if he does this, he is not responsible to the principal for the acts of negligence of\nthe agent so selected. 196. Right of person as to acts done for him without his authority, effect of\nratification -\nWhere acts are done by one person on behalf of another, but without his knowledge\nor authority, he may elect to ratify or to disown such acts. If he ratifies them, the\nsame effects will follow as if they had been performed by his authority. 197. Ratification may be expressed or implied -\nRatification may be expressed or may be implied in the conduct of the person on\nwhose behalf the acts are done.",
+        "label": "Chapter",
+        "numbering": "Agency, Appointment and authority of agents 182. \"Agent\" and \"principal\" defined -",
+        "collection": "",
+        "language": "",
+        "level": 4,
+        "dense_score": 0.2667,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5167,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "0d1934142f67c5f5",
+          "n_0038"
+        ],
+        "snippet": "An \"agent\" is a person employed to do any act for another, or to represent another\nin dealing with third persons. The person for whom such act is done, or who is so\nrepresented, is called the \"principal\". 183. Who may employ agent -\nAny per"
+      },
+      {
+        "node_id": "n_0172",
+        "title": "Explanation.—A person commits this offence who counterfeits by causing a genuine stamp of one",
+        "text": "denomination to appear like a genuine stamp of a different denomination. 256. Having possession of instrument or material for counterfeiting Government stamp.—\nWhoever has in his possession any instrument or material for the purpose of being used, or knowing or\nhaving reason to believe that it is intended to be used, for the purpose of counterfeiting any stamp issued\nby Government for the purpose of revenue, shall be punished with imprisonment of either description for\na term which may extend to seven years, and shall also be liable to fine. 257. Making or selling instrument for counterfeiting Government stamp.—Whoever makes or\nperforms any part of the process of making, or buys, or sells, or disposes of, any instrument for the\npurpose of being used, or knowing or having reason to believe that it is intended to be used, for the\npurpose of counterfeiting any stamp issued by Government for the purpose of revenue, shall be punished 1. Subs. by Act 26 of 1955, s. 117 and the Sch., for “transportation for life” (w.e.f. 1-1-1956).\n64\nwith imprisonment of either description for a term which may extend to seven years, and shall also be\nliable to fine. 258. Sale of counterfeit Government stamp.—Whoever sells, or offers for sale, any stamp which he\nknows or has reason to believe to be a counterfeit of any stamp issued by Government for the purpose of\nrevenue, shall be punished with imprisonment of either description for a term which may extend to seven\nyears, and shall also be liable to fine. 259. Having possession of counterfeit Government stamp.—Whoever has in his possession any\nstamp which he knows to be a counterfeit of any stamp issued by Government for the purpose of revenue,\nintending to use, or dispose of the same as a genuine stamp, or in order that it may be used as a genuine\nstamp, shall be punished with imprisonment of either description for a term which may extend to seven\nyears, and shall also be liable to fine. 260. Using as genuine a Government stamp known to be counterfeit.—Whoever uses as genuine\nany stamp, knowing it to be a counterfeit of any stamp issued by Government for the purpose of revenue,\nshall be punished with imprisonment of either description for a term which may extend to seven years, or\nwith fine, or with both. 261. Effacing writing from substance bearing Government stamp, or removing from document\na stamp used for it, with intent to cause loss to Government.—Whoever, fraudulently or with intent to\ncause loss to the Government, removes or effaces from any substance, bearing any stamp issued by\nGovernment for the purpose of revenue, any writing or document for which such stamp has been used, or\nremoves from any writing or document a stamp which has been used for such writing or document, in\norder that such stamp may be used for a different writing or document, shall be punished with\nimprisonment of either description for a term which may extend to three years, or with fine, or with both. 262. Using Government stamp known to have been before used.—Whoever, fraudulently or with\nintent to cause loss to the Government, uses for any purpose a stamp issued by Government for the\npurpose of revenue, which he knows to have been before used, shall be punished with imprisonment of\neither description for a term which may extend to two years, or with fine, or with both. 263. Erasure of mark denoting that stamp has been used.—Whoever, fraudulently or with intent\nto cause loss to Government, erases or removes from a stamp issued by Government for the purpose of\nrevenue, any mark, put or impressed upon such stamp for the purpose of denoting that the same has been\nused, or knowingly has in his possession or sells or disposes of any such stamp from which such mark has\nbeen erased or removed, or sells or disposes of any such stamp which he knows to have been used, shall\nbe punished with imprisonment of either description for a term which may extend to three years, or with\nfine, or with both.\n1[263A. Prohibition of fictitious stamps.—(1) Whoever— (a) makes, knowingly utters, deals in or sells any fictitious stamp, or knowingly uses for any\npostal purpose any fictitious stamp, or (b) has in his possession, without lawful excuse, any fictitious stamp, or (c) makes or, without lawful excuse, has in his possession any die, plate, instrument or materials\nfor making any fictitious stamp,\nshall be punished with fine which may extend to two hundred rupees. (2) Any such stamps, die, plate, instrument or materials in the possession of any person for making\nany fictitious stamp 2[may be seized and, if seized] shall be forfeited. (3) In this section “fictitious stamp” means any stamp falsely purporting to be issued by Government\nfor the purpose of denoting a rate of postage, or any facsimile or imitation or representation, whether on\npaper or otherwise, of any stamp issued by Government for that purpose. (4) In this section and also in sections 255 to 263, both inclusive, the word “Government”, when used\nin connection with, or in reference to, any stamp issued for the purpose of denoting a rate of postage, 1. Added by Act 3 of 1895, s. 2. 2. Subs. by Act 42 of 1953, s. 4 and the Third Sch., for “may be seized and”.\n65\nshall, notwithstanding anything in section 17, be deemed to include the person or persons authorized by\nlaw to administer executive government in any part of India, and also in any part of Her Majesty's\ndominions or in any foreign country.]",
+        "label": "Section",
+        "numbering": "—A person commits this offence who counterfeits by causing a genuine stamp of one",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2627,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5127,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0166",
+          "n_0168",
+          "n_0172"
+        ],
+        "snippet": "denomination to appear like a genuine stamp of a different denomination. 256. Having possession of instrument or material for counterfeiting Government stamp.—\nWhoever has in his possession any instrument or material for the purpose of bein"
+      },
+      {
+        "node_id": "n_0291",
+        "title": "Explanation 1.—It may amount to defamation to impute anything to a deceased person, if the",
+        "text": "imputation would harm the reputation of that person if living, and is intended to be hurtful to the fellings\nof his family or other near relatives.",
+        "label": "Section",
+        "numbering": "—It may amount to defamation to impute anything to a deceased person, if the",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2671,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5171,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0290",
+          "n_0291"
+        ],
+        "snippet": "imputation would harm the reputation of that person if living, and is intended to be hurtful to the fellings\nof his family or other near relatives."
+      },
+      {
+        "node_id": "n_0200",
+        "title": "Explanation.—A person is not said voluntarily to cause grievous hurt except when he both causes",
+        "text": "grievous hurt and intends or knows himself to be likely to cause grievous hurt. But he is said voluntarily\nto cause grievous hurt, if intending or knowing himself to be likely to cause grievous hurt of one kind, he\nactually causes grievous hurt of another kind.",
+        "label": "Section",
+        "numbering": "—A person is not said voluntarily to cause grievous hurt except when he both causes",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2667,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5167,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0179",
+          "n_0193",
+          "n_0200"
+        ],
+        "snippet": "grievous hurt and intends or knows himself to be likely to cause grievous hurt. But he is said voluntarily\nto cause grievous hurt, if intending or knowing himself to be likely to cause grievous hurt of one kind, he\nactually causes grievous "
+      },
+      {
+        "node_id": "n_0304",
+        "title": "CHAPTER XXII",
+        "text": "OF CRIMINAL INTIMIDATION, INSULT AND ANNOYANCE 503. Criminal intimidation.—Whoever threatens another with any injury to his person, reputation or\nproperty, or to the person or reputation of any one in whom that person is interested, with intent to cause\nalarm to that person, or to cause that person to do any act which he is not legally bound to do, or to omit\nto do any act which that person is legally entitled to do, as the means of avoiding the execution of such\nthreat, commits criminal intimidation.",
+        "label": "Chapter",
+        "numbering": "CHAPTER XXII",
+        "collection": "",
+        "language": "",
+        "level": 4,
+        "dense_score": 0.2651,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5151,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0304"
+        ],
+        "snippet": "OF CRIMINAL INTIMIDATION, INSULT AND ANNOYANCE 503. Criminal intimidation.—Whoever threatens another with any injury to his person, reputation or\nproperty, or to the person or reputation of any one in whom that person is interested, with in"
+      }
+    ],
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "kind": "query_parse",
+        "description": "Parsed the query into keywords and legal references.",
+        "node_ids": [],
+        "detail": {
+          "keywords": [
+            "exceptions",
+            "consideration"
+          ],
+          "section_refs": [],
+          "intent": "explanation"
+        }
+      },
+      {
+        "step": 2,
+        "kind": "dense",
+        "description": "Semantic vector search returned 5 candidate(s).",
+        "node_ids": [
+          "n_0291",
+          "n_0200",
+          "n_0029",
+          "n_0304",
+          "n_0172"
+        ],
+        "detail": {
+          "count": 5
+        }
+      },
+      {
+        "step": 3,
+        "kind": "graph",
+        "description": "Hybrid hierarchical graph retrieval returned 5 candidate(s).",
+        "node_ids": [
+          "n_0038",
+          "n_0011",
+          "n_0127",
+          "n_0030",
+          "n_0013"
+        ],
+        "detail": {
+          "seeds": [
+            "n_0038",
+            "n_0011",
+            "n_0127",
+            "n_0030",
+            "n_0013"
+          ],
+          "count": 5
+        }
+      },
+      {
+        "step": 4,
+        "kind": "hierarchy",
+        "description": "Hierarchical evidence propagated from 5 seed(s) to 40 ancestor/descendant node(s).",
+        "node_ids": [
+          "n_0291",
+          "n_0290",
+          "cf20a14c52127fd5",
+          "n_0200",
+          "n_0193"
+        ],
+        "detail": {
+          "seed_ids": [
+            "n_0291",
+            "n_0200",
+            "n_0029",
+            "n_0304",
+            "n_0172"
+          ],
+          "count": 40
+        }
+      },
+      {
+        "step": 5,
+        "kind": "fusion",
+        "description": "Fused dense/graph/hierarchy signals into 5 ranked evidence node(s) using weights dense=0.40, graph=0.35, hierarchy=0.25.",
+        "node_ids": [
+          "n_0029",
+          "n_0172",
+          "n_0291",
+          "n_0200",
+          "n_0304"
+        ],
+        "detail": {
+          "weights": {
+            "dense": 0.4,
+            "graph": 0.35,
+            "hierarchy": 0.25
+          },
+          "ranking_weights": {
+            "dense": 0.35,
+            "graph": 0.25,
+            "hierarchy": 0.15,
+            "keyword": 0.15,
+            "citation": 0.1
+          },
+          "intent": "explanation",
+          "strategy": "fixed",
+          "top_k": 5,
+          "candidates": 5,
+          "returned": 5,
+          "duplicates_removed": 0
+        }
+      },
+      {
+        "step": 6,
+        "kind": "verification",
+        "description": "Confidence 0.58 (medium); valid=True; counter-authorities detected: 0.",
+        "node_ids": [],
+        "detail": {
+          "confidence": 0.5844,
+          "validity": true
+        }
+      }
+    ],
+    "hierarchy_paths": [
+      {
+        "node_id": "n_0038",
+        "entries": [
+          {
+            "node_id": "0d1934142f67c5f5",
+            "title": "The Indian Contract Act, 1872",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0038",
+            "title": "Chapter X Agency, Appointment and authority of agents 182. \"Agent\" and \"principal\" defined -",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "Agency, Appointment and authority of agents 182. \"Agent\" and \"principal\" defined -"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0172",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0166",
+            "title": "CHAPTER XII",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XII"
+          },
+          {
+            "node_id": "n_0168",
+            "title": "Counterfeiting coin.—Whoever counterfeits or knowingly performs any part of the process of",
+            "label": "Section",
+            "level": 5,
+            "numbering": "231"
+          },
+          {
+            "node_id": "n_0172",
+            "title": "Explanation.—A person commits this offence who counterfeits by causing a genuine stamp of one",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—A person commits this offence who counterfeits by causing a genuine stamp of one"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0291",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0290",
+            "title": "CHAPTER XXI",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XXI"
+          },
+          {
+            "node_id": "n_0291",
+            "title": "Explanation 1.—It may amount to defamation to impute anything to a deceased person, if the",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—It may amount to defamation to impute anything to a deceased person, if the"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0200",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0179",
+            "title": "CHAPTER XVI",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XVI"
+          },
+          {
+            "node_id": "n_0193",
+            "title": "of the Dowry Prohibition Act, 1961 (28 of 1961). (2) Whoever commits dowry death shall be punished with imprisonment for a term which shall not be",
+            "label": "Section",
+            "level": 5,
+            "numbering": "2"
+          },
+          {
+            "node_id": "n_0200",
+            "title": "Explanation.—A person is not said voluntarily to cause grievous hurt except when he both causes",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—A person is not said voluntarily to cause grievous hurt except when he both causes"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0304",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0304",
+            "title": "CHAPTER XXII",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XXII"
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "index": 1,
+        "node_id": "n_0038",
+        "title": "Chapter X Agency, Appointment and authority of agents 182. \"Agent\" and \"principal\" defined -",
+        "label": "Chapter",
+        "numbering": "Agency, Appointment and authority of agents 182. \"Agent\" and \"principal\" defined -",
+        "score": 0.5167,
+        "citation_text": "Chapter Agency, Appointment and authority of agents 182. \"Agent\" and \"principal\" defined -, \"Chapter X Agency, Appointment and authority of agents 182. \"Agent\" and \"principal\" defined -\"",
+        "snippet": "An \"agent\" is a person employed to do any act for another, or to represent another\nin dealing with third persons. The person for whom such act is done, or who is so\nrepresented, is called the \"principal\". 183. Who may employ agent -\nAny per"
+      },
+      {
+        "index": 2,
+        "node_id": "n_0172",
+        "title": "Explanation.—A person commits this offence who counterfeits by causing a genuine stamp of one",
+        "label": "Section",
+        "numbering": "—A person commits this offence who counterfeits by causing a genuine stamp of one",
+        "score": 0.5127,
+        "citation_text": "Section —A person commits this offence who counterfeits by causing a genuine stamp of one, \"Explanation.—A person commits this offence who counterfeits by causing a genuine stamp of one\"",
+        "snippet": "denomination to appear like a genuine stamp of a different denomination. 256. Having possession of instrument or material for counterfeiting Government stamp.—\nWhoever has in his possession any instrument or material for the purpose of bein"
+      },
+      {
+        "index": 3,
+        "node_id": "n_0291",
+        "title": "Explanation 1.—It may amount to defamation to impute anything to a deceased person, if the",
+        "label": "Section",
+        "numbering": "—It may amount to defamation to impute anything to a deceased person, if the",
+        "score": 0.5171,
+        "citation_text": "Section —It may amount to defamation to impute anything to a deceased person, if the, \"Explanation 1.—It may amount to defamation to impute anything to a deceased person, if the\"",
+        "snippet": "imputation would harm the reputation of that person if living, and is intended to be hurtful to the fellings\nof his family or other near relatives."
+      },
+      {
+        "index": 4,
+        "node_id": "n_0200",
+        "title": "Explanation.—A person is not said voluntarily to cause grievous hurt except when he both causes",
+        "label": "Section",
+        "numbering": "—A person is not said voluntarily to cause grievous hurt except when he both causes",
+        "score": 0.5167,
+        "citation_text": "Section —A person is not said voluntarily to cause grievous hurt except when he both causes, \"Explanation.—A person is not said voluntarily to cause grievous hurt except when he both causes\"",
+        "snippet": "grievous hurt and intends or knows himself to be likely to cause grievous hurt. But he is said voluntarily\nto cause grievous hurt, if intending or knowing himself to be likely to cause grievous hurt of one kind, he\nactually causes grievous "
+      },
+      {
+        "index": 5,
+        "node_id": "n_0304",
+        "title": "CHAPTER XXII",
+        "label": "Chapter",
+        "numbering": "CHAPTER XXII",
+        "score": 0.5151,
+        "citation_text": "Chapter CHAPTER XXII, \"CHAPTER XXII\"",
+        "snippet": "OF CRIMINAL INTIMIDATION, INSULT AND ANNOYANCE 503. Criminal intimidation.—Whoever threatens another with any injury to his person, reputation or\nproperty, or to the person or reputation of any one in whom that person is interested, with in"
+      }
+    ],
+    "counter_authorities": [],
+    "confidence": {
+      "score": 0.5844,
+      "label": "medium",
+      "factors": {
+        "base_score": 0.5156,
+        "keyword_coverage": 0.5,
+        "sufficiency": 1.0,
+        "citation_bonus": 0.0,
+        "n_evidence": 5,
+        "matched_keywords": [
+          "consideration"
+        ]
+      }
+    },
+    "validity": {
+      "is_valid": true,
+      "supported": true,
+      "has_conflicts": false,
+      "cites_counter_authority": false,
+      "insufficient_evidence": false,
+      "reasons": [
+        "answer supported by retrieved evidence"
+      ]
+    },
+    "retrieval_weights": {
+      "dense": 0.4,
+      "graph": 0.35,
+      "hierarchy": 0.25
+    }
+  },
+  "duration_ms": 2970.2
+}

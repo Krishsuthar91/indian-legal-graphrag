@@ -1,0 +1,241 @@
+{
+  "provenance_id": "3191fba1f80149ffbe6190f9b265a920",
+  "query": "What is Section 2 of the Indian Contract Act?",
+  "answer": "Direct Answer: Section 2 of the Indian Contract Act states that all agreements are contracts if they are made by the free consent of parties competent to contract, for a lawful consideration and with a lawful object, and are not hereby expressly declared to be void.\n\nKey Points:\n\n* All agreements are contracts if they meet certain conditions [1].\n* The conditions for a contract include free consent of parties competent to contract [1].\n* The consideration and object of the contract must be lawful [1].\n* The contract is not void if it meets these conditions [1].\n* This section does not affect any law in force in India that requires a contract to be made in writing or in the presence of witnesses [1].\n\nNote on Evidence Confidence and Caveats: The confidence level of the evidence is 0.74 (high), indicating that the retrieved evidence is likely to be accurate. However, the counter-authorities detected in the verification step suggest that there may be conflicting or superseding authorities that could affect the validity of the evidence. Therefore, it is essential to verify the evidence with other reliable sources to ensure accuracy.",
+  "model": "meta/llama-3.1-8b-instruct",
+  "explanation": {
+    "query": "What is Section 2 of the Indian Contract Act?",
+    "query_language": "en",
+    "retrieval": {
+      "keywords": [
+        "2",
+        "indian",
+        "contract"
+      ],
+      "section_refs": [
+        "section 2"
+      ],
+      "dense_hits": 5,
+      "graph_hits": 5,
+      "hierarchy_propagated": 19,
+      "candidates": 5,
+      "returned": 5
+    },
+    "evidence": [
+      {
+        "node_id": "n_0008",
+        "title": "Chapter II Of contracts, violable contracts and void agreements 10. What agreements are contracts",
+        "text": "All agreements are contracts if they are made by the free consent of parties\ncompetent to contract, for a lawful consideration and with a lawful object, and are\nnot hereby expressly declared to be void. Nothing herein contained shall affect any\nlaw in force in India, and not hereby expressly repealed, by which any contract is\nrequired to be made in writing or in the presence of witnesses, or any law relating to\nthe registration of documents. 11. Who are competent to contract\nEvery person is competent to contract who is of the age of majority according to the\nlaw to which he is subject, and who is sound mind and is not disqualified from\ncontracting by any law to which he is subject. 12. What is a sound mind for the purposes of contracting\nA person is said to be of sound mind for the propose of making a contract, if, at the\ntime when he makes it, he is capable of understanding it and of forming a rational\njudgement as to its effect upon his interest.A person who is usually of unsound mind,\nbut occasionally of sound mind, may make a contract when he is of sound mind. A\nperson who is usually of sound mind, but occasionally of unsound mind, may not\nmake a contract when he is of unsound mind. 13. \"Consent\" defined -\nTwo or more person are said to consent when they agree upon the same thing in the\nsame sense. 14. \"Free consent\" defined -\nConsent is said to be free when it is not caused by - (1) coercion, as defined in section 15, or (2) undue influence, as defined in section 16, or (3) fraud, as defined in section 17, or (4) misrepresentation, as defined in section 18, or (5) mistake, subject to the provisions of section 20,21, and 22.\nConsent is said to be so caused when it would not have been given but for the\nexistence of such coercion, undue influence, fraud, misrepresentation, or mistake. 15. \"Coercion\" defined\n\"Coercion\" is the committing, or threating to commit, any act forbidden by the Indian\nPenal Code (45 of 1860) or the unlawful detaining, or threatening to detain, any\nproperty, to the prejudice of any person whatever, with the intention of causing any\nperson to enter into an agreement. 16. \"Undue influence\" defined (1) A contract is said to be induced by \"under influence\" where the relations\nsubsisting between the parties are such that one of the parties is in a position to\ndominate the will of the other and uses that position to obtain an unfair advantage\nover the other. (2) In particular and without prejudice to the generally of the foregoing principle, a\nperson is deemed to be in a position to dominate the will of another - (a) where he hold a real or apparent authority over the other, or where he stands in\na fiduciary relation to the other; or (b) where he makes a contract with a person whose mental capacity is temporarily\nor permanently affected by reason of age, illness, or mental or bodily distress. (3) Where a person who is in a position to dominate the will of another, enters into a\ncontract with him, and the transaction appears, on the face of it or on the evidence\nadduced, to be unconscionable, the burden of proving that such contract was not\ninduced by undue influence shall be upon the person in a position to dominate the\nwill of the other.\nNothing in the sub-section shall affect the provisions of section 111 of the Indian\nEvidence Act, 1872 (1 of 1872) 17. \"fraud defined\n\"Fraud\" means and includes any of the following acts committed by a party to a\ncontract, or with his connivance, or by his agents, with intent to deceive another\nparty thereto his agent, or to induce him to enter into the contract; (1) the suggestion as a fact, of that which is not true, by one who does not believe it\nto be true; (2) the active concealment of a fact by one having knowledge or belief of the fact; (3) a promise made without any intention of performing it; (4) any other act fitted to deceive; (5) any such act or omission as the law specially declares to be fraudulent. 18. \"Misrepresentation\" defined\n\"Misrepresentation\" means and includes - (1) the positive assertion, in a manner not warranted by the information of the\nperson making it, of that whichis not true, though he believes it to be true; (2) any breach of duty which, without an intent to deceive, gains an advantage to\nthe person committing it, or anyone claiming under him; by misleading another to\nhis prejudice, or to the prejudice of any one claiming under him; (3) causing, however innocently, a party to an agreement, to make a mistake as to\nthe substance of the thing which is subject of the agreement. 19. Voidability of agreements without free consent\nWhen consent to an agreement is caused by coercion, fraud or misrepresentation,\nthe agreement is a contract voidable at the option of the party whose consent was so\ncaused. A party to contract, whose consent was caused by fraud or mispresentation,\nmay, if he thinks fit, insist that the contract shall be performed, and that he shall be\nput on the position in which he would have been if the representations made had\nbeen true.\nException : If such consent was caused by misrepreentation or by silence, fraudulent\nwithin the meaning of section 17, the contract, neverthless, is not voidable, if the\nparty whose consent was so caused had the means of discovering the truth with\nordinary diligence.",
+        "label": "Chapter",
+        "numbering": "Of contracts, violable contracts and void agreements 10. What agreements are contracts",
+        "collection": "",
+        "language": "",
+        "level": 4,
+        "dense_score": 0.3193,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5693,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "040eb6f5d6578e88",
+          "n_0007",
+          "n_0008"
+        ],
+        "snippet": "All agreements are contracts if they are made by the free consent of parties\ncompetent to contract, for a lawful consideration and with a lawful object, and are\nnot hereby expressly declared to be void. Nothing herein contained shall affect"
+      }
+    ],
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "kind": "query_parse",
+        "description": "Parsed the query into keywords and legal references.",
+        "node_ids": [],
+        "detail": {
+          "keywords": [
+            "2",
+            "indian",
+            "contract"
+          ],
+          "section_refs": [
+            "section 2"
+          ]
+        }
+      },
+      {
+        "step": 2,
+        "kind": "dense",
+        "description": "Semantic vector search returned 5 candidate(s).",
+        "node_ids": [
+          "f89a98cf22313117",
+          "fa91efc60a66e428",
+          "fae2388dfc74b77c",
+          "fe171685afe0d498",
+          "root"
+        ],
+        "detail": {
+          "count": 5
+        }
+      },
+      {
+        "step": 3,
+        "kind": "graph",
+        "description": "Hybrid hierarchical graph retrieval returned 5 candidate(s).",
+        "node_ids": [
+          "n_0008",
+          "n_0174",
+          "n_0125",
+          "n_0171",
+          "n_0249"
+        ],
+        "detail": {
+          "seeds": [
+            "n_0008",
+            "n_0174",
+            "n_0125",
+            "n_0171",
+            "n_0249"
+          ],
+          "count": 5
+        }
+      },
+      {
+        "step": 4,
+        "kind": "hierarchy",
+        "description": "Hierarchical evidence propagated from 4 seed(s) to 19 ancestor/descendant node(s).",
+        "node_ids": [
+          "f89a98cf22313117",
+          "n_0001",
+          "n_0007",
+          "n_0009",
+          "n_0002"
+        ],
+        "detail": {
+          "seed_ids": [
+            "f89a98cf22313117",
+            "fa91efc60a66e428",
+            "fae2388dfc74b77c",
+            "fe171685afe0d498"
+          ],
+          "count": 19
+        }
+      },
+      {
+        "step": 5,
+        "kind": "fusion",
+        "description": "Fused dense/graph/hierarchy signals into 5 ranked evidence node(s) using weights dense=0.40, graph=0.35, hierarchy=0.25.",
+        "node_ids": [
+          "f89a98cf22313117",
+          "fa91efc60a66e428",
+          "fae2388dfc74b77c",
+          "fe171685afe0d498",
+          "root"
+        ],
+        "detail": {
+          "weights": {
+            "dense": 0.4,
+            "graph": 0.35,
+            "hierarchy": 0.25
+          },
+          "candidates": 5,
+          "returned": 5
+        }
+      },
+      {
+        "step": 6,
+        "kind": "verification",
+        "description": "Confidence 0.74 (high); valid=False; counter-authorities detected: 1.",
+        "node_ids": [],
+        "detail": {
+          "confidence": 0.7416,
+          "validity": false
+        }
+      }
+    ],
+    "hierarchy_paths": [
+      {
+        "node_id": "n_0008",
+        "entries": [
+          {
+            "node_id": "040eb6f5d6578e88",
+            "title": "THE INDIAN CONTRACT ACT, 1892",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0007",
+            "title": "be absolute and unqualified. (2) be expressed in some usual and reasonable manner, unless the proposal",
+            "label": "Section",
+            "level": 6,
+            "numbering": "1"
+          },
+          {
+            "node_id": "n_0008",
+            "title": "Chapter II Of contracts, violable contracts and void agreements 10. What agreements are contracts",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "Of contracts, violable contracts and void agreements 10. What agreements are contracts"
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "index": 1,
+        "node_id": "n_0008",
+        "title": "Chapter II Of contracts, violable contracts and void agreements 10. What agreements are contracts",
+        "label": "Chapter",
+        "numbering": "Of contracts, violable contracts and void agreements 10. What agreements are contracts",
+        "score": 0.5693,
+        "citation_text": "Chapter Of contracts, violable contracts and void agreements 10. What agreements are contracts, \"Chapter II Of contracts, violable contracts and void agreements 10. What agreements are contracts\"",
+        "snippet": "All agreements are contracts if they are made by the free consent of parties\ncompetent to contract, for a lawful consideration and with a lawful object, and are\nnot hereby expressly declared to be void. Nothing herein contained shall affect"
+      }
+    ],
+    "counter_authorities": [
+      {
+        "node_id": "n_0008",
+        "title": "Chapter II Of contracts, violable contracts and void agreements 10. What agreements are contracts",
+        "reason": "statement references an authority that appears repealed",
+        "marker": "repealed",
+        "evidence_text": "writing or in the presence of witnesses, or any law relating to\nthe registration of documents. 11. Who are competent to"
+      }
+    ],
+    "confidence": {
+      "score": 0.7416,
+      "label": "high",
+      "factors": {
+        "base_score": 0.5693,
+        "keyword_coverage": 1.0,
+        "sufficiency": 0.3333,
+        "citation_bonus": 0.1,
+        "n_evidence": 1,
+        "matched_keywords": [
+          "2",
+          "contract",
+          "indian"
+        ]
+      }
+    },
+    "validity": {
+      "is_valid": false,
+      "supported": true,
+      "has_conflicts": true,
+      "cites_counter_authority": true,
+      "insufficient_evidence": false,
+      "reasons": [
+        "answer supported by retrieved evidence",
+        "conflicting or qualifying statements detected in retrieved evidence",
+        "evidence may be overruled, superseded, repealed, or overridden"
+      ]
+    },
+    "retrieval_weights": {
+      "dense": 0.4,
+      "graph": 0.35,
+      "hierarchy": 0.25
+    }
+  },
+  "duration_ms": 3434.32
+}

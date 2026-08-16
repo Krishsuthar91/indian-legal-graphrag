@@ -1,0 +1,621 @@
+{
+  "provenance_id": "6985715836bd4b3ab3c3e3defa630f3a",
+  "query": "What is Section 2?",
+  "answer": "**1. Direct Answer**\nSection 2 is not mentioned in the retrieved evidence. The evidence contains sections and explanations related to other provisions, but there is no mention of Section 2.\n\n**2. Key Points**\n- The evidence contains sections and explanations related to other provisions.\n- Section 2 is not mentioned in the retrieved evidence.\n- The evidence does not provide any information about Section 2.\n\n**3. Evidence Summary**\nThe retrieved evidence consists of five sources that contain sections and explanations related to various provisions of the Penal Code. However, none of these sources mention Section 2.\n\n**4. Confidence Explanation**\nI am confident that Section 2 is not mentioned in the retrieved evidence because the evidence explicitly contains sections and explanations related to other provisions, but there is no mention of Section 2.\n\n**5. Limitations**\nThe question about Section 2 cannot be answered because it is not present in the indexed evidence. The evidence does not explicitly enumerate the complete set of sections, but it does not mention Section 2. Therefore, I cannot confirm or deny the existence of Section 2.",
+  "model": "meta/llama-3.1-8b-instruct",
+  "explanation": {
+    "query": "What is Section 2?",
+    "query_language": "en",
+    "retrieval": {
+      "keywords": [
+        "2"
+      ],
+      "section_refs": [
+        "section 2"
+      ],
+      "dense_hits": 5,
+      "graph_hits": 5,
+      "hierarchy_propagated": 14,
+      "candidates": 5,
+      "returned": 5,
+      "intent": "section_lookup",
+      "adaptive_top_k": null,
+      "retrieval_strategy": "fixed",
+      "ranking_breakdown": {
+        "n_0127": {
+          "dense": 0.2627,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 1.0,
+          "citation": 1.0,
+          "rank": 0.3832
+        },
+        "n_0163": {
+          "dense": 0.2703,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 0.375,
+          "rank": 0.1734
+        },
+        "n_0141": {
+          "dense": 0.2671,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 0.0,
+          "rank": 0.1347
+        },
+        "n_0234": {
+          "dense": 0.2655,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 0.0,
+          "rank": 0.1342
+        },
+        "n_0305": {
+          "dense": 0.2567,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 0.0,
+          "rank": 0.1311
+        }
+      },
+      "duplicates_removed": 0,
+      "duplicate_details": [],
+      "chain_ranking": {
+        "n_0127": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0163": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0141": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0234": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0305": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        }
+      },
+      "retrieval_pipeline": [
+        "intent_detection",
+        "adaptive_top_k",
+        "dense_retrieval",
+        "graph_retrieval",
+        "hierarchy_retrieval",
+        "keyword_ranking",
+        "citation_ranking",
+        "canonical_hierarchy_preference",
+        "evidence_deduplication",
+        "evidence_resolution",
+        "provenance_generation",
+        "llm_answer_generation"
+      ],
+      "query_intent": "section_lookup",
+      "retrieved_candidates": 5,
+      "ranked_candidates": 5,
+      "ranking_weights": {
+        "dense": 0.35,
+        "graph": 0.25,
+        "hierarchy": 0.15,
+        "keyword": 0.15,
+        "citation": 0.1
+      },
+      "retrieval_latency_ms": 185.794,
+      "ranking_latency_ms": 2.16,
+      "total_retrieval_latency_ms": 188.038,
+      "latency_breakdown": {
+        "intent_detection": 0.004,
+        "dense_retrieval": 9.981,
+        "graph_retrieval": 80.822,
+        "hierarchy_retrieval": 0.074,
+        "fusion": 94.911,
+        "ranking": 0.045,
+        "deduplication": 2.114,
+        "evidence_resolution": 0.084
+      }
+    },
+    "evidence": [
+      {
+        "node_id": "n_0127",
+        "title": ", ibid. 165. [Public servant obtaining valuable thing, without consideration, from person concerned in",
+        "text": "proceeding or business transacted by such public servant.] Rep. by s. 31, ibid. 165A.[Punishment for abetment of offences defined in section 161 or section 165.] Rep. by s. 31, ibid. 166. Public servant disobeying law, with intent to cause injury to any person.—Whoever, being a\npublic servant, knowingly disobeys any direction of the law as to the way in which he is to conduct\nhimself as such public servant, intending to cause, or knowing it to be likely that he will, by such\ndisobedience, cause injury to any person, shall be punished with simple imprisonment for a term which\nmay extend to one year, or with fine, or with both.\nIIIustration\nA, being an officer directed by law to take property in execution, in order to satisfy a decree\npronounced in Z's favour by a Court of Justice, knowingly disobeys that direction of law, with the\nknowledge that he is likely thereby to cause injury to Z. A has committed the offence defined in this\nsection.\n1[166A. Public servant disobeying direction under law.—Whoever, being a public servant,— (a) knowingly disobeys any direction of the law which prohibits him from requiring the\nattendance at any place of any person for the purpose of investigation into an offence or any other\nmatter, or (b) knowingly disobeys, to the prejudice of any person, any other direction of the law regulating\nthe manner in which he shall conduct such investigation, or (c) fails to record any information given to him under sub-section (1) of section 154 of the Code\nof Criminal Procedure, 1973 (2 of 1974), in relation to cognizable offence punishable under section\n326A, section 326B, section 354, section 354B, section 370, section 370A, section 376, section 376A,\n2[section 376AB, section 376B, section 376C, section 376D, section 376DA, section 376DB], section\n376E or section 509,\nshall be punished with rigorous imprisonment for a term which shall not be less than six months but\nwhich may extend to two years, and shall also be liable to fine.\nSTATE AMENDMENT\nArunachal Pradesh\nAmendment of section 166A.—In section 166A of the principal Act, in clause (c), for the words,\nfigures and letters “section 326A, section 326B, section 354, section 354A, section 370, section 370A,",
+        "label": "Section",
+        "numbering": "31",
+        "collection": "",
+        "language": "",
+        "level": 5,
+        "dense_score": 0.2627,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5127,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0125",
+          "n_0127"
+        ],
+        "snippet": "proceeding or business transacted by such public servant.] Rep. by s. 31, ibid. 165A.[Punishment for abetment of offences defined in section 161 or section 165.] Rep. by s. 31, ibid. 166. Public servant disobeying law, with intent to cause "
+      },
+      {
+        "node_id": "n_0163",
+        "title": "Explanation.—The printing or publication of the judgment of any High Court or the Supreme Court",
+        "text": "does not amount to an offence within the meaning of this section.]\nSTATE AMENDMENT\nArunachal Pradesh\nAmendment of section 228A.—In section 228A of the Penal Code, in sub-section (1), for the words,\nfigure and letters “offence under section 376, section 376A, section 376B, section 376C or section 376D\nor section 376E” the words, figure and letters “offence under section 376, section 376A, section 376AA,",
+        "label": "Section",
+        "numbering": "—The printing or publication of the judgment of any High Court or the Supreme Court",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2703,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5203,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0140",
+          "n_0161",
+          "n_0163"
+        ],
+        "snippet": "does not amount to an offence within the meaning of this section.]\nSTATE AMENDMENT\nArunachal Pradesh\nAmendment of section 228A.—In section 228A of the Penal Code, in sub-section (1), for the words,\nfigure and letters “offence under section "
+      },
+      {
+        "node_id": "n_0141",
+        "title": "Explanation 1.—A statement is within the meaning of this section, whether it is made verbally or",
+        "text": "otherwise.",
+        "label": "Section",
+        "numbering": "—A statement is within the meaning of this section, whether it is made verbally or",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2671,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5171,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0140",
+          "n_0141"
+        ],
+        "snippet": "otherwise."
+      },
+      {
+        "node_id": "n_0234",
+        "title": "Explanation 2.—For the purposes of this section, Explanation 1 to section 375 shall also be",
+        "text": "applicable.",
+        "label": "Section",
+        "numbering": "—For the purposes of this section, Explanation 1 to section 375 shall also be",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2655,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5155,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0179",
+          "n_0219",
+          "n_0224",
+          "n_0232",
+          "n_0234"
+        ],
+        "snippet": "applicable."
+      },
+      {
+        "node_id": "n_0305",
+        "title": "Explanation.—A threat to injure the reputation of any deceased person in whom the person threatened",
+        "text": "is interested, is within this section.",
+        "label": "Section",
+        "numbering": "—A threat to injure the reputation of any deceased person in whom the person threatened",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2567,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5067,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0304",
+          "n_0305"
+        ],
+        "snippet": "is interested, is within this section."
+      }
+    ],
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "kind": "query_parse",
+        "description": "Parsed the query into keywords and legal references.",
+        "node_ids": [],
+        "detail": {
+          "keywords": [
+            "2"
+          ],
+          "section_refs": [
+            "section 2"
+          ],
+          "intent": "section_lookup"
+        }
+      },
+      {
+        "step": 2,
+        "kind": "dense",
+        "description": "Semantic vector search returned 5 candidate(s).",
+        "node_ids": [
+          "n_0163",
+          "n_0141",
+          "n_0234",
+          "n_0127",
+          "n_0305"
+        ],
+        "detail": {
+          "count": 5
+        }
+      },
+      {
+        "step": 3,
+        "kind": "graph",
+        "description": "Hybrid hierarchical graph retrieval returned 5 candidate(s).",
+        "node_ids": [
+          "n_0160",
+          "n_0174",
+          "n_0161",
+          "n_0193",
+          "n_0125"
+        ],
+        "detail": {
+          "seeds": [
+            "n_0160",
+            "n_0174",
+            "n_0161",
+            "n_0193",
+            "n_0125"
+          ],
+          "count": 5
+        }
+      },
+      {
+        "step": 4,
+        "kind": "hierarchy",
+        "description": "Hierarchical evidence propagated from 5 seed(s) to 14 ancestor/descendant node(s).",
+        "node_ids": [
+          "n_0163",
+          "n_0161",
+          "n_0140",
+          "cf20a14c52127fd5",
+          "n_0141"
+        ],
+        "detail": {
+          "seed_ids": [
+            "n_0163",
+            "n_0141",
+            "n_0234",
+            "n_0127",
+            "n_0305"
+          ],
+          "count": 14
+        }
+      },
+      {
+        "step": 5,
+        "kind": "fusion",
+        "description": "Fused dense/graph/hierarchy signals into 5 ranked evidence node(s) using weights dense=0.40, graph=0.35, hierarchy=0.25.",
+        "node_ids": [
+          "n_0127",
+          "n_0163",
+          "n_0141",
+          "n_0234",
+          "n_0305"
+        ],
+        "detail": {
+          "weights": {
+            "dense": 0.4,
+            "graph": 0.35,
+            "hierarchy": 0.25
+          },
+          "ranking_weights": {
+            "dense": 0.35,
+            "graph": 0.25,
+            "hierarchy": 0.15,
+            "keyword": 0.15,
+            "citation": 0.1
+          },
+          "intent": "section_lookup",
+          "strategy": "fixed",
+          "top_k": 5,
+          "candidates": 5,
+          "returned": 5,
+          "duplicates_removed": 0
+        }
+      },
+      {
+        "step": 6,
+        "kind": "verification",
+        "description": "Confidence 0.81 (high); valid=True; counter-authorities detected: 0.",
+        "node_ids": [],
+        "detail": {
+          "confidence": 0.8091,
+          "validity": true
+        }
+      }
+    ],
+    "hierarchy_paths": [
+      {
+        "node_id": "n_0127",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0125",
+            "title": "CHAPTER IX",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER IX"
+          },
+          {
+            "node_id": "n_0127",
+            "title": ", ibid. 165. [Public servant obtaining valuable thing, without consideration, from person concerned in",
+            "label": "Section",
+            "level": 5,
+            "numbering": "31"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0163",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0140",
+            "title": "CHAPTER XI",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XI"
+          },
+          {
+            "node_id": "n_0161",
+            "title": ", section 376DB] or section 376E] is alleged or found to have been committed (hereafter",
+            "label": "Section",
+            "level": 5,
+            "numbering": "376DA"
+          },
+          {
+            "node_id": "n_0163",
+            "title": "Explanation.—The printing or publication of the judgment of any High Court or the Supreme Court",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—The printing or publication of the judgment of any High Court or the Supreme Court"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0141",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0140",
+            "title": "CHAPTER XI",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XI"
+          },
+          {
+            "node_id": "n_0141",
+            "title": "Explanation 1.—A statement is within the meaning of this section, whether it is made verbally or",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—A statement is within the meaning of this section, whether it is made verbally or"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0234",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0179",
+            "title": "CHAPTER XVI",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XVI"
+          },
+          {
+            "node_id": "n_0219",
+            "title": ", section 354C or section 354D and being able to prevent such offence, fails to prevent the",
+            "label": "Section",
+            "level": 5,
+            "numbering": "354B"
+          },
+          {
+            "node_id": "n_0224",
+            "title": "Where the offence involves the trafficking of more than one person, it shall be punishable with rigorous",
+            "label": "Section",
+            "level": 6,
+            "numbering": "3"
+          },
+          {
+            "node_id": "n_0232",
+            "title": "a public servant; or (c) superintendent or manager of a jail, remand home or other place of custody established by or",
+            "label": "Clause",
+            "level": 7,
+            "numbering": "b"
+          },
+          {
+            "node_id": "n_0234",
+            "title": "Explanation 2.—For the purposes of this section, Explanation 1 to section 375 shall also be",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—For the purposes of this section, Explanation 1 to section 375 shall also be"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0305",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0304",
+            "title": "CHAPTER XXII",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XXII"
+          },
+          {
+            "node_id": "n_0305",
+            "title": "Explanation.—A threat to injure the reputation of any deceased person in whom the person threatened",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—A threat to injure the reputation of any deceased person in whom the person threatened"
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "index": 1,
+        "node_id": "n_0127",
+        "title": ", ibid. 165. [Public servant obtaining valuable thing, without consideration, from person concerned in",
+        "label": "Section",
+        "numbering": "31",
+        "score": 0.5127,
+        "citation_text": "Section 31, \", ibid. 165. [Public servant obtaining valuable thing, without consideration, from person concerned in\"",
+        "snippet": "proceeding or business transacted by such public servant.] Rep. by s. 31, ibid. 165A.[Punishment for abetment of offences defined in section 161 or section 165.] Rep. by s. 31, ibid. 166. Public servant disobeying law, with intent to cause "
+      },
+      {
+        "index": 2,
+        "node_id": "n_0163",
+        "title": "Explanation.—The printing or publication of the judgment of any High Court or the Supreme Court",
+        "label": "Section",
+        "numbering": "—The printing or publication of the judgment of any High Court or the Supreme Court",
+        "score": 0.5203,
+        "citation_text": "Section —The printing or publication of the judgment of any High Court or the Supreme Court, \"Explanation.—The printing or publication of the judgment of any High Court or the Supreme Court\"",
+        "snippet": "does not amount to an offence within the meaning of this section.]\nSTATE AMENDMENT\nArunachal Pradesh\nAmendment of section 228A.—In section 228A of the Penal Code, in sub-section (1), for the words,\nfigure and letters “offence under section "
+      },
+      {
+        "index": 3,
+        "node_id": "n_0141",
+        "title": "Explanation 1.—A statement is within the meaning of this section, whether it is made verbally or",
+        "label": "Section",
+        "numbering": "—A statement is within the meaning of this section, whether it is made verbally or",
+        "score": 0.5171,
+        "citation_text": "Section —A statement is within the meaning of this section, whether it is made verbally or, \"Explanation 1.—A statement is within the meaning of this section, whether it is made verbally or\"",
+        "snippet": "otherwise."
+      },
+      {
+        "index": 4,
+        "node_id": "n_0234",
+        "title": "Explanation 2.—For the purposes of this section, Explanation 1 to section 375 shall also be",
+        "label": "Section",
+        "numbering": "—For the purposes of this section, Explanation 1 to section 375 shall also be",
+        "score": 0.5155,
+        "citation_text": "Section —For the purposes of this section, Explanation 1 to section 375 shall also be, \"Explanation 2.—For the purposes of this section, Explanation 1 to section 375 shall also be\"",
+        "snippet": "applicable."
+      },
+      {
+        "index": 5,
+        "node_id": "n_0305",
+        "title": "Explanation.—A threat to injure the reputation of any deceased person in whom the person threatened",
+        "label": "Section",
+        "numbering": "—A threat to injure the reputation of any deceased person in whom the person threatened",
+        "score": 0.5067,
+        "citation_text": "Section —A threat to injure the reputation of any deceased person in whom the person threatened, \"Explanation.—A threat to injure the reputation of any deceased person in whom the person threatened\"",
+        "snippet": "is interested, is within this section."
+      }
+    ],
+    "counter_authorities": [],
+    "confidence": {
+      "score": 0.8091,
+      "label": "high",
+      "factors": {
+        "base_score": 0.5152,
+        "keyword_coverage": 1.0,
+        "sufficiency": 1.0,
+        "citation_bonus": 0.1,
+        "n_evidence": 5,
+        "matched_keywords": [
+          "2"
+        ]
+      }
+    },
+    "validity": {
+      "is_valid": true,
+      "supported": true,
+      "has_conflicts": false,
+      "cites_counter_authority": false,
+      "insufficient_evidence": false,
+      "reasons": [
+        "answer supported by retrieved evidence"
+      ]
+    },
+    "retrieval_weights": {
+      "dense": 0.4,
+      "graph": 0.35,
+      "hierarchy": 0.25
+    }
+  },
+  "duration_ms": 2231.19
+}

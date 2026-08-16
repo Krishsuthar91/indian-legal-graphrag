@@ -1,0 +1,35 @@
+{
+  "document_id": "e59c255b805957ba",
+  "title": "BENGALURU BENCH",
+  "language": "en",
+  "pages": [
+    {
+      "page_number": 1,
+      "text": "BENGALURU BENCH\nSection 123 of the Indian Contract Act\nOrder VII Rule 11 of the CPC\nArticle 14 of the Constitution of India\nEquality before the law is a fundamental right.\nThis judgment was delivered on 15th March, 2024.",
+      "is_scanned": false
+    }
+  ],
+  "metadata": {
+    "file_name": "sample.pdf",
+    "file_path": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-80\\test_ingest_pdf0\\sample.pdf",
+    "file_size_bytes": 1721,
+    "file_type": "pdf",
+    "num_pages": 1,
+    "language": "en",
+    "creation_date": "2026-08-11T15:50:38.329140+00:00",
+    "pdf_properties": {
+      "page_count": 1,
+      "Author": "anonymous",
+      "CreationDate": "D:20260811212038+05'00'",
+      "Creator": "anonymous",
+      "Keywords": "",
+      "ModDate": "D:20260811212038+05'00'",
+      "Producer": "ReportLab PDF Library - (opensource)",
+      "Subject": "unspecified",
+      "Title": "untitled",
+      "Trapped": "False"
+    },
+    "is_scanned": false,
+    "ocr_applied": false
+  }
+}

@@ -1,0 +1,503 @@
+{
+  "provenance_id": "d2df6ea44d38434384c101daa445aab6",
+  "query": "Define consideration.",
+  "answer": "Direct Answer: Consideration refers to the object or subject matter of an agreement that is lawful, unless it is forbidden by law, fraudulent, or involves injury to another person or property.\n\nKey Points:\n\n1. The consideration or object of an agreement is lawful unless it is forbidden by law [1].\n2. If the consideration or object is of such nature that it would defeat the provisions of any law or is fraudulent, it is unlawful [1].\n3. Every agreement of which the object or consideration is unlawful is void [1].\n4. A person is not said to have voluntarily caused grievous hurt unless they both cause grievous hurt and intend or know themselves to be likely to cause grievous hurt [2].\n5. For the purpose of this section, a \"private act\" includes an act of watching carried out in a place that would reasonably be expected to provide privacy [3].\n\nEvidence Confidence and Caveats: The evidence retrieved is sufficient to provide a clear definition of consideration. However, the definition is limited to the specific context of agreements and may not be applicable in all situations. Additionally, the evidence does not provide a comprehensive list of what constitutes unlawful consideration, leaving some ambiguity. The confidence level is high (0.72), but caution should be exercised when applying this definition in practice.",
+  "model": "meta/llama-3.1-8b-instruct",
+  "explanation": {
+    "query": "Define consideration.",
+    "query_language": "en",
+    "retrieval": {
+      "keywords": [
+        "consideration"
+      ],
+      "section_refs": [],
+      "dense_hits": 5,
+      "graph_hits": 5,
+      "hierarchy_propagated": 21,
+      "candidates": 5,
+      "returned": 5
+    },
+    "evidence": [
+      {
+        "node_id": "n_0011",
+        "title": "What consideration and objects are lawful, and what not",
+        "text": "The consideration or object of an agreement is lawful, unless -It is forbidden by law;\noris of such nature that, if permitted it would defeat the provisions of any law or is\nfraudulent; ofinvolves or implies, injury to the person or property of another; orthe\nCourt regards it as immoral, or opposed to public policy.\nIn each of these cases, the consideration or object of an agreement is said to be\nunlawful. Every agreement of which the object or consideration is unlawful is void. 24. Agreements void, if consideration are objects unlawful in part\nIf any part of a single consideration for one or more objects, or any one or any part\nof any one of several consideration of a single object, is unlawful, the agreement is\nvoid. 25. Agreement without consideration, void, unless it is in writing and\nregistered or is a promise to compensate for something done or is a promise\nto pay a debt barred by limitation law -\nAn agreement made without consideration is void, unless - (1) it is expressed in writing and registered under the law for the time being in force\nfor the registration of documents, and is made on account of natural love and\naffection between parties standing in a near relation to each other; or unless. (2) it is a promise to compensate, wholly or in part, a person who has already\nvoluntarily done something for the promisor, or something which the promisor was\nlegally compellable to do; or unless. (3) it is a promise, made in writing and signed by the person to be charged therewith\nor by his agent generally or specially authorised in that behalf, to pay wholly or in\npart debt of which the creditor might have enforced payment but for the law for the\nlimitation of suits. In any of these cases, such an agreement is a contract.",
+        "label": "Section",
+        "numbering": "23",
+        "collection": "",
+        "language": "",
+        "level": 5,
+        "dense_score": 0.2269,
+        "graph_score": 0.2377,
+        "hierarchy_score": 0.25,
+        "final_score": 0.7146,
+        "sources": [
+          "dense",
+          "graph",
+          "hierarchy"
+        ],
+        "path": [
+          "040eb6f5d6578e88",
+          "n_0007",
+          "n_0008",
+          "n_0011"
+        ],
+        "snippet": "The consideration or object of an agreement is lawful, unless -It is forbidden by law;\noris of such nature that, if permitted it would defeat the provisions of any law or is\nfraudulent; ofinvolves or implies, injury to the person or propert"
+      },
+      {
+        "node_id": "n_0200",
+        "title": "Explanation.—A person is not said voluntarily to cause grievous hurt except when he both causes",
+        "text": "grievous hurt and intends or knows himself to be likely to cause grievous hurt. But he is said voluntarily\nto cause grievous hurt, if intending or knowing himself to be likely to cause grievous hurt of one kind, he\nactually causes grievous hurt of another kind.",
+        "label": "Section",
+        "numbering": "—A person is not said voluntarily to cause grievous hurt except when he both causes",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2204,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.4704,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0179",
+          "n_0193",
+          "n_0200"
+        ],
+        "snippet": "grievous hurt and intends or knows himself to be likely to cause grievous hurt. But he is said voluntarily\nto cause grievous hurt, if intending or knowing himself to be likely to cause grievous hurt of one kind, he\nactually causes grievous "
+      },
+      {
+        "node_id": "n_0215",
+        "title": "Explanation 1.—For the purpose of this section, “private act” includes an act of watching carried out",
+        "text": "in a place which, in the circumstances, would reasonably be expected to provide privacy and where the\nvictim's genitals, posterior or breasts are exposed or covered only in underwear; or the victim is using a\nlavatory; or the victim is doing a sexual act that is not of a kind ordinarily done in public.",
+        "label": "Section",
+        "numbering": "—For the purpose of this section, “private act” includes an act of watching carried out",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2114,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.4614,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0179",
+          "n_0202",
+          "n_0214",
+          "n_0215"
+        ],
+        "snippet": "in a place which, in the circumstances, would reasonably be expected to provide privacy and where the\nvictim's genitals, posterior or breasts are exposed or covered only in underwear; or the victim is using a\nlavatory; or the victim is doin"
+      },
+      {
+        "node_id": "n_0027",
+        "title": "Explanation : When any person enters into any bail bond, recognisance or other",
+        "text": "instrument of the same nature or, under the provisions of any law, or under the\norders of the Central Government or of any State Government, gives any bond for\nthe performance of any public duty or act in which the public are interested, he shall\nbe liable, upon breach of the condition of any such instrument, to pay the whole sum\nmentioned therein. 75. Party rightfully rescinding contract, entitled to compensation\nA person who rightfully rescinds a contract is entitled to consideration for any\ndamage which he has sustained through the no fulfillment of the contract.",
+        "label": "Section",
+        "numbering": "When any person enters into any bail bond, recognisance or other",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2071,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.4571,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "0d1934142f67c5f5",
+          "n_0024",
+          "n_0027"
+        ],
+        "snippet": "instrument of the same nature or, under the provisions of any law, or under the\norders of the Central Government or of any State Government, gives any bond for\nthe performance of any public duty or act in which the public are interested, he"
+      },
+      {
+        "node_id": "n_0258",
+        "title": "Illustration",
+        "text": "Z dies in possession of furniture and money. His servant A, before the money comes into the possession of any person\nentitled to such possession, dishonestly misappropriates it. A has committed the offence defined in this section.\nOf criminal breach of trust 405. Criminal breach of trust.—Whoever, being in any manner entrusted with property, or with any\ndominion over property, dishonestly misappropriates or converts to his own use that property, or\ndishonestly uses or disposes of that property in violation of any direction of law prescribing the mode in\nwhich such trust is to be discharged, or of any legal contract, express or implied, which he has made\ntouching the discharge of such trust, or wilfully suffers any other person so to do, commits “criminal\nbreach of trust”.\n1[2[Explanation 1].—A person, being an employer 3[of an establishment whether exempted under",
+        "label": "Section",
+        "numbering": "Illustration",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2064,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.4564,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0240",
+          "n_0248",
+          "n_0258"
+        ],
+        "snippet": "Z dies in possession of furniture and money. His servant A, before the money comes into the possession of any person\nentitled to such possession, dishonestly misappropriates it. A has committed the offence defined in this section.\nOf crimin"
+      }
+    ],
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "kind": "query_parse",
+        "description": "Parsed the query into keywords and legal references.",
+        "node_ids": [],
+        "detail": {
+          "keywords": [
+            "consideration"
+          ],
+          "section_refs": []
+        }
+      },
+      {
+        "step": 2,
+        "kind": "dense",
+        "description": "Semantic vector search returned 5 candidate(s).",
+        "node_ids": [
+          "n_0011",
+          "n_0200",
+          "n_0215",
+          "n_0027",
+          "n_0258"
+        ],
+        "detail": {
+          "count": 5
+        }
+      },
+      {
+        "step": 3,
+        "kind": "graph",
+        "description": "Hybrid hierarchical graph retrieval returned 5 candidate(s).",
+        "node_ids": [
+          "n_0038",
+          "n_0011",
+          "n_0030",
+          "n_0013",
+          "n_0127"
+        ],
+        "detail": {
+          "seeds": [
+            "n_0038",
+            "n_0011",
+            "n_0030",
+            "n_0013",
+            "n_0127"
+          ],
+          "count": 5
+        }
+      },
+      {
+        "step": 4,
+        "kind": "hierarchy",
+        "description": "Hierarchical evidence propagated from 5 seed(s) to 21 ancestor/descendant node(s).",
+        "node_ids": [
+          "n_0011",
+          "n_0008",
+          "n_0007",
+          "040eb6f5d6578e88",
+          "n_0012"
+        ],
+        "detail": {
+          "seed_ids": [
+            "n_0011",
+            "n_0200",
+            "n_0215",
+            "n_0027",
+            "n_0258"
+          ],
+          "count": 21
+        }
+      },
+      {
+        "step": 5,
+        "kind": "fusion",
+        "description": "Fused dense/graph/hierarchy signals into 5 ranked evidence node(s) using weights dense=0.40, graph=0.35, hierarchy=0.25.",
+        "node_ids": [
+          "n_0011",
+          "n_0200",
+          "n_0215",
+          "n_0027",
+          "n_0258"
+        ],
+        "detail": {
+          "weights": {
+            "dense": 0.4,
+            "graph": 0.35,
+            "hierarchy": 0.25
+          },
+          "candidates": 5,
+          "returned": 5
+        }
+      },
+      {
+        "step": 6,
+        "kind": "verification",
+        "description": "Confidence 0.72 (high); valid=True; counter-authorities detected: 0.",
+        "node_ids": [],
+        "detail": {
+          "confidence": 0.7208,
+          "validity": true
+        }
+      }
+    ],
+    "hierarchy_paths": [
+      {
+        "node_id": "n_0011",
+        "entries": [
+          {
+            "node_id": "040eb6f5d6578e88",
+            "title": "THE INDIAN CONTRACT ACT, 1892",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0007",
+            "title": "CHAPTER II",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER II"
+          },
+          {
+            "node_id": "n_0008",
+            "title": ".",
+            "label": "Section",
+            "level": 5,
+            "numbering": "3"
+          },
+          {
+            "node_id": "n_0011",
+            "title": "What consideration and objects are lawful, and what not",
+            "label": "Section",
+            "level": 5,
+            "numbering": "23"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0200",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0179",
+            "title": "CHAPTER XVI",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XVI"
+          },
+          {
+            "node_id": "n_0193",
+            "title": "of the Dowry Prohibition Act, 1961 (28 of 1961). (2) Whoever commits dowry death shall be punished with imprisonment for a term which shall not be",
+            "label": "Section",
+            "level": 5,
+            "numbering": "2"
+          },
+          {
+            "node_id": "n_0200",
+            "title": "Explanation.—A person is not said voluntarily to cause grievous hurt except when he both causes",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—A person is not said voluntarily to cause grievous hurt except when he both causes"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0215",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0179",
+            "title": "CHAPTER XVI",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XVI"
+          },
+          {
+            "node_id": "n_0202",
+            "title": ", voluntarily causes hurt, shall be punished with imprisonment of either description for a term",
+            "label": "Section",
+            "level": 5,
+            "numbering": "334"
+          },
+          {
+            "node_id": "n_0214",
+            "title": "a demand or request for sexual favours; or (iii) showing pornography against the will of a woman; or (iv) making sexually coloured remarks,",
+            "label": "Clause",
+            "level": 8,
+            "numbering": "ii"
+          },
+          {
+            "node_id": "n_0215",
+            "title": "Explanation 1.—For the purpose of this section, “private act” includes an act of watching carried out",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—For the purpose of this section, “private act” includes an act of watching carried out"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0027",
+        "entries": [
+          {
+            "node_id": "0d1934142f67c5f5",
+            "title": "The Indian Contract Act, 1872",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0024",
+            "title": "Chapter VI Of the consequences of breach of contract 73. Compensation of loss or damage caused by breach of contract",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "Of the consequences of breach of contract 73. Compensation of loss or damage caused by breach of contract"
+          },
+          {
+            "node_id": "n_0027",
+            "title": "Explanation : When any person enters into any bail bond, recognisance or other",
+            "label": "Section",
+            "level": 9,
+            "numbering": "When any person enters into any bail bond, recognisance or other"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0258",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0240",
+            "title": "CHAPTER XVII",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XVII"
+          },
+          {
+            "node_id": "n_0248",
+            "title": "Whoever, after committing or attempting to commit snatching, causes hurt or wrongful restraint",
+            "label": "Section",
+            "level": 6,
+            "numbering": "4"
+          },
+          {
+            "node_id": "n_0258",
+            "title": "Illustration",
+            "label": "Section",
+            "level": 9,
+            "numbering": "Illustration"
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "index": 1,
+        "node_id": "n_0011",
+        "title": "What consideration and objects are lawful, and what not",
+        "label": "Section",
+        "numbering": "23",
+        "score": 0.7146,
+        "citation_text": "Section 23, \"What consideration and objects are lawful, and what not\"",
+        "snippet": "The consideration or object of an agreement is lawful, unless -It is forbidden by law;\noris of such nature that, if permitted it would defeat the provisions of any law or is\nfraudulent; ofinvolves or implies, injury to the person or propert"
+      },
+      {
+        "index": 2,
+        "node_id": "n_0200",
+        "title": "Explanation.—A person is not said voluntarily to cause grievous hurt except when he both causes",
+        "label": "Section",
+        "numbering": "—A person is not said voluntarily to cause grievous hurt except when he both causes",
+        "score": 0.4704,
+        "citation_text": "Section —A person is not said voluntarily to cause grievous hurt except when he both causes, \"Explanation.—A person is not said voluntarily to cause grievous hurt except when he both causes\"",
+        "snippet": "grievous hurt and intends or knows himself to be likely to cause grievous hurt. But he is said voluntarily\nto cause grievous hurt, if intending or knowing himself to be likely to cause grievous hurt of one kind, he\nactually causes grievous "
+      },
+      {
+        "index": 3,
+        "node_id": "n_0215",
+        "title": "Explanation 1.—For the purpose of this section, “private act” includes an act of watching carried out",
+        "label": "Section",
+        "numbering": "—For the purpose of this section, “private act” includes an act of watching carried out",
+        "score": 0.4614,
+        "citation_text": "Section —For the purpose of this section, “private act” includes an act of watching carried out, \"Explanation 1.—For the purpose of this section, “private act” includes an act of watching carried out\"",
+        "snippet": "in a place which, in the circumstances, would reasonably be expected to provide privacy and where the\nvictim's genitals, posterior or breasts are exposed or covered only in underwear; or the victim is using a\nlavatory; or the victim is doin"
+      },
+      {
+        "index": 4,
+        "node_id": "n_0027",
+        "title": "Explanation : When any person enters into any bail bond, recognisance or other",
+        "label": "Section",
+        "numbering": "When any person enters into any bail bond, recognisance or other",
+        "score": 0.4571,
+        "citation_text": "Section When any person enters into any bail bond, recognisance or other, \"Explanation : When any person enters into any bail bond, recognisance or other\"",
+        "snippet": "instrument of the same nature or, under the provisions of any law, or under the\norders of the Central Government or of any State Government, gives any bond for\nthe performance of any public duty or act in which the public are interested, he"
+      },
+      {
+        "index": 5,
+        "node_id": "n_0258",
+        "title": "Illustration",
+        "label": "Section",
+        "numbering": "Illustration",
+        "score": 0.4564,
+        "citation_text": "Section Illustration, \"Illustration\"",
+        "snippet": "Z dies in possession of furniture and money. His servant A, before the money comes into the possession of any person\nentitled to such possession, dishonestly misappropriates it. A has committed the offence defined in this section.\nOf crimin"
+      }
+    ],
+    "counter_authorities": [],
+    "confidence": {
+      "score": 0.7208,
+      "label": "high",
+      "factors": {
+        "base_score": 0.5347,
+        "keyword_coverage": 1.0,
+        "sufficiency": 1.0,
+        "citation_bonus": 0.0,
+        "n_evidence": 5,
+        "matched_keywords": [
+          "consideration"
+        ]
+      }
+    },
+    "validity": {
+      "is_valid": true,
+      "supported": true,
+      "has_conflicts": false,
+      "cites_counter_authority": false,
+      "insufficient_evidence": false,
+      "reasons": [
+        "answer supported by retrieved evidence"
+      ]
+    },
+    "retrieval_weights": {
+      "dense": 0.4,
+      "graph": 0.35,
+      "hierarchy": 0.25
+    }
+  },
+  "duration_ms": 2730.03
+}

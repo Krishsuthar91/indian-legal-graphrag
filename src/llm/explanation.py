@@ -102,6 +102,18 @@ RETRIEVAL_PIPELINE_STAGES: tuple[str, ...] = (
 )
 
 
+def retrieval_pipeline_stages(expansion_enabled: bool) -> list[str]:
+    """Diagnostic stage list for a run.
+
+    ``legal_expansion`` only runs when query expansion is enabled, so it is
+    omitted from the reported pipeline otherwise.
+    """
+    stages = list(RETRIEVAL_PIPELINE_STAGES)
+    if not expansion_enabled:
+        stages.remove("legal_expansion")
+    return stages
+
+
 def _default_ranking_weights() -> dict[str, float]:
     """Ranking weights from settings (mirror DEFAULT_RANKING_WEIGHTS)."""
     return {
@@ -519,7 +531,7 @@ class ExplainabilityEngine:
             duplicates_removed=duplicates_removed,
             duplicate_details=duplicate_details,
             chain_ranking=chain_ranking,
-            retrieval_pipeline=list(RETRIEVAL_PIPELINE_STAGES),
+            retrieval_pipeline=retrieval_pipeline_stages(self.expansion_enabled),
             query_intent=intent,
             retrieved_candidates=len(candidates),
             ranked_candidates=ranked_before_dedup,

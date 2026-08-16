@@ -1,0 +1,24 @@
+{
+  "document_id": "55f3ddda1d617d33",
+  "title": "CIVIL APPELLATE JURISDICTION",
+  "language": "en",
+  "pages": [
+    {
+      "page_number": 1,
+      "text": "CIVIL APPELLATE JURISDICTION\nCIVIL APPEAL NO. 1234 OF 2024\n\nSection 123 of the Indian Contract Act, 1872\nAn agreement without consideration is void.\n\nArticle 14 of the Constitution of India\nThe State shall not deny to any person equality before the law.",
+      "is_scanned": false
+    }
+  ],
+  "metadata": {
+    "file_name": "sample.txt",
+    "file_path": "C:\\Users\\Krish\\AppData\\Local\\Temp\\pytest-of-Krish\\pytest-70\\test_ingest_txt0\\sample.txt",
+    "file_size_bytes": 339,
+    "file_type": "txt",
+    "num_pages": 1,
+    "language": "en",
+    "creation_date": "2026-08-11T14:37:25.418585+00:00",
+    "pdf_properties": {},
+    "is_scanned": false,
+    "ocr_applied": false
+  }
+}

@@ -27,7 +27,15 @@ class TestExplain:
         engine = build_engine()
         result = engine.explain("performance of contracts")
         kinds = [step.kind for step in result.reasoning_chain]
-        assert kinds == ["query_parse", "dense", "graph", "hierarchy", "fusion", "verification"]
+        assert kinds == [
+            "query_parse",
+            "query_expansion",
+            "dense",
+            "graph",
+            "hierarchy",
+            "fusion",
+            "verification",
+        ]
         assert all(step.step == i for i, step in enumerate(result.reasoning_chain, 1))
 
     def test_hierarchy_paths(self):
@@ -764,6 +772,13 @@ class TestRetrievalPipelineDiagnostics:
         assert s.chain_ranking
         assert s.retrieval_strategy == "fixed"
         assert s.adaptive_top_k is None
+
+    def test_expansion_enabled_adds_legal_expansion_stage(self):
+        engine = build_engine(expansion_enabled=True)
+        result = engine.explain("performance of contracts", top_k=5)
+        pipeline = result.retrieval.retrieval_pipeline
+        assert "legal_expansion" in pipeline
+        assert pipeline.index("legal_expansion") == 2
 
     def test_timing_fields_exist_and_consistent(self):
         engine = build_engine()

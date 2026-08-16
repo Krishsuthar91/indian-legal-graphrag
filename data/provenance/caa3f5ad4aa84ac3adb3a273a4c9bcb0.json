@@ -1,0 +1,496 @@
+{
+  "provenance_id": "caa3f5ad4aa84ac3adb3a273a4c9bcb0",
+  "query": "भारतीय अनुबंध अधिनियम की धारा 2 क्या है?",
+  "answer": "भारतीय अनुबंध अधिनियम की धारा 2 क्या है?\n\nभारतीय अनुबंध अधिनियम की धारा 2 का विवरण निम्नलिखित है:\n\n\"एक व्यक्ति को यह माना जाता है कि वह एक ऐसा कथन देता है जो उसके विश्वास के बारे में झूठा है, जब वह ऐसा कथन करता है कि वह कुछ विश्वास करता है जो वह वास्तव में नहीं विश्वास करता है, या जब वह ऐसा कथन करता है कि वह कुछ जानता है जो वह वास्तव में नहीं जानता है।\"\n\n- [1]\n\nयह धारा यह स्पष्ट करती है कि किसी व्यक्ति को झूठा साक्ष्य देने के लिए दोषी ठहराया जा सकता है, न कि केवल इसलिए कि वह झूठा साक्ष्य देता है, बल्कि इसलिए कि वह झूठा साक्ष्य देता है और उसे पता होता है कि वह झूठा साक्ष्य दे रहा है।\n\n**मुख्य बिंदु:**\n\n* भारतीय अनुबंध अधिनियम की धारा 2 का विवरण [1] में दिया गया है।\n* यह धारा यह स्पष्ट करती है कि किसी व्यक्ति को झूठा साक्ष्य देने के लिए दोषी ठहराया जा सकता है।\n* यह धारा यह भी स्पष्ट करती है कि किसी व्यक्ति को झूठा साक्ष्य देने के लिए दोषी ठहराया जा सकता है जब वह झूठा साक्ष्य देता है और उसे पता होता है कि वह झूठा साक्ष्य दे रहा है।\n\n**साक्ष्य की विश्वास क्षमता और सीमाएं:**\n\nसाक्ष्य की विश्वास क्षमता 0.46 (मध्यम) है, जो यह दर्शाता है कि साक्ष्य की विश्वास क्षमता मध्यम स्तर पर है। साक्ष्य की विश्वास क्षमता की सीमाएं यह हैं कि यह धारा केवल भारतीय अनुबंध अधिनियम की धारा 2 का विवरण देती है, और यह धारा केवल झूठा साक्ष्य देने के लिए दोषी ठहराने के लिए है।",
+  "model": "meta/llama-3.1-8b-instruct",
+  "explanation": {
+    "query": "भारतीय अनुबंध अधिनियम की धारा 2 क्या है?",
+    "query_language": "en",
+    "retrieval": {
+      "keywords": [
+        "भारतीय",
+        "अनुबंध",
+        "अधिनियम",
+        "की",
+        "धारा",
+        "2",
+        "क्या",
+        "है"
+      ],
+      "section_refs": [],
+      "dense_hits": 5,
+      "graph_hits": 0,
+      "hierarchy_propagated": 17,
+      "candidates": 5,
+      "returned": 5
+    },
+    "evidence": [
+      {
+        "node_id": "n_0142",
+        "title": "Explanation 2.—A false statement as to the belief of the person attesting is within the meaning of this",
+        "text": "section, and a person may be guilty of giving false evidence by stating that he believes a thing which he\ndoes not believe, as well as by stating that he knows a thing which he does not know.",
+        "label": "Section",
+        "numbering": "—A false statement as to the belief of the person attesting is within the meaning of this",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2194,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.4694,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0140",
+          "n_0142"
+        ],
+        "snippet": "section, and a person may be guilty of giving false evidence by stating that he believes a thing which he\ndoes not believe, as well as by stating that he knows a thing which he does not know."
+      },
+      {
+        "node_id": "n_0051",
+        "title": "“Voluntarily”.—A person is said to cause an effect “voluntarily” when he causes it by means",
+        "text": "whereby he intended to cause it, or by means which, at the time of employing those means, he knew or\nhad reason to believe to be likely to cause it.",
+        "label": "Section",
+        "numbering": "39",
+        "collection": "",
+        "language": "",
+        "level": 5,
+        "dense_score": 0.2131,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.4631,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "0d1934142f67c5f5",
+          "n_0030",
+          "n_0031",
+          "n_0051"
+        ],
+        "snippet": "whereby he intended to cause it, or by means which, at the time of employing those means, he knew or\nhad reason to believe to be likely to cause it."
+      },
+      {
+        "node_id": "n_0080",
+        "title": "Illustration",
+        "text": "A is attacked by a mob who attempt to murder him. He cannot effectually exercise his right of private defence without firing\non the mob, and he cannot fire without risk of harming young children who are mingled with the mob. A commits no offence if\nby so firing he harms any of the children.",
+        "label": "Section",
+        "numbering": "Illustration",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2128,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.4628,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0058",
+          "n_0076",
+          "n_0080"
+        ],
+        "snippet": "A is attacked by a mob who attempt to murder him. He cannot effectually exercise his right of private defence without firing\non the mob, and he cannot fire without risk of harming young children who are mingled with the mob. A commits no of"
+      },
+      {
+        "node_id": "n_0267",
+        "title": "Explanation 1.—It is not essential to the offence of mischief that the offender should intend to cause",
+        "text": "loss or damage to the owner of the property injured or destroyed. It is sufficient if he intends to cause, or\nknows that he is likely to cause, wrongful loss or damage to any person by injuring any property, whether\nit belongs to that person or not.",
+        "label": "Section",
+        "numbering": "—It is not essential to the offence of mischief that the offender should intend to cause",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2126,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.4626,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0240",
+          "n_0266",
+          "n_0267"
+        ],
+        "snippet": "loss or damage to the owner of the property injured or destroyed. It is sufficient if he intends to cause, or\nknows that he is likely to cause, wrongful loss or damage to any person by injuring any property, whether\nit belongs to that perso"
+      },
+      {
+        "node_id": "n_0223",
+        "title": "Explanation 2.—The consent of the victim is immaterial in determination of the offence of",
+        "text": "trafficking. (2) Whoever commits the offence of trafficking shall be punished with rigorous imprisonment for a\nterm which shall not be less than seven years, but which may extend to ten years, and shall also be liable\nto fine. 1. Ins. by Act 20 of 1923, s. 2. 2. Ins. by s. 3, ibid. 3. The words “British India” have successively been subs. by the A. O. 1948, the A. O. 1950 and Act 3 of 1951, s. 3 and the Sch.,\nto read as above. 4. Ins. by Act 3 of 1951, s. 3 and the Sch., (w.e.f. 1-4-1951). 5. Certain words omitted by s. 3 and the Sch., ibid. 6. Subs. by Act 13 of 2013, s. 8, for section 370 (w.e.f. 3-2-2013).\n88",
+        "label": "Section",
+        "numbering": "—The consent of the victim is immaterial in determination of the offence of",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2126,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.4626,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0179",
+          "n_0219",
+          "n_0223"
+        ],
+        "snippet": "trafficking. (2) Whoever commits the offence of trafficking shall be punished with rigorous imprisonment for a\nterm which shall not be less than seven years, but which may extend to ten years, and shall also be liable\nto fine. 1. Ins. by Ac"
+      }
+    ],
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "kind": "query_parse",
+        "description": "Parsed the query into keywords and legal references.",
+        "node_ids": [],
+        "detail": {
+          "keywords": [
+            "भारतीय",
+            "अनुबंध",
+            "अधिनियम",
+            "की",
+            "धारा",
+            "2",
+            "क्या",
+            "है"
+          ],
+          "section_refs": []
+        }
+      },
+      {
+        "step": 2,
+        "kind": "dense",
+        "description": "Semantic vector search returned 5 candidate(s).",
+        "node_ids": [
+          "n_0142",
+          "n_0051",
+          "n_0080",
+          "n_0267",
+          "n_0223"
+        ],
+        "detail": {
+          "count": 5
+        }
+      },
+      {
+        "step": 3,
+        "kind": "graph",
+        "description": "Hybrid hierarchical graph retrieval returned 0 candidate(s).",
+        "node_ids": [],
+        "detail": {
+          "seeds": [],
+          "count": 0
+        }
+      },
+      {
+        "step": 4,
+        "kind": "hierarchy",
+        "description": "Hierarchical evidence propagated from 5 seed(s) to 17 ancestor/descendant node(s).",
+        "node_ids": [
+          "n_0142",
+          "n_0140",
+          "cf20a14c52127fd5",
+          "n_0051",
+          "n_0031"
+        ],
+        "detail": {
+          "seed_ids": [
+            "n_0142",
+            "n_0051",
+            "n_0080",
+            "n_0267",
+            "n_0223"
+          ],
+          "count": 17
+        }
+      },
+      {
+        "step": 5,
+        "kind": "fusion",
+        "description": "Fused dense/graph/hierarchy signals into 5 ranked evidence node(s) using weights dense=0.40, graph=0.35, hierarchy=0.25.",
+        "node_ids": [
+          "n_0142",
+          "n_0051",
+          "n_0080",
+          "n_0267",
+          "n_0223"
+        ],
+        "detail": {
+          "weights": {
+            "dense": 0.4,
+            "graph": 0.35,
+            "hierarchy": 0.25
+          },
+          "candidates": 5,
+          "returned": 5
+        }
+      },
+      {
+        "step": 6,
+        "kind": "verification",
+        "description": "Confidence 0.46 (medium); valid=True; counter-authorities detected: 0.",
+        "node_ids": [],
+        "detail": {
+          "confidence": 0.4601,
+          "validity": true
+        }
+      }
+    ],
+    "hierarchy_paths": [
+      {
+        "node_id": "n_0142",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0140",
+            "title": "CHAPTER XI",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XI"
+          },
+          {
+            "node_id": "n_0142",
+            "title": "Explanation 2.—A false statement as to the belief of the person attesting is within the meaning of this",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—A false statement as to the belief of the person attesting is within the meaning of this"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0051",
+        "entries": [
+          {
+            "node_id": "0d1934142f67c5f5",
+            "title": "The Indian Contract Act, 1872",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0030",
+            "title": "Chapter VIII Of indemnity and guarantee 124. \"Contract of indemnity\" defined",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "Of indemnity and guarantee 124. \"Contract of indemnity\" defined"
+          },
+          {
+            "node_id": "n_0031",
+            "title": "Revocation of continuing guarantee",
+            "label": "Section",
+            "level": 5,
+            "numbering": "130"
+          },
+          {
+            "node_id": "n_0051",
+            "title": "“Voluntarily”.—A person is said to cause an effect “voluntarily” when he causes it by means",
+            "label": "Section",
+            "level": 5,
+            "numbering": "39"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0080",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0058",
+            "title": "CHAPTER IV",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER IV"
+          },
+          {
+            "node_id": "n_0076",
+            "title": "Right of private defence of the body and of property.—Every person has a right, subject to the",
+            "label": "Section",
+            "level": 5,
+            "numbering": "97"
+          },
+          {
+            "node_id": "n_0080",
+            "title": "Illustration",
+            "label": "Section",
+            "level": 9,
+            "numbering": "Illustration"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0267",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0240",
+            "title": "CHAPTER XVII",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XVII"
+          },
+          {
+            "node_id": "n_0266",
+            "title": "Punishment for cheating.—Whoever cheats shall be punished with imprisonment of either",
+            "label": "Section",
+            "level": 5,
+            "numbering": "417"
+          },
+          {
+            "node_id": "n_0267",
+            "title": "Explanation 1.—It is not essential to the offence of mischief that the offender should intend to cause",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—It is not essential to the offence of mischief that the offender should intend to cause"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0223",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0179",
+            "title": "CHAPTER XVI",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XVI"
+          },
+          {
+            "node_id": "n_0219",
+            "title": ", section 354C or section 354D and being able to prevent such offence, fails to prevent the",
+            "label": "Section",
+            "level": 5,
+            "numbering": "354B"
+          },
+          {
+            "node_id": "n_0223",
+            "title": "Explanation 2.—The consent of the victim is immaterial in determination of the offence of",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—The consent of the victim is immaterial in determination of the offence of"
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "index": 1,
+        "node_id": "n_0142",
+        "title": "Explanation 2.—A false statement as to the belief of the person attesting is within the meaning of this",
+        "label": "Section",
+        "numbering": "—A false statement as to the belief of the person attesting is within the meaning of this",
+        "score": 0.4694,
+        "citation_text": "Section —A false statement as to the belief of the person attesting is within the meaning of this, \"Explanation 2.—A false statement as to the belief of the person attesting is within the meaning of this\"",
+        "snippet": "section, and a person may be guilty of giving false evidence by stating that he believes a thing which he\ndoes not believe, as well as by stating that he knows a thing which he does not know."
+      },
+      {
+        "index": 2,
+        "node_id": "n_0051",
+        "title": "“Voluntarily”.—A person is said to cause an effect “voluntarily” when he causes it by means",
+        "label": "Section",
+        "numbering": "39",
+        "score": 0.4631,
+        "citation_text": "Section 39, \"“Voluntarily”.—A person is said to cause an effect “voluntarily” when he causes it by means\"",
+        "snippet": "whereby he intended to cause it, or by means which, at the time of employing those means, he knew or\nhad reason to believe to be likely to cause it."
+      },
+      {
+        "index": 3,
+        "node_id": "n_0080",
+        "title": "Illustration",
+        "label": "Section",
+        "numbering": "Illustration",
+        "score": 0.4628,
+        "citation_text": "Section Illustration, \"Illustration\"",
+        "snippet": "A is attacked by a mob who attempt to murder him. He cannot effectually exercise his right of private defence without firing\non the mob, and he cannot fire without risk of harming young children who are mingled with the mob. A commits no of"
+      },
+      {
+        "index": 4,
+        "node_id": "n_0267",
+        "title": "Explanation 1.—It is not essential to the offence of mischief that the offender should intend to cause",
+        "label": "Section",
+        "numbering": "—It is not essential to the offence of mischief that the offender should intend to cause",
+        "score": 0.4626,
+        "citation_text": "Section —It is not essential to the offence of mischief that the offender should intend to cause, \"Explanation 1.—It is not essential to the offence of mischief that the offender should intend to cause\"",
+        "snippet": "loss or damage to the owner of the property injured or destroyed. It is sufficient if he intends to cause, or\nknows that he is likely to cause, wrongful loss or damage to any person by injuring any property, whether\nit belongs to that perso"
+      },
+      {
+        "index": 5,
+        "node_id": "n_0223",
+        "title": "Explanation 2.—The consent of the victim is immaterial in determination of the offence of",
+        "label": "Section",
+        "numbering": "—The consent of the victim is immaterial in determination of the offence of",
+        "score": 0.4626,
+        "citation_text": "Section —The consent of the victim is immaterial in determination of the offence of, \"Explanation 2.—The consent of the victim is immaterial in determination of the offence of\"",
+        "snippet": "trafficking. (2) Whoever commits the offence of trafficking shall be punished with rigorous imprisonment for a\nterm which shall not be less than seven years, but which may extend to ten years, and shall also be liable\nto fine. 1. Ins. by Ac"
+      }
+    ],
+    "counter_authorities": [],
+    "confidence": {
+      "score": 0.4601,
+      "label": "medium",
+      "factors": {
+        "base_score": 0.4647,
+        "keyword_coverage": 0.125,
+        "sufficiency": 1.0,
+        "citation_bonus": 0.0,
+        "n_evidence": 5,
+        "matched_keywords": [
+          "2"
+        ]
+      }
+    },
+    "validity": {
+      "is_valid": true,
+      "supported": true,
+      "has_conflicts": false,
+      "cites_counter_authority": false,
+      "insufficient_evidence": false,
+      "reasons": [
+        "answer supported by retrieved evidence"
+      ]
+    },
+    "retrieval_weights": {
+      "dense": 0.4,
+      "graph": 0.35,
+      "hierarchy": 0.25
+    }
+  },
+  "duration_ms": 4899.55
+}

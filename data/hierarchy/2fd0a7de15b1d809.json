@@ -1,0 +1,222 @@
+{
+  "document_id": "2fd0a7de15b1d809",
+  "root_id": "root",
+  "nodes": [
+    {
+      "node_id": "root",
+      "parent_id": null,
+      "level": 0,
+      "node_type": "document",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "text": "",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "",
+      "children": [
+        "n_0001",
+        "n_0007",
+        "n_0009"
+      ]
+    },
+    {
+      "node_id": "n_0001",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "CHAPTER I",
+      "text": "Preliminary",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "CHAPTER I",
+      "children": [
+        "n_0002",
+        "n_0003"
+      ]
+    },
+    {
+      "node_id": "n_0002",
+      "parent_id": "n_0001",
+      "level": 5,
+      "node_type": "section",
+      "title": ".",
+      "text": "Short title and commencement. (1) This Act may be called the Indian Contract Act, 1892. (2) It shall come into force on the first day of July, 1892.",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "1",
+      "children": []
+    },
+    {
+      "node_id": "n_0003",
+      "parent_id": "n_0001",
+      "level": 5,
+      "node_type": "section",
+      "title": ".",
+      "text": "Definitions.\nIn this Act, unless there is anything repugnant in the subject or context, (a) \"contract\" means an agreement enforceable by law; (b) \"promise\" means a proposal accepted. (i) where the proposal is made (ii) where the acceptance is communicated",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "2",
+      "children": [
+        "n_0004",
+        "n_0005",
+        "n_0006"
+      ]
+    },
+    {
+      "node_id": "n_0004",
+      "parent_id": "n_0003",
+      "level": 9,
+      "node_type": "explanation",
+      "title": "Explanation.—Nothing in this section shall apply to",
+      "text": "",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "—Nothing in this section shall apply to",
+      "children": []
+    },
+    {
+      "node_id": "n_0005",
+      "parent_id": "n_0003",
+      "level": 9,
+      "node_type": "illustration",
+      "title": "Illustration.—A says to B",
+      "text": "",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "—A says to B",
+      "children": []
+    },
+    {
+      "node_id": "n_0006",
+      "parent_id": "n_0003",
+      "level": 9,
+      "node_type": "proviso",
+      "title": "Proviso.—Provided that",
+      "text": "",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "—Provided that",
+      "children": []
+    },
+    {
+      "node_id": "n_0007",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "CHAPTER II",
+      "text": "Of Contracts",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "CHAPTER II",
+      "children": [
+        "n_0008"
+      ]
+    },
+    {
+      "node_id": "n_0008",
+      "parent_id": "n_0007",
+      "level": 5,
+      "node_type": "section",
+      "title": ".",
+      "text": "Communication of proposals. (1) The communication of proposals is complete\nPART II — PERFORMANCE",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "3",
+      "children": []
+    },
+    {
+      "node_id": "n_0009",
+      "parent_id": "root",
+      "level": 4,
+      "node_type": "chapter",
+      "title": "CHAPTER III",
+      "text": "Of Performance",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "CHAPTER III",
+      "children": [
+        "n_0010"
+      ]
+    },
+    {
+      "node_id": "n_0010",
+      "parent_id": "n_0009",
+      "level": 5,
+      "node_type": "section",
+      "title": ".",
+      "text": "Performance of contracts. (a) where the contract provides (b) where no provision is made",
+      "start_page": 1,
+      "end_page": 1,
+      "numbering": "4",
+      "children": []
+    }
+  ],
+  "nested_set": [
+    {
+      "node_id": "n_0002",
+      "left": 3,
+      "right": 4,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0004",
+      "left": 6,
+      "right": 7,
+      "depth": 3
+    },
+    {
+      "node_id": "n_0005",
+      "left": 8,
+      "right": 9,
+      "depth": 3
+    },
+    {
+      "node_id": "n_0006",
+      "left": 10,
+      "right": 11,
+      "depth": 3
+    },
+    {
+      "node_id": "n_0003",
+      "left": 5,
+      "right": 12,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0001",
+      "left": 2,
+      "right": 13,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0008",
+      "left": 15,
+      "right": 16,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0007",
+      "left": 14,
+      "right": 17,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0010",
+      "left": 19,
+      "right": 20,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0009",
+      "left": 18,
+      "right": 21,
+      "depth": 1
+    },
+    {
+      "node_id": "root",
+      "left": 1,
+      "right": 22,
+      "depth": 0
+    }
+  ],
+  "warnings": []
+}

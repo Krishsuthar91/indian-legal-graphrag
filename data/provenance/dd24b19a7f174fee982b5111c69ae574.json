@@ -1,0 +1,559 @@
+{
+  "provenance_id": "dd24b19a7f174fee982b5111c69ae574",
+  "query": "How is a contract discharged?",
+  "answer": "**Direct Answer**\nA contract is not explicitly mentioned in the retrieved evidence as being discharged. [1] [2] [3] [4]\n\n**Key Points**\n- The retrieved evidence does not mention contract discharge.\n- The evidence discusses various illustrations of dishonest misappropriation and cheating.\n- The illustrations do not relate to contract discharge.\n\n**Evidence Summary**\nThe retrieved evidence consists of four sources:\n- SOURCE 1: Illustrations of dishonest misappropriation and cheating.\n- SOURCE 2: An illustration of pledging a Government promissory note belonging to Z.\n- SOURCE 3: An illustration of abetting the apprehension of an innocent person.\n- SOURCE 4: An explanation of dishonest misappropriation for a time only.\n\n**Confidence Explanation**\nI am 59% confident in my answer due to the medium confidence score from the verification step. However, the evidence does not provide any information about contract discharge, making it difficult to provide a definitive answer.\n\n**Limitations**\nThe question about contract discharge cannot be answered because the information is absent from the indexed evidence. The evidence does not mention contract discharge, and the illustrations and explanations provided do not relate to this topic.",
+  "model": "meta/llama-3.1-8b-instruct",
+  "explanation": {
+    "query": "How is a contract discharged?",
+    "query_language": "en",
+    "retrieval": {
+      "keywords": [
+        "contract",
+        "discharged"
+      ],
+      "section_refs": [],
+      "dense_hits": 5,
+      "graph_hits": 5,
+      "hierarchy_propagated": 12,
+      "candidates": 5,
+      "returned": 5,
+      "intent": "explanation",
+      "adaptive_top_k": null,
+      "retrieval_strategy": "fixed",
+      "ranking_breakdown": {
+        "n_0263": {
+          "dense": 0.268,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.5,
+          "citation": 1.0,
+          "rank": 0.31
+        },
+        "n_0145": {
+          "dense": 0.2781,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 0.0,
+          "rank": 0.1386
+        },
+        "n_0255": {
+          "dense": 0.2743,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 0.0,
+          "rank": 0.1372
+        },
+        "n_0083": {
+          "dense": 0.2706,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 0.0,
+          "rank": 0.136
+        },
+        "n_0254": {
+          "dense": 0.2702,
+          "graph": 0.0,
+          "hierarchy": 0.25,
+          "keyword": 0.0,
+          "citation": 0.0,
+          "rank": 0.1358
+        }
+      },
+      "duplicates_removed": 0,
+      "duplicate_details": [],
+      "chain_ranking": {
+        "n_0263": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0145": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0255": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0083": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        },
+        "n_0254": {
+          "chain_relevance": 1.1,
+          "effective_hierarchy_score": 0.275,
+          "ranking_reason": "canonical:section"
+        }
+      },
+      "retrieval_pipeline": [
+        "intent_detection",
+        "adaptive_top_k",
+        "dense_retrieval",
+        "graph_retrieval",
+        "hierarchy_retrieval",
+        "keyword_ranking",
+        "citation_ranking",
+        "canonical_hierarchy_preference",
+        "evidence_deduplication",
+        "evidence_resolution",
+        "provenance_generation",
+        "llm_answer_generation"
+      ],
+      "query_intent": "explanation",
+      "retrieved_candidates": 5,
+      "ranked_candidates": 5,
+      "ranking_weights": {
+        "dense": 0.35,
+        "graph": 0.25,
+        "hierarchy": 0.15,
+        "keyword": 0.15,
+        "citation": 0.1
+      },
+      "retrieval_latency_ms": 454.318,
+      "ranking_latency_ms": 2.044,
+      "total_retrieval_latency_ms": 456.417,
+      "latency_breakdown": {
+        "intent_detection": 0.353,
+        "dense_retrieval": 23.278,
+        "graph_retrieval": 205.466,
+        "hierarchy_retrieval": 0.115,
+        "fusion": 225.107,
+        "ranking": 0.047,
+        "deduplication": 1.997,
+        "evidence_resolution": 0.055
+      }
+    },
+    "evidence": [
+      {
+        "node_id": "n_0263",
+        "title": "Illustrations (a) A, by falsely pretending to be in the Civil Service, intentionally deceives Z, and thus dishonestly induces Z to let him",
+        "text": "have on credit goods for which he does not mean to pay. A cheats. (b) A, by putting a counterfeit mark on an article, intentionally deceives Z into a belief that this article was made by a certain\ncelebrated manufacturer, and thus dishonestly induces Z to buy and pay for the article. A cheats. (c) A, by exhibiting to Z a false sample of an article intentionally deceives Z into believing that the article corresponds with\nthe sample, and thereby dishonestly induces Z to buy and pay for the article. A cheats. (d) A, by tendering in payment for an article a bill on a house with which A keeps no money, and by which A expects that\nthe bill will be dishonoured, intentionally deceives Z, and thereby dishonestly induces Z to deliver the article, intending not to\npay for it. A cheats. (e) A, by pledging as diamond articles which he knows are not diamonds, intentionally deceives Z, and thereby dishonestly\ninduces Z to lend money. A cheats. (f) A Intentionally deceives Z into a belief that A means to repay any money that Z may lend to him and thereby dishonestly\ninduces Z to lend him money, A not intending to repay it. A cheats. (g) A intentionally deceives Z into a belief that A means to deliver to Z a certain quantity of indigo plant which he does not\nintend to deliver, and thereby dishonestly induces Z to advance money upon the faith of such delivery. A cheats; but if A, at the\ntime of obtaining the money, intends to deliver the indigo plant, and afterwards breaks his contract and does not deliver it, he\ndoes not cheat, but is liable only to a civil action for breach of contract. (h) A intentionally deceives Z into a belief that A has performed A's part of a contract made with Z, which he has not\nperformed, and thereby dishonestly induces Z to pay money. A cheats. (i) A sells and conveys an estate to B. A, knowing that in consequence of such sale he has no right to the property, sells or\nmortgages the same to Z, without disclosing the fact of the previous sale and conveyance to B, and receives the purchase or\nmortgage money from Z. A cheats. 416. Cheating by personation.—A person is said to “cheat by personation” if he cheats by\npretending to be some other person, or by knowingly substituting one person for or another, or\nrepresenting that he or any other person is a person other than he or such other person really is.",
+        "label": "Section",
+        "numbering": "s (a) A, by falsely pretending to be in the Civil Service, intentionally deceives Z, and thus dishonestly induces Z to let him",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.268,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.518,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0240",
+          "n_0259",
+          "n_0261",
+          "n_0263"
+        ],
+        "snippet": "have on credit goods for which he does not mean to pay. A cheats. (b) A, by putting a counterfeit mark on an article, intentionally deceives Z into a belief that this article was made by a certain\ncelebrated manufacturer, and thus dishonest"
+      },
+      {
+        "node_id": "n_0255",
+        "title": "Illustration",
+        "text": "A finds a Government promissory note belonging to Z, bearing a blank endorsement. A, knowing that the note belongs to Z,\npledges it with a banker as a security or a loan, intending at a future time to restore it to Z. A has committed an offence under this\nsection.",
+        "label": "Section",
+        "numbering": "Illustration",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2743,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5243,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0240",
+          "n_0248",
+          "n_0255"
+        ],
+        "snippet": "A finds a Government promissory note belonging to Z, bearing a blank endorsement. A, knowing that the note belongs to Z,\npledges it with a banker as a security or a loan, intending at a future time to restore it to Z. A has committed an off"
+      },
+      {
+        "node_id": "n_0083",
+        "title": "Illustration",
+        "text": "A, a public officer, is authorised by a warrant from a Court of Justice to apprehend Z. B, knowing that fact and also that C is\nnot Z, wilfully represents to A that C is Z, and thereby intentionally causes A to apprehend C. Here B abets by instigation the\napprehension of C.",
+        "label": "Section",
+        "numbering": "Illustration",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2706,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5206,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0081",
+          "n_0083"
+        ],
+        "snippet": "A, a public officer, is authorised by a warrant from a Court of Justice to apprehend Z. B, knowing that fact and also that C is\nnot Z, wilfully represents to A that C is Z, and thereby intentionally causes A to apprehend C. Here B abets by "
+      },
+      {
+        "node_id": "n_0254",
+        "title": "Explanation 1.—A dishonest misappropriation for a time only is a misappropriation within the",
+        "text": "meaning of this section.",
+        "label": "Section",
+        "numbering": "—A dishonest misappropriation for a time only is a misappropriation within the",
+        "collection": "",
+        "language": "",
+        "level": 9,
+        "dense_score": 0.2702,
+        "graph_score": 0.0,
+        "hierarchy_score": 0.25,
+        "final_score": 0.5202,
+        "sources": [
+          "dense",
+          "hierarchy"
+        ],
+        "path": [
+          "cf20a14c52127fd5",
+          "n_0240",
+          "n_0248",
+          "n_0254"
+        ],
+        "snippet": "meaning of this section."
+      }
+    ],
+    "reasoning_chain": [
+      {
+        "step": 1,
+        "kind": "query_parse",
+        "description": "Parsed the query into keywords and legal references.",
+        "node_ids": [],
+        "detail": {
+          "keywords": [
+            "contract",
+            "discharged"
+          ],
+          "section_refs": [],
+          "intent": "explanation"
+        }
+      },
+      {
+        "step": 2,
+        "kind": "dense",
+        "description": "Semantic vector search returned 5 candidate(s).",
+        "node_ids": [
+          "n_0145",
+          "n_0255",
+          "n_0083",
+          "n_0254",
+          "n_0263"
+        ],
+        "detail": {
+          "count": 5
+        }
+      },
+      {
+        "step": 3,
+        "kind": "graph",
+        "description": "Hybrid hierarchical graph retrieval returned 5 candidate(s).",
+        "node_ids": [
+          "n_0024",
+          "n_0021",
+          "n_0031",
+          "n_0032",
+          "n_0258"
+        ],
+        "detail": {
+          "seeds": [
+            "n_0024",
+            "n_0021",
+            "n_0031",
+            "n_0032",
+            "n_0258"
+          ],
+          "count": 5
+        }
+      },
+      {
+        "step": 4,
+        "kind": "hierarchy",
+        "description": "Hierarchical evidence propagated from 5 seed(s) to 12 ancestor/descendant node(s).",
+        "node_ids": [
+          "n_0145",
+          "n_0140",
+          "cf20a14c52127fd5",
+          "n_0255",
+          "n_0248"
+        ],
+        "detail": {
+          "seed_ids": [
+            "n_0145",
+            "n_0255",
+            "n_0083",
+            "n_0254",
+            "n_0263"
+          ],
+          "count": 12
+        }
+      },
+      {
+        "step": 5,
+        "kind": "fusion",
+        "description": "Fused dense/graph/hierarchy signals into 5 ranked evidence node(s) using weights dense=0.40, graph=0.35, hierarchy=0.25.",
+        "node_ids": [
+          "n_0263",
+          "n_0145",
+          "n_0255",
+          "n_0083",
+          "n_0254"
+        ],
+        "detail": {
+          "weights": {
+            "dense": 0.4,
+            "graph": 0.35,
+            "hierarchy": 0.25
+          },
+          "ranking_weights": {
+            "dense": 0.35,
+            "graph": 0.25,
+            "hierarchy": 0.15,
+            "keyword": 0.15,
+            "citation": 0.1
+          },
+          "intent": "explanation",
+          "strategy": "fixed",
+          "top_k": 5,
+          "candidates": 5,
+          "returned": 5,
+          "duplicates_removed": 0
+        }
+      },
+      {
+        "step": 6,
+        "kind": "verification",
+        "description": "Confidence 0.59 (medium); valid=True; counter-authorities detected: 0.",
+        "node_ids": [],
+        "detail": {
+          "confidence": 0.5874,
+          "validity": true
+        }
+      }
+    ],
+    "hierarchy_paths": [
+      {
+        "node_id": "n_0263",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0240",
+            "title": "CHAPTER XVII",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XVII"
+          },
+          {
+            "node_id": "n_0259",
+            "title": "of the Employees’ Provident Funds and Miscellaneous Provisions Act, 1952 (19 of 1952) or",
+            "label": "Section",
+            "level": 5,
+            "numbering": "17"
+          },
+          {
+            "node_id": "n_0261",
+            "title": "A is a warehouse-keeper. Z going on a journey, entrusts his furniture to A, under a contract that it shall be returned on",
+            "label": "Clause",
+            "level": 7,
+            "numbering": "b"
+          },
+          {
+            "node_id": "n_0263",
+            "title": "Illustrations (a) A, by falsely pretending to be in the Civil Service, intentionally deceives Z, and thus dishonestly induces Z to let him",
+            "label": "Section",
+            "level": 9,
+            "numbering": "s (a) A, by falsely pretending to be in the Civil Service, intentionally deceives Z, and thus dishonestly induces Z to let him"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0255",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0240",
+            "title": "CHAPTER XVII",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XVII"
+          },
+          {
+            "node_id": "n_0248",
+            "title": "Whoever, after committing or attempting to commit snatching, causes hurt or wrongful restraint",
+            "label": "Section",
+            "level": 6,
+            "numbering": "4"
+          },
+          {
+            "node_id": "n_0255",
+            "title": "Illustration",
+            "label": "Section",
+            "level": 9,
+            "numbering": "Illustration"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0083",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0081",
+            "title": "CHAPTER V",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER V"
+          },
+          {
+            "node_id": "n_0083",
+            "title": "Illustration",
+            "label": "Section",
+            "level": 9,
+            "numbering": "Illustration"
+          }
+        ]
+      },
+      {
+        "node_id": "n_0254",
+        "entries": [
+          {
+            "node_id": "cf20a14c52127fd5",
+            "title": "THE INDIAN PENAL CODE",
+            "label": "Document",
+            "level": 0,
+            "numbering": ""
+          },
+          {
+            "node_id": "n_0240",
+            "title": "CHAPTER XVII",
+            "label": "Chapter",
+            "level": 4,
+            "numbering": "CHAPTER XVII"
+          },
+          {
+            "node_id": "n_0248",
+            "title": "Whoever, after committing or attempting to commit snatching, causes hurt or wrongful restraint",
+            "label": "Section",
+            "level": 6,
+            "numbering": "4"
+          },
+          {
+            "node_id": "n_0254",
+            "title": "Explanation 1.—A dishonest misappropriation for a time only is a misappropriation within the",
+            "label": "Section",
+            "level": 9,
+            "numbering": "—A dishonest misappropriation for a time only is a misappropriation within the"
+          }
+        ]
+      }
+    ],
+    "citations": [
+      {
+        "index": 1,
+        "node_id": "n_0263",
+        "title": "Illustrations (a) A, by falsely pretending to be in the Civil Service, intentionally deceives Z, and thus dishonestly induces Z to let him",
+        "label": "Section",
+        "numbering": "s (a) A, by falsely pretending to be in the Civil Service, intentionally deceives Z, and thus dishonestly induces Z to let him",
+        "score": 0.518,
+        "citation_text": "Section s (a) A, by falsely pretending to be in the Civil Service, intentionally deceives Z, and thus dishonestly induces Z to let him, \"Illustrations (a) A, by falsely pretending to be in the Civil Service, intentionally deceives Z, and thus dishonestly induces Z to let him\"",
+        "snippet": "have on credit goods for which he does not mean to pay. A cheats. (b) A, by putting a counterfeit mark on an article, intentionally deceives Z into a belief that this article was made by a certain\ncelebrated manufacturer, and thus dishonest"
+      },
+      {
+        "index": 2,
+        "node_id": "n_0255",
+        "title": "Illustration",
+        "label": "Section",
+        "numbering": "Illustration",
+        "score": 0.5243,
+        "citation_text": "Section Illustration, \"Illustration\"",
+        "snippet": "A finds a Government promissory note belonging to Z, bearing a blank endorsement. A, knowing that the note belongs to Z,\npledges it with a banker as a security or a loan, intending at a future time to restore it to Z. A has committed an off"
+      },
+      {
+        "index": 3,
+        "node_id": "n_0083",
+        "title": "Illustration",
+        "label": "Section",
+        "numbering": "Illustration",
+        "score": 0.5206,
+        "citation_text": "Section Illustration, \"Illustration\"",
+        "snippet": "A, a public officer, is authorised by a warrant from a Court of Justice to apprehend Z. B, knowing that fact and also that C is\nnot Z, wilfully represents to A that C is Z, and thereby intentionally causes A to apprehend C. Here B abets by "
+      },
+      {
+        "index": 4,
+        "node_id": "n_0254",
+        "title": "Explanation 1.—A dishonest misappropriation for a time only is a misappropriation within the",
+        "label": "Section",
+        "numbering": "—A dishonest misappropriation for a time only is a misappropriation within the",
+        "score": 0.5202,
+        "citation_text": "Section —A dishonest misappropriation for a time only is a misappropriation within the, \"Explanation 1.—A dishonest misappropriation for a time only is a misappropriation within the\"",
+        "snippet": "meaning of this section."
+      }
+    ],
+    "counter_authorities": [],
+    "confidence": {
+      "score": 0.5874,
+      "label": "medium",
+      "factors": {
+        "base_score": 0.5207,
+        "keyword_coverage": 0.5,
+        "sufficiency": 1.0,
+        "citation_bonus": 0.0,
+        "n_evidence": 4,
+        "matched_keywords": [
+          "contract"
+        ]
+      }
+    },
+    "validity": {
+      "is_valid": true,
+      "supported": true,
+      "has_conflicts": false,
+      "cites_counter_authority": false,
+      "insufficient_evidence": false,
+      "reasons": [
+        "answer supported by retrieved evidence"
+      ]
+    },
+    "retrieval_weights": {
+      "dense": 0.4,
+      "graph": 0.35,
+      "hierarchy": 0.25
+    }
+  },
+  "duration_ms": 2612.88
+}
