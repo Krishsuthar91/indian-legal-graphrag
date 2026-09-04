@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: "HHGR: Hybrid Hierarchical Graph Retrieval for Explainable Indian Legal Document Intelligence"
+message: "If you use this software, please cite it using the metadata from this file."
+type: software
+authors:
+  - name: "HHGR Project Contributors"
+repository-code: "https://github.com/Krishsuthar91/indian-legal-graphrag"
+license: MIT
+date-released: "2026-09-02"
+version: "1.0.0"
+keywords:
+  - legal-ai
+  - graph-rag
+  - indian-law
+  - knowledge-graph
+  - retrieval-augmented-generation
+  - legal-nlp
+  - explainable-ai
+  - fastapi
+  - qdrant

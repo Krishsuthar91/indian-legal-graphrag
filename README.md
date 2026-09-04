@@ -1,10 +1,10 @@
 # HHGR — Hybrid Hierarchical Graph Retrieval for Indian Legal Document Intelligence
 
-An explainable, multilingual question-answering system over Indian legal documents that combines hierarchical graph retrieval with LLM-generated cited answers and a multi-stage verification framework.
+An explainable, multilingual question-answering system for Indian legal documents. Combines hierarchical graph retrieval with LLM-generated cited answers and a multi-stage verification framework.
 
 ## Motivation
 
-Indian legal documents — statutes, judgments, and codes — are deeply hierarchical and densely cross-referenced. A single question about "breach of contract remedies" may require navigating from Section 73 to Section 74, cross-referencing illustrations, and distinguishing overruled precedents. Traditional flat retrieval systems fail to capture these structural relationships, leading to incomplete or hallucinated answers.
+Indian legal documents — statutes, codes, and judgments — are deeply hierarchical and densely cross-referenced. A single question about "breach of contract remedies" may require navigating from Section 73 to Section 74, cross-referencing illustrations, and distinguishing overruled precedents. Traditional flat retrieval systems miss these structural relationships, producing incomplete or hallucinated answers.
 
 HHGR addresses this by building a **hierarchical knowledge graph** from parsed legal documents and fusing four complementary retrieval signals — lexical, citation, hierarchy, and structural — to produce grounded, cited answers with full provenance.
 
@@ -81,9 +81,9 @@ A multi-stage verification pipeline ensures answer reliability:
 ### Prerequisites
 
 - Python 3.11+
-- Node.js 20+ (for frontend)
-- Docker & Docker Compose (for full stack)
-- NVIDIA API key (for LLM evaluation)
+- Node.js 20+ (for the frontend)
+- Docker and Docker Compose (for full-stack deployment)
+- NVIDIA API key (for LLM-powered evaluation; optional for offline testing)
 
 ### Backend
 
@@ -115,24 +115,24 @@ npm run dev      # Development server at http://localhost:5173
 ### Docker (Full Stack)
 
 ```bash
-docker compose up --build    # 6-service stack at http://localhost
+docker compose up --build    # Full 6-service stack at http://localhost
 ```
 
 ## Running Locally
 
 ```bash
 # Start the backend
-uvicorn src.main:app --reload
+uvicorn src.main:app --reload          # http://localhost:8000
 
-# Run demos (in order)
-python demo_ingest.py       # Ingest a sample PDF
-python demo_hierarchy.py    # Parse into hierarchy tree
+# Run the step-by-step demos
+python demo_ingest.py       # Ingest a sample legal PDF
+python demo_hierarchy.py    # Parse document into hierarchy tree
 python demo_kg.py           # Build knowledge graph
 python demo_retrieval.py    # Run HHGR retrieval
-python demo_embeddings.py   # Vector store + hybrid retrieval
+python demo_embeddings.py   # Vector store + hybrid search
 
 # Run backend tests
-pytest -q                   # 908 tests, all passing
+pytest -q                   # 908 tests
 
 # Run frontend tests
 cd ui && npm test            # 49 Vitest + Testing Library tests
@@ -143,11 +143,11 @@ cd ui && npm test            # 49 Vitest + Testing Library tests
 ### Benchmark Evaluation (50 questions, deterministic)
 
 The committed benchmark runs offline with a deterministic embedding provider and
-mock LLM, so it is fully reproducible from the canonical corpus. Retrieval and
-verification metrics are measured deterministically; answer-related metrics
+mock LLM, making it fully reproducible from the canonical corpus. Retrieval and
+verification metrics are measured deterministically. Answer-related metrics
 (Answer Accuracy, Hallucination Rate, Faithfulness) reflect the mock LLM and
-should be interpreted as the offline pipeline's grounding behaviour, not as the
-production NVIDIA model's answer quality.
+should be interpreted as the offline pipeline's grounding behaviour rather than
+the production NVIDIA model's answer quality.
 
 ```bash
 # Regenerate the benchmark report from the committed raw results
@@ -246,12 +246,16 @@ explaintool/
 
 ## Future Work
 
-- **Multilingual Expansion:** Extend evaluation to Hindi, Tamil, and Bengali legal documents with MuRIL/IndicBERT embeddings.
-- **Live Neo4j Integration:** Deploy production Neo4j for persistent graph storage with real-time updates.
-- **Query Expansion:** Phase 4 LLM-based query expansion for complex multi-part legal questions.
-- **Citation Graph Analysis:** Deeper citation chain analysis for precedent tracking across judgment hierarchies.
+- **Multilingual Expansion:** Evaluate Hindi, Tamil, and Bengali legal documents using MuRIL/IndicBERT embeddings.
+- **Live Neo4j Integration:** Persistent graph storage with real-time document ingestion.
+- **LLM Query Expansion:** Phase 4 query expansion for complex multi-part legal questions.
+- **Citation Graph Analysis:** Precedent tracking across judgment hierarchies via deeper citation chain analysis.
 - **User Feedback Loop:** Active learning from user corrections to improve retrieval ranking over time.
-- **Mobile Interface:** Responsive mobile-first redesign for field lawyers and legal aid workers.
+- **Mobile Interface:** Responsive redesign for field lawyers and legal aid workers.
+
+## Acknowledgements
+
+Built with [FastAPI](https://fastapi.tiangolo.com/), [Qdrant](https://qdrant.tech/), [Neo4j](https://neo4j.com/), [React](https://react.dev/), and [NVIDIA NIM](https://build.nvidia.com/). Legal corpus sourced from publicly available Indian statute texts.
 
 ## Citation
 
