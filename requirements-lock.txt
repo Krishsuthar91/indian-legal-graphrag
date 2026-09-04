@@ -29,7 +29,7 @@ scikit-learn==1.9.0
 
 # Development
 pytest==9.1.1
-ruff==0.16.1
+ruff==0.16.5
 
 # Optional RAGAS integration (native metrics when installed)
 # ragas>=0.2.0
