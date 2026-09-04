@@ -102,7 +102,7 @@ def test_post_query_insufficient_evidence_returns_guard_answer(client, monkeypat
     from src.llm.explanation import ExplainabilityEngine
     from src.llm.llm import MockLLMClient
     from src.llm.provenance import ProvenanceStore
-    from src.llm.service import QueryService
+    from src.llm.service import GROUNDED_GUARD_ANSWER, QueryService
     from tests.qa_helpers import build_graph
 
     graph = build_graph()
@@ -113,7 +113,7 @@ def test_post_query_insufficient_evidence_returns_guard_answer(client, monkeypat
     resp = client.post("/api/v1/query", json={"query": "zzzqxwv unrelated gibberish"})
     assert resp.status_code == 200
     data = resp.json()
-    assert data["answer"] == "The indexed evidence is insufficient to answer this question."
+    assert data["answer"] == GROUNDED_GUARD_ANSWER
     assert data["model"] == "grounding-guard"
     assert data["validity"]["insufficient_evidence"] is True
     assert data["provenance_id"]
@@ -344,3 +344,35 @@ def test_run_answer_bounds_llm_by_request_deadline(monkeypatch):
     assert deadline is not None
     remaining = deadline - time.monotonic()
     assert 0.0 < remaining <= 29.0
+
+TASK17_QUERIES = ["Explain Section 4", "Explain Section 6", "Explain Section 14"]
+
+
+@pytest.mark.parametrize("query", TASK17_QUERIES)
+def test_post_query_serializes_promoted_exact_matches(client, patch_service, query):
+    """Task 17 regression: section-number queries used to crash /query with a
+    pydantic ``dict_type`` error because the internal ``_promoted_exact_matches``
+    diagnostic (a list) broke the ``dict[str, dict[str, float]]`` schema. The
+    request must now return 200 and any ``_promoted_exact_matches`` value must be
+    a schema-conformant ``dict[str, float]``."""
+    resp = client.post("/api/v1/query", json={"query": query, "top_k": 5})
+    assert resp.status_code == 200
+    data = resp.json()
+    breakdown = data["retrieval"]["ranking_breakdown"]
+    promoted = breakdown.get("_promoted_exact_matches", {})
+    assert isinstance(promoted, dict)
+    for node_id, value in promoted.items():
+        assert isinstance(node_id, str)
+        assert isinstance(value, float)
+
+
+def test_query_response_preserves_promoted_key(client, patch_service):
+    """The fix must keep the diagnostic key present (no field dropped), merely
+    re-encoded to a schema-conformant shape. ``section 4`` has an exact-numbering
+    match in the test corpus, so the promotion diagnostic is emitted."""
+    resp = client.post("/api/v1/query", json={"query": "Explain Section 4", "top_k": 5})
+    assert resp.status_code == 200
+    breakdown = resp.json()["retrieval"]["ranking_breakdown"]
+    promoted = breakdown["_promoted_exact_matches"]
+    assert isinstance(promoted, dict)
+    assert promoted

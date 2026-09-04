@@ -185,9 +185,9 @@ class TestCorpusAwareness:
             data = json.load(f)
         keys = available_section_keys(data["nodes"])
         assert "2" in keys and "65" in keys and "23" in keys
-        assert not {"14", "15", "16", "17", "18", "25"} & keys
+        assert {"14", "15", "16", "17", "18", "25"} <= keys
 
-    def test_real_corpus_never_receives_nonexistent_sections(self):
+    def test_real_corpus_all_refs_are_in_corpus(self):
         with CORPUS.open(encoding="utf-8") as f:
             data = json.load(f)
         keys = available_section_keys(data["nodes"])
@@ -202,30 +202,28 @@ class TestCorpusAwareness:
                 assert ref.rsplit(" ", 1)[-1].lower() in keys, (
                     f"injected ref {ref} not present in corpus"
                 )
-        assert result.section_refs_omitted  # at least one absent ref was omitted
+        # All referenced sections now exist in the full corpus
+        assert not result.section_refs_omitted
 
-    def test_real_corpus_threat_keeps_only_available_sections(self):
+    def test_real_corpus_threat_injects_all_available_sections(self):
         with CORPUS.open(encoding="utf-8") as f:
             data = json.load(f)
         result = expand_query(
             "A signs under threat. Is the contract valid?",
             available_sections=available_section_keys(data["nodes"]),
         )
-        assert result.section_refs == ["section 2"]
-        assert result.section_refs_omitted == [
-            "section 14", "section 15", "section 19",
-        ]
-        assert "omitted 3 section reference(s) not present in the indexed corpus" in result.reason
+        assert result.section_refs == ["section 14", "section 15", "section 19", "section 2"]
+        assert result.section_refs_omitted == []
 
-    def test_real_corpus_consideration_omits_section_25(self):
+    def test_real_corpus_consideration_injects_all_available_sections(self):
         with CORPUS.open(encoding="utf-8") as f:
             data = json.load(f)
         result = expand_query(
             "Agreements without consideration are void",
             available_sections=available_section_keys(data["nodes"]),
         )
-        assert result.section_refs == ["section 2"]
-        assert result.section_refs_omitted == ["section 25"]
+        assert result.section_refs == ["section 2", "section 25"]
+        assert result.section_refs_omitted == []
 
 
 class TestInactiveExpansion:

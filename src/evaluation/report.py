@@ -12,6 +12,12 @@ import time
 from pathlib import Path
 from typing import Any
 
+from src.evaluation.analysis import (
+    RetrievalFailureAnalysis,
+    summarize_failure_types,
+    top_recommendations,
+)
+from src.evaluation.calibration import CalibrationMetrics
 from src.evaluation.metrics.aggregate import (
     GENERATION_METRIC_KEYS,
     RETRIEVAL_METRIC_KEYS,
@@ -71,6 +77,17 @@ def _format_cell(cell: Any) -> str:
     return text
 
 
+def _calibration_interpretation(ece: float) -> str:
+    """Return a human-readable calibration quality label for the given ECE."""
+    if ece < 0.05:
+        return "Excellent calibration"
+    if ece < 0.10:
+        return "Good calibration"
+    if ece < 0.20:
+        return "Moderate calibration"
+    return "Poor calibration"
+
+
 def _recommendations(aggregate: dict[str, float], performance: dict[str, float]) -> list[str]:
     recs: list[str] = []
     if aggregate.get("recall_at_5", 1.0) < 0.5:
@@ -124,6 +141,7 @@ def build_report(
     scores: dict[str, float],
     p95_latency_ms: float,
     raw_rows: list[Any],
+    calibration: CalibrationMetrics | None = None,
 ) -> str:
     """Render the full evaluation report as a Markdown string."""
     aggregate = summarize_metrics(per_query_rows)
@@ -164,6 +182,49 @@ def build_report(
         )
     )
     sections.append("")
+
+    # -- Confidence Calibration ---------------------------------------------
+    if calibration is not None and calibration.total_samples > 0:
+        sections.append("## Confidence Calibration")
+        sections.append("")
+        sections.append(
+            _markdown_table(
+                ["Metric", "Value"],
+                [
+                    ["Expected Calibration Error (ECE)", calibration.expected_calibration_error],
+                    ["Maximum Calibration Error (MCE)", calibration.maximum_calibration_error],
+                    ["Average Confidence", calibration.average_confidence],
+                    ["Average Accuracy", calibration.average_accuracy],
+                    ["Total Samples", calibration.total_samples],
+                ],
+            )
+        )
+        sections.append("")
+
+        if calibration.confidence_bins:
+            sections.append("### Reliability Table")
+            sections.append("")
+            bin_rows: list[list[Any]] = []
+            for b in calibration.confidence_bins:
+                gap = abs(b.empirical_accuracy - b.average_confidence)
+                bin_rows.append([
+                    f"{b.lower_bound:.2f}-{b.upper_bound:.2f}",
+                    b.sample_count,
+                    b.average_confidence,
+                    b.empirical_accuracy,
+                    gap,
+                ])
+            sections.append(
+                _markdown_table(
+                    ["Confidence Range", "Samples", "Avg Confidence", "Empirical Accuracy", "Gap"],
+                    bin_rows,
+                )
+            )
+            sections.append("")
+
+        interp = _calibration_interpretation(calibration.expected_calibration_error)
+        sections.append(f"**Interpretation:** {interp}")
+        sections.append("")
 
     # -- Metric tables -----------------------------------------------------
     sections.append("## Metric Tables")
@@ -286,6 +347,48 @@ def build_report(
         )
     )
     sections.append("")
+
+    # -- Retrieval failure analysis ----------------------------------------
+    failure_analyses: list[RetrievalFailureAnalysis] = []
+    for raw in raw_rows:
+        analysis = getattr(raw, "retrieval_failure_analysis", None)
+        if analysis is not None:
+            failure_analyses.append(analysis)
+    if failure_analyses:
+        sections.append("## Retrieval Failure Analysis")
+        sections.append("")
+
+        type_summary = summarize_failure_types(failure_analyses)
+        if type_summary:
+            sections.append("### Failure Type Summary")
+            sections.append("")
+            sections.append(
+                _markdown_table(
+                    ["Failure Type", "Count", "Percentage", "Examples"],
+                    [
+                        [
+                            ftype,
+                            info["count"],
+                            f"{info['percentage']:.1f}%",
+                            "; ".join(info["examples"]),
+                        ]
+                        for ftype, info in type_summary.items()
+                    ],
+                )
+            )
+            sections.append("")
+
+        recs = top_recommendations(failure_analyses)
+        if recs:
+            sections.append("### Top Recommendations")
+            sections.append("")
+            sections.append(
+                _markdown_table(
+                    ["Recommendation", "Count"],
+                    [[r["recommendation"], r["count"]] for r in recs],
+                )
+            )
+            sections.append("")
 
     # -- Most successful ---------------------------------------------------
     sections.append("## Most Successful Queries")

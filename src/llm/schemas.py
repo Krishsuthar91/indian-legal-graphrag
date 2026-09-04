@@ -99,6 +99,12 @@ class ValiditySchema(BaseModel):
     cites_counter_authority: bool
     insufficient_evidence: bool
     reasons: list[str] = Field(default_factory=list)
+    status: str = "unknown"
+    reason: str = ""
+    support_score: float = 0.0
+    relevance_score: float = 0.0
+    sufficiency_score: float = 0.0
+    contradiction_found: bool = False
 
 
 class RetrievalSummarySchema(BaseModel):
@@ -117,6 +123,21 @@ class RetrievalSummarySchema(BaseModel):
     duplicate_details: list[dict[str, Any]] = Field(default_factory=list)
 
 
+class VerificationTraceSchema(BaseModel):
+    verification_status: str = ""
+    verification_reason: str = ""
+    confidence_score: float = 0.0
+    confidence_label: str = ""
+    evidence_relevance_score: float = 0.0
+    evidence_relevance_label: str = ""
+    evidence_sufficiency_score: float = 0.0
+    citation_entailment_score: float = 0.0
+    contradiction_found: bool = False
+    retrieval_base_score: float = 0.0
+    final_adjustment: str = ""
+    decision_path: list[str] = Field(default_factory=list)
+
+
 class ExplanationResponse(BaseModel):
     query: str
     query_language: str
@@ -129,6 +150,7 @@ class ExplanationResponse(BaseModel):
     confidence: ConfidenceSchema = Field(default_factory=ConfidenceSchema)
     validity: ValiditySchema = Field(default_factory=ValiditySchema)
     retrieval_weights: dict[str, float] = Field(default_factory=dict)
+    verification_trace: VerificationTraceSchema | None = None
 
 
 class QueryResponse(ExplanationResponse):

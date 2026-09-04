@@ -1,0 +1,1047 @@
+{
+  "schema_version": "1.0",
+  "corpus": "data/hierarchy (Indian Contract Act 1872 + IPC + 177 other docs)",
+  "confidence_tolerance": 0.1,
+  "cases": {
+    "1.001": {
+      "query": "What is Section 1?",
+      "expected_section": "1",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.002": {
+      "query": "What is Section 2?",
+      "expected_section": "2",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.003": {
+      "query": "Explain Section 3.",
+      "expected_section": "3",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.004": {
+      "query": "Explain Section 4.",
+      "expected_section": "4",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.005": {
+      "query": "What does Section 5 state?",
+      "expected_section": "5",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.006": {
+      "query": "What is Section 6?",
+      "expected_section": "6",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.007": {
+      "query": "Explain Section 7.",
+      "expected_section": "7",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.008": {
+      "query": "What does Section 8 state?",
+      "expected_section": "8",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.009": {
+      "query": "Explain Section 9.",
+      "expected_section": "9",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.010": {
+      "query": "What is Section 10?",
+      "expected_section": "10",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.011": {
+      "query": "The essentials of Section 10",
+      "expected_section": "10",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.012": {
+      "query": "Explain Section 11.",
+      "expected_section": "11",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.013": {
+      "query": "What does Section 12 state?",
+      "expected_section": "12",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.014": {
+      "query": "What is Section 13?",
+      "expected_section": "13",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.015": {
+      "query": "Explain Section 14.",
+      "expected_section": "14",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.016": {
+      "query": "What is Section 15?",
+      "expected_section": "15",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.017": {
+      "query": "What does Section 16 state?",
+      "expected_section": "16",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.018": {
+      "query": "Explain Section 17.",
+      "expected_section": "17",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.019": {
+      "query": "What is Section 18?",
+      "expected_section": "18",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.020": {
+      "query": "Explain Section 19.",
+      "expected_section": "19",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.021": {
+      "query": "What does Section 20 state?",
+      "expected_section": "20",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.022": {
+      "query": "What is Section 23?",
+      "expected_section": "23",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.023": {
+      "query": "Explain Section 25.",
+      "expected_section": "25",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.024": {
+      "query": "What does Section 27 state?",
+      "expected_section": "27",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.025": {
+      "query": "What is Section 37?",
+      "expected_section": "37",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.026": {
+      "query": "Explain Section 56.",
+      "expected_section": "56",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.027": {
+      "query": "What does Section 65 state?",
+      "expected_section": "65",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.028": {
+      "query": "What is Section 72?",
+      "expected_section": "72",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.029": {
+      "query": "Explain Section 73.",
+      "expected_section": "73",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.030": {
+      "query": "What does Section 74 state?",
+      "expected_section": "74",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.031": {
+      "query": "What is Section 124?",
+      "expected_section": "124",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.032": {
+      "query": "Explain Section 126.",
+      "expected_section": "126",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.033": {
+      "query": "What does Section 128 state?",
+      "expected_section": "128",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.034": {
+      "query": "What is Section 148?",
+      "expected_section": "148",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.035": {
+      "query": "Explain Section 171.",
+      "expected_section": "171",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.036": {
+      "query": "What does Section 172 state?",
+      "expected_section": "172",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.037": {
+      "query": "What is Section 182?",
+      "expected_section": "182",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.038": {
+      "query": "Explain Section 185.",
+      "expected_section": "185",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.039": {
+      "query": "What does Section 188 state?",
+      "expected_section": "188",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.040": {
+      "query": "What is the short title and commencement?",
+      "expected_section": "1",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "1.041": {
+      "query": "How is a contract defined?",
+      "expected_section": "2",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.2,
+      "confidence_max": 1.0
+    },
+    "2.001": {
+      "query": "What is coercion?",
+      "expected_section": "15",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.002": {
+      "query": "What is fraud?",
+      "expected_section": "17",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.003": {
+      "query": "What is consideration?",
+      "expected_section": "2",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.004": {
+      "query": "What is free consent?",
+      "expected_section": "14",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.005": {
+      "query": "What is an offer?",
+      "expected_section": "2",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.006": {
+      "query": "What is a proposal?",
+      "expected_section": "2",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.007": {
+      "query": "What is undue influence?",
+      "expected_section": "16",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.008": {
+      "query": "What is misrepresentation?",
+      "expected_section": "18",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.009": {
+      "query": "What is consent?",
+      "expected_section": "13",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.010": {
+      "query": "What is a contract?",
+      "expected_section": "2",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.011": {
+      "query": "What is an agreement?",
+      "expected_section": "2",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.012": {
+      "query": "What is a promise?",
+      "expected_section": "2",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.013": {
+      "query": "What is voidability?",
+      "expected_section": "19",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.014": {
+      "query": "What is a contingent contract?",
+      "expected_section": "31",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.015": {
+      "query": "What is a wagering agreement?",
+      "expected_section": "30",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.016": {
+      "query": "What is a guarantee?",
+      "expected_section": "126",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.017": {
+      "query": "What is an indemnity?",
+      "expected_section": "124",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.018": {
+      "query": "What is bailment?",
+      "expected_section": "148",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.019": {
+      "query": "What is a pledge?",
+      "expected_section": "172",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.020": {
+      "query": "What is an agency?",
+      "expected_section": "182",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.021": {
+      "query": "What is a minor's capacity to contract?",
+      "expected_section": "11",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.022": {
+      "query": "What is a mistake of fact?",
+      "expected_section": "20",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.023": {
+      "query": "What is a restraint of trade?",
+      "expected_section": "27",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "2.024": {
+      "query": "What is the liability of a finder of goods?",
+      "expected_section": "71",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "3.001": {
+      "query": "Difference between void agreement and voidable contract.",
+      "expected_section": "2",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "3.002": {
+      "query": "Difference between proposal and acceptance.",
+      "expected_section": "2",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "3.003": {
+      "query": "Difference between fraud and misrepresentation.",
+      "expected_section": "17",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "3.004": {
+      "query": "Difference between coercion and undue influence.",
+      "expected_section": "15",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "3.005": {
+      "query": "Difference between a promise and an agreement.",
+      "expected_section": "2",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "3.006": {
+      "query": "Difference between indemnity and guarantee.",
+      "expected_section": "124",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "3.007": {
+      "query": "Difference between bailment and pledge.",
+      "expected_section": "148",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "3.008": {
+      "query": "Difference between agent and servant.",
+      "expected_section": "182",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "3.009": {
+      "query": "How does void differ from voidable?",
+      "expected_section": "2",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "3.010": {
+      "query": "What is the relationship between offer and acceptance?",
+      "expected_section": "2",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "4.001": {
+      "query": "A person receives money by mistake, can it be retained?",
+      "expected_section": "72",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "4.002": {
+      "query": "A contract signed under threats, is it valid?",
+      "expected_section": "15",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "4.003": {
+      "query": "An agreement without consideration, is it valid?",
+      "expected_section": "25",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "4.004": {
+      "query": "Both parties are under a mistake as to a matter of fact, is the agreement valid?",
+      "expected_section": "20",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "4.005": {
+      "query": "An agreement in restraint of trade, is it valid?",
+      "expected_section": "27",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "4.006": {
+      "query": "A promise to pay money won by wager, is it enforceable?",
+      "expected_section": "30",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "4.007": {
+      "query": "A contract contingent on an impossible event, is it valid?",
+      "expected_section": "36",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "4.008": {
+      "query": "A person pays money owed by another to save his own interest, can he recover it?",
+      "expected_section": "69",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "4.009": {
+      "query": "A bailee loses goods entrusted to him, is he liable?",
+      "expected_section": "151",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "4.010": {
+      "query": "A surety is discharged by a variance, what is the effect?",
+      "expected_section": "133",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "4.011": {
+      "query": "A party fails to perform on time under a fixed-time contract, what happens?",
+      "expected_section": "55",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "4.012": {
+      "query": "A person refuses to perform his promise wholly, what is the consequence?",
+      "expected_section": "39",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "4.013": {
+      "query": "An agent exceeds his authority, is the principal bound?",
+      "expected_section": "227",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "4.014": {
+      "query": "A buyer receives goods but does not pay the agreed price, is a suit maintainable?",
+      "expected_section": "4",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "4.015": {
+      "query": "A contract is rescinded as voidable, must the party restore the benefit?",
+      "expected_section": "64",
+      "expected_status": "supported",
+      "blocked": false,
+      "confidence_min": 0.15,
+      "confidence_max": 1.0
+    },
+    "5.001": {
+      "query": "Section 999",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.002": {
+      "query": "Section 420 IPC",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.003": {
+      "query": "Section 420 Contract Act",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.004": {
+      "query": "What is Section 300 of the Indian Penal Code?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.005": {
+      "query": "Explain Section 9999.",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.006": {
+      "query": "Section 0",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.007": {
+      "query": "Section -5",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.008": {
+      "query": "What is Section 999 of the IPC?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.009": {
+      "query": "Is there a Section 999 in the Contract Act?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.010": {
+      "query": "Define the theft of incorporeal land.",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.011": {
+      "query": "Explain the doctrine of quantum teleportation of contracts.",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.012": {
+      "query": "What is the gnome clause of the Contract Act?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.013": {
+      "query": "qqxwv zzznope unrelated gibberish",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.014": {
+      "query": "asdkjh 12321 plqw asdfzxcv",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.015": {
+      "query": "xyzzy plugh foobar wibble",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.016": {
+      "query": "What colour is the evidence?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.017": {
+      "query": "Section 420B of an act that does not exist",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.018": {
+      "query": "Explain Section 999 of the Indian Contract Act, 1872.",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.019": {
+      "query": "How many sections does the Contract Act contain that are not in it?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "5.020": {
+      "query": "What does Section eight hundred apply to?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.001": {
+      "query": "What is the punishment under the United States Bankruptcy Code Chapter 11?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.002": {
+      "query": "Explain the Australian Consumer Law section on unfair terms.",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.003": {
+      "query": "What does the UK Companies Act 2006 Section 172 require?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.004": {
+      "query": "Explain Article 14 of the Indian Constitution.",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.005": {
+      "query": "What does the GDPR Article 17 say?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.006": {
+      "query": "Explain Section 302 of the Criminal Procedure Code (CrPC) of India.",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.007": {
+      "query": "What is the California Civil Code Section 1542?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.008": {
+      "query": "Explain the German Civil Code (BGB) Section 433.",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.009": {
+      "query": "What does the New York General Obligations Law Section 5-701 state?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.010": {
+      "query": "Explain the Paris Convention Article 4bis.",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.011": {
+      "query": "What does the Reserve Bank of India Master Direction on KYC say?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.012": {
+      "query": "Explain Section 12 of the Central Goods and Services Tax Act, 2017.",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.013": {
+      "query": "What is the fine under the Motor Vehicles Act, 1988 Section 183?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.014": {
+      "query": "Explain the Arbitration and Conciliation Act, 1996 Section 34.",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.015": {
+      "query": "What does the Income Tax Act, 1961 Section 80C permit?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.016": {
+      "query": "Explain the Limitation Act, 1963 Section 3.",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.017": {
+      "query": "What does the Specific Relief Act, 1963 Section 10 require?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.018": {
+      "query": "Explain the Partnerships Act, 1932 Section 69.",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.019": {
+      "query": "What does the Negotiable Instruments Act, 1881 Section 138 state?",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    },
+    "6.020": {
+      "query": "Explain the Employees Provident Funds Act, 1952 Section 14.",
+      "expected_section": "none",
+      "expected_status": "insufficient",
+      "blocked": true,
+      "confidence_min": 0.0,
+      "confidence_max": 0.5
+    }
+  }
+}

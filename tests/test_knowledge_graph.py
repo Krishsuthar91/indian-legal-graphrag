@@ -94,13 +94,15 @@ class TestImportHierarchy:
 
     def test_import_creates_part_of_edges(self, graph, sample_hierarchy):
         import_hierarchy_json(graph, sample_hierarchy)
-        edges = graph.get_edges("n1", rel_type="PART_OF")
+        # Hierarchy node_ids are namespaced with the document id to avoid
+        # collisions across files (e.g. n1 -> test_doc_01__n1).
+        edges = graph.get_edges("test_doc_01__n1", rel_type="PART_OF")
         assert len(edges) >= 1
 
     def test_import_extracts_citations(self, graph, sample_hierarchy):
         import_hierarchy_json(graph, sample_hierarchy)
         # n3 references Section 12 and Article 14
-        refs = graph.get_edges("n3", rel_type="REFERENCES")
+        refs = graph.get_edges("test_doc_01__n3", rel_type="REFERENCES")
         assert len(refs) >= 2
 
     def test_import_document_node(self, graph, sample_hierarchy):

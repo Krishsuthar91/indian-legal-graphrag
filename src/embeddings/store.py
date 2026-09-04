@@ -161,20 +161,26 @@ class QdrantStore:
         vector: list[float],
         top_k: int = 10,
         language: str | None = None,
+        document_id: str | None = None,
     ) -> list[dict[str, Any]]:
         """Dense search in a single collection.
 
         Returns [{node_id, collection, score (cosine in [-1, 1]), payload}].
+
+        ``document_id`` restricts results to points whose ``doc_id`` payload
+        field matches exactly (case-sensitive).  When *None* the filter is
+        skipped and all documents are searched.
         """
-        query_filter = None
+        conditions: list[models.FieldCondition] = []
         if language:
-            query_filter = models.Filter(
-                must=[
-                    models.FieldCondition(
-                        key="language", match=models.MatchValue(value=language)
-                    )
-                ]
+            conditions.append(
+                models.FieldCondition(key="language", match=models.MatchValue(value=language))
             )
+        if document_id:
+            conditions.append(
+                models.FieldCondition(key="doc_id", match=models.MatchValue(value=document_id))
+            )
+        query_filter = models.Filter(must=conditions) if conditions else None
         log.info(
             "qdrant.request_start",
             method="search",
@@ -222,16 +228,24 @@ class QdrantStore:
         top_k: int = 10,
         per_collection: int | None = None,
         language: str | None = None,
+        document_id: str | None = None,
     ) -> list[dict[str, Any]]:
         """Search several collections and aggregate the results.
 
         Each collection contributes ``per_collection`` hits (default top_k),
         then results are sorted by cosine score descending.
+
+        ``document_id`` restricts results to points whose ``doc_id`` payload
+        field matches exactly (case-sensitive).  When *None* the filter is
+        skipped and all documents are searched.
         """
         limit = per_collection or top_k
         aggregated: list[dict[str, Any]] = []
         for name in collections:
-            aggregated.extend(self.search(name, vector, top_k=limit, language=language))
+            aggregated.extend(
+                self.search(name, vector, top_k=limit, language=language,
+                            document_id=document_id)
+            )
         aggregated.sort(key=lambda h: (-h["score"], h["node_id"]))
         return aggregated[:top_k]
 

@@ -9,6 +9,13 @@ by the QA runtime — it is a purely additive, backward-compatible package.
 
 from __future__ import annotations
 
+from src.evaluation.analysis import (
+    RetrievalFailureAnalysis,
+    build_failure_analyses,
+    summarize_failure_types,
+    top_recommendations,
+)
+from src.evaluation.calibration import CalibrationMetrics, compute_calibration_metrics
 from src.evaluation.dataset import (
     BenchmarkItem,
     load_benchmark_csv,
@@ -22,9 +29,15 @@ from src.evaluation.pipeline import (
 
 __all__ = [
     "BenchmarkItem",
+    "CalibrationMetrics",
     "EvaluationConfig",
     "EvaluationOutput",
+    "RetrievalFailureAnalysis",
+    "build_failure_analyses",
+    "compute_calibration_metrics",
     "default_contract_act_config",
     "load_benchmark_csv",
     "run_evaluation",
+    "summarize_failure_types",
+    "top_recommendations",
 ]

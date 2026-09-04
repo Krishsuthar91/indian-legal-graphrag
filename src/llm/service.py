@@ -8,6 +8,7 @@ from __future__ import annotations
 import threading
 import time
 import uuid
+from pathlib import Path
 from typing import Any
 
 from src.config.logging_config import get_logger
@@ -19,6 +20,7 @@ from src.embeddings import (
     VectorRetriever,
     get_provider,
 )
+from src.knowledge_graph.canonical import canonical_doc_ids
 from src.knowledge_graph.importer import import_all
 from src.knowledge_graph.neo4j_driver import InMemoryGraph
 from src.llm.explanation import ExplainabilityEngine
@@ -29,6 +31,7 @@ from src.llm.provenance import (
     ExplanationResult,
     ProvenanceStore,
 )
+from src.retrieval.query import parse_query
 
 log = get_logger("qa_service")
 
@@ -39,6 +42,20 @@ INSUFFICIENT_EVIDENCE_ANSWER = (
     "The indexed evidence is insufficient to answer this question."
 )
 INSUFFICIENT_EVIDENCE_MODEL = "grounding-guard"
+
+# ---------------------------------------------------------------------------
+# Grounding guard (Task 15): thresholds enforced by _should_generate_answer
+# before the LLM is ever called. The LLM is skipped whenever any required
+# grounding condition is unmet, so the system never fabricates a legal answer.
+# ---------------------------------------------------------------------------
+GUARD_MIN_RELEVANCE = 0.30
+GUARD_MIN_SUFFICIENCY = 0.45
+GUARD_MIN_CONFIDENCE = 0.30
+
+GROUNDED_GUARD_ANSWER = (
+    "I could not verify this answer from the indexed legal corpus. "
+    "The retrieved evidence is insufficient to provide a reliable legal response."
+)
 
 
 class QueryService:
@@ -52,6 +69,7 @@ class QueryService:
         top_k: int = 5,
         confidence_threshold: float | None = None,
         require_sufficient_evidence: bool | None = None,
+        grounding_guard_enabled: bool | None = None,
     ) -> None:
         self.engine = engine
         self.llm = llm
@@ -63,6 +81,11 @@ class QueryService:
             settings.QA_REQUIRE_SUFFICIENT_EVIDENCE
             if require_sufficient_evidence is None
             else require_sufficient_evidence
+        )
+        self.grounding_guard_enabled = (
+            settings.QA_GROUNDING_GUARD_ENABLED
+            if grounding_guard_enabled is None
+            else grounding_guard_enabled
         )
 
     # -- API ---------------------------------------------------------------
@@ -90,7 +113,42 @@ class QueryService:
             top_k = self.top_k
         explanation = self.engine.explain(query, top_k=top_k, language=language)
 
-        if self.require_sufficient_evidence and explanation.validity.insufficient_evidence:
+        # Resolve LLM-generation parameters up front so both generation branches
+        # (grounding guard pass-through and legacy path) stay identical.
+        gen_temperature = (
+            temperature if temperature is not None else settings.LLM_TEMPERATURE
+        )
+        gen_max_tokens = max_tokens if max_tokens is not None else settings.LLM_MAX_TOKENS
+
+        needs_legacy_guard = (
+            self.require_sufficient_evidence
+            and explanation.validity.insufficient_evidence
+        )
+        # Task 15 grounding guard: enforced before any LLM generation. When
+        # enabled it replaces the coarse legacy insufficiency check with a
+        # granular set of grounding thresholds. When disabled, the system
+        # behaves exactly as before.
+        grounding_blocked = False
+        generated = False
+        if self.grounding_guard_enabled:
+            grounding_blocked = not self._should_generate_answer(explanation)
+            if grounding_blocked:
+                response_text = self._grounding_guard_response(explanation)
+                response_model = INSUFFICIENT_EVIDENCE_MODEL
+            else:
+                messages = build_messages(
+                    query, explanation, system_prompt=self._system_prompt(explanation)
+                )
+                response = self.llm.complete(
+                    messages,
+                    temperature=gen_temperature,
+                    max_tokens=gen_max_tokens,
+                    deadline=deadline,
+                )
+                response_text = response.text
+                response_model = response.model
+                generated = True
+        elif needs_legacy_guard:
             response_text = INSUFFICIENT_EVIDENCE_ANSWER
             response_model = INSUFFICIENT_EVIDENCE_MODEL
             log.info(
@@ -106,13 +164,21 @@ class QueryService:
             )
             response = self.llm.complete(
                 messages,
-                temperature=temperature if temperature is not None else settings.LLM_TEMPERATURE,
-                max_tokens=max_tokens if max_tokens is not None else settings.LLM_MAX_TOKENS,
+                temperature=gen_temperature,
+                max_tokens=gen_max_tokens,
                 deadline=deadline,
             )
             response_text = response.text
             response_model = response.model
+            generated = True
         duration_ms = round((time.perf_counter() - start) * 1000.0, 2)
+
+        # Task 20: after a real generated answer exists, re-score confidence and
+        # the verification badge with the actual citation-entailment result. This
+        # is skipped when no answer text or no evidence is present, and when the
+        # grounding guard / legacy guard blocked generation (no real answer).
+        if generated:
+            self._score_with_citation_entailment(explanation, response_text, query)
 
         provenance_id = uuid.uuid4().hex
         result = AnswerResult(
@@ -148,9 +214,124 @@ class QueryService:
             top_k = self.top_k
         return self.engine.explain(query, top_k=top_k, language=language)
 
+    def _score_with_citation_entailment(
+        self, explanation: ExplanationResult, answer: str, query: str
+    ) -> ExplanationResult:
+        """Run citation entailment on a generated answer and re-score the result.
+
+        Task 20: ``explain()`` computes confidence before an answer exists, so it
+        cannot evaluate citation entailment (the 0.35 entailment weight is
+        silently redistributed). Once ``answer()`` has generated text we re-run
+        the existing entailment implementation and feed the *real* entailment
+        score back into the existing confidence formula and verification badge.
+        This reuses ``_compute_citation_entailment``, ``_score_confidence``,
+        ``_assess_validity`` and ``_build_verification_trace`` unchanged — no
+        verification logic is redesigned.
+
+        1. Skip entailment when there is no answer text or no retrieved evidence.
+        2. Entailment is only evaluated after a generated answer, citations, and
+           evidence all exist.
+        """
+        if not (answer or "").strip():
+            return explanation
+        if not explanation.evidence:
+            return explanation
+        if not (
+            hasattr(self.engine, "_compute_citation_entailment")
+            and hasattr(self.engine, "_score_confidence")
+            and hasattr(self.engine, "_assess_validity")
+            and hasattr(self.engine, "_build_verification_trace")
+        ):
+            return explanation
+
+        entailment = self.engine._compute_citation_entailment(
+            answer, explanation.evidence, explanation.citations
+        )
+        parsed = parse_query(query)
+        evidence_relevance = explanation.evidence_relevance
+        confidence = self.engine._score_confidence(
+            explanation.evidence,
+            parsed,
+            query,
+            evidence_relevance=evidence_relevance,
+            citation_entailment=entailment,
+            contradiction_found=entailment.contradiction_found,
+        )
+        validity = self.engine._assess_validity(
+            explanation.evidence,
+            explanation.counter_authorities,
+            confidence,
+            query,
+            evidence_relevance=evidence_relevance,
+        )
+        explanation.confidence = confidence
+        explanation.validity = validity
+        explanation.verification_trace = self.engine._build_verification_trace(
+            confidence
+        )
+        explanation.citation_entailment = entailment
+        return explanation
+
     def get_provenance(self, provenance_id: str) -> dict[str, Any] | None:
         """Fetch a stored provenance record."""
         return self.provenance.get(provenance_id)
+
+    # -- Grounding guard (Task 15) ------------------------------------------
+
+    @staticmethod
+    def _should_generate_answer(explanation: ExplanationResult) -> bool:
+        """Return True only if every required grounding condition is met.
+
+        Evaluates the retrieval and verification outputs *before* any LLM call.
+        If any threshold is unmet the LLM must not be invoked, because
+        generating from insufficient evidence risks fabricating a legal answer.
+        """
+        if not explanation.evidence:
+            return False
+
+        verification_status = explanation.validity.status
+        if verification_status != "supported":
+            return False
+
+        if explanation.evidence_relevance.score < GUARD_MIN_RELEVANCE:
+            return False
+
+        if explanation.validity.sufficiency_score < GUARD_MIN_SUFFICIENCY:
+            return False
+
+        if explanation.confidence.score < GUARD_MIN_CONFIDENCE:
+            return False
+
+        return True
+
+    def _grounding_guard_response(self, explanation: ExplanationResult) -> str:
+        """Build the deterministic blocked response and emit the guard log."""
+        n_evidence = len(explanation.evidence)
+        log.info(
+            "Grounding guard triggered",
+            reason=self._grounding_guard_reason(explanation),
+            confidence=round(explanation.confidence.score, 4),
+            relevance=round(explanation.evidence_relevance.score, 4),
+            sufficiency=round(explanation.validity.sufficiency_score, 4),
+            verification_status=explanation.validity.status,
+            node_count=n_evidence,
+        )
+        return GROUNDED_GUARD_ANSWER
+
+    @staticmethod
+    def _grounding_guard_reason(explanation: ExplanationResult) -> str:
+        """Return a human-readable reason for the guard blocking generation."""
+        if not explanation.evidence:
+            return "no retrieved evidence"
+        if explanation.validity.status != "supported":
+            return f"verification status '{explanation.validity.status}'"
+        if explanation.evidence_relevance.score < GUARD_MIN_RELEVANCE:
+            return "evidence relevance below threshold"
+        if explanation.validity.sufficiency_score < GUARD_MIN_SUFFICIENCY:
+            return "evidence sufficiency below threshold"
+        if explanation.confidence.score < GUARD_MIN_CONFIDENCE:
+            return "confidence below threshold"
+        return "unknown"
 
     def _system_prompt(self, explanation: ExplanationResult) -> str:
         return build_system_prompt(language=explanation.query_language)
@@ -193,7 +374,11 @@ def build_default_corpus() -> tuple[InMemoryGraph, QdrantStore, EmbeddingService
     store.ensure_collections()
     log.info("qa_service.collections_ensure_complete")
     log.info("qa_service.index_graph_start", nodes=len(graph.all_nodes()))
-    HierarchyIndexer(graph, store, embedding_service).index_graph()
+    hierarchy_dir = Path(__file__).resolve().parent.parent.parent / "data" / "hierarchy"
+    canonical_ids = canonical_doc_ids(hierarchy_dir)
+    HierarchyIndexer(graph, store, embedding_service).index_graph(
+        canonical_doc_ids=canonical_ids
+    )
     log.info("qa_service.index_graph_complete")
     log.info(
         "qa_service.indexed",

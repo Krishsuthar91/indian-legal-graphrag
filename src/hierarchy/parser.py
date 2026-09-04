@@ -7,6 +7,7 @@ adjacency tree + nested set index, validates, and writes to data/hierarchy/.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 from src.config.logging_config import get_logger
@@ -73,6 +74,42 @@ def _merge_consecutive_body(blocks: list[dict], start_idx: int) -> tuple[str, in
     return "\n".join(texts), start_page, end_page
 
 
+# ---------------------------------------------------------------------------
+# Embedded-section splitter
+# ---------------------------------------------------------------------------
+
+# Matches a bare section-number heading embedded in a line, e.g.
+#   "10. What agreements are contracts"
+# Number: 1-3 digits with optional letter suffix.  Title starts with a
+# capital letter or opening quote.
+_EMBEDDED_SECTION_RE = re.compile(
+    r"(\d{1,3}[A-Za-z]*)\.\s+([A-Z\u201C\u2018])"
+)
+
+
+def _split_embedded_sections(text: str) -> list[str]:
+    """Split a chapter / part line that contains an embedded section heading.
+
+    Handles the case where text cleaning merged a section heading onto the
+    same line as its parent chapter / part heading.  Returns ``[text]`` when
+    no split is needed.
+
+    Example::
+
+        "Chapter II Of contracts… 10. What agreements are contracts"
+        → ["Chapter II Of contracts…", "10. What agreements are contracts"]
+    """
+    if not re.match(r"^\s*(?:CHAPTER|Chapter|PART|Part)\s+", text, re.I):
+        return [text]
+
+    for m in _EMBEDDED_SECTION_RE.finditer(text):
+        before = text[: m.start()].strip()
+        after = text[m.start() :].strip()
+        if before and after and len(before) > 5:
+            return [before, after]
+    return [text]
+
+
 def parse_document(processed_json: Path) -> ParsedHierarchy:
     """Parse a single processed document into a hierarchy.
 
@@ -93,6 +130,13 @@ def parse_document(processed_json: Path) -> ParsedHierarchy:
 
     text_pages = _collect_text_pages(pages)
     blocks = _split_into_blocks(text_pages)
+
+    # Split chapter / part lines that contain embedded section headings
+    expanded: list[dict] = []
+    for block in blocks:
+        for part in _split_embedded_sections(block["text"]):
+            expanded.append({**block, "text": part})
+    blocks = expanded
 
     nodes: list[HierarchyNode] = []
     node_counter = 0

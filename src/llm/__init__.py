@@ -27,9 +27,12 @@ from src.llm.prompts import (
 )
 from src.llm.provenance import (
     AnswerResult,
+    CitationEntailment,
+    ClaimResult,
     Confidence,
     CounterAuthority,
     Evidence,
+    EvidenceRelevance,
     ExplanationResult,
     HierarchyPath,
     HierarchyPathEntry,
@@ -38,6 +41,7 @@ from src.llm.provenance import (
     RetrievalSummary,
     SourceCitation,
     Validity,
+    VerificationTrace,
 )
 from src.llm.service import (
     QueryService,
@@ -68,6 +72,9 @@ __all__ = [
     "format_reasoning_chain",
     "AnswerResult",
     "Evidence",
+    "EvidenceRelevance",
+    "CitationEntailment",
+    "ClaimResult",
     "ExplanationResult",
     "ReasoningStep",
     "HierarchyPath",
@@ -76,6 +83,7 @@ __all__ = [
     "CounterAuthority",
     "Confidence",
     "Validity",
+    "VerificationTrace",
     "RetrievalSummary",
     "ProvenanceStore",
     "QueryService",

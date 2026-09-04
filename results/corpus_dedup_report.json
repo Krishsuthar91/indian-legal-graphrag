@@ -1,0 +1,3681 @@
+{
+  "canonical_documents": [
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\0d1934142f67c5f5.json",
+      "document_id": "0d1934142f67c5f5",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 222,
+      "section_count": 192,
+      "parser_version": 1,
+      "mtime": 1787670743.9167595
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\cf20a14c52127fd5.json",
+      "document_id": "cf20a14c52127fd5",
+      "title": "THE INDIAN PENAL CODE",
+      "act": "indian penal code",
+      "node_count": 311,
+      "section_count": 36,
+      "parser_version": 1,
+      "mtime": 1786003151.9126608
+    }
+  ],
+  "skipped_duplicates": [
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\03ea61f001619e54.json",
+      "document_id": "03ea61f001619e54",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786893163.2871187
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\040eb6f5d6578e88.json",
+      "document_id": "040eb6f5d6578e88",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786163808.651607
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\06b176c202b83ac5.json",
+      "document_id": "06b176c202b83ac5",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787842351.6146598
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\0940d367554383c5.json",
+      "document_id": "0940d367554383c5",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785946586.8975646
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\0e178b31f7181a31.json",
+      "document_id": "0e178b31f7181a31",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786114933.848129
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\148015d74d499b31.json",
+      "document_id": "148015d74d499b31",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786201662.8151708
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\1695bba888aa7e96.json",
+      "document_id": "1695bba888aa7e96",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787325331.7823224
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\169e97330f638ece.json",
+      "document_id": "169e97330f638ece",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785998604.1205895
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\18623084868e5dd4.json",
+      "document_id": "18623084868e5dd4",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787847366.784693
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\1aab3431fa7e4178.json",
+      "document_id": "1aab3431fa7e4178",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786205213.6097598
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\1b37b91659ebdf06.json",
+      "document_id": "1b37b91659ebdf06",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787329506.843041
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\1b8031c5dde2ed34.json",
+      "document_id": "1b8031c5dde2ed34",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786166505.5072544
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\22068958d1f78e89.json",
+      "document_id": "22068958d1f78e89",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786017966.1379151
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2311cde2e662beab.json",
+      "document_id": "2311cde2e662beab",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787759471.8363535
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\25d73169da28bbb3.json",
+      "document_id": "25d73169da28bbb3",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786163594.0680115
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\25ea7cbcb35ed41f.json",
+      "document_id": "25ea7cbcb35ed41f",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785948925.114673
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\26cd51402a96f053.json",
+      "document_id": "26cd51402a96f053",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786289165.991594
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2cbe53765978ce01.json",
+      "document_id": "2cbe53765978ce01",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785943045.3422284
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2cd6550f727e7bc9.json",
+      "document_id": "2cd6550f727e7bc9",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786633812.246898
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2cf55023b8ec7dbb.json",
+      "document_id": "2cf55023b8ec7dbb",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786373969.9761877
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2dae9e9c23484454.json",
+      "document_id": "2dae9e9c23484454",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786002789.158803
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2dd258ec3348f208.json",
+      "document_id": "2dd258ec3348f208",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786114765.0386655
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2f29df9e46565ae1.json",
+      "document_id": "2f29df9e46565ae1",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787672019.4601877
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2fd0a7de15b1d809.json",
+      "document_id": "2fd0a7de15b1d809",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786163807.923814
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3050f61f3f89c0b7.json",
+      "document_id": "3050f61f3f89c0b7",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786018739.1002016
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\30a050d6cf2dad7e.json",
+      "document_id": "30a050d6cf2dad7e",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785945166.9748566
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\30c8fbb64ee4ce81.json",
+      "document_id": "30c8fbb64ee4ce81",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786022558.2434826
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\330c31250893df67.json",
+      "document_id": "330c31250893df67",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787759752.4768713
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\33620a9a7f7737fa.json",
+      "document_id": "33620a9a7f7737fa",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786463431.968529
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\34790c6afee622aa.json",
+      "document_id": "34790c6afee622aa",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787844998.137456
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3485668897b544dd.json",
+      "document_id": "3485668897b544dd",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787325964.385837
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3b3ed02837e670d7.json",
+      "document_id": "3b3ed02837e670d7",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785861263.3155568
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3bb3c3a850117afb.json",
+      "document_id": "3bb3c3a850117afb",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786375353.2221365
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3be430cdc29bba1d.json",
+      "document_id": "3be430cdc29bba1d",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786805525.8287213
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3dd01f8b5e207b29.json",
+      "document_id": "3dd01f8b5e207b29",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785861564.7258632
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3e1f4bd208e66bf4.json",
+      "document_id": "3e1f4bd208e66bf4",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787848299.5816
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3ed0bd7891ef7233.json",
+      "document_id": "3ed0bd7891ef7233",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785947395.1860757
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\41b184f221823de1.json",
+      "document_id": "41b184f221823de1",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786114273.6874545
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\41b9cc4420b1227c.json",
+      "document_id": "41b9cc4420b1227c",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787325331.8425803
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\44df7d7ca0474f38.json",
+      "document_id": "44df7d7ca0474f38",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787670131.239388
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\45485824cfd9ad33.json",
+      "document_id": "45485824cfd9ad33",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785859834.7180693
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\46ba22025167c302.json",
+      "document_id": "46ba22025167c302",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787845178.8603587
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\476f2db58187f71b.json",
+      "document_id": "476f2db58187f71b",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786206061.415053
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\4a0d5634298429c2.json",
+      "document_id": "4a0d5634298429c2",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786004942.058438
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\4a6f0903dc791a1d.json",
+      "document_id": "4a6f0903dc791a1d",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786634549.8765113
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\4bd29584744375f8.json",
+      "document_id": "4bd29584744375f8",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785947395.2530806
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\4c48d8c889f64047.json",
+      "document_id": "4c48d8c889f64047",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787847366.7009184
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\4d1e9dd02623ee16.json",
+      "document_id": "4d1e9dd02623ee16",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787326151.519023
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\4e365d749eed4c61.json",
+      "document_id": "4e365d749eed4c61",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786004941.9704194
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\4eb7b5d5c27f72c5.json",
+      "document_id": "4eb7b5d5c27f72c5",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785860364.2642787
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\503a8b6ee6c08f6f.json",
+      "document_id": "503a8b6ee6c08f6f",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787326322.9037127
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5090a62917055c11.json",
+      "document_id": "5090a62917055c11",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786115686.92685
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\52d805fcf33f36a5.json",
+      "document_id": "52d805fcf33f36a5",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785859117.5203485
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\52dfc54cffda284b.json",
+      "document_id": "52dfc54cffda284b",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787844998.2417705
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\533c4b989305eff2.json",
+      "document_id": "533c4b989305eff2",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786465171.3545175
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\593838a968ec6352.json",
+      "document_id": "593838a968ec6352",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786114546.079343
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5b4b7ee303f7b438.json",
+      "document_id": "5b4b7ee303f7b438",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786116190.090532
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5beedd4734e9ca3d.json",
+      "document_id": "5beedd4734e9ca3d",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785949124.3999686
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5d54688d92964444.json",
+      "document_id": "5d54688d92964444",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786204316.066952
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5d7707f8751a742d.json",
+      "document_id": "5d7707f8751a742d",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787845178.9179554
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5da233f7ea15734a.json",
+      "document_id": "5da233f7ea15734a",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787842351.498526
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5e4bd0aea0add7b6.json",
+      "document_id": "5e4bd0aea0add7b6",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785947101.8832922
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5f32eaf72cb4c0d1.json",
+      "document_id": "5f32eaf72cb4c0d1",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787410677.3327434
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5f3e0d970d3f9301.json",
+      "document_id": "5f3e0d970d3f9301",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785949465.946923
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5f439cf0011d2786.json",
+      "document_id": "5f439cf0011d2786",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786019132.8503668
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\65751da259ddbf81.json",
+      "document_id": "65751da259ddbf81",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786805525.7530148
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\6634979ffee95abd.json",
+      "document_id": "6634979ffee95abd",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786018049.8028338
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\6bb61410643c3672.json",
+      "document_id": "6bb61410643c3672",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786459039.1821628
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\6c87078fae14b563.json",
+      "document_id": "6c87078fae14b563",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785947477.4457107
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\6dbf9277bd312957.json",
+      "document_id": "6dbf9277bd312957",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787326151.4139874
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\6e1d905620044562.json",
+      "document_id": "6e1d905620044562",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786460109.1886103
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\6ec15e2a7dc81ac8.json",
+      "document_id": "6ec15e2a7dc81ac8",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786021429.97056
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\6fdb609a64d2aaf1.json",
+      "document_id": "6fdb609a64d2aaf1",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786114470.384352
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\71e148f1ea7f1d8e.json",
+      "document_id": "71e148f1ea7f1d8e",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785861263.0920198
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\72832ec5fb2c37e5.json",
+      "document_id": "72832ec5fb2c37e5",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786202465.3938088
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\72fa56cbaa44e247.json",
+      "document_id": "72fa56cbaa44e247",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785860417.3609731
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\75a49834fba60b98.json",
+      "document_id": "75a49834fba60b98",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786892284.403793
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\75cda53aac07a006.json",
+      "document_id": "75cda53aac07a006",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786021430.5134149
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\785edffb66bad138.json",
+      "document_id": "785edffb66bad138",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787759471.891048
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\7995de4e44b3714f.json",
+      "document_id": "7995de4e44b3714f",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786465171.409607
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\7cf91da72813a8e4.json",
+      "document_id": "7cf91da72813a8e4",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786116189.5284116
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\7eb34d0c47c6f210.json",
+      "document_id": "7eb34d0c47c6f210",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785943045.2952375
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\8109291f0741d448.json",
+      "document_id": "8109291f0741d448",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786200650.5247226
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\83bd47f85c62cdac.json",
+      "document_id": "83bd47f85c62cdac",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787843634.9508648
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\83e373c3742ba7af.json",
+      "document_id": "83e373c3742ba7af",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786375353.3027642
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\84675d3099f5f14e.json",
+      "document_id": "84675d3099f5f14e",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785943090.4733315
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\856e62c657d18b70.json",
+      "document_id": "856e62c657d18b70",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787842674.1844175
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\86d136e7646e7a3c.json",
+      "document_id": "86d136e7646e7a3c",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785943090.4334078
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\8902f7812c3604ac.json",
+      "document_id": "8902f7812c3604ac",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785858992.477763
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\8a157659584bdb6c.json",
+      "document_id": "8a157659584bdb6c",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785941025.3180287
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\8b79f3715394298e.json",
+      "document_id": "8b79f3715394298e",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786022559.1072073
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\8be69a3dca7bb5a1.json",
+      "document_id": "8be69a3dca7bb5a1",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787327032.156724
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\8e24c5c91470b0aa.json",
+      "document_id": "8e24c5c91470b0aa",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786633998.3547285
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\8f4e7dd59c2a8dca.json",
+      "document_id": "8f4e7dd59c2a8dca",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786463935.530802
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\907835b8137e232c.json",
+      "document_id": "907835b8137e232c",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787671827.7517211
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\9142c0dc1197763c.json",
+      "document_id": "9142c0dc1197763c",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786002789.0944085
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\950783315442d162.json",
+      "document_id": "950783315442d162",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786205321.1320248
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\962a03c7f7a4842c.json",
+      "document_id": "962a03c7f7a4842c",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787671827.8622756
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\98f3622127539687.json",
+      "document_id": "98f3622127539687",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786633812.1517406
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\9ac8dccae8ea6943.json",
+      "document_id": "9ac8dccae8ea6943",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787325788.5530598
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\9adb0f484c88a58b.json",
+      "document_id": "9adb0f484c88a58b",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787759752.423494
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\9c2a2eebee9824e6.json",
+      "document_id": "9c2a2eebee9824e6",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786892284.558209
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\9fffb9aea4b254ac.json",
+      "document_id": "9fffb9aea4b254ac",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785949465.7694123
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\a11dfda55aa7e837.json",
+      "document_id": "a11dfda55aa7e837",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787329507.2765296
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\a18439ff84dfe1d1.json",
+      "document_id": "a18439ff84dfe1d1",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787328681.3370905
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\a774b5f538178dba.json",
+      "document_id": "a774b5f538178dba",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786636733.6748905
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\a8e370df98a63e81.json",
+      "document_id": "a8e370df98a63e81",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786205321.1901731
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\aa7f8669888f572f.json",
+      "document_id": "aa7f8669888f572f",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785859797.3064246
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\ac03141101e79412.json",
+      "document_id": "ac03141101e79412",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786163595.6395574
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\ac690dcf9a5b0eae.json",
+      "document_id": "ac690dcf9a5b0eae",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787410677.2859144
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\af05eb1af23d7b46.json",
+      "document_id": "af05eb1af23d7b46",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786204591.186177
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b03f2e8b19059ecb.json",
+      "document_id": "b03f2e8b19059ecb",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786115686.0096245
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b0656ed2bdcbaa20.json",
+      "document_id": "b0656ed2bdcbaa20",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787843635.0519779
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b1a2658577670dbd.json",
+      "document_id": "b1a2658577670dbd",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787843401.0835357
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b270c003322daba6.json",
+      "document_id": "b270c003322daba6",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787842674.0839305
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b3b8b97bbda59b89.json",
+      "document_id": "b3b8b97bbda59b89",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786634549.8024657
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b40934eef89e5856.json",
+      "document_id": "b40934eef89e5856",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786018049.7306566
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b474ba543f2e1d96.json",
+      "document_id": "b474ba543f2e1d96",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786028072.6359265
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b47a91572e83600b.json",
+      "document_id": "b47a91572e83600b",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787760009.6431992
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b753708cfeaadff4.json",
+      "document_id": "b753708cfeaadff4",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785998604.0445986
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b9e7a69bd223a066.json",
+      "document_id": "b9e7a69bd223a066",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785949124.2112756
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\baf5728ba6d1e41d.json",
+      "document_id": "baf5728ba6d1e41d",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786206061.3713977
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\bbb0fde89d467ddf.json",
+      "document_id": "bbb0fde89d467ddf",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787760009.7151947
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\bbbf98749c7c98ce.json",
+      "document_id": "bbbf98749c7c98ce",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786459039.2487798
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\bcce1dec162aaef7.json",
+      "document_id": "bcce1dec162aaef7",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785861564.6777592
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\bcfead7e4657c5ee.json",
+      "document_id": "bcfead7e4657c5ee",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786200651.0743673
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\bdfa582c6a33d10f.json",
+      "document_id": "bdfa582c6a33d10f",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785941025.428887
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\be2b0c714b2c98cb.json",
+      "document_id": "be2b0c714b2c98cb",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 16,
+      "section_count": 8,
+      "parser_version": 1,
+      "mtime": 1785859157.842218
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\be450de3e5ea5e46.json",
+      "document_id": "be450de3e5ea5e46",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787412117.9620464
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\bf8800f31edb412c.json",
+      "document_id": "bf8800f31edb412c",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785860445.0501604
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\bf8860a7a19c09c0.json",
+      "document_id": "bf8860a7a19c09c0",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787412117.9147692
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\c18a46d28c05afcf.json",
+      "document_id": "c18a46d28c05afcf",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786633998.423483
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\c27908be9aec296c.json",
+      "document_id": "c27908be9aec296c",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786018739.0362003
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\c815ed3b192dc789.json",
+      "document_id": "c815ed3b192dc789",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787843401.171967
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\c951713f7e8c4d46.json",
+      "document_id": "c951713f7e8c4d46",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787670186.9736886
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\cb36f9e8c925a3e4.json",
+      "document_id": "cb36f9e8c925a3e4",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786205213.6542082
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\cbb175cf5aabfc37.json",
+      "document_id": "cbb175cf5aabfc37",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785947477.5247169
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\cbd8ff9a67ce330f.json",
+      "document_id": "cbd8ff9a67ce330f",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787672019.3154852
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\cc52bf9722dfddab.json",
+      "document_id": "cc52bf9722dfddab",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786460109.1346211
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d1942ad4f7a4dcd2.json",
+      "document_id": "d1942ad4f7a4dcd2",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786203142.8922694
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d3886ac41f15c8a5.json",
+      "document_id": "d3886ac41f15c8a5",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786028071.9955065
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d3bd059e8237bfc2.json",
+      "document_id": "d3bd059e8237bfc2",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785860364.2181182
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d3bf595d831a58e3.json",
+      "document_id": "d3bf595d831a58e3",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786463432.026665
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d3e74d5cb16fa197.json",
+      "document_id": "d3e74d5cb16fa197",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787670906.1470704
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d407fc80f7944889.json",
+      "document_id": "d407fc80f7944889",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786893163.7027044
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d40c4f5e20fabcc8.json",
+      "document_id": "d40c4f5e20fabcc8",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787328830.543921
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d448230ba853d657.json",
+      "document_id": "d448230ba853d657",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786373969.909151
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d6cac907fe27eff1.json",
+      "document_id": "d6cac907fe27eff1",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787670906.053676
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d6cc73917a6f95dd.json",
+      "document_id": "d6cc73917a6f95dd",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785859834.7662182
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d88f0c4c84a5766f.json",
+      "document_id": "d88f0c4c84a5766f",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786805816.4914587
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d91e644caea36e1f.json",
+      "document_id": "d91e644caea36e1f",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786201315.5786173
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\da848a0f632847d8.json",
+      "document_id": "da848a0f632847d8",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786805816.4164371
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\db0b4d44107f5806.json",
+      "document_id": "db0b4d44107f5806",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785859797.355423
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\dbb42e04ac792a7f.json",
+      "document_id": "dbb42e04ac792a7f",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787328830.4808457
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\dc023ef4806287d5.json",
+      "document_id": "dc023ef4806287d5",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786017966.0778608
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\dca49c9fcef4a1cb.json",
+      "document_id": "dca49c9fcef4a1cb",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785946586.9395652
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\dd2fe059d2b3ac11.json",
+      "document_id": "dd2fe059d2b3ac11",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786019118.912063
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\de787ea6ed55d5d4.json",
+      "document_id": "de787ea6ed55d5d4",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785948924.9403875
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e0f3408fba90ff12.json",
+      "document_id": "e0f3408fba90ff12",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785860417.3138144
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e1efc1a872e250f8.json",
+      "document_id": "e1efc1a872e250f8",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786636733.7478795
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e4c0ba1f35c3f3f1.json",
+      "document_id": "e4c0ba1f35c3f3f1",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786202297.4864378
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e651d9e3946c7c9f.json",
+      "document_id": "e651d9e3946c7c9f",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787325788.6182897
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e66567bff4856be9.json",
+      "document_id": "e66567bff4856be9",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786114385.1962185
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e6d6d7f6e821d65c.json",
+      "document_id": "e6d6d7f6e821d65c",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787325964.3037877
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e83d0903b2813590.json",
+      "document_id": "e83d0903b2813590",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787326322.8204885
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e8a13893d8c88b69.json",
+      "document_id": "e8a13893d8c88b69",
+      "title": "The Indian Contract Act, 1872",
+      "act": "indian contract act",
+      "node_count": 46,
+      "section_count": 16,
+      "parser_version": 1,
+      "mtime": 1786286743.7027786
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e8af9da624fa37da.json",
+      "document_id": "e8af9da624fa37da",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785945166.9267278
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e98a6ab4658b3892.json",
+      "document_id": "e98a6ab4658b3892",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786289166.0879066
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\ec3cbccd35c16b3d.json",
+      "document_id": "ec3cbccd35c16b3d",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786021549.6196969
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\eddc0ff72fb9885b.json",
+      "document_id": "eddc0ff72fb9885b",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785947101.8362885
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\eefe97f667c9cf5a.json",
+      "document_id": "eefe97f667c9cf5a",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787328681.3970585
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\f291d96c98eb3be0.json",
+      "document_id": "f291d96c98eb3be0",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786021550.1262095
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\f3936ae7bfe7abaa.json",
+      "document_id": "f3936ae7bfe7abaa",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787670130.9841182
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\f5fbe66967104671.json",
+      "document_id": "f5fbe66967104671",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787670187.074767
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\f878bb4479542659.json",
+      "document_id": "f878bb4479542659",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786463935.7150714
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\f89a98cf22313117.json",
+      "document_id": "f89a98cf22313117",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785860445.0996785
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\fa218489fe9b2f6d.json",
+      "document_id": "fa218489fe9b2f6d",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787327032.246677
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\fa22be7ecb623c06.json",
+      "document_id": "fa22be7ecb623c06",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1787848299.6465964
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\fa91efc60a66e428.json",
+      "document_id": "fa91efc60a66e428",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785858992.4272482
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\fae2388dfc74b77c.json",
+      "document_id": "fae2388dfc74b77c",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1785859117.5735984
+    },
+    {
+      "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\fe171685afe0d498.json",
+      "document_id": "fe171685afe0d498",
+      "title": "THE INDIAN CONTRACT ACT, 1892",
+      "act": "indian contract act",
+      "node_count": 11,
+      "section_count": 4,
+      "parser_version": 1,
+      "mtime": 1786166506.6981926
+    }
+  ],
+  "summary": {
+    "total_files": 183,
+    "canonical_files": 2,
+    "skipped_files": 181,
+    "file_reduction_pct": 98.90710382513662,
+    "graph_nodes_before": 3089,
+    "graph_nodes_after": 533,
+    "node_reduction_pct": 82.74522499190677
+  },
+  "groups": {
+    "indian contract act": [
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\03ea61f001619e54.json",
+        "document_id": "03ea61f001619e54",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786893163.2871187
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\040eb6f5d6578e88.json",
+        "document_id": "040eb6f5d6578e88",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786163808.651607
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\06b176c202b83ac5.json",
+        "document_id": "06b176c202b83ac5",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787842351.6146598
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\0940d367554383c5.json",
+        "document_id": "0940d367554383c5",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785946586.8975646
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\0d1934142f67c5f5.json",
+        "document_id": "0d1934142f67c5f5",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 222,
+        "section_count": 192,
+        "parser_version": 1,
+        "mtime": 1787670743.9167595
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\0e178b31f7181a31.json",
+        "document_id": "0e178b31f7181a31",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786114933.848129
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\148015d74d499b31.json",
+        "document_id": "148015d74d499b31",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786201662.8151708
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\1695bba888aa7e96.json",
+        "document_id": "1695bba888aa7e96",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787325331.7823224
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\169e97330f638ece.json",
+        "document_id": "169e97330f638ece",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785998604.1205895
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\18623084868e5dd4.json",
+        "document_id": "18623084868e5dd4",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787847366.784693
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\1aab3431fa7e4178.json",
+        "document_id": "1aab3431fa7e4178",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786205213.6097598
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\1b37b91659ebdf06.json",
+        "document_id": "1b37b91659ebdf06",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787329506.843041
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\1b8031c5dde2ed34.json",
+        "document_id": "1b8031c5dde2ed34",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786166505.5072544
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\22068958d1f78e89.json",
+        "document_id": "22068958d1f78e89",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786017966.1379151
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2311cde2e662beab.json",
+        "document_id": "2311cde2e662beab",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787759471.8363535
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\25d73169da28bbb3.json",
+        "document_id": "25d73169da28bbb3",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786163594.0680115
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\25ea7cbcb35ed41f.json",
+        "document_id": "25ea7cbcb35ed41f",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785948925.114673
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\26cd51402a96f053.json",
+        "document_id": "26cd51402a96f053",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786289165.991594
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2cbe53765978ce01.json",
+        "document_id": "2cbe53765978ce01",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785943045.3422284
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2cd6550f727e7bc9.json",
+        "document_id": "2cd6550f727e7bc9",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786633812.246898
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2cf55023b8ec7dbb.json",
+        "document_id": "2cf55023b8ec7dbb",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786373969.9761877
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2dae9e9c23484454.json",
+        "document_id": "2dae9e9c23484454",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786002789.158803
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2dd258ec3348f208.json",
+        "document_id": "2dd258ec3348f208",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786114765.0386655
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2f29df9e46565ae1.json",
+        "document_id": "2f29df9e46565ae1",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787672019.4601877
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\2fd0a7de15b1d809.json",
+        "document_id": "2fd0a7de15b1d809",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786163807.923814
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3050f61f3f89c0b7.json",
+        "document_id": "3050f61f3f89c0b7",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786018739.1002016
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\30a050d6cf2dad7e.json",
+        "document_id": "30a050d6cf2dad7e",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785945166.9748566
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\30c8fbb64ee4ce81.json",
+        "document_id": "30c8fbb64ee4ce81",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786022558.2434826
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\330c31250893df67.json",
+        "document_id": "330c31250893df67",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787759752.4768713
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\33620a9a7f7737fa.json",
+        "document_id": "33620a9a7f7737fa",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786463431.968529
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\34790c6afee622aa.json",
+        "document_id": "34790c6afee622aa",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787844998.137456
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3485668897b544dd.json",
+        "document_id": "3485668897b544dd",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787325964.385837
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3b3ed02837e670d7.json",
+        "document_id": "3b3ed02837e670d7",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785861263.3155568
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3bb3c3a850117afb.json",
+        "document_id": "3bb3c3a850117afb",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786375353.2221365
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3be430cdc29bba1d.json",
+        "document_id": "3be430cdc29bba1d",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786805525.8287213
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3dd01f8b5e207b29.json",
+        "document_id": "3dd01f8b5e207b29",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785861564.7258632
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3e1f4bd208e66bf4.json",
+        "document_id": "3e1f4bd208e66bf4",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787848299.5816
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\3ed0bd7891ef7233.json",
+        "document_id": "3ed0bd7891ef7233",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785947395.1860757
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\41b184f221823de1.json",
+        "document_id": "41b184f221823de1",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786114273.6874545
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\41b9cc4420b1227c.json",
+        "document_id": "41b9cc4420b1227c",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787325331.8425803
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\44df7d7ca0474f38.json",
+        "document_id": "44df7d7ca0474f38",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787670131.239388
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\45485824cfd9ad33.json",
+        "document_id": "45485824cfd9ad33",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785859834.7180693
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\46ba22025167c302.json",
+        "document_id": "46ba22025167c302",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787845178.8603587
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\476f2db58187f71b.json",
+        "document_id": "476f2db58187f71b",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786206061.415053
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\4a0d5634298429c2.json",
+        "document_id": "4a0d5634298429c2",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786004942.058438
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\4a6f0903dc791a1d.json",
+        "document_id": "4a6f0903dc791a1d",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786634549.8765113
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\4bd29584744375f8.json",
+        "document_id": "4bd29584744375f8",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785947395.2530806
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\4c48d8c889f64047.json",
+        "document_id": "4c48d8c889f64047",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787847366.7009184
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\4d1e9dd02623ee16.json",
+        "document_id": "4d1e9dd02623ee16",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787326151.519023
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\4e365d749eed4c61.json",
+        "document_id": "4e365d749eed4c61",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786004941.9704194
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\4eb7b5d5c27f72c5.json",
+        "document_id": "4eb7b5d5c27f72c5",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785860364.2642787
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\503a8b6ee6c08f6f.json",
+        "document_id": "503a8b6ee6c08f6f",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787326322.9037127
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5090a62917055c11.json",
+        "document_id": "5090a62917055c11",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786115686.92685
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\52d805fcf33f36a5.json",
+        "document_id": "52d805fcf33f36a5",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785859117.5203485
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\52dfc54cffda284b.json",
+        "document_id": "52dfc54cffda284b",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787844998.2417705
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\533c4b989305eff2.json",
+        "document_id": "533c4b989305eff2",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786465171.3545175
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\593838a968ec6352.json",
+        "document_id": "593838a968ec6352",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786114546.079343
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5b4b7ee303f7b438.json",
+        "document_id": "5b4b7ee303f7b438",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786116190.090532
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5beedd4734e9ca3d.json",
+        "document_id": "5beedd4734e9ca3d",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785949124.3999686
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5d54688d92964444.json",
+        "document_id": "5d54688d92964444",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786204316.066952
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5d7707f8751a742d.json",
+        "document_id": "5d7707f8751a742d",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787845178.9179554
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5da233f7ea15734a.json",
+        "document_id": "5da233f7ea15734a",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787842351.498526
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5e4bd0aea0add7b6.json",
+        "document_id": "5e4bd0aea0add7b6",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785947101.8832922
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5f32eaf72cb4c0d1.json",
+        "document_id": "5f32eaf72cb4c0d1",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787410677.3327434
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5f3e0d970d3f9301.json",
+        "document_id": "5f3e0d970d3f9301",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785949465.946923
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\5f439cf0011d2786.json",
+        "document_id": "5f439cf0011d2786",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786019132.8503668
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\65751da259ddbf81.json",
+        "document_id": "65751da259ddbf81",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786805525.7530148
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\6634979ffee95abd.json",
+        "document_id": "6634979ffee95abd",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786018049.8028338
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\6bb61410643c3672.json",
+        "document_id": "6bb61410643c3672",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786459039.1821628
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\6c87078fae14b563.json",
+        "document_id": "6c87078fae14b563",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785947477.4457107
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\6dbf9277bd312957.json",
+        "document_id": "6dbf9277bd312957",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787326151.4139874
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\6e1d905620044562.json",
+        "document_id": "6e1d905620044562",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786460109.1886103
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\6ec15e2a7dc81ac8.json",
+        "document_id": "6ec15e2a7dc81ac8",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786021429.97056
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\6fdb609a64d2aaf1.json",
+        "document_id": "6fdb609a64d2aaf1",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786114470.384352
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\71e148f1ea7f1d8e.json",
+        "document_id": "71e148f1ea7f1d8e",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785861263.0920198
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\72832ec5fb2c37e5.json",
+        "document_id": "72832ec5fb2c37e5",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786202465.3938088
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\72fa56cbaa44e247.json",
+        "document_id": "72fa56cbaa44e247",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785860417.3609731
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\75a49834fba60b98.json",
+        "document_id": "75a49834fba60b98",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786892284.403793
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\75cda53aac07a006.json",
+        "document_id": "75cda53aac07a006",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786021430.5134149
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\785edffb66bad138.json",
+        "document_id": "785edffb66bad138",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787759471.891048
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\7995de4e44b3714f.json",
+        "document_id": "7995de4e44b3714f",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786465171.409607
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\7cf91da72813a8e4.json",
+        "document_id": "7cf91da72813a8e4",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786116189.5284116
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\7eb34d0c47c6f210.json",
+        "document_id": "7eb34d0c47c6f210",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785943045.2952375
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\8109291f0741d448.json",
+        "document_id": "8109291f0741d448",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786200650.5247226
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\83bd47f85c62cdac.json",
+        "document_id": "83bd47f85c62cdac",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787843634.9508648
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\83e373c3742ba7af.json",
+        "document_id": "83e373c3742ba7af",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786375353.3027642
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\84675d3099f5f14e.json",
+        "document_id": "84675d3099f5f14e",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785943090.4733315
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\856e62c657d18b70.json",
+        "document_id": "856e62c657d18b70",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787842674.1844175
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\86d136e7646e7a3c.json",
+        "document_id": "86d136e7646e7a3c",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785943090.4334078
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\8902f7812c3604ac.json",
+        "document_id": "8902f7812c3604ac",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785858992.477763
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\8a157659584bdb6c.json",
+        "document_id": "8a157659584bdb6c",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785941025.3180287
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\8b79f3715394298e.json",
+        "document_id": "8b79f3715394298e",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786022559.1072073
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\8be69a3dca7bb5a1.json",
+        "document_id": "8be69a3dca7bb5a1",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787327032.156724
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\8e24c5c91470b0aa.json",
+        "document_id": "8e24c5c91470b0aa",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786633998.3547285
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\8f4e7dd59c2a8dca.json",
+        "document_id": "8f4e7dd59c2a8dca",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786463935.530802
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\907835b8137e232c.json",
+        "document_id": "907835b8137e232c",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787671827.7517211
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\9142c0dc1197763c.json",
+        "document_id": "9142c0dc1197763c",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786002789.0944085
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\950783315442d162.json",
+        "document_id": "950783315442d162",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786205321.1320248
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\962a03c7f7a4842c.json",
+        "document_id": "962a03c7f7a4842c",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787671827.8622756
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\98f3622127539687.json",
+        "document_id": "98f3622127539687",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786633812.1517406
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\9ac8dccae8ea6943.json",
+        "document_id": "9ac8dccae8ea6943",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787325788.5530598
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\9adb0f484c88a58b.json",
+        "document_id": "9adb0f484c88a58b",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787759752.423494
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\9c2a2eebee9824e6.json",
+        "document_id": "9c2a2eebee9824e6",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786892284.558209
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\9fffb9aea4b254ac.json",
+        "document_id": "9fffb9aea4b254ac",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785949465.7694123
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\a11dfda55aa7e837.json",
+        "document_id": "a11dfda55aa7e837",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787329507.2765296
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\a18439ff84dfe1d1.json",
+        "document_id": "a18439ff84dfe1d1",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787328681.3370905
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\a774b5f538178dba.json",
+        "document_id": "a774b5f538178dba",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786636733.6748905
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\a8e370df98a63e81.json",
+        "document_id": "a8e370df98a63e81",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786205321.1901731
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\aa7f8669888f572f.json",
+        "document_id": "aa7f8669888f572f",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785859797.3064246
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\ac03141101e79412.json",
+        "document_id": "ac03141101e79412",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786163595.6395574
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\ac690dcf9a5b0eae.json",
+        "document_id": "ac690dcf9a5b0eae",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787410677.2859144
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\af05eb1af23d7b46.json",
+        "document_id": "af05eb1af23d7b46",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786204591.186177
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b03f2e8b19059ecb.json",
+        "document_id": "b03f2e8b19059ecb",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786115686.0096245
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b0656ed2bdcbaa20.json",
+        "document_id": "b0656ed2bdcbaa20",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787843635.0519779
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b1a2658577670dbd.json",
+        "document_id": "b1a2658577670dbd",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787843401.0835357
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b270c003322daba6.json",
+        "document_id": "b270c003322daba6",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787842674.0839305
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b3b8b97bbda59b89.json",
+        "document_id": "b3b8b97bbda59b89",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786634549.8024657
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b40934eef89e5856.json",
+        "document_id": "b40934eef89e5856",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786018049.7306566
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b474ba543f2e1d96.json",
+        "document_id": "b474ba543f2e1d96",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786028072.6359265
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b47a91572e83600b.json",
+        "document_id": "b47a91572e83600b",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787760009.6431992
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b753708cfeaadff4.json",
+        "document_id": "b753708cfeaadff4",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785998604.0445986
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\b9e7a69bd223a066.json",
+        "document_id": "b9e7a69bd223a066",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785949124.2112756
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\baf5728ba6d1e41d.json",
+        "document_id": "baf5728ba6d1e41d",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786206061.3713977
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\bbb0fde89d467ddf.json",
+        "document_id": "bbb0fde89d467ddf",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787760009.7151947
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\bbbf98749c7c98ce.json",
+        "document_id": "bbbf98749c7c98ce",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786459039.2487798
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\bcce1dec162aaef7.json",
+        "document_id": "bcce1dec162aaef7",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785861564.6777592
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\bcfead7e4657c5ee.json",
+        "document_id": "bcfead7e4657c5ee",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786200651.0743673
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\bdfa582c6a33d10f.json",
+        "document_id": "bdfa582c6a33d10f",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785941025.428887
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\be2b0c714b2c98cb.json",
+        "document_id": "be2b0c714b2c98cb",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 16,
+        "section_count": 8,
+        "parser_version": 1,
+        "mtime": 1785859157.842218
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\be450de3e5ea5e46.json",
+        "document_id": "be450de3e5ea5e46",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787412117.9620464
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\bf8800f31edb412c.json",
+        "document_id": "bf8800f31edb412c",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785860445.0501604
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\bf8860a7a19c09c0.json",
+        "document_id": "bf8860a7a19c09c0",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787412117.9147692
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\c18a46d28c05afcf.json",
+        "document_id": "c18a46d28c05afcf",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786633998.423483
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\c27908be9aec296c.json",
+        "document_id": "c27908be9aec296c",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786018739.0362003
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\c815ed3b192dc789.json",
+        "document_id": "c815ed3b192dc789",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787843401.171967
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\c951713f7e8c4d46.json",
+        "document_id": "c951713f7e8c4d46",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787670186.9736886
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\cb36f9e8c925a3e4.json",
+        "document_id": "cb36f9e8c925a3e4",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786205213.6542082
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\cbb175cf5aabfc37.json",
+        "document_id": "cbb175cf5aabfc37",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785947477.5247169
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\cbd8ff9a67ce330f.json",
+        "document_id": "cbd8ff9a67ce330f",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787672019.3154852
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\cc52bf9722dfddab.json",
+        "document_id": "cc52bf9722dfddab",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786460109.1346211
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d1942ad4f7a4dcd2.json",
+        "document_id": "d1942ad4f7a4dcd2",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786203142.8922694
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d3886ac41f15c8a5.json",
+        "document_id": "d3886ac41f15c8a5",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786028071.9955065
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d3bd059e8237bfc2.json",
+        "document_id": "d3bd059e8237bfc2",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785860364.2181182
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d3bf595d831a58e3.json",
+        "document_id": "d3bf595d831a58e3",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786463432.026665
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d3e74d5cb16fa197.json",
+        "document_id": "d3e74d5cb16fa197",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787670906.1470704
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d407fc80f7944889.json",
+        "document_id": "d407fc80f7944889",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786893163.7027044
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d40c4f5e20fabcc8.json",
+        "document_id": "d40c4f5e20fabcc8",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787328830.543921
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d448230ba853d657.json",
+        "document_id": "d448230ba853d657",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786373969.909151
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d6cac907fe27eff1.json",
+        "document_id": "d6cac907fe27eff1",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787670906.053676
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d6cc73917a6f95dd.json",
+        "document_id": "d6cc73917a6f95dd",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785859834.7662182
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d88f0c4c84a5766f.json",
+        "document_id": "d88f0c4c84a5766f",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786805816.4914587
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\d91e644caea36e1f.json",
+        "document_id": "d91e644caea36e1f",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786201315.5786173
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\da848a0f632847d8.json",
+        "document_id": "da848a0f632847d8",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786805816.4164371
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\db0b4d44107f5806.json",
+        "document_id": "db0b4d44107f5806",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785859797.355423
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\dbb42e04ac792a7f.json",
+        "document_id": "dbb42e04ac792a7f",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787328830.4808457
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\dc023ef4806287d5.json",
+        "document_id": "dc023ef4806287d5",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786017966.0778608
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\dca49c9fcef4a1cb.json",
+        "document_id": "dca49c9fcef4a1cb",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785946586.9395652
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\dd2fe059d2b3ac11.json",
+        "document_id": "dd2fe059d2b3ac11",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786019118.912063
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\de787ea6ed55d5d4.json",
+        "document_id": "de787ea6ed55d5d4",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785948924.9403875
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e0f3408fba90ff12.json",
+        "document_id": "e0f3408fba90ff12",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785860417.3138144
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e1efc1a872e250f8.json",
+        "document_id": "e1efc1a872e250f8",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786636733.7478795
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e4c0ba1f35c3f3f1.json",
+        "document_id": "e4c0ba1f35c3f3f1",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786202297.4864378
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e651d9e3946c7c9f.json",
+        "document_id": "e651d9e3946c7c9f",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787325788.6182897
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e66567bff4856be9.json",
+        "document_id": "e66567bff4856be9",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786114385.1962185
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e6d6d7f6e821d65c.json",
+        "document_id": "e6d6d7f6e821d65c",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787325964.3037877
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e83d0903b2813590.json",
+        "document_id": "e83d0903b2813590",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787326322.8204885
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e8a13893d8c88b69.json",
+        "document_id": "e8a13893d8c88b69",
+        "title": "The Indian Contract Act, 1872",
+        "act": "indian contract act",
+        "node_count": 46,
+        "section_count": 16,
+        "parser_version": 1,
+        "mtime": 1786286743.7027786
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e8af9da624fa37da.json",
+        "document_id": "e8af9da624fa37da",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785945166.9267278
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\e98a6ab4658b3892.json",
+        "document_id": "e98a6ab4658b3892",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786289166.0879066
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\ec3cbccd35c16b3d.json",
+        "document_id": "ec3cbccd35c16b3d",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786021549.6196969
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\eddc0ff72fb9885b.json",
+        "document_id": "eddc0ff72fb9885b",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785947101.8362885
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\eefe97f667c9cf5a.json",
+        "document_id": "eefe97f667c9cf5a",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787328681.3970585
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\f291d96c98eb3be0.json",
+        "document_id": "f291d96c98eb3be0",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786021550.1262095
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\f3936ae7bfe7abaa.json",
+        "document_id": "f3936ae7bfe7abaa",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787670130.9841182
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\f5fbe66967104671.json",
+        "document_id": "f5fbe66967104671",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787670187.074767
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\f878bb4479542659.json",
+        "document_id": "f878bb4479542659",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786463935.7150714
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\f89a98cf22313117.json",
+        "document_id": "f89a98cf22313117",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785860445.0996785
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\fa218489fe9b2f6d.json",
+        "document_id": "fa218489fe9b2f6d",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787327032.246677
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\fa22be7ecb623c06.json",
+        "document_id": "fa22be7ecb623c06",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1787848299.6465964
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\fa91efc60a66e428.json",
+        "document_id": "fa91efc60a66e428",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785858992.4272482
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\fae2388dfc74b77c.json",
+        "document_id": "fae2388dfc74b77c",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1785859117.5735984
+      },
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\fe171685afe0d498.json",
+        "document_id": "fe171685afe0d498",
+        "title": "THE INDIAN CONTRACT ACT, 1892",
+        "act": "indian contract act",
+        "node_count": 11,
+        "section_count": 4,
+        "parser_version": 1,
+        "mtime": 1786166506.6981926
+      }
+    ],
+    "indian penal code": [
+      {
+        "path": "C:\\Users\\Krish\\Project2\\data\\hierarchy\\cf20a14c52127fd5.json",
+        "document_id": "cf20a14c52127fd5",
+        "title": "THE INDIAN PENAL CODE",
+        "act": "indian penal code",
+        "node_count": 311,
+        "section_count": 36,
+        "parser_version": 1,
+        "mtime": 1786003151.9126608
+      }
+    ]
+  }
+}

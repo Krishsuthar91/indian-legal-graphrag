@@ -101,14 +101,24 @@ class HierarchyIndexer:
 
     # -- indexing from graph ---------------------------------------------
 
-    def _graph_nodes(self, node_ids: list[str] | None) -> list[dict[str, Any]]:
-        if node_ids is None:
-            return [n for n in self.graph.all_nodes() if n.get("node_id")]
-        nodes = []
-        for nid in node_ids:
-            node = self.graph.get_node(nid)
-            if node:
-                nodes.append(node)
+    def _graph_nodes(
+        self,
+        node_ids: list[str] | None,
+        canonical_doc_ids: set[str] | None = None,
+    ) -> list[dict[str, Any]]:
+        if node_ids is not None:
+            nodes = []
+            for nid in node_ids:
+                node = self.graph.get_node(nid)
+                if node:
+                    nodes.append(node)
+        else:
+            nodes = [n for n in self.graph.all_nodes() if n.get("node_id")]
+        if canonical_doc_ids is not None:
+            nodes = [
+                n for n in nodes
+                if n.get("document_id") in canonical_doc_ids
+            ]
         return nodes
 
     def _doc_language(self) -> str:
@@ -126,7 +136,14 @@ class HierarchyIndexer:
             collection = collection_for_label(label)
             if collection is None:
                 continue
-            payload = _build_payload(node, collection, doc_id, language, str(label).lower())
+            # Task 24: each node carries its own source document. Deriving the
+            # payload ``doc_id`` from the node's ``document_id`` (falling back to
+            # the caller-supplied doc_id only when the node lacks one) is what
+            # lets the dense ``document_id`` filter keep ICA and IPC apart.
+            node_doc_id = node.get("document_id") or doc_id
+            payload = _build_payload(
+                node, collection, node_doc_id, language, str(label).lower()
+            )
             batches.setdefault(collection, []).append(payload)
 
         totals: dict[str, int] = {}
@@ -139,8 +156,16 @@ class HierarchyIndexer:
             totals[collection] = self.store.upsert_batch(collection, items)
         return totals
 
-    def index_graph(self, node_ids: list[str] | None = None) -> dict[str, Any]:
-        """Embed all (or selected) hierarchy nodes from the graph store."""
+    def index_graph(
+        self,
+        node_ids: list[str] | None = None,
+        canonical_doc_ids: set[str] | None = None,
+    ) -> dict[str, Any]:
+        """Embed all (or selected) hierarchy nodes from the graph store.
+
+        ``canonical_doc_ids`` restricts embedding to nodes belonging to the given
+        canonical documents, so only canonical nodes land in Qdrant.
+        """
         doc_id = ""
         doc = next(
             (n for n in self.graph.all_nodes() if n.get("label") == "Document"), None
@@ -148,7 +173,9 @@ class HierarchyIndexer:
         if doc:
             doc_id = doc.get("document_id", doc["node_id"])
         language = self._doc_language()
-        totals = self._index_nodes(self._graph_nodes(node_ids), doc_id, language)
+        totals = self._index_nodes(
+            self._graph_nodes(node_ids, canonical_doc_ids), doc_id, language
+        )
         log.info("index.graph_complete", doc_id=doc_id, collections=totals)
         return {"doc_id": doc_id, "collections": totals}
 
@@ -173,7 +200,10 @@ class HierarchyIndexer:
             collection = collection_for_label(label)
             if collection is None:
                 continue
-            payload = _build_payload(node, collection, doc_id, language, str(label).lower())
+            node_doc_id = node.get("document_id") or doc_id
+            payload = _build_payload(
+                node, collection, node_doc_id, language, str(label).lower()
+            )
             current = existing[collection].get(node["node_id"])
             if current is not None and current.get("text_hash") == payload["text_hash"]:
                 skipped += 1

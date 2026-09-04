@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from src.evaluation.calibration import CalibrationMetrics
 from src.evaluation.corpus import (
     CONTRACT_ACT_1872_DOCUMENT_ID,
     build_evaluation_service,
@@ -24,7 +25,13 @@ from src.evaluation.metrics.aggregate import (
 )
 from src.evaluation.metrics.performance import measure_peak_traced_memory, performance_metrics
 from src.evaluation.report import build_report, write_report
-from src.evaluation.runner import RawResult, run_questions, save_raw_csv, save_raw_json
+from src.evaluation.runner import (
+    RawResult,
+    compute_row_calibration,
+    run_questions,
+    save_raw_csv,
+    save_raw_json,
+)
 from src.llm.llm import LLMClient
 
 DEFAULT_RESULTS_DIR = Path("results")
@@ -67,6 +74,7 @@ class EvaluationOutput:
     raw_json: Path
     raw_csv: Path
     report_path: Path
+    calibration: CalibrationMetrics | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -139,6 +147,8 @@ def run_evaluation(config: EvaluationConfig | None = None) -> EvaluationOutput:
     raw_json = save_raw_json(results, results_dir / RAW_JSON_FILE, meta=meta)
     raw_csv = save_raw_csv(results, results_dir / RAW_CSV_FILE)
 
+    calibration = compute_row_calibration(results, per_query)
+
     report = build_report(
         meta=meta,
         per_query_rows=per_query,
@@ -159,4 +169,5 @@ def run_evaluation(config: EvaluationConfig | None = None) -> EvaluationOutput:
         raw_json=raw_json,
         raw_csv=raw_csv,
         report_path=report_path,
+        calibration=calibration,
     )

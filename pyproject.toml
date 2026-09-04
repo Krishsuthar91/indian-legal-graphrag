@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "explaintool"
-version = "0.1.0"
+version = "1.0.0"
 description = "Explainable Multilingual Hierarchical Graph-RAG with Hybrid Hierarchical Graph Retrieval (HHGR) for Indian Legal Document Intelligence"
 readme = "README.md"
 license = {text = "MIT"}

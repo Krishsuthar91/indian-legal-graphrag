@@ -5,7 +5,11 @@ from pathlib import Path
 
 import pytest
 
-from src.hierarchy.parser import parse_and_save, parse_document
+from src.hierarchy.parser import (
+    _split_embedded_sections,
+    parse_and_save,
+    parse_document,
+)
 
 
 @pytest.fixture()
@@ -130,3 +134,56 @@ class TestParseAndSave:
             assert "left" in entry
             assert "right" in entry
             assert "depth" in entry
+
+
+class TestSplitEmbeddedSections:
+    """Unit tests for _split_embedded_sections."""
+
+    def test_splits_chapter_with_embedded_section(self):
+        text = (
+            "Chapter II Of contracts, violable contracts and void agreements"
+            " 10. What agreements are contracts"
+        )
+        parts = _split_embedded_sections(text)
+        assert len(parts) == 2
+        assert "Chapter II" in parts[0]
+        assert "10. What agreements" in parts[1]
+
+    def test_splits_chapter_72(self):
+        text = (
+            "Chapter V Of certain relations resembling those created by"
+            " contract 72. Liability of person to whom money is paid"
+        )
+        parts = _split_embedded_sections(text)
+        assert len(parts) == 2
+        assert "Chapter V" in parts[0]
+        assert "72. Liability" in parts[1]
+
+    def test_no_split_for_plain_chapter(self):
+        text = "Chapter III Of contingent contracts"
+        parts = _split_embedded_sections(text)
+        assert parts == [text]
+
+    def test_no_split_for_non_chapter_line(self):
+        text = "All agreements are contracts if they are made by the free consent."
+        parts = _split_embedded_sections(text)
+        assert parts == [text]
+
+    def test_no_split_for_section_heading(self):
+        text = "10. What agreements are contracts"
+        parts = _split_embedded_sections(text)
+        assert parts == [text]
+
+    def test_splits_part_with_embedded_section(self):
+        text = "PART I PRELIMINARY 1. Short title and commencement"
+        parts = _split_embedded_sections(text)
+        assert len(parts) == 2
+        assert "PART I" in parts[0]
+        assert "1. Short title" in parts[1]
+
+    def test_preserves_case_chapter(self):
+        text = "Chapter I Of the communication 3. Communication of proposals"
+        parts = _split_embedded_sections(text)
+        assert len(parts) == 2
+        assert parts[0].startswith("Chapter I")
+        assert parts[1].startswith("3.")

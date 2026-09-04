@@ -19,6 +19,7 @@ import httpx
 
 from src.config.logging_config import get_logger
 from src.config.settings import settings
+from src.llm.explanation import _text_similarity
 
 log = get_logger("llm")
 
@@ -639,6 +640,16 @@ class MockLLMClient(LLMClient):
 
     Echoes the query and lists the sources referenced in the prompt so generated
     answers remain deterministic and inspectable.
+
+    Test-harness behavior note (Task 23): the pipeline calls the LLM client both
+    to *generate answers* and to *score evidence relevance* (and entailment).
+    Those judge tasks expect a JSON object (see ``_RELEVANCE_JUDGE_SYSTEM`` /
+    ``_ENTAILMENT_JUDGE_SYSTEM``), which ``_parse_relevance_json`` /
+    ``_parse_entailment_json`` parse. The mock therefore detects a judge request
+    and returns valid judge JSON instead of prose, scoring relevance with the
+    same deterministic Dice-bigram similarity the engine uses in its own
+    ``_relevance_fallback``. This keeps the mock a faithful offline stand-in for
+    a production judge and prevents the all-zero relevance artifact.
     """
 
     name = "mock"
@@ -652,6 +663,14 @@ class MockLLMClient(LLMClient):
         deadline: float | None = None,
     ) -> LLMResponse:
         user = next((m["content"] for m in reversed(messages) if m["role"] == "user"), "")
+        judge_json = self._judge_json(user)
+        if judge_json is not None:
+            return LLMResponse(
+                text=judge_json[: max(1, max_tokens)],
+                model=self.model,
+                usage={"prompt_tokens": len(user) // 4, "completion_tokens": len(judge_json) // 4},
+                finish_reason="stop",
+            )
         sources = _extract_source_numbers(user)
         citation_note = (
             f"Sources cited: {', '.join(f'[{n}]' for n in sources)}."
@@ -669,6 +688,44 @@ class MockLLMClient(LLMClient):
             usage={"prompt_tokens": len(user) // 4, "completion_tokens": len(text) // 4},
             finish_reason="stop",
         )
+
+    @staticmethod
+    def _judge_json(user: str) -> str | None:
+        """Return valid JSON for the pipeline's LLM judge tasks, else ``None``.
+
+        The relevance judge prompt is ``_compute_evidence_relevance``'s
+        ``"Question: {query}\\n\\nRetrieved Evidence:\\n{block}"`` where the block
+        is ``"[{title}] {text}"`` per evidence item. The entailment judge prompt
+        contains ``"Claim:"``. Judge requests are detected by those markers and
+        answered with the JSON the corresponding parser expects.
+        """
+        joined = " ".join(user.split())
+        if joined.startswith("Question: ") and "Retrieved Evidence:" in user:
+            m = re.match(r"Question:\s*(.*?)\s*Retrieved Evidence:\s*(.*)$", user, re.S)
+            if not m:
+                return None
+            query, evidence_text = m.group(1), m.group(2)
+
+            cleaned_query = re.sub(
+                r"^(what|how|when|where|who|why|which)\s+(does|do|is|are|was|were|"
+                r"has|have|had|shall|should|can|could|may|might)\s+",
+                "",
+                query.lower(),
+                count=1,
+            )
+            score = _text_similarity(cleaned_query, evidence_text.lower())
+            if score >= 0.70:
+                label, reason = "direct", "High text similarity to query."
+            elif score >= 0.45:
+                label, reason = "partial", "Moderate text overlap with query."
+            elif score >= 0.20:
+                label, reason = "tangential", "Low text overlap; topically related."
+            else:
+                label, reason = "unrelated", "Minimal text overlap with query."
+            return (
+                f'{{"score": {score:.4f}, "label": "{label}", "reason": "{reason}"}}'
+            )
+        return None
 
 
 def _extract_source_numbers(user_prompt: str) -> list[str]:

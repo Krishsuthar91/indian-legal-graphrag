@@ -19,6 +19,7 @@ from src.retrieval.query import RetrievalQuery, parse_query
 from src.retrieval.scorer import (
     citation_score,
     combine_signals,
+    leaf_direct_priority,
     matched_keywords,
     structural_importance,
     text_score,
@@ -53,6 +54,7 @@ def _node_to_result(
     signals: dict[str, float],
     path: list[str],
     is_seed: bool,
+    score: float | None = None,
 ) -> RetrievalResult:
     text = node.get("text", "") or ""
     if len(text) > SNIPPET_CHARS:
@@ -63,7 +65,7 @@ def _node_to_result(
         title=node.get("title", ""),
         text=text,
         numbering=node.get("numbering", ""),
-        score=combine_signals(signals),
+        score=combine_signals(signals) if score is None else score,
         signals=signals,
         path=path,
         matched_keywords=matched_keywords(node, query),
@@ -76,8 +78,14 @@ def retrieve(
     query: str | RetrievalQuery,
     top_k: int = 5,
     threshold: float = 0.0,
+    document_id: str | None = None,
 ) -> list[RetrievalResult]:
-    """Run hybrid hierarchical graph retrieval over the given graph store."""
+    """Run hybrid hierarchical graph retrieval over the given graph store.
+
+    ``document_id`` restricts candidate nodes to those belonging to the
+    specified document (via the ``document_id`` property set during import).
+    When *None* all graph nodes are searched (legacy behaviour).
+    """
     if isinstance(query, str):
         query = parse_query(query)
 
@@ -85,7 +93,18 @@ def retrieve(
         log.info("retrieval.empty_query")
         return []
 
-    nodes = [n for n in graph.all_nodes() if n.get("node_id")]
+    all_nodes = [n for n in graph.all_nodes() if n.get("node_id")]
+    if document_id:
+        nodes = [n for n in all_nodes if n.get("document_id") == document_id]
+        if not nodes:
+            log.info(
+                "retrieval.document_filter_empty",
+                document_id=document_id,
+                fallback=True,
+            )
+            nodes = all_nodes
+    else:
+        nodes = all_nodes
 
     # 1. Seed selection: per-node text + citation signals
     per_node: dict[str, dict[str, float]] = {}
@@ -125,6 +144,13 @@ def retrieve(
             "citation": per_node.get(nid, {}).get("citation", 0.0),
             "structural": (structural[nid] / max_structural) if max_structural > 0 else 0.0,
         }
+        score = combine_signals(signals)
+        # Prefer a legal leaf (Section/Clause/...) whose own text directly
+        # matches the query over container nodes (Chapter/Part/...) that only
+        # aggregate keyword-bearing descendants. This is a bounded ranking
+        # bonus, not a linear weight, so it cannot swamp the citation signal.
+        if leaf_direct_priority(node, query) == 1.0:
+            score = min(1.0, score + 0.10)
         result = _node_to_result(
             graph,
             node,
@@ -132,6 +158,7 @@ def retrieve(
             signals,
             [p["node_id"] for p in get_ancestor_chain(graph, nid)],
             is_seed=nid in set(seed_ids),
+            score=score,
         )
         if result.score < threshold:
             continue

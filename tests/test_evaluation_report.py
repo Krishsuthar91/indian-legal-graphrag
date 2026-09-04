@@ -4,8 +4,10 @@ from types import SimpleNamespace
 
 import pytest
 
+from src.evaluation.calibration import CalibrationBin, CalibrationMetrics
 from src.evaluation.report import (
     FAILURE_CATEGORIES,
+    _calibration_interpretation,
     _failure_score,
     build_report,
     write_report,
@@ -133,3 +135,107 @@ class TestBuildReport:
         path = write_report(tmp_path / "evaluation_report.md", "# Report")
         assert path.exists()
         assert path.read_text(encoding="utf-8") == "# Report"
+
+
+class TestCalibrationInterpretation:
+    def test_excellent(self):
+        assert _calibration_interpretation(0.03) == "Excellent calibration"
+
+    def test_good(self):
+        assert _calibration_interpretation(0.07) == "Good calibration"
+
+    def test_moderate(self):
+        assert _calibration_interpretation(0.15) == "Moderate calibration"
+
+    def test_poor(self):
+        assert _calibration_interpretation(0.25) == "Poor calibration"
+
+    def test_boundary_005(self):
+        assert _calibration_interpretation(0.05) == "Good calibration"
+
+    def test_boundary_010(self):
+        assert _calibration_interpretation(0.10) == "Moderate calibration"
+
+    def test_boundary_020(self):
+        assert _calibration_interpretation(0.20) == "Poor calibration"
+
+
+class TestCalibrationInReport:
+    def _make_calibration(self, ece=0.08, bins=None):
+        if bins is None:
+            bins = [
+                CalibrationBin(0.0, 0.1, 5, 0.05, 0.10),
+                CalibrationBin(0.1, 0.2, 10, 0.15, 0.20),
+                CalibrationBin(0.2, 0.3, 8, 0.25, 0.30),
+            ]
+        return CalibrationMetrics(
+            expected_calibration_error=ece,
+            maximum_calibration_error=0.12,
+            average_confidence=0.45,
+            average_accuracy=0.48,
+            total_samples=23,
+            confidence_bins=bins,
+        )
+
+    def _build(self, calibration=None):
+        rows = [_row(item_id=f"ICA1872-{i:03d}") for i in range(1, 4)]
+        raw_rows = [_raw_row(item_id=f"ICA1872-{i:03d}") for i in range(1, 4)]
+        return build_report(
+            meta={},
+            per_query_rows=rows,
+            performance={},
+            scores={"overall": 0.5, "retrieval": 0.4, "generation": 0.5, "performance": 0.9},
+            p95_latency_ms=10.0,
+            raw_rows=raw_rows,
+            calibration=calibration,
+        )
+
+    def test_calibration_section_appears(self):
+        report = self._build(calibration=self._make_calibration())
+        assert "## Confidence Calibration" in report
+        assert "Expected Calibration Error (ECE)" in report
+        assert "Maximum Calibration Error (MCE)" in report
+        assert "Average Confidence" in report
+        assert "Average Accuracy" in report
+        assert "Total Samples" in report
+
+    def test_no_calibration_still_works(self):
+        report = self._build(calibration=None)
+        assert "## Confidence Calibration" not in report
+        assert "## Overall Score" in report
+        assert "## Metric Tables" in report
+
+    def test_reliability_table_renders(self):
+        report = self._build(calibration=self._make_calibration())
+        assert "### Reliability Table" in report
+        assert "Confidence Range" in report
+        assert "Samples" in report
+        assert "Gap" in report
+        assert "0.00-0.10" in report
+        assert "0.10-0.20" in report
+        assert "0.20-0.30" in report
+
+    def test_interpretation_changes_with_ece(self):
+        excellent = self._build(calibration=self._make_calibration(ece=0.02))
+        assert "Excellent calibration" in excellent
+
+        poor = self._build(calibration=self._make_calibration(ece=0.30))
+        assert "Poor calibration" in poor
+
+    def test_empty_bins_omitted(self):
+        bins = [CalibrationBin(0.0, 0.1, 3, 0.05, 0.10)]
+        cal = self._make_calibration(bins=bins)
+        report = self._build(calibration=cal)
+        assert "0.00-0.10" in report
+        assert "0.10-0.20" not in report
+
+    def test_no_bins_no_reliability_table(self):
+        cal = CalibrationMetrics(
+            expected_calibration_error=0.0,
+            maximum_calibration_error=0.0,
+            average_confidence=0.0,
+            average_accuracy=0.0,
+            total_samples=0,
+        )
+        report = self._build(calibration=cal)
+        assert "## Confidence Calibration" not in report

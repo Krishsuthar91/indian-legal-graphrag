@@ -101,6 +101,7 @@ class VectorRetriever:
         top_k: int = 10,
         language: str | None = None,
         query_language: str | None = None,
+        document_id: str | None = None,
     ) -> list[VectorHit]:
         """Multilingual dense similarity search across collections.
 
@@ -109,11 +110,14 @@ class VectorRetriever:
         ``language`` optionally filters indexed payloads by document language. The
         filter is soft: when it matches no documents (e.g. a Hindi query against
         an English corpus) the search falls back to the full corpus.
+        ``document_id`` restricts results to a single source document by its
+        ``doc_id`` payload field.  When *None* all documents are searched.
         """
         vector = self.service.embed_query(query)
         names = collections or self.store.collections
         hits = self.store.search_multiple(
-            names, vector, top_k=top_k, language=language
+            names, vector, top_k=top_k, language=language,
+            document_id=document_id,
         )
         if not hits and language:
             log.info(
@@ -121,7 +125,9 @@ class VectorRetriever:
                 language=language,
                 reason="no_matches",
             )
-            hits = self.store.search_multiple(names, vector, top_k=top_k)
+            hits = self.store.search_multiple(
+                names, vector, top_k=top_k, document_id=document_id,
+            )
         return [
             VectorHit(
                 node_id=h["node_id"],
@@ -138,9 +144,19 @@ class VectorRetriever:
 
     # -- graph (HHGR) -----------------------------------------------------
 
-    def graph_retrieval(self, query: str, top_k: int = 10) -> dict[str, float]:
-        """Run Module 5 HHGR graph retrieval; return {node_id: score}."""
-        results = retrieve(self.graph, query, top_k=top_k)
+    def graph_retrieval(
+        self,
+        query: str,
+        top_k: int = 10,
+        document_id: str | None = None,
+    ) -> dict[str, float]:
+        """Run Module 5 HHGR graph retrieval; return {node_id: score}.
+
+        ``document_id`` restricts graph candidates to nodes belonging to the
+        specified document (via the ``document_id`` payload field).  When *None*
+        all graph nodes are searched (legacy behaviour).
+        """
+        results = retrieve(self.graph, query, top_k=top_k, document_id=document_id)
         return {r.node_id: r.score for r in results}
 
     # -- hierarchy --------------------------------------------------------
@@ -151,6 +167,7 @@ class VectorRetriever:
         top_k: int = 10,
         collections: list[str] | None = None,
         language: str | None = None,
+        document_id: str | None = None,
     ) -> dict[str, float]:
         """Structure-aware retrieval.
 
@@ -159,7 +176,8 @@ class VectorRetriever:
         {node_id: evidence strength in [0, 1]}.
         """
         seeds = self.dense_search(
-            query, collections=collections, top_k=top_k, language=language
+            query, collections=collections, top_k=top_k, language=language,
+            document_id=document_id,
         )
         seed_ids = [h.node_id for h in seeds if h.node_id]
         return propagate_hierarchy(self.graph, seed_ids) if seed_ids else {}
@@ -173,12 +191,18 @@ class VectorRetriever:
         weights: dict[str, float] | None = None,
         collections: list[str] | None = None,
         language: str | None = None,
+        document_id: str | None = None,
     ) -> list[HybridHit]:
-        """Fuse dense + graph + hierarchy signals into ranked HybridHits."""
+        """Fuse dense + graph + hierarchy signals into ranked HybridHits.
+
+        ``document_id`` restricts all three retrieval signals to the specified
+        source document, ensuring evidence never mixes across Acts.
+        """
         w = normalize_weights(weights or self.weights)
 
         dense_hits = self.dense_search(
-            query, collections=collections, top_k=top_k, language=language
+            query, collections=collections, top_k=top_k, language=language,
+            document_id=document_id,
         )
         dense: dict[str, float] = {}
         dense_payload: dict[str, dict[str, Any]] = {}
@@ -186,9 +210,10 @@ class VectorRetriever:
             dense[hit.node_id] = max(dense.get(hit.node_id, 0.0), hit.score)
             dense_payload.setdefault(hit.node_id, hit.payload)
 
-        graph_scores = self.graph_retrieval(query, top_k=top_k)
+        graph_scores = self.graph_retrieval(query, top_k=top_k, document_id=document_id)
         hierarchy_scores = self.hierarchy_retrieval(
-            query, top_k=top_k, collections=collections, language=language
+            query, top_k=top_k, collections=collections, language=language,
+            document_id=document_id,
         )
 
         candidates: set[str] = set(dense) | set(graph_scores) | set(hierarchy_scores)

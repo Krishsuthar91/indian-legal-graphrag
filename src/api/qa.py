@@ -72,6 +72,10 @@ class LLMQuotaExceededError(AppException):
 def _query_response(result) -> QueryResponse:
     """Flatten an AnswerResult's explanation into the top-level response model."""
     data = asdict(result.explanation)
+    retrieval = data.get("retrieval")
+    if isinstance(retrieval, dict):
+        breakdown = retrieval.get("ranking_breakdown")
+        _coerce_ranking_breakdown(breakdown)
     data.update(
         {
             "provenance_id": result.provenance_id,
@@ -81,6 +85,24 @@ def _query_response(result) -> QueryResponse:
         }
     )
     return QueryResponse.model_validate(data)
+
+
+def _coerce_ranking_breakdown(breakdown: Any) -> None:
+    """Make an internal ranker diagnostic fit the public ranking_breakdown schema.
+
+    ``ranking_breakdown`` is declared ``dict[str, dict[str, float]]``. The ranker
+    nevertheless records an ``_promoted_exact_matches`` diagnostic as a *list* of
+    node ids, which Pydantic rejects. Re-encode the list as a ``str -> float``
+    mapping (node id -> promotion index) so the key stays present and conforms,
+    without touching retrieval/ranking behaviour.
+    """
+    if not isinstance(breakdown, dict):
+        return
+    promoted = breakdown.get("_promoted_exact_matches")
+    if isinstance(promoted, list):
+        breakdown["_promoted_exact_matches"] = {
+            node_id: float(i) for i, node_id in enumerate(promoted)
+        }
 
 
 def _run_answer(req: QueryRequest):

@@ -7,7 +7,11 @@ import pytest
 from src.llm.explanation import ExplainabilityEngine
 from src.llm.llm import MockLLMClient
 from src.llm.provenance import ProvenanceStore
-from src.llm.service import INSUFFICIENT_EVIDENCE_ANSWER, QueryService
+from src.llm.service import (
+    GROUNDED_GUARD_ANSWER,
+    INSUFFICIENT_EVIDENCE_ANSWER,
+    QueryService,
+)
 from tests.qa_helpers import build_graph, build_service
 
 
@@ -143,9 +147,10 @@ class TestRetrievalValidationGate:
         engine = ExplainabilityEngine(graph, vector_retriever=None)
         service = QueryService(engine, BoomClient(), ProvenanceStore())
         result = service.answer("zzzqxwv unrelated gibberish")
-        assert result.answer == INSUFFICIENT_EVIDENCE_ANSWER
+        assert result.answer == GROUNDED_GUARD_ANSWER
         assert result.model == "grounding-guard"
         assert result.explanation.validity.insufficient_evidence is True
+        assert result.explanation.evidence == []
 
     def test_insufficient_evidence_still_stores_provenance(self):
         store = ProvenanceStore()
@@ -155,11 +160,14 @@ class TestRetrievalValidationGate:
         result = service.answer("zzzqxwv unrelated gibberish")
         record = service.get_provenance(result.provenance_id)
         assert record is not None
-        assert record["answer"] == INSUFFICIENT_EVIDENCE_ANSWER
+        assert record["answer"] == GROUNDED_GUARD_ANSWER
 
     def test_guard_skipped_when_disabled(self):
-        service = self._graph_only_service(require_sufficient_evidence=False)
+        service = self._graph_only_service(
+            require_sufficient_evidence=False, grounding_guard_enabled=False
+        )
         result = service.answer("zzzqxwv unrelated gibberish")
+        assert result.answer != GROUNDED_GUARD_ANSWER
         assert result.answer != INSUFFICIENT_EVIDENCE_ANSWER
         assert result.model == "mock-llm"
 

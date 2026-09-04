@@ -1,0 +1,2139 @@
+{
+ "sample": {
+  "query": "What is a contingent contract?",
+  "system_prompt": "You are an evidence relevance evaluator for a legal question answering system. Given a user question and retrieved evidence, determine how well the evidence answers the question.\nScoring:\n1.0 = Evidence directly answers the question.\n0.75 = Evidence mostly answers the question but misses minor details.\n0.50 = Evidence is only partially relevant.\n0.25 = Evidence is topically related but does not answer the question.\n0.0 = Evidence is unrelated.\nReturn ONLY JSON: {\"score\": float, \"label\": \"...\", \"reason\": \"...\"}",
+  "user_msg": "Question: What is a contingent contract?\n\nRetrieved Evidence:\n[\"Contingent contract\" defined] A \"contingent contract\" is a contract to do or not to do something, if some event,\ncollateral to such contract, does or does not happen.\n\n[Illustrations] A writing expressing the terms of a contract, which may be used as evidence of the contract, is a document.\nA cheque upon a banker is a document.\nA power-of-attorney is a document.\nA map or plan which is intended to be used or which may be used as evidence, is a document.\nA writing containing directions or instructions is a document.\n\n[Enforcement of contract contingent on an event not happening] Contingent contracts to do or not to do anything if an uncertain future event does\nnot happen, can be enforced when the happening of that event becomes impossible,\nand not before.\n\n[When event on which contract is contingent to be deemed impossible, if] it is the future conduct of a living person\nIf the future event on which a contract is contingent is the way in which a person will\nact at an unspecified time, the event shall be considered to become impossible when\nsuch person does anything which renders it impossible that the should so act within\nany definite time, or otherwise than under further contingencies.\n\n[When contracts become void, which are contingent on happening of] specified event within fixed time\nContingent contracts to do or not to do anything, if a specified uncertain event\nhappens within a fixed time, become void, if, at the expiration of the time fixed, such\nevent has not happened, or if, before the time fixed, such event becomes impossible.\nWhen contracts may be enforced, which are contingent on specified event not\nhappening within fixed time : Contingent contract tutu or not to do anything, if a\nspecified uncertain event does not happen within a fixed time, may be enforced by\nlaw when the time fixed has expired and such event has not happened, or before the\ntime fixed has expired, if it become certain that such event will not happen.",
+  "mock_return_text": "[mock] Based on the retrieved legal evidence, the answer addresses: Question: What is a contingent contract?. No sources cited.",
+  "parsed_from_mock": {
+   "score": 0.0,
+   "label": "unknown",
+   "reason": "Failed to parse LLM response."
+  },
+  "mock_relevance_in_explain": 0.0
+ },
+ "parser_experiments": {
+  "perfect_json": {
+   "raw": "{\"score\": 0.85, \"label\": \"direct\", \"reason\": \"matches\"}",
+   "parsed": {
+    "score": 0.85,
+    "label": "direct",
+    "reason": "matches"
+   },
+   "final_score": 0.85
+  },
+  "json_float_score": {
+   "raw": "{\"score\": 0.75, \"label\": \"high\", \"reason\": \"x\"}",
+   "parsed": {
+    "score": 0.75,
+    "label": "high",
+    "reason": "x"
+   },
+   "final_score": 0.75
+  },
+  "json_int_score": {
+   "raw": "{\"score\": 1, \"label\": \"direct\", \"reason\": \"x\"}",
+   "parsed": {
+    "score": 1,
+    "label": "direct",
+    "reason": "x"
+   },
+   "final_score": 1.0
+  },
+  "malformed_json": {
+   "raw": "{\"score\": 0.8, \"label\": \"direct\", reason: \"nope\"}",
+   "parsed": {
+    "score": 0.0,
+    "label": "unknown",
+    "reason": "Failed to parse LLM response."
+   },
+   "final_score": 0.0
+  },
+  "plain_text": {
+   "raw": "This evidence is directly relevant. Score is high.",
+   "parsed": {
+    "score": 0.0,
+    "label": "unknown",
+    "reason": "Failed to parse LLM response."
+   },
+   "final_score": 0.0
+  },
+  "markdown_json": {
+   "raw": "```json\n{\"score\": 0.7, \"label\": \"partial\", \"reason\": \"md\"}\n```",
+   "parsed": {
+    "score": 0.7,
+    "label": "partial",
+    "reason": "md"
+   },
+   "final_score": 0.7
+  },
+  "markdown_plain": {
+   "raw": "```markdown\nThe evidence answers it fully.\n```",
+   "parsed": {
+    "score": 0.0,
+    "label": "unknown",
+    "reason": "Failed to parse LLM response."
+   },
+   "final_score": 0.0
+  },
+  "extra_commentary": {
+   "raw": "I think this is relevant. {\"score\": 0.6, \"label\": \"partial\", \"reason\": \"c\"} Hope that helps.",
+   "parsed": {
+    "score": 0.6,
+    "label": "partial",
+    "reason": "c"
+   },
+   "final_score": 0.6
+  },
+  "two_braces": {
+   "raw": "Here {\"score\": 0.9} and also {\"label\": \"x\"}",
+   "parsed": {
+    "score": 0.0,
+    "label": "unknown",
+    "reason": "Failed to parse LLM response."
+   },
+   "final_score": 0.0
+  },
+  "empty": {
+   "raw": "",
+   "parsed": {
+    "score": 0.0,
+    "label": "unknown",
+    "reason": "Failed to parse LLM response."
+   },
+   "final_score": 0.0
+  },
+  "whitespace": {
+   "raw": "   ",
+   "parsed": {
+    "score": 0.0,
+    "label": "unknown",
+    "reason": "Failed to parse LLM response."
+   },
+   "final_score": 0.0
+  },
+  "array_json": {
+   "raw": "[1, 2, 3]",
+   "parsed": {
+    "score": 0.0,
+    "label": "unknown",
+    "reason": "Failed to parse LLM response."
+   },
+   "final_score": 0.0
+  },
+  "mock_style_echo": {
+   "raw": "[mock] Based on the retrieved legal evidence, the answer addresses: What is a contingent contract?. Sources cited: [1].",
+   "parsed": {
+    "score": 0.0,
+    "label": "unknown",
+    "reason": "Failed to parse LLM response."
+   },
+   "final_score": 0.0
+  }
+ },
+ "quantification": {
+  "n": 90,
+  "relevance_ge_0_30": 3,
+  "relevance_ge_0_30_and_top1": 0,
+  "badge_supported_with_fallback": 3,
+  "guard_pass_with_fallback": 3,
+  "fixed_mock": {
+   "n": 90,
+   "relevance_gt_0": 90,
+   "relevance_ge_0_30": 4,
+   "top1_correct_relevance_ge_0_30": 1,
+   "status_supported_with_fixed_mock": 4,
+   "status_supported_top1_with_fixed_mock": 1,
+   "guard_pass_with_fixed_mock": 4,
+   "guard_distribution": {
+    "status_not_supported": 86,
+    "PASS": 4
+   },
+   "task22_baseline_status_supported": 0,
+   "task22_baseline_guard_pass": 0
+  }
+ },
+ "per_case_fallback": {
+  "1.001": {
+   "query": "What is Section 1?",
+   "expected": "1",
+   "top1_correct": true,
+   "fallback_relevance": 0.0523,
+   "sufficiency": 0.3366,
+   "confidence": 0.2043,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.002": {
+   "query": "What is Section 2?",
+   "expected": "2",
+   "top1_correct": true,
+   "fallback_relevance": 0.0322,
+   "sufficiency": 0.3225,
+   "confidence": 0.1679,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.003": {
+   "query": "Explain Section 3.",
+   "expected": "3",
+   "top1_correct": true,
+   "fallback_relevance": 0.0608,
+   "sufficiency": 0.3426,
+   "confidence": 0.201,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.004": {
+   "query": "Explain Section 4.",
+   "expected": "4",
+   "top1_correct": true,
+   "fallback_relevance": 0.0574,
+   "sufficiency": 0.3402,
+   "confidence": 0.206,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.005": {
+   "query": "What does Section 5 state?",
+   "expected": "5",
+   "top1_correct": true,
+   "fallback_relevance": 0.0427,
+   "sufficiency": 0.3299,
+   "confidence": 0.197,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.006": {
+   "query": "What is Section 6?",
+   "expected": "6",
+   "top1_correct": true,
+   "fallback_relevance": 0.0567,
+   "sufficiency": 0.3397,
+   "confidence": 0.2264,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.007": {
+   "query": "Explain Section 7.",
+   "expected": "7",
+   "top1_correct": true,
+   "fallback_relevance": 0.0741,
+   "sufficiency": 0.3519,
+   "confidence": 0.2376,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.008": {
+   "query": "What does Section 8 state?",
+   "expected": "8",
+   "top1_correct": true,
+   "fallback_relevance": 0.0462,
+   "sufficiency": 0.3323,
+   "confidence": 0.2108,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.009": {
+   "query": "Explain Section 9.",
+   "expected": "9",
+   "top1_correct": true,
+   "fallback_relevance": 0.0646,
+   "sufficiency": 0.3453,
+   "confidence": 0.2302,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.010": {
+   "query": "What is Section 10?",
+   "expected": "10",
+   "top1_correct": true,
+   "fallback_relevance": 0.0632,
+   "sufficiency": 0.3442,
+   "confidence": 0.2307,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.011": {
+   "query": "The essentials of Section 10",
+   "expected": "10",
+   "top1_correct": true,
+   "fallback_relevance": 0.0923,
+   "sufficiency": 0.1646,
+   "confidence": 0.1961,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.012": {
+   "query": "Explain Section 11.",
+   "expected": "11",
+   "top1_correct": true,
+   "fallback_relevance": 0.0707,
+   "sufficiency": 0.3495,
+   "confidence": 0.2346,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.013": {
+   "query": "What does Section 12 state?",
+   "expected": "12",
+   "top1_correct": true,
+   "fallback_relevance": 0.0493,
+   "sufficiency": 0.3345,
+   "confidence": 0.2129,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.014": {
+   "query": "What is Section 13?",
+   "expected": "13",
+   "top1_correct": true,
+   "fallback_relevance": 0.0415,
+   "sufficiency": 0.329,
+   "confidence": 0.1996,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.015": {
+   "query": "Explain Section 14.",
+   "expected": "14",
+   "top1_correct": true,
+   "fallback_relevance": 0.0588,
+   "sufficiency": 0.3412,
+   "confidence": 0.2142,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.016": {
+   "query": "What is Section 15?",
+   "expected": "15",
+   "top1_correct": true,
+   "fallback_relevance": 0.0583,
+   "sufficiency": 0.3408,
+   "confidence": 0.2368,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.017": {
+   "query": "What does Section 16 state?",
+   "expected": "16",
+   "top1_correct": true,
+   "fallback_relevance": 0.0485,
+   "sufficiency": 0.3339,
+   "confidence": 0.2123,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.018": {
+   "query": "Explain Section 17.",
+   "expected": "17",
+   "top1_correct": true,
+   "fallback_relevance": 0.07,
+   "sufficiency": 0.349,
+   "confidence": 0.2035,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.019": {
+   "query": "What is Section 18?",
+   "expected": "18",
+   "top1_correct": true,
+   "fallback_relevance": 0.0556,
+   "sufficiency": 0.3389,
+   "confidence": 0.2059,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.020": {
+   "query": "Explain Section 19.",
+   "expected": "19",
+   "top1_correct": true,
+   "fallback_relevance": 0.0665,
+   "sufficiency": 0.3466,
+   "confidence": 0.2166,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.021": {
+   "query": "What does Section 20 state?",
+   "expected": "20",
+   "top1_correct": true,
+   "fallback_relevance": 0.0494,
+   "sufficiency": 0.3346,
+   "confidence": 0.213,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.022": {
+   "query": "What is Section 23?",
+   "expected": "23",
+   "top1_correct": true,
+   "fallback_relevance": 0.0608,
+   "sufficiency": 0.3426,
+   "confidence": 0.2293,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.023": {
+   "query": "Explain Section 25.",
+   "expected": "25",
+   "top1_correct": true,
+   "fallback_relevance": 0.0702,
+   "sufficiency": 0.3492,
+   "confidence": 0.2368,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.024": {
+   "query": "What does Section 27 state?",
+   "expected": "27",
+   "top1_correct": true,
+   "fallback_relevance": 0.0489,
+   "sufficiency": 0.3342,
+   "confidence": 0.2126,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.025": {
+   "query": "What is Section 37?",
+   "expected": "37",
+   "top1_correct": true,
+   "fallback_relevance": 0.0677,
+   "sufficiency": 0.3474,
+   "confidence": 0.2344,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.026": {
+   "query": "Explain Section 56.",
+   "expected": "56",
+   "top1_correct": true,
+   "fallback_relevance": 0.0688,
+   "sufficiency": 0.3482,
+   "confidence": 0.2333,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.027": {
+   "query": "What does Section 65 state?",
+   "expected": "65",
+   "top1_correct": true,
+   "fallback_relevance": 0.0493,
+   "sufficiency": 0.3345,
+   "confidence": 0.2124,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.028": {
+   "query": "What is Section 72?",
+   "expected": "72",
+   "top1_correct": true,
+   "fallback_relevance": 0.0682,
+   "sufficiency": 0.3477,
+   "confidence": 0.2341,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.029": {
+   "query": "Explain Section 73.",
+   "expected": "73",
+   "top1_correct": true,
+   "fallback_relevance": 0.0711,
+   "sufficiency": 0.3498,
+   "confidence": 0.2166,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.030": {
+   "query": "What does Section 74 state?",
+   "expected": "74",
+   "top1_correct": true,
+   "fallback_relevance": 0.0492,
+   "sufficiency": 0.3344,
+   "confidence": 0.2128,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.031": {
+   "query": "What is Section 124?",
+   "expected": "124",
+   "top1_correct": true,
+   "fallback_relevance": 0.0752,
+   "sufficiency": 0.3526,
+   "confidence": 0.2389,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.032": {
+   "query": "Explain Section 126.",
+   "expected": "126",
+   "top1_correct": true,
+   "fallback_relevance": 0.0752,
+   "sufficiency": 0.3526,
+   "confidence": 0.2186,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.033": {
+   "query": "What does Section 128 state?",
+   "expected": "128",
+   "top1_correct": true,
+   "fallback_relevance": 0.0522,
+   "sufficiency": 0.3365,
+   "confidence": 0.2149,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.034": {
+   "query": "What is Section 148?",
+   "expected": "148",
+   "top1_correct": true,
+   "fallback_relevance": 0.0676,
+   "sufficiency": 0.3473,
+   "confidence": 0.2341,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.035": {
+   "query": "Explain Section 171.",
+   "expected": "171",
+   "top1_correct": true,
+   "fallback_relevance": 0.0738,
+   "sufficiency": 0.3516,
+   "confidence": 0.2368,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.036": {
+   "query": "What does Section 172 state?",
+   "expected": "172",
+   "top1_correct": true,
+   "fallback_relevance": 0.0514,
+   "sufficiency": 0.336,
+   "confidence": 0.2144,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.037": {
+   "query": "What is Section 182?",
+   "expected": "182",
+   "top1_correct": true,
+   "fallback_relevance": 0.0493,
+   "sufficiency": 0.3345,
+   "confidence": 0.2048,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.038": {
+   "query": "Explain Section 185.",
+   "expected": "185",
+   "top1_correct": true,
+   "fallback_relevance": 0.0748,
+   "sufficiency": 0.3524,
+   "confidence": 0.2376,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.039": {
+   "query": "What does Section 188 state?",
+   "expected": "188",
+   "top1_correct": true,
+   "fallback_relevance": 0.0523,
+   "sufficiency": 0.3366,
+   "confidence": 0.2149,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.040": {
+   "query": "What is the short title and commencement?",
+   "expected": "1",
+   "top1_correct": false,
+   "fallback_relevance": 0.1136,
+   "sufficiency": 0.3795,
+   "confidence": 0.2358,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "1.041": {
+   "query": "How is a contract defined?",
+   "expected": "2",
+   "top1_correct": false,
+   "fallback_relevance": 0.0691,
+   "sufficiency": 0.3484,
+   "confidence": 0.2436,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.001": {
+   "query": "What is coercion?",
+   "expected": "15",
+   "top1_correct": false,
+   "fallback_relevance": 0.0259,
+   "sufficiency": 0.3181,
+   "confidence": 0.171,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.002": {
+   "query": "What is fraud?",
+   "expected": "17",
+   "top1_correct": false,
+   "fallback_relevance": 0.0144,
+   "sufficiency": 0.3101,
+   "confidence": 0.1633,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.003": {
+   "query": "What is consideration?",
+   "expected": "2",
+   "top1_correct": false,
+   "fallback_relevance": 0.0478,
+   "sufficiency": 0.3335,
+   "confidence": 0.2145,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.004": {
+   "query": "What is free consent?",
+   "expected": "14",
+   "top1_correct": true,
+   "fallback_relevance": 0.059,
+   "sufficiency": 0.3413,
+   "confidence": 0.201,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.005": {
+   "query": "What is an offer?",
+   "expected": "2",
+   "top1_correct": false,
+   "fallback_relevance": 0.042,
+   "sufficiency": 0.3294,
+   "confidence": 0.2273,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.006": {
+   "query": "What is a proposal?",
+   "expected": "2",
+   "top1_correct": true,
+   "fallback_relevance": 0.0368,
+   "sufficiency": 0.3258,
+   "confidence": 0.2157,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.007": {
+   "query": "What is undue influence?",
+   "expected": "16",
+   "top1_correct": false,
+   "fallback_relevance": 0.0491,
+   "sufficiency": 0.3344,
+   "confidence": 0.2033,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.008": {
+   "query": "What is misrepresentation?",
+   "expected": "18",
+   "top1_correct": false,
+   "fallback_relevance": 0.0943,
+   "sufficiency": 0.366,
+   "confidence": 0.2241,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.009": {
+   "query": "What is consent?",
+   "expected": "13",
+   "top1_correct": false,
+   "fallback_relevance": 0.0211,
+   "sufficiency": 0.3148,
+   "confidence": 0.1923,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.010": {
+   "query": "What is a contract?",
+   "expected": "2",
+   "top1_correct": false,
+   "fallback_relevance": 0.0324,
+   "sufficiency": 0.3227,
+   "confidence": 0.2151,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.011": {
+   "query": "What is an agreement?",
+   "expected": "2",
+   "top1_correct": false,
+   "fallback_relevance": 0.0474,
+   "sufficiency": 0.3332,
+   "confidence": 0.203,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.012": {
+   "query": "What is a promise?",
+   "expected": "2",
+   "top1_correct": false,
+   "fallback_relevance": 0.0297,
+   "sufficiency": 0.3208,
+   "confidence": 0.1743,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.013": {
+   "query": "What is voidability?",
+   "expected": "19",
+   "top1_correct": true,
+   "fallback_relevance": 0.0518,
+   "sufficiency": 0.3363,
+   "confidence": 0.2232,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.014": {
+   "query": "What is a contingent contract?",
+   "expected": "31",
+   "top1_correct": true,
+   "fallback_relevance": 0.131,
+   "sufficiency": 0.3917,
+   "confidence": 0.2947,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.015": {
+   "query": "What is a wagering agreement?",
+   "expected": "30",
+   "top1_correct": false,
+   "fallback_relevance": 0.0933,
+   "sufficiency": 0.2653,
+   "confidence": 0.1917,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.016": {
+   "query": "What is a guarantee?",
+   "expected": "126",
+   "top1_correct": false,
+   "fallback_relevance": 0.0837,
+   "sufficiency": 0.3586,
+   "confidence": 0.2858,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.017": {
+   "query": "What is an indemnity?",
+   "expected": "124",
+   "top1_correct": true,
+   "fallback_relevance": 0.0746,
+   "sufficiency": 0.3522,
+   "confidence": 0.2316,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.018": {
+   "query": "What is bailment?",
+   "expected": "148",
+   "top1_correct": true,
+   "fallback_relevance": 0.0507,
+   "sufficiency": 0.3355,
+   "confidence": 0.1944,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.019": {
+   "query": "What is a pledge?",
+   "expected": "172",
+   "top1_correct": false,
+   "fallback_relevance": 0.0571,
+   "sufficiency": 0.34,
+   "confidence": 0.1997,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.020": {
+   "query": "What is an agency?",
+   "expected": "182",
+   "top1_correct": false,
+   "fallback_relevance": 0.0645,
+   "sufficiency": 0.3452,
+   "confidence": 0.2386,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.021": {
+   "query": "What is a minor's capacity to contract?",
+   "expected": "11",
+   "top1_correct": false,
+   "fallback_relevance": 0.1061,
+   "sufficiency": 0.3243,
+   "confidence": 0.2438,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.022": {
+   "query": "What is a mistake of fact?",
+   "expected": "20",
+   "top1_correct": false,
+   "fallback_relevance": 0.0907,
+   "sufficiency": 0.3635,
+   "confidence": 0.2647,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.023": {
+   "query": "What is a restraint of trade?",
+   "expected": "27",
+   "top1_correct": false,
+   "fallback_relevance": 0.0619,
+   "sufficiency": 0.3434,
+   "confidence": 0.2073,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "2.024": {
+   "query": "What is the liability of a finder of goods?",
+   "expected": "71",
+   "top1_correct": false,
+   "fallback_relevance": 0.1191,
+   "sufficiency": 0.3167,
+   "confidence": 0.2497,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "3.001": {
+   "query": "Difference between void agreement and voidable contract.",
+   "expected": "2",
+   "top1_correct": false,
+   "fallback_relevance": 0.2275,
+   "sufficiency": 0.4259,
+   "confidence": 0.3379,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "3.002": {
+   "query": "Difference between proposal and acceptance.",
+   "expected": "2",
+   "top1_correct": false,
+   "fallback_relevance": 0.2709,
+   "sufficiency": 0.3896,
+   "confidence": 0.4072,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "3.003": {
+   "query": "Difference between fraud and misrepresentation.",
+   "expected": "17",
+   "top1_correct": false,
+   "fallback_relevance": 0.2331,
+   "sufficiency": 0.3632,
+   "confidence": 0.2864,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "3.004": {
+   "query": "Difference between coercion and undue influence.",
+   "expected": "15",
+   "top1_correct": false,
+   "fallback_relevance": 0.1387,
+   "sufficiency": 0.3571,
+   "confidence": 0.2674,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "3.005": {
+   "query": "Difference between a promise and an agreement.",
+   "expected": "2",
+   "top1_correct": false,
+   "fallback_relevance": 0.1691,
+   "sufficiency": 0.3684,
+   "confidence": 0.3181,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "3.006": {
+   "query": "Difference between indemnity and guarantee.",
+   "expected": "124",
+   "top1_correct": false,
+   "fallback_relevance": 0.2049,
+   "sufficiency": 0.3934,
+   "confidence": 0.296,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "3.007": {
+   "query": "Difference between bailment and pledge.",
+   "expected": "148",
+   "top1_correct": false,
+   "fallback_relevance": 0.1872,
+   "sufficiency": 0.381,
+   "confidence": 0.2864,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "3.008": {
+   "query": "Difference between agent and servant.",
+   "expected": "182",
+   "top1_correct": false,
+   "fallback_relevance": 0.1224,
+   "sufficiency": 0.3357,
+   "confidence": 0.2677,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "3.009": {
+   "query": "How does void differ from voidable?",
+   "expected": "2",
+   "top1_correct": false,
+   "fallback_relevance": 0.1238,
+   "sufficiency": 0.3366,
+   "confidence": 0.2743,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "3.010": {
+   "query": "What is the relationship between offer and acceptance?",
+   "expected": "2",
+   "top1_correct": false,
+   "fallback_relevance": 0.2092,
+   "sufficiency": 0.3964,
+   "confidence": 0.3284,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "4.001": {
+   "query": "A person receives money by mistake, can it be retained?",
+   "expected": "72",
+   "top1_correct": false,
+   "fallback_relevance": 0.1676,
+   "sufficiency": 0.3673,
+   "confidence": 0.3222,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "4.002": {
+   "query": "A contract signed under threats, is it valid?",
+   "expected": "15",
+   "top1_correct": false,
+   "fallback_relevance": 0.166,
+   "sufficiency": 0.3362,
+   "confidence": 0.2729,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "4.003": {
+   "query": "An agreement without consideration, is it valid?",
+   "expected": "25",
+   "top1_correct": false,
+   "fallback_relevance": 0.1751,
+   "sufficiency": 0.3825,
+   "confidence": 0.3257,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "4.004": {
+   "query": "Both parties are under a mistake as to a matter of fact, is the agreement valid?",
+   "expected": "20",
+   "top1_correct": true,
+   "fallback_relevance": 0.2905,
+   "sufficiency": 0.4783,
+   "confidence": 0.45,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "4.005": {
+   "query": "An agreement in restraint of trade, is it valid?",
+   "expected": "27",
+   "top1_correct": false,
+   "fallback_relevance": 0.1328,
+   "sufficiency": 0.353,
+   "confidence": 0.2933,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "4.006": {
+   "query": "A promise to pay money won by wager, is it enforceable?",
+   "expected": "30",
+   "top1_correct": false,
+   "fallback_relevance": 0.1694,
+   "sufficiency": 0.3686,
+   "confidence": 0.3171,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "4.007": {
+   "query": "A contract contingent on an impossible event, is it valid?",
+   "expected": "36",
+   "top1_correct": false,
+   "fallback_relevance": 0.332,
+   "sufficiency": 0.4991,
+   "confidence": 0.4712,
+   "badge_with_fallback": "supported",
+   "status_now": "supported",
+   "guard_pass_with_fallback": true
+  },
+  "4.008": {
+   "query": "A person pays money owed by another to save his own interest, can he recover it?",
+   "expected": "69",
+   "top1_correct": false,
+   "fallback_relevance": 0.1938,
+   "sufficiency": 0.3928,
+   "confidence": 0.3152,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "4.009": {
+   "query": "A bailee loses goods entrusted to him, is he liable?",
+   "expected": "151",
+   "top1_correct": false,
+   "fallback_relevance": 0.1849,
+   "sufficiency": 0.3723,
+   "confidence": 0.2933,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "4.010": {
+   "query": "A surety is discharged by a variance, what is the effect?",
+   "expected": "133",
+   "top1_correct": false,
+   "fallback_relevance": 0.2648,
+   "sufficiency": 0.4454,
+   "confidence": 0.3531,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "4.011": {
+   "query": "A party fails to perform on time under a fixed-time contract, what happens?",
+   "expected": "55",
+   "top1_correct": false,
+   "fallback_relevance": 0.3782,
+   "sufficiency": 0.5647,
+   "confidence": 0.4743,
+   "badge_with_fallback": "supported",
+   "status_now": "supported",
+   "guard_pass_with_fallback": true
+  },
+  "4.012": {
+   "query": "A person refuses to perform his promise wholly, what is the consequence?",
+   "expected": "39",
+   "top1_correct": false,
+   "fallback_relevance": 0.1887,
+   "sufficiency": 0.4321,
+   "confidence": 0.3166,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "4.013": {
+   "query": "An agent exceeds his authority, is the principal bound?",
+   "expected": "227",
+   "top1_correct": true,
+   "fallback_relevance": 0.2975,
+   "sufficiency": 0.5082,
+   "confidence": 0.45,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "4.014": {
+   "query": "A buyer receives goods but does not pay the agreed price, is a suit maintainable?",
+   "expected": "4",
+   "top1_correct": false,
+   "fallback_relevance": 0.2188,
+   "sufficiency": 0.3532,
+   "confidence": 0.2817,
+   "badge_with_fallback": "insufficient",
+   "status_now": "insufficient",
+   "guard_pass_with_fallback": false
+  },
+  "4.015": {
+   "query": "A contract is rescinded as voidable, must the party restore the benefit?",
+   "expected": "64",
+   "top1_correct": false,
+   "fallback_relevance": 0.3497,
+   "sufficiency": 0.4948,
+   "confidence": 0.4642,
+   "badge_with_fallback": "supported",
+   "status_now": "supported",
+   "guard_pass_with_fallback": true
+  }
+ },
+ "per_case_fixed_mock": {
+  "1.001": {
+   "query": "What is Section 1?",
+   "expected": "1",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0513,
+   "label": "unrelated",
+   "sufficiency": 0.3366,
+   "confidence": 0.2038,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.002": {
+   "query": "What is Section 2?",
+   "expected": "2",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.032,
+   "label": "unrelated",
+   "sufficiency": 0.3225,
+   "confidence": 0.1679,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.003": {
+   "query": "Explain Section 3.",
+   "expected": "3",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0602,
+   "label": "unrelated",
+   "sufficiency": 0.3426,
+   "confidence": 0.2016,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.004": {
+   "query": "Explain Section 4.",
+   "expected": "4",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0568,
+   "label": "unrelated",
+   "sufficiency": 0.3402,
+   "confidence": 0.2058,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.005": {
+   "query": "What does Section 5 state?",
+   "expected": "5",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0425,
+   "label": "unrelated",
+   "sufficiency": 0.3299,
+   "confidence": 0.197,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.006": {
+   "query": "What is Section 6?",
+   "expected": "6",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0493,
+   "label": "unrelated",
+   "sufficiency": 0.3397,
+   "confidence": 0.2229,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.007": {
+   "query": "Explain Section 7.",
+   "expected": "7",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0688,
+   "label": "unrelated",
+   "sufficiency": 0.3519,
+   "confidence": 0.2351,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.008": {
+   "query": "What does Section 8 state?",
+   "expected": "8",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0458,
+   "label": "unrelated",
+   "sufficiency": 0.3323,
+   "confidence": 0.2106,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.009": {
+   "query": "Explain Section 9.",
+   "expected": "9",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0641,
+   "label": "unrelated",
+   "sufficiency": 0.3453,
+   "confidence": 0.23,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.010": {
+   "query": "What is Section 10?",
+   "expected": "10",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0559,
+   "label": "unrelated",
+   "sufficiency": 0.3442,
+   "confidence": 0.2274,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.011": {
+   "query": "The essentials of Section 10",
+   "expected": "10",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0914,
+   "label": "unrelated",
+   "sufficiency": 0.1646,
+   "confidence": 0.1957,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.012": {
+   "query": "Explain Section 11.",
+   "expected": "11",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0661,
+   "label": "unrelated",
+   "sufficiency": 0.3495,
+   "confidence": 0.2325,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.013": {
+   "query": "What does Section 12 state?",
+   "expected": "12",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0456,
+   "label": "unrelated",
+   "sufficiency": 0.3345,
+   "confidence": 0.2112,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.014": {
+   "query": "What is Section 13?",
+   "expected": "13",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0413,
+   "label": "unrelated",
+   "sufficiency": 0.329,
+   "confidence": 0.1995,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.015": {
+   "query": "Explain Section 14.",
+   "expected": "14",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0582,
+   "label": "unrelated",
+   "sufficiency": 0.3412,
+   "confidence": 0.2139,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.016": {
+   "query": "What is Section 15?",
+   "expected": "15",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0577,
+   "label": "unrelated",
+   "sufficiency": 0.3408,
+   "confidence": 0.2365,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.017": {
+   "query": "What does Section 16 state?",
+   "expected": "16",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0481,
+   "label": "unrelated",
+   "sufficiency": 0.3339,
+   "confidence": 0.2122,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.018": {
+   "query": "Explain Section 17.",
+   "expected": "17",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0693,
+   "label": "unrelated",
+   "sufficiency": 0.349,
+   "confidence": 0.2016,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.019": {
+   "query": "What is Section 18?",
+   "expected": "18",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0554,
+   "label": "unrelated",
+   "sufficiency": 0.3389,
+   "confidence": 0.2058,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.020": {
+   "query": "Explain Section 19.",
+   "expected": "19",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0663,
+   "label": "unrelated",
+   "sufficiency": 0.3466,
+   "confidence": 0.2165,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.021": {
+   "query": "What does Section 20 state?",
+   "expected": "20",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0489,
+   "label": "unrelated",
+   "sufficiency": 0.3346,
+   "confidence": 0.2128,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.022": {
+   "query": "What is Section 23?",
+   "expected": "23",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0537,
+   "label": "unrelated",
+   "sufficiency": 0.3426,
+   "confidence": 0.226,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.023": {
+   "query": "Explain Section 25.",
+   "expected": "25",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0657,
+   "label": "unrelated",
+   "sufficiency": 0.3492,
+   "confidence": 0.2347,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.024": {
+   "query": "What does Section 27 state?",
+   "expected": "27",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0453,
+   "label": "unrelated",
+   "sufficiency": 0.3342,
+   "confidence": 0.211,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.025": {
+   "query": "What is Section 37?",
+   "expected": "37",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0672,
+   "label": "unrelated",
+   "sufficiency": 0.3474,
+   "confidence": 0.2341,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.026": {
+   "query": "Explain Section 56.",
+   "expected": "56",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0645,
+   "label": "unrelated",
+   "sufficiency": 0.3482,
+   "confidence": 0.2313,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.027": {
+   "query": "What does Section 65 state?",
+   "expected": "65",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0489,
+   "label": "unrelated",
+   "sufficiency": 0.3345,
+   "confidence": 0.2122,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.028": {
+   "query": "What is Section 72?",
+   "expected": "72",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.053,
+   "label": "unrelated",
+   "sufficiency": 0.3477,
+   "confidence": 0.2271,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.029": {
+   "query": "Explain Section 73.",
+   "expected": "73",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0705,
+   "label": "unrelated",
+   "sufficiency": 0.3498,
+   "confidence": 0.2164,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.030": {
+   "query": "What does Section 74 state?",
+   "expected": "74",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0457,
+   "label": "unrelated",
+   "sufficiency": 0.3344,
+   "confidence": 0.2112,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.031": {
+   "query": "What is Section 124?",
+   "expected": "124",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0602,
+   "label": "unrelated",
+   "sufficiency": 0.3526,
+   "confidence": 0.2319,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.032": {
+   "query": "Explain Section 126.",
+   "expected": "126",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0744,
+   "label": "unrelated",
+   "sufficiency": 0.3526,
+   "confidence": 0.2183,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.033": {
+   "query": "What does Section 128 state?",
+   "expected": "128",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0486,
+   "label": "unrelated",
+   "sufficiency": 0.3365,
+   "confidence": 0.2132,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.034": {
+   "query": "What is Section 148?",
+   "expected": "148",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0541,
+   "label": "unrelated",
+   "sufficiency": 0.3473,
+   "confidence": 0.2279,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.035": {
+   "query": "Explain Section 171.",
+   "expected": "171",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0652,
+   "label": "unrelated",
+   "sufficiency": 0.3516,
+   "confidence": 0.2329,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.036": {
+   "query": "What does Section 172 state?",
+   "expected": "172",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0479,
+   "label": "unrelated",
+   "sufficiency": 0.336,
+   "confidence": 0.2127,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.037": {
+   "query": "What is Section 182?",
+   "expected": "182",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0489,
+   "label": "unrelated",
+   "sufficiency": 0.3345,
+   "confidence": 0.2047,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.038": {
+   "query": "Explain Section 185.",
+   "expected": "185",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0704,
+   "label": "unrelated",
+   "sufficiency": 0.3524,
+   "confidence": 0.2356,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.039": {
+   "query": "What does Section 188 state?",
+   "expected": "188",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0519,
+   "label": "unrelated",
+   "sufficiency": 0.3366,
+   "confidence": 0.2148,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.040": {
+   "query": "What is the short title and commencement?",
+   "expected": "1",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.1124,
+   "label": "unrelated",
+   "sufficiency": 0.3795,
+   "confidence": 0.2353,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "1.041": {
+   "query": "How is a contract defined?",
+   "expected": "2",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.0687,
+   "label": "unrelated",
+   "sufficiency": 0.3484,
+   "confidence": 0.2434,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.001": {
+   "query": "What is coercion?",
+   "expected": "15",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.0259,
+   "label": "unrelated",
+   "sufficiency": 0.3181,
+   "confidence": 0.1709,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.002": {
+   "query": "What is fraud?",
+   "expected": "17",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.0143,
+   "label": "unrelated",
+   "sufficiency": 0.3101,
+   "confidence": 0.1632,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.003": {
+   "query": "What is consideration?",
+   "expected": "2",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.0473,
+   "label": "unrelated",
+   "sufficiency": 0.3335,
+   "confidence": 0.2143,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.004": {
+   "query": "What is free consent?",
+   "expected": "14",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0584,
+   "label": "unrelated",
+   "sufficiency": 0.3413,
+   "confidence": 0.2008,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.005": {
+   "query": "What is an offer?",
+   "expected": "2",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.0418,
+   "label": "unrelated",
+   "sufficiency": 0.3294,
+   "confidence": 0.2271,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.006": {
+   "query": "What is a proposal?",
+   "expected": "2",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0364,
+   "label": "unrelated",
+   "sufficiency": 0.3258,
+   "confidence": 0.2155,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.007": {
+   "query": "What is undue influence?",
+   "expected": "16",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.049,
+   "label": "unrelated",
+   "sufficiency": 0.3344,
+   "confidence": 0.2032,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.008": {
+   "query": "What is misrepresentation?",
+   "expected": "18",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.094,
+   "label": "unrelated",
+   "sufficiency": 0.366,
+   "confidence": 0.2239,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.009": {
+   "query": "What is consent?",
+   "expected": "13",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.0209,
+   "label": "unrelated",
+   "sufficiency": 0.3148,
+   "confidence": 0.1922,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.010": {
+   "query": "What is a contract?",
+   "expected": "2",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.0321,
+   "label": "unrelated",
+   "sufficiency": 0.3227,
+   "confidence": 0.215,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.011": {
+   "query": "What is an agreement?",
+   "expected": "2",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.0467,
+   "label": "unrelated",
+   "sufficiency": 0.3332,
+   "confidence": 0.2026,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.012": {
+   "query": "What is a promise?",
+   "expected": "2",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.0297,
+   "label": "unrelated",
+   "sufficiency": 0.3208,
+   "confidence": 0.1743,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.013": {
+   "query": "What is voidability?",
+   "expected": "19",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0508,
+   "label": "unrelated",
+   "sufficiency": 0.3363,
+   "confidence": 0.2227,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.014": {
+   "query": "What is a contingent contract?",
+   "expected": "31",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.1299,
+   "label": "unrelated",
+   "sufficiency": 0.3917,
+   "confidence": 0.2942,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.015": {
+   "query": "What is a wagering agreement?",
+   "expected": "30",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.0918,
+   "label": "unrelated",
+   "sufficiency": 0.2653,
+   "confidence": 0.191,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.016": {
+   "query": "What is a guarantee?",
+   "expected": "126",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.0847,
+   "label": "unrelated",
+   "sufficiency": 0.3586,
+   "confidence": 0.2863,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.017": {
+   "query": "What is an indemnity?",
+   "expected": "124",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.0756,
+   "label": "unrelated",
+   "sufficiency": 0.3522,
+   "confidence": 0.232,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.018": {
+   "query": "What is bailment?",
+   "expected": "148",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.052,
+   "label": "unrelated",
+   "sufficiency": 0.3355,
+   "confidence": 0.195,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.019": {
+   "query": "What is a pledge?",
+   "expected": "172",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.0574,
+   "label": "unrelated",
+   "sufficiency": 0.34,
+   "confidence": 0.1999,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.020": {
+   "query": "What is an agency?",
+   "expected": "182",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.0658,
+   "label": "unrelated",
+   "sufficiency": 0.3452,
+   "confidence": 0.2391,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.021": {
+   "query": "What is a minor's capacity to contract?",
+   "expected": "11",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.1053,
+   "label": "unrelated",
+   "sufficiency": 0.3243,
+   "confidence": 0.2434,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.022": {
+   "query": "What is a mistake of fact?",
+   "expected": "20",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.0894,
+   "label": "unrelated",
+   "sufficiency": 0.3635,
+   "confidence": 0.2641,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.023": {
+   "query": "What is a restraint of trade?",
+   "expected": "27",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.0614,
+   "label": "unrelated",
+   "sufficiency": 0.3434,
+   "confidence": 0.2071,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "2.024": {
+   "query": "What is the liability of a finder of goods?",
+   "expected": "71",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.1189,
+   "label": "unrelated",
+   "sufficiency": 0.3167,
+   "confidence": 0.2496,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "3.001": {
+   "query": "Difference between void agreement and voidable contract.",
+   "expected": "2",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.2275,
+   "label": "tangential",
+   "sufficiency": 0.4259,
+   "confidence": 0.3379,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "3.002": {
+   "query": "Difference between proposal and acceptance.",
+   "expected": "2",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.2709,
+   "label": "tangential",
+   "sufficiency": 0.3896,
+   "confidence": 0.4071,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "3.003": {
+   "query": "Difference between fraud and misrepresentation.",
+   "expected": "17",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.2338,
+   "label": "tangential",
+   "sufficiency": 0.3632,
+   "confidence": 0.2867,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "3.004": {
+   "query": "Difference between coercion and undue influence.",
+   "expected": "15",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.1372,
+   "label": "unrelated",
+   "sufficiency": 0.3571,
+   "confidence": 0.2667,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "3.005": {
+   "query": "Difference between a promise and an agreement.",
+   "expected": "2",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.1683,
+   "label": "unrelated",
+   "sufficiency": 0.3684,
+   "confidence": 0.3177,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "3.006": {
+   "query": "Difference between indemnity and guarantee.",
+   "expected": "124",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.2054,
+   "label": "tangential",
+   "sufficiency": 0.3934,
+   "confidence": 0.2962,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "3.007": {
+   "query": "Difference between bailment and pledge.",
+   "expected": "148",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.1867,
+   "label": "unrelated",
+   "sufficiency": 0.381,
+   "confidence": 0.2862,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "3.008": {
+   "query": "Difference between agent and servant.",
+   "expected": "182",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.1217,
+   "label": "unrelated",
+   "sufficiency": 0.3357,
+   "confidence": 0.2674,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "3.009": {
+   "query": "How does void differ from voidable?",
+   "expected": "2",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.125,
+   "label": "unrelated",
+   "sufficiency": 0.3366,
+   "confidence": 0.2749,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "3.010": {
+   "query": "What is the relationship between offer and acceptance?",
+   "expected": "2",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.2076,
+   "label": "tangential",
+   "sufficiency": 0.3964,
+   "confidence": 0.3277,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "4.001": {
+   "query": "A person receives money by mistake, can it be retained?",
+   "expected": "72",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.166,
+   "label": "unrelated",
+   "sufficiency": 0.3673,
+   "confidence": 0.3214,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "4.002": {
+   "query": "A contract signed under threats, is it valid?",
+   "expected": "15",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.1643,
+   "label": "unrelated",
+   "sufficiency": 0.3362,
+   "confidence": 0.2721,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "4.003": {
+   "query": "An agreement without consideration, is it valid?",
+   "expected": "25",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.1735,
+   "label": "unrelated",
+   "sufficiency": 0.3825,
+   "confidence": 0.325,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "4.004": {
+   "query": "Both parties are under a mistake as to a matter of fact, is the agreement valid?",
+   "expected": "20",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.2837,
+   "label": "tangential",
+   "sufficiency": 0.4783,
+   "confidence": 0.45,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "4.005": {
+   "query": "An agreement in restraint of trade, is it valid?",
+   "expected": "27",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.1321,
+   "label": "unrelated",
+   "sufficiency": 0.353,
+   "confidence": 0.293,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "4.006": {
+   "query": "A promise to pay money won by wager, is it enforceable?",
+   "expected": "30",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.1685,
+   "label": "unrelated",
+   "sufficiency": 0.3686,
+   "confidence": 0.3167,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "4.007": {
+   "query": "A contract contingent on an impossible event, is it valid?",
+   "expected": "36",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.336,
+   "label": "tangential",
+   "sufficiency": 0.4991,
+   "confidence": 0.473,
+   "status": "supported",
+   "guard": "PASS"
+  },
+  "4.008": {
+   "query": "A person pays money owed by another to save his own interest, can he recover it?",
+   "expected": "69",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.1925,
+   "label": "unrelated",
+   "sufficiency": 0.3928,
+   "confidence": 0.3146,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "4.009": {
+   "query": "A bailee loses goods entrusted to him, is he liable?",
+   "expected": "151",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.1834,
+   "label": "unrelated",
+   "sufficiency": 0.3723,
+   "confidence": 0.2926,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "4.010": {
+   "query": "A surety is discharged by a variance, what is the effect?",
+   "expected": "133",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.2648,
+   "label": "tangential",
+   "sufficiency": 0.4454,
+   "confidence": 0.3531,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "4.011": {
+   "query": "A party fails to perform on time under a fixed-time contract, what happens?",
+   "expected": "55",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.377,
+   "label": "tangential",
+   "sufficiency": 0.5647,
+   "confidence": 0.4737,
+   "status": "supported",
+   "guard": "PASS"
+  },
+  "4.012": {
+   "query": "A person refuses to perform his promise wholly, what is the consequence?",
+   "expected": "39",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.1874,
+   "label": "unrelated",
+   "sufficiency": 0.4321,
+   "confidence": 0.316,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "4.013": {
+   "query": "An agent exceeds his authority, is the principal bound?",
+   "expected": "227",
+   "top1_correct": true,
+   "relevance_mock_fixed": 0.3042,
+   "label": "tangential",
+   "sufficiency": 0.5082,
+   "confidence": 0.4705,
+   "status": "supported",
+   "guard": "PASS"
+  },
+  "4.014": {
+   "query": "A buyer receives goods but does not pay the agreed price, is a suit maintainable?",
+   "expected": "4",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.2173,
+   "label": "tangential",
+   "sufficiency": 0.3532,
+   "confidence": 0.281,
+   "status": "insufficient",
+   "guard": "status_not_supported"
+  },
+  "4.015": {
+   "query": "A contract is rescinded as voidable, must the party restore the benefit?",
+   "expected": "64",
+   "top1_correct": false,
+   "relevance_mock_fixed": 0.3508,
+   "label": "tangential",
+   "sufficiency": 0.4948,
+   "confidence": 0.4647,
+   "status": "supported",
+   "guard": "PASS"
+  }
+ }
+}

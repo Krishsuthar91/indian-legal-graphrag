@@ -36,7 +36,7 @@ explaintool/
 pip install -r requirements.txt
 cp .env.example .env
 uvicorn src.main:app --reload          # http://localhost:8000
-pytest                                 # 360+ backend tests
+pytest                                 # 908 backend tests
 ruff check .                           # lint (repo has pre-existing fixes)
 ```
 

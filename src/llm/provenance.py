@@ -107,6 +107,36 @@ class Confidence:
 
 
 @dataclass
+class EvidenceRelevance:
+    """LLM-judged relevance of retrieved evidence to the user query."""
+
+    score: float = 0.0
+    label: str = "unknown"
+    explanation: str = ""
+
+
+@dataclass
+class ClaimResult:
+    """Entailment verdict for a single claim against its cited evidence."""
+
+    claim: str = ""
+    citation: str = ""
+    entailment: float = 0.0
+    contradicts: bool = False
+    reason: str = ""
+
+
+@dataclass
+class CitationEntailment:
+    """Aggregate entailment verdict for all claims in a generated answer."""
+
+    overall_score: float = 0.0
+    contradiction_found: bool = False
+    claim_results: list[ClaimResult] = field(default_factory=list)
+    summary: str = ""
+
+
+@dataclass
 class Validity:
     """Validity flags describing how well the answer is supported."""
 
@@ -116,6 +146,13 @@ class Validity:
     cites_counter_authority: bool
     insufficient_evidence: bool
     reasons: list[str] = field(default_factory=list)
+    # Task 4: structured verification badge driven by the verification framework.
+    status: str = "unknown"
+    reason: str = ""
+    support_score: float = 0.0
+    relevance_score: float = 0.0
+    sufficiency_score: float = 0.0
+    contradiction_found: bool = False
 
 
 @dataclass
@@ -184,6 +221,36 @@ class ExplanationResult:
         default_factory=lambda: Validity(False, False, False, False, True)
     )
     retrieval_weights: dict[str, float] = field(default_factory=dict)
+    evidence_relevance: EvidenceRelevance = field(
+        default_factory=EvidenceRelevance,
+    )
+    citation_entailment: CitationEntailment = field(
+        default_factory=CitationEntailment,
+    )
+    verification_trace: VerificationTrace | None = None
+
+
+@dataclass
+class VerificationTrace:
+    """Structured trace explaining why verification and confidence were assigned.
+
+    This is the read-only audit trail produced by the verification pipeline.
+    All fields are plain JSON-serialisable types so the trace can be stored
+    verbatim and rendered by any front-end without further transformation.
+    """
+
+    verification_status: str = ""
+    verification_reason: str = ""
+    confidence_score: float = 0.0
+    confidence_label: str = ""
+    evidence_relevance_score: float = 0.0
+    evidence_relevance_label: str = ""
+    evidence_sufficiency_score: float = 0.0
+    citation_entailment_score: float = 0.0
+    contradiction_found: bool = False
+    retrieval_base_score: float = 0.0
+    final_adjustment: str = ""
+    decision_path: list[str] = field(default_factory=list)
 
 
 @dataclass

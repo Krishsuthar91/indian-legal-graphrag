@@ -18,6 +18,8 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
+from src.evaluation.analysis import RetrievalFailureAnalysis, build_failure_analyses
+from src.evaluation.calibration import CalibrationMetrics, compute_calibration_metrics
 from src.evaluation.dataset import BenchmarkItem
 from src.evaluation.sections import predicted_sections
 from src.llm.provenance import AnswerResult
@@ -58,6 +60,7 @@ class RawResult:
     insufficient_evidence: bool
     has_conflicts: bool
     latency_breakdown: dict[str, float] = field(default_factory=dict)
+    retrieval_failure_analysis: RetrievalFailureAnalysis | None = None
 
     def to_dict(self) -> dict[str, Any]:
         """JSON-serializable representation (dataclass + ``asdict``)."""
@@ -140,40 +143,51 @@ def run_questions(
         ranking_latency = float(retrieval.ranking_latency_ms)
         llm_time = max(0.0, elapsed_ms - retrieval_latency)
 
-        rows.append(
-            RawResult(
-                item_id=item.id,
-                question=item.question,
-                query_type=item.query_type,
-                difficulty=item.difficulty,
-                expected_section=item.expected_section,
-                expected_sections=list(item.expected_sections),
-                predicted_section=", ".join(predicted),
-                predicted_sections=predicted,
-                answer=result.answer,
-                model=result.model,
-                retrieved_evidence=_evidence_dicts(evidence),
-                confidence=float(explanation.confidence.score),
-                confidence_label=explanation.confidence.label,
-                latency_ms=round(elapsed_ms, 3),
-                retrieval_latency_ms=round(retrieval_latency, 3),
-                ranking_latency_ms=round(ranking_latency, 3),
-                llm_time_ms=round(llm_time, 3),
-                retrieved_nodes=[ev.node_id for ev in evidence],
-                ranking_signals=dict(retrieval.ranking_breakdown),
-                intent_class=retrieval.query_intent or retrieval.intent,
-                adaptive_top_k=retrieval.adaptive_top_k,
-                duplicate_removal_count=int(retrieval.duplicates_removed),
-                hierarchy_chain=_hierarchy_chains(evidence),
-                retrieval_strategy=retrieval.retrieval_strategy,
-                retrieved_candidates=int(retrieval.retrieved_candidates),
-                ranked_candidates=int(retrieval.ranked_candidates),
-                supported=explanation.validity.supported,
-                insufficient_evidence=explanation.validity.insufficient_evidence,
-                has_conflicts=explanation.validity.has_conflicts,
-                latency_breakdown=dict(retrieval.latency_breakdown),
-            )
+        row = RawResult(
+            item_id=item.id,
+            question=item.question,
+            query_type=item.query_type,
+            difficulty=item.difficulty,
+            expected_section=item.expected_section,
+            expected_sections=list(item.expected_sections),
+            predicted_section=", ".join(predicted),
+            predicted_sections=predicted,
+            answer=result.answer,
+            model=result.model,
+            retrieved_evidence=_evidence_dicts(evidence),
+            confidence=float(explanation.confidence.score),
+            confidence_label=explanation.confidence.label,
+            latency_ms=round(elapsed_ms, 3),
+            retrieval_latency_ms=round(retrieval_latency, 3),
+            ranking_latency_ms=round(ranking_latency, 3),
+            llm_time_ms=round(llm_time, 3),
+            retrieved_nodes=[ev.node_id for ev in evidence],
+            ranking_signals=dict(retrieval.ranking_breakdown),
+            intent_class=retrieval.query_intent or retrieval.intent,
+            adaptive_top_k=retrieval.adaptive_top_k,
+            duplicate_removal_count=int(retrieval.duplicates_removed),
+            hierarchy_chain=_hierarchy_chains(evidence),
+            retrieval_strategy=retrieval.retrieval_strategy,
+            retrieved_candidates=int(retrieval.retrieved_candidates),
+            ranked_candidates=int(retrieval.ranked_candidates),
+            supported=explanation.validity.supported,
+            insufficient_evidence=explanation.validity.insufficient_evidence,
+            has_conflicts=explanation.validity.has_conflicts,
+            latency_breakdown=dict(retrieval.latency_breakdown),
         )
+
+        # --- Retrieval failure analysis (Task 7) ---
+        from src.evaluation.metrics.retrieval import section_accuracy as _sa
+
+        sec_acc = _sa(item.expected_sections, predicted)
+        row.retrieval_failure_analysis = build_failure_analyses(
+            item.question,
+            list(item.expected_sections),
+            row.retrieved_evidence,
+            section_accuracy=sec_acc,
+        )
+
+        rows.append(row)
     return rows
 
 
@@ -222,3 +236,27 @@ def save_raw_csv(rows: list[RawResult], path: str | Path) -> Path:
         for row in rows:
             writer.writerow(row.to_csv_row())
     return path
+
+
+def compute_row_calibration(
+    rows: list[RawResult],
+    per_query_rows: list[dict[str, Any]],
+) -> CalibrationMetrics:
+    """Build calibration input by joining RawResult.confidence with per-query answer_accuracy.
+
+    ``RawResult`` carries ``confidence`` but not ``answer_accuracy``; the
+    per-query metric rows carry ``answer_accuracy`` but not ``confidence``.
+    This helper joins them on ``item_id`` and calls
+    ``compute_calibration_metrics``.
+    """
+    accuracy_by_id: dict[str, float] = {}
+    for pq in per_query_rows:
+        accuracy_by_id[pq["item_id"]] = float(pq.get("answer_accuracy", 0.0))
+
+    calibration_input: list[dict[str, Any]] = []
+    for row in rows:
+        calibration_input.append({
+            "confidence": row.confidence,
+            "answer_accuracy": accuracy_by_id.get(row.item_id, 0.0),
+        })
+    return compute_calibration_metrics(calibration_input)

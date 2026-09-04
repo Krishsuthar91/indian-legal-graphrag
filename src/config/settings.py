@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     """Application configuration from environment / .env file."""
 
     APP_NAME: str = "explaintool"
-    APP_VERSION: str = "0.1.0"
+    APP_VERSION: str = "1.0.0"
     APP_ENV: str = "development"
     APP_DEBUG: bool = True
     APP_HOST: str = "0.0.0.0"
@@ -44,7 +44,7 @@ class Settings(BaseSettings):
     RANKING_WEIGHT_GRAPH: float = 0.25
     RANKING_WEIGHT_HIERARCHY: float = 0.15
     RANKING_WEIGHT_KEYWORD: float = 0.15
-    RANKING_WEIGHT_CITATION: float = 0.10
+    RANKING_WEIGHT_CITATION: float = 0.30
 
     # LLM / Answer Generation (Module 7)
     # mock | openai | llama | mistral | qwen | gemini | nvidia
@@ -103,6 +103,11 @@ class Settings(BaseSettings):
     # the 50-question benchmark, so it is opt-in. Set the env var (or .env) to
     # "true" to enable it explicitly.
     QA_QUERY_EXPANSION_ENABLED: bool = False
+    # Grounding guard (Task 15): when True, answer generation is skipped unless
+    # the retrieved evidence meets the grounding thresholds (relevance,
+    # sufficiency, verification status, confidence). When False the system
+    # behaves exactly as before and always calls the LLM if retrieval succeeded.
+    QA_GROUNDING_GUARD_ENABLED: bool = True
 
     CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:8000"]
 

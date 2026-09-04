@@ -98,7 +98,7 @@ class TestEndToEnd:
     def test_average_confidence(self):
         engine = build_engine()
         results = [engine.explain("performance of contracts", top_k=5) for _ in range(3)]
-        assert average_confidence(results) == pytest.approx(0.8006, abs=1e-3)
+        assert average_confidence(results) == pytest.approx(0.4605, abs=1e-3)
 
     def test_research_metrics_returns_all_keys(self):
         engine = build_engine()
@@ -114,4 +114,4 @@ class TestEndToEnd:
             "average_confidence",
         }
         assert all(v >= 0 for v in metrics.values())
-        assert metrics["average_confidence"] == pytest.approx(0.8006, abs=1e-3)
+        assert metrics["average_confidence"] == pytest.approx(0.4605, abs=1e-3)

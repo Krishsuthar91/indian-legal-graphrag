@@ -101,7 +101,7 @@ class TestRetrievalMetricsOnCorpus:
     def test_relevant_node_ids_maps_sections(self, service_and_graph):
         _, graph = service_and_graph
         relevant = relevant_node_ids(graph, ["1"])
-        assert "n_0002" in relevant  # the 11-node corpus has a section 1 node
+        assert "0940d367554383c5__n_0002" in relevant  # the 11-node corpus has a section 1 node
         assert relevant_node_ids(graph, ["999"]) == set()
 
     def test_retrieval_metrics_keys_and_range(self, service_and_graph):

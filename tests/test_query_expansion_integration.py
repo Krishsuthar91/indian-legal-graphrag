@@ -11,9 +11,8 @@ Two complementary angles:
   integrates end to end with dense + graph retrieval.
 
 The corpus-aware contract is also covered: on the real ICA 1872 corpus (which
-does NOT contain sections 14/15/16/17/18/25), expansion injects only the
-references that exist (e.g. "section 2") and records the rest as omitted, so
-the engine never steers retrieval toward sections the index cannot return.
+now contains all sections 1-76, 123-238), expansion injects all verified
+section references that exist in the corpus, with none omitted.
 """
 
 import json
@@ -206,10 +205,10 @@ class TestExpansionBackwardCompatibility:
 
 
 class TestCorpusAwareExpansion:
-    """The real ICA 1872 corpus lacks ss. 14/15/16/17/18/25, so expansion must
-    inject only references the corpus actually contains."""
+    """The real ICA 1872 corpus now contains all sections 1-76, 123-238, so
+    expansion injects all verified section references without omission."""
 
-    def test_threat_query_injects_only_available_section(self):
+    def test_threat_query_injects_all_available_sections(self):
         graph = _real_corpus_graph()
         engine = build_engine(graph, expansion_enabled=True)
         result = engine.explain(THREAT_QUERY, top_k=5)
@@ -218,11 +217,9 @@ class TestCorpusAwareExpansion:
         assert set(s.expanded_concepts) == {
             "coercion", "free_consent", "voidable_agreement",
         }
-        assert s.section_refs_available == ["section 2"]
-        assert s.section_refs_omitted == [
-            "section 14", "section 15", "section 19",
-        ]
-        assert "not present in the indexed corpus" in s.expansion_reason
+        expected = ["section 14", "section 15", "section 19", "section 2"]
+        assert s.section_refs_available == expected
+        assert s.section_refs_omitted == []
 
     def test_threat_query_still_retrieves_evidence(self):
         graph = _real_corpus_graph()
@@ -231,26 +228,25 @@ class TestCorpusAwareExpansion:
         assert result.evidence
         step = next(st for st in result.reasoning_chain if st.kind == "query_expansion")
         assert step.detail["active"] is True
-        assert all(
-            ref in step.detail["section_refs_omitted"]
-            for ref in ("section 14", "section 15", "section 19")
-        )
-        assert step.detail["section_refs"] == ["section 2"]
+        assert step.detail["section_refs_omitted"] == []
+        expected = ["section 14", "section 15", "section 19", "section 2"]
+        assert step.detail["section_refs"] == expected
 
-    def test_graph_only_engine_omits_absent_sections(self):
+    def test_graph_only_engine_injects_all_available_sections(self):
         graph = _real_corpus_graph()
-        engine = ExplainabilityEngine(graph, vector_retriever=None, expansion_enabled=True)
+        engine = ExplainabilityEngine(
+            graph, vector_retriever=None, expansion_enabled=True,
+        )
         result = engine.explain(THREAT_QUERY, top_k=5)
-        assert result.retrieval.section_refs_available == ["section 2"]
-        assert result.retrieval.section_refs_omitted == [
-            "section 14", "section 15", "section 19",
-        ]
+        expected = ["section 14", "section 15", "section 19", "section 2"]
+        assert result.retrieval.section_refs_available == expected
+        assert result.retrieval.section_refs_omitted == []
 
-    def test_real_corpus_json_contains_no_phantom_sections(self):
+    def test_real_corpus_json_contains_all_expected_sections(self):
         with REAL_CORPUS.open(encoding="utf-8") as f:
             data = json.load(f)
         numbering = {node.get("numbering") for node in data["nodes"]}
-        assert not {"14", "15", "16", "17", "18", "25"} & numbering
+        assert {"14", "15", "16", "17", "18", "25"} <= numbering
 
 
 class TestExpansionFeatureFlag:

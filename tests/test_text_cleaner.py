@@ -47,3 +47,33 @@ class TestTextCleaner:
         cleaned = clean_text(text)
         assert "© All rights reserved" not in cleaned
         assert "Signed this day" in cleaned
+
+    def test_preserves_section_heading_at_line_start(self):
+        """Section headings at line starts must NOT be joined to the previous line."""
+        text = (
+            "Chapter II Of contracts, violable contracts and void agreements\n"
+            "10. What agreements are contracts\n"
+            "All agreements are contracts if they are made by the free consent."
+        )
+        cleaned = clean_text(text)
+        lines = [line for line in cleaned.split("\n") if line.strip()]
+        assert any("10. What agreements" in line for line in lines)
+
+    def test_joins_split_section_keyword(self):
+        """Section keyword split across lines should be rejoined."""
+        text = "Refer to\nSection 123 of the Act."
+        cleaned = clean_text(text)
+        assert "Section 123" in cleaned
+
+    def test_joins_split_sec_dot(self):
+        """'Sec.' split from its number should be rejoined."""
+        text = "As per\nSec.\n45-A of the Rules"
+        cleaned = clean_text(text)
+        assert "Sec. 45-A" in cleaned or "Sec. 45" in cleaned
+
+    def test_preserves_subsection_at_line_start(self):
+        """Subsection (1) at line start should remain on its own line."""
+        text = "Some preamble text\n(1) This Act may be called..."
+        cleaned = clean_text(text)
+        lines = [line for line in cleaned.split("\n") if line.strip()]
+        assert any("(1) This Act" in line for line in lines)

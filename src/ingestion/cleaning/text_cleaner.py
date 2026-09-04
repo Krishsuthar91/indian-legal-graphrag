@@ -55,9 +55,21 @@ def _collapse_whitespace(text: str) -> str:
 
 
 def _preserve_legal_numbering(text: str) -> str:
-    """Ensure legal references are not broken across lines."""
-    # Join lines where a legal reference is split
-    text = re.sub(r"\n(\d+[A-Za-z]*\.)", r" \1", text)
+    """Ensure legal references are not broken across lines.
+
+    Joins section keywords that got split across lines (e.g. ``Section\\n123.``
+    → ``Section 123.``), but preserves bare section-number headings at line
+    starts so the hierarchy parser can detect them as structural nodes.
+    """
+    # Join section keywords split across lines:
+    #   "Section\n123." → "Section 123."
+    #   "Sec.\n45-A"   → "Sec. 45-A"
+    text = re.sub(
+        r"(Section|Sec\.?|S\.)\s*\n(\d+[A-Za-z]*(?:\s*[-–]\s*[A-Z])?)",
+        r"\1 \2",
+        text,
+    )
+    # Join subsection / clause references split across lines
     text = re.sub(r"\n\(([a-zA-Z0-9]+)\)", r" (\1)", text)
     return text
 

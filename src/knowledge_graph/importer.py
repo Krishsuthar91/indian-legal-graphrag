@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 from src.config.logging_config import get_logger
+from src.knowledge_graph.canonical import scan_hierarchy_files, select_canonical
 from src.knowledge_graph.citation_extractor import extract_citations
 from src.knowledge_graph.schema import (
     HIERARCHY_TYPE_MAP,
@@ -15,6 +16,20 @@ from src.knowledge_graph.schema import (
 )
 
 log = get_logger("importer")
+
+
+def _group_skipped_by_title(skipped) -> list[tuple[str, list]]:
+    """Group skipped duplicate entries by normalized Act title."""
+    groups: dict[str, list] = {}
+    order: list[str] = []
+    for entry in skipped:
+        key = entry.act_key
+        if key not in groups:
+            groups[key] = []
+            order.append(key)
+        groups[key].append(entry)
+    return [(groups[key][0].title, groups[key]) for key in order]
+
 
 
 def _get_label(hierarchy_type: str) -> str:
@@ -52,10 +67,13 @@ def import_hierarchy_json(graph, hierarchy_path: Path) -> dict[str, int]:
 
         h_type = h_node.get("node_type", "section")
         label = _get_label(h_type)
-        graph_node_id = h_node["node_id"]
+        # Namespace hierarchy node_ids with the document ID to prevent
+        # collisions when multiple hierarchy files share the same n_XXXX ids.
+        graph_node_id = f"{doc_id}__{h_node['node_id']}"
 
         props = {
             "node_id": graph_node_id,
+            "document_id": doc_id,
             "hierarchy_level": h_node.get("level", 0),
             "title": h_node.get("title", ""),
             "text": h_node.get("text", ""),
@@ -129,18 +147,41 @@ def import_hierarchy_json(graph, hierarchy_path: Path) -> dict[str, int]:
 
 
 def import_all(graph, hierarchy_dir: Path | None = None) -> dict[str, int]:
-    """Import all hierarchy JSON files from the given directory.
+    """Import only the canonical hierarchy files from the given directory.
 
-    Returns aggregate counts.
+    Non-canonical (duplicate) hierarchy files for the same Act are skipped —
+    they are never deleted, just not loaded into the graph.
     """
     if hierarchy_dir is None:
         hierarchy_dir = Path(__file__).resolve().parent.parent.parent / "data" / "hierarchy"
+
+    entries = scan_hierarchy_files(hierarchy_dir)
+    selection = select_canonical(entries)
+    canonical_paths = {e.path for e in selection.canonical}
 
     total_nodes = 0
     total_edges = 0
     files_imported = 0
 
+    log.info(
+        "canonical.corpus_load",
+        canonical=[
+            {"title": e.title, "document_id": e.document_id, "nodes": e.node_count}
+            for e in selection.canonical
+        ],
+    )
+    for e in selection.canonical:
+        log.info("canonical.corpus_loaded", title=e.title, nodes=e.node_count)
+    for title, group in _group_skipped_by_title(selection.skipped):
+        log.info(
+            "canonical.corpus_skipped",
+            title=title,
+            files=len(group),
+        )
+
     for json_file in sorted(hierarchy_dir.glob("*.json")):
+        if json_file not in canonical_paths:
+            continue
         try:
             counts = import_hierarchy_json(graph, json_file)
             total_nodes += counts["nodes_created"]
@@ -149,9 +190,17 @@ def import_all(graph, hierarchy_dir: Path | None = None) -> dict[str, int]:
         except Exception as exc:
             log.error("import.error", file=str(json_file), error=str(exc))
 
-    log.info("import.all_complete", files=files_imported, nodes=total_nodes, edges=total_edges)
+    log.info(
+        "import.all_complete",
+        files=files_imported,
+        skipped=len(selection.skipped),
+        nodes=total_nodes,
+        edges=total_edges,
+    )
     return {
+        "files_scanned": len(entries),
         "files_imported": files_imported,
+        "files_skipped": len(selection.skipped),
         "total_nodes": total_nodes,
         "total_edges": total_edges,
     }

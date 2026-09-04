@@ -1,255 +1,269 @@
-# Explainable Multilingual Hierarchical Graph-RAG with HHGR
+# HHGR — Hybrid Hierarchical Graph Retrieval for Indian Legal Document Intelligence
 
-A production-grade research project for Indian Legal Document Intelligence using Hybrid Hierarchical Graph Retrieval.
+An explainable, multilingual question-answering system over Indian legal documents that combines hierarchical graph retrieval with LLM-generated cited answers and a multi-stage verification framework.
 
-## Module 1 — Foundation
+## Motivation
 
-This module provides the project skeleton, configuration, logging, FastAPI server, utilities, and tests.
+Indian legal documents — statutes, judgments, and codes — are deeply hierarchical and densely cross-referenced. A single question about "breach of contract remedies" may require navigating from Section 73 to Section 74, cross-referencing illustrations, and distinguishing overruled precedents. Traditional flat retrieval systems fail to capture these structural relationships, leading to incomplete or hallucinated answers.
 
-## Module 2 — Legal Document Ingestion
+HHGR addresses this by building a **hierarchical knowledge graph** from parsed legal documents and fusing four complementary retrieval signals — lexical, citation, hierarchy, and structural — to produce grounded, cited answers with full provenance.
 
-Loads PDF / DOCX / TXT documents, detects scanned vs digital PDFs, OCRs scanned pages
-(PaddleOCR with Tesseract fallback), detects the document language (en/hi/kn/ta/te/ml/bn),
-extracts metadata, and cleans text while preserving legal numbering.
+## Key Contributions
 
-## Module 3 — Legal Hierarchy Parser
+- **Hybrid Hierarchical Graph Retrieval (HHGR):** A four-signal retrieval engine that combines text matching, citation matching, hierarchy propagation, and structural importance scoring over a legal knowledge graph.
+- **Legal Hierarchy Parser:** A stack-based parser with 20+ numbering patterns that extracts Document → Chapter → Section → Clause trees from Indian legal PDFs, building Nested Set Indices for fast subtree queries.
+- **Multi-Stage Verification Framework:** A 12-component verification pipeline (evidence sufficiency, evidence relevance, citation entailment, verification badge, confidence calibration) that ensures answers are only flagged "Supported" when backed by actual evidence.
+- **Explainable Answers:** Every response includes source citations, a 6-step reasoning chain, counter-authority detection (overruled/superseded/repealed/void), and full retrieval provenance.
+- **Reproducible Evaluation:** A complete benchmark suite with 50 questions across the Indian Contract Act 1872, NVIDIA LLM evaluation, calibration metrics, and reliability diagrams.
 
-Parses legal documents into a hierarchical tree (Document → Chapter → Section → Clause,
-plus Explanation, Illustration, Proviso, Schedule, etc.) using 20+ numbering patterns,
-assigns parents with a stack-based algorithm, and builds a Nested Set Index (left/right/depth)
-via DFS for fast subtree queries.
+## System Architecture
 
-## Module 4 — Knowledge Graph Builder
-
-Builds a graph from the parsed hierarchy using `InMemoryGraph` (Neo4j-compatible API) or the
-real `Neo4jDriver`. Extracts legal citations (Sections, Rules, Articles, Orders, AIR/SCC case
-citations), resolves duplicate entities, creates PART_OF / CITES / REFERENCES edges, and
-provides traversal APIs (parents, children, citation chains, shortest paths) and graph stats.
-
-## Module 5 — Hybrid Hierarchical Graph Retrieval (HHGR)
-
-Hybrid retrieval over the knowledge graph that combines four weighted signals:
-- **text** — lexical overlap between query keywords and node title/text (multilingual tokenization)
-- **citation** — query legal references (e.g. "Section 4") matching node numbering or text
-- **hierarchy** — evidence propagated from seed matches to ancestors and descendants along PART_OF edges
-- **structural** — node importance (degree + subtree size), normalized per query
-
-`retrieve(graph, query, top_k)` returns ranked `RetrievalResult`s with a per-signal score
-breakdown, the ancestor context path, and matched keywords.
-
-## Module 6 — Embedding & Vector Retrieval Layer
-
-Semantic retrieval over Qdrant fused with the Module 5 graph signals:
-- **embedding providers** — bge-m3 / LaBSE / MuRIL / IndicBERT specs in a registry; a
-  deterministic (dependency-free) provider keeps tests and demos fast; sentence-transformers /
-  transformers providers load the real multilingual models
-- **Qdrant store** — 4 collections (documents / chapters / sections / clauses), deterministic
-  UUID5 point ids, batched upserts, language-filtered `query_points` search with cosine
-  normalized to [0, 1], delete / count / indexed-payload introspection, in-memory mode
-- **indexer** — full indexing from hierarchy JSON or graph, incremental indexing that re-embeds
-  only new / text-changed nodes (md5 `text_hash`), and `sync_graph` that deletes stale points
-- **vector retriever** — `dense_search` (multilingual), `graph_retrieval` (Module 5 HHGR),
-  `hierarchy_retrieval` (evidence propagation from dense seeds), and `hybrid_retrieve` that fuses
-  all three signals with configurable weights (default dense .40 / graph .35 / hierarchy .25)
-- **benchmark** — per-query latency (mean / p50 / p95) for embedding, dense search, and hybrid
-
-## Module 7 — Explainable LLM Answer Generation
-
-Generates cited, explainable answers over the HHGR + vector retrieval layers:
-- **LLM abstraction** — one OpenAI-compatible `httpx` client shared by OpenAI, Llama,
-  Mistral, and Qwen (plus an offline `mock` client so tests and demos need no network/keys)
-- **prompt builder** — numbered evidence blocks (`[SOURCE 1]`, ...), graph reasoning
-  chain, hierarchy paths, and strict cite-only-the-evidence instructions
-- **explainability engine** — retrieval provenance per stage, a 6-step graph reasoning
-  chain (parse → dense → graph → hierarchy → fusion → verification), hierarchy paths,
-  source citations, counter-authority detection (overruled/superseded/repealed/void),
-  confidence scoring (base score + keyword coverage + sufficiency + citation bonus), and
-  validity flags (supported / has_conflicts / cites_counter_authority / insufficient)
-- **provenance store** — every answer is persisted (in-memory + JSON) keyed by a
-  `provenance_id` for full auditability
-- **API** — `POST /api/v1/query` (answer + provenance), `POST /api/v1/explain`
-  (retrieval explanation without the LLM), `GET /api/v1/provenance/{id}`
-
-## Module 8 — React Frontend & Explainability Dashboard
-
-A `ui/` Vite + React 18 + TypeScript dashboard over the Modules 1–7 API. Backend modules
-are untouched.- **Pages** — Home (search box, language selector, recent questions), Explain (full query
-  flow with a "retrieval only" `/explain` toggle), Provenance (look up any
-  `/provenance/{id}`), Settings (dark mode, defaults, API info)
-- **Answer view** — answer text, model name, response time, confidence gauge (Recharts),
-  validity badge, source citations, provenance link
-- **Evidence panel** — supporting evidence with section numbers, case citations, source
-  document path, dense/graph/hierarchy score bars, and keyword highlighting
-- **Hierarchy viewer** — React Flow (`@xyflow/react`) tree of
-  Document → Chapter → Section → Clause with expand/collapse
-- **Knowledge graph** — Cytoscape.js with statutes/cases/citations node shapes and
-  colors, dashed counter-authority edges, hover tooltips, zoom/pan, and re-layout
-- **Provenance panel** — 6-step retrieval path, hybrid score breakdown per evidence node,
-  and retrieval weights (dense / graph / hierarchy)
-- **Robustness** — React Query state management, friendly error messages with retry,
-  responsive Tailwind layout (desktop / tablet / mobile), dark mode (persisted), unit
-  tests (49), lazy-loaded routes + vendor chunk splitting
-
-## Module 9 — Production Deployment & Enterprise Infrastructure
-
-Production-readiness for the Modules 1–8 application (additive only — no backend
-logic or frontend features changed).
-
-- **Containers** — multi-stage `deploy/backend/Dockerfile` (Python 3.11-slim, cached
-  dependency layer, non-root user, healthcheck) and `deploy/frontend/Dockerfile`
-  (Node 20 build → nginx:alpine)
-- **Compose** — six-service `docker-compose.yml` (`api`, `react`, `nginx`, `neo4j`,
-  `qdrant`, `redis`) with healthchecks, `depends_on` gating, and named volumes;
-  dev override `docker-compose.override.yml`
-- **Edge nginx** — `deploy/nginx/nginx.conf` reverse proxy (API + SPA + docs),
-  gzip, security headers, WebSocket upgrade, TLS-ready
-- **Configuration** — `deploy/env/.env.{production,development,docker}` profiles +
-  fail-fast secret validation (`python -m deploy.config.cli validate --env production`)
-- **Security** — `src/middleware/security.py`: API-key auth, per-IP rate limiting,
-  request-size limits, security headers (all opt-in via settings)
-- **Health probes** — additive `/api/v1/live`, `/check/database`, `/check/vector`,
-  `/check/llm` returning structured `ServiceHealth`
-- **Monitoring** — stdlib-only `/metrics` endpoint, `monitoring/` Prometheus +
-  Grafana overlay (prebuilt "Overview" dashboard)
-- **Logging** — per-channel rotating log files (`logs/app|api|llm|retrieval|error|audit.log`)
-- **CI** — `.github/workflows/ci.yml` (ruff, pytest, vitest+build, docker builds)
-- **Docs** — `docs/DEPLOYMENT.md`, `docs/DEVELOPER.md`, `docs/PRODUCTION.md`,
-  `docs/TROUBLESHOOTING.md`, `docs/ARCHITECTURE.md`
-
-Deploy with `docker compose up --build -d` and visit http://localhost.
-
-## Module 10 — Research Evaluation & Publication Package
-
-Offline, deterministic evaluation and publication material for the HHGR system.
-Runs entirely on the `mock` LLM provider and a deterministic embedding provider,
-so every number is reproducible with no network access.
-
-- **Gold dataset** — `data/eval/gold/` (34 items, 5 legal domains): 10 grounded
-  Contract Act items with node-level relevance labels + 6 domain-probes each for
-  BNS, BNSS, BSA, and Supreme Court judgments (scored via citation matching)
-- **Metrics** — `eval/metrics/`:
-  - retrieval: Recall@K, Precision@K, Hit Rate@K, MRR, MAP, NDCG@K, latency (mean/p50/p95) + throughput
-  - explainability: citation accuracy, hierarchy correctness, graph-path accuracy,
-    provenance completeness, evidence coverage, counter-authority P/R/F1
-  - generation: RAGAS-style faithfulness, answer relevancy, context recall /
-    precision, answer correctness (offline surrogates; optional native `ragas`)
-- **Systems** — `eval/systems.py`: HHGR (full, with provenance), dense-only,
-  BM25, graph-only, naive RAG
-- **Ablation** — `eval/ablation.py`: six arms (full / no_graph / no_hierarchy /
-  no_dense / no_multilingual / no_explainability)
-- **Harness + CLI** — `eval/harness.py` + `eval/cli.py`; one command produces
-  JSON / CSV / Markdown / PDF reports and SVG + PNG figures under `evaluation/`
-- **Publication package** — `paper/`: IEEEtran paper (abstract, introduction,
-  methodology, experiments, results, future work), BibTeX, A0 poster, beamer
-  slides, and build instructions
-- **Reproducibility** — `scripts/reproduce.sh` + `requirements-lock.txt`
-
-```bash
-# Full offline benchmark run (reports + figures)
-python -m eval.cli --config data/eval/config/experiment.json --out evaluation
-
-# Quick smoke run (first 3 items)
-python -m eval.cli --quick --out evaluation
-
-# One-command reproducibility (venv + deps + benchmark + tests)
-bash scripts/reproduce.sh
+```
+Legal PDF/DOCX/TXT
+       │
+       ▼
+┌─────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│  Ingestion   │───▶│ Hierarchy Parser  │───▶│ Knowledge Graph  │
+│  (OCR, Lang) │    │ (20+ patterns)   │    │ (PART_OF/CITES)  │
+└─────────────┘    └──────────────────┘    └─────────────────┘
+                                                 │    │
+Question ──▶ Query Analysis ──▶ HHGR Retrieval ◄─┘    │
+                                    │                   │
+                                    ▼                   │
+                          Vector Store (Qdrant) ◄───────┘
+                                    │
+                                    ▼
+                     ┌──────────────────────────┐
+                     │  Verification Framework   │
+                     │  (Sufficiency, Relevance, │
+                     │   Entailment, Badge)      │
+                     └──────────────────────────┘
+                                    │
+                                    ▼
+                     ┌──────────────────────────┐
+                     │  LLM Answer Generation    │
+                     │  (Cited, Explainable)     │
+                     └──────────────────────────┘
+                                    │
+                                    ▼
+                     ┌──────────────────────────┐
+                     │  React Dashboard (UI)     │
+                     │  (Evidence, KG, Provenance)│
+                     └──────────────────────────┘
 ```
 
-## Quick Start
+## Hybrid Retrieval Pipeline
+
+The HHGR retrieval engine fuses four weighted signals:
+
+| Signal | Description | Default Weight |
+|--------|-------------|----------------|
+| **Text** | Lexical overlap between query keywords and node content (multilingual tokenization) | 0.30 |
+| **Citation** | Query legal references (e.g. "Section 4") matching node numbering or text | 0.20 |
+| **Hierarchy** | Evidence propagated from seed matches to ancestors/descendants along PART_OF edges | 0.30 |
+| **Structural** | Node importance (degree + subtree size), normalized per query | 0.20 |
+
+The vector layer adds multilingual dense search over Qdrant (4 collections: documents/chapters/sections/clauses) and fuses dense/graph/hierarchy signals with configurable weights (default: dense 0.40 / graph 0.35 / hierarchy 0.25).
+
+## Verification Framework
+
+A multi-stage verification pipeline ensures answer reliability:
+
+1. **Evidence Sufficiency** — Dice coefficient of character bigrams between query and evidence, with question boilerplate stripped.
+2. **Evidence Relevance** — LLM judge with deterministic fallback scoring each evidence chunk (0.0–1.0).
+3. **Citation Entailment** — Claim-level entailment check between generated answer and retrieved evidence.
+4. **Verification Badge** — 5-priority rule engine producing: `supported`, `insufficient_evidence`, `contradicted`, `no_evidence`, `no_answer`.
+5. **Confidence Calibration** — Formula: `0.35×entailment + 0.30×relevance + 0.20×sufficiency + 0.15×retrieval_base` with hard rules (contradiction → 0.20 cap, insufficient → 0.45 cap).
+6. **VerificationTrace** — Structured audit trail recording every decision step.
+
+## Installation
+
+### Prerequisites
+
+- Python 3.11+
+- Node.js 20+ (for frontend)
+- Docker & Docker Compose (for full stack)
+- NVIDIA API key (for LLM evaluation)
+
+### Backend
 
 ```bash
+# Clone the repository
+git clone https://github.com/Krishsuthar91/indian-legal-graphrag.git
+cd indian-legal-graphrag
+
+# Create virtual environment
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+
 # Install dependencies
 pip install -r requirements.txt
 
-# Copy environment
+# Copy environment template
 cp .env.example .env
-
-# Run the backend server
-uvicorn src.main:app --reload
-
-# Run backend tests
-pytest
-
-# Run the end-to-end demos (in order)
-python demo_ingest.py       # Module 2 — ingest a sample PDF
-python demo_hierarchy.py    # Module 3 — parse a document into a hierarchy
-python demo_kg.py           # Module 4 — build the knowledge graph
-python demo_retrieval.py    # Module 5 — hybrid hierarchical graph retrieval
-python demo_embeddings.py   # Module 6 — vector store + hybrid dense/graph/hierarchy retrieval
+# Edit .env with your settings (LLM provider, API keys, etc.)
 ```
 
-### Frontend (Module 8)
+### Frontend
 
 ```bash
 cd ui
 npm install
-npm run dev      # http://localhost:5173 (proxies /api to http://localhost:8000)
-npm run build    # type-check (tsc -b) + production build to ui/dist
-npm test         # 49 Vitest + Testing Library unit tests
-npm run preview  # serve the production build
+npm run dev      # Development server at http://localhost:5173
 ```
 
-The embedding demo runs on the deterministic provider (no downloads). For real multilingual
-vectors, install `sentence-transformers` / `torch` and set `EMBEDDING_MODEL=BAAI/bge-m3` (or
-LaBSE / MuRIL / IndicBERT) in `.env`. Qdrant runs via Docker (`docker-compose up`).
-
-## Docker
+### Docker (Full Stack)
 
 ```bash
-docker-compose up --build          # production-style six-service stack (http://localhost)
-# dev override: docker-compose -f docker-compose.yml -f docker-compose.override.yml up
-# validate secrets: python -m deploy.config.cli validate --env production
+docker compose up --build    # 6-service stack at http://localhost
+```
+
+## Running Locally
+
+```bash
+# Start the backend
+uvicorn src.main:app --reload
+
+# Run demos (in order)
+python demo_ingest.py       # Ingest a sample PDF
+python demo_hierarchy.py    # Parse into hierarchy tree
+python demo_kg.py           # Build knowledge graph
+python demo_retrieval.py    # Run HHGR retrieval
+python demo_embeddings.py   # Vector store + hybrid retrieval
+
+# Run backend tests
+pytest -q                   # 908 tests, all passing
+
+# Run frontend tests
+cd ui && npm test            # 49 Vitest + Testing Library tests
+```
+
+## Evaluation
+
+### Benchmark Evaluation (50 questions, deterministic)
+
+The committed benchmark runs offline with a deterministic embedding provider and
+mock LLM, so it is fully reproducible from the canonical corpus. Retrieval and
+verification metrics are measured deterministically; answer-related metrics
+(Answer Accuracy, Hallucination Rate, Faithfulness) reflect the mock LLM and
+should be interpreted as the offline pipeline's grounding behaviour, not as the
+production NVIDIA model's answer quality.
+
+```bash
+# Regenerate the benchmark report from the committed raw results
+python -m scripts.run_final_evaluation
+
+# Report generated at results/evaluation_report.md
+```
+
+### Results Summary (Contract Act 1872)
+
+| Metric | Before Parser Fix | After Parser Fix | Delta |
+|--------|-------------------|------------------|-------|
+| Overall Score | 0.4185 | **0.6271** | +0.2086 |
+| Section Accuracy | 0.1111 | **0.8700** | +0.7589 |
+| MRR | 0.0370 | **0.7400** | +0.7030 |
+| Recall@5 | 0.0556 | **0.3316** | +0.2760 |
+| Hallucination Rate | 0.5008 | **0.7883** | +0.2875 |
+| Grounding Accuracy | 1.0000 | **1.0000** | — |
+| Avg Latency | 2909ms | **108ms** | -2801ms |
+
+The full metric breakdown (including confidence calibration ECE 0.1792) is in
+`results/evaluation_report.md`.
+
+### Offline Deterministic Evaluation
+
+```bash
+# Full benchmark (reports + figures)
+python -m eval.cli --config data/eval/config/experiment.json --out evaluation
+
+# Quick smoke test (3 items)
+python -m eval.cli --quick --out evaluation
+
+# One-command reproducibility
+bash scripts/reproduce.sh
 ```
 
 ## Project Structure
 
 ```
 explaintool/
-├── src/
-│   ├── main.py              # FastAPI entry point (+ security & metrics middleware)
-│   ├── middleware/
-│   │   └── security.py      # Module 9 — API key / rate limit / size / headers
-│   ├── monitoring/
-│   │   ├── metrics.py       # Module 9 — stdlib Prometheus collector
-│   │   └── middleware.py    # Module 9 — /metrics endpoint
-│   ├── config/
-│   │   ├── settings.py      # Pydantic settings
-│   │   └── logging_config.py  # rotating per-channel file logging
-│   ├── api/
-│   │   ├── router.py        # API router
-│   │   ├── health.py        # Health + dependency probes (/live, /check/*)
-│   │   └── qa.py            # QA endpoints (/query, /explain, /provenance/{id})
-│   ├── models/
-│   │   └── schemas.py       # Pydantic models (HealthResponse, ServiceHealth, ...)
-│   ├── ingestion/
-│   ├── hierarchy/
-│   ├── knowledge_graph/
-│   ├── retrieval/
-│   ├── embeddings/
-│   ├── llm/
-│   └── utils/
-├── ui/                        # Module 8 — React frontend (Vite + TS)
-├── deploy/                    # Module 9 — Docker, nginx, env profiles, config loader
-│   ├── backend/Dockerfile
-│   ├── frontend/Dockerfile
-│   ├── nginx/nginx.conf + nginx-frontend.conf
-│   ├── env/.env.{production,development,docker}
-│   ├── config/{loader.py,cli.py}
-│   └── scripts/entrypoint.sh
-├── monitoring/                # Module 9 — Prometheus + Grafana overlay
-├── docs/                      # Module 9 — DEPLOYMENT / DEVELOPER / PRODUCTION / TROUBLESHOOTING / ARCHITECTURE
-├── .github/workflows/ci.yml   # Module 9 — CI pipeline
-├── eval/                      # Module 10 — evaluation package (metrics, systems, harness, CLI)
-├── data/eval/                 # Module 10 — gold datasets + experiment config
-├── evaluation/                # Module 10 — generated reports + figures
-├── paper/                     # Module 10 — IEEE paper, poster, presentation, BibTeX
-├── scripts/reproduce.sh       # Module 10 — one-command reproducibility
-├── requirements-lock.txt      # Module 10 — pinned evaluation lock file
-├── tests/                     # 447 backend tests (361 pre-existing + 86 Module 10)
-├── logs/
-├── data/
-├── pyproject.toml
-├── requirements.txt
-├── docker-compose.yml         # six-service production stack
-└── docker-compose.override.yml
+├── src/                          # Backend source (10,088 lines)
+│   ├── main.py                   # FastAPI entry point
+│   ├── api/                      # REST endpoints (11 routes)
+│   ├── config/                   # Settings, logging
+│   ├── ingestion/                # PDF/DOCX/TXT loaders, OCR, cleaning
+│   ├── hierarchy/                # Legal hierarchy parser (222 nodes)
+│   ├── knowledge_graph/          # Graph builder, traversal, citations
+│   ├── retrieval/                # HHGR engine (4-signal fusion)
+│   ├── embeddings/               # Vector store (Qdrant), indexing
+│   ├── llm/                      # LLM abstraction, prompts, provenance
+│   ├── evaluation/               # Benchmark pipeline, metrics, plots
+│   ├── middleware/                # Security (API key, rate limiting)
+│   ├── monitoring/               # Prometheus metrics, /metrics endpoint
+│   └── utils/                    # Constants, exceptions, helpers
+├── ui/                           # React 18 + TypeScript frontend
+├── eval/                         # Module 10 evaluation package
+├── tests/                        # 908 backend tests
+├── data/                         # Hierarchy JSONs, eval datasets, uploads
+├── results/                      # Evaluation results & reports
+├── deploy/                       # Docker, nginx, env profiles
+├── monitoring/                   # Prometheus + Grafana overlay
+├── paper/                        # IEEE paper, poster, slides
+├── scripts/                      # Evaluation & reproducibility scripts
+├── docs/                         # Architecture, deployment, developer docs
+└── pyproject.toml                # Project metadata & dependencies
 ```
+
+## Technologies Used
+
+| Category | Technologies |
+|----------|-------------|
+| **Backend** | Python 3.11, FastAPI, Pydantic, uvicorn |
+| **LLM** | NVIDIA NIM (Llama 3.1/3.3), OpenAI-compatible API |
+| **Vector Store** | Qdrant (cosine similarity, 4 collections) |
+| **Knowledge Graph** | InMemoryGraph, Neo4j (production) |
+| **Frontend** | React 18, TypeScript, Vite, Tailwind CSS |
+| **Visualization** | Cytoscape.js (KG), React Flow (hierarchy), Recharts (confidence) |
+| **Embeddings** | bge-m3, LaBSE, MuRIL, IndicBERT (multilingual), deterministic (testing) |
+| **OCR** | PaddleOCR, Tesseract (fallback) |
+| **Infrastructure** | Docker, Docker Compose, nginx, Prometheus, Grafana |
+| **CI/CD** | GitHub Actions (ruff, pytest, vitest, Docker builds) |
+| **Testing** | pytest (908 tests), Vitest + Testing Library (49 tests) |
+
+## Documentation
+
+| Document | Description |
+|----------|-------------|
+| [Architecture](docs/ARCHITECTURE.md) | System architecture and deployment topology |
+| [Verification Framework](docs/VerificationFramework.md) | Multi-stage verification pipeline details |
+| [Evaluation](docs/Evaluation.md) | Benchmark methodology and results |
+| [Dataset](docs/Dataset.md) | Evaluation datasets and gold standards |
+| [API Reference](docs/API.md) | REST API endpoint documentation |
+| [Deployment](docs/DEPLOYMENT.md) | Docker and production deployment guide |
+| [Developer Guide](docs/DEVELOPER.md) | Local setup, testing, code conventions |
+| [Troubleshooting](docs/TROUBLESHOOTING.md) | Common issues and solutions |
+
+## Future Work
+
+- **Multilingual Expansion:** Extend evaluation to Hindi, Tamil, and Bengali legal documents with MuRIL/IndicBERT embeddings.
+- **Live Neo4j Integration:** Deploy production Neo4j for persistent graph storage with real-time updates.
+- **Query Expansion:** Phase 4 LLM-based query expansion for complex multi-part legal questions.
+- **Citation Graph Analysis:** Deeper citation chain analysis for precedent tracking across judgment hierarchies.
+- **User Feedback Loop:** Active learning from user corrections to improve retrieval ranking over time.
+- **Mobile Interface:** Responsive mobile-first redesign for field lawyers and legal aid workers.
+
+## Citation
+
+```bibtex
+@inproceedings{hhgr2026,
+  title={HHGR: Hybrid Hierarchical Graph Retrieval for Explainable Indian Legal Document Intelligence},
+  author={Project Contributors},
+  booktitle={Proceedings of the International Conference on Legal Information Systems},
+  year={2026}
+}
+```
+
+## License
+
+MIT License. See [LICENSE](LICENSE) for details.

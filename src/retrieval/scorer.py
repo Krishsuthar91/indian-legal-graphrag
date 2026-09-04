@@ -9,6 +9,7 @@ Four signals are combined into a single relevance score:
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from src.retrieval.context import get_descendant_ids
@@ -19,7 +20,37 @@ WEIGHTS: dict[str, float] = {
     "hierarchy": 0.25,
     "citation": 0.20,
     "structural": 0.15,
+    "leaf": 0.00,
 }
+
+# Legal leaf node labels: concrete provisions a query can be asking about.
+# Container nodes (Chapter/Part/Document/... ) merely group these leaves, so a
+# query that directly matches a leaf should prefer the leaf over its container.
+LEAF_LABELS: frozenset[str] = frozenset({
+    "section", "clause", "article", "rule", "order", "paragraph", "subclause",
+})
+
+
+def leaf_direct_priority(node: dict[str, Any], query: RetrievalQuery) -> float:
+    """1.0 if the node is a legal leaf whose own text/title matches the query;
+    0.0 otherwise.
+
+    This offsets the container-bias from ``structural_importance``, where a
+    Chapter/Part wins purely because it aggregates many keyword-bearing
+    descendants. A query asking about "coercion" should surface the Section
+    that *defines* coercion, not the Chapter that contains it.
+    """
+    label = str(node.get("label", "")).lower()
+    if label not in LEAF_LABELS:
+        return 0.0
+    if not query.keywords:
+        return 0.0
+    combined = _token_set(f"{node.get('title', '')} {node.get('text', '')}")
+    if not combined:
+        return 0.0
+    if combined & set(query.keywords):
+        return 1.0
+    return 0.0
 
 
 def _token_set(text: str) -> set[str]:
@@ -67,16 +98,27 @@ def citation_score(node: dict[str, Any], query: RetrievalQuery) -> float:
 
     Exact ``numbering`` match (e.g. query "Section 5" vs node numbering "5")
     or the normalized reference appearing in the node's text/title.
+
+    When the query specifies a ``document_id`` the node must belong to the same
+    document for a citation match to be awarded.  This prevents Section 10 of
+    the Indian Contract Act from matching Section 10 of the Indian Penal Code.
+
+    A reference found in body *text* (``ref in combined``) is only awarded when
+    it appears as a standalone reference (word boundaries), so "Section 1" does
+    not spuriously match "Section 141" or "Section 12".  This stops a query for
+    one section flooding the seed set with unrelated sections whose prose merely
+    cross-references the number.
     """
     if not query.section_refs and not query.section_numbers:
         return 0.0
 
+    if query.document_id:
+        node_doc = node.get("document_id", "")
+        if node_doc and node_doc != query.document_id:
+            return 0.0
+
     numbering = str(node.get("numbering", "")).strip()
     combined = f"{node.get('title', '')} {node.get('text', '')}".lower()
-
-    for ref in query.section_refs:
-        if ref in combined:
-            return 1.0
 
     for num in query.section_numbers:
         if not num or not numbering:
@@ -84,6 +126,11 @@ def citation_score(node: dict[str, Any], query: RetrievalQuery) -> float:
         if numbering == num:
             return 1.0
         if num.isdigit() and numbering.isdigit() and numbering.lstrip("0") == num.lstrip("0"):
+            return 1.0
+
+    for ref in query.section_refs:
+        # Word-boundary match: "section 1" must not match "section 141"/"section 12".
+        if re.search(rf"\b{re.escape(ref)}\b", combined):
             return 1.0
 
     return 0.0

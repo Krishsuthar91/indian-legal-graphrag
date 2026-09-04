@@ -27,3 +27,8 @@ logs/*.log
 Thumbs.db
 logs/
 *.log
+
+# Generated corpus JSONs (tracked canonical files remain committed)
+data/hierarchy/*.json
+data/processed/*.json
+data/provenance/*.json
