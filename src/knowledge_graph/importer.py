@@ -31,7 +31,6 @@ def _group_skipped_by_title(skipped) -> list[tuple[str, list]]:
     return [(groups[key][0].title, groups[key]) for key in order]
 
 
-
 def _get_label(hierarchy_type: str) -> str:
     return HIERARCHY_TYPE_MAP.get(hierarchy_type, NodeLabel.SECTION).value
 
@@ -52,7 +51,8 @@ def import_hierarchy_json(graph, hierarchy_path: Path) -> dict[str, int]:
     root_node = next((n for n in nodes if n["node_id"] == "root"), None)
     doc_title = root_node["title"] if root_node else doc_id
     graph.create_node(
-        NodeLabel.DOCUMENT.value, doc_id,
+        NodeLabel.DOCUMENT.value,
+        doc_id,
         {"document_id": doc_id, "title": doc_title, "language": data.get("language", "unknown")},
     )
     nodes_created += 1
@@ -108,7 +108,9 @@ def import_hierarchy_json(graph, hierarchy_path: Path) -> dict[str, int]:
                 # Create Case node and CITES edge
                 case_id = f"case_{cite.case_name[:50]}"
                 graph.merge_node(
-                    NodeLabel.CASE.value, "citation", cite.case_name,
+                    NodeLabel.CASE.value,
+                    "citation",
+                    cite.case_name,
                     {"citation": cite.case_name, "court": cite.court, "year": cite.year},
                 )
                 if graph.create_edge(source_id, case_id, RelType.CITES.value):
@@ -127,7 +129,9 @@ def import_hierarchy_json(graph, hierarchy_path: Path) -> dict[str, int]:
                 concept_name = cite.raw_text
                 concept_id = f"concept_{concept_name[:50]}"
                 graph.merge_node(
-                    NodeLabel.LEGAL_CONCEPT.value, "name", concept_name,
+                    NodeLabel.LEGAL_CONCEPT.value,
+                    "name",
+                    concept_name,
                     {
                         "name": concept_name,
                         "citation_type": cite.citation_type,

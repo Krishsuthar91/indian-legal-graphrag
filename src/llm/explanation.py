@@ -60,7 +60,11 @@ DEDUP_TEXT_SIMILARITY = 0.95
 # ordering evidence. It is independent of DEFAULT_HYBRID_WEIGHTS so reported
 # per-signal scores and confidence are preserved.
 RANKING_SIGNALS: tuple[str, ...] = (
-    "dense", "graph", "hierarchy", "keyword", "citation",
+    "dense",
+    "graph",
+    "hierarchy",
+    "keyword",
+    "citation",
 )
 
 DEFAULT_RANKING_WEIGHTS: dict[str, float] = {
@@ -114,19 +118,53 @@ FRAGMENT_DEMOTION = 0.55
 # instruments/jurisdictions outside the ICA/IPC pair.
 _FOREIGN_ACT_MARKERS: tuple[str, ...] = (
     # Named non-canonical / foreign legislation.
-    "british columbia", "california civil code", "german civil code", "bgb",
-    "new york general obligations", "paris convention", "gdpr", "crpc",
-    "criminal procedure code", "reserve bank of india", "master direction",
-    "central goods and services tax", "motor vehicles act", "arbitration and "
-    "conciliation act", "income tax act", "limitation act", "specific relief act",
-    "partnerships act", "negotiable instruments act", "employees provident funds",
-    "united states bankruptcy", "us bankruptcy", "bankruptcy code",
-    "australian consumer law", "uk companies", "english companies",
-    "companies act 2006", "indian constitution",
+    "british columbia",
+    "california civil code",
+    "german civil code",
+    "bgb",
+    "new york general obligations",
+    "paris convention",
+    "gdpr",
+    "crpc",
+    "criminal procedure code",
+    "reserve bank of india",
+    "master direction",
+    "central goods and services tax",
+    "motor vehicles act",
+    "arbitration and conciliation act",
+    "income tax act",
+    "limitation act",
+    "specific relief act",
+    "partnerships act",
+    "negotiable instruments act",
+    "employees provident funds",
+    "united states bankruptcy",
+    "us bankruptcy",
+    "bankruptcy code",
+    "australian consumer law",
+    "uk companies",
+    "english companies",
+    "companies act 2006",
+    "indian constitution",
     # Jurisdictions / legal systems that are not the ICA/IPC domain.
-    "australia", "australian", "united states", "u.s.", "u.k.", "uk ", "british",
-    "germany", "german", "france", "french", "canada", "canadian", "california",
-    "new york", "england", "american", "usa ",
+    "australia",
+    "australian",
+    "united states",
+    "u.s.",
+    "u.k.",
+    "uk ",
+    "british",
+    "germany",
+    "german",
+    "france",
+    "french",
+    "canada",
+    "canadian",
+    "california",
+    "new york",
+    "england",
+    "american",
+    "usa ",
 )
 
 # Fictitious / self-invalidating act names that must never resolve to a doc.
@@ -309,19 +347,13 @@ class ExplainabilityEngine:
         )
         self.adaptive = settings.QA_ADAPTIVE_TOP_K if adaptive is None else adaptive
         self.top_k_easy = settings.QA_TOP_K_EASY if top_k_easy is None else top_k_easy
-        self.top_k_medium = (
-            settings.QA_TOP_K_MEDIUM if top_k_medium is None else top_k_medium
-        )
-        self.top_k_complex = (
-            settings.QA_TOP_K_COMPLEX if top_k_complex is None else top_k_complex
-        )
+        self.top_k_medium = settings.QA_TOP_K_MEDIUM if top_k_medium is None else top_k_medium
+        self.top_k_complex = settings.QA_TOP_K_COMPLEX if top_k_complex is None else top_k_complex
         self.ranking_weights = _normalize_ranking_weights(
             ranking_weights or _default_ranking_weights()
         )
         self.expansion_enabled = (
-            settings.QA_QUERY_EXPANSION_ENABLED
-            if expansion_enabled is None
-            else expansion_enabled
+            settings.QA_QUERY_EXPANSION_ENABLED if expansion_enabled is None else expansion_enabled
         )
         self._corpus_section_keys: set[str] | None = None
         self._doc_section_sets: dict[str | None, set[str]] | None = None
@@ -410,8 +442,7 @@ class ExplainabilityEngine:
         if parsed.act_name:
             normalized = parsed.act_name.lower().strip()
             if not any(
-                pattern in normalized or normalized in pattern
-                for pattern in _ACT_NAME_TO_DOC_ID
+                pattern in normalized or normalized in pattern for pattern in _ACT_NAME_TO_DOC_ID
             ):
                 return None, "non-canonical-act"
 
@@ -536,9 +567,7 @@ class ExplainabilityEngine:
                 f"reference(s) not present in the indexed corpus."
             )
         else:
-            expansion_description = (
-                "Legal query expansion matched no legal concept phrases."
-            )
+            expansion_description = "Legal query expansion matched no legal concept phrases."
         chain.append(
             ReasoningStep(
                 step=2,
@@ -566,7 +595,9 @@ class ExplainabilityEngine:
         dense_ids: list[str] = []
         if self.vr is not None:
             for hit in self.vr.dense_search(
-                search_text, top_k=budget, language=language,
+                search_text,
+                top_k=budget,
+                language=language,
                 document_id=effective_parsed.document_id or None,
             ):
                 if hit.node_id:
@@ -576,9 +607,7 @@ class ExplainabilityEngine:
             ReasoningStep(
                 step=3,
                 kind="dense",
-                description=(
-                    f"Semantic vector search returned {len(dense_ids)} candidate(s)."
-                ),
+                description=(f"Semantic vector search returned {len(dense_ids)} candidate(s)."),
                 node_ids=dense_ids[:budget],
                 detail={"count": len(dense_ids)},
             )
@@ -587,7 +616,9 @@ class ExplainabilityEngine:
         # 3. Graph (HHGR) retrieval
         _start = time.perf_counter()
         graph_results = retrieve(
-            self.graph, search_text, top_k=budget,
+            self.graph,
+            search_text,
+            top_k=budget,
             document_id=effective_parsed.document_id or None,
         )
         graph_map = {r.node_id: r for r in graph_results}
@@ -629,8 +660,12 @@ class ExplainabilityEngine:
         # 5. Fusion + ranking
         _start = time.perf_counter()
         signals, candidates = self._fuse(
-            search_text, top_k=budget, language=language, graph_results=graph_results,
-            propagated=propagated, parsed=effective_parsed,
+            search_text,
+            top_k=budget,
+            language=language,
+            graph_results=graph_results,
+            propagated=propagated,
+            parsed=effective_parsed,
         )
         latencies["fusion"] = self._ms_since(_start)
 
@@ -654,9 +689,7 @@ class ExplainabilityEngine:
             multiplier = self._chain_relevance(node)
             definition_bonus = self._definition_promotion(node, effective_parsed)
             frag_mult = self._fragment_demotion_multiplier(node)
-            rank[nid] = (
-                self._rank(sig, multiplier=multiplier) * frag_mult
-            ) + definition_bonus
+            rank[nid] = (self._rank(sig, multiplier=multiplier) * frag_mult) + definition_bonus
             chain_info[nid] = {
                 "chain_relevance": multiplier,
                 "fragment_demotion": frag_mult,
@@ -689,15 +722,15 @@ class ExplainabilityEngine:
                     continue
                 if numbering == num:
                     return True
-                if (num.isdigit() and numbering.isdigit()
-                        and numbering.lstrip("0") == num.lstrip("0")):
+                if (
+                    num.isdigit()
+                    and numbering.isdigit()
+                    and numbering.lstrip("0") == num.lstrip("0")
+                ):
                     return True
             return False
 
-        exact_matches = [
-            nid for nid in candidates
-            if _exact_numbering_match(nid)
-        ]
+        exact_matches = [nid for nid in candidates if _exact_numbering_match(nid)]
         if exact_matches and (effective_parsed.section_refs or effective_parsed.section_numbers):
             rest = [nid for nid in ranked_ids if nid not in exact_matches]
             ranked_ids = exact_matches + rest
@@ -723,9 +756,7 @@ class ExplainabilityEngine:
 
         # 5b. Deduplicate ranked evidence before evidence construction.
         _start = time.perf_counter()
-        ranked_ids, duplicate_details = self._dedupe_evidence(
-            ranked_ids, signals, effective_parsed
-        )
+        ranked_ids, duplicate_details = self._dedupe_evidence(ranked_ids, signals, effective_parsed)
         duplicates_removed = len(duplicate_details)
         # C4 diagnostics for the retained (surviving) nodes only.
         chain_ranking = {nid: chain_info[nid] for nid in ranked_ids}
@@ -762,10 +793,17 @@ class ExplainabilityEngine:
         counter = self._detect_counter_authorities(evidence)
         evidence_relevance = self._compute_evidence_relevance(query, evidence)
         confidence = self._score_confidence(
-            evidence, effective_parsed, query, evidence_relevance=evidence_relevance,
+            evidence,
+            effective_parsed,
+            query,
+            evidence_relevance=evidence_relevance,
         )
         validity = self._assess_validity(
-            evidence, counter, confidence, query, evidence_relevance,
+            evidence,
+            counter,
+            confidence,
+            query,
+            evidence_relevance,
         )
         verification_trace = self._build_verification_trace(confidence)
 
@@ -796,13 +834,9 @@ class ExplainabilityEngine:
             ),
             3,
         )
-        ranking_latency_ms = round(
-            latencies["ranking"] + latencies["deduplication"], 3
-        )
+        ranking_latency_ms = round(latencies["ranking"] + latencies["deduplication"], 3)
         total_retrieval_latency_ms = round(
-            retrieval_latency_ms
-            + ranking_latency_ms
-            + latencies["evidence_resolution"],
+            retrieval_latency_ms + ranking_latency_ms + latencies["evidence_resolution"],
             3,
         )
 
@@ -886,7 +920,10 @@ class ExplainabilityEngine:
 
         if self.vr is not None:
             hybrid = self.vr.hybrid_retrieve(
-                query, top_k=top_k, language=language, weights=self.weights,
+                query,
+                top_k=top_k,
+                language=language,
+                weights=self.weights,
                 document_id=parsed.document_id or None,
             )
             for hit in hybrid:
@@ -963,8 +1000,11 @@ class ExplainabilityEngine:
                     continue
             matched = any(
                 num == requested
-                or (requested.isdigit() and num.isdigit()
-                    and num.lstrip("0") == requested.lstrip("0"))
+                or (
+                    requested.isdigit()
+                    and num.isdigit()
+                    and num.lstrip("0") == requested.lstrip("0")
+                )
                 for requested in section_numbers
             )
             if not matched:
@@ -978,9 +1018,7 @@ class ExplainabilityEngine:
                 sig.citation = 1.0
         return signals, candidates
 
-    def _fill_ranking_signals(
-        self, signals: dict[str, _Signal], parsed
-    ) -> None:
+    def _fill_ranking_signals(self, signals: dict[str, _Signal], parsed) -> None:
         """Fill keyword-overlap + citation-frequency signals for every candidate."""
         citation_counts: dict[str, float] = {}
         max_citations = 0.0
@@ -1082,7 +1120,10 @@ class ExplainabilityEngine:
         if not num:
             return 1.0
         if num.lower() in (
-            "illustration", "illustrations", "explanation", "explanations",
+            "illustration",
+            "illustrations",
+            "explanation",
+            "explanations",
         ):
             return float(FRAGMENT_DEMOTION)
         if len(num) <= 20 and not re.search(r"\s", num):
@@ -1275,9 +1316,7 @@ class ExplainabilityEngine:
         paths: list[HierarchyPath] = []
         for ev in evidence[:MAX_PATHS]:
             chain = get_ancestor_chain(self.graph, ev.node_id)
-            nodes = list(reversed(chain)) + [
-                self.graph.get_node(ev.node_id)
-            ]
+            nodes = list(reversed(chain)) + [self.graph.get_node(ev.node_id)]
             entries: list[HierarchyPathEntry] = []
             for node in nodes:
                 if not node:
@@ -1326,9 +1365,7 @@ class ExplainabilityEngine:
 
     # -- counter-authority detection --------------------------------------
 
-    def _detect_counter_authorities(
-        self, evidence: list[Evidence]
-    ) -> list[CounterAuthority]:
+    def _detect_counter_authorities(self, evidence: list[Evidence]) -> list[CounterAuthority]:
         results: list[CounterAuthority] = []
         for ev in evidence:
             haystack = f"{ev.title} {ev.text}".lower()
@@ -1336,7 +1373,7 @@ class ExplainabilityEngine:
                 for phrase in phrases:
                     if phrase in haystack:
                         idx = haystack.find(phrase)
-                        context = ev.text[max(0, idx - 40): idx + 80].strip()
+                        context = ev.text[max(0, idx - 40) : idx + 80].strip()
                         results.append(
                             CounterAuthority(
                                 node_id=ev.node_id,
@@ -1367,9 +1404,7 @@ class ExplainabilityEngine:
         """
         import re as _re
 
-        evidence_text = " ".join(
-            f"{ev.title} {ev.text} {ev.numbering}" for ev in evidence
-        )
+        evidence_text = " ".join(f"{ev.title} {ev.text} {ev.numbering}" for ev in evidence)
         # Strip question boilerplate so similarity measures content, not syntax.
         cleaned_query = _re.sub(
             r"^(what|how|when|where|who|why|which)\s+(does|do|is|are|was|were|"
@@ -1394,7 +1429,7 @@ class ExplainabilityEngine:
         "0.50 = Evidence is only partially relevant.\n"
         "0.25 = Evidence is topically related but does not answer the question.\n"
         "0.0 = Evidence is unrelated.\n"
-        "Return ONLY JSON: {\"score\": float, \"label\": \"...\", \"reason\": \"...\"}"
+        'Return ONLY JSON: {"score": float, "label": "...", "reason": "..."}'
     )
 
     def _compute_evidence_relevance(
@@ -1411,9 +1446,7 @@ class ExplainabilityEngine:
         # Attempt LLM judge when a client is wired in.
         if self.llm_client is not None:
             try:
-                evidence_block = "\n\n".join(
-                    f"[{ev.title}] {ev.text}" for ev in evidence
-                )
+                evidence_block = "\n\n".join(f"[{ev.title}] {ev.text}" for ev in evidence)
                 user_msg = f"Question: {query}\n\nRetrieved Evidence:\n{evidence_block}"
                 response = self.llm_client.chat(
                     system=self._RELEVANCE_JUDGE_SYSTEM,
@@ -1434,15 +1467,11 @@ class ExplainabilityEngine:
         return self._relevance_fallback(query, evidence)
 
     @staticmethod
-    def _relevance_fallback(
-        query: str, evidence: list[Evidence]
-    ) -> EvidenceRelevance:
+    def _relevance_fallback(query: str, evidence: list[Evidence]) -> EvidenceRelevance:
         """Deterministic fallback for evidence relevance (no LLM required)."""
         import re as _re
 
-        evidence_text = " ".join(
-            f"{ev.title} {ev.text} {ev.numbering}" for ev in evidence
-        )
+        evidence_text = " ".join(f"{ev.title} {ev.text} {ev.numbering}" for ev in evidence)
         cleaned_query = _re.sub(
             r"^(what|how|when|where|who|why|which)\s+(does|do|is|are|was|were|"
             r"has|have|had|shall|should|can|could|may|might)\s+",
@@ -1495,9 +1524,7 @@ class ExplainabilityEngine:
             if not stripped:
                 continue
             # Skip markdown headings, bullet titles (lines ending with ':')
-            if stripped.startswith("#") or (
-                len(stripped) < 80 and stripped.endswith(":")
-            ):
+            if stripped.startswith("#") or (len(stripped) < 80 and stripped.endswith(":")):
                 continue
             # Split into sentences on '. ', '? ', '! '
             sentences = _re.split(r"(?<=[.!?])\s+", stripped)
@@ -1559,16 +1586,10 @@ class ExplainabilityEngine:
 
         if self.llm_client is not None:
             for claim in claims:
-                ev = self._find_citation_for_claim(
-                    claim, evidence, citations or []
-                )
-                ev_text = (
-                    f"{ev.title}: {ev.text}" if ev else "No matching evidence found."
-                )
+                ev = self._find_citation_for_claim(claim, evidence, citations or [])
+                ev_text = f"{ev.title}: {ev.text}" if ev else "No matching evidence found."
                 try:
-                    user_msg = (
-                        f"Claim: {claim}\n\nCited Evidence:\n{ev_text}"
-                    )
+                    user_msg = f"Claim: {claim}\n\nCited Evidence:\n{ev_text}"
                     response = self.llm_client.chat(
                         system=self._ENTAILMENT_JUDGE_SYSTEM,
                         user=user_msg,
@@ -1587,14 +1608,10 @@ class ExplainabilityEngine:
                     )
                 except Exception as exc:  # noqa: BLE001
                     log.warning("citation_entailment.llm_failed", error=str(exc))
-                    claim_results.append(
-                        self._entailment_fallback(claim, ev)
-                    )
+                    claim_results.append(self._entailment_fallback(claim, ev))
         else:
             for claim in claims:
-                ev = self._find_citation_for_claim(
-                    claim, evidence, citations or []
-                )
+                ev = self._find_citation_for_claim(claim, evidence, citations or [])
                 claim_results.append(self._entailment_fallback(claim, ev))
 
         scores = [cr.entailment for cr in claim_results]
@@ -1609,9 +1626,7 @@ class ExplainabilityEngine:
         )
 
     @staticmethod
-    def _entailment_fallback(
-        claim: str, evidence: Evidence | None
-    ) -> ClaimResult:
+    def _entailment_fallback(claim: str, evidence: Evidence | None) -> ClaimResult:
         """Deterministic fallback for entailment (no LLM required)."""
         if evidence is None:
             return ClaimResult(
@@ -1631,9 +1646,7 @@ class ExplainabilityEngine:
         )
 
     @staticmethod
-    def _entailment_summary(
-        overall: float, contradiction: bool, n_claims: int
-    ) -> str:
+    def _entailment_summary(overall: float, contradiction: bool, n_claims: int) -> str:
         parts = [f"{n_claims} claim(s) evaluated."]
         if contradiction:
             parts.append("CONTRADICTION detected.")
@@ -1700,25 +1713,16 @@ class ExplainabilityEngine:
 
         # Check each verification rule in priority order
         if contradiction:
-            path.append(
-                f"Contradiction detected in evidence "
-                f"(relevance={relevance:.4f})"
-            )
+            path.append(f"Contradiction detected in evidence (relevance={relevance:.4f})")
             path.append("Verification set to CONFLICTS")
         elif entailment >= 0 and entailment < 0.35:
-            path.append(
-                f"Citation entailment below threshold ({entailment:.4f} < 0.35)"
-            )
+            path.append(f"Citation entailment below threshold ({entailment:.4f} < 0.35)")
             path.append("Verification set to INSUFFICIENT")
         elif relevance < 0.30:
-            path.append(
-                f"Evidence relevance below threshold ({relevance:.4f} < 0.30)"
-            )
+            path.append(f"Evidence relevance below threshold ({relevance:.4f} < 0.30)")
             path.append("Verification set to INSUFFICIENT")
         elif sufficiency < 0.45:
-            path.append(
-                f"Evidence sufficiency below threshold ({sufficiency:.4f} < 0.45)"
-            )
+            path.append(f"Evidence sufficiency below threshold ({sufficiency:.4f} < 0.45)")
             path.append("Verification set to INSUFFICIENT")
         else:
             path.append("Evidence relevance passed")
@@ -1850,10 +1854,7 @@ class ExplainabilityEngine:
             # Full formula: 0.35 * entailment + 0.30 * relevance
             # + 0.20 * sufficiency + 0.15 * base
             score = (
-                0.35 * entailment
-                + 0.30 * relevance
-                + 0.20 * sufficiency
-                + 0.15 * retrieval_base
+                0.35 * entailment + 0.30 * relevance + 0.20 * sufficiency + 0.15 * retrieval_base
             )
         else:
             # Redistribute entailment weight (0.35) proportionally to the
@@ -1870,7 +1871,10 @@ class ExplainabilityEngine:
         # During explain(), entailment is not yet evaluated -> sentinel -1.0.
         entailment_for_badge = -1.0 if not entailment_available else entailment
         status, _badge_reason = self._compute_verification_badge(
-            relevance, sufficiency, entailment_for_badge, contradiction_found,
+            relevance,
+            sufficiency,
+            entailment_for_badge,
+            contradiction_found,
         )
 
         adjustment = "none"
@@ -1971,14 +1975,13 @@ class ExplainabilityEngine:
     ) -> Validity:
         # Counter-authority flags (preserved from old logic for diagnostics).
         has_conflicts = len(counter) > 0
-        cites_counter_authority = any(
-            c.marker in _STRONG_MARKERS for c in counter
-        )
+        cites_counter_authority = any(c.marker in _STRONG_MARKERS for c in counter)
 
         # Derive verification framework scores from the new confidence factors.
         sufficiency_score = confidence.factors.get("evidence_sufficiency", 0.0)
         relevance_score = (
-            evidence_relevance.score if evidence_relevance is not None
+            evidence_relevance.score
+            if evidence_relevance is not None
             else confidence.factors.get("evidence_relevance", 0.0)
         )
         # Use the verification status already computed by _score_confidence.
@@ -1998,13 +2001,9 @@ class ExplainabilityEngine:
 
         reasons: list[str] = [reason]
         if has_conflicts:
-            reasons.append(
-                "conflicting or qualifying statements detected in retrieved evidence"
-            )
+            reasons.append("conflicting or qualifying statements detected in retrieved evidence")
         if cites_counter_authority:
-            reasons.append(
-                "evidence may be overruled, superseded, repealed, or overridden"
-            )
+            reasons.append("evidence may be overruled, superseded, repealed, or overridden")
 
         return Validity(
             is_valid=is_valid,

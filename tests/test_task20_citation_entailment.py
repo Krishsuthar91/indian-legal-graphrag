@@ -134,15 +134,9 @@ def _build_service(explanation: ExplanationResult, entailment: str, **kwargs):
     return service, engine
 
 
-_SUPPORTED = (
-    '{"entailment": 1.0, "contradicts": false, "reason": "Supported."}'
-)
-_UNSUPPORTED = (
-    '{"entailment": 0.0, "contradicts": false, "reason": "Not supported."}'
-)
-_CONTRADICTION = (
-    '{"entailment": 0.0, "contradicts": true, "reason": "Contradicts."}'
-)
+_SUPPORTED = '{"entailment": 1.0, "contradicts": false, "reason": "Supported."}'
+_UNSUPPORTED = '{"entailment": 0.0, "contradicts": false, "reason": "Not supported."}'
+_CONTRADICTION = '{"entailment": 0.0, "contradicts": true, "reason": "Contradicts."}'
 
 
 # ---------------------------------------------------------------- tests ----

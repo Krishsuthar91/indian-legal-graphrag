@@ -15,6 +15,7 @@ from src.main import app
 # API fixtures
 # ---------------------------------------------------------------------------
 
+
 @pytest.fixture()
 def client():
     """Provide a TestClient for the FastAPI app."""
@@ -25,6 +26,7 @@ def client():
 # ---------------------------------------------------------------------------
 # Sample file fixtures
 # ---------------------------------------------------------------------------
+
 
 @pytest.fixture()
 def sample_txt(tmp_path: Path) -> Path:

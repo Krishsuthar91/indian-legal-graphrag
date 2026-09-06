@@ -45,28 +45,64 @@ class CrossLingualProvider(DeterministicEmbeddingProvider):
 
 def _build_graph():
     g = InMemoryGraph()
-    g.create_node("Document", "doc1", {
-        "document_id": "doc1", "title": "THE INDIAN CONTRACT ACT, 1892", "language": "en",
-    })
-    g.create_node("Chapter", "ch1", {
-        "title": "CHAPTER I", "text": "Preliminary", "hierarchy_level": 4,
-    })
-    g.create_node("Chapter", "ch2", {
-        "title": "CHAPTER II", "text": "Of Contracts", "hierarchy_level": 4,
-    })
-    g.create_node("Section", "s1", {
-        "title": "Short title", "numbering": "1", "hierarchy_level": 5,
-        "text": "This Act may be called the Indian Contract Act.",
-    })
-    g.create_node("Section", "s2", {
-        "title": "Definitions", "numbering": "2", "hierarchy_level": 5,
-        "text": "contract means an agreement enforceable by law.",
-    })
-    g.create_node("Section", "s4", {
-        "title": "Performance of contracts", "numbering": "4", "hierarchy_level": 5,
-        "text": "Performance of contracts. (a) where the contract provides "
-               "(b) where no provision is made.",
-    })
+    g.create_node(
+        "Document",
+        "doc1",
+        {
+            "document_id": "doc1",
+            "title": "THE INDIAN CONTRACT ACT, 1892",
+            "language": "en",
+        },
+    )
+    g.create_node(
+        "Chapter",
+        "ch1",
+        {
+            "title": "CHAPTER I",
+            "text": "Preliminary",
+            "hierarchy_level": 4,
+        },
+    )
+    g.create_node(
+        "Chapter",
+        "ch2",
+        {
+            "title": "CHAPTER II",
+            "text": "Of Contracts",
+            "hierarchy_level": 4,
+        },
+    )
+    g.create_node(
+        "Section",
+        "s1",
+        {
+            "title": "Short title",
+            "numbering": "1",
+            "hierarchy_level": 5,
+            "text": "This Act may be called the Indian Contract Act.",
+        },
+    )
+    g.create_node(
+        "Section",
+        "s2",
+        {
+            "title": "Definitions",
+            "numbering": "2",
+            "hierarchy_level": 5,
+            "text": "contract means an agreement enforceable by law.",
+        },
+    )
+    g.create_node(
+        "Section",
+        "s4",
+        {
+            "title": "Performance of contracts",
+            "numbering": "4",
+            "hierarchy_level": 5,
+            "text": "Performance of contracts. (a) where the contract provides "
+            "(b) where no provision is made.",
+        },
+    )
     g.create_edge("ch1", "doc1", "PART_OF")
     g.create_edge("ch2", "doc1", "PART_OF")
     g.create_edge("s1", "ch1", "PART_OF")
@@ -113,10 +149,16 @@ class TestDenseSearch:
         store.ensure_collections()
         g = InMemoryGraph()
         g.create_node("Document", "d", {"document_id": "d", "language": "en"})
-        g.create_node("Section", "sx", {
-            "title": "", "numbering": "1", "hierarchy_level": 5,
-            "text": "performance of contracts",
-        })
+        g.create_node(
+            "Section",
+            "sx",
+            {
+                "title": "",
+                "numbering": "1",
+                "hierarchy_level": 5,
+                "text": "performance of contracts",
+            },
+        )
         g.create_edge("sx", "d", "PART_OF")
         service = EmbeddingService(provider=CrossLingualProvider(dim=64))
         HierarchyIndexer(g, store, service).index_graph()
@@ -159,14 +201,26 @@ class TestCrossLingual:
         store.ensure_collections()
         g = InMemoryGraph()
         g.create_node("Document", "docX", {"document_id": "docX", "language": "hi"})
-        g.create_node("Section", "s_hi", {
-            "title": "हिंदी खंड", "numbering": "1", "hierarchy_level": 5,
-            "text": "अनुबंध प्रदर्शन",
-        })
-        g.create_node("Section", "s_en", {
-            "title": "English section", "numbering": "2", "hierarchy_level": 5,
-            "text": "contract performance",
-        })
+        g.create_node(
+            "Section",
+            "s_hi",
+            {
+                "title": "हिंदी खंड",
+                "numbering": "1",
+                "hierarchy_level": 5,
+                "text": "अनुबंध प्रदर्शन",
+            },
+        )
+        g.create_node(
+            "Section",
+            "s_en",
+            {
+                "title": "English section",
+                "numbering": "2",
+                "hierarchy_level": 5,
+                "text": "contract performance",
+            },
+        )
         g.create_edge("s_hi", "docX", "PART_OF")
         g.create_edge("s_en", "docX", "PART_OF")
         service = EmbeddingService(provider=CrossLingualProvider(dim=64))
@@ -187,9 +241,7 @@ class TestCrossLingual:
         assert "s_hi" in node_ids
 
     def test_hindi_query_with_matching_filter(self, xl_retriever):
-        hits = xl_retriever.cross_lingual_search(
-            "अनुबंध प्रदर्शन", top_k=5, language="hi"
-        )
+        hits = xl_retriever.cross_lingual_search("अनुबंध प्रदर्शन", top_k=5, language="hi")
         assert "s_hi" in [h.node_id for h in hits]
 
     def test_hindi_query_against_english_corpus_with_hindi_filter(self):
@@ -198,14 +250,26 @@ class TestCrossLingual:
         store.ensure_collections()
         g = InMemoryGraph()
         g.create_node("Document", "doc_en", {"document_id": "doc_en", "language": "en"})
-        g.create_node("Section", "s_contract", {
-            "title": "Definitions", "numbering": "2", "hierarchy_level": 5,
-            "text": "contract means an agreement enforceable by law.",
-        })
-        g.create_node("Section", "s_perf", {
-            "title": "Performance of contracts", "numbering": "4", "hierarchy_level": 5,
-            "text": "Performance of contracts.",
-        })
+        g.create_node(
+            "Section",
+            "s_contract",
+            {
+                "title": "Definitions",
+                "numbering": "2",
+                "hierarchy_level": 5,
+                "text": "contract means an agreement enforceable by law.",
+            },
+        )
+        g.create_node(
+            "Section",
+            "s_perf",
+            {
+                "title": "Performance of contracts",
+                "numbering": "4",
+                "hierarchy_level": 5,
+                "text": "Performance of contracts.",
+            },
+        )
         g.create_edge("s_contract", "doc_en", "PART_OF")
         g.create_edge("s_perf", "doc_en", "PART_OF")
         service = EmbeddingService(provider=CrossLingualProvider(dim=64))
@@ -223,14 +287,26 @@ class TestCrossLingual:
         store.ensure_collections()
         g = InMemoryGraph()
         g.create_node("Document", "docY", {"document_id": "docY", "language": "hi"})
-        g.create_node("Section", "s_hi", {
-            "title": "x", "numbering": "1", "hierarchy_level": 5,
-            "text": "अनुबंध प्रदर्शन",
-        })
-        g.create_node("Section", "s_en", {
-            "title": "y", "numbering": "2", "hierarchy_level": 5,
-            "text": "contract performance",
-        })
+        g.create_node(
+            "Section",
+            "s_hi",
+            {
+                "title": "x",
+                "numbering": "1",
+                "hierarchy_level": 5,
+                "text": "अनुबंध प्रदर्शन",
+            },
+        )
+        g.create_node(
+            "Section",
+            "s_en",
+            {
+                "title": "y",
+                "numbering": "2",
+                "hierarchy_level": 5,
+                "text": "contract performance",
+            },
+        )
         g.create_edge("s_hi", "docY", "PART_OF")
         g.create_edge("s_en", "docY", "PART_OF")
         service = EmbeddingService(provider=DeterministicEmbeddingProvider(dim=64))
@@ -254,9 +330,7 @@ class TestHierarchyRetrieval:
         assert scores["ch2"] >= 0.6
 
     def test_empty_store_returns_empty(self, graph, store, service):
-        scores = _retriever(graph, store, service).hierarchy_retrieval(
-            "performance of contracts"
-        )
+        scores = _retriever(graph, store, service).hierarchy_retrieval("performance of contracts")
         assert scores == {}
 
 
@@ -347,12 +421,18 @@ class TestWeights:
     def test_ranking_changes_with_weights(self, graph, store, service):
         _index(graph, store, service)
         retriever = _retriever(graph, store, service)
-        dense_ranked = [r.node_id for r in retriever.hybrid_retrieve(
-            "performance of contracts", top_k=5, weights={"dense": 1.0}
-        )]
-        graph_ranked = [r.node_id for r in retriever.hybrid_retrieve(
-            "performance of contracts", top_k=5, weights={"graph": 1.0}
-        )]
+        dense_ranked = [
+            r.node_id
+            for r in retriever.hybrid_retrieve(
+                "performance of contracts", top_k=5, weights={"dense": 1.0}
+            )
+        ]
+        graph_ranked = [
+            r.node_id
+            for r in retriever.hybrid_retrieve(
+                "performance of contracts", top_k=5, weights={"graph": 1.0}
+            )
+        ]
         assert dense_ranked != graph_ranked or dense_ranked[:1] != graph_ranked[:1]
 
 

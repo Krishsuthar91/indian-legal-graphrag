@@ -38,9 +38,9 @@ UPLOAD_DIR = Path(__file__).resolve().parent.parent.parent / "data" / "uploads"
 UPLOAD_TIMEOUT_SECONDS = 60
 
 # Overridable in tests to avoid building the full corpus service.
-corpus_factory: Callable[
-    [], tuple[InMemoryGraph, QdrantStore, EmbeddingService]
-] = get_default_corpus
+corpus_factory: Callable[[], tuple[InMemoryGraph, QdrantStore, EmbeddingService]] = (
+    get_default_corpus
+)
 
 
 def _get_corpus() -> tuple[InMemoryGraph, QdrantStore, EmbeddingService]:
@@ -95,9 +95,7 @@ def ingest_upload(file_path: Path, original_name: str | None = None) -> Document
     )
 
     log.info("documents.index.start", document_id=doc.document_id)
-    indexed = HierarchyIndexer(graph, store, embedding_service).index_hierarchy_file(
-        hierarchy_path
-    )
+    indexed = HierarchyIndexer(graph, store, embedding_service).index_hierarchy_file(hierarchy_path)
     log.info(
         "documents.index.complete",
         document_id=doc.document_id,

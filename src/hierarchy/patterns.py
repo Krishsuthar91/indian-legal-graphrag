@@ -26,12 +26,36 @@ class NumberingMatch:
 _ROMAN_ONES = "IVXLCDM"
 
 _ROMAN_MAP: dict[str, int] = {
-    "I": 1, "II": 2, "III": 3, "IV": 4, "V": 5,
-    "VI": 6, "VII": 7, "VIII": 8, "IX": 9, "X": 10,
-    "XI": 11, "XII": 12, "XIII": 13, "XIV": 14, "XV": 15,
-    "XVI": 16, "XVII": 17, "XVIII": 18, "XIX": 19, "XX": 20,
-    "XXI": 21, "XXII": 22, "XXIII": 23, "XXIV": 24, "XXV": 25,
-    "XXVI": 26, "XXVII": 27, "XXVIII": 28, "XXIX": 29, "XXX": 30,
+    "I": 1,
+    "II": 2,
+    "III": 3,
+    "IV": 4,
+    "V": 5,
+    "VI": 6,
+    "VII": 7,
+    "VIII": 8,
+    "IX": 9,
+    "X": 10,
+    "XI": 11,
+    "XII": 12,
+    "XIII": 13,
+    "XIV": 14,
+    "XV": 15,
+    "XVI": 16,
+    "XVII": 17,
+    "XVIII": 18,
+    "XIX": 19,
+    "XX": 20,
+    "XXI": 21,
+    "XXII": 22,
+    "XXIII": 23,
+    "XXIV": 24,
+    "XXV": 25,
+    "XXVI": 26,
+    "XXVII": 27,
+    "XXVIII": 28,
+    "XXIX": 29,
+    "XXX": 30,
 }
 
 _ROMAN_PATTERN = "|".join(sorted(_ROMAN_MAP.keys(), key=len, reverse=True))
@@ -60,6 +84,7 @@ LVL_BODY = 10  # fallback for unrecognized text
 # Order matters: first match wins within the same line.
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class _Pat:
     regex: re.Pattern
@@ -72,83 +97,83 @@ _PATTERNS: list[_Pat] = [
     # --- Schedule / Appendix (highest structural level) ---
     _Pat(
         re.compile(r"^\s*(?:SCHEDULE|SCHEDULE\s+\d+|[A-Z]\.\s*SCHEDULE)\s*$", re.I),
-        "schedule", LVL_SCHEDULE,
+        "schedule",
+        LVL_SCHEDULE,
     ),
     _Pat(
         re.compile(r"^\s*(?:APPENDIX|APPENDIX\s+[A-Z]|APPENDIX\s+\d+)\s*$", re.I),
-        "appendix", LVL_APPENDIX,
+        "appendix",
+        LVL_APPENDIX,
     ),
-
     # --- Part ---
     _Pat(
-        re.compile(
-            rf"^\s*PART\s+(?:{_ROMAN_PATTERN}|[A-Z]|\d+)\s*$", re.I
-        ),
-        "part", LVL_PART,
+        re.compile(rf"^\s*PART\s+(?:{_ROMAN_PATTERN}|[A-Z]|\d+)\s*$", re.I),
+        "part",
+        LVL_PART,
     ),
     _Pat(
         re.compile(r"^\s*Part\s+(\d+)\s*$", re.I),
-        "part", LVL_PART,
+        "part",
+        LVL_PART,
     ),
-
     # --- Chapter ---
     _Pat(
-        re.compile(
-            rf"^\s*CHAPTER\s+(?:{_ROMAN_PATTERN}|\d+)\s*[-–—]?\s*(.*)", re.I
-        ),
-        "chapter", LVL_CHAPTER,
+        re.compile(rf"^\s*CHAPTER\s+(?:{_ROMAN_PATTERN}|\d+)\s*[-–—]?\s*(.*)", re.I),
+        "chapter",
+        LVL_CHAPTER,
     ),
     _Pat(
         re.compile(r"^\s*Chapter\s+(\d+)\s*(.*)", re.I),
-        "chapter", LVL_CHAPTER,
+        "chapter",
+        LVL_CHAPTER,
     ),
-
     # --- Section (explicit keyword) ---
     _Pat(
         re.compile(r"^\s*(?:Section|Sec\.?|S\.)\s+(\d+[A-Za-z]*(?:\s*[-–]\s*[A-Z])?)\s*(.*)", re.I),
-        "section", LVL_SECTION,
+        "section",
+        LVL_SECTION,
     ),
-
     # --- Section (bare number + dot, e.g. "12.") ---
     _Pat(
         re.compile(r"^\s*(\d+[A-Za-z]*)\.\s+(.*)"),
-        "section", LVL_SECTION,
+        "section",
+        LVL_SECTION,
     ),
-
     # --- Sub-section: (1), (2), (3) ---
     _Pat(
         re.compile(r"^\s*\((\d+)\)\s*(.*)"),
-        "sub_section", LVL_SUB_SECTION,
+        "sub_section",
+        LVL_SUB_SECTION,
     ),
-
     # --- Sub-clause: (i), (ii), (iii) ---  (checked before clause to avoid conflict)
     _Pat(
         re.compile(r"^\s*\(([ivxlcdm]+)\)\s*(.*)", re.I),
-        "sub_clause", LVL_SUB_CLAUSE,
+        "sub_clause",
+        LVL_SUB_CLAUSE,
     ),
-
     # --- Clause: (a), (b), (c) ---
     _Pat(
         re.compile(r"^\s*\(([a-z])\)\s*(.*)"),
-        "clause", LVL_CLAUSE,
+        "clause",
+        LVL_CLAUSE,
     ),
-
     # --- Explanation ---
     _Pat(
         re.compile(r"^\s*Explanation\s*(?:\d+)?\.?\s*:?\s*(.*)", re.I),
-        "explanation", LVL_EXPLANATION,
+        "explanation",
+        LVL_EXPLANATION,
     ),
-
     # --- Illustration ---
     _Pat(
         re.compile(r"^\s*Illustration\s*(?:\d+)?\.?\s*:?\s*(.*)", re.I),
-        "illustration", LVL_ILLUSTRATION,
+        "illustration",
+        LVL_ILLUSTRATION,
     ),
-
     # --- Proviso ---
     _Pat(
         re.compile(r"^\s*Proviso\s*(?:\d+)?\.?\s*:?\s*(.*)", re.I),
-        "proviso", LVL_PROVISO,
+        "proviso",
+        LVL_PROVISO,
     ),
 ]
 

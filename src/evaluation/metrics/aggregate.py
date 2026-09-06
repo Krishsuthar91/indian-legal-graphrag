@@ -172,8 +172,5 @@ def summarize_metrics(
 ) -> dict[str, float]:
     """Aggregate per-query metric rows into a single summary vector."""
     meta_keys = ("item_id", "question", "query_type", "difficulty")
-    metric_rows = [
-        {key: row[key] for key in row if key not in meta_keys}
-        for row in rows
-    ]
+    metric_rows = [{key: row[key] for key in row if key not in meta_keys} for row in rows]
     return aggregate_metrics(metric_rows)

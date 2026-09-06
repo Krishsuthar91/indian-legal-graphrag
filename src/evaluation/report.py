@@ -207,13 +207,15 @@ def build_report(
             bin_rows: list[list[Any]] = []
             for b in calibration.confidence_bins:
                 gap = abs(b.empirical_accuracy - b.average_confidence)
-                bin_rows.append([
-                    f"{b.lower_bound:.2f}-{b.upper_bound:.2f}",
-                    b.sample_count,
-                    b.average_confidence,
-                    b.empirical_accuracy,
-                    gap,
-                ])
+                bin_rows.append(
+                    [
+                        f"{b.lower_bound:.2f}-{b.upper_bound:.2f}",
+                        b.sample_count,
+                        b.average_confidence,
+                        b.empirical_accuracy,
+                        gap,
+                    ]
+                )
             sections.append(
                 _markdown_table(
                     ["Confidence Range", "Samples", "Avg Confidence", "Empirical Accuracy", "Gap"],
@@ -311,9 +313,10 @@ def build_report(
                 counts[name] += 1
             elif name == "low_confidence" and row.get("confidence", 1.0) < 0.45:
                 counts[name] += 1
-            elif name == "high_hallucination" and row.get(
-                "hallucination_rate", 0.0
-            ) > _HALLUCINATION_THRESHOLD:
+            elif (
+                name == "high_hallucination"
+                and row.get("hallucination_rate", 0.0) > _HALLUCINATION_THRESHOLD
+            ):
                 counts[name] += 1
             elif name == "ungrounded_citation" and row.get("grounding_accuracy", 1.0) < 1.0:
                 counts[name] += 1

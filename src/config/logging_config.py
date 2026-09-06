@@ -44,9 +44,7 @@ CHANNELS: dict[str, tuple[str, tuple[str, ...]]] = {
 _CHANNEL_NAMES: dict[str, set[str]] = {
     channel: set(names) for channel, (_, names) in CHANNELS.items()
 }
-_CHANNEL_FILES: dict[str, str] = {
-    channel: filename for channel, (filename, _) in CHANNELS.items()
-}
+_CHANNEL_FILES: dict[str, str] = {channel: filename for channel, (filename, _) in CHANNELS.items()}
 
 
 class ChannelFilter(logging.Filter):

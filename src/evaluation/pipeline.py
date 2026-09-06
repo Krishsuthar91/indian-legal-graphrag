@@ -115,9 +115,7 @@ def run_evaluation(config: EvaluationConfig | None = None) -> EvaluationOutput:
         embedding_dim=config.embedding_dim,
     )
 
-    results, peak_traced_bytes = measure_peak_traced_memory(
-        lambda: run_questions(service, items)
-    )
+    results, peak_traced_bytes = measure_peak_traced_memory(lambda: run_questions(service, items))
 
     per_query = compute_per_query_metrics(graph, items, results)
     performance = performance_metrics(results)

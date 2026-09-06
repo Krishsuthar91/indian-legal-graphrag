@@ -47,10 +47,7 @@ def test_api_key_required_when_enabled(monkeypatch):
     monkeypatch.setattr(settings, "API_KEY", "secret-token")
     with TestClient(_build_app()) as client:
         assert client.get("/api/v1/data").status_code == 401
-        assert (
-            client.get("/api/v1/data", headers={"x-api-key": "wrong"}).status_code
-            == 401
-        )
+        assert client.get("/api/v1/data", headers={"x-api-key": "wrong"}).status_code == 401
         resp = client.get("/api/v1/data", headers={"x-api-key": "secret-token"})
         assert resp.status_code == 200
 

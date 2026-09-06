@@ -116,7 +116,10 @@ class VectorRetriever:
         vector = self.service.embed_query(query)
         names = collections or self.store.collections
         hits = self.store.search_multiple(
-            names, vector, top_k=top_k, language=language,
+            names,
+            vector,
+            top_k=top_k,
+            language=language,
             document_id=document_id,
         )
         if not hits and language:
@@ -126,7 +129,10 @@ class VectorRetriever:
                 reason="no_matches",
             )
             hits = self.store.search_multiple(
-                names, vector, top_k=top_k, document_id=document_id,
+                names,
+                vector,
+                top_k=top_k,
+                document_id=document_id,
             )
         return [
             VectorHit(
@@ -176,7 +182,10 @@ class VectorRetriever:
         {node_id: evidence strength in [0, 1]}.
         """
         seeds = self.dense_search(
-            query, collections=collections, top_k=top_k, language=language,
+            query,
+            collections=collections,
+            top_k=top_k,
+            language=language,
             document_id=document_id,
         )
         seed_ids = [h.node_id for h in seeds if h.node_id]
@@ -201,7 +210,10 @@ class VectorRetriever:
         w = normalize_weights(weights or self.weights)
 
         dense_hits = self.dense_search(
-            query, collections=collections, top_k=top_k, language=language,
+            query,
+            collections=collections,
+            top_k=top_k,
+            language=language,
             document_id=document_id,
         )
         dense: dict[str, float] = {}
@@ -212,7 +224,10 @@ class VectorRetriever:
 
         graph_scores = self.graph_retrieval(query, top_k=top_k, document_id=document_id)
         hierarchy_scores = self.hierarchy_retrieval(
-            query, top_k=top_k, collections=collections, language=language,
+            query,
+            top_k=top_k,
+            collections=collections,
+            language=language,
             document_id=document_id,
         )
 
@@ -232,9 +247,11 @@ class VectorRetriever:
             title = (node or payload).get("title", "")
             text = (node or payload).get("text", "")
             label = (node or {}).get("label", payload.get("node_type", ""))
-            level = node.get(
-                "level", node.get("hierarchy_level", payload.get("level", 0))
-            ) if node else payload.get("level", 0)
+            level = (
+                node.get("level", node.get("hierarchy_level", payload.get("level", 0)))
+                if node
+                else payload.get("level", 0)
+            )
             lang = node.get("language") if node else payload.get("language", "")
             if not lang:
                 lang = payload.get("language", "")

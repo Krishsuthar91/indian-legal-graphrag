@@ -115,10 +115,7 @@ def _backoff(attempt: int) -> float:
 def _is_quota_exhausted(body: str) -> bool:
     """Heuristic: does a provider 429 body indicate quota exhaustion?"""
     lowered = body.lower()
-    return any(
-        token in lowered
-        for token in ("resource_exhausted", "quota", "billing", "limit: 0")
-    )
+    return any(token in lowered for token in ("resource_exhausted", "quota", "billing", "limit: 0"))
 
 
 def _is_transient_network_error(exc: BaseException) -> bool:
@@ -174,9 +171,7 @@ def _parse_retry_after_seconds(resp: Any) -> float | None:
     match = re.search(r'retryDelay"?\s*:\s*"?(\d+(?:\.\d+)?)s', _safe_text(resp, 8000))
     if match:
         return max(0.0, float(match.group(1)))
-    match = re.search(
-        r"retry (?:in|after) (\d+(?:\.\d+)?)s", _safe_text(resp, 8000), re.IGNORECASE
-    )
+    match = re.search(r"retry (?:in|after) (\d+(?:\.\d+)?)s", _safe_text(resp, 8000), re.IGNORECASE)
     if match:
         return max(0.0, float(match.group(1)))
     return None
@@ -293,9 +288,7 @@ class OpenAICompatClient(LLMClient):
             # Without an explicit deadline, bound the call anyway so a single
             # direct call cannot run forever: N attempts of `timeout` plus a
             # generous backoff allowance.
-            deadline = (
-                time.monotonic() + self.timeout * (max_retries + 1) + 60.0
-            )
+            deadline = time.monotonic() + self.timeout * (max_retries + 1) + 60.0
 
         resp: Any = None
         for attempt in range(max_retries + 1):
@@ -417,9 +410,7 @@ class OpenAICompatClient(LLMClient):
                         attempt=attempt,
                         status_code=status_code,
                         retry_after=retry_after,
-                        response_headers=(
-                            dict(resp.headers) if hasattr(resp, "headers") else None
-                        ),
+                        response_headers=(dict(resp.headers) if hasattr(resp, "headers") else None),
                         response_body=_safe_text(resp)[:2000],
                     )
                     log.info(
@@ -448,15 +439,11 @@ class OpenAICompatClient(LLMClient):
                 url=self._chat_url,
                 model=self.model,
                 status_code=status_code,
-                response_headers=(
-                    dict(resp.headers) if hasattr(resp, "headers") else None
-                ),
+                response_headers=(dict(resp.headers) if hasattr(resp, "headers") else None),
                 response_body=_safe_text(resp),
                 error=str(exc),
             )
-            raise LLMProviderError(
-                f"LLM request failed: {exc}", http_status=status_code
-            ) from exc
+            raise LLMProviderError(f"LLM request failed: {exc}", http_status=status_code) from exc
         except httpx.HTTPError as exc:
             log.error(
                 "llm.request_failed",
@@ -522,9 +509,7 @@ class OpenAICompatClient(LLMClient):
             max_retries=settings.LLM_MAX_RETRIES,
             status_code=getattr(resp, "status_code", None),
             retry_after=_parse_retry_after_seconds(resp),
-            response_headers=(
-                dict(resp.headers) if hasattr(resp, "headers") else None
-            ),
+            response_headers=(dict(resp.headers) if hasattr(resp, "headers") else None),
             response_body=body[:2000],
             quota_exhausted=_is_quota_exhausted(body),
         )
@@ -598,9 +583,7 @@ class GeminiClient(OpenAICompatClient):
         api_key = api_key or settings.GEMINI_API_KEY
         base_url = base_url or settings.GEMINI_BASE_URL or None
         model = model or settings.GEMINI_MODEL or None
-        super().__init__(
-            model=model, base_url=base_url, api_key=api_key, timeout=timeout, **kwargs
-        )
+        super().__init__(model=model, base_url=base_url, api_key=api_key, timeout=timeout, **kwargs)
 
 
 class NvidiaClient(OpenAICompatClient):
@@ -626,13 +609,9 @@ class NvidiaClient(OpenAICompatClient):
         **kwargs: Any,
     ) -> None:
         api_key = api_key or settings.LLM_API_KEY or settings.NVIDIA_API_KEY
-        base_url = (
-            base_url or settings.LLM_BASE_URL or settings.NVIDIA_BASE_URL or None
-        )
+        base_url = base_url or settings.LLM_BASE_URL or settings.NVIDIA_BASE_URL or None
         model = model or settings.LLM_MODEL or settings.NVIDIA_MODEL or None
-        super().__init__(
-            model=model, base_url=base_url, api_key=api_key, timeout=timeout, **kwargs
-        )
+        super().__init__(model=model, base_url=base_url, api_key=api_key, timeout=timeout, **kwargs)
 
 
 class MockLLMClient(LLMClient):
@@ -722,9 +701,7 @@ class MockLLMClient(LLMClient):
                 label, reason = "tangential", "Low text overlap; topically related."
             else:
                 label, reason = "unrelated", "Minimal text overlap with query."
-            return (
-                f'{{"score": {score:.4f}, "label": "{label}", "reason": "{reason}"}}'
-            )
+            return f'{{"score": {score:.4f}, "label": "{label}", "reason": "{reason}"}}'
         return None
 
 
@@ -734,7 +711,7 @@ def _extract_source_numbers(user_prompt: str) -> list[str]:
     for line in user_prompt.splitlines():
         stripped = line.strip()
         if stripped.startswith("[SOURCE"):
-            num = stripped[len("[SOURCE"):].strip()
+            num = stripped[len("[SOURCE") :].strip()
             num = num.split("]", 1)[0].strip()
             if num.isdigit() and num not in numbers:
                 numbers.append(num)

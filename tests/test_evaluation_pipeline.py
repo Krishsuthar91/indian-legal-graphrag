@@ -161,10 +161,7 @@ class TestCalibrationIntegration:
     def test_compute_row_calibration_joins_correctly(self, eval_service, sample_items):
         service, _ = eval_service
         rows = run_questions(service, sample_items)
-        per_query = [
-            {"item_id": r.item_id, "answer_accuracy": 0.5}
-            for r in rows
-        ]
+        per_query = [{"item_id": r.item_id, "answer_accuracy": 0.5} for r in rows]
         cal = compute_row_calibration(rows, per_query)
         assert isinstance(cal, CalibrationMetrics)
         assert cal.total_samples == len(rows)

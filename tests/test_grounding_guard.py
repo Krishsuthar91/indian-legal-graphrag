@@ -24,6 +24,7 @@ from src.llm.service import (
 
 # ---------------------------------------------------------------- helpers ---
 
+
 def _evidence() -> Evidence:
     return Evidence(
         node_id="s4",
@@ -174,8 +175,9 @@ class TestGroundingGuardAnswerGate:
 
     def test_guard_disabled_calls_llm_regardless(self):
         llm = _CountingClient()
-        exp = _explanation(relevance=0.0, sufficiency=0.0,
-                           status="insufficient", confidence=0.0, evidence=[])
+        exp = _explanation(
+            relevance=0.0, sufficiency=0.0, status="insufficient", confidence=0.0, evidence=[]
+        )
         # Disable every answer-generation guard so the LLM is invoked.
         service = _build_service(
             exp, llm, grounding_guard_enabled=False, require_sufficient_evidence=False
@@ -213,6 +215,7 @@ class TestGroundingGuardAnswerGate:
         class _Spy:
             def info(self, event, **kwargs):
                 calls.append((event, kwargs))
+
             def debug(self, *a, **k):
                 pass
 

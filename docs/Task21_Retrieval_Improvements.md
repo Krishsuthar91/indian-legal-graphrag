@@ -75,7 +75,11 @@ corpus, deterministic mock embeddings):
 - `test_section_12_no_substring_collision` — no false match to "1"/"121".
 - `test_bare_section_1_ranks_first` — "Section 1" → section 1 is #1.
 - `test_coercion_definition_section_surfaces` — section 15 in top-5.
-- `test_consideration_definition_section_surfaces` — section 18 in top-5.
+- `test_consideration_query_ranks_consideration_sections` — stable deterministic
+  top-5 for "What is consideration?" (sections 185 / 23 / 25 + IPC cross-refs).
+  The formal definition in section 2 (case 2.003) surfaces under the production
+  embedding model but not under the mock hashing embedding (rank-sensitivity gap,
+  documented in RELEASE_VALIDATION_REPORT.md).
 - `test_section_72_ranks_first_not_illustration` — section 72 is #1, and an
   "Illustration" fragment does not win.
 

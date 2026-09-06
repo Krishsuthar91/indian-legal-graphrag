@@ -75,12 +75,14 @@ def build_nested_set(root: HierarchyNode, all_nodes: list[HierarchyNode]) -> lis
         counter[0] += 1
         right = counter[0]
 
-        entries.append(NestedSetEntry(
-            node_id=node_id,
-            left=left,
-            right=right,
-            depth=depth,
-        ))
+        entries.append(
+            NestedSetEntry(
+                node_id=node_id,
+                left=left,
+                right=right,
+                depth=depth,
+            )
+        )
 
     dfs("root", 0)
     return entries

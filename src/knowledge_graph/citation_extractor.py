@@ -20,15 +20,15 @@ from dataclasses import dataclass
 class Citation:
     """A extracted citation from text."""
 
-    citation_type: str   # section, rule, article, order, case
-    raw_text: str        # the full matched text
-    ref_number: str = "" # e.g. "12", "45-A", "VII Rule 11"
-    act_name: str = ""   # e.g. "Indian Contract Act"
+    citation_type: str  # section, rule, article, order, case
+    raw_text: str  # the full matched text
+    ref_number: str = ""  # e.g. "12", "45-A", "VII Rule 11"
+    act_name: str = ""  # e.g. "Indian Contract Act"
     case_name: str = ""  # e.g. "AIR 1965 SC 123"
-    court: str = ""      # e.g. "SC", "Bombay HC"
-    year: str = ""       # e.g. "1965"
-    start: int = 0       # start position in text
-    end: int = 0         # end position in text
+    court: str = ""  # e.g. "SC", "Bombay HC"
+    year: str = ""  # e.g. "1965"
+    start: int = 0  # start position in text
+    end: int = 0  # end position in text
 
 
 # ---------------------------------------------------------------------------
@@ -92,82 +92,96 @@ def extract_citations(text: str) -> list[Citation]:
 
     # Section citations
     for m in _SECTION_RE.finditer(text):
-        _add(Citation(
-            citation_type="section",
-            raw_text=m.group(0).strip(),
-            ref_number=m.group(1),
-            act_name=m.group(2).strip() if m.group(2) else "",
-            start=m.start(),
-            end=m.end(),
-        ))
+        _add(
+            Citation(
+                citation_type="section",
+                raw_text=m.group(0).strip(),
+                ref_number=m.group(1),
+                act_name=m.group(2).strip() if m.group(2) else "",
+                start=m.start(),
+                end=m.end(),
+            )
+        )
 
     # Rule citations
     for m in _RULE_RE.finditer(text):
-        _add(Citation(
-            citation_type="rule",
-            raw_text=m.group(0).strip(),
-            ref_number=m.group(1),
-            act_name=m.group(2).strip() if m.group(2) else "",
-            start=m.start(),
-            end=m.end(),
-        ))
+        _add(
+            Citation(
+                citation_type="rule",
+                raw_text=m.group(0).strip(),
+                ref_number=m.group(1),
+                act_name=m.group(2).strip() if m.group(2) else "",
+                start=m.start(),
+                end=m.end(),
+            )
+        )
 
     # Article citations
     for m in _ARTICLE_RE.finditer(text):
-        _add(Citation(
-            citation_type="article",
-            raw_text=m.group(0).strip(),
-            ref_number=m.group(1),
-            act_name=m.group(2).strip() if m.group(2) else "",
-            start=m.start(),
-            end=m.end(),
-        ))
+        _add(
+            Citation(
+                citation_type="article",
+                raw_text=m.group(0).strip(),
+                ref_number=m.group(1),
+                act_name=m.group(2).strip() if m.group(2) else "",
+                start=m.start(),
+                end=m.end(),
+            )
+        )
 
     # Order + Rule citations
     for m in _ORDER_RE.finditer(text):
-        _add(Citation(
-            citation_type="order",
-            raw_text=m.group(0).strip(),
-            ref_number=f"Order {m.group(1)} Rule {m.group(2)}",
-            act_name=m.group(3).strip() if m.group(3) else "",
-            start=m.start(),
-            end=m.end(),
-        ))
+        _add(
+            Citation(
+                citation_type="order",
+                raw_text=m.group(0).strip(),
+                ref_number=f"Order {m.group(1)} Rule {m.group(2)}",
+                act_name=m.group(3).strip() if m.group(3) else "",
+                start=m.start(),
+                end=m.end(),
+            )
+        )
 
     # AIR case citations
     for m in _AIR_RE.finditer(text):
-        _add(Citation(
-            citation_type="case",
-            raw_text=m.group(0).strip(),
-            case_name=m.group(0).strip(),
-            court=m.group(2),
-            year=m.group(1),
-            start=m.start(),
-            end=m.end(),
-        ))
+        _add(
+            Citation(
+                citation_type="case",
+                raw_text=m.group(0).strip(),
+                case_name=m.group(0).strip(),
+                court=m.group(2),
+                year=m.group(1),
+                start=m.start(),
+                end=m.end(),
+            )
+        )
 
     # (Year) Vol Court Page
     for m in _PAREN_YEAR_RE.finditer(text):
-        _add(Citation(
-            citation_type="case",
-            raw_text=m.group(0).strip(),
-            case_name=m.group(0).strip(),
-            court=m.group(3),
-            year=m.group(1),
-            start=m.start(),
-            end=m.end(),
-        ))
+        _add(
+            Citation(
+                citation_type="case",
+                raw_text=m.group(0).strip(),
+                case_name=m.group(0).strip(),
+                court=m.group(3),
+                year=m.group(1),
+                start=m.start(),
+                end=m.end(),
+            )
+        )
 
     # Year Court (Bench) Page
     for m in _YEAR_COURT_RE.finditer(text):
-        _add(Citation(
-            citation_type="case",
-            raw_text=m.group(0).strip(),
-            case_name=m.group(0).strip(),
-            court=m.group(2),
-            year=m.group(1),
-            start=m.start(),
-            end=m.end(),
-        ))
+        _add(
+            Citation(
+                citation_type="case",
+                raw_text=m.group(0).strip(),
+                case_name=m.group(0).strip(),
+                court=m.group(2),
+                year=m.group(1),
+                start=m.start(),
+                end=m.end(),
+            )
+        )
 
     return citations

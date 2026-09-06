@@ -218,9 +218,7 @@ def save_raw_json(
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     payload: dict[str, Any] = {"meta": meta or {}, "results": [row.to_dict() for row in rows]}
-    path.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8"
-    )
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     return path
 
 
@@ -255,8 +253,10 @@ def compute_row_calibration(
 
     calibration_input: list[dict[str, Any]] = []
     for row in rows:
-        calibration_input.append({
-            "confidence": row.confidence,
-            "answer_accuracy": accuracy_by_id.get(row.item_id, 0.0),
-        })
+        calibration_input.append(
+            {
+                "confidence": row.confidence,
+                "answer_accuracy": accuracy_by_id.get(row.item_id, 0.0),
+            }
+        )
     return compute_calibration_metrics(calibration_input)

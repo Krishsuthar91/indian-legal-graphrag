@@ -150,10 +150,12 @@ class TestMockClient:
     def test_echoes_query_and_cites_sources(self):
         client = MockLLMClient()
         user = "QUESTION: performance of contracts\n[SOURCE 1] x\n[SOURCE 2] y\n"
-        response = client.complete([
-            {"role": "system", "content": "sys"},
-            {"role": "user", "content": user},
-        ])
+        response = client.complete(
+            [
+                {"role": "system", "content": "sys"},
+                {"role": "user", "content": user},
+            ]
+        )
         assert isinstance(response, LLMResponse)
         assert "performance of contracts" in response.text
         assert "[1]" in response.text
@@ -404,9 +406,7 @@ class TestTypedErrorsAndDeadline:
             (400, LLMProviderError),
         ],
     )
-    def test_non_retryable_status_raises_typed_error(
-        self, monkeypatch, status, error_type
-    ):
+    def test_non_retryable_status_raises_typed_error(self, monkeypatch, status, error_type):
         attempts: list[int] = []
 
         def fake_post(url, json=None, headers=None, timeout=None):
@@ -727,9 +727,7 @@ class TestRateLimitHandling:
 
         monkeypatch.setattr(time, "sleep", lambda seconds: sleeps.append(seconds))
         monkeypatch.setattr(httpx, "post", fake_post)
-        client = OpenAICompatClient(
-            model="m", base_url="http://x/v1", api_key="super-secret-key"
-        )
+        client = OpenAICompatClient(model="m", base_url="http://x/v1", api_key="super-secret-key")
         with pytest.raises(RateLimitError) as exc_info:
             client.complete([{"role": "user", "content": "hi"}])
         error = exc_info.value

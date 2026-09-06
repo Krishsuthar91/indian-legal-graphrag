@@ -40,9 +40,7 @@ DEFAULT_HIERARCHY_DIR = Path("data/hierarchy")
 CONTRACT_ACT_1872_DOCUMENT_ID = "0d1934142f67c5f5"
 
 
-def resolve_hierarchy_file(
-    document_id: str, hierarchy_file: str | Path | None = None
-) -> Path:
+def resolve_hierarchy_file(document_id: str, hierarchy_file: str | Path | None = None) -> Path:
     """Locate the hierarchy JSON for a document id.
 
     Prefers an explicit path, then ``data/hierarchy/{document_id}.json``, then
@@ -56,8 +54,7 @@ def resolve_hierarchy_file(
     if candidate.exists():
         return candidate
     raise FileNotFoundError(
-        f"no hierarchy file found for document {document_id!r} "
-        f"(looked for {candidate})"
+        f"no hierarchy file found for document {document_id!r} (looked for {candidate})"
     )
 
 

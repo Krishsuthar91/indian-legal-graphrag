@@ -115,10 +115,7 @@ class HierarchyIndexer:
         else:
             nodes = [n for n in self.graph.all_nodes() if n.get("node_id")]
         if canonical_doc_ids is not None:
-            nodes = [
-                n for n in nodes
-                if n.get("document_id") in canonical_doc_ids
-            ]
+            nodes = [n for n in nodes if n.get("document_id") in canonical_doc_ids]
         return nodes
 
     def _doc_language(self) -> str:
@@ -141,9 +138,7 @@ class HierarchyIndexer:
             # the caller-supplied doc_id only when the node lacks one) is what
             # lets the dense ``document_id`` filter keep ICA and IPC apart.
             node_doc_id = node.get("document_id") or doc_id
-            payload = _build_payload(
-                node, collection, node_doc_id, language, str(label).lower()
-            )
+            payload = _build_payload(node, collection, node_doc_id, language, str(label).lower())
             batches.setdefault(collection, []).append(payload)
 
         totals: dict[str, int] = {}
@@ -167,15 +162,11 @@ class HierarchyIndexer:
         canonical documents, so only canonical nodes land in Qdrant.
         """
         doc_id = ""
-        doc = next(
-            (n for n in self.graph.all_nodes() if n.get("label") == "Document"), None
-        )
+        doc = next((n for n in self.graph.all_nodes() if n.get("label") == "Document"), None)
         if doc:
             doc_id = doc.get("document_id", doc["node_id"])
         language = self._doc_language()
-        totals = self._index_nodes(
-            self._graph_nodes(node_ids, canonical_doc_ids), doc_id, language
-        )
+        totals = self._index_nodes(self._graph_nodes(node_ids, canonical_doc_ids), doc_id, language)
         log.info("index.graph_complete", doc_id=doc_id, collections=totals)
         return {"doc_id": doc_id, "collections": totals}
 
@@ -183,9 +174,7 @@ class HierarchyIndexer:
 
     def index_incremental(self, node_ids: list[str] | None = None) -> dict[str, Any]:
         """Re-embed only new or text-changed nodes; skip already-fresh ones."""
-        doc = next(
-            (n for n in self.graph.all_nodes() if n.get("label") == "Document"), None
-        )
+        doc = next((n for n in self.graph.all_nodes() if n.get("label") == "Document"), None)
         doc_id = doc.get("document_id", doc["node_id"]) if doc else ""
         language = self._doc_language()
 
@@ -201,9 +190,7 @@ class HierarchyIndexer:
             if collection is None:
                 continue
             node_doc_id = node.get("document_id") or doc_id
-            payload = _build_payload(
-                node, collection, node_doc_id, language, str(label).lower()
-            )
+            payload = _build_payload(node, collection, node_doc_id, language, str(label).lower())
             current = existing[collection].get(node["node_id"])
             if current is not None and current.get("text_hash") == payload["text_hash"]:
                 skipped += 1

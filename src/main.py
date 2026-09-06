@@ -137,9 +137,7 @@ async def llm_quota_exceeded_handler(request: Request, exc: LLMQuotaExceededErro
     provider = (exc.provider or "provider").capitalize()
     content = {
         "error": (
-            f"{provider} quota exceeded"
-            if exc.quota_exhausted
-            else f"{provider} rate limited"
+            f"{provider} quota exceeded" if exc.quota_exhausted else f"{provider} rate limited"
         ),
         "provider": exc.provider,
         "details": exc.details,

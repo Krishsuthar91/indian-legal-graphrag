@@ -86,9 +86,7 @@ def performance_metrics(rows: list[Any]) -> dict[str, float]:
         )
         if rows
         else 0.0,
-        "average_llm_time_ms": round(
-            statistics.mean([row.llm_time_ms for row in rows]), 3
-        )
+        "average_llm_time_ms": round(statistics.mean([row.llm_time_ms for row in rows]), 3)
         if rows
         else 0.0,
         "average_ranking_time_ms": round(

@@ -48,30 +48,14 @@ _FAILURE_REASONS: dict[str, str] = {
 }
 
 _FAILURE_RECOMMENDATIONS: dict[str, str] = {
-    "missing_section": (
-        "Improve retrieval weighting or query expansion."
-    ),
-    "wrong_section": (
-        "Review section parsing; retrieved nodes may map to incorrect sections."
-    ),
-    "partial_match": (
-        "Increase top_k or improve ranking so all expected sections surface."
-    ),
-    "low_similarity": (
-        "Add domain-specific embeddings or synonym expansion for legal queries."
-    ),
-    "no_evidence": (
-        "Check that the document is fully indexed and the query is within scope."
-    ),
-    "ranking_error": (
-        "Adjust ranking weights so gold-relevant nodes rank higher."
-    ),
-    "graph_error": (
-        "Verify parent/child edges in the hierarchy graph."
-    ),
-    "chunking_error": (
-        "Re-parse the document so the expected section appears as a node."
-    ),
+    "missing_section": ("Improve retrieval weighting or query expansion."),
+    "wrong_section": ("Review section parsing; retrieved nodes may map to incorrect sections."),
+    "partial_match": ("Increase top_k or improve ranking so all expected sections surface."),
+    "low_similarity": ("Add domain-specific embeddings or synonym expansion for legal queries."),
+    "no_evidence": ("Check that the document is fully indexed and the query is within scope."),
+    "ranking_error": ("Adjust ranking weights so gold-relevant nodes rank higher."),
+    "graph_error": ("Verify parent/child edges in the hierarchy graph."),
+    "chunking_error": ("Re-parse the document so the expected section appears as a node."),
 }
 
 
@@ -151,18 +135,14 @@ def _analyze_retrieval_failure(
     retrieved_keys = _extract_retrieved_section_keys(retrieved_evidence)
     analysis.retrieved_sections = retrieved_keys
 
-    retrieved_scores = [
-        float(ev.get("final_score", 0.0)) for ev in retrieved_evidence
-    ]
+    retrieved_scores = [float(ev.get("final_score", 0.0)) for ev in retrieved_evidence]
 
     # --- Check each expected section ----------------------------------------
     missing: list[str] = []
     ranking_errors: list[str] = []
 
     for exp_key in expected_sections:
-        found, rank, score = _find_matching_retrieved(
-            exp_key, retrieved_keys, retrieved_scores
-        )
+        found, rank, score = _find_matching_retrieved(exp_key, retrieved_keys, retrieved_scores)
         if not found:
             missing.append(exp_key)
         elif rank > ranking_top_k:
@@ -173,7 +153,8 @@ def _analyze_retrieval_failure(
     # Extra sections = retrieved keys that don't match any expected section
     expected_set = set(expected_sections)
     extra = [
-        key for key in dict.fromkeys(retrieved_keys)
+        key
+        for key in dict.fromkeys(retrieved_keys)
         if not any(matches(exp, key) for exp in expected_set)
     ]
     analysis.extra_sections = extra
@@ -193,9 +174,7 @@ def _analyze_retrieval_failure(
         # Nothing expected was found
         if all(s < similarity_threshold for s in retrieved_scores):
             analysis.failure_type = "low_similarity"
-            analysis.failure_reason = (
-                f"All retrieved scores below {similarity_threshold:.2f}."
-            )
+            analysis.failure_reason = f"All retrieved scores below {similarity_threshold:.2f}."
             analysis.recommendation = _FAILURE_RECOMMENDATIONS["low_similarity"]
         elif ranking_errors:
             analysis.failure_type = "ranking_error"
@@ -206,9 +185,7 @@ def _analyze_retrieval_failure(
         else:
             # Expected section is absent from results — missing_section
             analysis.failure_type = "missing_section"
-            analysis.failure_reason = (
-                f"Expected section(s) {expected_sections} not retrieved."
-            )
+            analysis.failure_reason = f"Expected section(s) {expected_sections} not retrieved."
             analysis.recommendation = _FAILURE_RECOMMENDATIONS["missing_section"]
     elif ranking_errors:
         # Some found, some missing due to ranking
@@ -220,9 +197,7 @@ def _analyze_retrieval_failure(
     else:
         # Partial match — some expected sections found, some missing
         analysis.failure_type = "partial_match"
-        analysis.failure_reason = (
-            f"Missing section(s): {missing}."
-        )
+        analysis.failure_reason = f"Missing section(s): {missing}."
         analysis.recommendation = _FAILURE_RECOMMENDATIONS["partial_match"]
 
     return analysis

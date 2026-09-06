@@ -109,9 +109,7 @@ class TestGetProvider:
         assert provider.name == "no/such-model"
 
     def test_registry_dim_used_when_forced(self):
-        provider = get_provider(
-            model_name=EmbeddingModel.BGE_M3.value, force_deterministic=True
-        )
+        provider = get_provider(model_name=EmbeddingModel.BGE_M3.value, force_deterministic=True)
         assert provider.dim == 1024
 
 

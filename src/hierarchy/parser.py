@@ -44,11 +44,13 @@ def _split_into_blocks(text_pages: list[tuple[str, int]]) -> list[dict]:
         for i, line in enumerate(lines):
             stripped = line.strip()
             if stripped:
-                blocks.append({
-                    "text": stripped,
-                    "page_number": page_num,
-                    "line_number": i,
-                })
+                blocks.append(
+                    {
+                        "text": stripped,
+                        "page_number": page_num,
+                        "line_number": i,
+                    }
+                )
     return blocks
 
 
@@ -82,9 +84,7 @@ def _merge_consecutive_body(blocks: list[dict], start_idx: int) -> tuple[str, in
 #   "10. What agreements are contracts"
 # Number: 1-3 digits with optional letter suffix.  Title starts with a
 # capital letter or opening quote.
-_EMBEDDED_SECTION_RE = re.compile(
-    r"(\d{1,3}[A-Za-z]*)\.\s+([A-Z\u201C\u2018])"
-)
+_EMBEDDED_SECTION_RE = re.compile(r"(\d{1,3}[A-Za-z]*)\.\s+([A-Z\u201C\u2018])")
 
 
 def _split_embedded_sections(text: str) -> list[str]:

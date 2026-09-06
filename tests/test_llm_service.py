@@ -98,9 +98,7 @@ class TestAnswer:
         for block in source_blocks:
             match = re.search(r"Text:\s*(.*)", block)
             assert match, f"source block missing Text: {block!r}"
-            assert match.group(1).strip(), (
-                f"empty evidence text passed to LLM: {block!r}"
-            )
+            assert match.group(1).strip(), f"empty evidence text passed to LLM: {block!r}"
 
     def test_deadline_propagates_to_llm_client(self):
         captured = {}

@@ -21,6 +21,7 @@ log = get_logger("provenance")
 # Evidence and explanation building blocks
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class Evidence:
     """A single retrieved node with its per-signal scores and provenance."""
@@ -217,9 +218,7 @@ class ExplanationResult:
     citations: list[SourceCitation] = field(default_factory=list)
     counter_authorities: list[CounterAuthority] = field(default_factory=list)
     confidence: Confidence = field(default_factory=lambda: Confidence(0.0, "low"))
-    validity: Validity = field(
-        default_factory=lambda: Validity(False, False, False, False, True)
-    )
+    validity: Validity = field(default_factory=lambda: Validity(False, False, False, False, True))
     retrieval_weights: dict[str, float] = field(default_factory=dict)
     evidence_relevance: EvidenceRelevance = field(
         default_factory=EvidenceRelevance,
@@ -269,6 +268,7 @@ class AnswerResult:
 # Provenance store
 # ---------------------------------------------------------------------------
 
+
 def _as_dict(obj: Any) -> dict[str, Any]:
     return asdict(obj)
 
@@ -288,9 +288,7 @@ class ProvenanceStore:
         self._records[result.provenance_id] = record
         if self.directory is not None:
             path = self.directory / f"{result.provenance_id}.json"
-            path.write_text(
-                json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8"
-            )
+            path.write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
             log.debug("provenance.saved", id=result.provenance_id, path=str(path))
         return result.provenance_id
 

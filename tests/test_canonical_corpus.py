@@ -126,7 +126,9 @@ class TestSelection:
         assert len(selection.canonical) == 2
         assert len(selection.skipped) == 3
         assert {e.document_id for e in selection.skipped} == {
-            "dup1", "dup2", "dup3",
+            "dup1",
+            "dup2",
+            "dup3",
         }
 
 
@@ -138,11 +140,7 @@ class TestImportAll:
         assert result["files_imported"] == 2  # canonical ICA + penal
         assert result["files_skipped"] == 3
 
-        doc_ids = [
-            n.get("document_id")
-            for n in graph.all_nodes()
-            if n.get("label") == "Document"
-        ]
+        doc_ids = [n.get("document_id") for n in graph.all_nodes() if n.get("label") == "Document"]
         doc_ids = [d for d in doc_ids if d]
         assert doc_ids == ["canonical", "penal"]
         # No duplicate document nodes leak in.

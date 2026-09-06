@@ -14,28 +14,48 @@ def graph():
     g.create_node("Chapter", "ch1", {"title": "CHAPTER I", "text": "Preliminary"})
     g.create_node("Chapter", "ch2", {"title": "CHAPTER II", "text": "Of Contracts"})
     g.create_node("Chapter", "ch3", {"title": "CHAPTER III", "text": "Of Performance"})
-    g.create_node("Section", "s1", {
-        "title": "Short title", "numbering": "1",
-        "text": "This Act may be called the Indian Contract Act.",
-    })
-    g.create_node("Section", "s2", {
-        "title": "Definitions", "numbering": "2",
-        "text": "contract means an agreement enforceable by law.",
-    })
-    g.create_node("Section", "s3", {
-        "title": "Communication of proposals", "numbering": "3",
-        "text": (
-            "The communication of proposals is complete when it comes to "
-            "knowledge of the offeree."
-        ),
-    })
-    g.create_node("Section", "s4", {
-        "title": "Performance of contracts", "numbering": "4",
-        "text": (
-            "Performance of contracts. (a) where the contract provides "
-            "(b) where no provision is made."
-        ),
-    })
+    g.create_node(
+        "Section",
+        "s1",
+        {
+            "title": "Short title",
+            "numbering": "1",
+            "text": "This Act may be called the Indian Contract Act.",
+        },
+    )
+    g.create_node(
+        "Section",
+        "s2",
+        {
+            "title": "Definitions",
+            "numbering": "2",
+            "text": "contract means an agreement enforceable by law.",
+        },
+    )
+    g.create_node(
+        "Section",
+        "s3",
+        {
+            "title": "Communication of proposals",
+            "numbering": "3",
+            "text": (
+                "The communication of proposals is complete when it comes to "
+                "knowledge of the offeree."
+            ),
+        },
+    )
+    g.create_node(
+        "Section",
+        "s4",
+        {
+            "title": "Performance of contracts",
+            "numbering": "4",
+            "text": (
+                "Performance of contracts. (a) where the contract provides "
+                "(b) where no provision is made."
+            ),
+        },
+    )
     g.create_edge("ch1", "doc", "PART_OF")
     g.create_edge("ch2", "doc", "PART_OF")
     g.create_edge("ch3", "doc", "PART_OF")
@@ -113,20 +133,30 @@ class TestRetrieveByReference:
         assert results[0].is_seed is True
 
     def test_section_reference_in_text(self, graph):
-        graph.create_node("Section", "s5", {
-            "title": "Note", "numbering": "5",
-            "text": "This applies as per Section 4 of the Act.",
-        })
+        graph.create_node(
+            "Section",
+            "s5",
+            {
+                "title": "Note",
+                "numbering": "5",
+                "text": "This applies as per Section 4 of the Act.",
+            },
+        )
         graph.create_edge("s5", "ch3", "PART_OF")
         results = retrieve(graph, "section 4")
         assert any(r.node_id == "s4" for r in results)
         assert any(r.node_id == "s5" for r in results)
 
     def test_snippet_truncated(self, graph):
-        graph.create_node("Section", "s_long", {
-            "title": "Long", "numbering": "9",
-            "text": "word " * 200,
-        })
+        graph.create_node(
+            "Section",
+            "s_long",
+            {
+                "title": "Long",
+                "numbering": "9",
+                "text": "word " * 200,
+            },
+        )
         graph.create_edge("s_long", "ch1", "PART_OF")
         results = retrieve(graph, "word", top_k=10)
         long_result = next(r for r in results if r.node_id == "s_long")

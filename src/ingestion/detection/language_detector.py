@@ -22,7 +22,7 @@ _SCRIPT_RANGES: list[tuple[str, int, int]] = [
 _LANG_ALIASES: dict[str, str] = {
     "en": "en",
     "hi": "hi",
-    "mr": "hi",       # Marathi uses Devanagari; map to hi for now
+    "mr": "hi",  # Marathi uses Devanagari; map to hi for now
     "bn": "bn",
     "ta": "ta",
     "te": "te",

@@ -70,6 +70,7 @@ async def check_llm() -> ServiceHealth:
 # Helpers
 # ---------------------------------------------------------------------------
 
+
 async def _check_database() -> ServiceHealth:
     """Probe Neo4j with a trivial query and a short timeout."""
     from neo4j import GraphDatabase

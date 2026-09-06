@@ -43,29 +43,74 @@ COMPLEX_TOP_K = 12
 # lowercased raw query; single-word markers match at word boundaries so e.g.
 # "fine" does not fire inside "defines".
 _DEFINITION_MARKERS = (
-    "define", "defined", "definition", "meaning", "means", "mean",
-    "interpretation", "interpret", "construed",
+    "define",
+    "defined",
+    "definition",
+    "meaning",
+    "means",
+    "mean",
+    "interpretation",
+    "interpret",
+    "construed",
 )
 _PUNISHMENT_MARKERS = (
-    "punish", "punishment", "penalty", "penal", "offence", "offense",
-    "imprison", "imprisonment", "fine", "guilty", "criminal",
+    "punish",
+    "punishment",
+    "penalty",
+    "penal",
+    "offence",
+    "offense",
+    "imprison",
+    "imprisonment",
+    "fine",
+    "guilty",
+    "criminal",
 )
 _PROCEDURAL_MARKERS = (
-    "procedure", "procedural", "process", "how to", "how do", "file a",
-    "filed", "complaint", "summon", "summons", "appeal", "jurisdiction",
-    "limitation", "pleading", "pleadings", "evidence act",
+    "procedure",
+    "procedural",
+    "process",
+    "how to",
+    "how do",
+    "file a",
+    "filed",
+    "complaint",
+    "summon",
+    "summons",
+    "appeal",
+    "jurisdiction",
+    "limitation",
+    "pleading",
+    "pleadings",
+    "evidence act",
 )
 _CONSTITUTIONAL_MARKERS = (
-    "constitution", "constitutional", "fundamental right",
-    "fundamental rights", "directive principle",
+    "constitution",
+    "constitutional",
+    "fundamental right",
+    "fundamental rights",
+    "directive principle",
 )
 _CASE_LAW_MARKERS = (
-    "supreme court", "high court", "judgment", "judgement", "precedent",
-    "case law", "landmark",
+    "supreme court",
+    "high court",
+    "judgment",
+    "judgement",
+    "precedent",
+    "case law",
+    "landmark",
 )
 _COMPARISON_MARKERS = (
-    "compare", "comparison", "difference", "differ", "distinguish",
-    "distinction", "versus", "vs", "differentiate", "similar",
+    "compare",
+    "comparison",
+    "difference",
+    "differ",
+    "distinguish",
+    "distinction",
+    "versus",
+    "vs",
+    "differentiate",
+    "similar",
 )
 _EXPLANATION_MARKERS = ("explain", "explanation", "what is", "how", "why")
 

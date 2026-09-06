@@ -124,15 +124,11 @@ def scan_hierarchy_files(hierarchy_dir: Path) -> list[AuditEntry]:
             log.error("canonical.scan_error", file=str(json_file), error=str(exc))
             continue
         document_id = data.get("document_id", json_file.stem)
-        root = next(
-            (n for n in data.get("nodes", []) if n.get("node_id") == "root"), {}
-        )
+        root = next((n for n in data.get("nodes", []) if n.get("node_id") == "root"), {})
         title = root.get("title") or data.get("title") or document_id
         nodes = data.get("nodes", [])
         node_count = len(nodes)
-        section_count = sum(
-            1 for n in nodes if n.get("node_type") == "section"
-        )
+        section_count = sum(1 for n in nodes if n.get("node_type") == "section")
         mtime = json_file.stat().st_mtime
         entries.append(
             AuditEntry(
@@ -154,10 +150,12 @@ def _select(entries: list[AuditEntry]) -> list[AuditEntry]:
     if not entries:
         return []
     # Prefer (node_count, section_count, parser_version, mtime) — all descending.
-    return [max(
-        entries,
-        key=lambda e: (e.node_count, e.section_count, e.parser_version, e.mtime),
-    )]
+    return [
+        max(
+            entries,
+            key=lambda e: (e.node_count, e.section_count, e.parser_version, e.mtime),
+        )
+    ]
 
 
 def select_canonical(entries: list[AuditEntry]) -> CanonicalSelection:
@@ -196,7 +194,5 @@ def build_corpus_audit(hierarchy_dir: Path) -> dict:
         "canonical_documents": [e.as_dict() for e in selection.canonical],
         "skipped_duplicates": [e.as_dict() for e in selection.skipped],
         "summary": selection.summary(),
-        "groups": {
-            key: [e.as_dict() for e in group] for key, group in selection.groups.items()
-        },
+        "groups": {key: [e.as_dict() for e in group] for key, group in selection.groups.items()},
     }

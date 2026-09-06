@@ -13,13 +13,14 @@ log = logging.getLogger(__name__)
 # In-Memory Graph (used for tests and when Neo4j is unavailable)
 # ---------------------------------------------------------------------------
 
+
 class InMemoryGraph:
     """A lightweight in-memory graph store that mirrors Neo4j's API surface."""
 
     def __init__(self) -> None:
-        self._nodes: dict[str, dict[str, Any]] = {}       # node_id -> properties
-        self._node_labels: dict[str, str] = {}             # node_id -> label
-        self._edges: list[dict[str, Any]] = []             # list of edge dicts
+        self._nodes: dict[str, dict[str, Any]] = {}  # node_id -> properties
+        self._node_labels: dict[str, str] = {}  # node_id -> label
+        self._edges: list[dict[str, Any]] = []  # list of edge dicts
         self._adj_out: dict[str, list[int]] = defaultdict(list)  # node_id -> edge indices
         self._adj_in: dict[str, list[int]] = defaultdict(list)
 
@@ -46,7 +47,8 @@ class InMemoryGraph:
         self, label: str, property_key: str, property_value: Any
     ) -> list[dict[str, Any]]:
         return [
-            n for nid, n in self._nodes.items()
+            n
+            for nid, n in self._nodes.items()
             if self._node_labels.get(nid) == label and n.get(property_key) == property_value
         ]
 
@@ -64,6 +66,7 @@ class InMemoryGraph:
                 self._nodes[nid].update(props)
             return nid
         import uuid
+
         nid = uuid.uuid4().hex[:12]
         all_props = {match_key: match_value}
         if props:
@@ -167,8 +170,7 @@ class InMemoryGraph:
     def edge_count(self, rel_type: str | None = None) -> int:
         if rel_type:
             return sum(
-                1 for e in self._edges
-                if not e.get("_deleted") and e["rel_type"] == rel_type
+                1 for e in self._edges if not e.get("_deleted") and e["rel_type"] == rel_type
             )
         return sum(1 for e in self._edges if not e.get("_deleted"))
 
@@ -184,11 +186,13 @@ class InMemoryGraph:
 # Neo4j Driver (wraps the real neo4j package)
 # ---------------------------------------------------------------------------
 
+
 class Neo4jDriver:
     """Thin wrapper around the official neo4j driver."""
 
     def __init__(self, uri: str, user: str, password: str) -> None:
         from neo4j import GraphDatabase
+
         self._driver = GraphDatabase.driver(uri, auth=(user, password))
         log.info("neo4j.connected", uri=uri)
 
@@ -204,9 +208,11 @@ class Neo4jDriver:
         self, cypher: str, params: dict[str, Any] | None = None
     ) -> list[dict[str, Any]]:
         with self._driver.session() as session:
+
             def _tx(tx):
                 result = tx.run(cypher, params or {})
                 return [dict(record) for record in result]
+
             return session.execute_write(_tx)
 
     def create_node(self, label: str, node_id: str, props: dict[str, Any] | None = None) -> str:
@@ -296,6 +302,7 @@ class Neo4jDriver:
 # ---------------------------------------------------------------------------
 # Factory
 # ---------------------------------------------------------------------------
+
 
 def get_graph(uri: str | None = None, user: str | None = None, password: str | None = None):
     """Return a graph store.

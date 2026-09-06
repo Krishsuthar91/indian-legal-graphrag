@@ -16,23 +16,53 @@ from src.knowledge_graph.neo4j_driver import InMemoryGraph
 @pytest.fixture()
 def graph():
     g = InMemoryGraph()
-    g.create_node("Document", "doc1", {
-        "document_id": "doc1", "title": "THE INDIAN CONTRACT ACT, 1892", "language": "en",
-    })
-    g.create_node("Chapter", "ch1", {
-        "title": "CHAPTER I", "text": "Preliminary", "hierarchy_level": 4,
-    })
-    g.create_node("Chapter", "ch2", {
-        "title": "CHAPTER II", "text": "Of Contracts", "hierarchy_level": 4,
-    })
-    g.create_node("Section", "s1", {
-        "title": "Short title", "numbering": "1", "hierarchy_level": 5,
-        "text": "This Act may be called the Indian Contract Act.",
-    })
-    g.create_node("Section", "s2", {
-        "title": "Definitions", "numbering": "2", "hierarchy_level": 5,
-        "text": "contract means an agreement enforceable by law.",
-    })
+    g.create_node(
+        "Document",
+        "doc1",
+        {
+            "document_id": "doc1",
+            "title": "THE INDIAN CONTRACT ACT, 1892",
+            "language": "en",
+        },
+    )
+    g.create_node(
+        "Chapter",
+        "ch1",
+        {
+            "title": "CHAPTER I",
+            "text": "Preliminary",
+            "hierarchy_level": 4,
+        },
+    )
+    g.create_node(
+        "Chapter",
+        "ch2",
+        {
+            "title": "CHAPTER II",
+            "text": "Of Contracts",
+            "hierarchy_level": 4,
+        },
+    )
+    g.create_node(
+        "Section",
+        "s1",
+        {
+            "title": "Short title",
+            "numbering": "1",
+            "hierarchy_level": 5,
+            "text": "This Act may be called the Indian Contract Act.",
+        },
+    )
+    g.create_node(
+        "Section",
+        "s2",
+        {
+            "title": "Definitions",
+            "numbering": "2",
+            "hierarchy_level": 5,
+            "text": "contract means an agreement enforceable by law.",
+        },
+    )
     g.create_node("Case", "case1", {"name": "AIR 1965 SC 123", "hierarchy_level": 0})
     g.create_edge("ch1", "doc1", "PART_OF")
     g.create_edge("ch2", "doc1", "PART_OF")
@@ -100,12 +130,30 @@ class TestIndexHierarchyFile:
             "root_id": "root",
             "language": "hi",
             "nodes": [
-                {"node_id": "root", "parent_id": None, "level": 0, "node_type": "document",
-                 "title": "अनुबंध अधिनियम", "text": "", "start_page": 1,
-                 "end_page": 1, "numbering": "", "children": ["n1"]},
-                {"node_id": "n1", "parent_id": "root", "level": 4, "node_type": "chapter",
-                 "title": "CHAPTER I", "text": "प्रारंभिक", "start_page": 1,
-                 "end_page": 1, "numbering": "I", "children": []},
+                {
+                    "node_id": "root",
+                    "parent_id": None,
+                    "level": 0,
+                    "node_type": "document",
+                    "title": "अनुबंध अधिनियम",
+                    "text": "",
+                    "start_page": 1,
+                    "end_page": 1,
+                    "numbering": "",
+                    "children": ["n1"],
+                },
+                {
+                    "node_id": "n1",
+                    "parent_id": "root",
+                    "level": 4,
+                    "node_type": "chapter",
+                    "title": "CHAPTER I",
+                    "text": "प्रारंभिक",
+                    "start_page": 1,
+                    "end_page": 1,
+                    "numbering": "I",
+                    "children": [],
+                },
             ],
             "nested_set": [],
             "warnings": [],
@@ -132,10 +180,16 @@ class TestIncremental:
     def test_new_node_indexed(self, graph, store, service):
         indexer = _indexer(graph, store, service)
         indexer.index_graph()
-        graph.create_node("Section", "s3", {
-            "title": "New", "numbering": "3", "hierarchy_level": 5,
-            "text": "freshly added provision",
-        })
+        graph.create_node(
+            "Section",
+            "s3",
+            {
+                "title": "New",
+                "numbering": "3",
+                "hierarchy_level": 5,
+                "text": "freshly added provision",
+            },
+        )
         graph.create_edge("s3", "ch1", "PART_OF")
         result = indexer.index_incremental()
         assert result["indexed"] == 1

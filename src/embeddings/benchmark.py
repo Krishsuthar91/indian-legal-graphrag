@@ -78,12 +78,8 @@ def benchmark_retrieval(
 
     for q in queries:
         embed.times_ms.append(_time_ms(lambda: retriever.service.embed_query(q)))
-        dense.times_ms.append(
-            _time_ms(lambda: retriever.dense_search(q, top_k=top_k))
-        )
-        hybrid.times_ms.append(
-            _time_ms(lambda: retriever.hybrid_retrieve(q, top_k=top_k))
-        )
+        dense.times_ms.append(_time_ms(lambda: retriever.dense_search(q, top_k=top_k)))
+        hybrid.times_ms.append(_time_ms(lambda: retriever.hybrid_retrieve(q, top_k=top_k)))
 
     reports = [embed, dense, hybrid]
     log.info(

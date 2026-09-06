@@ -18,6 +18,7 @@ from typing import Any
 # Data structures
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class CalibrationBin:
     """Statistics for one confidence bin."""
@@ -134,8 +135,7 @@ def _compute_ece(bins: list[CalibrationBin], total: int) -> float:
     if total == 0 or not bins:
         return 0.0
     return sum(
-        (b.sample_count / total) * abs(b.empirical_accuracy - b.average_confidence)
-        for b in bins
+        (b.sample_count / total) * abs(b.empirical_accuracy - b.average_confidence) for b in bins
     )
 
 

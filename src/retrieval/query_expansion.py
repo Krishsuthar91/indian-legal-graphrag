@@ -267,9 +267,7 @@ def expand_query(
     seen_refs: set[str] = set()
     considered: list[str] = []
     for ref in sorted(
-        f"section {n}"
-        for concept in ordered
-        for n in VERIFIED_SECTION_MAPPING.get(concept, ())
+        f"section {n}" for concept in ordered for n in VERIFIED_SECTION_MAPPING.get(concept, ())
     ):
         if ref not in seen_refs:
             seen_refs.add(ref)

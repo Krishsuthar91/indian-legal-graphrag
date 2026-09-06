@@ -52,7 +52,7 @@ class Settings(BaseSettings):
     # e.g. gpt-4o-mini, llama-3.1-8b, mistral-small, Qwen/Qwen2.5-7B-Instruct,
     # meta/llama-3.3-70b-instruct
     LLM_MODEL: str = ""
-    LLM_BASE_URL: str = ""      # OpenAI-compatible endpoint for llama/qwen/nvidia serving
+    LLM_BASE_URL: str = ""  # OpenAI-compatible endpoint for llama/qwen/nvidia serving
     LLM_API_KEY: str = ""
     LLM_TEMPERATURE: float = 0.2
     LLM_MAX_TOKENS: int = 800

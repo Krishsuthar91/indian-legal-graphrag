@@ -58,12 +58,21 @@ class TestUpsertAndSearch:
         store.upsert_batch(
             "sections",
             [
-                {"node_id": "s1", "vector": [1.0, 0.0, 0.0, 0.0],
-                 "payload": {"node_id": "s1", "language": "en"}},
-                {"node_id": "s2", "vector": [0.9, 0.1, 0.0, 0.0],
-                 "payload": {"node_id": "s2", "language": "hi"}},
-                {"node_id": "s3", "vector": [0.1, 0.9, 0.0, 0.0],
-                 "payload": {"node_id": "s3", "language": "en"}},
+                {
+                    "node_id": "s1",
+                    "vector": [1.0, 0.0, 0.0, 0.0],
+                    "payload": {"node_id": "s1", "language": "en"},
+                },
+                {
+                    "node_id": "s2",
+                    "vector": [0.9, 0.1, 0.0, 0.0],
+                    "payload": {"node_id": "s2", "language": "hi"},
+                },
+                {
+                    "node_id": "s3",
+                    "vector": [0.1, 0.9, 0.0, 0.0],
+                    "payload": {"node_id": "s3", "language": "en"},
+                },
             ],
         )
         hits = store.search("sections", [1.0, 0.0, 0.0, 0.0], top_k=3)
@@ -72,7 +81,9 @@ class TestUpsertAndSearch:
 
     def test_search_returns_payload(self, store):
         store.upsert(
-            "sections", "s1", [1.0, 0.0, 0.0, 0.0],
+            "sections",
+            "s1",
+            [1.0, 0.0, 0.0, 0.0],
             {"node_id": "s1", "language": "en", "level": 5},
         )
         hits = store.search("sections", [1.0, 0.0, 0.0, 0.0], top_k=1)
@@ -83,10 +94,16 @@ class TestUpsertAndSearch:
         store.upsert_batch(
             "sections",
             [
-                {"node_id": "s1", "vector": [1.0, 0.0, 0.0, 0.0],
-                 "payload": {"node_id": "s1", "language": "en"}},
-                {"node_id": "s2", "vector": [1.0, 0.0, 0.0, 0.0],
-                 "payload": {"node_id": "s2", "language": "hi"}},
+                {
+                    "node_id": "s1",
+                    "vector": [1.0, 0.0, 0.0, 0.0],
+                    "payload": {"node_id": "s1", "language": "en"},
+                },
+                {
+                    "node_id": "s2",
+                    "vector": [1.0, 0.0, 0.0, 0.0],
+                    "payload": {"node_id": "s2", "language": "hi"},
+                },
             ],
         )
         hits = store.search("sections", [1.0, 0.0, 0.0, 0.0], top_k=5, language="hi")
@@ -131,7 +148,9 @@ class TestPointManagement:
 
     def test_indexed_payloads(self, store):
         store.upsert(
-            "sections", "s1", [1.0, 0.0, 0.0, 0.0],
+            "sections",
+            "s1",
+            [1.0, 0.0, 0.0, 0.0],
             {"node_id": "s1", "text_hash": "a", "level": 5},
         )
         payloads = store.indexed_payloads("sections")

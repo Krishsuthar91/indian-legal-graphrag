@@ -8,6 +8,7 @@ from pydantic import BaseModel, Field
 # API schemas
 # ---------------------------------------------------------------------------
 
+
 class HealthResponse(BaseModel):
     status: str
     version: str
@@ -30,6 +31,7 @@ class ErrorResponse(BaseModel):
 # ---------------------------------------------------------------------------
 # Ingestion schemas
 # ---------------------------------------------------------------------------
+
 
 class PageData(BaseModel):
     page_number: int

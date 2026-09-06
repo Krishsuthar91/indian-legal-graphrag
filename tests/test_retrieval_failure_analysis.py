@@ -146,12 +146,15 @@ class TestSerialization:
 
     def test_build_failure_analyses_returns_none_when_accurate(self):
         """build_failure_analyses returns None when section_accuracy is 1.0."""
-        assert build_failure_analyses(
-            query="q",
-            expected_sections=["72"],
-            retrieved_evidence=[_ev("72")],
-            section_accuracy=1.0,
-        ) is None
+        assert (
+            build_failure_analyses(
+                query="q",
+                expected_sections=["72"],
+                retrieved_evidence=[_ev("72")],
+                section_accuracy=1.0,
+            )
+            is None
+        )
 
     def test_build_failure_analyses_returns_analysis_when_incomplete(self):
         result = build_failure_analyses(
@@ -166,13 +169,19 @@ class TestSerialization:
     def test_summarize_failure_types(self):
         analyses = [
             RetrievalFailureAnalysis(
-                failure_type="missing_section", query="q1", recommendation="rec1",
+                failure_type="missing_section",
+                query="q1",
+                recommendation="rec1",
             ),
             RetrievalFailureAnalysis(
-                failure_type="missing_section", query="q2", recommendation="rec1",
+                failure_type="missing_section",
+                query="q2",
+                recommendation="rec1",
             ),
             RetrievalFailureAnalysis(
-                failure_type="no_evidence", query="q3", recommendation="rec2",
+                failure_type="no_evidence",
+                query="q3",
+                recommendation="rec2",
             ),
         ]
         summary = summarize_failure_types(analyses)
@@ -233,9 +242,14 @@ class TestRegression:
             if row.retrieval_failure_analysis is not None:
                 a = row.retrieval_failure_analysis
                 assert a.failure_type in (
-                    "missing_section", "wrong_section", "partial_match",
-                    "low_similarity", "no_evidence", "ranking_error",
-                    "graph_error", "chunking_error",
+                    "missing_section",
+                    "wrong_section",
+                    "partial_match",
+                    "low_similarity",
+                    "no_evidence",
+                    "ranking_error",
+                    "graph_error",
+                    "chunking_error",
                 )
                 assert a.query
                 assert a.failure_reason

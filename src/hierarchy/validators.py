@@ -31,12 +31,14 @@ def _check_missing_parent(
     warnings: list[HierarchyWarning] = []
     for node in hierarchy.nodes:
         if node.parent_id and node.parent_id not in node_map:
-            warnings.append(HierarchyWarning(
-                warning_type="missing_parent",
-                message=f"Node '{node.node_id}' (level {node.level}) references "
-                        f"non-existent parent '{node.parent_id}'",
-                node_id=node.node_id,
-            ))
+            warnings.append(
+                HierarchyWarning(
+                    warning_type="missing_parent",
+                    message=f"Node '{node.node_id}' (level {node.level}) references "
+                    f"non-existent parent '{node.parent_id}'",
+                    node_id=node.node_id,
+                )
+            )
     return warnings
 
 
@@ -50,13 +52,15 @@ def _check_duplicate_numbering(hierarchy: ParsedHierarchy) -> list[HierarchyWarn
             continue
         key = (node.parent_id, node.numbering, node.level)
         if key in seen:
-            warnings.append(HierarchyWarning(
-                warning_type="duplicate_numbering",
-                message=f"Duplicate numbering '{node.numbering}' at level {node.level} "
-                        f"under parent '{node.parent_id}' "
-                        f"(first: {seen[key]}, duplicate: {node.node_id})",
-                node_id=node.node_id,
-            ))
+            warnings.append(
+                HierarchyWarning(
+                    warning_type="duplicate_numbering",
+                    message=f"Duplicate numbering '{node.numbering}' at level {node.level} "
+                    f"under parent '{node.parent_id}' "
+                    f"(first: {seen[key]}, duplicate: {node.node_id})",
+                    node_id=node.node_id,
+                )
+            )
         else:
             seen[key] = node.node_id
 
@@ -73,11 +77,13 @@ def _check_broken_nesting(
             continue
         parent = node_map.get(node.parent_id)
         if parent and node.level <= parent.level:
-            warnings.append(HierarchyWarning(
-                warning_type="broken_nesting",
-                message=f"Node '{node.node_id}' (level {node.level}) is a child of "
-                        f"'{parent.node_id}' (level {parent.level}) — "
-                        f"child level must be < parent level",
-                node_id=node.node_id,
-            ))
+            warnings.append(
+                HierarchyWarning(
+                    warning_type="broken_nesting",
+                    message=f"Node '{node.node_id}' (level {node.level}) is a child of "
+                    f"'{parent.node_id}' (level {parent.level}) — "
+                    f"child level must be < parent level",
+                    node_id=node.node_id,
+                )
+            )
     return warnings

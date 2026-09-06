@@ -38,9 +38,7 @@ log = get_logger("qa_service")
 # Grounded guard answer returned when retrieval validation finds the indexed
 # evidence insufficient. The LLM is never invoked in that case, so it cannot
 # fabricate a section or assert that a provision "does not exist".
-INSUFFICIENT_EVIDENCE_ANSWER = (
-    "The indexed evidence is insufficient to answer this question."
-)
+INSUFFICIENT_EVIDENCE_ANSWER = "The indexed evidence is insufficient to answer this question."
 INSUFFICIENT_EVIDENCE_MODEL = "grounding-guard"
 
 # ---------------------------------------------------------------------------
@@ -115,14 +113,11 @@ class QueryService:
 
         # Resolve LLM-generation parameters up front so both generation branches
         # (grounding guard pass-through and legacy path) stay identical.
-        gen_temperature = (
-            temperature if temperature is not None else settings.LLM_TEMPERATURE
-        )
+        gen_temperature = temperature if temperature is not None else settings.LLM_TEMPERATURE
         gen_max_tokens = max_tokens if max_tokens is not None else settings.LLM_MAX_TOKENS
 
         needs_legacy_guard = (
-            self.require_sufficient_evidence
-            and explanation.validity.insufficient_evidence
+            self.require_sufficient_evidence and explanation.validity.insufficient_evidence
         )
         # Task 15 grounding guard: enforced before any LLM generation. When
         # enabled it replaces the coarse legacy insufficiency check with a
@@ -266,9 +261,7 @@ class QueryService:
         )
         explanation.confidence = confidence
         explanation.validity = validity
-        explanation.verification_trace = self.engine._build_verification_trace(
-            confidence
-        )
+        explanation.verification_trace = self.engine._build_verification_trace(confidence)
         explanation.citation_entailment = entailment
         return explanation
 
@@ -360,9 +353,7 @@ def build_default_corpus() -> tuple[InMemoryGraph, QdrantStore, EmbeddingService
     log.info("qa_service.corpus_build_start")
     graph = build_default_graph()
 
-    provider = get_provider(
-        model_name=settings.EMBEDDING_MODEL, force_deterministic=True
-    )
+    provider = get_provider(model_name=settings.EMBEDDING_MODEL, force_deterministic=True)
     embedding_service = EmbeddingService(provider=provider)
     store = QdrantStore(
         dim=embedding_service.dim,
@@ -376,9 +367,7 @@ def build_default_corpus() -> tuple[InMemoryGraph, QdrantStore, EmbeddingService
     log.info("qa_service.index_graph_start", nodes=len(graph.all_nodes()))
     hierarchy_dir = Path(__file__).resolve().parent.parent.parent / "data" / "hierarchy"
     canonical_ids = canonical_doc_ids(hierarchy_dir)
-    HierarchyIndexer(graph, store, embedding_service).index_graph(
-        canonical_doc_ids=canonical_ids
-    )
+    HierarchyIndexer(graph, store, embedding_service).index_graph(canonical_doc_ids=canonical_ids)
     log.info("qa_service.index_graph_complete")
     log.info(
         "qa_service.indexed",

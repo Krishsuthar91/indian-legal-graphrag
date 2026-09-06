@@ -26,9 +26,17 @@ WEIGHTS: dict[str, float] = {
 # Legal leaf node labels: concrete provisions a query can be asking about.
 # Container nodes (Chapter/Part/Document/... ) merely group these leaves, so a
 # query that directly matches a leaf should prefer the leaf over its container.
-LEAF_LABELS: frozenset[str] = frozenset({
-    "section", "clause", "article", "rule", "order", "paragraph", "subclause",
-})
+LEAF_LABELS: frozenset[str] = frozenset(
+    {
+        "section",
+        "clause",
+        "article",
+        "rule",
+        "order",
+        "paragraph",
+        "subclause",
+    }
+)
 
 
 def leaf_direct_priority(node: dict[str, Any], query: RetrievalQuery) -> float:

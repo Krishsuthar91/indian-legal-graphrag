@@ -53,30 +53,22 @@ class TestTokenF1:
 
 class TestFaithfulness:
     def test_answer_supported_by_evidence(self):
-        result = ExplanationResult(
-            query="q", query_language="en", evidence=[_evidence()]
-        )
+        result = ExplanationResult(query="q", query_language="en", evidence=[_evidence()])
         assert faithfulness("When contracts must be performed.", result) == pytest.approx(1.0)
 
     def test_unsupported_answer(self):
-        result = ExplanationResult(
-            query="q", query_language="en", evidence=[_evidence()]
-        )
+        result = ExplanationResult(query="q", query_language="en", evidence=[_evidence()])
         assert faithfulness("Quantum computing is fun.", result) == pytest.approx(0.0)
 
 
 class TestContextRecall:
     def test_anchor_recovered(self):
-        result = ExplanationResult(
-            query="q", query_language="en", evidence=[_evidence()]
-        )
+        result = ExplanationResult(query="q", query_language="en", evidence=[_evidence()])
         gold = [GoldCitation(citation_text="Section 4 of the Act", node_id="s4")]
         assert context_recall(gold, result) == pytest.approx(1.0)
 
     def test_missing_anchor(self):
-        result = ExplanationResult(
-            query="q", query_language="en", evidence=[_evidence()]
-        )
+        result = ExplanationResult(query="q", query_language="en", evidence=[_evidence()])
         gold = [GoldCitation(citation_text="Section 99 of the Act", node_id="s99")]
         assert context_recall(gold, result) == pytest.approx(0.0)
 

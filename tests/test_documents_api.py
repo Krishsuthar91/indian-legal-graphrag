@@ -31,9 +31,7 @@ def corpus(monkeypatch):
     retriever = build_retriever(graph)
     store = retriever.store
     service = retriever.service
-    monkeypatch.setattr(
-        documents_api, "corpus_factory", lambda: (graph, store, service)
-    )
+    monkeypatch.setattr(documents_api, "corpus_factory", lambda: (graph, store, service))
     return graph, store, service
 
 
@@ -59,9 +57,7 @@ def test_upload_indexes_document(client, sample_txt, isolated_dirs, corpus):
     after = sum(store.count(c) for c in store.collections)
     assert after - before >= data["nodes_indexed"]
 
-    hits = VectorRetriever(graph, store, service).dense_search(
-        "equality before the law", top_k=10
-    )
+    hits = VectorRetriever(graph, store, service).dense_search("equality before the law", top_k=10)
     assert hits
     assert any(h.payload.get("doc_id") == data["document_id"] for h in hits)
 
@@ -113,9 +109,7 @@ def test_upload_failure_returns_500_with_traceback(client, sample_txt, isolated_
     assert "Traceback" in data["detail"]
 
 
-def test_upload_hang_times_out_and_returns_500_json(
-    client, sample_txt, isolated_dirs, monkeypatch
-):
+def test_upload_hang_times_out_and_returns_500_json(client, sample_txt, isolated_dirs, monkeypatch):
     def hang(*args, **kwargs):
         time.sleep(5)
         return None

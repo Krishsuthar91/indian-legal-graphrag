@@ -44,52 +44,120 @@ def _threat_graph() -> InMemoryGraph:
     references) they are never retrieved."""
     g = InMemoryGraph()
     g.create_node("Document", "docT", {"title": "EXPLAINTEST", "language": "en"})
-    g.create_node("Chapter", "chA", {
-        "title": "CHAPTER II", "text": "Of Contracts", "hierarchy_level": 4,
-    })
-    g.create_node("Chapter", "chC", {
-        "title": "CHAPTER IV", "text": "Consent and coercion", "hierarchy_level": 4,
-    })
-    g.create_node("Section", "s2", {
-        "title": "Definitions", "numbering": "2", "hierarchy_level": 5,
-        "text": "Contract means an agreement enforceable by law.",
-    })
-    g.create_node("Section", "s3", {
-        "title": "Communication", "numbering": "3", "hierarchy_level": 5,
-        "text": "Communication of a contract is complete when it comes to knowledge.",
-    })
-    g.create_node("Section", "s4", {
-        "title": "Performance", "numbering": "4", "hierarchy_level": 5,
-        "text": "Performance under a valid contract is a duty of the promisor.",
-    })
-    g.create_node("Section", "s5", {
-        "title": "Writing", "numbering": "5", "hierarchy_level": 5,
-        "text": "A contract may be valid without writing.",
-    })
-    g.create_node("Section", "s10", {
-        "title": "What agreements are contracts", "numbering": "10", "hierarchy_level": 5,
-        "text": "All agreements are contracts if made by free consent of parties.",
-    })
-    g.create_node("Section", "s12", {
-        "title": "Sound mind", "numbering": "12", "hierarchy_level": 5,
-        "text": "A person is of sound mind for contracting if capable of understanding it.",
-    })
-    g.create_node("Section", "s14", {
-        "title": "Free consent", "numbering": "14", "hierarchy_level": 5,
-        "text": "Consent free when not caused by coercion, undue influence, fraud, "
-               "misrepresentation, or mistake.",
-    })
-    g.create_node("Section", "s15", {
-        "title": "Coercion", "numbering": "15", "hierarchy_level": 5,
-        "text": "Committing coercion as permitted in the Indian Penal Code renders "
-               "consent voidable.",
-    })
-    g.create_node("Section", "s19", {
-        "title": "Voidability", "numbering": "19", "hierarchy_level": 5,
-        "text": "Consent caused by coercion voidable at option of coerced party.",
-    })
-    for chapter, sections in (("chA", ("s2", "s3", "s4", "s5", "s10", "s12")),
-                              ("chC", ("s14", "s15", "s19"))):
+    g.create_node(
+        "Chapter",
+        "chA",
+        {
+            "title": "CHAPTER II",
+            "text": "Of Contracts",
+            "hierarchy_level": 4,
+        },
+    )
+    g.create_node(
+        "Chapter",
+        "chC",
+        {
+            "title": "CHAPTER IV",
+            "text": "Consent and coercion",
+            "hierarchy_level": 4,
+        },
+    )
+    g.create_node(
+        "Section",
+        "s2",
+        {
+            "title": "Definitions",
+            "numbering": "2",
+            "hierarchy_level": 5,
+            "text": "Contract means an agreement enforceable by law.",
+        },
+    )
+    g.create_node(
+        "Section",
+        "s3",
+        {
+            "title": "Communication",
+            "numbering": "3",
+            "hierarchy_level": 5,
+            "text": "Communication of a contract is complete when it comes to knowledge.",
+        },
+    )
+    g.create_node(
+        "Section",
+        "s4",
+        {
+            "title": "Performance",
+            "numbering": "4",
+            "hierarchy_level": 5,
+            "text": "Performance under a valid contract is a duty of the promisor.",
+        },
+    )
+    g.create_node(
+        "Section",
+        "s5",
+        {
+            "title": "Writing",
+            "numbering": "5",
+            "hierarchy_level": 5,
+            "text": "A contract may be valid without writing.",
+        },
+    )
+    g.create_node(
+        "Section",
+        "s10",
+        {
+            "title": "What agreements are contracts",
+            "numbering": "10",
+            "hierarchy_level": 5,
+            "text": "All agreements are contracts if made by free consent of parties.",
+        },
+    )
+    g.create_node(
+        "Section",
+        "s12",
+        {
+            "title": "Sound mind",
+            "numbering": "12",
+            "hierarchy_level": 5,
+            "text": "A person is of sound mind for contracting if capable of understanding it.",
+        },
+    )
+    g.create_node(
+        "Section",
+        "s14",
+        {
+            "title": "Free consent",
+            "numbering": "14",
+            "hierarchy_level": 5,
+            "text": "Consent free when not caused by coercion, undue influence, fraud, "
+            "misrepresentation, or mistake.",
+        },
+    )
+    g.create_node(
+        "Section",
+        "s15",
+        {
+            "title": "Coercion",
+            "numbering": "15",
+            "hierarchy_level": 5,
+            "text": "Committing coercion as permitted in the Indian Penal Code renders "
+            "consent voidable.",
+        },
+    )
+    g.create_node(
+        "Section",
+        "s19",
+        {
+            "title": "Voidability",
+            "numbering": "19",
+            "hierarchy_level": 5,
+            "text": "Consent caused by coercion voidable at option of coerced party.",
+        },
+    )
+    for chapter, sections in (
+        ("chA", ("s2", "s3", "s4", "s5", "s10", "s12")),
+        ("chC", ("s14", "s15", "s19")),
+    ):
         g.create_edge(chapter, "docT", "PART_OF")
         for section in sections:
             g.create_edge(section, chapter, "PART_OF")
@@ -145,15 +213,23 @@ class TestFullPipelineWithExpansion:
         s = result.retrieval
         assert s.query_expansion_enabled is True
         assert set(s.expanded_concepts) >= {
-            "coercion", "free_consent", "voidable_agreement",
+            "coercion",
+            "free_consent",
+            "voidable_agreement",
         }
         assert s.expanded_terms
         assert s.expansion_reason
         assert s.section_refs_considered == [
-            "section 14", "section 15", "section 19", "section 2",
+            "section 14",
+            "section 15",
+            "section 19",
+            "section 2",
         ]
         assert s.section_refs_available == [
-            "section 14", "section 15", "section 19", "section 2",
+            "section 14",
+            "section 15",
+            "section 19",
+            "section 2",
         ]
         assert s.section_refs_omitted == []
         assert "legal_expansion" in s.latency_breakdown
@@ -215,7 +291,9 @@ class TestCorpusAwareExpansion:
         s = result.retrieval
         assert s.query_expansion_enabled is True
         assert set(s.expanded_concepts) == {
-            "coercion", "free_consent", "voidable_agreement",
+            "coercion",
+            "free_consent",
+            "voidable_agreement",
         }
         expected = ["section 14", "section 15", "section 19", "section 2"]
         assert s.section_refs_available == expected
@@ -235,7 +313,9 @@ class TestCorpusAwareExpansion:
     def test_graph_only_engine_injects_all_available_sections(self):
         graph = _real_corpus_graph()
         engine = ExplainabilityEngine(
-            graph, vector_retriever=None, expansion_enabled=True,
+            graph,
+            vector_retriever=None,
+            expansion_enabled=True,
         )
         result = engine.explain(THREAT_QUERY, top_k=5)
         expected = ["section 14", "section 15", "section 19", "section 2"]
@@ -270,7 +350,10 @@ class TestExpansionFeatureFlag:
         assert COERCION_SECTIONS <= _evidence_ids(result)
         assert result.retrieval.query_expansion_enabled is True
         assert result.retrieval.section_refs_available == [
-            "section 14", "section 15", "section 19", "section 2",
+            "section 14",
+            "section 15",
+            "section 19",
+            "section 2",
         ]
         assert result.retrieval.section_refs_omitted == []
         step = next(st for st in result.reasoning_chain if st.kind == "query_expansion")

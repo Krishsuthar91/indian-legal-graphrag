@@ -1,6 +1,5 @@
 """Tests for the explainability engine (Module 7)."""
 
-
 import pytest
 
 from src.knowledge_graph.neo4j_driver import InMemoryGraph
@@ -111,16 +110,34 @@ class TestGraphOnlyMode:
 class TestCounterAuthority:
     def _graph_with_counter(self) -> InMemoryGraph:
         g = InMemoryGraph()
-        g.create_node("Document", "docV", {
-            "document_id": "docV", "title": "SAMPLE ACT", "language": "en",
-        })
-        g.create_node("Chapter", "chV", {
-            "title": "CHAPTER I", "text": "General", "hierarchy_level": 4,
-        })
-        g.create_node("Section", "sVoid", {
-            "title": "Void agreements", "numbering": "25", "hierarchy_level": 5,
-            "text": "An agreement without consideration is void ab initio and not enforceable.",
-        })
+        g.create_node(
+            "Document",
+            "docV",
+            {
+                "document_id": "docV",
+                "title": "SAMPLE ACT",
+                "language": "en",
+            },
+        )
+        g.create_node(
+            "Chapter",
+            "chV",
+            {
+                "title": "CHAPTER I",
+                "text": "General",
+                "hierarchy_level": 4,
+            },
+        )
+        g.create_node(
+            "Section",
+            "sVoid",
+            {
+                "title": "Void agreements",
+                "numbering": "25",
+                "hierarchy_level": 5,
+                "text": "An agreement without consideration is void ab initio and not enforceable.",
+            },
+        )
         g.create_edge("chV", "docV", "PART_OF")
         g.create_edge("sVoid", "chV", "PART_OF")
         return g
@@ -314,11 +331,7 @@ class TestRankingSignals:
             breakdown[first.node_id]
         )
         assert 0.0 <= breakdown[first.node_id]["rank"] <= 1.0
-        assert all(
-            0.0 <= v <= 1.0
-            for node in breakdown.values()
-            for v in node.values()
-        )
+        assert all(0.0 <= v <= 1.0 for node in breakdown.values() for v in node.values())
 
     def test_evidence_ordered_by_breakdown_rank(self):
         engine = build_engine()
@@ -542,12 +555,14 @@ class TestEvidenceDeduplication:
     def test_no_duplicates_reports_zero_and_empty(self):
         g = InMemoryGraph()
         g.create_node(
-            "Section", "n1", {"title": "One", "numbering": "1",
-                              "text": "first distinct text about performance"}
+            "Section",
+            "n1",
+            {"title": "One", "numbering": "1", "text": "first distinct text about performance"},
         )
         g.create_node(
-            "Section", "n2", {"title": "Two", "numbering": "2",
-                              "text": "second distinct text about performance"}
+            "Section",
+            "n2",
+            {"title": "Two", "numbering": "2", "text": "second distinct text about performance"},
         )
         engine = ExplainabilityEngine(g, vector_retriever=None)
         result = engine.explain("performance", top_k=5)
@@ -663,7 +678,6 @@ class TestEvidenceSufficiency:
             "test query", [], keyword_coverage=0.0
         )
         assert score == 0.0
-
 
 
 class TestChainRelevance:
@@ -802,12 +816,8 @@ class TestChainRelevance:
 
     def test_unknown_node_reason_and_multiplier(self):
         g = InMemoryGraph()
-        g.create_node(
-            "Paragraph", "p1", {"title": "P1", "text": "some paragraph text"}
-        )
-        g.create_node(
-            "Paragraph", "p2", {"title": "P2", "text": "another paragraph"}
-        )
+        g.create_node("Paragraph", "p1", {"title": "P1", "text": "some paragraph text"})
+        g.create_node("Paragraph", "p2", {"title": "P2", "text": "another paragraph"})
         engine = ExplainabilityEngine(g, vector_retriever=None)
         result = engine.explain("paragraph text", top_k=5)
         cr = result.retrieval.chain_ranking
@@ -909,9 +919,7 @@ class TestRetrievalPipelineDiagnostics:
         }
         assert all(v >= 0.0 for v in breakdown.values())
         assert s.total_retrieval_latency_ms == pytest.approx(
-            s.retrieval_latency_ms
-            + s.ranking_latency_ms
-            + breakdown["evidence_resolution"],
+            s.retrieval_latency_ms + s.ranking_latency_ms + breakdown["evidence_resolution"],
             abs=0.02,
         )
 
@@ -1047,9 +1055,7 @@ class TestRetrievalPipelineDiagnostics:
                 "retrieval_weights": {"dense": 0.4, "graph": 0.35, "hierarchy": 0.25},
             },
         }
-        (tmp_path / "old1.json").write_text(
-            json.dumps(old_record), encoding="utf-8"
-        )
+        (tmp_path / "old1.json").write_text(json.dumps(old_record), encoding="utf-8")
         store = ProvenanceStore(directory=tmp_path)
         record = store.get("old1")
         assert record is not None
@@ -1097,8 +1103,7 @@ class TestEvidenceRelevance:
 
     def test_mostly_relevant_evidence(self):
         response_json = (
-            '{"score": 0.75, "label": "mostly",'
-            ' "reason": "Good match with minor gaps."}'
+            '{"score": 0.75, "label": "mostly", "reason": "Good match with minor gaps."}'
         )
         engine = build_engine(llm_client=_MockJudgeClient(response_json))
         result = engine.explain("performance of contracts", top_k=5)
@@ -1106,8 +1111,7 @@ class TestEvidenceRelevance:
 
     def test_partially_relevant_evidence(self):
         response_json = (
-            '{"score": 0.50, "label": "partial",'
-            ' "reason": "Only tangentially related."}'
+            '{"score": 0.50, "label": "partial", "reason": "Only tangentially related."}'
         )
         engine = build_engine(llm_client=_MockJudgeClient(response_json))
         result = engine.explain("performance of contracts", top_k=5)
@@ -1179,10 +1183,7 @@ class TestCitationEntailment:
     """Tests for ExplainabilityEngine._compute_citation_entailment."""
 
     def test_direct_support(self):
-        response = (
-            '{"entailment": 1.0, "contradicts": false,'
-            ' "reason": "Directly supported."}'
-        )
+        response = '{"entailment": 1.0, "contradicts": false, "reason": "Directly supported."}'
         engine = build_engine(llm_client=_EntailmentJudgeClient([response]))
         ev = [_make_ev("s1", "Section 72", "Money paid by mistake must be repaid.")]
         result = engine._compute_citation_entailment(
@@ -1195,10 +1196,7 @@ class TestCitationEntailment:
         assert len(result.claim_results) == 1
 
     def test_partial_support(self):
-        response = (
-            '{"entailment": 0.5, "contradicts": false,'
-            ' "reason": "Partially relevant."}'
-        )
+        response = '{"entailment": 0.5, "contradicts": false, "reason": "Partially relevant."}'
         engine = build_engine(llm_client=_EntailmentJudgeClient([response]))
         ev = [_make_ev("s1", "Section 68", "Compensation for breach of contract.")]
         result = engine._compute_citation_entailment(
@@ -1208,10 +1206,7 @@ class TestCitationEntailment:
         assert result.overall_score == pytest.approx(0.5, abs=0.01)
 
     def test_unsupported_claim(self):
-        response = (
-            '{"entailment": 0.0, "contradicts": false,'
-            ' "reason": "Not supported."}'
-        )
+        response = '{"entailment": 0.0, "contradicts": false, "reason": "Not supported."}'
         engine = build_engine(llm_client=_EntailmentJudgeClient([response]))
         ev = [_make_ev("s1", "Section 477", "Criminal breach of trust provision.")]
         result = engine._compute_citation_entailment(
@@ -1222,8 +1217,7 @@ class TestCitationEntailment:
 
     def test_contradiction_found(self):
         response = (
-            '{"entailment": 0.0, "contradicts": true,'
-            ' "reason": "Evidence states the opposite."}'
+            '{"entailment": 0.0, "contradicts": true, "reason": "Evidence states the opposite."}'
         )
         engine = build_engine(llm_client=_EntailmentJudgeClient([response]))
         ev = [_make_ev("s1", "Section 72", "Money need not be repaid if under 100.")]
@@ -1235,14 +1229,8 @@ class TestCitationEntailment:
         assert result.overall_score == 0.0
 
     def test_multiple_claims_average(self):
-        r1 = (
-            '{"entailment": 1.0, "contradicts": false,'
-            ' "reason": "Supported."}'
-        )
-        r2 = (
-            '{"entailment": 0.0, "contradicts": false,'
-            ' "reason": "Not supported."}'
-        )
+        r1 = '{"entailment": 1.0, "contradicts": false, "reason": "Supported."}'
+        r2 = '{"entailment": 0.0, "contradicts": false, "reason": "Not supported."}'
         engine = build_engine(llm_client=_EntailmentJudgeClient([r1, r2]))
         ev = [
             _make_ev("s1", "Section 72", "Money paid by mistake must be repaid."),
@@ -1367,7 +1355,8 @@ class TestVerificationBadge:
         graph = InMemoryGraph()
         graph.create_node("Document", "d1", {"title": "Indian Contract Act"})
         graph.create_node(
-            "Section", "s68",
+            "Section",
+            "s68",
             {
                 "title": "Section 68",
                 "numbering": "68",
@@ -1375,7 +1364,8 @@ class TestVerificationBadge:
             },
         )
         graph.create_node(
-            "Section", "s23",
+            "Section",
+            "s23",
             {
                 "title": "Section 23",
                 "numbering": "23",
@@ -1383,7 +1373,8 @@ class TestVerificationBadge:
             },
         )
         graph.create_node(
-            "Section", "s477",
+            "Section",
+            "s477",
             {
                 "title": "Section 477",
                 "numbering": "477",
@@ -1394,9 +1385,7 @@ class TestVerificationBadge:
         graph.create_edge("s23", "d1", "PART_OF")
         graph.create_edge("s477", "d1", "PART_OF")
         bare_engine = ExplainabilityEngine(graph, vector_retriever=None)
-        result = bare_engine.explain(
-            "What does Section 72 provide?", top_k=3
-        )
+        result = bare_engine.explain("What does Section 72 provide?", top_k=3)
         assert result.validity.status == "insufficient"
         assert result.validity.supported is False
         assert result.validity.insufficient_evidence is True
@@ -1408,18 +1397,25 @@ class TestConfidenceScoring:
     @staticmethod
     def _ev(node_id, title, text, final_score, **kw):
         return Evidence(
-            node_id=node_id, title=title, text=text,
+            node_id=node_id,
+            title=title,
+            text=text,
             label=kw.pop("label", "Section"),
             numbering=kw.pop("numbering", "1"),
             collection=kw.pop("collection", "sections"),
-            language="en", level=3,
-            dense_score=final_score, graph_score=0.0,
-            hierarchy_score=0.0, final_score=final_score, **kw,
+            language="en",
+            level=3,
+            dense_score=final_score,
+            graph_score=0.0,
+            hierarchy_score=0.0,
+            final_score=final_score,
+            **kw,
         )
 
     @staticmethod
     def _parsed(keywords=None):
         from src.retrieval.query import parse_query
+
         return parse_query(" ".join(keywords or []))
 
     def test_perfect_evidence(self):
@@ -1434,14 +1430,20 @@ class TestConfidenceScoring:
         ]
         parsed = self._parsed(["performance", "contracts"])
         relevance = EvidenceRelevance(
-            score=0.98, label="direct", explanation="perfect",
+            score=0.98,
+            label="direct",
+            explanation="perfect",
         )
         entailment = CitationEntailment(
-            overall_score=0.98, contradiction_found=False,
-            claim_results=[], summary="",
+            overall_score=0.98,
+            contradiction_found=False,
+            claim_results=[],
+            summary="",
         )
         result = engine._score_confidence(
-            evidence, parsed, "performance of contracts",
+            evidence,
+            parsed,
+            "performance of contracts",
             evidence_relevance=relevance,
             citation_entailment=entailment,
         )
@@ -1457,10 +1459,14 @@ class TestConfidenceScoring:
         ]
         parsed = self._parsed(["performance", "contracts"])
         relevance = EvidenceRelevance(
-            score=0.50, label="partial", explanation="partial",
+            score=0.50,
+            label="partial",
+            explanation="partial",
         )
         result = engine._score_confidence(
-            evidence, parsed, "performance of contracts",
+            evidence,
+            parsed,
+            "performance of contracts",
             evidence_relevance=relevance,
         )
         assert 0.40 <= result.score <= 0.70
@@ -1475,10 +1481,14 @@ class TestConfidenceScoring:
         ]
         parsed = self._parsed(["performance", "contracts"])
         relevance = EvidenceRelevance(
-            score=0.15, label="unrelated", explanation="wrong",
+            score=0.15,
+            label="unrelated",
+            explanation="wrong",
         )
         result = engine._score_confidence(
-            evidence, parsed, "performance of contracts",
+            evidence,
+            parsed,
+            "performance of contracts",
             evidence_relevance=relevance,
         )
         assert result.score < 0.45
@@ -1493,10 +1503,14 @@ class TestConfidenceScoring:
         ]
         parsed = self._parsed(["performance", "contracts"])
         relevance = EvidenceRelevance(
-            score=0.90, label="direct", explanation="perfect",
+            score=0.90,
+            label="direct",
+            explanation="perfect",
         )
         result = engine._score_confidence(
-            evidence, parsed, "performance of contracts",
+            evidence,
+            parsed,
+            "performance of contracts",
             evidence_relevance=relevance,
             contradiction_found=True,
         )
@@ -1509,7 +1523,9 @@ class TestConfidenceScoring:
         engine = build_engine()
         parsed = self._parsed(["performance", "contracts"])
         result = engine._score_confidence(
-            [], parsed, "performance of contracts",
+            [],
+            parsed,
+            "performance of contracts",
         )
         assert result.score == 0.0
         assert result.label == "very_low"
@@ -1520,19 +1536,20 @@ class TestConfidenceScoring:
         """6. Section 72 regression: wrong evidence -> confidence <= 0.45."""
         engine = build_engine()
         evidence = [
-            self._ev("s68", "S68", "promisee may recover compensation", 0.50,
-                      numbering="68"),
-            self._ev("s23", "S23", "what considerations are lawful", 0.40,
-                      numbering="23"),
-            self._ev("s477", "S477", "criminal breach of trust", 0.30,
-                      numbering="477"),
+            self._ev("s68", "S68", "promisee may recover compensation", 0.50, numbering="68"),
+            self._ev("s23", "S23", "what considerations are lawful", 0.40, numbering="23"),
+            self._ev("s477", "S477", "criminal breach of trust", 0.30, numbering="477"),
         ]
         parsed = self._parsed(["section", "72", "provide"])
         relevance = EvidenceRelevance(
-            score=0.20, label="unrelated", explanation="wrong sections",
+            score=0.20,
+            label="unrelated",
+            explanation="wrong sections",
         )
         result = engine._score_confidence(
-            evidence, parsed, "what does section 72 provide",
+            evidence,
+            parsed,
+            "what does section 72 provide",
             evidence_relevance=relevance,
         )
         assert result.score <= 0.45
@@ -1565,14 +1582,20 @@ class TestConfidenceScoring:
         ]
         for rel, ent, expected in cases:
             relevance = EvidenceRelevance(
-                score=rel, label="x", explanation="",
+                score=rel,
+                label="x",
+                explanation="",
             )
             entailment = CitationEntailment(
-                overall_score=ent, contradiction_found=False,
-                claim_results=[], summary="",
+                overall_score=ent,
+                contradiction_found=False,
+                claim_results=[],
+                summary="",
             )
             result = engine._score_confidence(
-                base_ev, parsed, query,
+                base_ev,
+                parsed,
+                query,
                 evidence_relevance=relevance,
                 citation_entailment=entailment,
             )
@@ -1586,10 +1609,15 @@ class TestConfidenceScoring:
         engine = build_engine()
         result = engine.explain("performance of contracts")
         required_keys = {
-            "retrieval_base", "evidence_relevance",
-            "evidence_sufficiency", "citation_entailment",
-            "verification_status", "contradiction_found",
-            "final_adjustment", "n_evidence", "matched_keywords",
+            "retrieval_base",
+            "evidence_relevance",
+            "evidence_sufficiency",
+            "citation_entailment",
+            "verification_status",
+            "contradiction_found",
+            "final_adjustment",
+            "n_evidence",
+            "matched_keywords",
         }
         assert required_keys.issubset(result.confidence.factors.keys())
         assert isinstance(result.confidence.score, float)
@@ -1618,7 +1646,8 @@ class TestVerificationTrace:
         graph = InMemoryGraph()
         graph.create_node("Document", "d1", {"title": "Test"})
         graph.create_node(
-            "Section", "s1",
+            "Section",
+            "s1",
             {"title": "Section 1", "numbering": "1", "text": "Irrelevant text about birds."},
         )
         engine = build_engine(graph=graph)
@@ -1677,9 +1706,7 @@ class TestVerificationTrace:
         assert trace is not None
         if trace.verification_status == "insufficient":
             assert trace.confidence_score <= 0.45
-            cap_steps = [
-                s for s in trace.decision_path if "cap" in s.lower()
-            ]
+            cap_steps = [s for s in trace.decision_path if "cap" in s.lower()]
             # Should have a cap-related step OR be below 0.45 naturally
             assert len(cap_steps) > 0 or trace.confidence_score <= 0.45
 

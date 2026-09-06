@@ -71,15 +71,9 @@ class MetricsRegistry:
                 for labels, values in sorted(buckets.items()):
                     if not values:
                         continue
-                    lines.append(
-                        f"{name}_count{self._format_labels(labels)} {len(values)}"
-                    )
-                    lines.append(
-                        f"{name}_sum{self._format_labels(labels)} {sum(values):.9f}"
-                    )
-                    lines.append(
-                        f"{name}{self._format_labels(labels)} {values[-1]:.9f}"
-                    )
+                    lines.append(f"{name}_count{self._format_labels(labels)} {len(values)}")
+                    lines.append(f"{name}_sum{self._format_labels(labels)} {sum(values):.9f}")
+                    lines.append(f"{name}{self._format_labels(labels)} {values[-1]:.9f}")
 
             lines.append(
                 f"process_uptime_seconds{self._format_labels(())} {self.uptime_seconds():.2f}"

@@ -37,7 +37,7 @@ class TestNormalizeSection:
 
 class TestSectionKeysFromText:
     def test_from_numbering_and_title(self):
-        assert section_keys_from_text("124. \"Contract of indemnity\" defined") == {"124"}
+        assert section_keys_from_text('124. "Contract of indemnity" defined') == {"124"}
         assert section_keys_from_text("53") == {"53"}
         assert section_keys_from_text("294A") == {"294a"}
 
@@ -53,7 +53,7 @@ class TestSectionKeysFromText:
         assert node_section_keys(node) == {"65"}
         mixed = {
             "node_id": "n_0015",
-            "numbering": "Of contingent contracts 31. \"Contingent contract\" defined",
+            "numbering": 'Of contingent contracts 31. "Contingent contract" defined',
             "title": "",
         }
         assert node_section_keys(mixed) == {"31"}

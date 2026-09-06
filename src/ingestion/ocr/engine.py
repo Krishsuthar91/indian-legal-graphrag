@@ -51,6 +51,7 @@ def _ocr_with_paddle(image: Image.Image) -> str:
 # Tesseract (fallback)
 # ---------------------------------------------------------------------------
 
+
 def _ocr_with_tesseract(image: Image.Image, lang: str = "eng") -> str:
     try:
         import pytesseract

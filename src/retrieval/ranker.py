@@ -42,7 +42,7 @@ class RetrievalResult:
     numbering: str
     score: float
     signals: dict[str, float] = field(default_factory=dict)
-    path: list[str] = field(default_factory=list)      # ancestor chain node ids
+    path: list[str] = field(default_factory=list)  # ancestor chain node ids
     matched_keywords: list[str] = field(default_factory=list)
     is_seed: bool = False
 

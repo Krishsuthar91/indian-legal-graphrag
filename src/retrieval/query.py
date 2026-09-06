@@ -13,13 +13,68 @@ from dataclasses import dataclass, field
 from src.knowledge_graph.citation_extractor import extract_citations
 
 _STOPWORDS: set[str] = {
-    "a", "an", "the", "and", "or", "but", "of", "in", "on", "at", "to", "for",
-    "with", "under", "per", "vs", "v", "act", "section", "sec", "sections",
-    "article", "articles", "rule", "rules", "order", "orders", "what", "which",
-    "who", "whom", "how", "does", "do", "did", "is", "are", "was", "were", "be",
-    "been", "being", "about", "provide", "provides", "provided", "provisions",
-    "provision", "means", "mean", "explain", "explains", "define", "defines",
-    "definition", "according", "shall", "may", "not", "any", "all", "each",
+    "a",
+    "an",
+    "the",
+    "and",
+    "or",
+    "but",
+    "of",
+    "in",
+    "on",
+    "at",
+    "to",
+    "for",
+    "with",
+    "under",
+    "per",
+    "vs",
+    "v",
+    "act",
+    "section",
+    "sec",
+    "sections",
+    "article",
+    "articles",
+    "rule",
+    "rules",
+    "order",
+    "orders",
+    "what",
+    "which",
+    "who",
+    "whom",
+    "how",
+    "does",
+    "do",
+    "did",
+    "is",
+    "are",
+    "was",
+    "were",
+    "be",
+    "been",
+    "being",
+    "about",
+    "provide",
+    "provides",
+    "provided",
+    "provisions",
+    "provision",
+    "means",
+    "mean",
+    "explain",
+    "explains",
+    "define",
+    "defines",
+    "definition",
+    "according",
+    "shall",
+    "may",
+    "not",
+    "any",
+    "all",
+    "each",
 }
 
 _SECTION_LABELS: dict[str, str] = {
@@ -51,12 +106,12 @@ class RetrievalQuery:
 
     raw: str
     keywords: list[str] = field(default_factory=list)
-    section_refs: list[str] = field(default_factory=list)     # normalized e.g. "section 5"
+    section_refs: list[str] = field(default_factory=list)  # normalized e.g. "section 5"
     section_numbers: list[str] = field(default_factory=list)  # e.g. "5"
-    citation_texts: list[str] = field(default_factory=list)   # raw matched citation text
+    citation_texts: list[str] = field(default_factory=list)  # raw matched citation text
     language: str = "en"
-    act_name: str = ""       # e.g. "Indian Contract Act"
-    document_id: str = ""    # resolved document UUID hex, e.g. "0d1934142f67c5f5"
+    act_name: str = ""  # e.g. "Indian Contract Act"
+    document_id: str = ""  # resolved document UUID hex, e.g. "0d1934142f67c5f5"
 
     @property
     def is_empty(self) -> bool:
@@ -74,9 +129,9 @@ def tokenize(text: str) -> list[str]:
         return []
     if re.search(r"[^\x00-\x7F]", text):
         return [
-            t for t in (
-                tok.strip(" \t.,;:!?()[]{}<>\"'‘’“”–—-")
-                for tok in re.split(r"\s+", text.lower())
+            t
+            for t in (
+                tok.strip(" \t.,;:!?()[]{}<>\"'‘’“”–—-") for tok in re.split(r"\s+", text.lower())
             )
             if t
         ]
@@ -124,7 +179,7 @@ def parse_query(raw: str, language: str = "en") -> RetrievalQuery:
         for pattern, doc_id in _ACT_NAME_TO_DOC_ID.items():
             if raw_lower.startswith(pattern):
                 query.document_id = doc_id
-                query.act_name = raw[len(pattern):].strip().lstrip(", ")
+                query.act_name = raw[len(pattern) :].strip().lstrip(", ")
                 break
 
     for token in tokenize(raw):

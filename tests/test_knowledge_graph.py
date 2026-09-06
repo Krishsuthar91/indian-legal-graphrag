@@ -113,7 +113,9 @@ class TestImportHierarchy:
 
     def test_import_all(self, graph, tmp_path: Path):
         data = {
-            "document_id": "doc_a", "root_id": "root", "language": "en",
+            "document_id": "doc_a",
+            "root_id": "root",
+            "language": "en",
             "nodes": [
                 {
                     "node_id": "root",
@@ -140,7 +142,8 @@ class TestImportHierarchy:
                     "children": [],
                 },
             ],
-            "nested_set": [], "warnings": [],
+            "nested_set": [],
+            "warnings": [],
         }
         d = tmp_path / "hierarchy"
         d.mkdir()

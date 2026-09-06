@@ -243,8 +243,7 @@ class QdrantStore:
         aggregated: list[dict[str, Any]] = []
         for name in collections:
             aggregated.extend(
-                self.search(name, vector, top_k=limit, language=language,
-                            document_id=document_id)
+                self.search(name, vector, top_k=limit, language=language, document_id=document_id)
             )
         aggregated.sort(key=lambda h: (-h["score"], h["node_id"]))
         return aggregated[:top_k]

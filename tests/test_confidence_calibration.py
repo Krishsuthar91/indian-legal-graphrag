@@ -73,9 +73,15 @@ class TestSingleBin:
 class TestMixedBins:
     def test_mixed_bins(self):
         data = [
-            _row(0.05, 0.0), _row(0.15, 0.1), _row(0.25, 0.3),
-            _row(0.35, 0.4), _row(0.45, 0.5), _row(0.55, 0.6),
-            _row(0.65, 0.7), _row(0.75, 0.8), _row(0.85, 0.9),
+            _row(0.05, 0.0),
+            _row(0.15, 0.1),
+            _row(0.25, 0.3),
+            _row(0.35, 0.4),
+            _row(0.45, 0.5),
+            _row(0.55, 0.6),
+            _row(0.65, 0.7),
+            _row(0.75, 0.8),
+            _row(0.85, 0.9),
             _row(0.95, 1.0),
         ]
         m = compute_calibration_metrics(data)
@@ -91,8 +97,11 @@ class TestECECalculation:
         # Bin [0.0, 0.1): 3 samples, avg_conf=0.05, avg_acc=0.2, gap=0.15
         # Bin [0.5, 0.6): 2 samples, avg_conf=0.55, avg_acc=0.4, gap=0.15
         data = [
-            _row(0.05, 0.2), _row(0.05, 0.2), _row(0.05, 0.2),
-            _row(0.55, 0.4), _row(0.55, 0.4),
+            _row(0.05, 0.2),
+            _row(0.05, 0.2),
+            _row(0.05, 0.2),
+            _row(0.55, 0.4),
+            _row(0.55, 0.4),
         ]
         m = compute_calibration_metrics(data)
         # ECE = (3/5)*0.15 + (2/5)*0.15 = 0.15
@@ -105,7 +114,8 @@ class TestMCECalculation:
         # Bin [0.9, 1.0): 2 samples, gap = |0.9 - 0.95| = 0.05
         data = [
             _row(0.05, 1.0),
-            _row(0.95, 0.9), _row(0.95, 0.9),
+            _row(0.95, 0.9),
+            _row(0.95, 0.9),
         ]
         m = compute_calibration_metrics(data)
         # MCE = max(0.95, 0.05) = 0.95

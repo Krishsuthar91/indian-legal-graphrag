@@ -40,9 +40,7 @@ class TestRankingMetrics:
 
     def test_average_precision(self):
         assert average_precision({"a", "b"}, ["a", "b"]) == pytest.approx(1.0)
-        assert average_precision({"a", "b"}, ["a", "x", "b"]) == pytest.approx(
-            (1.0 + (2 / 3)) / 2
-        )
+        assert average_precision({"a", "b"}, ["a", "x", "b"]) == pytest.approx((1.0 + (2 / 3)) / 2)
         assert average_precision({"a"}, ["x"]) == pytest.approx(0.0)
 
     def test_ndcg_perfect_ranking_is_one(self):

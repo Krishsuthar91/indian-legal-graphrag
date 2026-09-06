@@ -14,9 +14,7 @@ def extract_file_metadata(path: Path) -> dict:
         "file_path": str(path.resolve()),
         "file_size_bytes": stat.st_size,
         "file_type": path.suffix.lower().lstrip("."),
-        "creation_date": datetime.fromtimestamp(
-            stat.st_ctime, tz=UTC
-        ).isoformat(),
+        "creation_date": datetime.fromtimestamp(stat.st_ctime, tz=UTC).isoformat(),
     }
 
 
@@ -42,12 +40,14 @@ def build_metadata(
 ) -> dict:
     """Build the full metadata dict for an ingested document."""
     meta = extract_file_metadata(path)
-    meta.update({
-        "num_pages": num_pages,
-        "language": language,
-        "is_scanned": is_scanned,
-        "ocr_applied": ocr_applied,
-    })
+    meta.update(
+        {
+            "num_pages": num_pages,
+            "language": language,
+            "is_scanned": is_scanned,
+            "ocr_applied": ocr_applied,
+        }
+    )
     if pdf_info:
         meta["pdf_properties"] = extract_pdf_properties(pdf_info=pdf_info)
     return meta

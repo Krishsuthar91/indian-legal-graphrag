@@ -20,10 +20,16 @@ def retriever():
     g = InMemoryGraph()
     g.create_node("Document", "doc1", {"document_id": "doc1", "language": "en"})
     for i in range(20):
-        g.create_node("Section", f"s{i}", {
-            "title": f"Section {i}", "numbering": str(i), "hierarchy_level": 5,
-            "text": f"provision number {i} about contracts and performance",
-        })
+        g.create_node(
+            "Section",
+            f"s{i}",
+            {
+                "title": f"Section {i}",
+                "numbering": str(i),
+                "hierarchy_level": 5,
+                "text": f"provision number {i} about contracts and performance",
+            },
+        )
         g.create_edge(f"s{i}", "doc1", "PART_OF")
 
     store = QdrantStore(dim=64, in_memory=True)
@@ -68,9 +74,7 @@ class TestBenchmarkRetrieval:
             assert report.p50_ms <= report.p95_ms
 
     def test_format_report(self, retriever):
-        reports = benchmark_retrieval(
-            retriever, ["performance of contracts", "section 4"], top_k=3
-        )
+        reports = benchmark_retrieval(retriever, ["performance of contracts", "section 4"], top_k=3)
         text = format_report(reports)
         assert "stage" in text
         assert "embed_query" in text

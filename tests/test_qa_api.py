@@ -184,9 +184,7 @@ def test_post_query_nvidia_quota_returns_provider_neutral_429(client, monkeypatc
                 quota_exhausted=True,
                 retry_after=7.0,
                 provider="nvidia",
-                provider_body=(
-                    '{"error":{"message":"Request failed with status code 429"}}'
-                ),
+                provider_body=('{"error":{"message":"Request failed with status code 429"}}'),
             )
 
     monkeypatch.setattr(qa_api, "service_factory", lambda: NvidiaQuotaExhausted())
@@ -344,6 +342,7 @@ def test_run_answer_bounds_llm_by_request_deadline(monkeypatch):
     assert deadline is not None
     remaining = deadline - time.monotonic()
     assert 0.0 < remaining <= 29.0
+
 
 TASK17_QUERIES = ["Explain Section 4", "Explain Section 6", "Explain Section 14"]
 

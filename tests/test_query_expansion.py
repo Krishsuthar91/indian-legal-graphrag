@@ -26,7 +26,7 @@ FULL_CORPUS = {"2", "14", "15", "19", "25", "17", "18", "11", "12", "16"}
 
 class TestSectionKeyExtraction:
     def test_section_keys_from_text(self):
-        assert section_keys_from_text("124. \"Contract of indemnity\" defined") == {"124"}
+        assert section_keys_from_text('124. "Contract of indemnity" defined') == {"124"}
         assert section_keys_from_text("53") == {"53"}
         assert section_keys_from_text("294A") == {"294a"}
         assert section_keys_from_text("Of contingent contracts 31.") == {"31"}
@@ -55,10 +55,16 @@ class TestThreatExpansion:
         result = expand_query("A signs under threat. Is the contract valid?")
         assert result.section_refs == []
         assert result.section_refs_considered == [
-            "section 14", "section 15", "section 19", "section 2",
+            "section 14",
+            "section 15",
+            "section 19",
+            "section 2",
         ]
         assert result.section_refs_omitted == [
-            "section 14", "section 15", "section 19", "section 2",
+            "section 14",
+            "section 15",
+            "section 19",
+            "section 2",
         ]
         assert result.section_refs_available == []
 
@@ -68,7 +74,10 @@ class TestThreatExpansion:
             available_sections=FULL_CORPUS,
         )
         assert result.section_refs == [
-            "section 14", "section 15", "section 19", "section 2",
+            "section 14",
+            "section 15",
+            "section 19",
+            "section 2",
         ]
         assert result.section_refs_omitted == []
         assert result.section_refs_available == result.section_refs
@@ -80,7 +89,9 @@ class TestThreatExpansion:
         )
         assert result.section_refs == ["section 2"]
         assert result.section_refs_omitted == [
-            "section 14", "section 15", "section 19",
+            "section 14",
+            "section 15",
+            "section 19",
         ]
 
     def test_forced_to_sign_matches(self):
@@ -314,10 +325,7 @@ class TestVerifiedSections:
     def test_sections_come_only_from_verified_mapping(self):
         for concept in CONCEPT_DISPLAY:
             assert concept in VERIFIED_SECTION_MAPPING
-            assert all(
-                isinstance(n, int) and n > 0
-                for n in VERIFIED_SECTION_MAPPING[concept]
-            )
+            assert all(isinstance(n, int) and n > 0 for n in VERIFIED_SECTION_MAPPING[concept])
 
     def test_every_surface_phrase_maps_to_known_concepts(self):
         for phrase, targets in SURFACE_PHRASES.items():

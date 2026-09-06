@@ -116,45 +116,72 @@ class TestGraphRetrievalDocumentScoped:
     def _build_graph(self):
         graph = InMemoryGraph()
         # ICA document
-        graph.create_node("Document", ICA_DOC_ID, {
-            "document_id": ICA_DOC_ID, "title": "Indian Contract Act",
-        })
-        graph.create_node("Section", "ica_sec_10", {
-            "node_id": "ica_sec_10", "document_id": ICA_DOC_ID,
-            "title": "What agreements are contracts",
-            "text": "All agreements are contracts if made by free consent",
-            "numbering": "10",
-            "hierarchy_level": 2,
-        })
+        graph.create_node(
+            "Document",
+            ICA_DOC_ID,
+            {
+                "document_id": ICA_DOC_ID,
+                "title": "Indian Contract Act",
+            },
+        )
+        graph.create_node(
+            "Section",
+            "ica_sec_10",
+            {
+                "node_id": "ica_sec_10",
+                "document_id": ICA_DOC_ID,
+                "title": "What agreements are contracts",
+                "text": "All agreements are contracts if made by free consent",
+                "numbering": "10",
+                "hierarchy_level": 2,
+            },
+        )
         graph.create_edge("ica_sec_10", ICA_DOC_ID, "PART_OF")
-        graph.create_node("Section", "ica_sec_23", {
-            "node_id": "ica_sec_23", "document_id": ICA_DOC_ID,
-            "title": "What is consideration",
-            "text": "When at the desire of the promisor, the promisee has done",
-            "numbering": "23",
-            "hierarchy_level": 2,
-        })
+        graph.create_node(
+            "Section",
+            "ica_sec_23",
+            {
+                "node_id": "ica_sec_23",
+                "document_id": ICA_DOC_ID,
+                "title": "What is consideration",
+                "text": "When at the desire of the promisor, the promisee has done",
+                "numbering": "23",
+                "hierarchy_level": 2,
+            },
+        )
         graph.create_edge("ica_sec_23", ICA_DOC_ID, "PART_OF")
 
         # IPC document
-        graph.create_node("Document", IPC_DOC_ID, {
-            "document_id": IPC_DOC_ID, "title": "Indian Penal Code",
-        })
-        graph.create_node("Section", "ipc_sec_302", {
-            "node_id": "ipc_sec_302", "document_id": IPC_DOC_ID,
-            "title": "Punishment for murder",
-            "text": "Whoever commits murder shall be punished with death",
-            "numbering": "302",
-            "hierarchy_level": 2,
-        })
+        graph.create_node(
+            "Document",
+            IPC_DOC_ID,
+            {
+                "document_id": IPC_DOC_ID,
+                "title": "Indian Penal Code",
+            },
+        )
+        graph.create_node(
+            "Section",
+            "ipc_sec_302",
+            {
+                "node_id": "ipc_sec_302",
+                "document_id": IPC_DOC_ID,
+                "title": "Punishment for murder",
+                "text": "Whoever commits murder shall be punished with death",
+                "numbering": "302",
+                "hierarchy_level": 2,
+            },
+        )
         graph.create_edge("ipc_sec_302", IPC_DOC_ID, "PART_OF")
         return graph
 
     def test_scoped_query_returns_only_ica_nodes(self):
         graph = self._build_graph()
         results = retrieve(
-            graph, "What is Section 10 of the Indian Contract Act?",
-            top_k=10, document_id=ICA_DOC_ID,
+            graph,
+            "What is Section 10 of the Indian Contract Act?",
+            top_k=10,
+            document_id=ICA_DOC_ID,
         )
         node_ids = [r.node_id for r in results]
         assert "ica_sec_10" in node_ids
@@ -163,8 +190,10 @@ class TestGraphRetrievalDocumentScoped:
     def test_unscoped_query_returns_all_nodes(self):
         graph = self._build_graph()
         results = retrieve(
-            graph, "What is Section 10?",
-            top_k=10, document_id=None,
+            graph,
+            "What is Section 10?",
+            top_k=10,
+            document_id=None,
         )
         node_ids = [r.node_id for r in results]
         assert "ica_sec_10" in node_ids
@@ -172,8 +201,10 @@ class TestGraphRetrievalDocumentScoped:
     def test_empty_document_id_returns_all_nodes(self):
         graph = self._build_graph()
         results = retrieve(
-            graph, "Section 10 of the Indian Contract Act",
-            top_k=10, document_id="",
+            graph,
+            "Section 10 of the Indian Contract Act",
+            top_k=10,
+            document_id="",
         )
         node_ids = [r.node_id for r in results]
         # Should find at least one node (unscoped fallback)
@@ -190,12 +221,26 @@ class TestQdrantDocumentFilter:
         store.ensure_collections()
         vec = [0.1] * 384
 
-        store.upsert("sections", "ica_10", vec, {
-            "node_id": "ica_10", "doc_id": ICA_DOC_ID, "title": "ICA Section 10",
-        })
-        store.upsert("sections", "ipc_302", vec, {
-            "node_id": "ipc_302", "doc_id": IPC_DOC_ID, "title": "IPC Section 302",
-        })
+        store.upsert(
+            "sections",
+            "ica_10",
+            vec,
+            {
+                "node_id": "ica_10",
+                "doc_id": ICA_DOC_ID,
+                "title": "ICA Section 10",
+            },
+        )
+        store.upsert(
+            "sections",
+            "ipc_302",
+            vec,
+            {
+                "node_id": "ipc_302",
+                "doc_id": IPC_DOC_ID,
+                "title": "IPC Section 302",
+            },
+        )
 
         # Filtered search: only ICA
         hits = store.search("sections", vec, top_k=10, document_id=ICA_DOC_ID)
