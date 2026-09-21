@@ -12,7 +12,11 @@
       "start_page": 1,
       "end_page": 1,
       "numbering": "",
-      "children": []
+      "children": [
+        "n_0001",
+        "n_0007",
+        "n_0009"
+      ]
     },
     {
       "node_id": "n_0001",
@@ -34,7 +38,7 @@
       "parent_id": "n_0001",
       "level": 5,
       "node_type": "section",
-      "title": ".",
+      "title": "Section",
       "text": "Short title and commencement. (1) This Act may be called the Indian Contract Act, 1892. (2) It shall come into force on the first day of July, 1892.",
       "start_page": 1,
       "end_page": 1,
@@ -46,51 +50,11 @@
       "parent_id": "n_0001",
       "level": 5,
       "node_type": "section",
-      "title": ".",
-      "text": "Definitions.\nIn this Act, unless there is anything repugnant in the subject or context, (a) \"contract\" means an agreement enforceable by law; (b) \"promise\" means a proposal accepted. (i) where the proposal is made (ii) where the acceptance is communicated",
+      "title": "Section",
+      "text": "Definitions.\nIn this Act, unless there is anything repugnant in the subject or context, (a) \"contract\" means an agreement enforceable by law; (b) \"promise\" means a proposal accepted. (i) where the proposal is made (ii) where the acceptance is communicated\nExplanation.—Nothing in this section shall apply to\nIllustration.—A says to B\nProviso.—Provided that",
       "start_page": 1,
       "end_page": 1,
       "numbering": "2",
-      "children": [
-        "n_0004",
-        "n_0005",
-        "n_0006"
-      ]
-    },
-    {
-      "node_id": "n_0004",
-      "parent_id": "n_0003",
-      "level": 9,
-      "node_type": "explanation",
-      "title": "Explanation.—Nothing in this section shall apply to",
-      "text": "",
-      "start_page": 1,
-      "end_page": 1,
-      "numbering": "—Nothing in this section shall apply to",
-      "children": []
-    },
-    {
-      "node_id": "n_0005",
-      "parent_id": "n_0003",
-      "level": 9,
-      "node_type": "illustration",
-      "title": "Illustration.—A says to B",
-      "text": "",
-      "start_page": 1,
-      "end_page": 1,
-      "numbering": "—A says to B",
-      "children": []
-    },
-    {
-      "node_id": "n_0006",
-      "parent_id": "n_0003",
-      "level": 9,
-      "node_type": "proviso",
-      "title": "Proviso.—Provided that",
-      "text": "",
-      "start_page": 1,
-      "end_page": 1,
-      "numbering": "—Provided that",
       "children": []
     },
     {
@@ -112,7 +76,7 @@
       "parent_id": "n_0007",
       "level": 5,
       "node_type": "section",
-      "title": ".",
+      "title": "Section",
       "text": "Communication of proposals. (1) The communication of proposals is complete\nPART II — PERFORMANCE",
       "start_page": 1,
       "end_page": 1,
@@ -138,7 +102,7 @@
       "parent_id": "n_0009",
       "level": 5,
       "node_type": "section",
-      "title": ".",
+      "title": "Section",
       "text": "Performance of contracts. (a) where the contract provides (b) where no provision is made",
       "start_page": 1,
       "end_page": 1,
@@ -148,62 +112,53 @@
   ],
   "nested_set": [
     {
+      "node_id": "n_0002",
+      "left": 3,
+      "right": 4,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0003",
+      "left": 5,
+      "right": 6,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0001",
+      "left": 2,
+      "right": 7,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0008",
+      "left": 9,
+      "right": 10,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0007",
+      "left": 8,
+      "right": 11,
+      "depth": 1
+    },
+    {
+      "node_id": "n_0010",
+      "left": 13,
+      "right": 14,
+      "depth": 2
+    },
+    {
+      "node_id": "n_0009",
+      "left": 12,
+      "right": 15,
+      "depth": 1
+    },
+    {
       "node_id": "root",
       "left": 1,
-      "right": 2,
+      "right": 16,
       "depth": 0
     }
   ],
-  "warnings": [
-    {
-      "warning_type": "broken_nesting",
-      "message": "Node 'n_0001' (level 4) is a child of 'root' (level 0) — child level must be < parent level",
-      "node_id": "n_0001"
-    },
-    {
-      "warning_type": "broken_nesting",
-      "message": "Node 'n_0002' (level 5) is a child of 'n_0001' (level 4) — child level must be < parent level",
-      "node_id": "n_0002"
-    },
-    {
-      "warning_type": "broken_nesting",
-      "message": "Node 'n_0003' (level 5) is a child of 'n_0001' (level 4) — child level must be < parent level",
-      "node_id": "n_0003"
-    },
-    {
-      "warning_type": "broken_nesting",
-      "message": "Node 'n_0004' (level 9) is a child of 'n_0003' (level 5) — child level must be < parent level",
-      "node_id": "n_0004"
-    },
-    {
-      "warning_type": "broken_nesting",
-      "message": "Node 'n_0005' (level 9) is a child of 'n_0003' (level 5) — child level must be < parent level",
-      "node_id": "n_0005"
-    },
-    {
-      "warning_type": "broken_nesting",
-      "message": "Node 'n_0006' (level 9) is a child of 'n_0003' (level 5) — child level must be < parent level",
-      "node_id": "n_0006"
-    },
-    {
-      "warning_type": "broken_nesting",
-      "message": "Node 'n_0007' (level 4) is a child of 'root' (level 0) — child level must be < parent level",
-      "node_id": "n_0007"
-    },
-    {
-      "warning_type": "broken_nesting",
-      "message": "Node 'n_0008' (level 5) is a child of 'n_0007' (level 4) — child level must be < parent level",
-      "node_id": "n_0008"
-    },
-    {
-      "warning_type": "broken_nesting",
-      "message": "Node 'n_0009' (level 4) is a child of 'root' (level 0) — child level must be < parent level",
-      "node_id": "n_0009"
-    },
-    {
-      "warning_type": "broken_nesting",
-      "message": "Node 'n_0010' (level 5) is a child of 'n_0009' (level 4) — child level must be < parent level",
-      "node_id": "n_0010"
-    }
-  ]
+  "warnings": []
 }

@@ -8,13 +8,17 @@ for persistence and for the FastAPI response models.
 from __future__ import annotations
 
 import json
+import time
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
 from src.config.logging_config import get_logger
+from src.config.settings import settings
 
 log = get_logger("provenance")
+
+_SECONDS_PER_DAY = 86_400
 
 
 # ---------------------------------------------------------------------------
@@ -273,6 +277,89 @@ def _as_dict(obj: Any) -> dict[str, Any]:
     return asdict(obj)
 
 
+@dataclass
+class ProvenanceCleanup:
+    """Outcome of a provenance retention run."""
+
+    removed: int
+    remaining: int
+    dry_run: bool = False
+
+
+def _is_provenance_record(path: Path) -> bool:
+    """True only for persisted ``AnswerResult`` provenance records.
+
+    Any other JSON (hierarchy, processed, embeddings, evaluation artifacts)
+    that could share a directory is not a provenance record and must never be
+    touched by cleanup.
+    """
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError, UnicodeDecodeError):
+        return False
+    return isinstance(data, dict) and "provenance_id" in data
+
+
+def _retention_survivors(
+    records: list[Path],
+    now: float,
+    retention_days: int,
+    max_files: int,
+) -> set[Path]:
+    """Return the provenance files a retention run must keep.
+
+    A record survives when it is newer than the retention window *or* when it
+    ranks inside the ``max_files`` newest records, so the newest files are
+    always preserved. Files that cannot be stat()ed are also kept (never
+    delete what cannot be evaluated).
+    """
+
+    def mtime(path: Path) -> float:
+        try:
+            return path.stat().st_mtime
+        except OSError:
+            return float("-inf")
+
+    age_enabled = bool(retention_days and retention_days > 0)
+    count_enabled = bool(max_files and max_files > 0)
+    if not age_enabled and not count_enabled:
+        return set(records)
+
+    survivors: set[Path] = set()
+    if age_enabled:
+        cutoff = now - retention_days * _SECONDS_PER_DAY
+        survivors.update(p for p in records if mtime(p) >= cutoff)
+    if count_enabled:
+        newest = sorted(records, key=mtime, reverse=True)[:max_files]
+        survivors.update(newest)
+    return survivors
+
+
+def cleanup_provenance(
+    directory: str | Path | None = None,
+    retention_days: int | None = None,
+    max_files: int | None = None,
+    enabled: bool | None = None,
+    *,
+    dry_run: bool = False,
+    now: float | None = None,
+) -> ProvenanceCleanup:
+    """Retention-clean the provenance directory (defaults from settings).
+
+    ``ProvenanceStore.cleanup`` is applied to ``settings.QA_PROVENANCE_DIR``
+    unless ``directory`` is given. Delegating means every caller keeps a
+    single, idempotent cleanup implementation.
+    """
+    target = Path(directory) if directory is not None else Path(settings.QA_PROVENANCE_DIR)
+    return ProvenanceStore(target).cleanup(
+        retention_days=retention_days,
+        max_files=max_files,
+        enabled=enabled,
+        dry_run=dry_run,
+        now=now,
+    )
+
+
 class ProvenanceStore:
     """In-memory provenance records with optional JSON-file persistence."""
 
@@ -311,3 +398,95 @@ class ProvenanceStore:
     def list_ids(self, limit: int = 50) -> list[str]:
         """Return the most recently saved provenance ids (in save order)."""
         return list(self._records.keys())[-limit:]
+
+    def cleanup(
+        self,
+        retention_days: int | None = None,
+        max_files: int | None = None,
+        enabled: bool | None = None,
+        *,
+        dry_run: bool = False,
+        now: float | None = None,
+    ) -> ProvenanceCleanup:
+        """Enforce the provenance retention policy on the store directory.
+
+        Settings supply the defaults; explicit arguments override them. Only
+        persisted ``AnswerResult`` provenance records (JSON containing a
+        ``provenance_id``) are ever considered, so processed/hierarchy/
+        canonical/evaluation artifacts are never touched, and non-provenance
+        files in the same directory are never deleted. Idempotent: a second
+        run removes nothing.
+        """
+        retention_days = (
+            retention_days if retention_days is not None else settings.PROVENANCE_RETENTION_DAYS
+        )
+        max_files = max_files if max_files is not None else settings.PROVENANCE_MAX_FILES
+        enabled = enabled if enabled is not None else settings.PROVENANCE_CLEANUP_ENABLED
+        stamp = time.time() if now is None else now
+
+        if self.directory is None:
+            log.info("provenance.cleanup.start", directory=None, enabled=enabled)
+            log.info("provenance.cleanup.complete", removed=0, remaining=0)
+            print("provenance.cleanup.complete removed=0 remaining=0")
+            return ProvenanceCleanup(removed=0, remaining=0, dry_run=dry_run)
+
+        log.info(
+            "provenance.cleanup.start",
+            directory=str(self.directory),
+            retention_days=retention_days,
+            max_files=max_files,
+            enabled=enabled,
+            dry_run=dry_run,
+        )
+        print(
+            f"provenance.cleanup.start directory={self.directory} "
+            f"retention_days={retention_days} max_files={max_files} "
+            f"enabled={enabled}"
+        )
+
+        records = [p for p in sorted(self.directory.glob("*.json")) if _is_provenance_record(p)]
+
+        if not enabled:
+            result = ProvenanceCleanup(removed=0, remaining=len(records), dry_run=dry_run)
+            log.info(
+                "provenance.cleanup.complete",
+                removed=0,
+                remaining=result.remaining,
+                disabled=True,
+            )
+            print(
+                f"provenance.cleanup.complete removed=0 remaining={result.remaining} disabled=True"
+            )
+            return result
+
+        survivors = _retention_survivors(records, stamp, retention_days, max_files)
+
+        removed = 0
+        for path in records:
+            if path in survivors:
+                continue
+            log.info("provenance.cleanup.remove", path=str(path), dry_run=dry_run)
+            print(f"provenance.cleanup.remove path={path}")
+            if not dry_run:
+                try:
+                    path.unlink()
+                except OSError as exc:
+                    log.warning(
+                        "provenance.cleanup.remove_failed",
+                        path=str(path),
+                        error=str(exc),
+                    )
+                    print(f"provenance.cleanup.remove_failed path={path} error={exc}")
+                    continue
+            removed += 1
+
+        remaining = len([p for p in self.directory.glob("*.json") if _is_provenance_record(p)])
+        result = ProvenanceCleanup(removed=removed, remaining=remaining, dry_run=dry_run)
+        log.info(
+            "provenance.cleanup.complete",
+            removed=result.removed,
+            remaining=result.remaining,
+            dry_run=dry_run,
+        )
+        print(f"provenance.cleanup.complete removed={result.removed} remaining={result.remaining}")
+        return result

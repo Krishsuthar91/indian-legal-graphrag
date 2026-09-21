@@ -75,6 +75,35 @@ async def _prewarm_service(log) -> None:
     log.info("service.prewarm.complete", elapsed_ms=_elapsed_ms(started))
 
 
+def _run_provenance_cleanup(log) -> None:
+    """Retention-clean the provenance directory at startup when opted in.
+
+    Gated by ``PROVENANCE_CLEANUP_AT_STARTUP`` (default off) so a running
+    server never mutates ``data/provenance`` implicitly. Failures are logged
+    and swallowed — startup must never crash on cleanup.
+    """
+    if not settings.PROVENANCE_CLEANUP_AT_STARTUP:
+        log.info("provenance.cleanup.skipped", reason="startup cleanup not enabled")
+        return
+    from src.llm.provenance import ProvenanceStore
+
+    started = time.perf_counter()
+    try:
+        ProvenanceStore(settings.QA_PROVENANCE_DIR).cleanup()
+        log.info(
+            "provenance.cleanup.complete",
+            source="startup",
+            elapsed_ms=_elapsed_ms(started),
+        )
+    except Exception as exc:
+        log.exception(
+            "provenance.cleanup.failed",
+            source="startup",
+            elapsed_ms=_elapsed_ms(started),
+            error=str(exc),
+        )
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Application startup and shutdown lifecycle."""
@@ -93,6 +122,7 @@ async def lifespan(app: FastAPI):
     # lazy build. Non-fatal: a failure is logged and the server still starts.
     await _prewarm_corpus(log)
     await _prewarm_service(log)
+    _run_provenance_cleanup(log)
 
     yield
     log.info("app.stopping")

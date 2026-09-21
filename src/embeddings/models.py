@@ -10,6 +10,8 @@ class EmbeddingModel(StrEnum):
     """Supported embedding models."""
 
     BGE_M3 = "BAAI/bge-m3"
+    BGE_LARGE_EN_V15 = "BAAI/bge-large-en-v1.5"
+    E5_LARGE_V2 = "intfloat/e5-large-v2"
     LABSE = "sentence-transformers/LaBSE"
     MURIL = "google/muril-base-cased"
     INDIC_BERT = "ai4bharat/indic-bert"
@@ -24,6 +26,12 @@ class ModelSpec:
     max_seq: int
     provider: str  # "sentence_transformers" | "transformers"
     description: str
+    # Optional retrieval prefixes. ``query_prefix`` is prepended to queries and
+    # ``passage_prefix`` to indexed documents. Empty for models that embed the
+    # same text identically (bge-m3 / bge-large-en via sentence-transformers);
+    # required for models such as e5-large-v2 ("query:" / "passage:").
+    query_prefix: str = ""
+    passage_prefix: str = ""
 
 
 MODEL_REGISTRY: dict[str, ModelSpec] = {
@@ -33,6 +41,22 @@ MODEL_REGISTRY: dict[str, ModelSpec] = {
         max_seq=8192,
         provider="sentence_transformers",
         description="Multilingual dense retriever supporting 100+ languages (default)",
+    ),
+    EmbeddingModel.BGE_LARGE_EN_V15.value: ModelSpec(
+        name=EmbeddingModel.BGE_LARGE_EN_V15.value,
+        dim=1024,
+        max_seq=512,
+        provider="sentence_transformers",
+        description="English BGE-Large retriever (v1.5) — strong single-language ranking",
+    ),
+    EmbeddingModel.E5_LARGE_V2.value: ModelSpec(
+        name=EmbeddingModel.E5_LARGE_V2.value,
+        dim=1024,
+        max_seq=512,
+        provider="sentence_transformers",
+        description="E5-Large-v2 English retriever — requires query:/passage: prefixes",
+        query_prefix="query: ",
+        passage_prefix="passage: ",
     ),
     EmbeddingModel.LABSE.value: ModelSpec(
         name=EmbeddingModel.LABSE.value,

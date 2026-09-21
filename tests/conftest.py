@@ -9,11 +9,25 @@ from fastapi.testclient import TestClient
 
 from eval.corpus import build_corpus
 from eval.dataset import EvalDataset
+from src.config.settings import settings
 from src.main import app
 
 # ---------------------------------------------------------------------------
 # API fixtures
 # ---------------------------------------------------------------------------
+
+
+@pytest.fixture(scope="session", autouse=True)
+def _force_deterministic_embeddings():
+    """Keep every test on DeterministicEmbeddingProvider.
+
+    The runtime (build_default_corpus) honors ``EMBEDDING_FORCE_DETERMINISTIC``;
+    tests and evaluation must stay deterministic exactly as before, so the
+    setting is pinned for the whole session (the shared TestClient builds the
+    default corpus).
+    """
+    settings.EMBEDDING_FORCE_DETERMINISTIC = True
+    yield
 
 
 @pytest.fixture()

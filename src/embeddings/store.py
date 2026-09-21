@@ -8,7 +8,10 @@ making upserts idempotent.
 
 from __future__ import annotations
 
+import gc
+import shutil
 import uuid
+from pathlib import Path
 from typing import Any
 
 from qdrant_client import QdrantClient, models
@@ -40,14 +43,29 @@ class QdrantStore:
         url: str | None = None,
         api_key: str | None = None,
         timeout: float | None = None,
+        path: str | None = None,
     ) -> None:
         self.dim = dim
         self.timeout = timeout if timeout is not None else settings.QDRANT_TIMEOUT_SECONDS
         self._collections = list(collections) if collections else list(DEFAULT_COLLECTIONS)
+        self._local_path: Path | None = None
         if in_memory:
             log.info("qdrant.connect.start", mode="in-memory")
             self._client = QdrantClient(":memory:")
             log.info("qdrant.connect.complete", mode="in-memory", dim=dim)
+        elif path:
+            # Embedded on-disk Qdrant (e.g. temporary persistent instances for
+            # verification). Behaves exactly like a server-backed persistent
+            # store but lives in a directory.
+            self._local_path = Path(path)
+            log.info("qdrant.connect.start", mode="local-persistent", path=str(path))
+            self._client = QdrantClient(path=str(path))
+            log.info(
+                "qdrant.connect.complete",
+                mode="local-persistent",
+                path=str(path),
+                dim=dim,
+            )
         else:
             log.info(
                 "qdrant.connect.start",
@@ -100,6 +118,58 @@ class QdrantStore:
             raise
         log.info("qdrant.request_complete", method="collection_exists", collection=name)
         return result
+
+    def collection_dimension(self, name: str) -> int | None:
+        """Vector size configured on an existing collection, or None.
+
+        Returns None when the collection does not exist or its vector config is
+        ambiguous (e.g. named vectors with mixed sizes). Persisted collections
+        always use a single ``VectorParams`` config, so in practice this is the
+        stored dimension size.
+        """
+        log.info("qdrant.request_start", method="get_collection", collection=name)
+        try:
+            if not self._client.collection_exists(name):
+                return None
+            info = self._client.get_collection(name)
+        except Exception:
+            log.exception("qdrant.request_failed", method="get_collection", collection=name)
+            raise
+        log.info("qdrant.request_complete", method="get_collection", collection=name)
+        vectors = info.config.params.vectors
+        if isinstance(vectors, models.VectorParams):
+            return vectors.size
+        if isinstance(vectors, dict):
+            sizes = {v.size for v in vectors.values() if isinstance(v, models.VectorParams)}
+            return sizes.pop() if len(sizes) == 1 else None
+        return None
+
+    def recreate_collection(self, name: str) -> None:
+        """Delete and recreate a collection with the current dimension.
+
+        The locally-embedded ``QdrantClient(path=...)`` can resurrect a
+        collection's data when it is deleted and re-created under the same name
+        in one session: on Windows the client-side ``delete_collection`` rmtree
+        can silently fail while the collection's sqlite handle is still open, so
+        the on-disk data directory is removed explicitly before re-creating.
+        This mirrors the true reset a server-backed collection undergoes.
+        """
+        if self._client.collection_exists(name):
+            self.delete_collection(name)
+        if self._local_path is not None:
+            gc.collect()
+            shutil.rmtree(
+                self._local_path / "collection" / name,
+                ignore_errors=True,
+            )
+        self._client.create_collection(
+            collection_name=name,
+            vectors_config=models.VectorParams(
+                size=self.dim,
+                distance=models.Distance.COSINE,
+            ),
+        )
+        log.info("qdrant.collection_recreated", collection=name, dim=self.dim)
 
     def delete_collection(self, name: str) -> None:
         log.info("qdrant.request_start", method="delete_collection", collection=name)

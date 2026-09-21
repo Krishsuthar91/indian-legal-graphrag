@@ -85,7 +85,7 @@ class HierarchyIndexer:
         for collection in self.store.collections:
             if not batches[collection]:
                 continue
-            vectors = self.service.embed(texts_by_batch[collection])
+            vectors = self.service.embed_documents(texts_by_batch[collection])
             items = [
                 {"node_id": p["node_id"], "vector": vec, "payload": p}
                 for p, vec in zip(batches[collection], vectors)
@@ -143,7 +143,7 @@ class HierarchyIndexer:
 
         totals: dict[str, int] = {}
         for collection, payloads in batches.items():
-            vectors = self.service.embed([node_text(p) for p in payloads])
+            vectors = self.service.embed_documents([node_text(p) for p in payloads])
             items = [
                 {"node_id": p["node_id"], "vector": vec, "payload": p}
                 for p, vec in zip(payloads, vectors)
@@ -184,6 +184,10 @@ class HierarchyIndexer:
 
         to_embed: list[tuple[str, dict[str, Any]]] = []
         skipped = 0
+        inserted = 0
+        updated = 0
+        collections_inserted: dict[str, int] = {}
+        collections_updated: dict[str, int] = {}
         for node in self._graph_nodes(node_ids):
             label = node.get("label", "")
             collection = collection_for_label(label)
@@ -195,6 +199,12 @@ class HierarchyIndexer:
             if current is not None and current.get("text_hash") == payload["text_hash"]:
                 skipped += 1
                 continue
+            if current is None:
+                inserted += 1
+                collections_inserted[collection] = collections_inserted.get(collection, 0) + 1
+            else:
+                updated += 1
+                collections_updated[collection] = collections_updated.get(collection, 0) + 1
             to_embed.append((collection, payload))
 
         batches: dict[str, list[dict[str, Any]]] = {}
@@ -203,7 +213,7 @@ class HierarchyIndexer:
 
         totals: dict[str, int] = {}
         for collection, payloads in batches.items():
-            vectors = self.service.embed([node_text(p) for p in payloads])
+            vectors = self.service.embed_documents([node_text(p) for p in payloads])
             items = [
                 {"node_id": p["node_id"], "vector": vec, "payload": p}
                 for p, vec in zip(payloads, vectors)
@@ -216,22 +226,104 @@ class HierarchyIndexer:
             indexed=sum(totals.values()),
             skipped=skipped,
         )
-        return {"indexed": sum(totals.values()), "skipped": skipped, "collections": totals}
+        return {
+            "indexed": sum(totals.values()),
+            "skipped": skipped,
+            "inserted": inserted,
+            "updated": updated,
+            "collections": totals,
+            "collections_inserted": collections_inserted,
+            "collections_updated": collections_updated,
+        }
 
-    def sync_graph(self, node_ids: list[str] | None = None) -> dict[str, Any]:
+    def sync_graph(
+        self, node_ids: list[str] | None = None, *, recreate_on_dimension_mismatch: bool = False
+    ) -> dict[str, Any]:
         """Incremental sync: index new/changed nodes and delete stale points.
 
         Stale = nodes indexed in Qdrant but no longer present in the graph.
+        When ``recreate_on_dimension_mismatch`` is enabled, any collection whose
+        stored vector size differs from the provider dimension is recreated
+        exactly once before syncing (a hard requirement: mismatched dimensions
+        cannot be upserted into). Idempotent — a repeat run reports zero
+        inserts, updates, and deletes.
         """
-        result = self.index_incremental(node_ids)
+        recreated = 0
+        if recreate_on_dimension_mismatch:
+            for collection in self.store.collections:
+                stored_dim = self.store.collection_dimension(collection)
+                if stored_dim is not None and stored_dim != self.store.dim:
+                    reason = f"stored dimension {stored_dim} != expected {self.store.dim}"
+                    log.info(
+                        "vector.sync.recreate",
+                        collection=collection,
+                        stored_dim=stored_dim,
+                        expected_dim=self.store.dim,
+                        reason=reason,
+                    )
+                    print(
+                        "vector.sync.recreate "
+                        f"collection={collection} stored_dim={stored_dim} "
+                        f"expected_dim={self.store.dim} reason=dimension changed"
+                    )
+                    self.store.recreate_collection(collection)
+                    recreated += 1
 
-        current = {n["node_id"] for n in self._graph_nodes(node_ids)}
-        stale_count = 0
+        nodes = self._graph_nodes(node_ids)
+        log.info(
+            "vector.sync.start",
+            nodes=len(nodes),
+            collections=self.store.collections,
+            recreate_on_dimension_mismatch=recreate_on_dimension_mismatch,
+        )
+        print(f"vector.sync.start nodes={len(nodes)} collections={self.store.collections}")
+
+        incremental = self.index_incremental(node_ids)
+
+        for collection, count in incremental.get("collections_inserted", {}).items():
+            if not count:
+                continue
+            log.info("vector.sync.insert", collection=collection, count=count)
+            print(f"vector.sync.insert collection={collection} count={count}")
+        for collection, count in incremental.get("collections_updated", {}).items():
+            if not count:
+                continue
+            log.info("vector.sync.update", collection=collection, count=count)
+            print(f"vector.sync.update collection={collection} count={count}")
+
+        current = {n["node_id"] for n in nodes}
+        deleted = 0
         for collection in self.store.collections:
             indexed = self.store.indexed_ids(collection)
             stale = indexed - current
             if stale:
-                stale_count += self.store.delete(collection, list(stale))
-        result["deleted"] = stale_count
-        log.info("index.sync_complete", **result)
+                count = self.store.delete(collection, list(stale))
+                deleted += count
+                log.info("vector.sync.delete", collection=collection, count=count)
+                print(f"vector.sync.delete collection={collection} count={count}")
+
+        skipped = incremental.get("skipped", 0)
+        result = {
+            "inserted": incremental.get("inserted", 0),
+            "updated": incremental.get("updated", 0),
+            "deleted": deleted,
+            "unchanged": skipped,
+            "recreated": recreated,
+            "indexed": incremental.get("indexed", 0),
+            "skipped": skipped,
+            "collections": incremental.get("collections", {}),
+        }
+        log.info(
+            "vector.sync.complete",
+            inserted=result["inserted"],
+            updated=result["updated"],
+            deleted=deleted,
+            unchanged=skipped,
+            recreated=recreated,
+        )
+        print(
+            "vector.sync.complete "
+            f"inserted={result['inserted']} updated={result['updated']} deleted={deleted} "
+            f"unchanged={skipped} recreated={recreated}"
+        )
         return result

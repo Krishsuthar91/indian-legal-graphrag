@@ -320,12 +320,162 @@ class TestWordBoundaries:
         result = expand_query("the minority shareholders agreed")
         assert result.active is False
 
+    def test_cheat_does_not_match_cheater(self):
+        result = expand_query("the cheater signed the agreement")
+        assert result.active is False
+
+
+class TestIPCConceptExpansion:
+    """V2.4.1: open-ended IPC concept queries expand with synonym terms and
+    verified section references."""
+
+    def test_theft_expands_with_synonyms(self):
+        result = expand_query("What is theft?", available_sections={"378"})
+        assert result.active is True
+        assert result.expanded_concepts == ["theft"]
+        assert "theft" in result.expanded_terms
+        assert "stealing" in result.expanded_terms
+        assert "dishonest removal" in result.expanded_terms
+        assert result.section_refs == ["section 378"]
+
+    def test_dishonestly_taking_property_expands_to_theft(self):
+        result = expand_query("He was engaged in dishonestly taking property")
+        assert result.expanded_concepts == ["theft"]
+
+    def test_murder_expands_with_sections(self):
+        result = expand_query("What is murder?", available_sections={"300", "302"})
+        assert result.expanded_concepts == ["murder"]
+        assert result.section_refs == ["section 300", "section 302"]
+
+    def test_culpable_homicide_expands(self):
+        result = expand_query("What is culpable homicide?", available_sections={"299", "304"})
+        assert "culpable_homicide" in result.expanded_concepts
+        assert "murder" in result.expanded_concepts
+        assert result.section_refs == ["section 299", "section 304"]
+
+    def test_cheating_does_not_capture_civil_fraud_words(self):
+        result = expand_query("He deceived me in the contract.")
+        assert result.expanded_concepts == ["fraud", "misrepresentation"]
+
+    def test_deception_expands_to_cheating(self):
+        result = expand_query("What is deception?", available_sections={"415", "420"})
+        assert result.expanded_concepts == ["cheating"]
+        assert result.section_refs == ["section 415", "section 420"]
+
+    def test_robbery_expands(self):
+        result = expand_query("What is robbery?", available_sections={"390"})
+        assert result.expanded_concepts == ["robbery"]
+        assert result.section_refs == ["section 390"]
+
+    def test_criminal_breach_of_trust_expands(self):
+        result = expand_query(
+            "What is criminal breach of trust?",
+            available_sections={"405", "406"},
+        )
+        assert result.expanded_concepts == ["criminal_breach_of_trust"]
+        assert result.section_refs == ["section 405", "section 406"]
+
+    def test_dowry_death_expands_with_alphanumeric_section(self):
+        result = expand_query("What is dowry death?", available_sections={"304b"})
+        assert result.expanded_concepts == ["dowry_death"]
+        assert result.section_refs == ["section 304b"]
+
+    def test_house_breaking_expands_to_house_trespass(self):
+        result = expand_query("house-breaking at night")
+        assert result.expanded_concepts == ["house_trespass"]
+
+    def test_trespass_expands_to_criminal_trespass(self):
+        result = expand_query("What is criminal trespass?", available_sections={"441"})
+        assert result.expanded_concepts == ["criminal_trespass"]
+        assert result.section_refs == ["section 441"]
+
+    def test_forgery_defamation_and_intimidation_expand(self):
+        forgery = expand_query("What is forgery?", available_sections={"463", "465"})
+        assert forgery.expanded_concepts == ["forgery"]
+        assert forgery.section_refs == ["section 463", "section 465"]
+        defam = expand_query("What is defamation?", available_sections={"499", "500"})
+        assert defam.expanded_concepts == ["defamation"]
+        intimidate = expand_query("criminal intimidation", available_sections={"503", "506"})
+        assert intimidate.expanded_concepts == ["criminal_intimidation"]
+
+    def test_rape_and_kidnapping_expand(self):
+        rape = expand_query("What is rape?", available_sections={"375", "376"})
+        assert rape.expanded_concepts == ["rape"]
+        kidnap = expand_query("What is kidnapping?", available_sections={"359", "360", "361"})
+        assert kidnap.expanded_concepts == ["kidnapping"]
+
+
+class TestICAContinuationConcepts:
+    """V2.4.1: ICA doctrine concepts beyond formation/defects."""
+
+    def test_acceptance_expands_with_sections(self):
+        result = expand_query(
+            "What is acceptance?",
+            available_sections={"2", "7", "8"},
+        )
+        assert result.expanded_concepts == ["acceptance"]
+        assert "acceptance of proposal" in result.expanded_terms
+        assert result.section_refs == ["section 2", "section 7", "section 8"]
+
+    def test_free_consent_expands(self):
+        result = expand_query("What is free consent?", available_sections={"14"})
+        assert result.expanded_concepts == ["free_consent"]
+        assert result.section_refs == ["section 14"]
+
+    def test_void_agreement_expands(self):
+        result = expand_query(
+            "What is a void agreement?",
+            available_sections={"24", "25", "30"},
+        )
+        assert result.expanded_concepts == ["void_agreement"]
+        assert result.section_refs == ["section 24", "section 25", "section 30"]
+
+    def test_voidable_contract_expands(self):
+        result = expand_query("What is a voidable contract?", available_sections={"19", "2"})
+        assert set(result.expanded_concepts) == {"voidable_agreement", "voidable_contract"}
+
+    def test_breach_of_contract_expands(self):
+        result = expand_query(
+            "What is breach of contract?",
+            available_sections={"73", "74"},
+        )
+        assert result.expanded_concepts == ["breach_of_contract"]
+        assert result.section_refs == ["section 73", "section 74"]
+
+    def test_agency_indemnity_and_guarantee_expand(self):
+        agency = expand_query("What is agency?", available_sections={"182"})
+        assert agency.expanded_concepts == ["agency"]
+        assert agency.section_refs == ["section 182"]
+        indemnity = expand_query("What is an indemnity?", available_sections={"124"})
+        assert indemnity.expanded_concepts == ["indemnity"]
+        guarantee = expand_query("What is a guarantee?", available_sections={"126"})
+        assert guarantee.expanded_concepts == ["guarantee"]
+
+    def test_bailment_and_pledge_expand(self):
+        bailment = expand_query("What is bailment?", available_sections={"148"})
+        assert bailment.expanded_concepts == ["bailment"]
+        pledge = expand_query("What is a pledge?", available_sections={"172"})
+        assert pledge.expanded_concepts == ["pledge"]
+
+    def test_offer_expands_to_multi_synonym_proposal(self):
+        result = expand_query("What is an offer?", available_sections={"2"})
+        assert result.expanded_concepts == ["proposal"]
+        assert "propose" in result.expanded_terms
+        assert "proposal accepted" in result.expanded_terms
+        assert result.section_refs == ["section 2"]
+
 
 class TestVerifiedSections:
     def test_sections_come_only_from_verified_mapping(self):
+        def _valid_ref(n: int | str) -> bool:
+            if isinstance(n, int):
+                return n > 0
+            return n.isascii() and n.islower() and any(c.isdigit() for c in n)
+
         for concept in CONCEPT_DISPLAY:
             assert concept in VERIFIED_SECTION_MAPPING
-            assert all(isinstance(n, int) and n > 0 for n in VERIFIED_SECTION_MAPPING[concept])
+            assert VERIFIED_SECTION_MAPPING[concept]
+            assert all(_valid_ref(n) for n in VERIFIED_SECTION_MAPPING[concept])
 
     def test_every_surface_phrase_maps_to_known_concepts(self):
         for phrase, targets in SURFACE_PHRASES.items():

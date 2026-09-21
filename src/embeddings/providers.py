@@ -41,6 +41,9 @@ class DeterministicEmbeddingProvider:
     def __init__(self, dim: int = 64, name: str = DETERMINISTIC_PROVIDER) -> None:
         self.dim = dim
         self.name = name
+        self.device = "cpu"
+        self.query_prefix = ""
+        self.passage_prefix = ""
 
     def _embed(self, text: str) -> list[float]:
         vector = [0.0] * self.dim
@@ -65,22 +68,64 @@ class DeterministicEmbeddingProvider:
 class SentenceTransformerProvider:
     """Wrapper around sentence-transformers models (bge-m3, LaBSE)."""
 
-    def __init__(self, model_name: str, batch_size: int = 32) -> None:
+    def __init__(
+        self,
+        model_name: str,
+        batch_size: int = 32,
+        query_prefix: str = "",
+        passage_prefix: str = "",
+        max_seq: int | None = None,
+    ) -> None:
         from sentence_transformers import SentenceTransformer
 
         self.name = model_name
         self.batch_size = batch_size
+        self.query_prefix = query_prefix
+        self.passage_prefix = passage_prefix
+        self.max_seq = max_seq
         self._model = SentenceTransformer(model_name)
         self.dim = int(self._model.get_sentence_embedding_dimension())
+        self.device = str(getattr(self._model, "device", "cpu"))
 
     def encode(self, texts: list[str]) -> list[list[float]]:
         vectors = self._model.encode(
-            texts,
+            self._clip_long(texts),
             batch_size=self.batch_size,
             normalize_embeddings=True,
             show_progress_bar=False,
         )
         return [v.tolist() for v in vectors]
+
+    def _clip_long(self, texts: list[str]) -> list[str]:
+        """Cap text length at ``self.max_seq`` tokens when set.
+
+        Long clause texts make CPU attention cost quadratic in length (bge-m3
+        registers an 8192-token context), so a handful of very long nodes can
+        stall pure-CPU indexing. Clipping runs through the module tokenizer so
+        the embedded tokens are exactly the first ``max_seq`` tokens; short
+        texts pass through untouched. Full text stays in node payloads.
+        """
+        if not self.max_seq:
+            return texts
+        tokenizer = getattr(self._model[0], "tokenizer", None)
+        if tokenizer is None:
+            return texts
+        try:
+            encoded = tokenizer(
+                texts,
+                add_special_tokens=False,
+                padding=False,
+                truncation=True,
+                max_length=self.max_seq,
+                return_attention_mask=False,
+            )
+        except Exception:  # pragma: no cover - tokenizer edge cases
+            return texts
+        clipped = list(texts)
+        for i, token_ids in enumerate(encoded["input_ids"]):
+            if len(token_ids) >= self.max_seq:
+                clipped[i] = tokenizer.decode(token_ids, skip_special_tokens=True)
+        return clipped
 
 
 class TransformersProvider:
@@ -93,10 +138,13 @@ class TransformersProvider:
         self.name = model_name
         self.max_seq = max_seq
         self.batch_size = batch_size
+        self.query_prefix = ""
+        self.passage_prefix = ""
         self._torch = torch
         self._tokenizer = AutoTokenizer.from_pretrained(model_name)
         self._model = AutoModel.from_pretrained(model_name)
         self.dim = int(self._model.config.hidden_size)
+        self.device = str(next(self._model.parameters()).device)
 
     def encode(self, texts: list[str]) -> list[list[float]]:
         torch = self._torch
@@ -121,11 +169,23 @@ def get_provider(
     force_deterministic: bool = False,
     deterministic_dim: int | None = None,
     batch_size: int = 32,
+    allow_fallback: bool = True,
+    max_seq: int | None = None,
 ) -> EmbeddingProvider:
     """Create an embedding provider for the given model.
 
-    Falls back to the deterministic provider when model weights cannot be loaded
-    (e.g. offline, torch not installed).
+    Runtime callers pass ``allow_fallback=False`` so a requested semantic
+    model can never silently degrade to the deterministic hash provider
+    (V2.4.2 finding: deterministic dense is concept-insensitive). When
+    ``allow_fallback=True`` the provider falls back to the deterministic
+    provider when model weights cannot be loaded (e.g. offline, torch not
+    installed) — the behavior kept for unit tests and legacy callers.
+
+    ``max_seq`` caps the encoded sequence length (provider truncates). A
+    handful of very long clause texts make attention cost on CPU explode
+    (quadratic in length); capping keeps indexing tractable while the full
+    text stays in node payloads for generation. When ``None`` the model's
+    registered ``max_seq`` is used.
     """
     from src.embeddings.models import get_model_spec
 
@@ -138,18 +198,46 @@ def get_provider(
 
     spec = get_model_spec(name)
     if spec is None:
+        if not allow_fallback:
+            raise RuntimeError(
+                f"unknown embedding model {name!r} — set EMBEDDING_MODEL to a "
+                "registered model or enable EMBEDDING_ALLOW_DETERMINISTIC_FALLBACK "
+                "to run on deterministic embeddings"
+            )
         log.warning("unknown_embedding_model", model=name, using="deterministic")
         return DeterministicEmbeddingProvider(dim=deterministic_dim or 64, name=name)
 
     try:
         log.info("embedding.provider_load_start", model=name, provider=spec.provider)
         if spec.provider == "sentence_transformers":
-            provider = SentenceTransformerProvider(name, batch_size=batch_size)
+            provider = SentenceTransformerProvider(
+                name,
+                batch_size=batch_size,
+                query_prefix=spec.query_prefix,
+                passage_prefix=spec.passage_prefix,
+                max_seq=min(spec.max_seq, max_seq) if max_seq else spec.max_seq,
+            )
         else:
-            provider = TransformersProvider(name, max_seq=spec.max_seq, batch_size=batch_size)
-        log.info("embedding.provider_ready", model=name, dim=provider.dim)
+            provider = TransformersProvider(
+                name,
+                max_seq=min(spec.max_seq, max_seq) if max_seq else spec.max_seq,
+                batch_size=batch_size,
+            )
+        log.info("embedding.provider_ready", model=name, dim=provider.dim, device=provider.device)
         return provider
     except Exception as exc:  # pragma: no cover - depends on environment
+        if not allow_fallback:
+            log.error(
+                "embedding.model_unavailable",
+                model=name,
+                error=str(exc),
+                action="raise",
+            )
+            raise RuntimeError(
+                f"embedding model {name!r} failed to load: {exc} — set "
+                "EMBEDDING_ALLOW_DETERMINISTIC_FALLBACK=true to run on "
+                "deterministic embeddings instead"
+            ) from exc
         log.warning(
             "embedding.model_unavailable",
             model=name,

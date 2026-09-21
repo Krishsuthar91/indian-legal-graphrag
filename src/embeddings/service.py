@@ -42,6 +42,11 @@ class EmbeddingService:
     def provider(self) -> EmbeddingProvider:
         return self._provider
 
+    @property
+    def device(self) -> str:
+        """Device the active provider runs on (cpu / cuda / ...)."""
+        return str(getattr(self._provider, "device", "cpu"))
+
     def embed(self, texts: list[str], batch_size: int | None = None) -> list[list[float]]:
         """Embed a list of texts in batches."""
         if not texts:
@@ -55,6 +60,19 @@ class EmbeddingService:
         log.info("embedding.generate.complete", texts=len(texts), vectors=len(vectors))
         return vectors
 
+    def _prefixed_encode(
+        self, texts: list[str], prefix: str, batch_size: int | None
+    ) -> list[list[float]]:
+        if not texts:
+            return []
+        if prefix:
+            texts = [t if t.startswith(prefix) else f"{prefix}{t}" for t in texts]
+        return self.embed(texts, batch_size=batch_size)
+
+    def embed_documents(self, texts: list[str], batch_size: int | None = None) -> list[list[float]]:
+        """Embed documents/placements, applying the provider's passage prefix."""
+        return self._prefixed_encode(texts, getattr(self._provider, "passage_prefix", ""), batch_size)
+
     def embed_text(self, text: str) -> list[float]:
         """Embed a single text."""
         return self.embed([text])[0]
@@ -62,7 +80,9 @@ class EmbeddingService:
     def embed_query(self, text: str) -> list[float]:
         """Embed a retrieval query.
 
-        bge-m3 and LaBSE use the same representation for queries and documents,
-        so no instruction prefix is applied.
+        bge-m3 and bge-large-en use the same representation for queries and
+        documents, so no instruction prefix is applied. Models that require a
+        query prefix (e.g. e5-large-v2, ``query: ``) get it here so index and
+        query vectors remain in the same space.
         """
-        return self.embed_text(text)
+        return self._prefixed_encode([text], getattr(self._provider, "query_prefix", ""), None)[0]

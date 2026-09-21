@@ -187,3 +187,81 @@ class TestSplitEmbeddedSections:
         assert len(parts) == 2
         assert parts[0].startswith("Chapter I")
         assert parts[1].startswith("3.")
+
+    def test_splits_inline_heading_with_of_prefix(self):
+        text = (
+            "Of Theft 378. Theft.\u2014Whoever, intending to take dishonestly "
+            "any movable property out of the possession of"
+        )
+        parts = _split_embedded_sections(text)
+        assert len(parts) == 3
+        assert parts[0] == "Of Theft"
+        assert parts[1] == "378. Theft"
+        assert parts[2].startswith("Whoever, intending to take")
+
+    def test_splits_inline_heading_after_body_tail(self):
+        text = (
+            "himself to be likely to cause. 302. Punishment for murder.\u2014"
+            "Whoever commits murder shall be punished with death"
+        )
+        parts = _split_embedded_sections(text)
+        assert len(parts) == 3
+        assert parts[0] == "himself to be likely to cause."
+        assert parts[1] == "302. Punishment for murder"
+        assert parts[2].startswith("Whoever commits murder")
+
+    def test_splits_inline_heading_with_double_hyphen(self):
+        text = "Of Cheating 415. Cheating.--Whoever, by deceiving any person"
+        parts = _split_embedded_sections(text)
+        assert len(parts) == 3
+        assert parts[1] == "415. Cheating"
+        assert parts[2] == "Whoever, by deceiving any person"
+
+    def test_splits_inline_heading_after_short_tail(self):
+        text = (
+            "both. 420. Cheating and dishonestly inducing delivery of "
+            "property.\u2014Whoever cheats and thereby"
+        )
+        parts = _split_embedded_sections(text)
+        assert len(parts) == 3
+        assert parts[1] == "420. Cheating and dishonestly inducing delivery of property"
+
+    def test_splits_inline_heading_of_mischief(self):
+        text = (
+            "Of mischief 425. Mischief.\u2014Whoever with intent to cause, or "
+            "knowing that he is likely to cause, wrongful loss"
+        )
+        parts = _split_embedded_sections(text)
+        assert len(parts) == 3
+        assert parts[1] == "425. Mischief"
+
+    def test_standalone_inline_heading_unchanged(self):
+        text = "10. What agreements are contracts.\u2014All agreements are contracts"
+        parts = _split_embedded_sections(text)
+        assert parts == [text]
+
+    def test_trailing_number_heading(self):
+        text = "Punishment for murder 302."
+        parts = _split_embedded_sections(text)
+        assert parts == ["302. Punishment for murder"]
+
+    def test_no_split_for_number_index_line(self):
+        text = (
+            "Of theft 378. Theft. 379. Punishment for theft. "
+            "380. Theft in dwelling house, etc."
+        )
+        parts = _split_embedded_sections(text)
+        assert parts == [text]
+
+    def test_no_split_for_explanation_prose(self):
+        text = (
+            "Explanation. The last section is subject to the same "
+            "Explanation as section 352."
+        )
+        parts = _split_embedded_sections(text)
+        assert parts == [text]
+
+    def test_no_split_for_plain_body_line(self):
+        text = "Whoever commits murder shall be punished with death"
+        parts = _split_embedded_sections(text)
+        assert parts == [text]

@@ -353,8 +353,25 @@ def build_default_corpus() -> tuple[InMemoryGraph, QdrantStore, EmbeddingService
     log.info("qa_service.corpus_build_start")
     graph = build_default_graph()
 
-    provider = get_provider(model_name=settings.EMBEDDING_MODEL, force_deterministic=True)
-    embedding_service = EmbeddingService(provider=provider)
+    provider = get_provider(
+        model_name=settings.EMBEDDING_MODEL,
+        force_deterministic=settings.EMBEDDING_FORCE_DETERMINISTIC,
+        batch_size=settings.EMBEDDING_BATCH_SIZE,
+        allow_fallback=settings.EMBEDDING_ALLOW_DETERMINISTIC_FALLBACK,
+        max_seq=settings.EMBEDDING_MAX_SEQUENCE_LENGTH,
+    )
+    embedding_service = EmbeddingService(
+        provider=provider, batch_size=settings.EMBEDDING_BATCH_SIZE
+    )
+    log.info(
+        "embedding.runtime_init",
+        provider=provider.name,
+        model=settings.EMBEDDING_MODEL,
+        dimension=embedding_service.dim,
+        force_deterministic=settings.EMBEDDING_FORCE_DETERMINISTIC,
+        batch_size=settings.EMBEDDING_BATCH_SIZE,
+        device=getattr(provider, "device", "cpu"),
+    )
     store = QdrantStore(
         dim=embedding_service.dim,
         in_memory=settings.QA_INDEX_IN_MEMORY,
@@ -367,8 +384,19 @@ def build_default_corpus() -> tuple[InMemoryGraph, QdrantStore, EmbeddingService
     log.info("qa_service.index_graph_start", nodes=len(graph.all_nodes()))
     hierarchy_dir = Path(__file__).resolve().parent.parent.parent / "data" / "hierarchy"
     canonical_ids = canonical_doc_ids(hierarchy_dir)
-    HierarchyIndexer(graph, store, embedding_service).index_graph(canonical_doc_ids=canonical_ids)
-    log.info("qa_service.index_graph_complete")
+    indexer = HierarchyIndexer(graph, store, embedding_service)
+    if settings.QA_INDEX_IN_MEMORY:
+        # In-memory mode recreates its collections every startup, so a full
+        # canonical (re)index keeps current behaviour exactly.
+        indexer.index_graph(canonical_doc_ids=canonical_ids)
+        log.info("qa_service.index_graph_complete")
+    else:
+        # Persistent mode keeps vectors across restarts: synchronize the
+        # collections with the current corpus instead (insert missing, update
+        # changed, delete stale, recreate on dimension change — Issue #13 V2.8).
+        log.info("qa_service.sync_graph_start")
+        indexer.sync_graph(recreate_on_dimension_mismatch=True)
+        log.info("qa_service.sync_graph_complete")
     log.info(
         "qa_service.indexed",
         nodes=len(graph.all_nodes()),

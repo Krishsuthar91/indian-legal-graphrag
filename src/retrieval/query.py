@@ -97,7 +97,41 @@ _ACT_NAME_TO_DOC_ID: dict[str, str] = {
     "indian penal code, 1860": "cf20a14c52127fd5",
     "indian penal code 1860": "cf20a14c52127fd5",
     "ipc": "cf20a14c52127fd5",
+    # Generic "the Act" — contextually the primary domain Act (ICA 1872).
+    "the act": "0d1934142f67c5f5",
 }
+
+# Canonical display names for each known act pattern (used for query.act_name).
+_ACT_DISPLAY_NAMES: dict[str, str] = {
+    "indian contract act": "Indian Contract Act",
+    "indian contract act, 1872": "Indian Contract Act, 1872",
+    "indian contract act 1872": "Indian Contract Act, 1872",
+    "contract act": "Contract Act",
+    "contract act, 1872": "Contract Act, 1872",
+    "contract act 1872": "Contract Act, 1872",
+    "ica": "ICA",
+    "indian penal code": "Indian Penal Code",
+    "indian penal code, 1860": "Indian Penal Code, 1860",
+    "indian penal code 1860": "Indian Penal Code, 1860",
+    "ipc": "IPC",
+    "the act": "the Act",
+}
+
+# Pre-compiled, word-boundary anchored patterns for every known Act name or
+# abbreviation, ordered longest-first so the most specific phrase wins (e.g.
+# "Indian Contract Act" is preferred over "Contract Act").
+_ACT_PATTERNS: list[tuple[re.Pattern, str, str]] = sorted(
+    (
+        (
+            re.compile(rf"(?<!\w){re.escape(pattern)}(?!\w)", re.I),
+            _ACT_DISPLAY_NAMES.get(pattern, pattern.title()),
+            doc_id,
+        )
+        for pattern, doc_id in _ACT_NAME_TO_DOC_ID.items()
+    ),
+    key=lambda entry: len(entry[0].pattern),
+    reverse=True,
+)
 
 
 @dataclass
@@ -143,6 +177,22 @@ def _normalize_section_ref(citation_type: str, ref_number: str) -> str:
     return f"{label} {ref_number}".strip()
 
 
+def _match_act_name(raw: str) -> tuple[str, str] | None:
+    """Resolve a known Act name / abbreviation anywhere in ``raw``.
+
+    Returns ``(display_name, document_id)`` for the first known pattern found,
+    or ``None`` when the query names no supported Act.  Handles trailing forms
+    ("Section 378 IPC", "Explain Section 5 Contract Act"), leading forms
+    ("IPC Section 302") and the generic "the Act".
+    """
+    if not raw:
+        return None
+    for pattern, display, doc_id in _ACT_PATTERNS:
+        if pattern.search(raw):
+            return display, doc_id
+    return None
+
+
 def parse_query(raw: str, language: str = "en") -> RetrievalQuery:
     """Parse a natural-language legal query into structured retrieval terms.
 
@@ -171,16 +221,15 @@ def parse_query(raw: str, language: str = "en") -> RetrievalQuery:
                 query.document_id = doc_id
                 break
 
-    # Fallback: try to match an act abbreviation at the start of the raw query
-    # when the citation extractor didn't already resolve an act name.
-    # E.g. "IPC Section 420" → "ipc" before the section ref.
+    # Fallback: resolve an Act name / abbreviation appearing anywhere in the
+    # raw query when the citation extractor didn't already resolve one.  This
+    # handles trailing abbreviations ("Section 378 IPC"), trailing full names
+    # ("Explain Section 5 Contract Act"), leading abbreviations
+    # ("IPC Section 302") and the generic "the Act" default (→ ICA 1872).
     if not query.document_id and not query.act_name:
-        raw_lower = raw.lower().strip()
-        for pattern, doc_id in _ACT_NAME_TO_DOC_ID.items():
-            if raw_lower.startswith(pattern):
-                query.document_id = doc_id
-                query.act_name = raw[len(pattern) :].strip().lstrip(", ")
-                break
+        resolved = _match_act_name(raw)
+        if resolved:
+            query.act_name, query.document_id = resolved
 
     for token in tokenize(raw):
         if token in _STOPWORDS:
@@ -189,10 +238,18 @@ def parse_query(raw: str, language: str = "en") -> RetrievalQuery:
         # content keywords for text matching — they are handled by citation_score.
         if token in query.section_numbers:
             continue
-        # Act names/abbreviations should not be content keywords either.
-        if query.document_id and token in query.act_name.lower().split():
-            continue
         if token not in query.keywords:
             query.keywords.append(token)
+
+    # Act names/abbreviations should not be content keywords, but when the
+    # resolved act name is the entire substantive content of the query (e.g. a
+    # bare "Indian Contract Act" query) its words are kept so text scoring can
+    # still match.  When other content keywords exist, the act-name tokens are
+    # dropped as before.
+    if query.document_id and query.act_name:
+        act_words = set(query.act_name.lower().split())
+        remaining = [t for t in query.keywords if t not in act_words]
+        if remaining:
+            query.keywords = remaining
 
     return query

@@ -54,6 +54,10 @@ class EvaluationConfig:
     require_sufficient_evidence: bool | None = None
     seed: int = 42
     embedding_dim: int = 64
+    # Optional semantic embedding model (e.g. "BAAI/bge-m3"). When None the
+    # deterministic provider is used (the default offline evaluation path).
+    embedding_model: str | None = None
+    force_deterministic: bool = True
     latency_budget_ms: float = 5000.0
     max_questions: int | None = None
 
@@ -113,6 +117,8 @@ def run_evaluation(config: EvaluationConfig | None = None) -> EvaluationOutput:
         require_sufficient_evidence=config.require_sufficient_evidence,
         seed=config.seed,
         embedding_dim=config.embedding_dim,
+        embedding_model=config.embedding_model,
+        force_deterministic=config.force_deterministic,
     )
 
     results, peak_traced_bytes = measure_peak_traced_memory(lambda: run_questions(service, items))

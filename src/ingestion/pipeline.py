@@ -6,7 +6,6 @@ text cleaning, and JSON output for a single document.
 
 from __future__ import annotations
 
-import hashlib
 import json
 from pathlib import Path
 
@@ -14,6 +13,7 @@ from src.config.logging_config import get_logger
 from src.ingestion.cleaning.text_cleaner import clean_pages
 from src.ingestion.detection.language_detector import detect_document_language
 from src.ingestion.detection.scanner_detector import is_scanned_pdf
+from src.ingestion.identity import resolve_document_id
 from src.ingestion.loaders.docx_loader import load_docx
 from src.ingestion.loaders.pdf_loader import load_pdf, render_page_to_image
 from src.ingestion.loaders.txt_loader import load_txt
@@ -28,10 +28,13 @@ SUPPORTED_EXTENSIONS = {".pdf", ".docx", ".txt"}
 OUTPUT_DIR = Path(__file__).resolve().parent.parent.parent / "data" / "processed"
 
 
-def _generate_document_id(path: Path, text_sample: str) -> str:
-    """Generate a deterministic document ID from file path and content."""
-    raw = f"{path.resolve()}:{text_sample[:500]}"
-    return hashlib.sha256(raw.encode()).hexdigest()[:16]
+def _generate_document_id(file_bytes: bytes) -> str:
+    """Generate a deterministic document ID from file content bytes.
+
+    Identity is content-based (see ``src.ingestion.identity``) so identical
+    documents get the same id regardless of filename or upload directory.
+    """
+    return resolve_document_id(file_bytes)
 
 
 def _derive_title(path: Path, pages: list[str]) -> str:
@@ -66,6 +69,10 @@ def ingest_document(file_path: str | Path) -> IngestedDocument:
         raise ValueError(f"Unsupported file type: {ext}. Supported: {SUPPORTED_EXTENSIONS}")
 
     log.info("ingestion.start", file=str(path), ext=ext)
+
+    # Content bytes drive the document identity (Issue #13 V2.5): identical
+    # bytes always produce the same document_id, independent of path/name.
+    file_bytes = path.read_bytes()
 
     # --- 1. Load ---
     ocr_applied = False
@@ -118,7 +125,7 @@ def ingest_document(file_path: str | Path) -> IngestedDocument:
     )
 
     # --- 7. Build schema ---
-    doc_id = _generate_document_id(path, pages[0] if pages else "")
+    doc_id = _generate_document_id(file_bytes)
     title = _derive_title(path, pages)
 
     page_data = [

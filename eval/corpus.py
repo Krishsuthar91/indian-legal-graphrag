@@ -74,8 +74,15 @@ def build_corpus(
     confidence_threshold: float | None = None,
     embedding_dim: int = 64,
     seed: int = 42,
+    embedding_model: str | None = None,
+    force_deterministic: bool = True,
+    allow_fallback: bool = True,
 ) -> Corpus:
-    """Deterministic end-to-end corpus: graph -> embeddings -> retriever -> engine."""
+    """Deterministic end-to-end corpus: graph -> embeddings -> retriever -> engine.
+
+    ``embedding_model`` selects a real semantic model (e.g. ``BAAI/bge-m3``).
+    When *None* the deterministic provider is used (tests / offline defaults).
+    """
     random.seed(seed)
     try:
         import numpy as np
@@ -89,11 +96,20 @@ def build_corpus(
     graph = InMemoryGraph()
     counts = import_hierarchy_json(graph, path)
 
-    provider = get_provider(
-        model_name="deterministic",
-        force_deterministic=True,
-        deterministic_dim=embedding_dim,
-    )
+    if embedding_model and embedding_model != "deterministic":
+        provider = get_provider(
+            model_name=embedding_model,
+            force_deterministic=force_deterministic,
+            batch_size=32,
+            allow_fallback=allow_fallback,
+            max_seq=settings.EMBEDDING_MAX_SEQUENCE_LENGTH,
+        )
+    else:
+        provider = get_provider(
+            model_name="deterministic",
+            force_deterministic=True,
+            deterministic_dim=embedding_dim,
+        )
     service = EmbeddingService(provider=provider)
     store = QdrantStore(dim=service.dim, in_memory=True)
     store.ensure_collections()

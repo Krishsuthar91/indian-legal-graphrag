@@ -75,11 +75,16 @@ def build_evaluation_corpus(
     seed: int = 42,
     confidence_threshold: float | None = None,
     weights: dict[str, float] | None = None,
+    embedding_model: str | None = None,
+    force_deterministic: bool = True,
+    allow_fallback: bool = True,
 ) -> tuple[InMemoryGraph, VectorRetriever, ExplainabilityEngine]:
     """Deterministic graph + vector retriever + explainability engine.
 
     Mirrors ``eval.corpus.build_corpus`` without depending on the ``eval``
-    package so the research framework is self-contained.
+    package so the research framework is self-contained. ``embedding_model``
+    selects a real semantic model (e.g. ``BAAI/bge-m3``); when *None* the
+    deterministic provider is used (offline tests).
     """
     import random
 
@@ -93,11 +98,20 @@ def build_evaluation_corpus(
 
     graph, path = build_evaluation_graph(document_id, hierarchy_file)
 
-    provider = get_provider(
-        model_name="deterministic",
-        force_deterministic=True,
-        deterministic_dim=embedding_dim,
-    )
+    if embedding_model and embedding_model != "deterministic":
+        provider = get_provider(
+            model_name=embedding_model,
+            force_deterministic=force_deterministic,
+            batch_size=32,
+            allow_fallback=allow_fallback,
+            max_seq=settings.EMBEDDING_MAX_SEQUENCE_LENGTH,
+        )
+    else:
+        provider = get_provider(
+            model_name="deterministic",
+            force_deterministic=True,
+            deterministic_dim=embedding_dim,
+        )
     service = EmbeddingService(provider=provider)
     store = QdrantStore(dim=service.dim, in_memory=True)
     store.ensure_collections()
@@ -127,6 +141,9 @@ def build_evaluation_service(
     require_sufficient_evidence: bool | None = None,
     seed: int = 42,
     embedding_dim: int = 64,
+    embedding_model: str | None = None,
+    force_deterministic: bool = True,
+    allow_fallback: bool = True,
 ) -> tuple[QueryService, InMemoryGraph]:
     """Build the full frontend QA service over an offline deterministic corpus.
 
@@ -139,6 +156,9 @@ def build_evaluation_service(
         embedding_dim=embedding_dim,
         seed=seed,
         confidence_threshold=confidence_threshold,
+        embedding_model=embedding_model,
+        force_deterministic=force_deterministic,
+        allow_fallback=allow_fallback,
     )
     service = QueryService(
         engine,

@@ -27,6 +27,8 @@ class TestModelRegistry:
     def test_contains_all_supported_models(self):
         assert set(MODEL_REGISTRY) == {
             EmbeddingModel.BGE_M3.value,
+            EmbeddingModel.BGE_LARGE_EN_V15.value,
+            EmbeddingModel.E5_LARGE_V2.value,
             EmbeddingModel.LABSE.value,
             EmbeddingModel.MURIL.value,
             EmbeddingModel.INDIC_BERT.value,
@@ -37,6 +39,22 @@ class TestModelRegistry:
         assert spec.dim == 1024
         assert spec.max_seq == 8192
         assert spec.provider == "sentence_transformers"
+        assert spec.query_prefix == ""
+        assert spec.passage_prefix == ""
+
+    def test_bge_large_en_dimensions(self):
+        spec = get_model_spec(EmbeddingModel.BGE_LARGE_EN_V15.value)
+        assert spec.dim == 1024
+        assert spec.provider == "sentence_transformers"
+        assert spec.query_prefix == ""
+        assert spec.passage_prefix == ""
+
+    def test_e5_large_v2_prefixes(self):
+        spec = get_model_spec(EmbeddingModel.E5_LARGE_V2.value)
+        assert spec.dim == 1024
+        assert spec.provider == "sentence_transformers"
+        assert spec.query_prefix == "query: "
+        assert spec.passage_prefix == "passage: "
 
     def test_labse_dimensions(self):
         spec = get_model_spec(EmbeddingModel.LABSE.value)
@@ -112,6 +130,37 @@ class TestGetProvider:
         provider = get_provider(model_name=EmbeddingModel.BGE_M3.value, force_deterministic=True)
         assert provider.dim == 1024
 
+    def test_unknown_model_raises_without_fallback(self):
+        import pytest
+
+        with pytest.raises(RuntimeError):
+            get_provider(model_name="no/such-model", allow_fallback=False)
+
+    def test_unloadable_model_raises_without_fallback(self, monkeypatch):
+        import pytest
+
+        def _boom(*args, **kwargs):
+            raise RuntimeError("cannot download")
+
+        monkeypatch.setattr("src.embeddings.providers.SentenceTransformerProvider", _boom)
+        with pytest.raises(RuntimeError):
+            get_provider(
+                model_name=EmbeddingModel.BGE_M3.value,
+                allow_fallback=False,
+            )
+
+    def test_unloadable_model_falls_back_with_flag(self, monkeypatch):
+        def _boom(*args, **kwargs):
+            raise RuntimeError("cannot download")
+
+        monkeypatch.setattr("src.embeddings.providers.SentenceTransformerProvider", _boom)
+        provider = get_provider(
+            model_name=EmbeddingModel.BGE_M3.value,
+            allow_fallback=True,
+        )
+        assert provider.name == EmbeddingModel.BGE_M3.value
+        assert provider.dim == 1024
+
 
 class TestEmbeddingService:
     def test_dimension_from_provider(self):
@@ -149,3 +198,49 @@ class TestEmbeddingService:
         provider = DeterministicEmbeddingProvider(dim=16)
         service = EmbeddingService(provider=provider)
         assert service.provider is provider
+
+
+class _RecordingProvider:
+    """Records texts asked to embed; dim/name mimic a semantic provider."""
+
+    name = "recording"
+    dim = 1024
+    device = "cpu"
+
+    def __init__(self, query_prefix: str = "", passage_prefix: str = "") -> None:
+        self.query_prefix = query_prefix
+        self.passage_prefix = passage_prefix
+        self.encoded: list[str] = []
+
+    def encode(self, texts: list[str]) -> list[list[float]]:
+        self.encoded.extend(texts)
+        return [[0.0] * self.dim for _ in texts]
+
+
+class TestPrefixApplication:
+    def test_query_prefix_applied_for_query_only(self):
+        provider = _RecordingProvider(query_prefix="query: ", passage_prefix="passage: ")
+        service = EmbeddingService(provider=provider)
+        service.embed_query("theft")
+        service.embed_documents(["theft definition", "murder definition"])
+        service.embed(["raw text"])
+        assert provider.encoded == [
+            "query: theft",
+            "passage: theft definition",
+            "passage: murder definition",
+            "raw text",
+        ]
+
+    def test_no_prefix_when_empty(self):
+        provider = _RecordingProvider()
+        service = EmbeddingService(provider=provider)
+        service.embed_query("theft")
+        service.embed_documents(["theft definition"])
+        assert provider.encoded == ["theft", "theft definition"]
+
+    def test_prefix_not_doubled(self):
+        provider = _RecordingProvider(query_prefix="query: ", passage_prefix="passage: ")
+        service = EmbeddingService(provider=provider)
+        service.embed_query("query: theft")
+        service.embed_documents(["passage: theft definition"])
+        assert provider.encoded == ["query: theft", "passage: theft definition"]

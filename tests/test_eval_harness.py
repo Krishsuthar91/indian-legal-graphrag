@@ -20,9 +20,9 @@ from tests.conftest import EVAL_DOCUMENT_ID, EVAL_GOLD_DIR, EVAL_HIERARCHY_FILE
 
 class TestCorpus:
     def test_build_corpus_counts(self, eval_corpus):
-        assert eval_corpus.node_count == 11
-        assert eval_corpus.edge_count == 10
-        assert len(eval_corpus.all_nodes()) == 11
+        assert eval_corpus.node_count == 8
+        assert eval_corpus.edge_count == 7
+        assert len(eval_corpus.all_nodes()) == 8
 
     def test_corpus_is_deterministic(self):
         first = build_corpus(document_id=EVAL_DOCUMENT_ID, hierarchy_file=str(EVAL_HIERARCHY_FILE))
@@ -126,6 +126,21 @@ class TestBenchmark:
         output = benchmark_from_config(config, out_dir=None, quick=True)
         assert output.meta["document_id"] == EVAL_DOCUMENT_ID
         assert output.meta["items_evaluated"] == 3
+
+    def test_benchmark_from_config_unknown_model_raises(self):
+        import json
+
+        import pytest
+
+        with open("data/eval/config/experiment.json", encoding="utf-8") as fh:
+            config = json.load(fh)
+        config["experiment"]["embedding"] = {
+            "model": "no/such-model",
+            "force_deterministic": False,
+            "allow_fallback": False,
+        }
+        with pytest.raises(RuntimeError):
+            benchmark_from_config(config, out_dir=None, quick=True)
 
     def test_coverage_stats(self):
         datasets = {}

@@ -1,0 +1,1097 @@
+{
+  "BAAI/bge-m3": {
+    "provider": "BAAI/bge-m3",
+    "dim": 1024,
+    "nodes_indexed": 749,
+    "build_seconds": 1168.2,
+    "concepts": {
+      "rows": [
+        {
+          "query": "What is theft?",
+          "dense_top10": [
+            "IPC-378",
+            "IPC-411",
+            "IPC-412",
+            "IPC-410",
+            "IPC-CHAPTER XVII",
+            "IPC-415",
+            "IPC-424",
+            "IPC-24",
+            "IPC-422",
+            "IPC-379"
+          ],
+          "graph_top10": [
+            "IPC-378",
+            "IPC-b",
+            "IPC-403",
+            "IPC-215",
+            "IPC-424",
+            "IPC-412",
+            "IPC-369",
+            "IPC-420",
+            "IPC-411",
+            "IPC-108"
+          ],
+          "final_top5": [
+            "IPC-378",
+            "IPC-424",
+            "IPC-412",
+            "IPC-411",
+            "IPC-410"
+          ],
+          "dense_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "final_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "confidence": 0.9182,
+          "relevance": 1.0,
+          "sufficiency": 0.9,
+          "validity": true,
+          "status": "supported",
+          "grounding": "GENERATE"
+        },
+        {
+          "query": "What is murder?",
+          "dense_top10": [
+            "IPC-300",
+            "IPC-302",
+            "IPC-299",
+            "IPC-303",
+            "IPC-307",
+            "IPC-c",
+            "IPC-308",
+            "IPC-319",
+            "IPC-40",
+            "IPC-53"
+          ],
+          "graph_top10": [
+            "IPC-300",
+            "IPC-302",
+            "IPC-38",
+            "IPC-304",
+            "IPC-299",
+            "IPC-c",
+            "IPC-308",
+            "IPC-316",
+            "IPC-364",
+            "IPC-108"
+          ],
+          "final_top5": [
+            "IPC-300",
+            "IPC-302",
+            "IPC-299",
+            "IPC-c",
+            "IPC-308"
+          ],
+          "dense_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "final_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "confidence": 0.9274,
+          "relevance": 1.0,
+          "sufficiency": 0.91,
+          "validity": true,
+          "status": "supported",
+          "grounding": "GENERATE"
+        },
+        {
+          "query": "What is robbery?",
+          "dense_top10": [
+            "IPC-390",
+            "IPC-392",
+            "IPC-CHAPTER XVII",
+            "IPC-40",
+            "IPC-394",
+            "IPC-215",
+            "IPC-31",
+            "IPC-116",
+            "IPC-412",
+            "IPC-216A"
+          ],
+          "graph_top10": [
+            "IPC-390",
+            "IPC-397",
+            "IPC-392",
+            "IPC-393",
+            "IPC-394",
+            "IPC-398",
+            "IPC-216A",
+            "IPC-105",
+            "IPC-97",
+            "IPC-389"
+          ],
+          "final_top5": [
+            "IPC-390",
+            "IPC-392",
+            "IPC-394",
+            "IPC-216A",
+            "IPC-116"
+          ],
+          "dense_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "final_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "confidence": 0.8958,
+          "relevance": 1.0,
+          "sufficiency": 0.85,
+          "validity": true,
+          "status": "supported",
+          "grounding": "GENERATE"
+        },
+        {
+          "query": "What is rape?",
+          "dense_top10": [
+            "IPC-375",
+            "IPC-1",
+            "IPC-40",
+            "IPC-376D",
+            "IPC-376E",
+            "IPC-i",
+            "IPC-376C",
+            "IPC-ii",
+            "IPC-376B",
+            "IPC-376"
+          ],
+          "graph_top10": [
+            "IPC-376",
+            "IPC-375",
+            "IPC-b",
+            "IPC-376AA",
+            "IPC-376D",
+            "IPC-ii",
+            "IPC-166A",
+            "IPC-376",
+            "IPC-376DA",
+            "IPC-1"
+          ],
+          "final_top5": [
+            "IPC-375",
+            "IPC-i",
+            "IPC-376",
+            "IPC-376E",
+            "IPC-b"
+          ],
+          "dense_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "final_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "confidence": 0.871,
+          "relevance": 1.0,
+          "sufficiency": 0.8875,
+          "validity": true,
+          "status": "supported",
+          "grounding": "GENERATE"
+        },
+        {
+          "query": "What is cheating?",
+          "dense_top10": [
+            "IPC-415",
+            "IPC-417",
+            "IPC-420",
+            "IPC-416",
+            "IPC-468",
+            "IPC-422",
+            "IPC-463",
+            "IPC-28",
+            "IPC-40",
+            "IPC-24"
+          ],
+          "graph_top10": [
+            "IPC-415",
+            "IPC-420",
+            "IPC-403",
+            "IPC-416",
+            "IPC-422",
+            "IPC-424",
+            "IPC-464",
+            "IPC-1",
+            "IPC-CHAPTER XVII",
+            "-cf20a14c52127fd5"
+          ],
+          "final_top5": [
+            "IPC-415",
+            "IPC-420",
+            "IPC-416",
+            "IPC-422",
+            "IPC-417"
+          ],
+          "dense_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "final_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "confidence": 0.9208,
+          "relevance": 1.0,
+          "sufficiency": 0.8875,
+          "validity": true,
+          "status": "supported",
+          "grounding": "GENERATE"
+        },
+        {
+          "query": "What is an offer?",
+          "dense_top10": [
+            "ICA-8",
+            "ICA-1",
+            "ICA-2",
+            "ICA-3",
+            "ICA-9",
+            "ICA-7",
+            "ICA-Of the communication, acceptance and revocation of proposals",
+            "ICA-6",
+            "ICA-4",
+            "ICA-57"
+          ],
+          "graph_top10": [
+            "ICA-2",
+            "ICA-1",
+            "ICA-38",
+            "-0d1934142f67c5f5",
+            "ICA-7",
+            "ICA-Chapter IV",
+            "ICA-Of the communication, acceptance and revocation of proposals",
+            "ICA-j"
+          ],
+          "final_top5": [
+            "ICA-2",
+            "ICA-1",
+            "ICA-7",
+            "ICA-8",
+            "ICA-3"
+          ],
+          "dense_metrics": {
+            "top1": 0.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 0.3333,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "final_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "confidence": 0.9092,
+          "relevance": 1.0,
+          "sufficiency": 0.91,
+          "validity": false,
+          "status": "supported",
+          "grounding": "GENERATE"
+        },
+        {
+          "query": "What is acceptance?",
+          "dense_top10": [
+            "ICA-8",
+            "ICA-3",
+            "ICA-7",
+            "ICA-1",
+            "ICA-2",
+            "ICA-Of the communication, acceptance and revocation of proposals",
+            "ICA-13",
+            "ICA-197",
+            "ICA-6",
+            "ICA-5"
+          ],
+          "graph_top10": [
+            "ICA-2",
+            "ICA-7",
+            "ICA-8",
+            "ICA-1",
+            "ICA-3",
+            "ICA-5",
+            "ICA-4",
+            "ICA-6",
+            "ICA-9",
+            "ICA-38"
+          ],
+          "final_top5": [
+            "ICA-2",
+            "ICA-8",
+            "ICA-7",
+            "ICA-1",
+            "ICA-3"
+          ],
+          "dense_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "final_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "confidence": 0.9667,
+          "relevance": 1.0,
+          "sufficiency": 1.0,
+          "validity": false,
+          "status": "supported",
+          "grounding": "GENERATE"
+        },
+        {
+          "query": "What is consideration?",
+          "dense_top10": [
+            "ICA-23",
+            "ICA-24",
+            "ICA-25",
+            "ICA-2",
+            "ICA-8",
+            "ICA-127",
+            "ICA-69",
+            "ICA-185",
+            "ICA-75",
+            "ICA-20"
+          ],
+          "graph_top10": [
+            "ICA-25",
+            "ICA-2",
+            "ICA-10",
+            "ICA-23",
+            "ICA-8",
+            "ICA-24",
+            "ICA-127",
+            "ICA-185",
+            "ICA-222",
+            "ICA-27"
+          ],
+          "final_top5": [
+            "ICA-25",
+            "ICA-2",
+            "ICA-23",
+            "ICA-24",
+            "ICA-8"
+          ],
+          "dense_metrics": {
+            "top1": 0.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 0.3333,
+            "r@5": 0.6667,
+            "r@10": 1.0
+          },
+          "final_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 0.6667,
+            "r@10": 1.0
+          },
+          "confidence": 0.9568,
+          "relevance": 1.0,
+          "sufficiency": 1.0,
+          "validity": false,
+          "status": "supported",
+          "grounding": "GENERATE"
+        },
+        {
+          "query": "What is breach of contract?",
+          "dense_top10": [
+            "ICA-73",
+            "ICA-74",
+            "ICA-Of the consequences of breach of contract",
+            "ICA-17",
+            "ICA-75",
+            "ICA-31",
+            "ICA-124",
+            "ICA-133",
+            "ICA-10",
+            "ICA-64"
+          ],
+          "graph_top10": [
+            "ICA-73",
+            "ICA-74",
+            "ICA-Of the consequences of breach of contract",
+            "ICA-16",
+            "ICA-178A",
+            "ICA-j",
+            "ICA-11",
+            "ICA-22",
+            "ICA-31",
+            "ICA-33"
+          ],
+          "final_top5": [
+            "ICA-73",
+            "ICA-74",
+            "ICA-31",
+            "ICA-124",
+            "ICA-17"
+          ],
+          "dense_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "final_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "confidence": 0.9023,
+          "relevance": 1.0,
+          "sufficiency": 0.85,
+          "validity": false,
+          "status": "supported",
+          "grounding": "GENERATE"
+        }
+      ],
+      "dense_agg": {
+        "top1": 0.7778,
+        "top3": 1.0,
+        "top5": 1.0,
+        "top10": 1.0,
+        "mrr": 0.8518,
+        "r@5": 0.963,
+        "r@10": 1.0,
+        "n": 9
+      },
+      "final_agg": {
+        "top1": 1.0,
+        "top3": 1.0,
+        "top5": 1.0,
+        "top10": 1.0,
+        "mrr": 1.0,
+        "r@5": 0.963,
+        "r@10": 1.0,
+        "n": 9
+      }
+    },
+    "ica_gold": {
+      "rows": [
+        {
+          "query": "What is the short title and commencement of the Indian Contract Act, 1892?",
+          "dense_top10": [
+            "ICA-1",
+            "-0d1934142f67c5f5",
+            "ICA-Of contracts, violable contracts and void agreements",
+            "ICA-Of the consequences of breach of contract",
+            "ICA-10",
+            "ICA-Of contingent contracts",
+            "ICA-Of certain relations resembling those created by contract",
+            "ICA-21",
+            "ICA-16",
+            "ICA-Of partnership"
+          ],
+          "graph_top10": [
+            "ICA-1",
+            "ICA-166",
+            "ICA-178A",
+            "ICA-27",
+            "ICA-167",
+            "ICA-178",
+            "ICA-Of bailment",
+            "-0d1934142f67c5f5",
+            "ICA-Of contracts, violable contracts and void agreements"
+          ],
+          "final_top5": [
+            "ICA-16",
+            "ICA-178A",
+            "ICA-1",
+            "ICA-Of partnership",
+            "ICA-10"
+          ],
+          "dense_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 0.5,
+            "r@10": 0.5
+          },
+          "final_metrics": {
+            "top1": 0.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 0.3333,
+            "r@5": 0.5,
+            "r@10": 0.5
+          },
+          "confidence": 0.3861,
+          "relevance": 0.2228,
+          "sufficiency": 0.5375,
+          "validity": false,
+          "status": "insufficient",
+          "grounding": "BLOCKED"
+        },
+        {
+          "query": "How is a contract defined under the Act?",
+          "dense_top10": [
+            "ICA-10",
+            "ICA-1",
+            "ICA-126",
+            "ICA-37",
+            "ICA-2",
+            "ICA-31",
+            "ICA-16",
+            "ICA-124",
+            "ICA-j",
+            "ICA-74"
+          ],
+          "graph_top10": [
+            "ICA-16",
+            "ICA-17",
+            "ICA-31",
+            "ICA-124",
+            "ICA-148",
+            "ICA-14",
+            "ICA-178A",
+            "ICA-j",
+            "ICA-11",
+            "ICA-13"
+          ],
+          "final_top5": [
+            "ICA-31",
+            "ICA-124",
+            "ICA-14",
+            "ICA-16",
+            "ICA-j"
+          ],
+          "dense_metrics": {
+            "top1": 0.0,
+            "top3": 0.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 0.2,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "final_metrics": {
+            "top1": 0.0,
+            "top3": 0.0,
+            "top5": 0.0,
+            "top10": 1.0,
+            "mrr": 0.1,
+            "r@5": 0.0,
+            "r@10": 1.0
+          },
+          "confidence": 0.4238,
+          "relevance": 0.1356,
+          "sufficiency": 0.65,
+          "validity": false,
+          "status": "insufficient",
+          "grounding": "BLOCKED"
+        },
+        {
+          "query": "What is a promise under the Act?",
+          "dense_top10": [
+            "ICA-2",
+            "ICA-57",
+            "ICA-37",
+            "ICA-9",
+            "ICA-126",
+            "ICA-56",
+            "ICA-178",
+            "ICA-145",
+            "ICA-42",
+            "ICA-74"
+          ],
+          "graph_top10": [
+            "ICA-2",
+            "ICA-7",
+            "ICA-8",
+            "ICA-9",
+            "ICA-17",
+            "ICA-25",
+            "ICA-38",
+            "ICA-39",
+            "ICA-40",
+            "ICA-41"
+          ],
+          "final_top5": [
+            "ICA-2",
+            "ICA-9",
+            "ICA-57",
+            "ICA-126",
+            "ICA-56"
+          ],
+          "dense_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "final_metrics": {
+            "top1": 1.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 1.0,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "confidence": 0.4143,
+          "relevance": 0.1099,
+          "sufficiency": 0.65,
+          "validity": false,
+          "status": "insufficient",
+          "grounding": "BLOCKED"
+        },
+        {
+          "query": "When is the communication of a proposal complete?",
+          "dense_top10": [
+            "ICA-4",
+            "ICA-1",
+            "ICA-Of the communication, acceptance and revocation of proposals",
+            "ICA-3",
+            "ICA-5",
+            "ICA-6",
+            "ICA-7",
+            "ICA-8",
+            "ICA-2",
+            "ICA-9"
+          ],
+          "graph_top10": [
+            "ICA-2",
+            "ICA-4",
+            "ICA-5",
+            "ICA-3",
+            "ICA-1",
+            "ICA-38",
+            "ICA-219",
+            "ICA-6",
+            "ICA-12",
+            "ICA-66"
+          ],
+          "final_top5": [
+            "ICA-2",
+            "ICA-4",
+            "ICA-5",
+            "ICA-1",
+            "ICA-3"
+          ],
+          "dense_metrics": {
+            "top1": 0.0,
+            "top3": 0.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 0.25,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "final_metrics": {
+            "top1": 0.0,
+            "top3": 0.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 0.2,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "confidence": 0.9342,
+          "relevance": 1.0,
+          "sufficiency": 0.9437,
+          "validity": false,
+          "status": "supported",
+          "grounding": "GENERATE"
+        },
+        {
+          "query": "What does the Act say about the performance of contracts?",
+          "dense_top10": [
+            "ICA-37",
+            "ICA-1",
+            "ICA-10",
+            "ICA-232",
+            "ICA-Of contracts, violable contracts and void agreements",
+            "ICA-Of the consequences of breach of contract",
+            "ICA-226",
+            "-0d1934142f67c5f5",
+            "ICA-32",
+            "ICA-230"
+          ],
+          "graph_top10": [
+            "ICA-36",
+            "ICA-10",
+            "ICA-32",
+            "ICA-35",
+            "ICA-38",
+            "ICA-41",
+            "ICA-46",
+            "ICA-47",
+            "ICA-48",
+            "ICA-49"
+          ],
+          "final_top5": [
+            "ICA-10",
+            "ICA-32",
+            "ICA-37",
+            "ICA-232",
+            "ICA-226"
+          ],
+          "dense_metrics": {
+            "top1": 0.0,
+            "top3": 0.0,
+            "top5": 0.0,
+            "top10": 0.0,
+            "mrr": 0.0,
+            "r@5": 0.0,
+            "r@10": 0.0
+          },
+          "final_metrics": {
+            "top1": 0.0,
+            "top3": 0.0,
+            "top5": 0.0,
+            "top10": 0.0,
+            "mrr": 0.0,
+            "r@5": 0.0,
+            "r@10": 0.0
+          },
+          "confidence": 0.4049,
+          "relevance": 0.2139,
+          "sufficiency": 0.5,
+          "validity": false,
+          "status": "insufficient",
+          "grounding": "BLOCKED"
+        },
+        {
+          "query": "Which chapter of the Act deals with performance?",
+          "dense_top10": [
+            "ICA-Chapter IV",
+            "ICA-Of the consequences of breach of contract",
+            "ICA-Agency, Appointment and authority of agents",
+            "ICA-Of the communication, acceptance and revocation of proposals",
+            "ICA-Of indemnity and guarantee",
+            "ICA-Of certain relations resembling those created by contract",
+            "ICA-Of contingent contracts",
+            "ICA-Of bailment",
+            "ICA-Of contracts, violable contracts and void agreements",
+            "ICA-2"
+          ],
+          "graph_top10": [
+            "ICA-Agency, Appointment and authority of agents",
+            "ICA-38",
+            "ICA-41",
+            "ICA-46",
+            "ICA-47",
+            "ICA-48",
+            "ICA-49",
+            "ICA-50",
+            "ICA-52",
+            "ICA-63"
+          ],
+          "final_top5": [
+            "ICA-2",
+            "ICA-215",
+            "ICA-38",
+            "ICA-41",
+            "ICA-46"
+          ],
+          "dense_metrics": {
+            "top1": 0.0,
+            "top3": 0.0,
+            "top5": 0.0,
+            "top10": 0.0,
+            "mrr": 0.0,
+            "r@5": 0.0,
+            "r@10": 0.0
+          },
+          "final_metrics": {
+            "top1": 0.0,
+            "top3": 0.0,
+            "top5": 0.0,
+            "top10": 0.0,
+            "mrr": 0.0,
+            "r@5": 0.0,
+            "r@10": 0.0
+          },
+          "confidence": 0.3618,
+          "relevance": 0.2154,
+          "sufficiency": 0.5,
+          "validity": false,
+          "status": "insufficient",
+          "grounding": "BLOCKED"
+        },
+        {
+          "query": "Where are the preliminary provisions of the Act located?",
+          "dense_top10": [
+            "ICA-Of the communication, acceptance and revocation of proposals",
+            "ICA-1",
+            "ICA-Agency, Appointment and authority of agents",
+            "ICA-Of indemnity and guarantee",
+            "ICA-Of the consequences of breach of contract",
+            "ICA-Chapter IV",
+            "ICA-Of contingent contracts",
+            "ICA-2",
+            "ICA-Of bailment",
+            "ICA-Of contracts, violable contracts and void agreements"
+          ],
+          "graph_top10": [
+            "ICA-16",
+            "ICA-20",
+            "ICA-46",
+            "ICA-47",
+            "ICA-49",
+            "ICA-59",
+            "ICA-60",
+            "ICA-61",
+            "ICA-74",
+            "ICA-176"
+          ],
+          "final_top5": [
+            "ICA-16",
+            "ICA-1",
+            "ICA-2",
+            "ICA-20",
+            "ICA-46"
+          ],
+          "dense_metrics": {
+            "top1": 0.0,
+            "top3": 0.0,
+            "top5": 0.0,
+            "top10": 0.0,
+            "mrr": 0.0,
+            "r@5": 0.0,
+            "r@10": 0.0
+          },
+          "final_metrics": {
+            "top1": 0.0,
+            "top3": 0.0,
+            "top5": 0.0,
+            "top10": 0.0,
+            "mrr": 0.0,
+            "r@5": 0.0,
+            "r@10": 0.0
+          },
+          "confidence": 0.2878,
+          "relevance": 0.1907,
+          "sufficiency": 0.35,
+          "validity": false,
+          "status": "insufficient",
+          "grounding": "BLOCKED"
+        },
+        {
+          "query": "What is an agreement enforceable by law called?",
+          "dense_top10": [
+            "ICA-32",
+            "ICA-56",
+            "ICA-j",
+            "ICA-33",
+            "ICA-10",
+            "ICA-58",
+            "ICA-2",
+            "ICA-57",
+            "ICA-226",
+            "ICA-25"
+          ],
+          "graph_top10": [
+            "ICA-2",
+            "ICA-j",
+            "ICA-25",
+            "ICA-23",
+            "ICA-28",
+            "ICA-238",
+            "ICA-30",
+            "ICA-21",
+            "ICA-27",
+            "ICA-56"
+          ],
+          "final_top5": [
+            "ICA-30",
+            "ICA-2",
+            "ICA-j",
+            "ICA-25",
+            "ICA-56"
+          ],
+          "dense_metrics": {
+            "top1": 0.0,
+            "top3": 0.0,
+            "top5": 0.0,
+            "top10": 1.0,
+            "mrr": 0.1429,
+            "r@5": 0.0,
+            "r@10": 1.0
+          },
+          "final_metrics": {
+            "top1": 0.0,
+            "top3": 1.0,
+            "top5": 1.0,
+            "top10": 1.0,
+            "mrr": 0.5,
+            "r@5": 1.0,
+            "r@10": 1.0
+          },
+          "confidence": 0.4227,
+          "relevance": 0.1683,
+          "sufficiency": 0.65,
+          "validity": false,
+          "status": "insufficient",
+          "grounding": "BLOCKED"
+        },
+        {
+          "query": "Does the Act require the parties to specify how a contract is to be performed, and what happens if they do not?",
+          "dense_top10": [
+            "ICA-37",
+            "ICA-231",
+            "ICA-10",
+            "ICA-230",
+            "ICA-33",
+            "ICA-2",
+            "ICA-74",
+            "ICA-32",
+            "ICA-35",
+            "ICA-56"
+          ],
+          "graph_top10": [
+            "ICA-231",
+            "ICA-40",
+            "ICA-55",
+            "ICA-62",
+            "ICA-73",
+            "ICA-10",
+            "ICA-34",
+            "ICA-37",
+            "ICA-19",
+            "ICA-35"
+          ],
+          "final_top5": [
+            "ICA-19",
+            "ICA-231",
+            "ICA-10",
+            "ICA-35",
+            "ICA-37"
+          ],
+          "dense_metrics": {
+            "top1": 0.0,
+            "top3": 0.0,
+            "top5": 0.0,
+            "top10": 0.0,
+            "mrr": 0.0,
+            "r@5": 0.0,
+            "r@10": 0.0
+          },
+          "final_metrics": {
+            "top1": 0.0,
+            "top3": 0.0,
+            "top5": 0.0,
+            "top10": 0.0,
+            "mrr": 0.0,
+            "r@5": 0.0,
+            "r@10": 0.0
+          },
+          "confidence": 0.4715,
+          "relevance": 0.3253,
+          "sufficiency": 0.5938,
+          "validity": false,
+          "status": "supported",
+          "grounding": "GENERATE"
+        }
+      ],
+      "dense_agg": {
+        "top1": 0.2222,
+        "top3": 0.2222,
+        "top5": 0.4444,
+        "top10": 0.5556,
+        "mrr": 0.2881,
+        "r@5": 0.3889,
+        "r@10": 0.5,
+        "n": 9
+      },
+      "final_agg": {
+        "top1": 0.1111,
+        "top3": 0.3333,
+        "top5": 0.4444,
+        "top10": 0.5556,
+        "mrr": 0.237,
+        "r@5": 0.3889,
+        "r@10": 0.5,
+        "n": 9
+      }
+    }
+  }
+}

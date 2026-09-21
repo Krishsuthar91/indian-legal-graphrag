@@ -1,13 +1,18 @@
-"""Deterministic legal query expansion for Indian Contract Act retrieval.
+"""Deterministic legal query expansion for Indian legal corpus retrieval.
 
 Phase 4: maps ordinary-language expressions in legal queries onto the
 canonical concepts the HHGR pipeline understands. For example, "threat" is
 expanded into the coercion / free consent / voidable agreement concepts defined
-by the Indian Contract Act 1872, plus the sections that define them.
+by the Indian Contract Act 1872, and "theft" into the IPC theft concept (s.
+378). Expanded concepts also carry verified section references (ICA ss. 1-238,
+IPC ss. 239-511 are distinct; IPC concept refs are therefore unambiguous).
+
+Enabled by default since V2.4.1 so open-ended legal concept queries
+("What is theft?", "What is an offer?") are not blocked behind a disabled flag.
 
 The expansion is intentionally:
 - deterministic: a fixed phrase table; no model, no randomness;
-- configurable: gated by QA_QUERY_EXPANSION_ENABLED (default False, opt-in);
+- configurable: gated by QA_QUERY_EXPANSION_ENABLED (default True);
 - auditable: every matched phrase, added term and added concept is recorded so
   the reasoning chain can show exactly what was expanded and why;
 - corpus-aware: concept terms are always added, but a section reference is only
@@ -28,18 +33,51 @@ from dataclasses import dataclass, field
 
 from src.retrieval.query import RetrievalQuery
 
-# Canonical ICA concepts -> the search terms that surface their defining
-# sections in the vector store and the graph.
+# Canonical concepts -> the search terms that surface their defining sections
+# in the vector store and the graph. Each concept carries multiple synonyms so
+# open-ended queries ("What is an offer?", "What is theft?") collide with the
+# statutory language of their defining section. ICA concepts use Contract Act
+# terminology; IPC concepts use Penal Code terminology.
 CONCEPT_TERMS: dict[str, tuple[str, ...]] = {
-    "coercion": ("coercion",),
-    "free_consent": ("free consent",),
+    # ICA: coercion / free consent / voidability (ss. 14-16, 19)
+    "coercion": ("coercion", "coerced", "threatened", "threat", "duress", "compulsion"),
+    "free_consent": ("free consent", "consent given freely", "freely consenting"),
     "voidable_agreement": ("voidable agreement", "voidable"),
-    "fraud": ("fraud",),
-    "misrepresentation": ("misrepresentation",),
-    "proposal": ("proposal",),
-    "consideration": ("consideration",),
-    "capacity": ("capacity", "sound mind", "competent"),
+    "fraud": ("fraud", "fraudulent", "deceit", "deception"),
+    "misrepresentation": ("misrepresentation", "misrepresent", "false representation"),
+    "proposal": ("proposal", "offer", "propose", "proposed", "proposal accepted"),
+    "consideration": ("consideration", "lawful consideration"),
+    "capacity": ("capacity", "sound mind", "competent", "unsound mind"),
     "undue_influence": ("undue influence",),
+    # ICA: formation of contract (ss. 2, 7-8) and doctrines
+    "acceptance": ("acceptance", "acceptance of proposal", "accepted", "assent"),
+    "void_agreement": ("void agreement", "void contract", "agreement void"),
+    "voidable_contract": ("voidable contract", "voidable"),
+    "breach_of_contract": ("breach of contract", "breaking the contract", "breach of the contract"),
+    "agency": ("agency", "agent", "principal", "sub-agent"),
+    "indemnity": ("indemnity", "indemnify", "indemnified"),
+    "guarantee": ("guarantee", "guarantor", "surety", "contract of guarantee"),
+    "bailment": ("bailment", "bailor", "bailee", "deposit of goods"),
+    "pledge": ("pledge", "pledgor", "pledgee", "pawnor", "pawnee"),
+    # IPC: theft and property offences
+    "theft": ("theft", "stealing", "steal", "stolen", "dishonest removal", "dishonestly taking", "dishonestly take"),
+    "robbery": ("robbery", "rob", "robbed"),
+    "extortion": ("extortion", "extort", "extorted", "putting in fear"),
+    "criminal_breach_of_trust": ("criminal breach of trust", "breach of trust", "entrusted property"),
+    "mischief": ("mischief", "causing damage to property", "causing damage"),
+    "house_trespass": ("house trespass", "house-breaking", "house breaking"),
+    "criminal_trespass": ("criminal trespass", "trespass"),
+    # IPC: offences against the body and person
+    "murder": ("murder", "murdered", "homicide", "killing", "killed"),
+    "culpable_homicide": ("culpable homicide", "homicide"),
+    "assault": ("assault", "assaulted", "criminal force", "use of force"),
+    "rape": ("rape", "raped", "sexually assaulted"),
+    "kidnapping": ("kidnapping", "kidnap", "kidnapped", "abduction"),
+    "cheating": ("cheating", "cheat", "cheated", "dishonest inducement", "dishonestly inducing", "deception"),
+    "forgery": ("forgery", "forged", "forging", "false document"),
+    "defamation": ("defamation", "defame", "defamed", "defamatory"),
+    "criminal_intimidation": ("criminal intimidation", "intimidation", "intimidates"),
+    "dowry_death": ("dowry death", "dowry", "cruelty to wife"),
 }
 
 # Human-readable labels for the reasoning chain / diagnostics.
@@ -53,11 +91,40 @@ CONCEPT_DISPLAY: dict[str, str] = {
     "consideration": "consideration",
     "capacity": "capacity",
     "undue_influence": "undue influence",
+    "acceptance": "acceptance",
+    "void_agreement": "void agreement",
+    "voidable_contract": "voidable contract",
+    "breach_of_contract": "breach of contract",
+    "agency": "agency",
+    "indemnity": "indemnity",
+    "guarantee": "guarantee",
+    "bailment": "bailment",
+    "pledge": "pledge",
+    "theft": "theft",
+    "murder": "murder",
+    "culpable_homicide": "culpable homicide",
+    "cheating": "cheating",
+    "robbery": "robbery",
+    "extortion": "extortion",
+    "criminal_breach_of_trust": "criminal breach of trust",
+    "mischief": "mischief",
+    "assault": "assault",
+    "rape": "rape",
+    "kidnapping": "kidnapping",
+    "forgery": "forgery",
+    "defamation": "defamation",
+    "criminal_intimidation": "criminal intimidation",
+    "dowry_death": "dowry death",
+    "house_trespass": "house trespass",
+    "criminal_trespass": "criminal trespass",
 }
 
-# Explicit, verified ICA 1872 section numbers per concept. Never extended
+# Explicit, verified section numbers per concept. ICA 1872 references are
+# ss. 1-238; IPC 1860 references are ss. 239+ (keyed alphanumerically, e.g.
+# "304b" for s. 304B) and are unique to the Indian Penal Code. Never extended
 # heuristically.
-VERIFIED_SECTION_MAPPING: dict[str, tuple[int, ...]] = {
+VERIFIED_SECTION_MAPPING: dict[str, tuple[int | str, ...]] = {
+    # ICA 1872
     "coercion": (15,),
     "free_consent": (14,),
     "voidable_agreement": (19, 2),
@@ -67,11 +134,40 @@ VERIFIED_SECTION_MAPPING: dict[str, tuple[int, ...]] = {
     "consideration": (25, 2),
     "capacity": (11, 12),
     "undue_influence": (16,),
+    "acceptance": (2, 7, 8),
+    "void_agreement": (24, 25, 30),
+    "voidable_contract": (19, 2),
+    "breach_of_contract": (73, 74),
+    "agency": (182,),
+    "indemnity": (124,),
+    "guarantee": (126,),
+    "bailment": (148,),
+    "pledge": (172,),
+    # IPC 1860
+    "theft": (378,),
+    "murder": (300, 302),
+    "culpable_homicide": (299, 304),
+    "cheating": (415, 420),
+    "robbery": (390,),
+    "extortion": (383, 384),
+    "criminal_breach_of_trust": (405, 406),
+    "mischief": (425, 426),
+    "assault": (351, 352),
+    "rape": (375, 376),
+    "kidnapping": (359, 360, 361),
+    "forgery": (463, 465),
+    "defamation": (499, 500),
+    "criminal_intimidation": (503, 506),
+    "dowry_death": ("304b",),
+    "house_trespass": (442,),
+    "criminal_trespass": (441,),
 }
 
 # Surface phrases -> expanded concepts. More specific phrases (e.g.
 # "forced to sign") are listed before their shorter forms so their concepts are
-# always included when both match.
+# always included when both match. IPC phrases deliberately avoid bare words
+# that also belong to ICA concepts (e.g. "deceived"/"deceit" stay ICA
+# fraud/misrepresentation; "deception" alone maps to IPC cheating).
 SURFACE_PHRASES: dict[str, tuple[str, ...]] = {
     # coercion / free consent / voidable agreement (ss. 14-15, 19)
     "forced to sign": ("coercion", "free_consent", "voidable_agreement"),
@@ -82,6 +178,10 @@ SURFACE_PHRASES: dict[str, tuple[str, ...]] = {
     "threats": ("coercion", "free_consent", "voidable_agreement"),
     "duress": ("coercion", "free_consent", "voidable_agreement"),
     "coercion": ("coercion", "free_consent", "voidable_agreement"),
+    # free consent (s. 14)
+    "without free consent": ("free_consent", "coercion", "voidable_agreement"),
+    "not free consent": ("free_consent", "voidable_agreement"),
+    "free consent": ("free_consent",),
     # fraud / misrepresentation (ss. 17-18)
     "false statements": ("fraud", "misrepresentation"),
     "false statement": ("fraud", "misrepresentation"),
@@ -96,6 +196,11 @@ SURFACE_PHRASES: dict[str, tuple[str, ...]] = {
     "offers": ("proposal",),
     "offer": ("proposal",),
     "proposal": ("proposal",),
+    # acceptance (ss. 2, 7-8)
+    "acceptance": ("acceptance",),
+    "accepting": ("acceptance",),
+    "accepts": ("acceptance",),
+    "accepted": ("acceptance",),
     # consideration (ss. 25, 2)
     "without consideration": ("consideration",),
     "no consideration": ("consideration",),
@@ -114,6 +219,115 @@ SURFACE_PHRASES: dict[str, tuple[str, ...]] = {
     "fiduciary": ("undue_influence",),
     "pressured": ("undue_influence",),
     "pressure": ("undue_influence",),
+    # void agreement (ss. 24-25, 30) / voidable contract (ss. 19, 2)
+    "void agreement": ("void_agreement",),
+    "agreement is void": ("void_agreement",),
+    "voidable contract": ("voidable_contract", "voidable_agreement"),
+    # breach of contract (ss. 73-74)
+    "breach of contract": ("breach_of_contract",),
+    "breach of the contract": ("breach_of_contract",),
+    "broke the contract": ("breach_of_contract",),
+    # agency (s. 182)
+    "agent": ("agency",),
+    "agency": ("agency",),
+    "sub-agent": ("agency",),
+    # indemnity (s. 124)
+    "indemnity": ("indemnity",),
+    "indemnify": ("indemnity",),
+    "indemnified": ("indemnity",),
+    # guarantee (s. 126)
+    "contract of guarantee": ("guarantee",),
+    "guarantee": ("guarantee",),
+    "guarantor": ("guarantee",),
+    "surety": ("guarantee",),
+    # bailment (s. 148)
+    "bailment": ("bailment",),
+    "bailor": ("bailment",),
+    "bailee": ("bailment",),
+    # pledge (s. 172)
+    "pledge": ("pledge",),
+    "pawnor": ("pledge",),
+    "pawnee": ("pledge",),
+    # IPC: theft (s. 378)
+    "dishonestly taking property": ("theft",),
+    "dishonestly taking": ("theft",),
+    "dishonest removal": ("theft",),
+    "dishonest taking": ("theft",),
+    "stealing": ("theft",),
+    "steals": ("theft",),
+    "stolen": ("theft",),
+    "steal": ("theft",),
+    "theft": ("theft",),
+    # IPC: murder / culpable homicide (ss. 299-304)
+    "culpable homicide": ("culpable_homicide",),
+    "murdered": ("murder",),
+    "murdering": ("murder",),
+    "murders": ("murder",),
+    "homicide": ("murder", "culpable_homicide"),
+    "killing": ("murder",),
+    "killed": ("murder",),
+    "kills": ("murder",),
+    "murder": ("murder",),
+    # IPC: cheating (ss. 415, 420)
+    "cheating and dishonestly inducing": ("cheating",),
+    "dishonest inducement": ("cheating",),
+    "dishonestly inducing": ("cheating",),
+    "cheating": ("cheating",),
+    "cheated": ("cheating",),
+    "cheat": ("cheating",),
+    "deception": ("cheating",),
+    # IPC: robbery (s. 390)
+    "robbery": ("robbery",),
+    "robbed": ("robbery",),
+    "rob": ("robbery",),
+    # IPC: extortion (ss. 383-384)
+    "putting in fear": ("extortion",),
+    "extortion": ("extortion",),
+    "extorted": ("extortion",),
+    "extort": ("extortion",),
+    # IPC: criminal breach of trust (ss. 405-406)
+    "criminal breach of trust": ("criminal_breach_of_trust",),
+    "breach of trust": ("criminal_breach_of_trust",),
+    "entrusted property": ("criminal_breach_of_trust",),
+    # IPC: mischief (ss. 425-426)
+    "causing damage to property": ("mischief",),
+    "causing damage": ("mischief",),
+    "mischief": ("mischief",),
+    # IPC: assault (ss. 351-352)
+    "criminal force": ("assault",),
+    "assaulted": ("assault",),
+    "assault": ("assault",),
+    # IPC: rape (ss. 375-376)
+    "sexually assaulted": ("rape",),
+    "raped": ("rape",),
+    "rape": ("rape",),
+    # IPC: kidnapping (ss. 359-361)
+    "kidnapping": ("kidnapping",),
+    "kidnapped": ("kidnapping",),
+    "kidnap": ("kidnapping",),
+    "abduction": ("kidnapping",),
+    # IPC: forgery (ss. 463, 465)
+    "forgery": ("forgery",),
+    "forged": ("forgery",),
+    "forging": ("forgery",),
+    # IPC: defamation (ss. 499, 500)
+    "defamation": ("defamation",),
+    "defamed": ("defamation",),
+    "defame": ("defamation",),
+    "defamatory": ("defamation",),
+    # IPC: criminal intimidation (ss. 503, 506)
+    "criminal intimidation": ("criminal_intimidation",),
+    "intimidation": ("criminal_intimidation",),
+    "intimidates": ("criminal_intimidation",),
+    # IPC: dowry death (s. 304B)
+    "dowry death": ("dowry_death",),
+    "dowry": ("dowry_death",),
+    # IPC: house / criminal trespass (ss. 441-442)
+    "house-breaking": ("house_trespass",),
+    "house breaking": ("house_trespass",),
+    "house trespass": ("house_trespass",),
+    "criminal trespass": ("criminal_trespass",),
+    "trespass": ("criminal_trespass",),
 }
 
 

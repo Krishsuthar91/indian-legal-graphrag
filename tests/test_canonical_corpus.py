@@ -6,6 +6,7 @@ audit report is produced.
 """
 
 import json
+import os
 from pathlib import Path
 
 import pytest
@@ -130,6 +131,47 @@ class TestSelection:
             "dup2",
             "dup3",
         }
+
+
+class TestStableRegistryTiebreak:
+    """Canonical selection must not depend on file mtime for known Acts.
+
+    Two byte-equivalent ICA duplicates tie on node/section/parser counts; the
+    registered document id must win deterministically, not the newest file.
+    """
+
+    def test_registered_id_wins_identical_duplicates(self, tmp_path: Path):
+        d = tmp_path / "h"
+        d.mkdir()
+        _write(d, "0d1934142f67c5f5", "The Indian Contract Act, 1872", section_count=3)
+        _write(d, "0e178b31f7181a31", "The Indian Contract Act, 1872", section_count=3)
+        imported = d / "0e178b31f7181a31.json"
+        os.utime(imported, (2_000_000_000, 2_000_000_000))  # non-registered file is newer
+        selection = select_canonical(scan_hierarchy_files(d))
+        ica = [e for e in selection.canonical if e.act_key == "indian contract act"]
+        assert len(ica) == 1
+        assert ica[0].document_id == "0d1934142f67c5f5"
+
+    def test_registered_id_wins_regardless_of_mtime_order(self, tmp_path: Path):
+        d = tmp_path / "h"
+        d.mkdir()
+        _write(d, "0d1934142f67c5f5", "The Indian Contract Act, 1872", section_count=3)
+        _write(d, "0e178b31f7181a31", "The Indian Contract Act, 1872", section_count=3)
+        registered = d / "0d1934142f67c5f5.json"
+        os.utime(registered, (2_000_000_000, 2_000_000_000))  # registered file is newer
+        selection = select_canonical(scan_hierarchy_files(d))
+        ica = [e for e in selection.canonical if e.act_key == "indian contract act"]
+        assert len(ica) == 1
+        assert ica[0].document_id == "0d1934142f67c5f5"
+
+    def test_richer_corpus_still_wins_over_registered_id(self, tmp_path: Path):
+        d = tmp_path / "h"
+        d.mkdir()
+        _write(d, "0d1934142f67c5f5", "The Indian Contract Act, 1872", section_count=2)
+        _write(d, "0e178b31f7181a31", "The Indian Contract Act, 1872", section_count=10)
+        selection = select_canonical(scan_hierarchy_files(d))
+        ica = [e for e in selection.canonical if e.act_key == "indian contract act"]
+        assert ica[0].document_id == "0e178b31f7181a31"
 
 
 class TestImportAll:

@@ -11,7 +11,10 @@ Selection rules (in order) choose the canonical file for a group:
 1. highest node count
 2. highest section count
 3. newest parser format (detected from content where available)
-4. newest file modification timestamp
+4. a document_id registered in ``_STABLE_CANONICAL_IDS`` (so duplicates that
+   tie on all content-based keys resolve deterministically instead of by
+   filesystem mtime)
+5. newest file modification timestamp
 
 All other files in the group are marked non-canonical and are skipped at import
 time. Files are never deleted — only ignored during loading.
@@ -27,6 +30,17 @@ from pathlib import Path
 from src.config.logging_config import get_logger
 
 log = get_logger("canonical_corpus")
+
+# Stable, registered canonical document id per Act.  These match the ids the
+# rest of the system resolves Act names to at query time (e.g.
+# ``src/retrieval/query.py::_ACT_NAME_TO_DOC_ID``) and the evaluation defaults.
+# When identical duplicate hierarchy files tie on node/section/parser counts,
+# the registered id breaks the tie deterministically; mtime is only a
+# content-independent fallback, never the deciding factor for registered Acts.
+_STABLE_CANONICAL_IDS: dict[str, str] = {
+    "indian contract act": "0d1934142f67c5f5",
+    "indian penal code": "cf20a14c52127fd5",
+}
 
 
 @dataclass(frozen=True)
@@ -145,17 +159,30 @@ def scan_hierarchy_files(hierarchy_dir: Path) -> list[AuditEntry]:
     return entries
 
 
-def _select(entries: list[AuditEntry]) -> list[AuditEntry]:
-    """Pick the single canonical file for an Act group."""
+def _select(entries: list[AuditEntry], act_key: str) -> list[AuditEntry]:
+    """Pick the single canonical file for an Act group.
+
+    Preference order: (node_count, section_count, parser_version) descending,
+    then membership of ``document_id`` in ``_STABLE_CANONICAL_IDS`` for the
+    group's Act, then mtime.  Content-based keys dominate, so a genuinely
+    richer corpus still wins; the registered id only breaks ties between
+    otherwise identical duplicates, keeping selection deterministic (both
+    across machines and re-runs) instead of mtime-dependent.
+    """
     if not entries:
         return []
-    # Prefer (node_count, section_count, parser_version, mtime) — all descending.
-    return [
-        max(
-            entries,
-            key=lambda e: (e.node_count, e.section_count, e.parser_version, e.mtime),
+    registered_id = _STABLE_CANONICAL_IDS.get(act_key)
+
+    def key(e: AuditEntry) -> tuple:
+        return (
+            e.node_count,
+            e.section_count,
+            e.parser_version,
+            int(e.document_id == registered_id) if registered_id else 0,
+            e.mtime,
         )
-    ]
+
+    return [max(entries, key=key)]
 
 
 def select_canonical(entries: list[AuditEntry]) -> CanonicalSelection:
@@ -167,7 +194,7 @@ def select_canonical(entries: list[AuditEntry]) -> CanonicalSelection:
     canonical: list[AuditEntry] = []
     skipped: list[AuditEntry] = []
     for act_key, group in groups.items():
-        chosen = _select(group)
+        chosen = _select(group, act_key)
         chosen_ids = {e.document_id for e in chosen}
         canonical.extend(chosen)
         skipped.extend(e for e in group if e.document_id not in chosen_ids)

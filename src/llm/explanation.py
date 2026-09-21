@@ -174,6 +174,46 @@ _FICTITIOUS_ACT_MARKERS: tuple[str, ...] = (
     "not in it",
 )
 
+# IPC criminal concepts: a query naming one of these without an explicit Act
+# and with no unique section number unambiguously targets the Indian Penal
+# Code. Only clearly penal concepts live here; civil-ambiguous terms (fraud,
+# contract, agreement, property, liability, damage) intentionally stay on the
+# ICA default path.
+_IPC_CONCEPT_MARKERS: tuple[str, ...] = (
+    "theft",
+    "cheating",
+    "murder",
+    "culpable homicide",
+    "robbery",
+    "mischief",
+    "criminal breach of trust",
+    "extortion",
+    "assault",
+    "kidnapping",
+    "rape",
+    "dowry death",
+    "forgery",
+    "criminal intimidation",
+    "hurt",
+    "grievous hurt",
+    "dacoity",
+    "rioting",
+    "trespass",
+    "criminal trespass",
+)
+
+# Word-boundary, case-insensitive match so "rape" never matches "scrape" and
+# "hurt" never matches "hurting". Markers are escaped before spaces become
+# ``\s+`` so multi-word concepts like "criminal breach of trust" match too.
+_IPC_CONCEPT_PATTERN = re.compile(
+    r"\b(?:"
+    + "|".join(
+        r"\s+".join(re.escape(word) for word in marker.split()) for marker in _IPC_CONCEPT_MARKERS
+    )
+    + r")\b",
+    re.IGNORECASE,
+)
+
 # Default document used when a query is in the ICA/IPC domain but does not
 # explicitly name an Act and has no section that is unique to the other
 # canonical document. The QA domain is the Indian Contract Act, so ICA is the
@@ -426,6 +466,11 @@ class ExplainabilityEngine:
            unit-test fixtures) routing stays generic so retrieval is unchanged.
            The grounding guard still blocks queries routed here for which the
            ICA evidence is genuinely insufficient.
+
+        A named IPC criminal concept (theft, murder, rape, ...) that reaches
+        step 4 without an explicit Act or a unique section is first routed to
+        the Indian Penal Code (``ipc-concept``) instead of the ICA default; if
+        the IPC document is absent from the corpus it falls through unchanged.
         """
         if parsed.document_id:
             doc_id = parsed.document_id
@@ -461,6 +506,9 @@ class ExplainabilityEngine:
                 unique_docs.add(ipc_doc_id)
         if len(unique_docs) == 1:
             return next(iter(unique_docs)), "unique-section"
+
+        if ipc_present and _IPC_CONCEPT_PATTERN.search(raw_lower):
+            return ipc_doc_id, "ipc-concept"
 
         if ica_present:
             return _ICA_DOC_ID, "ica-default"
@@ -732,6 +780,7 @@ class ExplainabilityEngine:
 
         exact_matches = [nid for nid in candidates if _exact_numbering_match(nid)]
         if exact_matches and (effective_parsed.section_refs or effective_parsed.section_numbers):
+            exact_matches.sort(key=lambda nid: (-rank.get(nid, 0.0), nid))
             rest = [nid for nid in ranked_ids if nid not in exact_matches]
             ranked_ids = exact_matches + rest
             exact_matches_sorted = True
@@ -791,7 +840,9 @@ class ExplainabilityEngine:
         paths = self._build_paths(evidence)
         citations = self._build_citations(evidence)
         counter = self._detect_counter_authorities(evidence)
-        evidence_relevance = self._compute_evidence_relevance(query, evidence)
+        evidence_relevance = self._compute_evidence_relevance(
+            query, evidence, parsed=effective_parsed
+        )
         confidence = self._score_confidence(
             evidence,
             effective_parsed,
@@ -1019,18 +1070,32 @@ class ExplainabilityEngine:
         return signals, candidates
 
     def _fill_ranking_signals(self, signals: dict[str, _Signal], parsed) -> None:
-        """Fill keyword-overlap + citation-frequency signals for every candidate."""
+        """Fill keyword-overlap + citation signals for every candidate.
+
+        The citation signal reflects whether a node actually matches the legal
+        citation requested by the query (``citation_score`` is a binary exact /
+        word-boundary reference match). Cross-reference frequency
+        (``citation_frequency``, the count of CITES/REFERENCES edges) never
+        replaces a missing match: when the query references a legal citation,
+        nodes that do not match get ``citation=0.0`` so unrelated high-reference
+        nodes cannot receive the maximum citation score and outrank the actual
+        provision. Only when the query carries no legal reference at all is the
+        normalized frequency kept as a popularity signal for ordering, which
+        preserves the previous ranking behaviour for ordinary concept queries.
+        """
         citation_counts: dict[str, float] = {}
         max_citations = 0.0
+        has_reference = bool(parsed.section_refs or parsed.section_numbers)
         for node_id, sig in signals.items():
             node = self.graph.get_node(node_id)
             if node:
                 sig.keyword = keyword_overlap(node, parsed)
-                # An explicit query section reference that exactly matches this
-                # node's numbering is the strongest citation signal: award it
-                # the full citation score regardless of citation edge counts.
-                if citation_score(node, parsed) == 1.0:
-                    sig.citation = 1.0
+                # An exact citation match (numbering equality or a standalone
+                # reference in the node's text) is the citation signal. It is
+                # binary — no frequency fill-in below.
+                sig.citation = citation_score(node, parsed)
+            if has_reference:
+                continue
             count = citation_frequency(self.graph, node_id)
             citation_counts[node_id] = count
             max_citations = max(max_citations, count)
@@ -1393,29 +1458,28 @@ class ExplainabilityEngine:
         query: str,
         evidence: list[Evidence],
         keyword_coverage: float,
+        exact_citation: bool = False,
     ) -> float:
         """Query-aware evidence sufficiency score in [0, 1].
 
-        Composed of three signals:
-        - 70% semantic similarity (Dice coefficient of query vs concatenated evidence)
-        - 20% keyword coverage (fraction of query keywords found in evidence)
-        - 10% evidence diversity (small bonus for multiple independent chunks,
-          capped at 3 so irrelevant chunks never inflate the score).
-        """
-        import re as _re
+        Composed of three retrieval-derived signals:
+        - 45% keyword coverage (fraction of query keywords found in evidence)
+        - 35% exact citation match (the query explicitly cites a provision and
+          the top-ranked evidence is that exact provision; a single cited
+          provision is sufficient for a section-lookup answer)
+        - 20% evidence diversity (small bonus for multiple independent chunks,
+          capped at 3 so irrelevant chunks never inflate the score)
 
-        evidence_text = " ".join(f"{ev.title} {ev.text} {ev.numbering}" for ev in evidence)
-        # Strip question boilerplate so similarity measures content, not syntax.
-        cleaned_query = _re.sub(
-            r"^(what|how|when|where|who|why|which)\s+(does|do|is|are|was|were|"
-            r"has|have|had|shall|should|can|could|may|might)\s+",
-            "",
-            query.lower(),
-            count=1,
-        )
-        similarity = _text_similarity(cleaned_query, evidence_text.lower())
+        The former 70% Dice-terms term is removed: raw lexical similarity is
+        already scored as evidence relevance, so re-weighting the same Dice in
+        sufficiency double-counted it (Issue #12).
+        """
+        if not evidence:
+            return 0.0
+
         diversity = min(len(evidence), 3) / 3.0
-        return min(1.0, 0.7 * similarity + 0.20 * keyword_coverage + 0.10 * diversity)
+        exact = 1.0 if exact_citation else 0.0
+        return min(1.0, 0.45 * keyword_coverage + 0.20 * diversity + 0.35 * exact)
 
     # -- evidence relevance (LLM judge) -----------------------------------
 
@@ -1432,16 +1496,44 @@ class ExplainabilityEngine:
         'Return ONLY JSON: {"score": float, "label": "...", "reason": "..."}'
     )
 
+    def _is_exact_provision_match(self, evidence: list[Evidence], parsed=None) -> bool:
+        """True when the query explicitly cites a provision and the top-ranked
+        evidence is the exact cited provision (numbering and document both
+        match).
+
+        Reuses ``citation_score`` — the same signal already used for ranking —
+        so no duplicate citation logic is introduced (Issue #12).
+        """
+        if not evidence or parsed is None:
+            return False
+        if not (parsed.section_refs or parsed.section_numbers):
+            return False
+        node = self.graph.get_node(evidence[0].node_id)
+        if node is None:
+            return False
+        return citation_score(node, parsed) >= 1.0
+
     def _compute_evidence_relevance(
-        self, query: str, evidence: list[Evidence]
+        self, query: str, evidence: list[Evidence], parsed=None
     ) -> EvidenceRelevance:
         """Score how well retrieved evidence answers the query.
 
         Uses an LLM judge when a client is available; falls back to a
-        deterministic similarity-based estimate otherwise.
+        deterministic similarity-based estimate otherwise. When the query
+        explicitly cites a legal provision and the top-ranked evidence is that
+        exact provision, relevance is scored as semantically direct (1.0)
+        regardless of raw lexical overlap, which is structurally low for
+        short-vs-statute comparisons (Issue #12).
         """
         if not evidence:
             return EvidenceRelevance(score=0.0, label="none", explanation="No evidence retrieved.")
+
+        if self._is_exact_provision_match(evidence, parsed):
+            return EvidenceRelevance(
+                score=1.0,
+                label="direct",
+                explanation="Top-ranked evidence is the exact provision cited by the query.",
+            )
 
         # Attempt LLM judge when a client is wired in.
         if self.llm_client is not None:
@@ -1837,7 +1929,10 @@ class ExplainabilityEngine:
         coverage = len(matched) / len(keywords) if keywords else 1.0
 
         # --- Component 3: evidence sufficiency (shared computation) ---
-        sufficiency = self._compute_evidence_sufficiency(query, evidence, coverage)
+        exact_citation = self._is_exact_provision_match(evidence, parsed)
+        sufficiency = self._compute_evidence_sufficiency(
+            query, evidence, coverage, exact_citation=exact_citation
+        )
 
         # --- Component 4: evidence relevance ---
         relevance = evidence_relevance.score if evidence_relevance is not None else 0.0

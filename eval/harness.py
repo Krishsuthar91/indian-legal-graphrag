@@ -280,12 +280,16 @@ def benchmark_from_config(
     hierarchy_file = ds_conf.get("hierarchy_file")
     dataset_path = Path(dataset_file or ds_conf["gold_dir"])
     dataset = _load_primary_dataset(dataset_path, doc_id)
+    embed_conf = exp.get("embedding", {}) or {}
     corpus = build_corpus(
         document_id=doc_id,
         hierarchy_file=hierarchy_file,
         weights=exp.get("hybrid_weights"),
         confidence_threshold=exp.get("confidence_threshold"),
-        embedding_dim=exp.get("embedding", {}).get("dim", 64),
+        embedding_dim=embed_conf.get("dim", 64),
+        embedding_model=embed_conf.get("model"),
+        force_deterministic=bool(embed_conf.get("force_deterministic", False)),
+        allow_fallback=bool(embed_conf.get("allow_fallback", True)),
         seed=exp.get("seed", 42),
     )
     try:

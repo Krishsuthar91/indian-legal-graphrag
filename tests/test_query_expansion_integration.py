@@ -3,6 +3,8 @@
 Shows that a natural-language "threat" query retrieves the coercion-family
 sections (s. 14 free consent, s. 15 coercion, s. 19 voidability) ONLY when
 expansion is enabled, while the pipeline otherwise behaves exactly as before.
+Expansion is enabled by default since V2.4.1; disabling it preserves the
+original (unexpanded) behaviour.
 
 Two complementary angles:
 - graph-only engines (``vector_retriever=None``) give a deterministic,
@@ -194,17 +196,15 @@ class TestFullPipelineWithExpansion:
         result = engine.explain(THREAT_QUERY, top_k=5)
         assert COERCION_SECTIONS <= _evidence_ids(result)
 
-    def test_expansion_defaults_to_disabled(self):
+    def test_expansion_defaults_to_enabled(self):
         graph = _threat_graph()
         engine = build_engine(graph)
         result = engine.explain(THREAT_QUERY, top_k=5)
-        assert result.retrieval.query_expansion_enabled is False
-        assert result.retrieval.expanded_concepts == []
-        assert result.retrieval.expanded_terms == []
-        assert result.retrieval.expansion_reason == "expansion disabled"
+        assert result.retrieval.query_expansion_enabled is True
+        assert COERCION_SECTIONS <= _evidence_ids(result)
         step = next(st for st in result.reasoning_chain if st.kind == "query_expansion")
-        assert step.detail["active"] is False
-        assert step.detail["enabled"] is False
+        assert step.detail["active"] is True
+        assert step.detail["enabled"] is True
 
     def test_expansion_diagnostics_populated(self):
         graph = _threat_graph()
@@ -330,10 +330,10 @@ class TestCorpusAwareExpansion:
 
 
 class TestExpansionFeatureFlag:
-    """The default is OFF; the flag must still enable/disable explicitly."""
+    """The default is ON; the flag must still disable/enable explicitly."""
 
-    def test_default_config_disables_expansion(self):
-        assert Settings().QA_QUERY_EXPANSION_ENABLED is False
+    def test_default_config_enables_expansion(self):
+        assert Settings().QA_QUERY_EXPANSION_ENABLED is True
 
     def test_env_var_true_enables_expansion(self, monkeypatch):
         monkeypatch.setenv("QA_QUERY_EXPANSION_ENABLED", "true")

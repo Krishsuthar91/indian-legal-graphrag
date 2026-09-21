@@ -61,6 +61,31 @@ def get_related_nodes(
     return [n for n in (graph.get_node(nid) for nid in neighbor_ids) if n]
 
 
+def _node_document(graph, node_id: str) -> str:
+    """Return the ``document_id`` of a node, or ``""`` when it has none."""
+    node = graph.get_node(node_id)
+    if not node:
+        return ""
+    return str(node.get("document_id") or "")
+
+
+def _same_document(seed_document: str, node) -> bool:
+    """True when ``node`` may be included in a seed's propagation walk.
+
+    The document boundary only ever blocks nodes that explicitly belong to a
+    different document than the originating seed. A node without a
+    ``document_id`` carries no boundary information and is treated as
+    transparent, so propagation over graphs that do not annotate every node
+    (synthetic fixtures, partial imports) behaves exactly as before.
+    """
+    if not seed_document:
+        return True
+    node_document = str((node or {}).get("document_id") or "")
+    if not node_document:
+        return True
+    return node_document == seed_document
+
+
 def propagate_hierarchy(
     graph,
     seed_ids: list[str],
@@ -73,6 +98,10 @@ def propagate_hierarchy(
     ``up_factor`` and each descendant level by ``down_factor``. Strengths from
     multiple seeds accumulate (capped at 1.0).
 
+    Propagation is bounded by document: a seed never expands into a node whose
+    ``document_id`` differs from the originating seed's, so evidence never
+    crosses Acts (or any hierarchy boundary defined by ``document_id``).
+
     Returns a mapping node_id -> evidence strength in [0, 1].
     """
     evidence: dict[str, float] = {}
@@ -82,6 +111,7 @@ def propagate_hierarchy(
 
     for seed in seed_ids:
         _add(seed, 1.0)
+        seed_document = _node_document(graph, seed)
 
         # Ancestors
         strength = up_factor
@@ -90,6 +120,8 @@ def propagate_hierarchy(
         while strength > 1e-4:
             parent = get_parent(graph, current)
             if not parent or parent["node_id"] in seen:
+                break
+            if not _same_document(seed_document, parent):
                 break
             seen.add(parent["node_id"])
             _add(parent["node_id"], strength)
@@ -106,6 +138,8 @@ def propagate_hierarchy(
                 continue
             for child in get_children(graph, current):
                 child_id = child["node_id"]
+                if not _same_document(seed_document, child):
+                    continue
                 if child_id in visited:
                     continue
                 visited.add(child_id)

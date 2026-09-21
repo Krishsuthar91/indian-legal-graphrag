@@ -32,6 +32,15 @@ class Settings(BaseSettings):
     EMBEDDING_MODEL: str = "BAAI/bge-m3"
     EMBEDDING_BATCH_SIZE: int = 32
     EMBEDDING_FORCE_DETERMINISTIC: bool = False
+    # When False (default) the runtime FAILS if the configured embedding model
+    # cannot be loaded, instead of silently running on the deterministic
+    # 64-dim hash provider (which is concept-insensitive — see V2.4.2).
+    # Runtime semantic retrieval therefore cannot degrade silently.
+    EMBEDDING_ALLOW_DETERMINISTIC_FALLBACK: bool = False
+    # Cap for encoded sequence length (tokens). Provider truncates long texts;
+    # a few very long clause texts make CPU attention cost quadratic in length.
+    # Full text still lives in node payloads for generation. None = model max.
+    EMBEDDING_MAX_SEQUENCE_LENGTH: int | None = 512
 
     HYBRID_WEIGHTS_DENSE: float = 0.40
     HYBRID_WEIGHTS_GRAPH: float = 0.35
@@ -96,18 +105,27 @@ class Settings(BaseSettings):
     # Must be >= LLM_TIMEOUT_SECONDS so a slow-but-alive LLM still gets its turn.
     QA_REQUEST_TIMEOUT_SECONDS: float = 30.0
     # Phase 4: deterministic legal query expansion. When True, ordinary-language
-    # expressions (e.g. "threat") are expanded into canonical ICA concepts and
-    # verified section references before retrieval. Retrieval-side only: answer
-    # generation and the public API contract are unchanged.
-    # Default is False: corpus-aware expansion remains a small net regression on
-    # the 50-question benchmark, so it is opt-in. Set the env var (or .env) to
-    # "true" to enable it explicitly.
-    QA_QUERY_EXPANSION_ENABLED: bool = False
+    # expressions (e.g. "threat", "theft", "offer") are expanded into canonical
+    # ICA and IPC concepts plus verified section references before retrieval.
+    # Retrieval-side only: answer generation and the public API contract are
+    # unchanged. Enabled by default since V2.4.1 (open-ended legal concept
+    # queries). Set the env var (or .env) to "false" to disable it explicitly.
+    QA_QUERY_EXPANSION_ENABLED: bool = True
     # Grounding guard (Task 15): when True, answer generation is skipped unless
     # the retrieved evidence meets the grounding thresholds (relevance,
     # sufficiency, verification status, confidence). When False the system
     # behaves exactly as before and always calls the LLM if retrieval succeeded.
     QA_GROUNDING_GUARD_ENABLED: bool = True
+
+    # Provenance retention (Issue #13 V2.7): every query writes a provenance
+    # record and nothing ever expired them. These policy knobs bound how long
+    # and how many records are kept (newest always survive).
+    PROVENANCE_RETENTION_DAYS: int = 30
+    PROVENANCE_MAX_FILES: int = 5000
+    PROVENANCE_CLEANUP_ENABLED: bool = True
+    # Cleanup on application startup is opt-in; rebuilds and the standalone
+    # cleanup script always honor PROVENANCE_CLEANUP_ENABLED.
+    PROVENANCE_CLEANUP_AT_STARTUP: bool = False
 
     CORS_ORIGINS: list[str] = ["http://localhost:3000", "http://localhost:8000"]
 

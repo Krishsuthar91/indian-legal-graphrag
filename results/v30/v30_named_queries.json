@@ -1,0 +1,2038 @@
+{
+  "corpus": {
+    "files_scanned": 280,
+    "files_imported": 2,
+    "files_skipped": 278,
+    "total_nodes": 749,
+    "total_edges": 1213,
+    "graph_nodes": 938
+  },
+  "settings": {
+    "qa_top_k": 5,
+    "confidence_threshold": 0.45,
+    "embedding": "deterministic@64"
+  },
+  "queries": [
+    {
+      "query": "Section 378 IPC",
+      "expected_doc": "cf20a14c52127fd5",
+      "expected_numbering": "378",
+      "note": "theft",
+      "document_target_reason": "explicit-canonical-act",
+      "inferred_document_id": "cf20a14c52127fd5",
+      "routed_to_expected_doc": true,
+      "top_1": true,
+      "top_3": true,
+      "top_5": true,
+      "top_10": true,
+      "mrr": 1.0,
+      "rank_of_expected": 1,
+      "n_evidence": 10,
+      "n_same_doc_retrieved": 10,
+      "confidence": 0.7329,
+      "confidence_label": "high",
+      "verification_status": "supported",
+      "evidence_sufficiency": 0.55,
+      "evidence_relevance_score": 1.0,
+      "contradiction_found": false,
+      "n_counter_authorities": 0,
+      "counter_authorities": [],
+      "is_valid": true,
+      "verdict": "supported",
+      "validity_reason": "Generated answer is supported by retrieved evidence.",
+      "threshold": 0.45,
+      "top5": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0572",
+          "numbering": "378",
+          "label": "Section",
+          "title": "Theft",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0235",
+          "numbering": "376",
+          "label": "Section",
+          "title": ", section 376A, section 376B, section 376C, section 376D, section 376E or section 509\u201d the",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0328",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Whoever prints or",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0332",
+          "numbering": "376B",
+          "label": "Section",
+          "title": ", section 376C, section 376D, section 376DA or section 376E\u201d shall be substituted.",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0232",
+          "numbering": "31",
+          "label": "Section",
+          "title": ", ibid. 165. [Public servant obtaining valuable thing, without consideration, from person concerned in",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ],
+      "retrieved_all": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0572",
+          "numbering": "378",
+          "label": "Section",
+          "title": "Theft",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0235",
+          "numbering": "376",
+          "label": "Section",
+          "title": ", section 376A, section 376B, section 376C, section 376D, section 376E or section 509\u201d the",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0328",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Whoever prints or",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0332",
+          "numbering": "376B",
+          "label": "Section",
+          "title": ", section 376C, section 376D, section 376DA or section 376E\u201d shall be substituted.",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0232",
+          "numbering": "31",
+          "label": "Section",
+          "title": ", ibid. 165. [Public servant obtaining valuable thing, without consideration, from person concerned in",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0029",
+          "numbering": "24",
+          "label": "Section",
+          "title": "\u201cDishonestly\u201d",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0234",
+          "numbering": "166A",
+          "label": "Section",
+          "title": "Public servant disobeying direction under law",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0430",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Where the death of a woman is caused by any burns or bodily injury or",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0653",
+          "numbering": "440",
+          "label": "Section",
+          "title": "Mischief committed after preparation made for causing death or hurt",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0203",
+          "numbering": "140",
+          "label": "Section",
+          "title": "Wearing garb or carrying token used by soldier, sailor or airman",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ]
+    },
+    {
+      "query": "Section 302 IPC",
+      "expected_doc": "cf20a14c52127fd5",
+      "expected_numbering": "302",
+      "note": "murder punishment",
+      "document_target_reason": "explicit-canonical-act",
+      "inferred_document_id": "cf20a14c52127fd5",
+      "routed_to_expected_doc": true,
+      "top_1": true,
+      "top_3": true,
+      "top_5": true,
+      "top_10": true,
+      "mrr": 1.0,
+      "rank_of_expected": 1,
+      "n_evidence": 10,
+      "n_same_doc_retrieved": 10,
+      "confidence": 0.7327,
+      "confidence_label": "high",
+      "verification_status": "supported",
+      "evidence_sufficiency": 0.55,
+      "evidence_relevance_score": 1.0,
+      "contradiction_found": false,
+      "n_counter_authorities": 0,
+      "counter_authorities": [],
+      "is_valid": true,
+      "verdict": "supported",
+      "validity_reason": "Generated answer is supported by retrieved evidence.",
+      "threshold": 0.45,
+      "top5": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0424",
+          "numbering": "302",
+          "label": "Section",
+          "title": "Punishment for murder",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0235",
+          "numbering": "376",
+          "label": "Section",
+          "title": ", section 376A, section 376B, section 376C, section 376D, section 376E or section 509\u201d the",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0328",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Whoever prints or",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0332",
+          "numbering": "376B",
+          "label": "Section",
+          "title": ", section 376C, section 376D, section 376DA or section 376E\u201d shall be substituted.",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0232",
+          "numbering": "31",
+          "label": "Section",
+          "title": ", ibid. 165. [Public servant obtaining valuable thing, without consideration, from person concerned in",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ],
+      "retrieved_all": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0424",
+          "numbering": "302",
+          "label": "Section",
+          "title": "Punishment for murder",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0235",
+          "numbering": "376",
+          "label": "Section",
+          "title": ", section 376A, section 376B, section 376C, section 376D, section 376E or section 509\u201d the",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0328",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Whoever prints or",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0332",
+          "numbering": "376B",
+          "label": "Section",
+          "title": ", section 376C, section 376D, section 376DA or section 376E\u201d shall be substituted.",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0232",
+          "numbering": "31",
+          "label": "Section",
+          "title": ", ibid. 165. [Public servant obtaining valuable thing, without consideration, from person concerned in",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0234",
+          "numbering": "166A",
+          "label": "Section",
+          "title": "Public servant disobeying direction under law",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0310",
+          "numbering": "376C",
+          "label": "Section",
+          "title": ", section 376F, section 509, section 509A or section 509B shall be punishable with",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0430",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Where the death of a woman is caused by any burns or bodily injury or",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0653",
+          "numbering": "440",
+          "label": "Section",
+          "title": "Mischief committed after preparation made for causing death or hurt",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0675",
+          "numbering": "CHAPTER XVIII",
+          "label": "Chapter",
+          "title": "CHAPTER XVIII",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ]
+    },
+    {
+      "query": "Section 420 IPC",
+      "expected_doc": "cf20a14c52127fd5",
+      "expected_numbering": "420",
+      "note": "cheating and dishonestly inducing delivery",
+      "document_target_reason": "explicit-canonical-act",
+      "inferred_document_id": "cf20a14c52127fd5",
+      "routed_to_expected_doc": true,
+      "top_1": true,
+      "top_3": true,
+      "top_5": true,
+      "top_10": true,
+      "mrr": 1.0,
+      "rank_of_expected": 1,
+      "n_evidence": 10,
+      "n_same_doc_retrieved": 10,
+      "confidence": 0.7316,
+      "confidence_label": "high",
+      "verification_status": "supported",
+      "evidence_sufficiency": 0.55,
+      "evidence_relevance_score": 1.0,
+      "contradiction_found": false,
+      "n_counter_authorities": 0,
+      "counter_authorities": [],
+      "is_valid": true,
+      "verdict": "supported",
+      "validity_reason": "Generated answer is supported by retrieved evidence.",
+      "threshold": 0.45,
+      "top5": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0637",
+          "numbering": "420",
+          "label": "Section",
+          "title": "Cheating and dishonestly inducing delivery of property",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0235",
+          "numbering": "376",
+          "label": "Section",
+          "title": ", section 376A, section 376B, section 376C, section 376D, section 376E or section 509\u201d the",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0332",
+          "numbering": "376B",
+          "label": "Section",
+          "title": ", section 376C, section 376D, section 376DA or section 376E\u201d shall be substituted.",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0328",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Whoever prints or",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0518",
+          "numbering": "359",
+          "label": "Section",
+          "title": "Kidnapping",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ],
+      "retrieved_all": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0637",
+          "numbering": "420",
+          "label": "Section",
+          "title": "Cheating and dishonestly inducing delivery of property",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0235",
+          "numbering": "376",
+          "label": "Section",
+          "title": ", section 376A, section 376B, section 376C, section 376D, section 376E or section 509\u201d the",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0332",
+          "numbering": "376B",
+          "label": "Section",
+          "title": ", section 376C, section 376D, section 376DA or section 376E\u201d shall be substituted.",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0328",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Whoever prints or",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0518",
+          "numbering": "359",
+          "label": "Section",
+          "title": "Kidnapping",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0430",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Where the death of a woman is caused by any burns or bodily injury or",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0234",
+          "numbering": "166A",
+          "label": "Section",
+          "title": "Public servant disobeying direction under law",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0653",
+          "numbering": "440",
+          "label": "Section",
+          "title": "Mischief committed after preparation made for causing death or hurt",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0232",
+          "numbering": "31",
+          "label": "Section",
+          "title": ", ibid. 165. [Public servant obtaining valuable thing, without consideration, from person concerned in",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0424",
+          "numbering": "302",
+          "label": "Section",
+          "title": "Punishment for murder",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ]
+    },
+    {
+      "query": "Section 10 Indian Contract Act",
+      "expected_doc": "0d1934142f67c5f5",
+      "expected_numbering": "10",
+      "note": "what agreements are contracts",
+      "document_target_reason": "explicit-canonical-act",
+      "inferred_document_id": "0d1934142f67c5f5",
+      "routed_to_expected_doc": true,
+      "top_1": true,
+      "top_3": true,
+      "top_5": true,
+      "top_10": true,
+      "mrr": 1.0,
+      "rank_of_expected": 1,
+      "n_evidence": 9,
+      "n_same_doc_retrieved": 9,
+      "confidence": 0.8965,
+      "confidence_label": "very_high",
+      "verification_status": "supported",
+      "evidence_sufficiency": 1.0,
+      "evidence_relevance_score": 1.0,
+      "contradiction_found": false,
+      "n_counter_authorities": 2,
+      "counter_authorities": [
+        {
+          "node_id": "0d1934142f67c5f5__n_0014",
+          "marker": "repealed",
+          "reason": "statement references an authority that appears repealed",
+          "title": "What agreements are contracts"
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0001",
+          "marker": "repealed",
+          "reason": "statement references an authority that appears repealed",
+          "title": "Short title"
+        }
+      ],
+      "is_valid": false,
+      "verdict": "supported",
+      "validity_reason": "Generated answer is supported by retrieved evidence.",
+      "threshold": 0.45,
+      "top5": [
+        {
+          "node_id": "0d1934142f67c5f5__n_0014",
+          "numbering": "10",
+          "label": "Section",
+          "title": "What agreements are contracts",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0041",
+          "numbering": "31",
+          "label": "Section",
+          "title": "\"Contingent contract\" defined",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0020",
+          "numbering": "16",
+          "label": "Section",
+          "title": "\"Undue influence\" defined (1) A contract is said to be induced by \"under influence\" where the relations",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0001",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Short title",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0027",
+          "numbering": "21",
+          "label": "Section",
+          "title": "Effect of mistake as to law",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        }
+      ],
+      "retrieved_all": [
+        {
+          "node_id": "0d1934142f67c5f5__n_0014",
+          "numbering": "10",
+          "label": "Section",
+          "title": "What agreements are contracts",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0041",
+          "numbering": "31",
+          "label": "Section",
+          "title": "\"Contingent contract\" defined",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0020",
+          "numbering": "16",
+          "label": "Section",
+          "title": "\"Undue influence\" defined (1) A contract is said to be induced by \"under influence\" where the relations",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0001",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Short title",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0027",
+          "numbering": "21",
+          "label": "Section",
+          "title": "Effect of mistake as to law",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0036",
+          "numbering": "28",
+          "label": "Section",
+          "title": "Agreements in restrain of legal proceedings, void",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0018",
+          "numbering": "14",
+          "label": "Section",
+          "title": "\"Free consent\" defined -",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0121",
+          "numbering": "147",
+          "label": "Section",
+          "title": "Liability of co-sureties bound in different sums -",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0167",
+          "numbering": "189",
+          "label": "Section",
+          "title": "Agent's authority in an emergency -",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        }
+      ]
+    },
+    {
+      "query": "theft",
+      "expected_doc": "cf20a14c52127fd5",
+      "expected_numbering": "378",
+      "note": "concept routing",
+      "document_target_reason": "unique-section",
+      "inferred_document_id": "cf20a14c52127fd5",
+      "routed_to_expected_doc": true,
+      "top_1": true,
+      "top_3": true,
+      "top_5": true,
+      "top_10": true,
+      "mrr": 1.0,
+      "rank_of_expected": 1,
+      "n_evidence": 10,
+      "n_same_doc_retrieved": 10,
+      "confidence": 0.8479,
+      "confidence_label": "high",
+      "verification_status": "supported",
+      "evidence_sufficiency": 0.8,
+      "evidence_relevance_score": 1.0,
+      "contradiction_found": false,
+      "n_counter_authorities": 0,
+      "counter_authorities": [],
+      "is_valid": true,
+      "verdict": "supported",
+      "validity_reason": "Generated answer is supported by retrieved evidence.",
+      "threshold": 0.45,
+      "top5": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0572",
+          "numbering": "378",
+          "label": "Section",
+          "title": "Theft",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0332",
+          "numbering": "376B",
+          "label": "Section",
+          "title": ", section 376C, section 376D, section 376DA or section 376E\u201d shall be substituted.",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0646",
+          "numbering": "428",
+          "label": "Section",
+          "title": "Mischief by killing or maiming animal of the value of ten rupees",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0235",
+          "numbering": "376",
+          "label": "Section",
+          "title": ", section 376A, section 376B, section 376C, section 376D, section 376E or section 509\u201d the",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0060",
+          "numbering": "47",
+          "label": "Section",
+          "title": "\u201cAnimal\u201d",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ],
+      "retrieved_all": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0572",
+          "numbering": "378",
+          "label": "Section",
+          "title": "Theft",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0332",
+          "numbering": "376B",
+          "label": "Section",
+          "title": ", section 376C, section 376D, section 376DA or section 376E\u201d shall be substituted.",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0646",
+          "numbering": "428",
+          "label": "Section",
+          "title": "Mischief by killing or maiming animal of the value of ten rupees",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0235",
+          "numbering": "376",
+          "label": "Section",
+          "title": ", section 376A, section 376B, section 376C, section 376D, section 376E or section 509\u201d the",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0060",
+          "numbering": "47",
+          "label": "Section",
+          "title": "\u201cAnimal\u201d",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0328",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Whoever prints or",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0047",
+          "numbering": "36",
+          "label": "Section",
+          "title": "Effect caused partly by act and partly by omission",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0232",
+          "numbering": "31",
+          "label": "Section",
+          "title": ", ibid. 165. [Public servant obtaining valuable thing, without consideration, from person concerned in",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0579",
+          "numbering": "b",
+          "label": "Clause",
+          "title": "A puts a bait for dogs in his pocket, and thus induces Z's dog to follow it. Here, if A's intention be dishonestly to take the",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0003",
+          "numbering": "2",
+          "label": "Section",
+          "title": "Punishment of offences committed within India",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ]
+    },
+    {
+      "query": "murder",
+      "expected_doc": "cf20a14c52127fd5",
+      "expected_numbering": "302",
+      "note": "concept routing",
+      "document_target_reason": "unique-section",
+      "inferred_document_id": "cf20a14c52127fd5",
+      "routed_to_expected_doc": true,
+      "top_1": true,
+      "top_3": true,
+      "top_5": true,
+      "top_10": true,
+      "mrr": 1.0,
+      "rank_of_expected": 1,
+      "n_evidence": 10,
+      "n_same_doc_retrieved": 10,
+      "confidence": 0.846,
+      "confidence_label": "high",
+      "verification_status": "supported",
+      "evidence_sufficiency": 0.82,
+      "evidence_relevance_score": 1.0,
+      "contradiction_found": false,
+      "n_counter_authorities": 0,
+      "counter_authorities": [],
+      "is_valid": true,
+      "verdict": "supported",
+      "validity_reason": "Generated answer is supported by retrieved evidence.",
+      "threshold": 0.45,
+      "top5": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0424",
+          "numbering": "302",
+          "label": "Section",
+          "title": "Punishment for murder",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0416",
+          "numbering": "300",
+          "label": "Section",
+          "title": "Murder",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0425",
+          "numbering": "303",
+          "label": "Section",
+          "title": "Punishment for murder by life-convict",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0235",
+          "numbering": "376",
+          "label": "Section",
+          "title": ", section 376A, section 376B, section 376C, section 376D, section 376E or section 509\u201d the",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0328",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Whoever prints or",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ],
+      "retrieved_all": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0424",
+          "numbering": "302",
+          "label": "Section",
+          "title": "Punishment for murder",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0416",
+          "numbering": "300",
+          "label": "Section",
+          "title": "Murder",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0425",
+          "numbering": "303",
+          "label": "Section",
+          "title": "Punishment for murder by life-convict",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0235",
+          "numbering": "376",
+          "label": "Section",
+          "title": ", section 376A, section 376B, section 376C, section 376D, section 376E or section 509\u201d the",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0328",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Whoever prints or",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0234",
+          "numbering": "166A",
+          "label": "Section",
+          "title": "Public servant disobeying direction under law",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0332",
+          "numbering": "376B",
+          "label": "Section",
+          "title": ", section 376C, section 376D, section 376DA or section 376E\u201d shall be substituted.",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0430",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Where the death of a woman is caused by any burns or bodily injury or",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0504",
+          "numbering": "ii",
+          "label": "Clause",
+          "title": "a demand or request for sexual favours; or (iii) showing pornography against the will of a woman; or (iv) making sexually coloured remarks,",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0310",
+          "numbering": "376C",
+          "label": "Section",
+          "title": ", section 376F, section 509, section 509A or section 509B shall be punishable with",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ]
+    },
+    {
+      "query": "robbery",
+      "expected_doc": "cf20a14c52127fd5",
+      "expected_numbering": "390",
+      "note": "concept routing",
+      "document_target_reason": "unique-section",
+      "inferred_document_id": "cf20a14c52127fd5",
+      "routed_to_expected_doc": true,
+      "top_1": true,
+      "top_3": true,
+      "top_5": true,
+      "top_10": true,
+      "mrr": 1.0,
+      "rank_of_expected": 1,
+      "n_evidence": 10,
+      "n_same_doc_retrieved": 10,
+      "confidence": 0.836,
+      "confidence_label": "high",
+      "verification_status": "supported",
+      "evidence_sufficiency": 0.85,
+      "evidence_relevance_score": 1.0,
+      "contradiction_found": false,
+      "n_counter_authorities": 0,
+      "counter_authorities": [],
+      "is_valid": true,
+      "verdict": "supported",
+      "validity_reason": "Generated answer is supported by retrieved evidence.",
+      "threshold": 0.45,
+      "top5": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0594",
+          "numbering": "390",
+          "label": "Section",
+          "title": "Robbery",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0598",
+          "numbering": "392",
+          "label": "Section",
+          "title": "Punishment for robbery",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0624",
+          "numbering": "410",
+          "label": "Section",
+          "title": "Stolen property",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0027",
+          "numbering": "22",
+          "label": "Section",
+          "title": "\u201cMovable property\u201d",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0425",
+          "numbering": "303",
+          "label": "Section",
+          "title": "Punishment for murder by life-convict",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ],
+      "retrieved_all": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0594",
+          "numbering": "390",
+          "label": "Section",
+          "title": "Robbery",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0598",
+          "numbering": "392",
+          "label": "Section",
+          "title": "Punishment for robbery",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0624",
+          "numbering": "410",
+          "label": "Section",
+          "title": "Stolen property",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0027",
+          "numbering": "22",
+          "label": "Section",
+          "title": "\u201cMovable property\u201d",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0425",
+          "numbering": "303",
+          "label": "Section",
+          "title": "Punishment for murder by life-convict",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0070",
+          "numbering": "54",
+          "label": "Section",
+          "title": "Commutation of sentence of death",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0688",
+          "numbering": "470",
+          "label": "Section",
+          "title": "Forged document",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0011",
+          "numbering": "7",
+          "label": "Section",
+          "title": "Sense of expression once explained",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0694",
+          "numbering": "479",
+          "label": "Section",
+          "title": "Property mark",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0557",
+          "numbering": "376B",
+          "label": "Section",
+          "title": "Sexual intercourse by husband upon his wife during separation",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ]
+    },
+    {
+      "query": "rape",
+      "expected_doc": "cf20a14c52127fd5",
+      "expected_numbering": "376",
+      "note": "concept routing",
+      "document_target_reason": "unique-section",
+      "inferred_document_id": "cf20a14c52127fd5",
+      "routed_to_expected_doc": true,
+      "top_1": false,
+      "top_3": true,
+      "top_5": true,
+      "top_10": true,
+      "mrr": 0.5,
+      "rank_of_expected": 2,
+      "n_evidence": 10,
+      "n_same_doc_retrieved": 10,
+      "confidence": 0.2728,
+      "confidence_label": "very_low",
+      "verification_status": "insufficient",
+      "evidence_sufficiency": 0.425,
+      "evidence_relevance_score": 0.0102,
+      "contradiction_found": false,
+      "n_counter_authorities": 0,
+      "counter_authorities": [],
+      "is_valid": false,
+      "verdict": "insufficient",
+      "validity_reason": "Retrieved evidence is insufficient.",
+      "threshold": 0.45,
+      "top5": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0553",
+          "numbering": "i",
+          "label": "Clause",
+          "title": "within the limits of the police station to which such police officer is appointed; or (ii) in the premises of any station house; or (iii) on a woman in such police officer's custody or in the custody of a police officer",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0235",
+          "numbering": "376",
+          "label": "Section",
+          "title": ", section 376A, section 376B, section 376C, section 376D, section 376E or section 509\u201d the",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0548",
+          "numbering": "375",
+          "label": "Section",
+          "title": "Rape",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0234",
+          "numbering": "166A",
+          "label": "Section",
+          "title": "Public servant disobeying direction under law",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0560",
+          "numbering": "b",
+          "label": "Clause",
+          "title": "a public servant; or (c) superintendent or manager of a jail, remand home or other place of custody established by or",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ],
+      "retrieved_all": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0553",
+          "numbering": "i",
+          "label": "Clause",
+          "title": "within the limits of the police station to which such police officer is appointed; or (ii) in the premises of any station house; or (iii) on a woman in such police officer's custody or in the custody of a police officer",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0235",
+          "numbering": "376",
+          "label": "Section",
+          "title": ", section 376A, section 376B, section 376C, section 376D, section 376E or section 509\u201d the",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0548",
+          "numbering": "375",
+          "label": "Section",
+          "title": "Rape",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0234",
+          "numbering": "166A",
+          "label": "Section",
+          "title": "Public servant disobeying direction under law",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0560",
+          "numbering": "b",
+          "label": "Clause",
+          "title": "a public servant; or (c) superintendent or manager of a jail, remand home or other place of custody established by or",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0329",
+          "numbering": "376DA",
+          "label": "Section",
+          "title": ", section 376DB] or section 376E] is alleged or found to have been committed (hereafter",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0552",
+          "numbering": "1",
+          "label": "Section",
+          "title": "Whoever, except in the cases provided for in sub-section (2),",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0501",
+          "numbering": "354",
+          "label": "Section",
+          "title": "Assault or criminal force to woman with intent to outrage her modesty",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0424",
+          "numbering": "302",
+          "label": "Section",
+          "title": "Punishment for murder",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0310",
+          "numbering": "376C",
+          "label": "Section",
+          "title": ", section 376F, section 509, section 509A or section 509B shall be punishable with",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ]
+    },
+    {
+      "query": "cheating",
+      "expected_doc": "cf20a14c52127fd5",
+      "expected_numbering": "415",
+      "note": "concept routing",
+      "document_target_reason": "unique-section",
+      "inferred_document_id": "cf20a14c52127fd5",
+      "routed_to_expected_doc": true,
+      "top_1": true,
+      "top_3": true,
+      "top_5": true,
+      "top_10": true,
+      "mrr": 1.0,
+      "rank_of_expected": 1,
+      "n_evidence": 10,
+      "n_same_doc_retrieved": 10,
+      "confidence": 0.8308,
+      "confidence_label": "high",
+      "verification_status": "supported",
+      "evidence_sufficiency": 0.8875,
+      "evidence_relevance_score": 1.0,
+      "contradiction_found": false,
+      "n_counter_authorities": 0,
+      "counter_authorities": [],
+      "is_valid": true,
+      "verdict": "supported",
+      "validity_reason": "Generated answer is supported by retrieved evidence.",
+      "threshold": 0.45,
+      "top5": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0629",
+          "numbering": "415",
+          "label": "Section",
+          "title": "Cheating",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0637",
+          "numbering": "420",
+          "label": "Section",
+          "title": "Cheating and dishonestly inducing delivery of property",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0332",
+          "numbering": "376B",
+          "label": "Section",
+          "title": ", section 376C, section 376D, section 376DA or section 376E\u201d shall be substituted.",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0519",
+          "numbering": "360",
+          "label": "Section",
+          "title": "Kidnapping from India",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0310",
+          "numbering": "376C",
+          "label": "Section",
+          "title": ", section 376F, section 509, section 509A or section 509B shall be punishable with",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ],
+      "retrieved_all": [
+        {
+          "node_id": "cf20a14c52127fd5__n_0629",
+          "numbering": "415",
+          "label": "Section",
+          "title": "Cheating",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0637",
+          "numbering": "420",
+          "label": "Section",
+          "title": "Cheating and dishonestly inducing delivery of property",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0332",
+          "numbering": "376B",
+          "label": "Section",
+          "title": ", section 376C, section 376D, section 376DA or section 376E\u201d shall be substituted.",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0519",
+          "numbering": "360",
+          "label": "Section",
+          "title": "Kidnapping from India",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0310",
+          "numbering": "376C",
+          "label": "Section",
+          "title": ", section 376F, section 509, section 509A or section 509B shall be punishable with",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0235",
+          "numbering": "376",
+          "label": "Section",
+          "title": ", section 376A, section 376B, section 376C, section 376D, section 376E or section 509\u201d the",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0194",
+          "numbering": "131",
+          "label": "Section",
+          "title": "Abetting mutiny, or attempting to seduce a soldier, sailor or airman from his duty",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0041",
+          "numbering": "29A",
+          "label": "Section",
+          "title": "\u201cElectronic record\u201d",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0003",
+          "numbering": "2",
+          "label": "Section",
+          "title": "Punishment of offences committed within India",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        },
+        {
+          "node_id": "cf20a14c52127fd5__n_0545",
+          "numbering": "373",
+          "label": "Section",
+          "title": "Buying minor for purposes of prostitution, etc",
+          "document_id": "cf20a14c52127fd5",
+          "node_order": null
+        }
+      ]
+    },
+    {
+      "query": "consideration",
+      "expected_doc": "0d1934142f67c5f5",
+      "expected_numbering": "2(h)",
+      "note": "definition",
+      "document_target_reason": "ica-default",
+      "inferred_document_id": "0d1934142f67c5f5",
+      "routed_to_expected_doc": true,
+      "top_1": false,
+      "top_3": false,
+      "top_5": false,
+      "top_10": false,
+      "mrr": 0.0,
+      "rank_of_expected": 0,
+      "n_evidence": 10,
+      "n_same_doc_retrieved": 10,
+      "confidence": 0.8836,
+      "confidence_label": "very_high",
+      "verification_status": "supported",
+      "evidence_sufficiency": 1.0,
+      "evidence_relevance_score": 1.0,
+      "contradiction_found": false,
+      "n_counter_authorities": 2,
+      "counter_authorities": [
+        {
+          "node_id": "0d1934142f67c5f5__n_0002",
+          "marker": "not enforceable",
+          "reason": "statement is declared invalid, void, or unenforceable",
+          "title": "Interpretation -clause"
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0014",
+          "marker": "repealed",
+          "reason": "statement references an authority that appears repealed",
+          "title": "What agreements are contracts"
+        }
+      ],
+      "is_valid": false,
+      "verdict": "supported",
+      "validity_reason": "Generated answer is supported by retrieved evidence.",
+      "threshold": 0.45,
+      "top5": [
+        {
+          "node_id": "0d1934142f67c5f5__n_0031",
+          "numbering": "25",
+          "label": "Section",
+          "title": "Agreement without consideration, void, unless it is in writing and",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0002",
+          "numbering": "2",
+          "label": "Section",
+          "title": "Interpretation -clause",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0029",
+          "numbering": "23",
+          "label": "Section",
+          "title": "What consideration and objects are lawful, and what not",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0163",
+          "numbering": "185",
+          "label": "Section",
+          "title": "Consideration not necessary -",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0030",
+          "numbering": "24",
+          "label": "Section",
+          "title": "Agreements void, if consideration are objects unlawful in part",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        }
+      ],
+      "retrieved_all": [
+        {
+          "node_id": "0d1934142f67c5f5__n_0031",
+          "numbering": "25",
+          "label": "Section",
+          "title": "Agreement without consideration, void, unless it is in writing and",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0002",
+          "numbering": "2",
+          "label": "Section",
+          "title": "Interpretation -clause",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0029",
+          "numbering": "23",
+          "label": "Section",
+          "title": "What consideration and objects are lawful, and what not",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0163",
+          "numbering": "185",
+          "label": "Section",
+          "title": "Consideration not necessary -",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0030",
+          "numbering": "24",
+          "label": "Section",
+          "title": "Agreements void, if consideration are objects unlawful in part",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0014",
+          "numbering": "10",
+          "label": "Section",
+          "title": "What agreements are contracts",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0011",
+          "numbering": "8",
+          "label": "Section",
+          "title": "Acceptance by performing conditions, or receiving consideration",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0101",
+          "numbering": "127",
+          "label": "Section",
+          "title": "Consideration for guarantee",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0121",
+          "numbering": "147",
+          "label": "Section",
+          "title": "Liability of co-sureties bound in different sums -",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0018",
+          "numbering": "14",
+          "label": "Section",
+          "title": "\"Free consent\" defined -",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        }
+      ]
+    },
+    {
+      "query": "offer",
+      "expected_doc": "0d1934142f67c5f5",
+      "expected_numbering": "2(a)",
+      "note": "proposal definition",
+      "document_target_reason": "ica-default",
+      "inferred_document_id": "0d1934142f67c5f5",
+      "routed_to_expected_doc": true,
+      "top_1": false,
+      "top_3": false,
+      "top_5": false,
+      "top_10": false,
+      "mrr": 0.0,
+      "rank_of_expected": 0,
+      "n_evidence": 10,
+      "n_same_doc_retrieved": 10,
+      "confidence": 0.8697,
+      "confidence_label": "very_high",
+      "verification_status": "supported",
+      "evidence_sufficiency": 0.91,
+      "evidence_relevance_score": 1.0,
+      "contradiction_found": false,
+      "n_counter_authorities": 1,
+      "counter_authorities": [
+        {
+          "node_id": "0d1934142f67c5f5__n_0002",
+          "marker": "not enforceable",
+          "reason": "statement is declared invalid, void, or unenforceable",
+          "title": "Interpretation -clause"
+        }
+      ],
+      "is_valid": false,
+      "verdict": "supported",
+      "validity_reason": "Generated answer is supported by retrieved evidence.",
+      "threshold": 0.45,
+      "top5": [
+        {
+          "node_id": "0d1934142f67c5f5__n_0002",
+          "numbering": "2",
+          "label": "Section",
+          "title": "Interpretation -clause",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0010",
+          "numbering": "1",
+          "label": "Section",
+          "title": "be absolute and unqualified. (2) be expressed in some usual and reasonable manner, unless the proposal",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0049",
+          "numbering": "38",
+          "label": "Section",
+          "title": "Effect of refusal to accept offer of performance",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0008",
+          "numbering": "6",
+          "label": "Section",
+          "title": "Revocation how made",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0193",
+          "numbering": "215",
+          "label": "Section",
+          "title": "Right to principal when agent deals, on his own account, in business of",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        }
+      ],
+      "retrieved_all": [
+        {
+          "node_id": "0d1934142f67c5f5__n_0002",
+          "numbering": "2",
+          "label": "Section",
+          "title": "Interpretation -clause",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0010",
+          "numbering": "1",
+          "label": "Section",
+          "title": "be absolute and unqualified. (2) be expressed in some usual and reasonable manner, unless the proposal",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0049",
+          "numbering": "38",
+          "label": "Section",
+          "title": "Effect of refusal to accept offer of performance",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0008",
+          "numbering": "6",
+          "label": "Section",
+          "title": "Revocation how made",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0193",
+          "numbering": "215",
+          "label": "Section",
+          "title": "Right to principal when agent deals, on his own account, in business of",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0151",
+          "numbering": "176",
+          "label": "Section",
+          "title": "Pawnee's right where pawnor makes default -",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0130",
+          "numbering": "155",
+          "label": "Section",
+          "title": "Effect of mixture with bailor's consent, of his goods with bailee's -",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0023",
+          "numbering": "19",
+          "label": "Section",
+          "title": "Voidability of agreements without free consent",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0107",
+          "numbering": "133",
+          "label": "Section",
+          "title": "Discharge of surety by variance in terms of contract",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0134",
+          "numbering": "159",
+          "label": "Section",
+          "title": "Restoration of goods lent gratuitously -",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        }
+      ]
+    },
+    {
+      "query": "acceptance",
+      "expected_doc": "0d1934142f67c5f5",
+      "expected_numbering": "2(b)",
+      "note": "acceptance definition",
+      "document_target_reason": "ica-default",
+      "inferred_document_id": "0d1934142f67c5f5",
+      "routed_to_expected_doc": true,
+      "top_1": false,
+      "top_3": false,
+      "top_5": false,
+      "top_10": false,
+      "mrr": 0.0,
+      "rank_of_expected": 0,
+      "n_evidence": 10,
+      "n_same_doc_retrieved": 10,
+      "confidence": 0.9052,
+      "confidence_label": "very_high",
+      "verification_status": "supported",
+      "evidence_sufficiency": 1.0,
+      "evidence_relevance_score": 1.0,
+      "contradiction_found": false,
+      "n_counter_authorities": 1,
+      "counter_authorities": [
+        {
+          "node_id": "0d1934142f67c5f5__n_0002",
+          "marker": "not enforceable",
+          "reason": "statement is declared invalid, void, or unenforceable",
+          "title": "Interpretation -clause"
+        }
+      ],
+      "is_valid": false,
+      "verdict": "supported",
+      "validity_reason": "Generated answer is supported by retrieved evidence.",
+      "threshold": 0.45,
+      "top5": [
+        {
+          "node_id": "0d1934142f67c5f5__n_0009",
+          "numbering": "7",
+          "label": "Section",
+          "title": "Acceptance must be absolute",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0002",
+          "numbering": "2",
+          "label": "Section",
+          "title": "Interpretation -clause",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0011",
+          "numbering": "8",
+          "label": "Section",
+          "title": "Acceptance by performing conditions, or receiving consideration",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0007",
+          "numbering": "5",
+          "label": "Section",
+          "title": "Revocation of Proposals and acceptance",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0005",
+          "numbering": "3",
+          "label": "Section",
+          "title": "Communication, acceptance and revocation of proposals",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        }
+      ],
+      "retrieved_all": [
+        {
+          "node_id": "0d1934142f67c5f5__n_0009",
+          "numbering": "7",
+          "label": "Section",
+          "title": "Acceptance must be absolute",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0002",
+          "numbering": "2",
+          "label": "Section",
+          "title": "Interpretation -clause",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0011",
+          "numbering": "8",
+          "label": "Section",
+          "title": "Acceptance by performing conditions, or receiving consideration",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0007",
+          "numbering": "5",
+          "label": "Section",
+          "title": "Revocation of Proposals and acceptance",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0005",
+          "numbering": "3",
+          "label": "Section",
+          "title": "Communication, acceptance and revocation of proposals",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0008",
+          "numbering": "6",
+          "label": "Section",
+          "title": "Revocation how made",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0010",
+          "numbering": "1",
+          "label": "Section",
+          "title": "be absolute and unqualified. (2) be expressed in some usual and reasonable manner, unless the proposal",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0080",
+          "numbering": "66",
+          "label": "Section",
+          "title": "Mode of communicating or revoking rescission of voidable contract",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0127",
+          "numbering": "152",
+          "label": "Section",
+          "title": "Bailee when not liable for loss, etc, of thing bailed -",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0018",
+          "numbering": "14",
+          "label": "Section",
+          "title": "\"Free consent\" defined -",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        }
+      ]
+    },
+    {
+      "query": "breach of contract",
+      "expected_doc": "0d1934142f67c5f5",
+      "expected_numbering": "73",
+      "note": "compensation for breach",
+      "document_target_reason": "ica-default",
+      "inferred_document_id": "0d1934142f67c5f5",
+      "routed_to_expected_doc": true,
+      "top_1": true,
+      "top_3": true,
+      "top_5": true,
+      "top_10": true,
+      "mrr": 1.0,
+      "rank_of_expected": 1,
+      "n_evidence": 9,
+      "n_same_doc_retrieved": 9,
+      "confidence": 0.8792,
+      "confidence_label": "very_high",
+      "verification_status": "supported",
+      "evidence_sufficiency": 0.85,
+      "evidence_relevance_score": 1.0,
+      "contradiction_found": false,
+      "n_counter_authorities": 0,
+      "counter_authorities": [],
+      "is_valid": true,
+      "verdict": "supported",
+      "validity_reason": "Generated answer is supported by retrieved evidence.",
+      "threshold": 0.45,
+      "top5": [
+        {
+          "node_id": "0d1934142f67c5f5__n_0089",
+          "numbering": "73",
+          "label": "Section",
+          "title": "Compensation of loss or damage caused by breach of contract",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0091",
+          "numbering": "74",
+          "label": "Section",
+          "title": "Compensation of breach of contract where penalty stipulated for",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0098",
+          "numbering": "124",
+          "label": "Section",
+          "title": "\"Contract of indemnity\" defined",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0041",
+          "numbering": "31",
+          "label": "Section",
+          "title": "\"Contingent contract\" defined",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0067",
+          "numbering": "53",
+          "label": "Section",
+          "title": "Liability of party preventing event on which contract is to take effect",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        }
+      ],
+      "retrieved_all": [
+        {
+          "node_id": "0d1934142f67c5f5__n_0089",
+          "numbering": "73",
+          "label": "Section",
+          "title": "Compensation of loss or damage caused by breach of contract",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0091",
+          "numbering": "74",
+          "label": "Section",
+          "title": "Compensation of breach of contract where penalty stipulated for",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0098",
+          "numbering": "124",
+          "label": "Section",
+          "title": "\"Contract of indemnity\" defined",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0041",
+          "numbering": "31",
+          "label": "Section",
+          "title": "\"Contingent contract\" defined",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0067",
+          "numbering": "53",
+          "label": "Section",
+          "title": "Liability of party preventing event on which contract is to take effect",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0080",
+          "numbering": "66",
+          "label": "Section",
+          "title": "Mode of communicating or revoking rescission of voidable contract",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0105",
+          "numbering": "131",
+          "label": "Section",
+          "title": "Revocation of continuing guarantee by surety' death -",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0127",
+          "numbering": "152",
+          "label": "Section",
+          "title": "Bailee when not liable for loss, etc, of thing bailed -",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        },
+        {
+          "node_id": "0d1934142f67c5f5__n_0068",
+          "numbering": "54",
+          "label": "Section",
+          "title": "Effect of default as to the promise which should be performed, in",
+          "document_id": "0d1934142f67c5f5",
+          "node_order": null
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "routed_to_expected_doc": 13,
+    "top1": 9,
+    "top3": 10,
+    "top5": 10,
+    "top10": 10,
+    "valid": 8
+  }
+}
