@@ -132,13 +132,21 @@ python demo_retrieval.py    # Run HHGR retrieval
 python demo_embeddings.py   # Vector store + hybrid search
 
 # Run backend tests
-pytest -q                   # 908 tests
+pytest -q                   # 1047 tests
 
 # Run frontend tests
 cd ui && npm test            # 49 Vitest + Testing Library tests
 ```
 
 ## Evaluation
+
+### LLM Configuration
+
+The active LLM provider is `nvidia` (defined in `deploy/env/.env.development`). `NVIDIA_MODEL` is the **single source of truth** for the NVIDIA model name — the generic `LLM_MODEL` never overrides it. Generic `LLM_*` settings still take precedence for the API key and base URL when both are set.
+
+- Put your real key in `deploy/env/.env.development.local` (git-ignored); the tracked env templates keep empty/placeholder secrets.
+- Runtime load order: code defaults ← `.env.development` ← `.env.development.local` ← OS environment.
+- Retired model ids are rejected by NVIDIA NIM with `HTTP 410` (e.g. `meta/llama-3.3-70b-instruct` reached EOL on 2026-08-26). The repo defaults to `nvidia/nemotron-3-super-120b-a12b`. See `final_report_llm_model_config.md` for the full precedence breakdown.
 
 ### Benchmark Evaluation (50 questions, deterministic)
 
@@ -204,7 +212,7 @@ explaintool/
 │   └── utils/                    # Constants, exceptions, helpers
 ├── ui/                           # React 18 + TypeScript frontend
 ├── eval/                         # Module 10 evaluation package
-├── tests/                        # 908 backend tests
+├── tests/                        # 1047 backend tests
 ├── data/                         # Hierarchy JSONs, eval datasets, uploads
 ├── results/                      # Evaluation results & reports
 ├── deploy/                       # Docker, nginx, env profiles
@@ -220,7 +228,7 @@ explaintool/
 | Category | Technologies |
 |----------|-------------|
 | **Backend** | Python 3.11, FastAPI, Pydantic, uvicorn |
-| **LLM** | NVIDIA NIM (Llama 3.1/3.3), OpenAI-compatible API |
+| **LLM** | NVIDIA NIM (`nvidia/nemotron-3-super-120b-a12b`), OpenAI-compatible API |
 | **Vector Store** | Qdrant (cosine similarity, 4 collections) |
 | **Knowledge Graph** | InMemoryGraph, Neo4j (production) |
 | **Frontend** | React 18, TypeScript, Vite, Tailwind CSS |
@@ -229,7 +237,7 @@ explaintool/
 | **OCR** | PaddleOCR, Tesseract (fallback) |
 | **Infrastructure** | Docker, Docker Compose, nginx, Prometheus, Grafana |
 | **CI/CD** | GitHub Actions (ruff, pytest, vitest, Docker builds) |
-| **Testing** | pytest (908 tests), Vitest + Testing Library (49 tests) |
+| **Testing** | pytest (1047 tests), Vitest + Testing Library (49 tests) |
 
 ## Documentation
 
@@ -243,6 +251,8 @@ explaintool/
 | [Deployment](docs/DEPLOYMENT.md) | Docker and production deployment guide |
 | [Developer Guide](docs/DEVELOPER.md) | Local setup, testing, code conventions |
 | [Troubleshooting](docs/TROUBLESHOOTING.md) | Common issues and solutions |
+| [Startup Hang Root Cause](ROOT_CAUSE_STARTUP_HANG.md) | Cold-start snapshot + deferred prewarm fix |
+| [LLM Config Report](final_report_llm_model_config.md) | NVIDIA model precedence, EOL analysis, before/after evidence |
 
 ## Future Work
 
