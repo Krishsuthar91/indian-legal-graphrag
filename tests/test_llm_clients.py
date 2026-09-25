@@ -99,7 +99,7 @@ class TestFactory:
         assert "generativelanguage.googleapis.com" in client.base_url
 
     def test_provider_gemini_ignores_generic_llm_model(self, monkeypatch):
-        monkeypatch.setattr(settings, "LLM_MODEL", "meta/llama-3.3-70b-instruct")
+        monkeypatch.setattr(settings, "LLM_MODEL", "nvidia/nemotron-3-super-120b-a12b")
         monkeypatch.setattr(settings, "GEMINI_MODEL", "gemini-2.0-flash")
         client = get_llm_client(provider="gemini")
         assert isinstance(client, GeminiClient)
@@ -110,11 +110,11 @@ class TestFactory:
         monkeypatch.setattr(settings, "LLM_BASE_URL", "")
         monkeypatch.setattr(settings, "LLM_API_KEY", "")
         monkeypatch.setattr(settings, "NVIDIA_API_KEY", "nvapi-secret")
-        monkeypatch.setattr(settings, "NVIDIA_MODEL", "meta/llama-3.3-70b-instruct")
+        monkeypatch.setattr(settings, "NVIDIA_MODEL", "nvidia/nemotron-3-super-120b-a12b")
         monkeypatch.setattr(settings, "NVIDIA_BASE_URL", "https://integrate.api.nvidia.com/v1")
         client = get_llm_client(provider="nvidia")
         assert isinstance(client, NvidiaClient)
-        assert client.model == "meta/llama-3.3-70b-instruct"
+        assert client.model == "nvidia/nemotron-3-super-120b-a12b"
         assert client.api_key == "nvapi-secret"
         assert "integrate.api.nvidia.com" in client.base_url
 
@@ -129,17 +129,31 @@ class TestFactory:
         assert client.model == NvidiaClient.default_model
         assert client.base_url == NvidiaClient.default_base_url
 
-    def test_provider_nvidia_generic_llm_settings_take_priority(self, monkeypatch):
+    def test_provider_nvidia_model_comes_from_nvidia_model_not_generic(self, monkeypatch):
         monkeypatch.setattr(settings, "LLM_MODEL", "gpt-4o-mini")
         monkeypatch.setattr(settings, "LLM_BASE_URL", "https://api.openai.com/v1")
         monkeypatch.setattr(settings, "LLM_API_KEY", "generic-key")
-        monkeypatch.setattr(settings, "NVIDIA_MODEL", "meta/llama-3.3-70b-instruct")
+        monkeypatch.setattr(settings, "NVIDIA_MODEL", "nvidia/nemotron-3-super-120b-a12b")
         monkeypatch.setattr(settings, "NVIDIA_BASE_URL", "https://integrate.api.nvidia.com/v1")
         client = get_llm_client(provider="nvidia")
         assert isinstance(client, NvidiaClient)
-        assert client.model == "gpt-4o-mini"
+        assert client.model == "nvidia/nemotron-3-super-120b-a12b"
         assert client.base_url == "https://api.openai.com/v1"
         assert client.api_key == "generic-key"
+
+    def test_startup_log_reports_nvidia_model_setting(self, monkeypatch, capfd):
+        from src.config.logging_config import setup_logging
+
+        setup_logging()
+        monkeypatch.setattr(settings, "LLM_MODEL", "gpt-4o-mini")
+        monkeypatch.setattr(settings, "NVIDIA_MODEL", "nvidia/nemotron-3-super-120b-a12b")
+        monkeypatch.setattr(settings, "LLM_API_KEY", "")
+        monkeypatch.setattr(settings, "NVIDIA_API_KEY", "nvapi-key")
+        get_llm_client(provider="nvidia")
+        captured = capfd.readouterr()
+        out = captured.out + captured.err
+        assert "nvidia/nemotron-3-super-120b-a12b" in out
+        assert "gpt-4o-mini" not in out
 
     def test_unknown_provider_raises(self):
         with pytest.raises(LLMError):
@@ -289,7 +303,7 @@ class TestNvidiaClient:
 
                 def json(self):
                     return {
-                        "model": "meta/llama-3.3-70b-instruct",
+                        "model": "nvidia/nemotron-3-super-120b-a12b",
                         "choices": [{"message": {"content": "namaste"}}],
                         "usage": {"total_tokens": 9},
                     }
@@ -297,33 +311,33 @@ class TestNvidiaClient:
             return FakeResp()
 
         monkeypatch.setattr(httpx, "post", fake_post)
-        client = NvidiaClient(model="meta/llama-3.3-70b-instruct", api_key="nvapi-secret")
+        client = NvidiaClient(model="nvidia/nemotron-3-super-120b-a12b", api_key="nvapi-secret")
         response = client.complete([{"role": "user", "content": "hi"}])
         assert response.text == "namaste"
-        assert response.model == "meta/llama-3.3-70b-instruct"
+        assert response.model == "nvidia/nemotron-3-super-120b-a12b"
         assert "integrate.api.nvidia.com" in captured["url"]
         assert captured["url"].endswith("/chat/completions")
         assert captured["headers"]["Authorization"] == "Bearer nvapi-secret"
-        assert captured["payload"]["model"] == "meta/llama-3.3-70b-instruct"
+        assert captured["payload"]["model"] == "nvidia/nemotron-3-super-120b-a12b"
 
     def test_falls_back_to_nvidia_settings(self, monkeypatch):
         monkeypatch.setattr(settings, "NVIDIA_API_KEY", "nvapi-from-settings")
-        monkeypatch.setattr(settings, "NVIDIA_MODEL", "meta/llama-3.3-70b-instruct")
+        monkeypatch.setattr(settings, "NVIDIA_MODEL", "nvidia/nemotron-3-super-120b-a12b")
         monkeypatch.setattr(settings, "LLM_API_KEY", "")
         monkeypatch.setattr(settings, "LLM_MODEL", "")
         client = NvidiaClient()
         assert client.api_key == "nvapi-from-settings"
-        assert client.model == "meta/llama-3.3-70b-instruct"
+        assert client.model == "nvidia/nemotron-3-super-120b-a12b"
 
-    def test_generic_llm_settings_override_nvidia_settings(self, monkeypatch):
+    def test_generic_llm_settings_do_not_override_nvidia_model(self, monkeypatch):
         monkeypatch.setattr(settings, "LLM_API_KEY", "generic-key")
         monkeypatch.setattr(settings, "LLM_MODEL", "gpt-4o-mini")
         monkeypatch.setattr(settings, "LLM_BASE_URL", "http://localhost:11434/v1")
         monkeypatch.setattr(settings, "NVIDIA_API_KEY", "nvapi-key")
-        monkeypatch.setattr(settings, "NVIDIA_MODEL", "meta/llama-3.3-70b-instruct")
+        monkeypatch.setattr(settings, "NVIDIA_MODEL", "nvidia/nemotron-3-super-120b-a12b")
         client = NvidiaClient()
         assert client.api_key == "generic-key"
-        assert client.model == "gpt-4o-mini"
+        assert client.model == "nvidia/nemotron-3-super-120b-a12b"
         assert client.base_url == "http://localhost:11434/v1"
 
     def test_api_key_never_logged(self, monkeypatch, capfd):

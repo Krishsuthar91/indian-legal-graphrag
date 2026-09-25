@@ -181,7 +181,7 @@ pytest tests/test_query_expansion.py tests/test_query_expansion_integration.py -
 
 Key evaluation-related settings:
 - `LLM_PROVIDER=nvidia`
-- `LLM_MODEL=meta/llama-3.1-8b-instruct`
+- `LLM_MODEL=nvidia/nemotron-3-super-120b-a12b`
 - `QA_TOP_K=5`
 - `QA_CONFIDENCE_THRESHOLD=0.45`
 - `QA_INDEX_IN_MEMORY=true`

@@ -137,7 +137,7 @@ All fields except `query` are optional. Constraints:
   },
   "provenance_id": "prov-abc123",
   "answer": "A contract is defined under Section 2(h) as an agreement enforceable by law.",
-  "model": "meta/llama-3.1-8b-instruct",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
   "duration_ms": 1850.0
 }
 ```

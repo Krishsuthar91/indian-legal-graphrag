@@ -148,7 +148,7 @@ def _build_comparison_tables(prev_meta: dict, prev_results: list,
     sections.append(f"- **Hierarchy nodes:** {prev_meta.get('hierarchy_nodes', 46)}")
     sections.append(f"- **Section nodes:** {prev_meta.get('section_nodes', 16)}")
     sections.append(f"- **Document ID:** {prev_meta.get('document_id', '0d1934142f67c5f5')}")
-    sections.append(f"- **LLM:** {prev_meta.get('model', 'meta/llama-3.1-8b-instruct')}")
+    sections.append(f"- **LLM:** {prev_meta.get('model', 'nvidia/nemotron-3-super-120b-a12b')}")
     sections.append(f"- **Questions:** {prev_meta.get('questions', 50)}")
     sections.append("")
 
@@ -157,7 +157,7 @@ def _build_comparison_tables(prev_meta: dict, prev_results: list,
     sections.append(f"- **Hierarchy nodes:** {new_meta.get('hierarchy_nodes', 222)}")
     sections.append(f"- **Section nodes:** {new_meta.get('section_nodes', 192)}")
     sections.append(f"- **Document ID:** {new_meta.get('document_id', '0d1934142f67c5f5')}")
-    sections.append(f"- **LLM:** {new_meta.get('model', 'meta/llama-3.1-8b-instruct')}")
+    sections.append(f"- **LLM:** {new_meta.get('model', 'nvidia/nemotron-3-super-120b-a12b')}")
     sections.append(f"- **Questions:** {new_meta.get('questions', 50)}")
     sections.append("")
 

@@ -591,13 +591,15 @@ class NvidiaClient(OpenAICompatClient):
 
     Uses ``Authorization: Bearer <NVIDIA_API_KEY>`` against
     ``https://integrate.api.nvidia.com/v1/chat/completions``. Set
-    ``LLM_PROVIDER=nvidia`` with ``NVIDIA_API_KEY`` (and optionally
-    ``NVIDIA_MODEL``). Generic ``LLM_*`` settings take precedence over the
-    ``NVIDIA_*`` equivalents when both are set.
+    ``LLM_PROVIDER=nvidia`` with ``NVIDIA_API_KEY``. ``NVIDIA_MODEL`` is the
+    single source of truth for the model name — the generic ``LLM_MODEL`` is
+    ignored here so a stale generic value can never override the provider
+    model. Generic ``LLM_*`` settings still take precedence for the API key
+    and base URL when both are set.
     """
 
     name = "nvidia"
-    default_model = "meta/llama-3.3-70b-instruct"
+    default_model = "nvidia/nemotron-3-super-120b-a12b"
     default_base_url = "https://integrate.api.nvidia.com/v1"
 
     def __init__(
@@ -610,7 +612,7 @@ class NvidiaClient(OpenAICompatClient):
     ) -> None:
         api_key = api_key or settings.LLM_API_KEY or settings.NVIDIA_API_KEY
         base_url = base_url or settings.LLM_BASE_URL or settings.NVIDIA_BASE_URL or None
-        model = model or settings.LLM_MODEL or settings.NVIDIA_MODEL or None
+        model = model or settings.NVIDIA_MODEL or None
         super().__init__(model=model, base_url=base_url, api_key=api_key, timeout=timeout, **kwargs)
 
 
@@ -732,8 +734,10 @@ def get_llm_client(
     Configuration priority per provider:
       - generic (openai/llama/mistral/qwen): explicit args, then ``LLM_*``
         settings, then the provider-specific defaults.
-      - nvidia: explicit args, then ``LLM_*`` settings, then ``NVIDIA_*``
-        settings, then the NVIDIA defaults.
+      - nvidia: explicit args, then ``NVIDIA_MODEL`` for the model name
+        (single source of truth; generic ``LLM_MODEL`` is ignored), then the
+        NVIDIA defaults. API key / base URL: explicit args, then ``LLM_*``,
+        then ``NVIDIA_*``.
       - gemini: explicit args, then ``GEMINI_*`` settings.
     """
     selected = (provider or settings.LLM_PROVIDER or "mock").lower().strip()

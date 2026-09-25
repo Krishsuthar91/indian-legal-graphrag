@@ -41,6 +41,12 @@ class Settings(BaseSettings):
     # a few very long clause texts make CPU attention cost quadratic in length.
     # Full text still lives in node payloads for generation. None = model max.
     EMBEDDING_MAX_SEQUENCE_LENGTH: int | None = 512
+    # Disk cache for computed embeddings (in-memory Qdrant mode). The semantic
+    # migration (V2.4.3/V3.0) made indexing CPU-heavy (bge-m3), so without a
+    # cache every in-memory startup re-embeds the whole corpus. Warm startups
+    # load the snapshot and only re-embed new/changed texts.
+    EMBEDDING_SNAPSHOT_ENABLED: bool = True
+    EMBEDDING_SNAPSHOT_DIR: str = "data/embeddings"
 
     HYBRID_WEIGHTS_DENSE: float = 0.40
     HYBRID_WEIGHTS_GRAPH: float = 0.35
@@ -59,7 +65,7 @@ class Settings(BaseSettings):
     # mock | openai | llama | mistral | qwen | gemini | nvidia
     LLM_PROVIDER: str = "mock"
     # e.g. gpt-4o-mini, llama-3.1-8b, mistral-small, Qwen/Qwen2.5-7B-Instruct,
-    # meta/llama-3.3-70b-instruct
+    # nvidia/nemotron-3-super-120b-a12b
     LLM_MODEL: str = ""
     LLM_BASE_URL: str = ""  # OpenAI-compatible endpoint for llama/qwen/nvidia serving
     LLM_API_KEY: str = ""
@@ -77,10 +83,11 @@ class Settings(BaseSettings):
     GEMINI_BASE_URL: str = "https://generativelanguage.googleapis.com/v1beta/openai"
 
     # NVIDIA NIM (only used when LLM_PROVIDER=nvidia).
-    # Generic LLM_* settings take precedence when set; NVIDIA_* are the
-    # provider-specific fallback (per the LLM config priority in docs).
+    # NVIDIA_MODEL is the single source of truth for the model name (the
+    # generic LLM_MODEL must not override it). Generic LLM_* settings still
+    # take precedence for the API key / base URL when both are set.
     NVIDIA_API_KEY: str = ""
-    NVIDIA_MODEL: str = "meta/llama-3.3-70b-instruct"
+    NVIDIA_MODEL: str = "nvidia/nemotron-3-super-120b-a12b"
     NVIDIA_BASE_URL: str = "https://integrate.api.nvidia.com/v1"
 
     # Document upload (Module 8 frontend integration)
