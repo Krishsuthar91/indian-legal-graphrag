@@ -5,6 +5,7 @@ the project's data directory for the FastAPI endpoints and demos.
 
 from __future__ import annotations
 
+import re
 import threading
 import time
 import uuid
@@ -340,6 +341,32 @@ _default_graph: InMemoryGraph | None = None
 _default_store: QdrantStore | None = None
 _default_embedding: EmbeddingService | None = None
 
+# True while a corpus build owns ``_default_lock`` (including a cold-start
+# build that outlived the startup prewarm window). The API layers check this to
+# return a normal 503 JSON "warming" response instead of blocking on the lock
+# or surfacing ECONNREFUSED/timeouts to the frontend.
+_build_in_progress = False
+
+
+def is_default_corpus_ready() -> bool:
+    """True when the shared corpus has finished building and is queryable."""
+    return _default_graph is not None
+
+
+def corpus_build_in_progress() -> bool:
+    """True when a corpus build owns the build lock but is not done yet."""
+    return _build_in_progress and not is_default_corpus_ready()
+
+
+def _embedding_cache_key(provider, dim: int) -> str:
+    """Stable snapshot cache key: model + dim + sequence cap.
+
+    Vectors only depend on the model, dimension and truncation cap, so a key
+    change naturally invalidates the cache after any of those change.
+    """
+    raw = f"{provider.name}_{dim}d_{settings.EMBEDDING_MAX_SEQUENCE_LENGTH or 'max'}"
+    return re.sub(r"[^A-Za-z0-9_.-]+", "_", raw)
+
 
 def build_default_graph(data_dir: str | None = None) -> InMemoryGraph:
     """Import every hierarchy JSON into a fresh in-memory graph."""
@@ -387,9 +414,24 @@ def build_default_corpus() -> tuple[InMemoryGraph, QdrantStore, EmbeddingService
     indexer = HierarchyIndexer(graph, store, embedding_service)
     if settings.QA_INDEX_IN_MEMORY:
         # In-memory mode recreates its collections every startup, so a full
-        # canonical (re)index keeps current behaviour exactly.
+        # canonical (re)index keeps current behaviour exactly. Since the
+        # semantic migration, CPU embedding is the dominant startup cost: a
+        # snapshot of previously computed vectors is restored first and
+        # ``index_graph`` skips any text whose hash is already fresh, so only
+        # new/changed texts are re-embedded (V3.0 startup repair).
+        cache_key = _embedding_cache_key(provider, embedding_service.dim)
+        if settings.EMBEDDING_SNAPSHOT_ENABLED:
+            restored = store.load_snapshot(cache_key)
+            log.info("qa_service.snapshot_restored", points=restored, key=cache_key)
+        index_started = time.perf_counter()
         indexer.index_graph(canonical_doc_ids=canonical_ids)
-        log.info("qa_service.index_graph_complete")
+        log.info(
+            "qa_service.index_graph_complete",
+            elapsed_s=round(time.perf_counter() - index_started, 2),
+        )
+        if settings.EMBEDDING_SNAPSHOT_ENABLED:
+            saved = store.save_snapshot(cache_key)
+            log.info("qa_service.snapshot_saved", points=saved, key=cache_key)
     else:
         # Persistent mode keeps vectors across restarts: synchronize the
         # collections with the current corpus instead (insert missing, update
@@ -413,12 +455,16 @@ def get_default_corpus() -> tuple[InMemoryGraph, QdrantStore, EmbeddingService]:
     check-then-act pattern keeps concurrent first calls safe without ever
     nesting the lock across separate public functions.
     """
-    global _default_graph, _default_store, _default_embedding
+    global _default_graph, _default_store, _default_embedding, _build_in_progress
     if _default_graph is None:
         log.info("corpus.load.start")
         with _default_lock:
             if _default_graph is None:
-                _default_graph, _default_store, _default_embedding = build_default_corpus()
+                _build_in_progress = True
+                try:
+                    _default_graph, _default_store, _default_embedding = build_default_corpus()
+                finally:
+                    _build_in_progress = False
         log.info("corpus.load.complete")
     return _default_graph, _default_store, _default_embedding
 

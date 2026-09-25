@@ -46,6 +46,11 @@ _LLM_DEADLINE_MARGIN_SECONDS = 1.0
 # Overridable in tests to avoid building the full corpus service.
 service_factory: Callable[[], QueryService] = get_default_service
 
+# How long a request may wait for the corpus to finish a cold-start build
+# before returning a normal 503 JSON "warming" response. Warm startups restore
+# the embedding snapshot and never hit this.
+_CORPUS_WARMING_GRACE_SECONDS = 3.0
+
 
 class LLMQuotaExceededError(AppException):
     """Rendered as a clean 429 with the provider-facing quota JSON shape."""
@@ -85,6 +90,35 @@ def _query_response(result) -> QueryResponse:
         }
     )
     return QueryResponse.model_validate(data)
+
+
+async def _await_corpus_ready() -> None:
+    """Wait (briefly) for a cold-start corpus build, or return 503 JSON.
+
+    Uses the real default service only. When the corpus is mid-build (a startup
+    prewarm that outlasted its grace window) a request must not block on the
+    build lock for many minutes; it gets a normal 503 JSON response instead.
+    Tests that stub ``service_factory`` never take this path.
+    """
+    from src.llm import service as svc
+
+    if service_factory is not get_default_service:
+        return
+    if not svc.corpus_build_in_progress():
+        return
+    deadline = time.monotonic() + _CORPUS_WARMING_GRACE_SECONDS
+    while time.monotonic() < deadline:
+        if svc.is_default_corpus_ready():
+            return
+        await asyncio.sleep(0.2)
+    log.warning("qa.corpus_warming", grace_seconds=_CORPUS_WARMING_GRACE_SECONDS)
+    raise HTTPException(
+        status_code=503,
+        detail=(
+            "The vector corpus is still indexing (cold start). "
+            "Please retry in a few minutes."
+        ),
+    )
 
 
 def _coerce_ranking_breakdown(breakdown: Any) -> None:
@@ -148,6 +182,7 @@ async def _dispatch(fn, *args) -> Any:
     or never completes within ``QA_REQUEST_TIMEOUT_SECONDS``.
     """
     timeout = settings.QA_REQUEST_TIMEOUT_SECONDS
+    await _await_corpus_ready()
     log.info("qa.request_start", fn=fn.__name__, timeout=timeout)
     try:
         result = await asyncio.wait_for(

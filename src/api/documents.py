@@ -8,6 +8,7 @@ upload a legal document and immediately query it.
 from __future__ import annotations
 
 import asyncio
+import time
 import traceback
 import uuid
 from collections.abc import Callable
@@ -45,6 +46,26 @@ corpus_factory: Callable[[], tuple[InMemoryGraph, QdrantStore, EmbeddingService]
 
 def _get_corpus() -> tuple[InMemoryGraph, QdrantStore, EmbeddingService]:
     return corpus_factory()
+
+
+async def _await_corpus_ready() -> None:
+    """Return 503 JSON (instead of blocking on the build lock) while warming."""
+    from src.llm import service as svc
+
+    if corpus_factory is not get_default_corpus:
+        return
+    if not svc.corpus_build_in_progress():
+        return
+    deadline = time.monotonic() + 3.0
+    while time.monotonic() < deadline:
+        if svc.is_default_corpus_ready():
+            return
+        await asyncio.sleep(0.2)
+    raise HTTPException(
+        status_code=503,
+        detail="The vector corpus is still indexing (cold start). "
+        "Please retry in a few minutes.",
+    )
 
 
 def _save_upload(file: UploadFile, file_name: str) -> Path:
@@ -158,6 +179,7 @@ async def upload_document(file: UploadFile = File(...)) -> DocumentUploadRespons
             f"Supported: {sorted(pipeline.SUPPORTED_EXTENSIONS)}"
         )
 
+    await _await_corpus_ready()
     try:
         result = await _run_upload(file, file_name)
     except TimeoutError as exc:

@@ -24,9 +24,11 @@ def _force_deterministic_embeddings():
     The runtime (build_default_corpus) honors ``EMBEDDING_FORCE_DETERMINISTIC``;
     tests and evaluation must stay deterministic exactly as before, so the
     setting is pinned for the whole session (the shared TestClient builds the
-    default corpus).
+    default corpus). Corpus embedding snapshots are also disabled so tests stay
+    hermetic and never write into the repository's data directory.
     """
     settings.EMBEDDING_FORCE_DETERMINISTIC = True
+    settings.EMBEDDING_SNAPSHOT_ENABLED = False
     yield
 
 

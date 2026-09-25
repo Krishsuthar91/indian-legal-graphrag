@@ -278,7 +278,7 @@
 - **Hierarchy nodes:** 46
 - **Section nodes:** 16
 - **Document ID:** 0d1934142f67c5f5
-- **LLM:** meta/llama-3.1-8b-instruct
+- **LLM:** meta/llama-3.3-70b-instruct
 - **Questions:** 50
 
 ### After Parser Fix

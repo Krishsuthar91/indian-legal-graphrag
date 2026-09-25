@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import time
+
 from src.config.logging_config import get_logger
 from src.embeddings.models import DEFAULT_MODEL
 from src.embeddings.providers import EmbeddingProvider, get_provider
@@ -48,16 +50,60 @@ class EmbeddingService:
         return str(getattr(self._provider, "device", "cpu"))
 
     def embed(self, texts: list[str], batch_size: int | None = None) -> list[list[float]]:
-        """Embed a list of texts in batches."""
+        """Embed a list of texts in batches.
+
+        Texts are length-stratified (longest first) before chunking so each
+        batch is padded only to its own longest text instead of the corpus
+        maximum — this removes wasted CPU attention over padding without
+        changing a single vector. Output order matches the input order.
+        Progress is logged per batch so long cold-start embeddings never look
+        like a hang. Memory stays bounded because the provider only ever sees
+        ``batch_size`` texts at a time.
+        """
         if not texts:
             return []
         size = batch_size or self._batch_size
-        log.info("embedding.generate.start", texts=len(texts), model=self._model_name)
+        order: list[int] | None = None
+        work = texts
+        if len(texts) > size:
+            order = sorted(range(len(texts)), key=lambda i: len(texts[i]), reverse=True)
+            work = [texts[i] for i in order]
+        batches = (len(work) + size - 1) // size
+        log.info(
+            "embedding.generate.start",
+            texts=len(texts),
+            model=self._model_name,
+            batch_size=size,
+            batches=batches,
+            stratified=order is not None,
+        )
         vectors: list[list[float]] = []
-        for start in range(0, len(texts), size):
-            chunk = texts[start : start + size]
-            vectors.extend(self._provider.encode(chunk))
-        log.info("embedding.generate.complete", texts=len(texts), vectors=len(vectors))
+        started = time.perf_counter()
+        for start in range(0, len(work), size):
+            chunk = work[start : start + size]
+            chunk_started = time.perf_counter()
+            chunk_vectors = self._provider.encode(chunk)
+            vectors.extend(chunk_vectors)
+            if batches > 1:
+                log.info(
+                    "embedding.batch.progress",
+                    index=start // size + 1,
+                    of=batches,
+                    texts=len(chunk),
+                    elapsed_s=round(time.perf_counter() - chunk_started, 2),
+                    cumulative_s=round(time.perf_counter() - started, 2),
+                )
+        if order is not None:
+            restored: list[list[float]] = [vectors[0]] * len(vectors)
+            for position, original_index in enumerate(order):
+                restored[original_index] = vectors[position]
+            vectors = restored
+        log.info(
+            "embedding.generate.complete",
+            texts=len(texts),
+            vectors=len(vectors),
+            elapsed_s=round(time.perf_counter() - started, 2),
+        )
         return vectors
 
     def _prefixed_encode(

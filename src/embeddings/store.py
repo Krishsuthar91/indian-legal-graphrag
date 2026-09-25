@@ -9,6 +9,9 @@ making upserts idempotent.
 from __future__ import annotations
 
 import gc
+import gzip
+import json
+import os
 import shutil
 import uuid
 from pathlib import Path
@@ -25,6 +28,16 @@ log = get_logger("qdrant")
 _NAMESPACE = uuid.UUID("00000000-0000-4000-8000-000000000001")
 
 SCROLL_BATCH = 512
+
+_SNAPSHOT_BASE = Path(__file__).resolve().parent.parent.parent
+
+
+def _snapshot_path(key: str) -> Path:
+    """Absolute snapshot file path for a cache key."""
+    directory = Path(settings.EMBEDDING_SNAPSHOT_DIR)
+    if not directory.is_absolute():
+        directory = _SNAPSHOT_BASE / directory
+    return directory / f"snapshot_{key}.json.gz"
 
 
 def point_id(node_id: str) -> str:
@@ -224,6 +237,94 @@ class QdrantStore:
             raise
         log.info("qdrant.request_complete", method="upsert_batch", collection=collection)
         return len(points)
+
+    def save_snapshot(self, key: str) -> int:
+        """Persist all indexed points (payload + vector) to a gzip JSON file.
+
+        Used by the in-memory store so a subsequent startup can restore the
+        computed vectors instead of re-embedding the whole corpus on CPU.
+        Writes are atomic (temp file + rename). Returns the point count.
+        """
+        points: dict[str, dict[str, dict[str, Any]]] = {}
+        vectors: dict[str, dict[str, list[float]]] = {}
+        total = 0
+        for name in self._collections:
+            coll_points: dict[str, dict[str, Any]] = {}
+            coll_vectors: dict[str, list[float]] = {}
+            offset = None
+            while True:
+                page, offset = self._client.scroll(
+                    name,
+                    limit=SCROLL_BATCH,
+                    offset=offset,
+                    with_payload=True,
+                    with_vectors=True,
+                )
+                for point in page:
+                    payload = dict(point.payload or {})
+                    node_id = payload.get("node_id", "")
+                    if not node_id:
+                        continue
+                    coll_points[node_id] = payload
+                    vector = getattr(point, "vector", None)
+                    coll_vectors[node_id] = [float(v) for v in vector]
+                if offset is None:
+                    break
+            if coll_points:
+                points[name] = coll_points
+                vectors[name] = coll_vectors
+                total += len(coll_points)
+
+        path = _snapshot_path(key)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        tmp = path.with_suffix(".tmp")
+        with gzip.open(tmp, "wt", encoding="utf-8") as fh:
+            json.dump({"key": key, "dim": self.dim, "points": points, "vectors": vectors}, fh)
+        os.replace(tmp, path)
+        log.info("qdrant.snapshot_saved", key=key, points=total, path=str(path))
+        return total
+
+    def load_snapshot(self, key: str) -> int:
+        """Restore points/vectors from a saved snapshot, if any.
+
+        Returns the number of points restored (0 when the cache key is stale,
+        missing, or corrupt — callers then fall back to a full re-embed).
+        """
+        path = _snapshot_path(key)
+        if not path.exists():
+            return 0
+        try:
+            with gzip.open(path, "rt", encoding="utf-8") as fh:
+                data = json.load(fh)
+        except Exception:  # pragma: no cover - corrupt/partial snapshot
+            log.warning("qdrant.snapshot_unreadable", key=key, path=str(path))
+            return 0
+        if data.get("key") != key or int(data.get("dim", -1)) != self.dim:
+            log.warning(
+                "qdrant.snapshot_stale",
+                key=key,
+                dim=data.get("dim"),
+                expected=self.dim,
+            )
+            return 0
+        points = data.get("points", {})
+        vectors = data.get("vectors", {})
+        restored = 0
+        for name, coll_points in points.items():
+            coll_vectors = vectors.get(name, {})
+            prepared = []
+            for node_id, payload in coll_points.items():
+                vector = coll_vectors.get(node_id)
+                if not vector:
+                    continue
+                prepared.append(
+                    models.PointStruct(id=point_id(node_id), vector=vector, payload=payload)
+                )
+            for start in range(0, len(prepared), SCROLL_BATCH):
+                self._client.upsert(name, points=prepared[start : start + SCROLL_BATCH])
+            restored += len(prepared)
+        log.info("qdrant.snapshot_restored", key=key, points=restored, path=str(path))
+        return restored
 
     def search(
         self,

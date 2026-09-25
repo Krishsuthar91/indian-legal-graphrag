@@ -7,7 +7,7 @@
 | hierarchy_file | data\hierarchy\0d1934142f67c5f5.json |
 | questions | 50 |
 | llm_provider | nvidia |
-| model | meta/llama-3.1-8b-instruct |
+| model | meta/llama-3.3-70b-instruct |
 | embedding_provider | deterministic |
 | seed | 42 |
 | confidence_threshold | 0.4500 |

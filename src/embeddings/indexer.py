@@ -125,9 +125,16 @@ class HierarchyIndexer:
         return _DEFAULT_LANGUAGE
 
     def _index_nodes(
-        self, nodes: list[dict[str, Any]], doc_id: str, language: str
+        self,
+        nodes: list[dict[str, Any]],
+        doc_id: str,
+        language: str,
+        existing: dict[str, dict[str, Any]] | None = None,
     ) -> dict[str, Any]:
-        batches: dict[str, list[dict[str, Any]]] = {}
+        existing = existing or {}
+        # Skip nodes whose payload hash is already fresh in the store so a
+        # warm (snapshot-restored) startup only re-embeds new/changed texts.
+        to_embed: list[dict[str, Any]] = []
         for node in nodes:
             label = node.get("label", "")
             collection = collection_for_label(label)
@@ -139,7 +146,14 @@ class HierarchyIndexer:
             # lets the dense ``document_id`` filter keep ICA and IPC apart.
             node_doc_id = node.get("document_id") or doc_id
             payload = _build_payload(node, collection, node_doc_id, language, str(label).lower())
-            batches.setdefault(collection, []).append(payload)
+            current = existing.get(collection, {}).get(node["node_id"])
+            if current is not None and current.get("text_hash") == payload["text_hash"]:
+                continue
+            to_embed.append(payload)
+
+        batches: dict[str, list[dict[str, Any]]] = {}
+        for payload in to_embed:
+            batches.setdefault(payload["collection"], []).append(payload)
 
         totals: dict[str, int] = {}
         for collection, payloads in batches.items():
@@ -166,7 +180,11 @@ class HierarchyIndexer:
         if doc:
             doc_id = doc.get("document_id", doc["node_id"])
         language = self._doc_language()
-        totals = self._index_nodes(self._graph_nodes(node_ids, canonical_doc_ids), doc_id, language)
+        # Snapshot-restored points are the ``existing`` baseline, so only texts
+        # that are new or changed get re-embedded (see V3.0 startup repair).
+        existing = {c: self.store.indexed_payloads(c) for c in self.store.collections}
+        nodes = self._graph_nodes(node_ids, canonical_doc_ids)
+        totals = self._index_nodes(nodes, doc_id, language, existing=existing)
         log.info("index.graph_complete", doc_id=doc_id, collections=totals)
         return {"doc_id": doc_id, "collections": totals}
 

@@ -53,13 +53,24 @@ async def _prewarm_corpus(log) -> None:
 async def _prewarm_service(log) -> None:
     """Build + cache the default QueryService at startup.
 
-    A failure is logged and swallowed so startup never crashes on a miswired
-    LLM client or provenance store.
+    When the corpus is still warming up (a cold-start embedding that outlasted
+    ``PREWARM_TIMEOUT_SECONDS``) the service build would block on the corpus
+    lock for an unbounded time, so it is deferred instead — the request path
+    gates on corpus readiness and answers once indexing completes. A failure is
+    logged and swallowed so startup never crashes on a miswired LLM client or
+    provenance store.
     """
     from src.llm import service as svc
 
     started = time.perf_counter()
     log.info("service.prewarm.start", elapsed_ms=0)
+    if not svc.is_default_corpus_ready():
+        log.info(
+            "service.prewarm.deferred",
+            reason="corpus still warming",
+            elapsed_ms=_elapsed_ms(started),
+        )
+        return
     try:
         await asyncio.wait_for(
             asyncio.to_thread(svc.get_default_service),

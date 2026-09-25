@@ -32,3 +32,5 @@ logs/
 data/hierarchy/*.json
 data/processed/*.json
 data/provenance/*.json
+
+data/embeddings/
