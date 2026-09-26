@@ -13,12 +13,12 @@ to what the /query pipeline computes *before* answer generation.
 Outputs:
     results/task22_verification_audit.json
 """
+
 from __future__ import annotations
 
 import io
 import json
 import sys
-from collections import Counter
 from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
@@ -67,7 +67,7 @@ def main() -> None:
         confidence_threshold=settings.QA_CONFIDENCE_THRESHOLD,
     )
 
-    DOC_SLUGS = {
+    doc_slugs = {
         "0d1934142f67c5f5": "ICA (Contract Act)",
         "cf20a14c52127fd5": "IPC (Penal Code)",
     }
@@ -115,7 +115,7 @@ def main() -> None:
         expected_in_chain = False
         for step in exp_obj.reasoning_chain:
             if step.kind in ("dense", "graph", "hierarchy"):
-                for nid in (step.node_ids or []):
+                for nid in step.node_ids or []:
                     if node_meta.get(nid, {}).get("num", "") == exp:
                         expected_in_chain = True
                         break
@@ -138,7 +138,7 @@ def main() -> None:
             if d and d not in doc_seen:
                 doc_seen.add(d)
                 doc_ids.append(d)
-                doc_titles.append(DOC_SLUGS.get(d, d[:12]))
+                doc_titles.append(doc_slugs.get(d, d[:12]))
         for e in ev:
             t = node_type(e.node_id)
             if t:
@@ -159,7 +159,7 @@ def main() -> None:
             "expected_in_chain": expected_in_chain,
             "top1_section": top1_num,
             "top1_doc": top1_doc,
-            "top1_doc_slug": DOC_SLUGS.get(top1_doc, top1_doc[:12]),
+            "top1_doc_slug": doc_slugs.get(top1_doc, top1_doc[:12]),
             "retrieved_sections": [str(e.numbering).strip() for e in ev],
             "retrieved_doc_ids": doc_ids,
             "retrieved_doc_titles": doc_titles,
@@ -171,8 +171,9 @@ def main() -> None:
             "evidence_titles": [e.title for e in ev],
             "evidence_node_types": node_types,
             "evidence_doc_ids": [node_doc(e.node_id) for e in ev],
-            "evidence_snippets": [(e.title, (e.text or "")[:80], str(e.numbering).strip())
-                                  for e in ev[:5]],
+            "evidence_snippets": [
+                (e.title, (e.text or "")[:80], str(e.numbering).strip()) for e in ev[:5]
+            ],
             # --- verification ---
             "verification_status": exp_obj.validity.status,
             "verification_reason": exp_obj.validity.reason,
@@ -205,11 +206,13 @@ def main() -> None:
             "guard_reason": guard_reason,
         }
         audit[cid] = record
-        print(f"[{cid}] top1={top1_num!r} top1ok={record['top1_correct']} "
-              f"rel={record['evidence_relevance']:.3f} "
-              f"suf={record['evidence_sufficiency']:.3f} "
-              f"conf={record['confidence_score']:.3f} "
-              f"status={record['verification_status']} guard={guard_triggered} {guard_reason}")
+        print(
+            f"[{cid}] top1={top1_num!r} top1ok={record['top1_correct']} "
+            f"rel={record['evidence_relevance']:.3f} "
+            f"suf={record['evidence_sufficiency']:.3f} "
+            f"conf={record['confidence_score']:.3f} "
+            f"status={record['verification_status']} guard={guard_triggered} {guard_reason}"
+        )
 
     OUT_PATH.parent.mkdir(exist_ok=True)
     OUT_PATH.write_text(json.dumps(audit, indent=1), encoding="utf-8")

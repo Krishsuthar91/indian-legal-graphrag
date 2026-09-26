@@ -23,9 +23,9 @@ def _find_hierarchy_file() -> Path | None:
 
 
 def _print_graph(g):
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("GRAPH NODES")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     for label in NodeLabel:
         nodes = g.get_nodes_by_label(label.value)
         if nodes:
@@ -34,10 +34,11 @@ def _print_graph(g):
                 title = n.get("title") or n.get("name") or n.get("citation") or n.get("node_id")
                 print(f"    - {title}")
 
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("GRAPH EDGES")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     from src.knowledge_graph.schema import RelType
+
     for rel in RelType:
         count = g.edge_count(rel.value)
         if count > 0:
@@ -73,9 +74,9 @@ if __name__ == "__main__":
 
     # 5. Traversal demo
     doc_id = h_file.stem
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("TRAVERSAL DEMO")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
 
     parent = get_parent(graph, "n3") if graph.get_node("n3") else None
     if parent:
@@ -96,9 +97,9 @@ if __name__ == "__main__":
                 print(f"    -> {title} (depth {item['depth']}, via {item['rel_type']})")
 
     # 7. Stats
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("GRAPH STATISTICS")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     stats = export_stats(graph, Path("data/graph_stats.json"))
     for k, v in stats.items():
         print(f"  {k}: {v}")

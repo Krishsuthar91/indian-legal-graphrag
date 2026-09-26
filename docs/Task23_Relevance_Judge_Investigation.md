@@ -86,8 +86,10 @@ task; it treats every request the same:
 
 ```python
 query_line = user.split("QUESTION:", 1)[-1].splitlines()[0].strip()
-text = ("[mock] Based on the retrieved legal evidence, the answer addresses: "
-        f"{query_line}. {citation_note}")
+text = (
+    "[mock] Based on the retrieved legal evidence, the answer addresses: "
+    f"{query_line}. {citation_note}"
+)
 ```
 
 - **Prompt it receives:** the relevance judge calls `chat(system=..., user="Question: ... Retrieved Evidence: ...")`. The mock ignores `system` and only looks at `user`.
@@ -102,17 +104,16 @@ text = ("[mock] Based on the retrieved legal evidence, the answer addresses: "
 ## Step 3 — Inspect `_parse_relevance_json`
 
 ```python
-def _parse_relevance_json(raw: str) -> dict[str, Any]:          # explanation.py:174
+def _parse_relevance_json(raw: str) -> dict[str, Any]:  # explanation.py:174
     text = raw.strip()
     start = text.find("{")
     end = text.rfind("}")
     if start != -1 and end > start:
         try:
-            return json.loads(text[start:end + 1])
+            return json.loads(text[start : end + 1])
         except json.JSONDecodeError:
             pass
-    return {"score": 0.0, "label": "unknown",
-            "reason": "Failed to parse LLM response."}
+    return {"score": 0.0, "label": "unknown", "reason": "Failed to parse LLM response."}
 ```
 
 - **Accepted format:** the outermost `{ ... }` substring must be valid JSON.

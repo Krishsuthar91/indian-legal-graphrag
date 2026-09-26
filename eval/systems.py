@@ -156,9 +156,7 @@ class HhgrSystem(_BaseSystem):
                 )
             else:
                 explanation = self.engine.explain(q, top_k=k, language=self.language)
-                result = SystemResult(
-                    system=self.name, query=q, explanation=explanation
-                )
+                result = SystemResult(system=self.name, query=q, explanation=explanation)
             result.hits = [RankedHit.from_evidence(ev) for ev in explanation.evidence]
             return result
 
@@ -304,8 +302,7 @@ class Bm25System(_BaseSystem):
                 reverse=True,
             )
             hits = [
-                RankedHit(node_id=node_id, score=round(score, 4))
-                for node_id, score in scored[:k]
+                RankedHit(node_id=node_id, score=round(score, 4)) for node_id, score in scored[:k]
             ]
             return SystemResult(system=self.name, query=q, hits=hits)
 

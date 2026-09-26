@@ -56,7 +56,7 @@ def _dcg_at_k(relevances: Sequence[float], k: int) -> float:
     for i in range(min(k, len(relevances))):
         rel = relevances[i]
         if rel > 0:
-            dcg += (2 ** rel - 1) / math.log2(i + 2)
+            dcg += (2**rel - 1) / math.log2(i + 2)
     return dcg
 
 

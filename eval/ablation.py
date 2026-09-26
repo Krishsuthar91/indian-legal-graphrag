@@ -102,9 +102,7 @@ def run_ablation(
         for item in items:
             result = system.run(item.query, top_k=top_k)
             latency.append(result.duration_ms)
-            per_item.append(
-                retrieval_metrics(item.gold_node_ids, result.retrieved_ids, k=top_k)
-            )
+            per_item.append(retrieval_metrics(item.gold_node_ids, result.retrieved_ids, k=top_k))
             if result.explanation is not None:
                 explain_rows.append(
                     explainability_metrics(

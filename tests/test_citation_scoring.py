@@ -12,7 +12,7 @@ from __future__ import annotations
 import pytest
 
 from src.knowledge_graph.neo4j_driver import InMemoryGraph
-from src.llm.explanation import _Signal, ExplainabilityEngine
+from src.llm.explanation import ExplainabilityEngine, _Signal
 from src.retrieval.query import parse_query
 from src.retrieval.scorer import citation_score
 
@@ -21,30 +21,48 @@ def _build_graph() -> InMemoryGraph:
     """ICA-like graph with an exact-match section, a text-mention section,
     an unrelated high-reference hub, and an orphan."""
     g = InMemoryGraph()
-    g.create_node("Document", "doc1", {"document_id": "doc1", "title": "The Indian Contract Act, 1872"})
+    g.create_node(
+        "Document", "doc1", {"document_id": "doc1", "title": "The Indian Contract Act, 1872"}
+    )
     g.create_node(
         "Section",
         "s10",
-        {"document_id": "doc1", "numbering": "10", "title": "Agreements void",
-         "text": "Agreements without consideration are void."},
+        {
+            "document_id": "doc1",
+            "numbering": "10",
+            "title": "Agreements void",
+            "text": "Agreements without consideration are void.",
+        },
     )
     g.create_node(
         "Section",
         "s02",
-        {"document_id": "doc1", "numbering": "2", "title": "Mere reference",
-         "text": "This section refers to section 10 for the general rule."},
+        {
+            "document_id": "doc1",
+            "numbering": "2",
+            "title": "Mere reference",
+            "text": "This section refers to section 10 for the general rule.",
+        },
     )
     g.create_node(
         "Section",
         "s01",
-        {"document_id": "doc1", "numbering": "1", "title": "Short title",
-         "text": "This Act may be called the Indian Contract Act."},
+        {
+            "document_id": "doc1",
+            "numbering": "1",
+            "title": "Short title",
+            "text": "This Act may be called the Indian Contract Act.",
+        },
     )
     g.create_node(
         "Section",
         "s20",
-        {"document_id": "doc1", "numbering": "20", "title": "Orphan",
-         "text": "Unrelated provision with no cross references."},
+        {
+            "document_id": "doc1",
+            "numbering": "20",
+            "title": "Orphan",
+            "text": "Unrelated provision with no cross references.",
+        },
     )
     for i in range(5):
         g.create_edge("s01", f"ref{i}", "CITES")
@@ -98,12 +116,8 @@ def test_exact_match_ranks_above_high_reference_hub(engine: ExplainabilityEngine
     assert citation_score(graph.get_node("s10"), parsed) == 1.0
     assert citation_score(graph.get_node("s01"), parsed) == 0.0
 
-    rank = {
-        nid: engine._rank(sig) for nid, sig in signals.items()
-    }
-    assert rank["s10"] == pytest.approx(
-        rank["s01"] + engine.ranking_weights["citation"]
-    )
+    rank = {nid: engine._rank(sig) for nid, sig in signals.items()}
+    assert rank["s10"] == pytest.approx(rank["s01"] + engine.ranking_weights["citation"])
     assert rank["s10"] > rank["s01"]
 
 

@@ -42,7 +42,7 @@ def create_demo_pdf(output_path: Path) -> Path:
         ("", 6),
         ("Explanation.—Nothing in this section shall apply to agreements.", 10),
         ("", 6),
-        ("Illustration.—A says to B, \"I will sell my house for Rs. 1 lakh.\"", 10),
+        ('Illustration.—A says to B, "I will sell my house for Rs. 1 lakh."', 10),
         ("", 6),
         ("Proviso.—Provided that no suit shall be filed after three years.", 10),
         ("", 6),
@@ -126,14 +126,14 @@ if __name__ == "__main__":
     print(f"Ingested: {doc.document_id} ({doc.title})\n")
 
     hierarchy = parse_and_save(Path(f"data/processed/{doc.document_id}.json"))
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     print(f"HIERARCHY TREE - {hierarchy.document_id}")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     print_tree(hierarchy)
 
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("NESTED SET INDEX")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     node_map = {n.node_id: n for n in hierarchy.nodes}
     for entry in sorted(hierarchy.nested_set, key=lambda e: e.left):
         node = node_map.get(entry.node_id)
@@ -141,9 +141,9 @@ if __name__ == "__main__":
         print(f"  L={entry.left:3d}  R={entry.right:3d}  D={entry.depth}  {label}")
 
     if hierarchy.warnings:
-        print(f"\n{'='*60}")
+        print(f"\n{'=' * 60}")
         print(f"WARNINGS ({len(hierarchy.warnings)})")
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
         for w in hierarchy.warnings:
             print(f"  [{w.warning_type}] {w.message}")
     else:

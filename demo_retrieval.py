@@ -40,10 +40,12 @@ def _print_results(results) -> None:
         title = r.title or r.node_id
         print(f"\n  {i}. [{marker}] {title}  (score={r.score:.3f})")
         print(f"      label: {r.label}  numbering: {r.numbering!r}")
-        print(f"      signals: text={r.signals['text']:.2f} "
-              f"hierarchy={r.signals['hierarchy']:.2f} "
-              f"citation={r.signals['citation']:.2f} "
-              f"structural={r.signals['structural']:.2f}")
+        print(
+            f"      signals: text={r.signals['text']:.2f} "
+            f"hierarchy={r.signals['hierarchy']:.2f} "
+            f"citation={r.signals['citation']:.2f} "
+            f"structural={r.signals['structural']:.2f}"
+        )
         if r.matched_keywords:
             print(f"      matched: {r.matched_keywords}")
         if r.path:
@@ -69,9 +71,9 @@ if __name__ == "__main__":
     # 2. Run hybrid retrieval queries
     print("\n[2] Hybrid Hierarchical Graph Retrieval")
     for raw in QUERIES:
-        print(f"\n{'='*60}")
+        print(f"\n{'=' * 60}")
         print(f"QUERY: {raw}")
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
         query = parse_query(raw)
         _print_query(query)
         results = retrieve(graph, query, top_k=5)

@@ -32,8 +32,7 @@ def item_relevant_ids(graph, item: EvalItem) -> set[str]:
         if not node_id:
             continue
         key = normalize_citation(
-            f"{node.get('label', '')} {node.get('numbering', '')} "
-            f"{node.get('title', '')} {node_id}"
+            f"{node.get('label', '')} {node.get('numbering', '')} {node.get('title', '')} {node_id}"
         )
         if any(gold_key in key or key in gold_key for gold_key in gold_keys):
             relevant.add(node_id)
@@ -108,9 +107,7 @@ def benchmark_retrieval(
                     **metrics,
                 }
             )
-        summary_rows.append(
-            summarize(metric_rows, latency, system=name, items=len(items))
-        )
+        summary_rows.append(summarize(metric_rows, latency, system=name, items=len(items)))
     return summary_rows, per_query
 
 

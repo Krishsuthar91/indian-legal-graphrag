@@ -106,8 +106,7 @@ class EvalDataset:
                     errors.append(f"{item.id}: citation with empty citation_text")
                 if item.grounded and not citation.node_id:
                     errors.append(
-                        f"{item.id}: grounded citation without node_id "
-                        f"({citation.citation_text})"
+                        f"{item.id}: grounded citation without node_id ({citation.citation_text})"
                     )
             if item.grounded and not item.gold_node_ids:
                 errors.append(f"{item.id}: grounded item has no node-grounded citations")

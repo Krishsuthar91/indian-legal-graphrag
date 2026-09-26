@@ -210,8 +210,7 @@ def write_report(
         avg_conf = sum(r["actual"]["confidence"] for r in results) / n if n else 0
         avg_ms = sum(r["actual"]["duration_ms"] for r in results) / n if n else 0
         lines.append(
-            f"| {name} | {n} | {p} | {n-p} | {p/n*100:.1f}% | "
-            f"{avg_conf:.3f} | {avg_ms:.1f} |"
+            f"| {name} | {n} | {p} | {n - p} | {p / n * 100:.1f}% | {avg_conf:.3f} | {avg_ms:.1f} |"
         )
     lines.append("")
     lines.append("## Top failure patterns")
@@ -259,23 +258,25 @@ def main() -> None:
             result = evaluate(case_id, case, actual)
             cat = case_id.split(".")[0]
             categories[f"Category {cat}"].append(result)
-            print(f"[{case_id}] status={actual.get('status')} "
-                  f"conf={actual['confidence']:.3f} blocked={actual['blocked']} "
-                  f"sec={actual['top_section']!r} doc={actual['top_doc']} "
-                  f"-> {'PASS' if result['passed'] else 'FAIL'}")
+            print(
+                f"[{case_id}] status={actual.get('status')} "
+                f"conf={actual['confidence']:.3f} blocked={actual['blocked']} "
+                f"sec={actual['top_section']!r} doc={actual['top_doc']} "
+                f"-> {'PASS' if result['passed'] else 'FAIL'}"
+            )
 
     all_results = [r for res in categories.values() for r in res]
     total = len(all_results)
     passed = sum(1 for r in all_results if r["passed"])
     wrong_doc = sum(
-        1 for r in all_results
+        1
+        for r in all_results
         if r["actual"]["ok"]
         and r["case_id"][0] not in ("5", "6")
         and r["actual"]["top_doc_id"] not in ("0d1934142f67c5f5",)
     )
     hallucinations_prevented = sum(
-        1 for r in all_results
-        if r["case_id"][0] in ("5", "6") and r["actual"]["blocked"]
+        1 for r in all_results if r["case_id"][0] in ("5", "6") and r["actual"]["blocked"]
     )
     guard_activations = sum(1 for r in all_results if r["actual"]["blocked"])
     avg_conf = sum(r["actual"]["confidence"] for r in all_results) / total if total else 0

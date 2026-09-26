@@ -1,13 +1,16 @@
 """Diagnostic trace for 'What is Section 10?' pipeline."""
+
 from __future__ import annotations
-import sys, pathlib
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
-from src.retrieval.query import parse_query
-from src.retrieval.ranker import TEXT_THRESHOLD
-from src.retrieval.ranker import retrieve
-from src.retrieval.context import propagate_hierarchy
-from src.retrieval.scorer import text_score, citation_score, structural_importance, combine_signals
+
+from collections import Counter
+
+import _bootstrap  # noqa: F401 -- prepares sys.path for src imports
+
 from src.llm.service import build_default_graph
+from src.retrieval.context import propagate_hierarchy
+from src.retrieval.query import parse_query
+from src.retrieval.ranker import TEXT_THRESHOLD, retrieve
+from src.retrieval.scorer import citation_score, combine_signals, structural_importance, text_score
 
 ICA_DOC = "0d1934142f67c5f5"
 
@@ -16,8 +19,16 @@ print("=" * 70)
 print("STAGE 1: Parsed Query")
 print("=" * 70)
 q = parse_query("What is Section 10?")
-for attr in ("raw", "keywords", "section_refs", "section_numbers",
-             "citation_texts", "act_name", "document_id", "language"):
+for attr in (
+    "raw",
+    "keywords",
+    "section_refs",
+    "section_numbers",
+    "citation_texts",
+    "act_name",
+    "document_id",
+    "language",
+):
     print(f"  {attr}: {getattr(q, attr)!r}")
 print()
 
@@ -33,7 +44,6 @@ print(f"  ICA nodes:   {len(ica_nodes)}")
 print(f"  Other nodes: {len(all_nodes) - len(ica_nodes)}")
 
 # Show all node types in ICA
-from collections import Counter
 types = Counter(n.get("label", "?") for n in ica_nodes)
 print(f"  ICA node types: {dict(types)}")
 
@@ -41,13 +51,19 @@ print(f"  ICA node types: {dict(types)}")
 sec10_list = [n for n in ica_nodes if n.get("numbering") == "10"]
 print(f"\n  Nodes with numbering='10' in ICA: {len(sec10_list)}")
 for sn in sec10_list:
-    print(f"    node_id={sn['node_id']}  label={sn.get('label','')}  title={sn.get('title','')[:50]}")
+    print(
+        f"    node_id={sn['node_id']}  label={sn.get('label', '')}  "
+        f"title={sn.get('title', '')[:50]}"
+    )
 
 # Find Section 10 across ALL docs
 sec10_all = [n for n in all_nodes if n.get("numbering") == "10"]
 print(f"  Nodes with numbering='10' across ALL docs: {len(sec10_all)}")
 for sn in sec10_all[:5]:
-    print(f"    node_id={sn['node_id']}  doc={sn.get('document_id','?')[:12]}  label={sn.get('label','')}  title={sn.get('title','')[:40]}")
+    print(
+        f"    node_id={sn['node_id']}  doc={sn.get('document_id', '?')[:12]}  "
+        f"label={sn.get('label', '')}  title={sn.get('title', '')[:40]}"
+    )
 print()
 
 # ── Stage 3: Seed selection ──
@@ -59,12 +75,23 @@ for node in ica_nodes:
     t = text_score(node, q)
     c = citation_score(node, q)
     if t >= TEXT_THRESHOLD or c >= 1.0:
-        seeds.append((node["node_id"], node.get("numbering", ""),
-                      node.get("label", ""), node.get("title", ""), t, c))
+        seeds.append(
+            (
+                node["node_id"],
+                node.get("numbering", ""),
+                node.get("label", ""),
+                node.get("title", ""),
+                t,
+                c,
+            )
+        )
 seeds.sort(key=lambda x: (-x[5], -x[4], x[1]))
 print(f"  Total seeds from ICA: {len(seeds)}")
 for sid, num, lbl, title, t, c in seeds[:25]:
-    print(f"    num={num:5s}  text={t:.3f}  cite={c:.1f}  label={lbl:15s}  id={sid}  title={title[:40]}")
+    print(
+        f"    num={num:5s}  text={t:.3f}  cite={c:.1f}  label={lbl:15s}  "
+        f"id={sid}  title={title[:40]}"
+    )
 print()
 
 # ── Stage 4: Graph retrieval (no filter) ──
@@ -75,7 +102,10 @@ graph_results = retrieve(graph, "What is Section 10?", top_k=15)
 for i, r in enumerate(graph_results):
     node = graph.get_node(r.node_id)
     doc = node.get("document_id", "?") if node else "?"
-    print(f"  #{i+1:2d} score={r.score:.4f} num={r.numbering:5s} label={r.label:15s} doc={doc[:12]}  id={r.node_id}  title={r.title[:40]}")
+    print(
+        f"  #{i + 1:2d} score={r.score:.4f} num={r.numbering:5s} "
+        f"label={r.label:15s} doc={doc[:12]}  id={r.node_id}  title={r.title[:40]}"
+    )
     print(f"       signals={r.signals}  is_seed={r.is_seed}")
 print()
 
@@ -85,7 +115,10 @@ print("STAGE 4b: Graph Retrieval (document_id filtered to ICA)")
 print("=" * 70)
 graph_results_f = retrieve(graph, "What is Section 10?", top_k=15, document_id=ICA_DOC)
 for i, r in enumerate(graph_results_f):
-    print(f"  #{i+1:2d} score={r.score:.4f} num={r.numbering:5s} label={r.label:15s}  id={r.node_id}  title={r.title[:40]}")
+    print(
+        f"  #{i + 1:2d} score={r.score:.4f} num={r.numbering:5s} "
+        f"label={r.label:15s}  id={r.node_id}  title={r.title[:40]}"
+    )
     print(f"       signals={r.signals}  is_seed={r.is_seed}")
 print()
 
@@ -101,12 +134,18 @@ print(f"  Propagated nodes: {len(propagated)}")
 for nid, strength in prop_sorted[:30]:
     node = graph.get_node(nid)
     if node:
-        print(f"    strength={strength:.4f} num={node.get('numbering',''):5s} label={node.get('label',''):15s} id={nid}  title={node.get('title','')[:40]}")
+        print(
+            f"    strength={strength:.4f} num={node.get('numbering', ''):5s} "
+            f"label={node.get('label', ''):15s} id={nid}  title={node.get('title', '')[:40]}"
+        )
 print("  ...")
 for nid, strength in prop_sorted[-5:]:
     node = graph.get_node(nid)
     if node:
-        print(f"    strength={strength:.4f} num={node.get('numbering',''):5s} label={node.get('label',''):15s} id={nid}  title={node.get('title','')[:40]}")
+        print(
+            f"    strength={strength:.4f} num={node.get('numbering', ''):5s} "
+            f"label={node.get('label', ''):15s} id={nid}  title={node.get('title', '')[:40]}"
+        )
 print()
 
 # ── Stage 6: Detailed scoring for top candidates ──
@@ -138,24 +177,38 @@ for nid in propagated:
         "structural": (structural_scores.get(nid, 0.0) / max_struct) if max_struct > 0 else 0.0,
     }
     final = combine_signals(signals)
-    scored.append((nid, node.get("numbering", ""), node.get("label", ""),
-                   node.get("title", ""), final, signals))
+    scored.append(
+        (
+            nid,
+            node.get("numbering", ""),
+            node.get("label", ""),
+            node.get("title", ""),
+            final,
+            signals,
+        )
+    )
 
 scored.sort(key=lambda x: (-x[4], x[0]))
 print(f"  Total scored candidates: {len(scored)}")
-print(f"  {'#':>3s}  {'final':>6s}  {'text':>5s}  {'hier':>5s}  {'cite':>5s}  {'struct':>5s}  {'num':>5s}  {'label':15s}  title")
+print(
+    f"  {'#':>3s}  {'final':>6s}  {'text':>5s}  {'hier':>5s}  {'cite':>5s}  "
+    f"{'struct':>5s}  {'num':>5s}  {'label':15s}  title"
+)
 for i, (nid, num, lbl, title, final, sig) in enumerate(scored[:20]):
-    print(f"  {i+1:3d}  {final:6.4f}  {sig['text']:5.3f}  {sig['hierarchy']:5.3f}  {sig['citation']:5.3f}  {sig['structural']:5.3f}  {num:5s}  {lbl:15s}  {title[:35]}")
+    print(
+        f"  {i + 1:3d}  {final:6.4f}  {sig['text']:5.3f}  {sig['hierarchy']:5.3f}  "
+        f"{sig['citation']:5.3f}  {sig['structural']:5.3f}  {num:5s}  {lbl:15s}  {title[:35]}"
+    )
 
 # Find Section 10 specifically
 print()
 sec10_scored = [s for s in scored if s[1] == "10"]
 if sec10_scored:
     s = sec10_scored[0]
-    print(f"  *** Section 10 ***")
+    print("  *** Section 10 ***")
     print(f"      node_id={s[0]}  final={s[4]:.4f}  label={s[2]}")
     print(f"      signals: {s[5]}")
-    rank_pos = next((i+1 for i, x in enumerate(scored) if x[0] == s[0]), None)
+    rank_pos = next((i + 1 for i, x in enumerate(scored) if x[0] == s[0]), None)
     print(f"      rank position: #{rank_pos} of {len(scored)}")
 else:
     print("  *** Section 10 NOT in scored candidates ***")

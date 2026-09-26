@@ -170,10 +170,7 @@ def suppress_fragment_nodes(nodes: list[HierarchyNode]) -> list[HierarchyNode]:
         title = node.title or ""
         is_fragment = node.node_type in _FRAGMENT_NODE_TYPES or (
             node.node_type == "section"
-            and (
-                bool(_LOWERCASE_START_RE.match(title))
-                or bool(_FOOTNOTE_SECTION_RE.match(title))
-            )
+            and (bool(_LOWERCASE_START_RE.match(title)) or bool(_FOOTNOTE_SECTION_RE.match(title)))
         )
         if not is_fragment:
             result.append(node)

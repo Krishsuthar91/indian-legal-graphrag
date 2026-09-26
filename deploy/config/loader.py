@@ -152,13 +152,9 @@ def validate_production(
         if not _truthy(values.get(flag, "false")):
             continue
         if not values.get(secret):
-            errors.append(
-                f"{flag} is enabled but required secret {secret} is empty"
-            )
+            errors.append(f"{flag} is enabled but required secret {secret} is empty")
 
-    if values.get("APP_ENV") == "production" and _truthy(
-        values.get("APP_DEBUG", "false")
-    ):
+    if values.get("APP_ENV") == "production" and _truthy(values.get("APP_DEBUG", "false")):
         errors.append("APP_DEBUG must be false in production")
 
     return errors

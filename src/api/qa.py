@@ -114,10 +114,7 @@ async def _await_corpus_ready() -> None:
     log.warning("qa.corpus_warming", grace_seconds=_CORPUS_WARMING_GRACE_SECONDS)
     raise HTTPException(
         status_code=503,
-        detail=(
-            "The vector corpus is still indexing (cold start). "
-            "Please retry in a few minutes."
-        ),
+        detail=("The vector corpus is still indexing (cold start). Please retry in a few minutes."),
     )
 
 

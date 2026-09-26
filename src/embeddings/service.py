@@ -117,7 +117,9 @@ class EmbeddingService:
 
     def embed_documents(self, texts: list[str], batch_size: int | None = None) -> list[list[float]]:
         """Embed documents/placements, applying the provider's passage prefix."""
-        return self._prefixed_encode(texts, getattr(self._provider, "passage_prefix", ""), batch_size)
+        return self._prefixed_encode(
+            texts, getattr(self._provider, "passage_prefix", ""), batch_size
+        )
 
     def embed_text(self, text: str) -> list[float]:
         """Embed a single text."""

@@ -50,8 +50,10 @@ def main() -> int:
     print(f"  model         : {client.model}")
     print(f"  base_url      : {getattr(client, 'base_url', 'N/A')}")
     print(f"  api_key       : configured={bool(api_key)} masked={_masked(api_key)}")
-    print(f"  request       : single completion, no retries, "
-          f"{SMOKE_TIMEOUT_SECONDS:.0f}s read timeout")
+    print(
+        f"  request       : single completion, no retries, "
+        f"{SMOKE_TIMEOUT_SECONDS:.0f}s read timeout"
+    )
 
     url = f"{client.base_url}/chat/completions"
     headers = {"Content-Type": "application/json"}
@@ -71,13 +73,15 @@ def main() -> int:
     }
 
     try:
-        with httpx.Client(timeout=httpx.Timeout(
-            SMOKE_TIMEOUT_SECONDS,
-            connect=min(10.0, SMOKE_TIMEOUT_SECONDS),
-            read=SMOKE_TIMEOUT_SECONDS,
-            write=SMOKE_TIMEOUT_SECONDS,
-            pool=SMOKE_TIMEOUT_SECONDS,
-        )) as http:
+        with httpx.Client(
+            timeout=httpx.Timeout(
+                SMOKE_TIMEOUT_SECONDS,
+                connect=min(10.0, SMOKE_TIMEOUT_SECONDS),
+                read=SMOKE_TIMEOUT_SECONDS,
+                write=SMOKE_TIMEOUT_SECONDS,
+                pool=SMOKE_TIMEOUT_SECONDS,
+            )
+        ) as http:
             resp = http.post(url, json=payload, headers=headers)
     except httpx.HTTPError as exc:
         print(f"FAILED: {exc}", file=sys.stderr)

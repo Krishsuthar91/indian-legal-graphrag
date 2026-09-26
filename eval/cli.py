@@ -54,10 +54,7 @@ def _retrieval_table(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "title": "Retrieval Accuracy & Latency by System",
         "headers": [metric_label(key) for key in keys],
         "rows": [
-            [
-                row.get(key, "") if key in ("system", "items") else _fmt(row.get(key))
-                for key in keys
-            ]
+            [row.get(key, "") if key in ("system", "items") else _fmt(row.get(key)) for key in keys]
             for row in rows
         ],
     }
@@ -84,10 +81,7 @@ def _explainability_table(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "title": "HHGR Explainability Metrics (per query)",
         "headers": [metric_label(key) for key in keys],
         "rows": [
-            [
-                row.get(key, "") if key == "item_id" else _fmt(row.get(key))
-                for key in keys
-            ]
+            [row.get(key, "") if key == "item_id" else _fmt(row.get(key)) for key in keys]
             for row in rows
         ],
     }
@@ -273,8 +267,10 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     meta = result["output"].meta
-    print(f"evaluation complete: dataset={meta['dataset']} items={meta['items_evaluated']} "
-          f"elapsed={meta['elapsed_seconds']}s")
+    print(
+        f"evaluation complete: dataset={meta['dataset']} items={meta['items_evaluated']} "
+        f"elapsed={meta['elapsed_seconds']}s"
+    )
     for key, path in sorted(result["reports"].items()):
         print(f"  {key}: {path}")
     return 0

@@ -23,26 +23,28 @@ from __future__ import annotations
 
 import argparse
 import json
-import sys
+import logging
 import time
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(REPO))
+import _bootstrap  # noqa: F401 -- prepares sys.path for src imports
 
 from src.config.settings import settings
-
-settings.QA_INDEX_IN_MEMORY = True
-
-from src.embeddings import EmbeddingService, HierarchyIndexer, QdrantStore, VectorRetriever, get_provider
+from src.embeddings import (
+    EmbeddingService,
+    HierarchyIndexer,
+    QdrantStore,
+    VectorRetriever,
+    get_provider,
+)
 from src.knowledge_graph.canonical import canonical_doc_ids
 from src.knowledge_graph.importer import import_all
 from src.knowledge_graph.neo4j_driver import InMemoryGraph
 from src.llm.explanation import ExplainabilityEngine
 from src.llm.service import QueryService
 
-import logging
-
+REPO = Path(__file__).resolve().parent.parent
+settings.QA_INDEX_IN_MEMORY = True
 logging.getLogger().setLevel(logging.WARNING)
 
 IPC = "cf20a14c52127fd5"
@@ -72,13 +74,19 @@ ICA_GOLD_QUERIES: list[tuple[str, list[str]]] = [
     ("Which chapter of the Act deals with performance?", ["CHAPTER III", "4"]),
     ("Where are the preliminary provisions of the Act located?", ["CHAPTER I"]),
     ("What is an agreement enforceable by law called?", ["2"]),
-    ("Does the Act require the parties to specify how a contract is to be performed, and what happens if they do not?", ["4"]),
+    (
+        "Does the Act require the parties to specify how a contract is to be performed, "
+        "and what happens if they do not?",
+        ["4"],
+    ),
 ]
 
 K_LIST = (1, 3, 5, 10)
 
 
-def build_corpus_with(provider_name: str, allow_fallback: bool) -> tuple[InMemoryGraph, EmbeddingService, QdrantStore, VectorRetriever, ExplainabilityEngine]:
+def build_corpus_with(
+    provider_name: str, allow_fallback: bool
+) -> tuple[InMemoryGraph, EmbeddingService, QdrantStore, VectorRetriever, ExplainabilityEngine]:
     graph = InMemoryGraph()
     import_all(graph)
     provider = get_provider(
@@ -92,7 +100,9 @@ def build_corpus_with(provider_name: str, allow_fallback: bool) -> tuple[InMemor
     store = QdrantStore(dim=service.dim, in_memory=True)
     store.ensure_collections()
     hierarchy_dir = REPO / "data" / "hierarchy"
-    HierarchyIndexer(graph, store, service).index_graph(canonical_doc_ids=canonical_doc_ids(hierarchy_dir))
+    HierarchyIndexer(graph, store, service).index_graph(
+        canonical_doc_ids=canonical_doc_ids(hierarchy_dir)
+    )
     retriever = VectorRetriever(graph, store, service)
     engine = ExplainabilityEngine(graph, vector_retriever=retriever, expansion_enabled=True)
     engine.adaptive = False
@@ -175,10 +185,14 @@ def run_provider(
         final5 = final10[:5]
         dense_metrics = {f"top{k}": retrieve_metrics(relevant, dense, k)["hit"] for k in K_LIST}
         dense_metrics["mrr"] = retrieve_metrics(relevant, dense, 10)["mrr"]
-        dense_metrics.update({f"r@{k}": retrieve_metrics(relevant, dense, k)["recall"] for k in (5, 10)})
+        dense_metrics.update(
+            {f"r@{k}": retrieve_metrics(relevant, dense, k)["recall"] for k in (5, 10)}
+        )
         final_metrics = {f"top{k}": retrieve_metrics(relevant, final10, k)["hit"] for k in K_LIST}
         final_metrics["mrr"] = retrieve_metrics(relevant, final10, 10)["mrr"]
-        final_metrics.update({f"r@{k}": retrieve_metrics(relevant, final10, k)["recall"] for k in (5, 10)})
+        final_metrics.update(
+            {f"r@{k}": retrieve_metrics(relevant, final10, k)["recall"] for k in (5, 10)}
+        )
         guard = QueryService._should_generate_answer(res)
         return {
             "query": query,
@@ -227,22 +241,44 @@ def run_provider(
 
 
 def print_tables(results: dict) -> None:
-    for group, title in (("concepts", "Concept queries (9)"), ("ica_gold", "ICA gold dataset (9 lookup queries)")):
+    for group, title in (
+        ("concepts", "Concept queries (9)"),
+        ("ica_gold", "ICA gold dataset (9 lookup queries)"),
+    ):
         block = results[group]
         print(f"\n=== {title} ===")
-        print(f"\n{results['provider']} DENSE:   " + "  ".join(f"{k}={block['dense_agg'].get(k)}" for k in ("top1", "top3", "top5", "mrr", "r@5", "r@10")))
-        print(f"{results['provider']} FINAL:  " + "  ".join(f"{k}={block['final_agg'].get(k)}" for k in ("top1", "top3", "top5", "mrr", "r@5", "r@10")))
+        print(
+            f"\n{results['provider']} DENSE:   "
+            + "  ".join(
+                f"{k}={block['dense_agg'].get(k)}"
+                for k in ("top1", "top3", "top5", "mrr", "r@5", "r@10")
+            )
+        )
+        print(
+            f"{results['provider']} FINAL:  "
+            + "  ".join(
+                f"{k}={block['final_agg'].get(k)}"
+                for k in ("top1", "top3", "top5", "mrr", "r@5", "r@10")
+            )
+        )
         for row in block["rows"]:
-            print(f"    {row['query'][:48]:<50} D{row['dense_metrics']} F{row['final_metrics']} "
-                  f"conf={row['confidence']} rel={row['relevance']} suff={row['sufficiency']} {row['grounding']}")
+            print(
+                f"    {row['query'][:48]:<50} D{row['dense_metrics']} F{row['final_metrics']} "
+                f"conf={row['confidence']} rel={row['relevance']} "
+                f"suff={row['sufficiency']} {row['grounding']}"
+            )
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--quick", action="store_true", help="only concept query set")
-    parser.add_argument("--model", default=settings.EMBEDDING_MODEL, help="semantic model (default EMBEDDING_MODEL)")
+    parser.add_argument(
+        "--model", default=settings.EMBEDDING_MODEL, help="semantic model (default EMBEDDING_MODEL)"
+    )
     parser.add_argument("--suffix", default="v243")
-    parser.add_argument("--only", default=None, help="run a single provider: deterministic or the --model name")
+    parser.add_argument(
+        "--only", default=None, help="run a single provider: deterministic or the --model name"
+    )
     args = parser.parse_args()
 
     providers = ["deterministic", args.model]

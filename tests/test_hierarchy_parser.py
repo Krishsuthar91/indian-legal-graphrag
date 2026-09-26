@@ -246,18 +246,12 @@ class TestSplitEmbeddedSections:
         assert parts == ["302. Punishment for murder"]
 
     def test_no_split_for_number_index_line(self):
-        text = (
-            "Of theft 378. Theft. 379. Punishment for theft. "
-            "380. Theft in dwelling house, etc."
-        )
+        text = "Of theft 378. Theft. 379. Punishment for theft. 380. Theft in dwelling house, etc."
         parts = _split_embedded_sections(text)
         assert parts == [text]
 
     def test_no_split_for_explanation_prose(self):
-        text = (
-            "Explanation. The last section is subject to the same "
-            "Explanation as section 352."
-        )
+        text = "Explanation. The last section is subject to the same Explanation as section 352."
         parts = _split_embedded_sections(text)
         assert parts == [text]
 

@@ -22,12 +22,11 @@ import json
 import sys
 from pathlib import Path
 
-_REPO_ROOT = Path(__file__).resolve().parent.parent
-if str(_REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(_REPO_ROOT))
+import _bootstrap  # noqa: F401 -- prepares sys.path for src imports
 
 from src.knowledge_graph.canonical import build_corpus_audit
 
+_REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_HIERARCHY = _REPO_ROOT / "data" / "hierarchy"
 
 
@@ -92,9 +91,7 @@ def main() -> int:
 
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
-        args.output.write_text(
-            json.dumps(audit, indent=2, ensure_ascii=False), encoding="utf-8"
-        )
+        args.output.write_text(json.dumps(audit, indent=2, ensure_ascii=False), encoding="utf-8")
         print(f"\nFull audit written to {args.output}")
     return 0
 

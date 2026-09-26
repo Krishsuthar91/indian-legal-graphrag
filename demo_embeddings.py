@@ -111,8 +111,10 @@ if __name__ == "__main__":
         hits = retriever.hybrid_retrieve(raw, top_k=5)
         for i, h in enumerate(hits, 1):
             print(f"  {i}. {h.title or h.node_id}  (score={h.score:.3f})")
-            print(f"      dense={h.dense_score:.2f} graph={h.graph_score:.2f} "
-                  f"hierarchy={h.hierarchy_score:.2f} sources={h.sources}")
+            print(
+                f"      dense={h.dense_score:.2f} graph={h.graph_score:.2f} "
+                f"hierarchy={h.hierarchy_score:.2f} sources={h.sources}"
+            )
 
     # 7. Benchmark
     print("\n[7] Retrieval benchmark")

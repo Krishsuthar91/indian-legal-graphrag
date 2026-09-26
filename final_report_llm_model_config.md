@@ -30,8 +30,8 @@ Source order (later wins; pydantic-settings): **code defaults < `.env.developmen
 **Client resolution (post-fix):**
 
 ```python
-model    = model or settings.NVIDIA_MODEL or None            # NVIDIA_MODEL only
-api_key  = api_key or settings.LLM_API_KEY or settings.NVIDIA_API_KEY
+model = model or settings.NVIDIA_MODEL or None  # NVIDIA_MODEL only
+api_key = api_key or settings.LLM_API_KEY or settings.NVIDIA_API_KEY
 base_url = base_url or settings.LLM_BASE_URL or settings.NVIDIA_BASE_URL or None
 ```
 

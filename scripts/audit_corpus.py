@@ -92,7 +92,9 @@ def audit(hierarchy_dir: Path) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Audit the hierarchy corpus.")
     parser.add_argument(
-        "--hierarchy-dir", type=Path, default=Path("data/hierarchy"),
+        "--hierarchy-dir",
+        type=Path,
+        default=Path("data/hierarchy"),
         help="Directory containing hierarchy JSON files",
     )
     parser.add_argument("--json", type=Path, default=None, help="Write JSON report")

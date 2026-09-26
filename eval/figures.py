@@ -75,51 +75,89 @@ def pipeline_architecture(out_dir: str | Path) -> dict[str, str]:
     ax.axis("off")
 
     boxes = [
-        (0.05, 0.72, 0.18, 0.16, "Document Intake",
-         "PDF / DOCX parsing\nOCR + hierarchy detection"),
-        (0.30, 0.72, 0.18, 0.16, "Knowledge Graph",
-         "Neo4j / in-memory\nPART_OF hierarchy + citations"),
-        (0.55, 0.72, 0.18, 0.16, "Embeddings",
-         "Multilingual dense vectors\nQdrant collections"),
-        (0.80, 0.72, 0.18, 0.16, "Indexer",
-         "Hierarchical index\nincremental sync"),
+        (
+            0.05,
+            0.72,
+            0.18,
+            0.16,
+            "Document Intake",
+            "PDF / DOCX parsing\nOCR + hierarchy detection",
+        ),
+        (
+            0.30,
+            0.72,
+            0.18,
+            0.16,
+            "Knowledge Graph",
+            "Neo4j / in-memory\nPART_OF hierarchy + citations",
+        ),
+        (0.55, 0.72, 0.18, 0.16, "Embeddings", "Multilingual dense vectors\nQdrant collections"),
+        (0.80, 0.72, 0.18, 0.16, "Indexer", "Hierarchical index\nincremental sync"),
     ]
     for x, y, w, h, title, sub in boxes:
         ax.add_patch(plt.Rectangle((x, y), w, h, facecolor="#DCE6F1", edgecolor="#1F4E79", lw=1.5))
         ax.text(x + w / 2, y + h - 0.03, title, ha="center", va="top", fontsize=10, weight="bold")
         ax.text(
-            x + w / 2, y + h * 0.28, sub, ha="center",
-            va="center", fontsize=7.5, color="#333333",
+            x + w / 2,
+            y + h * 0.28,
+            sub,
+            ha="center",
+            va="center",
+            fontsize=7.5,
+            color="#333333",
         )
 
     stages = [
-        (0.05, 0.34, 0.18, 0.16, "1. Query Parsing",
-         "keywords, section refs,\ncitation texts"),
-        (0.30, 0.34, 0.18, 0.16, "2. Dense Retrieval",
-         "multilingual semantic\nvector search"),
-        (0.55, 0.34, 0.18, 0.16, "3. Graph Retrieval",
-         "HHGR text/citation/\nhierarchy/structural signals"),
-        (0.80, 0.34, 0.18, 0.16, "4. Hierarchy Fusion",
-         "evidence propagation\nancestor/descendant"),
+        (0.05, 0.34, 0.18, 0.16, "1. Query Parsing", "keywords, section refs,\ncitation texts"),
+        (0.30, 0.34, 0.18, 0.16, "2. Dense Retrieval", "multilingual semantic\nvector search"),
+        (
+            0.55,
+            0.34,
+            0.18,
+            0.16,
+            "3. Graph Retrieval",
+            "HHGR text/citation/\nhierarchy/structural signals",
+        ),
+        (
+            0.80,
+            0.34,
+            0.18,
+            0.16,
+            "4. Hierarchy Fusion",
+            "evidence propagation\nancestor/descendant",
+        ),
     ]
     for x, y, w, h, title, sub in stages:
         ax.add_patch(plt.Rectangle((x, y), w, h, facecolor="#E2EFDA", edgecolor="#2E8B57", lw=1.5))
         ax.text(x + w / 2, y + h - 0.03, title, ha="center", va="top", fontsize=10, weight="bold")
         ax.text(
-            x + w / 2, y + h * 0.28, sub, ha="center",
-            va="center", fontsize=7.5, color="#333333",
+            x + w / 2,
+            y + h * 0.28,
+            sub,
+            ha="center",
+            va="center",
+            fontsize=7.5,
+            color="#333333",
         )
 
     fuse = plt.Rectangle((0.30, 0.04), 0.40, 0.16, facecolor="#FCE4D6", edgecolor="#8B0000", lw=1.5)
     ax.add_patch(fuse)
     ax.text(
-        0.50, 0.12, "5. Fusion + Explainability",
-        ha="center", va="center", fontsize=11, weight="bold",
+        0.50,
+        0.12,
+        "5. Fusion + Explainability",
+        ha="center",
+        va="center",
+        fontsize=11,
+        weight="bold",
     )
     ax.text(
-        0.50, 0.045,
+        0.50,
+        0.045,
         "evidence, reasoning chain, citations, confidence, validity, counter-authority",
-        ha="center", va="center", fontsize=7.5,
+        ha="center",
+        va="center",
+        fontsize=7.5,
     )
 
     for x_from, y_from, x_to, y_to in [
@@ -135,8 +173,12 @@ def pipeline_architecture(out_dir: str | Path) -> dict[str, str]:
         (0.73, 0.42, 0.70, 0.20),
         (0.30, 0.20, 0.30, 0.12),
     ]:
-        ax.annotate("", xy=(x_to, y_to), xytext=(x_from, y_from),
-                    arrowprops=dict(arrowstyle="-|>", color="#555555", lw=1.3))
+        ax.annotate(
+            "",
+            xy=(x_to, y_to),
+            xytext=(x_from, y_from),
+            arrowprops=dict(arrowstyle="-|>", color="#555555", lw=1.3),
+        )
 
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
@@ -201,8 +243,15 @@ def hierarchy_tree(out_dir: str | Path, corpus: Corpus) -> dict[str, str]:
         label = node.get("label", "")
         if len(title) > 24:
             title = title[:22] + "…"
-        ax.text(x, y, f"{title}\n{label}", ha="center", va="center", fontsize=6.5,
-                bbox=dict(boxstyle="round,pad=0.3", facecolor="#E2EFDA", edgecolor="#2E8B57"))
+        ax.text(
+            x,
+            y,
+            f"{title}\n{label}",
+            ha="center",
+            va="center",
+            fontsize=6.5,
+            bbox=dict(boxstyle="round,pad=0.3", facecolor="#E2EFDA", edgecolor="#2E8B57"),
+        )
 
     ax.set_title(f"Hierarchy Tree — {corpus.hierarchy_file.name}")
     ax.set_xlim(-0.05, 1.05)
@@ -253,8 +302,16 @@ def kg_example_graph(out_dir: str | Path, corpus: Corpus) -> dict[str, str]:
         if len(title) > 20:
             title = title[:18] + "…"
         ax.scatter(x, y, s=220, color=color, zorder=2)
-        ax.annotate(title, (x, y), fontsize=6, ha="center", va="center",
-                    color="white", weight="bold", zorder=3)
+        ax.annotate(
+            title,
+            (x, y),
+            fontsize=6,
+            ha="center",
+            va="center",
+            color="white",
+            weight="bold",
+            zorder=3,
+        )
 
     ax.set_title("Knowledge Graph Example — Indian Contract Act, 1892 (PART_OF + citation edges)")
     ax.set_xlim(-0.05, 1.05)
@@ -322,7 +379,9 @@ def ablation_chart(out_dir: str | Path, ablation_rows: list[dict[str, Any]]) -> 
         values = [ablation_rows[i].get(m, 0.0) for m in metrics]
         offset = (i - len(variants) / 2 + 0.5) * width
         ax.bar(
-            x + offset, values, width,
+            x + offset,
+            values,
+            width,
             label=ablation_rows[i]["label"],
             color=_color_for(variant),
         )
@@ -344,8 +403,13 @@ def latency_chart(out_dir: str | Path, retrieval_rows: list[dict[str, Any]]) -> 
     fig, ax = plt.subplots(figsize=(9, 5))
     for i, (key, label) in enumerate([("mean_ms", "Mean"), ("p50_ms", "p50"), ("p95_ms", "p95")]):
         values = [retrieval_rows[j].get(key, 0.0) for j in range(len(systems))]
-        ax.bar(x + (i - 1) * width, values, width, label=label,
-               color=[_color_for("hhgr"), "#2E8B57", "#B8860B"][i])
+        ax.bar(
+            x + (i - 1) * width,
+            values,
+            width,
+            label=label,
+            color=[_color_for("hhgr"), "#2E8B57", "#B8860B"][i],
+        )
     ax.set_xticks(x)
     ax.set_xticklabels(systems)
     ax.set_ylabel("Latency (ms)")
@@ -376,10 +440,7 @@ def ragas_radar(out_dir: str | Path, ragas_rows: list[dict[str, Any]]) -> dict[s
         values = [row for row in ragas_rows if row["system"] == system]
         if not values:
             return [0.0] * len(metrics)
-        return [
-            sum(row[metric] for row in values) / len(values)
-            for metric in metrics
-        ]
+        return [sum(row[metric] for row in values) / len(values) for metric in metrics]
 
     angles = np.linspace(0, 2 * np.pi, len(metrics), endpoint=False).tolist()
     angles += angles[:1]

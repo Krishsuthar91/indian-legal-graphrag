@@ -1,4 +1,5 @@
 """Capture the before-state of the hierarchy."""
+
 import json
 
 with open("data/hierarchy/0d1934142f67c5f5.json") as f:

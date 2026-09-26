@@ -81,11 +81,13 @@ def write_markdown(
     path.parent.mkdir(parents=True, exist_ok=True)
     lines = [f"# {title}", ""]
     for section in sections:
-        lines.append(markdown_table(
-            section.get("title", "Table"),
-            section.get("headers", []),
-            section.get("rows", []),
-        ))
+        lines.append(
+            markdown_table(
+                section.get("title", "Table"),
+                section.get("headers", []),
+                section.get("rows", []),
+            )
+        )
         lines.append("")
     path.write_text("\n".join(lines), encoding="utf-8")
     return path
@@ -125,9 +127,7 @@ def write_pdf(
         rightMargin=2 * cm,
     )
     styles = getSampleStyleSheet()
-    title_style = ParagraphStyle(
-        "ReportTitle", parent=styles["Title"], fontSize=18, spaceAfter=12
-    )
+    title_style = ParagraphStyle("ReportTitle", parent=styles["Title"], fontSize=18, spaceAfter=12)
     heading_style = ParagraphStyle(
         "ReportH2", parent=styles["Heading2"], spaceBefore=10, spaceAfter=6
     )

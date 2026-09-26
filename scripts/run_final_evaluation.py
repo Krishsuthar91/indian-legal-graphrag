@@ -12,12 +12,10 @@ import json
 import time
 from pathlib import Path
 
-from src.config.settings import settings
 from src.evaluation.calibration import CalibrationMetrics
 from src.evaluation.pipeline import EvaluationConfig, run_evaluation
 from src.evaluation.plots import generate_reliability_diagram
 from src.evaluation.report import build_report, write_report
-from src.evaluation.runner import compute_row_calibration
 from src.llm.llm import get_llm_client
 
 RESULTS_DIR = Path("results")
@@ -35,21 +33,14 @@ def _load_previous_results() -> dict:
     report_path = PRE_DIR / "evaluation_report.md"
     prev_metrics = {}
     if report_path.exists():
-        import re
         text = report_path.read_text(encoding="utf-8")
         # Parse "### Retrieval Metrics" section
-        in_retrieval = False
-        in_generation = False
         for line in text.splitlines():
             if "### Retrieval Metrics" in line:
-                in_retrieval = True
                 continue
             if "### Generation Metrics" in line:
-                in_retrieval = False
-                in_generation = True
                 continue
             if "### Performance Metrics" in line:
-                in_generation = False
                 continue
             if line.startswith("| ") and ("---" not in line):
                 parts = [p.strip() for p in line.split("|") if p.strip()]
@@ -70,9 +61,14 @@ def _load_new_results() -> dict:
         return json.load(f)
 
 
-def _build_comparison_tables(prev_meta: dict, prev_results: list,
-                             new_meta: dict, new_results: list,
-                             prev_data: dict, new_agg: dict) -> str:
+def _build_comparison_tables(
+    prev_meta: dict,
+    prev_results: list,
+    new_meta: dict,
+    new_results: list,
+    prev_data: dict,
+    new_agg: dict,
+) -> str:
     """Build the Before vs After Parser Fix comparison section."""
     sections: list[str] = []
     sections.append("## Impact of Parser Fix")
@@ -98,7 +94,6 @@ def _build_comparison_tables(prev_meta: dict, prev_results: list,
     prev_prec5 = prev_parsed.get("precision_at_5", 0.0)
     prev_halluc = prev_parsed.get("hallucination_rate", 0.0)
     prev_confidence = 0.0
-    prev_latency = 0.0
 
     # New metrics
     new_section_acc = _agg(new_results, "section_correct", 0.0)
@@ -106,7 +101,6 @@ def _build_comparison_tables(prev_meta: dict, prev_results: list,
     new_recall5 = 0.0
     new_halluc = _agg(new_results, "hallucination_rate", 0.0)
     new_confidence = _agg(new_results, "confidence", 0.0)
-    new_latency = _agg(new_results, "latency_ms", 0.0)
 
     # New metrics from per-query aggregation
     new_section_acc = new_agg.get("section_accuracy", 0.0)
@@ -279,7 +273,9 @@ def _build_failure_analysis(raw_results: list) -> str:
         sections.append("")
         sections.append(f"- **Expected section:** {r.get('expected_section', 'N/A')}")
         sections.append(f"- **Retrieved sections:** {r.get('predicted_section', 'N/A')}")
-        sections.append(f"- **Verification status:** {'supported' if r.get('supported') else 'insufficient'}")
+        sections.append(
+            f"- **Verification status:** {'supported' if r.get('supported') else 'insufficient'}"
+        )
         sections.append(f"- **Confidence:** {r.get('confidence', 0.0):.4f}")
         sections.append(f"- **Failure score:** {fscore:.4f}")
 
@@ -346,10 +342,14 @@ def _build_best_queries(raw_results: list) -> str:
         sections.append("")
         sections.append(f"- **Expected section:** {r.get('expected_section', 'N/A')}")
         sections.append(f"- **Retrieved sections:** {r.get('predicted_section', 'N/A')}")
-        sections.append(f"- **Section accuracy:** {float(metrics.get('section_accuracy', 0.0)):.4f}")
+        sections.append(
+            f"- **Section accuracy:** {float(metrics.get('section_accuracy', 0.0)):.4f}"
+        )
         sections.append(f"- **MRR:** {float(metrics.get('mrr', 0.0)):.4f}")
         sections.append(f"- **Faithfulness:** {float(metrics.get('faithfulness', 0.0)):.4f}")
-        sections.append(f"- **Evidence coverage:** {float(metrics.get('evidence_coverage', 0.0)):.4f}")
+        sections.append(
+            f"- **Evidence coverage:** {float(metrics.get('evidence_coverage', 0.0)):.4f}"
+        )
         sections.append(f"- **Confidence:** {r.get('confidence', 0.0):.4f}")
         sections.append(f"- **Success score:** {sscore:.4f}")
         sections.append("")
@@ -357,9 +357,14 @@ def _build_best_queries(raw_results: list) -> str:
     return "\n".join(sections)
 
 
-def _build_paper_tables(meta: dict, per_query_rows: list, performance: dict,
-                        scores: dict, calibration: CalibrationMetrics | None,
-                        raw_rows: list) -> str:
+def _build_paper_tables(
+    meta: dict,
+    per_query_rows: list,
+    performance: dict,
+    scores: dict,
+    calibration: CalibrationMetrics | None,
+    raw_rows: list,
+) -> str:
     """Build publication-quality markdown tables for IEEE paper."""
     sections: list[str] = []
     sections.append("## Research Paper Ready Tables")
@@ -370,12 +375,12 @@ def _build_paper_tables(meta: dict, per_query_rows: list, performance: dict,
     sections.append("")
     sections.append("| Metric | Value |")
     sections.append("| --- | --- |")
-    sections.append(f"| Document | Indian Contract Act, 1872 |")
+    sections.append("| Document | Indian Contract Act, 1872 |")
     sections.append(f"| Hierarchy Nodes | {meta.get('hierarchy_nodes', 'N/A')} |")
     sections.append(f"| Section Nodes | {meta.get('section_nodes', 'N/A')} |")
     sections.append(f"| Benchmark Questions | {meta.get('questions', 50)} |")
     sections.append(f"| LLM | {meta.get('model', 'N/A')} |")
-    sections.append(f"| Embedding | Deterministic (dim=64) |")
+    sections.append("| Embedding | Deterministic (dim=64) |")
     sections.append(f"| Overall Score | {scores['overall']:.4f} |")
     sections.append(f"| Retrieval Score | {scores['retrieval']:.4f} |")
     sections.append(f"| Generation Score | {scores['generation']:.4f} |")
@@ -387,8 +392,14 @@ def _build_paper_tables(meta: dict, per_query_rows: list, performance: dict,
     sections.append("")
     sections.append("| Metric | Value |")
     sections.append("| --- | --- |")
-    for key in ["recall_at_5", "recall_at_10", "precision_at_5", "mrr",
-                "section_accuracy", "hierarchy_accuracy"]:
+    for key in [
+        "recall_at_5",
+        "recall_at_10",
+        "precision_at_5",
+        "mrr",
+        "section_accuracy",
+        "hierarchy_accuracy",
+    ]:
         val = performance.get(key, 0.0)
         for pq in per_query_rows:
             if key in pq:
@@ -396,6 +407,7 @@ def _build_paper_tables(meta: dict, per_query_rows: list, performance: dict,
                 break
         # Use aggregate from per_query
         from src.evaluation.metrics.aggregate import summarize_metrics
+
         agg = summarize_metrics(per_query_rows)
         val = agg.get(key, 0.0)
         sections.append(f"| {key} | {val:.4f} |")
@@ -431,8 +443,12 @@ def _build_paper_tables(meta: dict, per_query_rows: list, performance: dict,
     if calibration and calibration.total_samples > 0:
         sections.append("| Metric | Value |")
         sections.append("| --- | --- |")
-        sections.append(f"| Expected Calibration Error (ECE) | {calibration.expected_calibration_error:.4f} |")
-        sections.append(f"| Maximum Calibration Error (MCE) | {calibration.maximum_calibration_error:.4f} |")
+        sections.append(
+            f"| Expected Calibration Error (ECE) | {calibration.expected_calibration_error:.4f} |"
+        )
+        sections.append(
+            f"| Maximum Calibration Error (MCE) | {calibration.maximum_calibration_error:.4f} |"
+        )
         sections.append(f"| Average Confidence | {calibration.average_confidence:.4f} |")
         sections.append(f"| Average Accuracy | {calibration.average_accuracy:.4f} |")
         sections.append(f"| Total Samples | {calibration.total_samples} |")
@@ -441,7 +457,9 @@ def _build_paper_tables(meta: dict, per_query_rows: list, performance: dict,
         if calibration.confidence_bins:
             sections.append("**Reliability Table:**")
             sections.append("")
-            sections.append("| Confidence Range | Samples | Avg Confidence | Empirical Accuracy | Gap |")
+            sections.append(
+                "| Confidence Range | Samples | Avg Confidence | Empirical Accuracy | Gap |"
+            )
             sections.append("| --- | --- | --- | --- | --- |")
             for b in calibration.confidence_bins:
                 gap = abs(b.empirical_accuracy - b.average_confidence)
@@ -509,15 +527,12 @@ def main() -> int:
 
     # Check if results already exist (skip re-running API calls)
     existing_json = RESULTS_DIR / "raw_results.json"
-    skip_evaluation = (
-        existing_json.exists()
-        and (RESULTS_DIR / "reliability_diagram.png").exists()
-    )
+    skip_evaluation = existing_json.exists() and (RESULTS_DIR / "reliability_diagram.png").exists()
 
     if skip_evaluation:
         print("[1/6] Existing results found — loading cached evaluation output...")
-        from src.evaluation.runner import RawResult
         from src.evaluation.calibration import compute_calibration_metrics
+        from src.evaluation.runner import RawResult
 
         with existing_json.open(encoding="utf-8") as f:
             cached = json.load(f)
@@ -562,7 +577,9 @@ def main() -> int:
         from src.evaluation.corpus import build_evaluation_graph
         from src.evaluation.dataset import load_benchmark_csv
         from src.evaluation.metrics.aggregate import (
-            compute_per_query_metrics, summarize_metrics, overall_score,
+            compute_per_query_metrics,
+            overall_score,
+            summarize_metrics,
         )
         from src.evaluation.metrics.performance import performance_metrics
 
@@ -574,26 +591,41 @@ def main() -> int:
         scores = overall_score(agg, perf["average_latency_ms"])
 
         # Calibration
-        calibration = compute_calibration_metrics([
-            {"confidence": r.confidence, "answer_accuracy": float(
-                next((pq["answer_accuracy"] for pq in per_query
-                      if pq["item_id"] == r.item_id), 0.0)
-            )}
-            for r in raw_results
-        ])
+        calibration = compute_calibration_metrics(
+            [
+                {
+                    "confidence": r.confidence,
+                    "answer_accuracy": float(
+                        next(
+                            (
+                                pq["answer_accuracy"]
+                                for pq in per_query
+                                if pq["item_id"] == r.item_id
+                            ),
+                            0.0,
+                        )
+                    ),
+                }
+                for r in raw_results
+            ]
+        )
 
-        output = type("CachedOutput", (), {
-            "meta": cached.get("meta", {}),
-            "results": raw_results,
-            "per_query": per_query,
-            "aggregate": agg,
-            "performance": perf,
-            "scores": scores,
-            "raw_json": existing_json,
-            "raw_csv": RESULTS_DIR / "raw_results.csv",
-            "report_path": RESULTS_DIR / "evaluation_report.md",
-            "calibration": calibration,
-        })()
+        output = type(
+            "CachedOutput",
+            (),
+            {
+                "meta": cached.get("meta", {}),
+                "results": raw_results,
+                "per_query": per_query,
+                "aggregate": agg,
+                "performance": perf,
+                "scores": scores,
+                "raw_json": existing_json,
+                "raw_csv": RESULTS_DIR / "raw_results.csv",
+                "report_path": RESULTS_DIR / "evaluation_report.md",
+                "calibration": calibration,
+            },
+        )()
 
         config = EvaluationConfig(
             benchmark_csv="data/eval/contract_act_1872_benchmark.csv",
@@ -654,21 +686,22 @@ def main() -> int:
     prev_results = prev_data.get("results", [])
     prev_meta = prev_data.get("meta", {})
     print(f"  Previous results: {len(prev_results)} questions")
-    print(f"  Previous overall: N/A (from report: 0.4185)")
+    print("  Previous overall: N/A (from report: 0.4185)")
     print()
 
     # 5. Build comprehensive report
     print("[5/6] Building comprehensive evaluation report...")
 
     # Re-compute per_query and aggregate for report building
-    from src.evaluation.metrics.aggregate import compute_per_query_metrics, summarize_metrics
     from src.evaluation.corpus import resolve_hierarchy_file
     from src.evaluation.dataset import load_benchmark_csv
+    from src.evaluation.metrics.aggregate import compute_per_query_metrics, summarize_metrics
 
     items = load_benchmark_csv(config.resolved_benchmark_csv())
     hierarchy_path = resolve_hierarchy_file(config.document_id, config.hierarchy_file)
 
     from src.evaluation.corpus import build_evaluation_graph
+
     graph, _ = build_evaluation_graph(config.document_id, config.hierarchy_file)
 
     per_query = compute_per_query_metrics(graph, items, output.results)
@@ -680,8 +713,7 @@ def main() -> int:
             hdata = json.load(f)
         hierarchy_meta["hierarchy_nodes"] = len(hdata.get("nodes", []))
         hierarchy_meta["section_nodes"] = sum(
-            1 for n in hdata.get("nodes", [])
-            if n.get("node_type") == "section"
+            1 for n in hdata.get("nodes", []) if n.get("node_type") == "section"
         )
     except Exception:
         hierarchy_meta["hierarchy_nodes"] = "N/A"
@@ -691,6 +723,7 @@ def main() -> int:
 
     # Deep-copy per_query before build_report mutates it (adds _raw keys)
     import copy
+
     per_query_for_report = copy.deepcopy(per_query)
 
     # Build the standard report with calibration
@@ -712,11 +745,25 @@ def main() -> int:
     failure_section = _build_failure_analysis(new_results_raw)
     best_section = _build_best_queries(new_results_raw)
     paper_section = _build_paper_tables(
-        enriched_meta, per_query, output.performance,
-        output.scores, output.calibration, new_results_raw,
+        enriched_meta,
+        per_query,
+        output.performance,
+        output.scores,
+        output.calibration,
+        new_results_raw,
     )
 
-    full_report = report + "\n\n" + comparison_section + "\n\n" + failure_section + "\n\n" + best_section + "\n\n" + paper_section
+    full_report = (
+        report
+        + "\n\n"
+        + comparison_section
+        + "\n\n"
+        + failure_section
+        + "\n\n"
+        + best_section
+        + "\n\n"
+        + paper_section
+    )
 
     report_path = write_report(RESULTS_DIR / "evaluation_report.md", full_report)
     print(f"  Report saved: {report_path}")

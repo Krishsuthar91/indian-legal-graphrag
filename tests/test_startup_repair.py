@@ -103,19 +103,23 @@ def test_qa_query_returns_503_json_while_corpus_warming(client, monkeypatch):
 def test_qa_warming_gate_allows_lazy_build_when_not_building(client, monkeypatch):
     """Not building + not ready must NOT 503: the lazy build path is preserved."""
     from src.api import qa as qa_api
+    from src.llm.explanation import ExplainabilityEngine
     from src.llm.llm import MockLLMClient
     from src.llm.provenance import ProvenanceStore
     from src.llm.service import QueryService
-    from src.llm.explanation import ExplainabilityEngine
 
     monkeypatch.setattr(svc, "_build_in_progress", False)
     for name in ("_default_graph", "_default_store", "_default_embedding"):
         monkeypatch.setattr(svc, name, None)
-    monkeypatch.setattr(qa_api, "service_factory", lambda: QueryService(
-        ExplainabilityEngine(graph, vector_retriever=None),
-        MockLLMClient(),
-        ProvenanceStore(),
-    ))
+    monkeypatch.setattr(
+        qa_api,
+        "service_factory",
+        lambda: QueryService(
+            ExplainabilityEngine(graph, vector_retriever=None),
+            MockLLMClient(),
+            ProvenanceStore(),
+        ),
+    )
 
     import asyncio
 

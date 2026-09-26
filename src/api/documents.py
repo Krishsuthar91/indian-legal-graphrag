@@ -63,8 +63,7 @@ async def _await_corpus_ready() -> None:
         await asyncio.sleep(0.2)
     raise HTTPException(
         status_code=503,
-        detail="The vector corpus is still indexing (cold start). "
-        "Please retry in a few minutes.",
+        detail="The vector corpus is still indexing (cold start). Please retry in a few minutes.",
     )
 
 
