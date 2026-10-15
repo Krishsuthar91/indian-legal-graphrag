@@ -34,10 +34,11 @@ explaintool/
 
 ```bash
 pip install -r requirements.txt
-cp .env.example .env
+cp deploy/env/.env.development deploy/env/.env.development.local
 uvicorn src.main:app --reload          # http://localhost:8000
-pytest                                 # 908 backend tests
-ruff check .                           # lint (repo has pre-existing fixes)
+pytest                                 # 1047 backend tests
+ruff check .                           # lint (zero issues in the repo)
+ruff format --check .                  # format check (zero drift)
 ```
 
 ### Frontend (Node 20+)
@@ -46,7 +47,7 @@ ruff check .                           # lint (repo has pre-existing fixes)
 cd ui
 npm install
 npm run dev                            # http://localhost:5173 (proxies /api)
-npm test                               # 49 Vitest tests
+npm test                               # 53 Vitest tests
 npm run build                          # type-check + production bundle
 ```
 
@@ -63,8 +64,9 @@ python demo_embeddings.py   # Module 6 — vector + hybrid retrieval
 ## Configuration
 
 Settings live in `src/config/settings.py` (pydantic `BaseSettings`), loaded
-from `.env` or process environment. See `.env.example`. For deployment the
-profiles in `deploy/env/` override local `.env`.
+from `deploy/env/.env.development` then `deploy/env/.env.development.local`.
+See `docs/Configuration.md`. The profiles in `deploy/env/` are the single
+source of truth for environment configuration.
 
 New Module 9 settings:
 

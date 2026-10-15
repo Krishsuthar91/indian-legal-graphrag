@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "84986c29-96bb-4b58-9512-ced34644d962",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "C:\\Users\\Krish\\Project2\\.archify\\architecture-legalgraphrag-20260930-210704\\candidate.json",
+  "output": "C:\\Users\\Krish\\Project2\\docs\\architecture\\legalgraphrag.architecture.html",
+  "specification": {
+    "sha256": "0f582a4c8f7d2b1898bf896d22cbfb5959a031e260ef7ac851e16e1de1fae9fd",
+    "bytes": 12131
+  },
+  "artifact": {
+    "sha256": "c125362040c4237cb9971822e1fa00f6c3dd6a40dcaf7e8c2cbeb2ffe0a947ef",
+    "bytes": 791574
+  }
+}

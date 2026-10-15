@@ -20,6 +20,14 @@ langdetect==1.0.9
 neo4j==6.2.0
 qdrant-client==1.19.0
 
+# Embeddings — pins verified working on this CPU-only box (BAAI/bge-m3 loads,
+# dim=1024). These were previously absent from the lock, which is how a clean
+# install produced an interpreter with no sentence_transformers at all.
+# torch is the CPU build; use the default PyPI index (not the cu128 index).
+torch==2.14.0
+sentence-transformers==6.1.0
+transformers==5.17.0
+
 # Evaluation / reporting
 numpy==2.5.1
 matplotlib==3.11.1

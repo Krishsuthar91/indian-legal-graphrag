@@ -6,15 +6,16 @@ Thank you for your interest in contributing to HHGR.
 
 1. Clone the repository
 2. Install backend dependencies: `pip install -r requirements.txt`
-3. Copy `.env.example` to `.env` and configure your API keys
+3. Copy `deploy/env/.env.development` to `deploy/env/.env.development.local` and set your API keys there
 4. Start the backend: `uvicorn src.main:app --reload`
 5. Start the frontend: `cd ui && npm install && npm run dev`
 
 ## Code Quality
 
-- **Linting**: Run `ruff check src/` before committing
-- **Tests**: Run `python -m pytest tests/` — all 908 backend tests must pass
-- **Frontend tests**: Run `cd ui && npm test` — all 49 tests must pass
+- **Linting**: Run `ruff check .` before committing (must be zero issues)
+- **Formatting**: Run `ruff format --check .` before committing (must be zero drift)
+- **Tests**: Run `python -m pytest -q` — all 1047 backend tests must pass
+- **Frontend tests**: Run `cd ui && npm test` — all 53 tests must pass
 - **Type checking**: Run `cd ui && npx tsc --noEmit` for frontend types
 
 ## Pull Request Process

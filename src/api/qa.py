@@ -317,4 +317,8 @@ async def get_provenance(provenance_id: str) -> QueryResponse:
             "duration_ms": record["duration_ms"],
         }
     )
+    retrieval = data.get("retrieval")
+    if isinstance(retrieval, dict):
+        breakdown = retrieval.get("ranking_breakdown")
+        _coerce_ranking_breakdown(breakdown)
     return QueryResponse.model_validate(data)

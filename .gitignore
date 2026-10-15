@@ -34,3 +34,11 @@ data/processed/*.json
 data/provenance/*.json
 
 data/embeddings/
+
+# Local agent tooling / generated media (not part of the project)
+.agents/
+.archify/
+skills-lock.json
+brag-output/
+brag-research-*/
+demo-output/

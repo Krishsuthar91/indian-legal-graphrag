@@ -1,0 +1,310 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "LegalGraphRAG — GraphRAG Legal Assistant",
+    "output": "docs/architecture/legalgraphrag.architecture.html",
+    "quality_profile": "showcase",
+    "locale": "en",
+    "repository": {
+      "url": "https://github.com/Krishsuthar91/indian-legal-graphrag.git",
+      "provider": "github",
+      "link_mode": "web",
+      "revision": "fa892d8c366db926e9d31ecb79b53f4c6aba8ddc"
+    }
+  },
+  "components": [
+    {
+      "id": "react-spa",
+      "type": "frontend",
+      "label": "React Dashboard",
+      "sublabel": "React 18 · Vite 5",
+      "tag": "axios → /api/v1",
+      "sources": [
+        { "path": "ui/src/App.tsx", "line": 8, "end_line": 36, "label": "lazy routes + Router" },
+        { "path": "ui/src/api/client.ts", "line": 10, "end_line": 15, "label": "axios baseURL /api/v1" }
+      ],
+      "pos": [270, 40],
+      "size": [175, 76]
+    },
+    {
+      "id": "legal-user",
+      "type": "external",
+      "label": "Legal Practitioner",
+      "sublabel": "Browser · statute questions",
+      "sources": [
+        { "path": "ui/index.html", "line": 1, "end_line": 14, "label": "SPA entry document" },
+        { "path": "ui/src/pages/Home.tsx", "line": 1, "end_line": 20, "label": "question entry page" }
+      ],
+      "pos": [60, 186],
+      "size": [150, 76]
+    },
+    {
+      "id": "edge-nginx",
+      "type": "cloud",
+      "label": "Edge Reverse Proxy",
+      "sublabel": "nginx 1.27 · :80",
+      "tag": "TLS block commented out",
+      "sources": [
+        { "path": "deploy/nginx/nginx.conf", "line": 65, "end_line": 73, "label": "api:8000 + react:80 upstreams" },
+        { "path": "docker-compose.yml", "line": 65, "end_line": 66, "label": "nginx compose service" }
+      ],
+      "pos": [270, 186],
+      "size": [175, 76]
+    },
+    {
+      "id": "security-mw",
+      "type": "security",
+      "label": "Security Middleware",
+      "sublabel": "CORS · API key · rate limit",
+      "sources": [
+        { "path": "src/middleware/security.py", "line": 49, "end_line": 132, "label": "auth, rate limit, headers" },
+        { "path": "src/main.py", "line": 160, "end_line": 161, "label": "middleware install order" }
+      ],
+      "pos": [540, 186],
+      "size": [180, 76]
+    },
+    {
+      "id": "fastapi",
+      "type": "backend",
+      "label": "FastAPI Application",
+      "sublabel": "uvicorn :8000 · /api/v1",
+      "sources": [
+        { "path": "src/api/router.py", "line": 9, "end_line": 12, "label": "api/v1 router aggregation" },
+        { "path": "src/main.py", "line": 142, "end_line": 163, "label": "app + middleware chain" }
+      ],
+      "pos": [800, 186],
+      "size": [180, 76]
+    },
+    {
+      "id": "query-service",
+      "type": "backend",
+      "label": "QueryService",
+      "sublabel": "answer() · 30s deadline",
+      "sources": [
+        { "path": "src/llm/service.py", "line": 92, "end_line": 200, "label": "answer() orchestration" },
+        { "path": "src/llm/service.py", "line": 276, "end_line": 299, "label": "grounding guard gate" }
+      ],
+      "pos": [1085, 186],
+      "size": [195, 76]
+    },
+    {
+      "id": "provenance",
+      "type": "database",
+      "label": "Provenance Store",
+      "sublabel": "data/provenance JSON · 30d",
+      "sources": [
+        { "path": "src/llm/provenance.py", "line": 363, "end_line": 380, "label": "ProvenanceStore" },
+        { "path": "src/llm/service.py", "line": 179, "end_line": 188, "label": "save AnswerResult record" }
+      ],
+      "pos": [1390, 186],
+      "size": [200, 76]
+    },
+    {
+      "id": "hhgr-engine",
+      "type": "backend",
+      "label": "Explainability Engine",
+      "sublabel": "7-step HHGR explain()",
+      "sources": [
+        { "path": "src/llm/explanation.py", "line": 362, "end_line": 372, "label": "ExplainabilityEngine" },
+        { "path": "src/llm/explanation.py", "line": 535, "end_line": 560, "label": "explain() stage 1-2" }
+      ],
+      "pos": [1085, 352],
+      "size": [195, 76]
+    },
+    {
+      "id": "llm-provider",
+      "type": "external",
+      "label": "LLM Provider",
+      "sublabel": "NVIDIA NIM · Gemini",
+      "tag": "nemotron-3-super",
+      "sources": [
+        { "path": "src/llm/llm.py", "line": 589, "end_line": 617, "label": "NvidiaClient / GeminiClient" },
+        { "path": "src/llm/llm.py", "line": 723, "end_line": 760, "label": "get_llm_client factory" }
+      ],
+      "pos": [1470, 352],
+      "size": [200, 76]
+    },
+    {
+      "id": "hybrid-retriever",
+      "type": "backend",
+      "label": "Hybrid Vector Retriever",
+      "sublabel": "dense .40 · graph .35 · hier .25",
+      "sources": [
+        { "path": "src/embeddings/retriever.py", "line": 23, "end_line": 27, "label": "hybrid signal weights" },
+        { "path": "src/embeddings/retriever.py", "line": 196, "end_line": 277, "label": "hybrid_retrieve fusion" }
+      ],
+      "pos": [1075, 553],
+      "size": [215, 76]
+    },
+    {
+      "id": "embed-provider",
+      "type": "external",
+      "label": "Embedding Provider",
+      "sublabel": "BAAI/bge-m3 · 1024d",
+      "tag": "sentence-transformers",
+      "sources": [
+        { "path": "src/embeddings/providers.py", "line": 68, "end_line": 130, "label": "SentenceTransformerProvider" },
+        { "path": "src/embeddings/models.py", "line": 37, "end_line": 82, "label": "model registry, 1024 dim" }
+      ],
+      "pos": [1470, 553],
+      "size": [200, 76]
+    },
+    {
+      "id": "neo4j",
+      "type": "database",
+      "label": "Neo4j 5",
+      "sublabel": "health probe only",
+      "tag": "Neo4jDriver unused by QA",
+      "sources": [
+        { "path": "src/knowledge_graph/neo4j_driver.py", "line": 190, "end_line": 200, "label": "Neo4jDriver class" },
+        { "path": "src/api/health.py", "line": 74, "end_line": 96, "label": "GET /check/database probe" }
+      ],
+      "pos": [800, 733],
+      "size": [200, 76]
+    },
+    {
+      "id": "qdrant",
+      "type": "database",
+      "label": "Qdrant Vector Store",
+      "sublabel": "4 collections · cosine 1024d",
+      "sources": [
+        { "path": "src/embeddings/store.py", "line": 48, "end_line": 118, "label": "QdrantStore + collections" },
+        { "path": "src/llm/service.py", "line": 402, "end_line": 413, "label": "corpus store wiring" }
+      ],
+      "pos": [1075, 733],
+      "size": [215, 76]
+    },
+    {
+      "id": "kg-memory",
+      "type": "database",
+      "label": "In-Memory Knowledge Graph",
+      "sublabel": "PART_OF · CITES · REFERENCES",
+      "tag": "InMemoryGraph backs QA",
+      "sources": [
+        { "path": "src/knowledge_graph/neo4j_driver.py", "line": 17, "end_line": 40, "label": "InMemoryGraph" },
+        { "path": "src/llm/service.py", "line": 371, "end_line": 375, "label": "build_default_graph" }
+      ],
+      "pos": [1410, 733],
+      "size": [200, 76]
+    },
+    {
+      "id": "ingest",
+      "type": "backend",
+      "label": "Ingest + Hierarchy Parse",
+      "sublabel": "OCR · clean · chunk to nodes",
+      "sources": [
+        { "path": "src/ingestion/pipeline.py", "line": 50, "end_line": 146, "label": "ingest_document" },
+        { "path": "src/hierarchy/parser.py", "line": 272, "end_line": 330, "label": "parse_document chunking" },
+        { "path": "src/api/documents.py", "line": 92, "end_line": 110, "label": "ingest_upload chain" }
+      ],
+      "pos": [500, 913],
+      "size": [200, 76]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Public Internet",
+      "wraps": ["legal-user"]
+    },
+    {
+      "kind": "region",
+      "label": "Docker Compose network · explaintool",
+      "wraps": [
+        "react-spa",
+        "edge-nginx",
+        "security-mw",
+        "fastapi",
+        "query-service",
+        "provenance",
+        "hhgr-engine",
+        "hybrid-retriever",
+        "neo4j",
+        "qdrant",
+        "kg-memory",
+        "ingest"
+      ]
+    },
+    {
+      "kind": "security-group",
+      "label": "api :8000 · internal only",
+      "wraps": ["security-mw", "fastapi"]
+    },
+    {
+      "kind": "region",
+      "label": "Third-party AI providers",
+      "wraps": ["llm-provider", "embed-provider"]
+    }
+  ],
+  "connections": [
+    { "id": "user-https", "from": "legal-user", "to": "edge-nginx", "label": "HTTPS", "variant": "emphasis" },
+    { "id": "nginx-static", "from": "edge-nginx", "to": "react-spa", "label": "static", "variant": "dashed" },
+    { "id": "nginx-api", "from": "edge-nginx", "to": "security-mw", "label": "proxy /api/" },
+    { "id": "mw-to-app", "from": "security-mw", "to": "fastapi" },
+    { "id": "api-query", "from": "fastapi", "to": "query-service", "label": "POST /query", "variant": "emphasis" },
+    { "id": "svc-provenance", "from": "query-service", "to": "provenance", "label": "save record" },
+    { "id": "svc-explain", "from": "query-service", "to": "hhgr-engine", "label": "explain()" },
+    { "id": "svc-llm", "from": "query-service", "to": "llm-provider", "label": "generate if supported", "variant": "security" },
+    { "id": "engine-retrieve", "from": "hhgr-engine", "to": "hybrid-retriever", "label": "hybrid_retrieve" },
+    { "id": "retr-embed", "from": "hybrid-retriever", "to": "embed-provider", "label": "embed query" },
+    { "id": "retr-qdrant", "from": "hybrid-retriever", "to": "qdrant", "label": "dense search" },
+    { "id": "retr-kg", "from": "hybrid-retriever", "to": "kg-memory", "label": "graph · hier" },
+    { "id": "ingest-qdrant", "from": "ingest", "to": "qdrant", "label": "index vectors", "variant": "dashed", "fromSide": "right", "toSide": "right" },
+    { "id": "ingest-kg", "from": "ingest", "to": "kg-memory", "label": "import nodes", "variant": "dashed", "fromSide": "bottom", "toSide": "bottom" },
+    { "id": "api-neo4j", "from": "fastapi", "to": "neo4j", "label": "check/database", "variant": "dashed" },
+    { "id": "api-upload", "from": "fastapi", "to": "ingest", "label": "upload", "variant": "dashed" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Primary request path",
+      "items": [
+        "Browser → nginx → SecurityMiddleware → FastAPI → QueryService.answer()",
+        "answer() calls explain(), then generates only if the grounding guard passes",
+        "ExplainabilityEngine drives 7 stages; each emits a ReasoningStep",
+        "Response returns evidence, confidence, validity and a provenance id"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Retrieval + RAG pipeline",
+      "items": [
+        "VectorRetriever fuses three signals: dense 0.40, graph 0.35, hierarchy 0.25",
+        "Query is embedded by BAAI/bge-m3 (1024d) before dense search",
+        "Prompts are assembled in src/llm/prompts.py; evidence capped at 500 chars",
+        "Confidence = 0.35 entailment + 0.30 relevance + 0.20 sufficiency + 0.15 retrieval"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Knowledge sources",
+      "items": [
+        "Upload: pdfplumber/PyMuPDF → optional Tesseract OCR → clean → data/processed",
+        "Hierarchy parser chunks by legal node (document/chapter/section/clause)",
+        "Committed corpus is Indian Contract Act 1872 + Indian Penal Code, not BNS",
+        "BNS 2023 exists only as a 6-item ungrounded gold probe in data/eval/gold"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Data stores and reality check",
+      "items": [
+        "Qdrant is the only vector store; no ChromaDB anywhere in the tree",
+        "Retrieval runs on InMemoryGraph, not Neo4j — Neo4jDriver has no QA caller",
+        "Redis is declared in compose and settings but never imported by src/",
+        "Provenance records persist to data/provenance with 30-day retention"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Trust boundaries",
+      "items": [
+        "nginx is the single public entry; only it publishes 80/443",
+        "api exposes 8000 to the compose network only; compose publishes no port",
+        "API-key auth and per-IP rate limiting are off by default (settings flags)",
+        "LLM and embedding calls leave the network to third-party providers"
+      ]
+    }
+  ]
+}

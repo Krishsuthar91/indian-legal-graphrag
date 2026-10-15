@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\Users\\Krish\\Project2\\.archify\\architecture-legalgraphrag-20260930-210704\\candidate.json",
+    "sha256": "0f582a4c8f7d2b1898bf896d22cbfb5959a031e260ef7ac851e16e1de1fae9fd",
+    "bytes": 12131
+  },
+  "artifact": {
+    "path": "C:\\Users\\Krish\\Project2\\docs\\architecture\\legalgraphrag.architecture.html",
+    "sha256": "c125362040c4237cb9971822e1fa00f6c3dd6a40dcaf7e8c2cbeb2ffe0a947ef",
+    "bytes": 791574
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Users\\Krish\\Project2\\docs\\architecture\\legalgraphrag.architecture.finalize.json",
+    "summaryReceipt": "C:\\Users\\Krish\\Project2\\docs\\architecture\\legalgraphrag.architecture.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Users\\Krish\\Project2\\docs\\architecture\\legalgraphrag.architecture.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.0.1",
+    "availableVersion": "3.0.1",
+    "releaseNotes": null,
+    "checkedAt": "2026-09-30T15:37:38.128Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 3424
+}

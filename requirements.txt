@@ -34,10 +34,13 @@ neo4j>=5.0.0
 # Vector Database
 qdrant-client>=1.9.1
 
-# Embeddings (optional — only needed for real model inference; requires torch)
-# sentence-transformers>=3.0.0
-# torch>=2.1.0
-# transformers>=4.40.0
+# Embeddings (required for the default BAAI/bge-m3 provider)
+# Keep these DECLARED. settings.EMBEDDING_ALLOW_DETERMINISTIC_FALLBACK defaults
+# to False, so a missing sentence-transformers makes get_provider() raise and the
+# corpus never builds. Only the deterministic test provider can omit them.
+sentence-transformers>=3.0.0
+torch>=2.1.0
+transformers>=4.41.0
 
 # Testing
 pytest>=8.3.3
