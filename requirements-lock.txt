@@ -3,7 +3,7 @@
 # Last verified against a Python 3.14.5 environment on Windows.
 
 fastapi==0.141.1
-uvicorn[standard]==0.52.0
+uvicorn[standard]==0.52.4
 pydantic==2.13.4
 pydantic-settings==2.14.2
 python-multipart==0.0.32
